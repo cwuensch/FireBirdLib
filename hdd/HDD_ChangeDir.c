@@ -7,8 +7,13 @@ bool HDD_ChangeDir (char *Dir)
 {
 #ifdef _TMS_
 
-  //The TMS supports absolute paths
-  return !TAP_Hdd_ChangeDir(Dir);
+  //The TMS supports absolute paths.
+  //Starting with 2009-08-13 (version 0105), TF changed the return value
+  //  of TAP_Hdd_ChangeDir() to the same type as the current TF5000 API
+  if(TAP_GetVersion() > 0x0104)
+    return TAP_Hdd_ChangeDir(Dir);
+  else
+    return !TAP_Hdd_ChangeDir(Dir);
 
 #else
 

@@ -2743,39 +2743,39 @@
   int        HDD_Smart_ReadThresholdData (word *DataBuf);
   int        HDD_Smart_ReturnStatus (void);                  ////if 20 is returned then one or more thresholds have been exceeded; -1 upon error
   bool       HDD_Write (void *data, dword length, TYPE_File *f);
-  void      HDD_BigFile_Read (void *buf, dword SectorNr, dword NrSectors, TYPE_File *fp);
-  dword     HDD_BigFile_Size (TYPE_File *fp);     //Returns the number of sectors
-  void      HDD_BigFile_Write (void *buf, dword SectorNr, dword NrSectors, TYPE_File *fp);  //!!!Write doesn't append to a file!!! It may only be used in a read-modify-write manner!!!
-  dword     HDD_FreeSize (void);
-  dword     HDD_GetClusterSize (void);
-  bool      HDD_GetFileDir (char *FileName, eRootDirs Root, char *Dir);
-  int       HDD_GetFirmwareDirCluster (void);
-  bool      HDD_GetHDDInfo (HDDINFO *HddInfo);
-  dword     HDD_LiveFS_GetChainLength (int Cluster);
-  dword     HDD_LiveFS_GetFAT1Address (void);
-  dword     HDD_LiveFS_GetFAT2Address (void);
-  int       HDD_LiveFS_GetFirstCluster (int Cluster);
-  int       HDD_LiveFS_GetLastCluster (int Cluster);
-  int       HDD_LiveFS_GetNextCluster (int Cluster);
-  int       HDD_LiveFS_GetPreviousCluster (int Cluster);
-  dword     HDD_LiveFS_GetRootDirAddress (void);
-  dword     HDD_LiveFS_GetSuperBlockAddress (void);
-  void      HDD_ReadClusterDMA (dword Cluster, byte *DataBuffer);
-  int       HDD_ReadSector (dword SectorNr, word *DataBuf);
-  void      HDD_ReadSectorDMA (dword StartSector, dword NrSectors, byte *DataBuffer);
+  void       HDD_BigFile_Read (void *buf, dword SectorNr, dword NrSectors, TYPE_File *fp);
+  dword      HDD_BigFile_Size (TYPE_File *fp);     //Returns the number of sectors
+  void       HDD_BigFile_Write (void *buf, dword SectorNr, dword NrSectors, TYPE_File *fp);  //!!!Write doesn't append to a file!!! It may only be used in a read-modify-write manner!!!
+  dword      HDD_FreeSize (void);
+  dword      HDD_GetClusterSize (void);
+  bool       HDD_GetFileDir (char *FileName, eRootDirs Root, char *Dir);
+  int        HDD_GetFirmwareDirCluster (void);
+  bool       HDD_GetHDDInfo (HDDINFO *HddInfo);
+  dword      HDD_LiveFS_GetChainLength (int Cluster);
+  dword      HDD_LiveFS_GetFAT1Address (void);
+  dword      HDD_LiveFS_GetFAT2Address (void);
+  int        HDD_LiveFS_GetFirstCluster (int Cluster);
+  int        HDD_LiveFS_GetLastCluster (int Cluster);
+  int        HDD_LiveFS_GetNextCluster (int Cluster);
+  int        HDD_LiveFS_GetPreviousCluster (int Cluster);
+  dword      HDD_LiveFS_GetRootDirAddress (void);
+  dword      HDD_LiveFS_GetSuperBlockAddress (void);
+  void       HDD_ReadClusterDMA (dword Cluster, byte *DataBuffer);
+  int        HDD_ReadSector (dword SectorNr, word *DataBuf);
+  void       HDD_ReadSectorDMA (dword StartSector, dword NrSectors, byte *DataBuffer);
 
-  bool      HDD_SetCryptFlag (TYPE_File *fp, byte CryptFlag);
-  void      HDD_SetFileDateTime (TYPE_File *fp, dword FileDateTime, byte Sec, int LocalOffset);
-  void      HDD_TouchFile (TYPE_File *fp);
-  void      HDD_SetSkipFlag (TYPE_File *fp, bool SkipFlag);
+  bool       HDD_SetCryptFlag (TYPE_File *fp, byte CryptFlag);
+  void       HDD_SetFileDateTime (TYPE_File *fp, dword FileDateTime, byte Sec, int LocalOffset);
+  void       HDD_TouchFile (TYPE_File *fp);
+  void       HDD_SetSkipFlag (TYPE_File *fp, bool SkipFlag);
 
-  int       HDD_SetStandbyTimer(dword TimeoutSec);
-  byte      HDD_Smart_ExecuteOfflineImmediate (byte TestMode);
-  int       HDD_Stop(void);
-  int       HDD_TranslateDirCluster (dword DirClusterNr, char* CurrentDir);
-  void      HDD_WriteClusterDMA (dword Cluster, byte *DataBuffer);;
-  void      HDD_WriteSectorDMA (dword StartSector, dword NrSectors, byte *DataBuffer);
-  bool      HDD_TruncateFile (TYPE_File *File, dword Size);
+  int        HDD_SetStandbyTimer(dword TimeoutSec);
+  byte       HDD_Smart_ExecuteOfflineImmediate (byte TestMode);
+  int        HDD_Stop(void);
+  int        HDD_TranslateDirCluster (dword DirClusterNr, char* CurrentDir);
+  void       HDD_WriteClusterDMA (dword Cluster, byte *DataBuffer);;
+  void       HDD_WriteSectorDMA (dword StartSector, dword NrSectors, byte *DataBuffer);
+  bool       HDD_TruncateFile (TYPE_File *File, dword Size);
 
 
   //SMART Test Modes are:
