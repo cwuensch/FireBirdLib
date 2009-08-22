@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-#define __FBLIB_VERSION__ "2009-08-14"
+#define __FBLIB_VERSION__ "2009-08-22"
 
 #ifdef PC_BASED
   #define inline

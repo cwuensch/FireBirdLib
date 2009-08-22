@@ -1558,7 +1558,7 @@
   tBootReason BootReason(void);
   char *GetToppyString (word SysID);
   dword Now (byte *Sec);
-  void  Log (char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *String);
+  void  LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text);
   void  FlushCache(dword *pAddr, int Size);
   char *iso639_1 (int OSDLan);
   void DumpMemory(unsigned char* p, dword size, int BytesPerLine);
@@ -2129,7 +2129,7 @@
 #endif
 
     byte                Res4;
-    word                NetworkID;
+    word                OriginalNetworkID;
   }TYPE_TpInfoS;
 
   typedef struct
@@ -2283,7 +2283,7 @@
     word                TSID;
     byte                StreamType;             //0=LP Stream, 1=HP Stream
     byte                Res2;
-    word                NetworkID;
+    word                OriginalNetworkID;
     byte                Res3 [2];
     byte                Res4 [8];               //TF5700t only.
   }TYPE_TpInfoT5700;
@@ -2380,7 +2380,7 @@
     dword               Frequency;              //[kHz]
     word                SymbolRate;
     word                TSID;
-    word                NetworkID;
+    word                OriginalNetworkID;
     byte                Modulation;             //0=16QAM, 1=32QAM, 2=64QAM, 3=128QAM, 4=256QAM
     byte                Res1 [1];
   }TYPE_TpInfoC;
@@ -2578,7 +2578,7 @@
     word        SymbolRate;
     word        TSID;
     byte        reserved3 [2];
-    word        NetworkID;
+    word        OriginalNetworkID;
   } __attribute__((packed)) tRECTPInfoSat;              //16 bytes
 
   typedef struct
@@ -2590,7 +2590,7 @@
     word                TSID;
     byte                LPHPStream;     //0=LP, 1=HP
     byte                reserved2;
-    word                NetworkID;
+    word                OriginalNetworkID;
     byte                unknown1 [2];
   } __attribute__((packed)) tRECTPInfoTer;              //16 bytes
 
@@ -2599,7 +2599,7 @@
     dword       Frequency;
     word        SymbolRate;
     word        TSID;
-    word        NetworkID;
+    word        OriginalNetworkID;
     byte        Modulation;     //0=16QAM, 1=32QAM, ...
     byte        unused1;
   } __attribute__((packed)) tRECTPInfoCable;            //12 bytes
@@ -3055,7 +3055,7 @@
     dword               TPFrequency;        //STC
     word                TPSymbolRate;       //SC
     word                TPTSID;             //STC
-    word                TPNetworkID;        //STC
+    word                TPOriginalNetworkID;//STC
     byte                TPReserved1 [2];    //S
     byte                TPReserved2 [2];    //S
     byte                TPReserved3;        //ST

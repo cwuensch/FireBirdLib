@@ -69,7 +69,7 @@ int FlashFindTransponderIndex(dword SatIndex, dword NetworkID, dword TSID)
       {
         i++;
         // fortunately, the structures are identical until NetworkID (and TSID)
-        if ((((TYPE_TpInfoT *) Transponder)->NetworkID == NetworkID) && (((TYPE_TpInfoT *) Transponder)->TSID == TSID)) break;
+        if ((((TYPE_TpInfoT *) Transponder)->OriginalNetworkID == NetworkID) && (((TYPE_TpInfoT *) Transponder)->TSID == TSID)) break;
         Transponder += (SystemType == ST_DVBT ? sizeof(TYPE_TpInfoT) : sizeof(TYPE_TpInfoT5700));
         TrCount--;
       }
@@ -106,7 +106,7 @@ int FlashFindTransponderIndex(dword SatIndex, dword NetworkID, dword TSID)
 
       while (TrCount > 0)
       {
-        if ((Transponder->NetworkID == NetworkID) && (Transponder->TSID == TSID)) break;
+        if ((Transponder->OriginalNetworkID == NetworkID) && (Transponder->TSID == TSID)) break;
         Transponder--;
         TrCount--;
       }

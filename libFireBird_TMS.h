@@ -95,11 +95,12 @@
 
   bool  InitTAPex (void);
   void  InitTAPexFailedMsg(char *ProgramName);
+  dword FindInstructionSequence (char SearchPattern [200], char SearchMask [200], dword StartAddress, dword EndAddress, int EntryPointOffset, bool SearchForPrevADDIUSP);
   word  GetSysID(void);
   tBootReason BootReason(void);
   char *GetToppyString (word SysID);
   dword Now (byte *Sec);
-  void  Log (char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *String);
+  void  LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text);
   void  FlushCache(dword *pAddr, int Size);
   char *iso639_1 (int OSDLan);
   void DumpMemory(unsigned char* p, dword size, int BytesPerLine);
@@ -125,16 +126,17 @@
 
   dword TryResolve(char *Function);
 
+  inline dword FIS_fwPowerOff(void);
+  inline dword FIS_fwSetIrCode(void);
   inline dword FIS_vBootReason(void);
   inline dword FIS_vEEPROM (void);
   inline dword FIS_vEEPROMPin (void);
   inline dword FIS_vEtcInfo(void);
   inline dword FIS_vFlash (void);
+  inline dword FIS_vMACAddress(void);
   inline dword FIS_vOSDMap (void);
   inline dword FIS_vParentalInfo(void);
   inline dword FIS_vRECSlotAddress (byte Slot);
-  inline dword FIS_fwPowerOff(void);
-  inline dword FIS_vMACAddress(void);
 
 //TODO: They might be ported
 #ifdef _FUTURE_TMS_
@@ -710,7 +712,7 @@
     word        SymbolRate;
     word        TSID;
     byte        reserved3 [2];
-    word        NetworkID;
+    word        OriginalNetworkID;
   } __attribute__((packed)) tRECTPInfoSat;              //16 bytes
 
   typedef struct
@@ -722,7 +724,7 @@
     word                TSID;
     byte                LPHPStream;     //0=LP, 1=HP
     byte                reserved2;
-    word                NetworkID;
+    word                OriginalNetworkID;
     byte                unknown1 [2];
   } __attribute__((packed)) tRECTPInfoTer;              //16 bytes
 
@@ -731,7 +733,7 @@
     dword       Frequency;
     word        SymbolRate;
     word        TSID;
-    word        NetworkID;
+    word        OriginalNetworkID;
     byte        Modulation;     //0=16QAM, 1=32QAM, ...
     byte        unused1;
   } __attribute__((packed)) tRECTPInfoCable;            //12 bytes

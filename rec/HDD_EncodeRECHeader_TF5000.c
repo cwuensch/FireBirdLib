@@ -59,14 +59,14 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
     {
       if (RECHeaderInfo->HeaderType != HeaderType)
       {
-        RECHeaderInfo->TPSatIndex     = 0;
-        RECHeaderInfo->TPPolarization = 0;
-        RECHeaderInfo->TPMode         = 0;
-        RECHeaderInfo->TPReserved3    = 0;
-        RECHeaderInfo->TPFrequency    = 10700;
-        RECHeaderInfo->TPSymbolRate   = 27500;
-        RECHeaderInfo->TPTSID         = 0;
-        RECHeaderInfo->TPNetworkID    = 0;
+        RECHeaderInfo->TPSatIndex           = 0;
+        RECHeaderInfo->TPPolarization       = 0;
+        RECHeaderInfo->TPMode               = 0;
+        RECHeaderInfo->TPReserved3          = 0;
+        RECHeaderInfo->TPFrequency          = 10700;
+        RECHeaderInfo->TPSymbolRate         = 27500;
+        RECHeaderInfo->TPTSID               = 0;
+        RECHeaderInfo->TPOriginalNetworkID  = 0;
       }
 
       *( byte*)(&Buffer [p +  0]) = RECHeaderInfo->TPSatIndex;
@@ -79,7 +79,7 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
       *( word*)(&Buffer [p +  8]) = RECHeaderInfo->TPSymbolRate;
       *( word*)(&Buffer [p + 10]) = RECHeaderInfo->TPTSID;
       memcpy   (&Buffer [p + 12], RECHeaderInfo->TPReserved2, 2);
-      *( word*)(&Buffer [p + 14]) = RECHeaderInfo->TPNetworkID;
+      *( word*)(&Buffer [p + 14]) = RECHeaderInfo->TPOriginalNetworkID;
 
       p += 16;
       break;
@@ -90,12 +90,12 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
     {
       if (RECHeaderInfo->HeaderType != HeaderType)
       {
-        RECHeaderInfo->TPChannelNumber = 0;
-        RECHeaderInfo->TPBandwidth     = 6;
-        RECHeaderInfo->TPFrequency     = 174000;
-        RECHeaderInfo->TPTSID          = 0;
-        RECHeaderInfo->TPLPHPStream    = 0;
-        RECHeaderInfo->TPNetworkID     = 0;
+        RECHeaderInfo->TPChannelNumber      = 0;
+        RECHeaderInfo->TPBandwidth          = 6;
+        RECHeaderInfo->TPFrequency          = 174000;
+        RECHeaderInfo->TPTSID               = 0;
+        RECHeaderInfo->TPLPHPStream         = 0;
+        RECHeaderInfo->TPOriginalNetworkID  = 0;
       }
 
       *( word*)(&Buffer [p +  0]) = RECHeaderInfo->TPChannelNumber;
@@ -105,7 +105,7 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
       *( word*)(&Buffer [p +  8]) = RECHeaderInfo->TPTSID;
       *( byte*)(&Buffer [p + 10]) = RECHeaderInfo->TPLPHPStream;
       *( byte*)(&Buffer [p + 11]) = RECHeaderInfo->TPReserved4;
-      *( word*)(&Buffer [p + 12]) = RECHeaderInfo->TPNetworkID;
+      *( word*)(&Buffer [p + 12]) = RECHeaderInfo->TPOriginalNetworkID;
       memcpy   (&Buffer [p + 14], RECHeaderInfo->TPUnknown1, 2);
 
       p += 16;
@@ -122,17 +122,17 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
     {
       if (RECHeaderInfo->HeaderType != HeaderType)
       {
-        RECHeaderInfo->TPFrequency  = 47000;
-        RECHeaderInfo->TPSymbolRate = 2000;
-        RECHeaderInfo->TPTSID       = 0;
-        RECHeaderInfo->TPNetworkID  = 0;
-        RECHeaderInfo->TPModulation = 0;
+        RECHeaderInfo->TPFrequency          = 47000;
+        RECHeaderInfo->TPSymbolRate         = 2000;
+        RECHeaderInfo->TPTSID               = 0;
+        RECHeaderInfo->TPOriginalNetworkID  = 0;
+        RECHeaderInfo->TPModulation         = 0;
       }
 
       *(dword*)(&Buffer [p +  0]) = RECHeaderInfo->TPFrequency;
       *( word*)(&Buffer [p +  4]) = RECHeaderInfo->TPSymbolRate;
       *( word*)(&Buffer [p +  6]) = RECHeaderInfo->TPTSID;
-      *( word*)(&Buffer [p +  8]) = RECHeaderInfo->TPNetworkID;
+      *( word*)(&Buffer [p +  8]) = RECHeaderInfo->TPOriginalNetworkID;
       *( byte*)(&Buffer [p + 10]) = RECHeaderInfo->TPModulation;
       *( byte*)(&Buffer [p + 11]) = RECHeaderInfo->TPReserved5;
 

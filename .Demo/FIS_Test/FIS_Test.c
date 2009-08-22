@@ -4,7 +4,12 @@
 
 #define PROGRAM_NAME    "FIS_Test"
 #define LOGNAME         "FIS_Test.log"
-#define FIRMWAREDAT     "Firmware.dat"
+
+#ifdef _TMS_
+  #define FIRMWAREDAT   "FirmwareTMS.dat"
+#else
+  #define FIRMWAREDAT   "Firmware.dat"
+#endif
 
 TAP_ID(1);
 TAP_PROGRAM_NAME        (PROGRAM_NAME);
@@ -12,8 +17,8 @@ TAP_AUTHOR_NAME         ("FireBird");
 TAP_DESCRIPTION         ("");
 TAP_ETCINFO             (__DATE__);
 
-char                    puffer[256];
-#define DEBUG(...)      {sprintf(puffer, __VA_ARGS__); Log (LOGNAME, PROGRAM_NAME, TRUE, TIMESTAMP_HMS, puffer);}
+char                    LogPuffer[256];
+#define DEBUG(...)      {sprintf(LogPuffer, __VA_ARGS__); LogEntry(LOGNAME, PROGRAM_NAME, TRUE, TIMESTAMP_HMS, LogPuffer);}
 
 dword TAP_EventHandler (word event, dword param1, dword param2)
 {
@@ -23,22 +28,33 @@ dword TAP_EventHandler (word event, dword param1, dword param2)
   return param1;
 }
 
-extern int              _appl_version;
+#ifndef _TMS_
+  extern int            _appl_version;
+#endif
 
 char                    x[256];
 
 int TAP_Main (void)
 {
-  word                  SystemID = *((volatile word*)0xa3fffffa);
+  word                  SystemID;
   dword                 i;
   tFWDATHeader         *FWDatHeader;
   tToppyInfo           *ToppyInfo;
   tFWInfo              *FWInfo;
   INILOCATION           Loc;
   SYSTEM_TYPE           SystemType = ST_UNKNOWN;
-  int                   FWID = -1;
 
+#ifndef _TMS_
+  int                   FWID = -1;
+#endif
+
+  SystemID = GetSysID();
+
+#ifdef _TMS_
+  DEBUG("SysID=%d, ApplID=%4.4x", SystemID, TAP_GetVersion());
+#else
   DEBUG("SysID=%d, ApplID=%4.4x, FWgp=%8.8x", SystemID, _appl_version, FIS_GetGP((dword*)0x80000000));
+#endif
   DEBUG("Built with FBLib version %s", __FBLIB_VERSION__);
   DEBUG("");
 
@@ -49,6 +65,11 @@ int TAP_Main (void)
   }
   else
   {
+
+#ifdef _TMS_
+    DEBUG("Main init failed");
+#else
+
     x[0] = '\0';
     if (!FWgp) strcat(x, "FWgp");
     if (!pFWWD)
@@ -67,6 +88,7 @@ int TAP_Main (void)
       strcat(x, "EnqueueEventAddress");
     }
     DEBUG("Main init failed (%s not found)", x);
+#endif
   }
 
   if(FlashInitialize(SystemID))
@@ -81,7 +103,6 @@ int TAP_Main (void)
     DEBUG("  locate FIS_vFlash()");
   }
 
-
   //Details about Firmware.dat
   DEBUG("");
   HDD_TAP_PushDir();
@@ -89,11 +110,12 @@ int TAP_Main (void)
   if (Loc == INILOCATION_NotFound)
   {
     HDD_TAP_PopDir();
-    DEBUG("Firmware.dat not found.");
+
+    DEBUG("%s not found.", FIRMWAREDAT);
   }
   else
   {
-    TAP_SPrint(x, "Firmware.dat found at ");
+    TAP_SPrint(x, "%s found at ", FIRMWAREDAT);
     switch(Loc)
     {
       case INILOCATION_AtCurrentDir:    strcat(x, "current directory"); break;
@@ -107,7 +129,7 @@ int TAP_Main (void)
     {
       HDD_TAP_PopDir();
       DEBUG("%s", x);
-      DEBUG("  Failed while trying to load Firmware.dat");
+      DEBUG("  Failed while trying to load %s", FIRMWAREDAT);
     }
     else
     {
@@ -128,7 +150,7 @@ int TAP_Main (void)
 
     if(ToppyInfo->SystemType == ST_UNKNOWN)
     {
-      DEBUG("  Your SysID is not included in Firmware.dat!");
+      DEBUG("  Your SysID is not included in %s!", FIRMWAREDAT);
     }
     else
     {
@@ -141,6 +163,7 @@ int TAP_Main (void)
         case ST_DVBT    : DEBUG("  DVBt"); break;
         case ST_DVBC    : DEBUG("  DVBc"); break;
         case ST_DVBT5700: DEBUG("  Modified DVBt (TF5700)"); break;
+        case ST_DVBSTMS : DEBUG("  DVBs (TMS)"); break;
         default:;
       }
 
@@ -152,6 +175,7 @@ int TAP_Main (void)
       }
     }
 
+#ifndef _TMS_
     for (i = 0; i < FWDatHeader->NrOfFWInfoEntries; i++, FWInfo++)
     {
       if (FWInfo->SysID == SystemID && FWInfo->FWgp == FWgp)
@@ -163,7 +187,7 @@ int TAP_Main (void)
 
     if(FWID == -1)
     {
-      DEBUG("  Your firmware is not included in Firmware.dat!");
+      DEBUG("  Your firmware is not included in %s!", FIRMWAREDAT);
     }
     else
     {
@@ -171,10 +195,16 @@ int TAP_Main (void)
       DEBUG("  FW AppVersion = %x", FWInfo->AppVersion);
       DEBUG("  FW beta state = %s", FWInfo->Beta ? "yes": "no");
     }
+#endif
   }
 
   //Details about the FindInstructionSequences
   DEBUG("");
+
+#ifdef _TMS_
+  DEBUG("FIS_fwPowerOff                    = %8.8x", FIS_fwPowerOff());
+  DEBUG("FIS_fwSetIrCode                   = %8.8x", FIS_fwSetIrCode());
+#else
   DEBUG("FIS_fwAddEventHandler             = %8.8x", FIS_fwAddEventHandler());
   DEBUG("FIS_fwBIOS                        = %8.8x", FIS_fwBIOS());
   DEBUG("FIS_fwDelEventHandler             = %8.8x", FIS_fwDelEventHandler());
@@ -206,13 +236,25 @@ int TAP_Main (void)
   DEBUG("FIS_fwUpdateMPVFD                 = %8.8x", FIS_fwUpdateMPVFD());
   DEBUG("FIS_fwWriteSectors                = %8.8x", FIS_fwWriteSectors());
   DEBUG("FIS_fwWriteSectorsDMA             = %8.8x", FIS_fwWriteSectorsDMA());
+#endif
 
   DEBUG("");
 
+  DEBUG("FIS_vBootReason                   = %8.8x", FIS_vBootReason());
   DEBUG("FIS_vEEPROM                       = %8.8x", FIS_vEEPROM());
   DEBUG("FIS_vEEPROMPin                    = %8.8x", FIS_vEEPROMPin());
-  DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());
+  DEBUG("FIS_vEtcInfo                      = %8.8x", FIS_vEtcInfo());
   DEBUG("FIS_vFlash                        = %8.8x", FIS_vFlash());
+  DEBUG("FIS_vOSDMap                       = %8.8x", FIS_vOSDMap());
+  DEBUG("FIS_vParentalInfo                 = %8.8x", FIS_vParentalInfo());
+  DEBUG("FIS_vRECSlotAddress0              = %8.8x", FIS_vRECSlotAddress(0));
+  DEBUG("FIS_vRECSlotAddress1              = %8.8x", FIS_vRECSlotAddress(1));
+
+#ifdef _TMS_
+  DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
+  DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
+#else
+  DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());
   DEBUG("FIS_vFlashFWMaxSize               = %8.8x", FIS_vFlashFWMaxSize());
   DEBUG("FIS_vFlashFWStartOffset           = %8.8x", FIS_vFlashFWStartOffset());
   DEBUG("FIS_vFlashInProgress              = %8.8x", FIS_vFlashInProgress());
@@ -231,14 +273,11 @@ int TAP_Main (void)
   DEBUG("FIS_vMPEGHeader                   = %8.8x", FIS_vMPEGHeader());
   DEBUG("FIS_vMPVFD                        = %8.8x", FIS_vMPVFD());
   DEBUG("FIS_vMPVFDBackup                  = %8.8x", FIS_vMPVFDBackup());
-  DEBUG("FIS_vOSDMap                       = %8.8x", FIS_vOSDMap());
   DEBUG("FIS_vPinStatus                    = %8.8x", FIS_vPinStatus());
   DEBUG("FIS_vPlaybackPaused               = %8.8x", FIS_vPlaybackPaused());
   DEBUG("FIS_vPlaySlot                     = %8.8x", FIS_vPlaySlot());
   DEBUG("FIS_vRecFile0                     = %8.8x", FIS_vRecFile(0));
   DEBUG("FIS_vRecFile1                     = %8.8x", FIS_vRecFile(1));
-  DEBUG("FIS_vRECSlotAddress0              = %8.8x", FIS_vRECSlotAddress(0));
-  DEBUG("FIS_vRECSlotAddress1              = %8.8x", FIS_vRECSlotAddress(1));
   DEBUG("FIS_vSuppressedAutoStart          = %8.8x", FIS_vSuppressedAutoStart());
   DEBUG("FIS_vSysOsdControl                = %8.8x", FIS_vSysOsdControl());
   DEBUG("FIS_vTAP_Vfd_Control              = %8.8x", FIS_vTAP_Vfd_Control());
@@ -247,6 +286,7 @@ int TAP_Main (void)
   DEBUG("FIS_vTaskAddressTable             = %8.8x", FIS_vTaskAddressTable());
   DEBUG("FIS_vVolume                       = %8.8x", FIS_vVolume());
   DEBUG("FIS_vWD1                          = %8.8x", FIS_vWD1());
+#endif
 
   return 0;
 }

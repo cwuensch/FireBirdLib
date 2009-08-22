@@ -3,7 +3,7 @@ rem cls
 set Project=FIS_Test
 
 echo ---%Project%
-call gcc %Project%.c
+call gcc.bat %Project%.c
 
 echo ---Linker
 mips-ld --cref -o %Project%.elf -T C:\sw\prgm\Topfield\API\TF5000\TAP.LD %Project%.o -l FireBird -l c -l tap -l gcc -l FireBird -Map %Project%.map

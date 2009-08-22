@@ -344,13 +344,21 @@ License:  This library is freeware. You may use this code in your own projects f
 2009-07-04  FlashFindEndOfServiceTableAddress() also uses the PMTPID to detect invalid entries
             FlashProgram() deliberately modifies the CRC of the TVServices in the memory to ensure that the flash will be update
 
-2009-07-18  TMS
-            TryResolve
-            GetMacAddress
+2009-07-18  TMS Support
+            Added TryResolve()
+            Added GetMacAddress()
             Changed all Dialog word *Colors to dword to be compatible with the TMS's OSD_8888 format
-            SetEEPROMPin
-            New Flashtype ST_DVBSTMS, udpated all flash function
-            FIS_vMACAddress
-            FIS_fwPowerOff
-            BootReason
-            FIS_vEtcInfo
+            Added SetEEPROMPin
+            New flash type ST_DVBSTMS, udpated all flash function
+            Added FIS_vMACAddress()
+            Added FIS_fwPowerOff()
+            Added TMS support to BootReason()
+            Added FIS_vEtcInfo()
+            Added DumpMemory()
+
+2009-08-22  I had to rename Log() to LogEntry() because calling Log() caused an immediate reboot on the TMS
+            Added TMS support to SetRemoteMode()
+            Added FIS_fwSetIrCode()
+            Bugfix @ HDD_TAP_Start() [TMS]: the launched TAP is now in the same directory as the launcher, not /ProgramFiles
+            Had to change several NetworkIDs to OriginalNetworkIDs:
+              TYPE_TpInfoS, TYPE_TpInfoT, TYPE_TpInfoT5700, TYPE_TpInfoC, tRECTPInfoSat, tRECTPInfoTer, tRECTPInfoCable, tRECHeaderInfo

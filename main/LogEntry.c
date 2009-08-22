@@ -4,12 +4,12 @@
 
 #define DUMMYNAME       "FBDUMMYFILE"
 
-void Log (char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
+void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
 {
   TYPE_File             *File;
   dword                 LogSize;
   char                  *TS;
-  char                  CRLF [] = {'\r', '\n'};
+  char                  CRLF[] = {'\r', '\n'};
   byte                  Sec;
 
   TS = TimeFormat(Now (&Sec), Sec, TimeStampFormat);
@@ -36,16 +36,25 @@ void Log (char *FileName, char *ProgramName, bool Console, eTimeStampFormat Time
       TAP_Hdd_Fclose (File);
 
       //The following Create/Delete ensures that the FAT is flushed onto the HDD
+#ifndef _TMS_
       TAP_Hdd_Create (DUMMYNAME, ATTR_NORMAL);
       TAP_Hdd_Delete (DUMMYNAME);
+#endif
     }
   }
 
   if (Console)
   {
+#ifdef _TMS_
+    if (TimeStampFormat != TIMESTAMP_NONE) TAP_PrintNet(TS);
+    if (ProgramName && ProgramName [0]) TAP_PrintNet("%s: ", ProgramName);
+    if (Text && Text [0]) TAP_PrintNet("%s", Text);
+    TAP_PrintNet("\n");
+#else
     if (TimeStampFormat != TIMESTAMP_NONE) TAP_Print (TS);
     if (ProgramName && ProgramName [0]) TAP_Print ("%s: ", ProgramName);
     if (Text && Text [0]) TAP_Print ("%s", Text);
     TAP_Print ("\n");
+#endif
   }
 }

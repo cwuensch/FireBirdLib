@@ -116,16 +116,16 @@ SYSTEM_TYPE HDD_DecodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   {
     case ST_DVBS:
     {
-      RECHeaderInfo->TPSatIndex     = *( byte*)(&Buffer [p +  0]);
-      RECHeaderInfo->TPPolarization = *( byte*)(&Buffer [p +  1]) >> 7;
-      RECHeaderInfo->TPMode         = (*( byte*)(&Buffer [p +  1]) >> 4) & 7;
-      RECHeaderInfo->TPReserved3    = (*( byte*)(&Buffer [p +  1])     ) & 15;
+      RECHeaderInfo->TPSatIndex           = *( byte*)(&Buffer [p +  0]);
+      RECHeaderInfo->TPPolarization       = *( byte*)(&Buffer [p +  1]) >> 7;
+      RECHeaderInfo->TPMode               = (*( byte*)(&Buffer [p +  1]) >> 4) & 7;
+      RECHeaderInfo->TPReserved3          = (*( byte*)(&Buffer [p +  1])     ) & 15;
       memcpy (RECHeaderInfo->TPReserved1,     &Buffer [p +  2], 2);
-      RECHeaderInfo->TPFrequency    = *(dword*)(&Buffer [p +  4]);
-      RECHeaderInfo->TPSymbolRate   = *( word*)(&Buffer [p +  8]);
-      RECHeaderInfo->TPTSID         = *( word*)(&Buffer [p + 10]);
+      RECHeaderInfo->TPFrequency          = *(dword*)(&Buffer [p +  4]);
+      RECHeaderInfo->TPSymbolRate         = *( word*)(&Buffer [p +  8]);
+      RECHeaderInfo->TPTSID               = *( word*)(&Buffer [p + 10]);
       memcpy (RECHeaderInfo->TPReserved2,     &Buffer [p + 12], 2);
-      RECHeaderInfo->TPNetworkID    = *( word*)(&Buffer [p + 14]);
+      RECHeaderInfo->TPOriginalNetworkID  = *( word*)(&Buffer [p + 14]);
 
       p += 16;
       break;
@@ -134,14 +134,14 @@ SYSTEM_TYPE HDD_DecodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo)
     case ST_DVBT:
     case ST_DVBT5700:
     {
-      RECHeaderInfo->TPChannelNumber = *( word*)(&Buffer [p +  0]);
-      RECHeaderInfo->TPBandwidth     = *( byte*)(&Buffer [p +  2]);
-      RECHeaderInfo->TPReserved3     = *( byte*)(&Buffer [p +  3]);
-      RECHeaderInfo->TPFrequency     = *(dword*)(&Buffer [p +  4]);
-      RECHeaderInfo->TPTSID          = *( word*)(&Buffer [p +  8]);
-      RECHeaderInfo->TPLPHPStream    = *( byte*)(&Buffer [p + 10]);
-      RECHeaderInfo->TPReserved4     = *( byte*)(&Buffer [p + 11]);
-      RECHeaderInfo->TPNetworkID     = *( word*)(&Buffer [p + 12]);
+      RECHeaderInfo->TPChannelNumber      = *( word*)(&Buffer [p +  0]);
+      RECHeaderInfo->TPBandwidth          = *( byte*)(&Buffer [p +  2]);
+      RECHeaderInfo->TPReserved3          = *( byte*)(&Buffer [p +  3]);
+      RECHeaderInfo->TPFrequency          = *(dword*)(&Buffer [p +  4]);
+      RECHeaderInfo->TPTSID               = *( word*)(&Buffer [p +  8]);
+      RECHeaderInfo->TPLPHPStream         = *( byte*)(&Buffer [p + 10]);
+      RECHeaderInfo->TPReserved4          = *( byte*)(&Buffer [p + 11]);
+      RECHeaderInfo->TPOriginalNetworkID  = *( word*)(&Buffer [p + 12]);
       memcpy (RECHeaderInfo->TPUnknown1,     &Buffer [p + 14], 2);
 
       p += 16;
@@ -156,12 +156,12 @@ SYSTEM_TYPE HDD_DecodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
     case ST_DVBC:
     {
-      RECHeaderInfo->TPFrequency  = *(dword*)(&Buffer [p +  0]);
-      RECHeaderInfo->TPSymbolRate = *( word*)(&Buffer [p +  4]);
-      RECHeaderInfo->TPTSID       = *( word*)(&Buffer [p +  6]);
-      RECHeaderInfo->TPNetworkID  = *( word*)(&Buffer [p +  8]);
-      RECHeaderInfo->TPModulation = *( byte*)(&Buffer [p + 10]);
-      RECHeaderInfo->TPReserved5  = *( byte*)(&Buffer [p + 11]);
+      RECHeaderInfo->TPFrequency          = *(dword*)(&Buffer [p +  0]);
+      RECHeaderInfo->TPSymbolRate         = *( word*)(&Buffer [p +  4]);
+      RECHeaderInfo->TPTSID               = *( word*)(&Buffer [p +  6]);
+      RECHeaderInfo->TPOriginalNetworkID  = *( word*)(&Buffer [p +  8]);
+      RECHeaderInfo->TPModulation         = *( byte*)(&Buffer [p + 10]);
+      RECHeaderInfo->TPReserved5          = *( byte*)(&Buffer [p + 11]);
 
       p += 12;
       break;

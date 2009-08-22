@@ -14,7 +14,7 @@ void SetRemoteMode (byte Mode, bool Active)
 
   void (*DevFront_SetIrCode)(byte P1, byte P2, byte P3, byte P4, byte P5);
 
-  DevFront_SetIrCode = (void*)TryResolve("DevFront_SetIrCode");
+  DevFront_SetIrCode = (void*)FIS_fwSetIrCode();
   if(DevFront_SetIrCode)
   {
     Mode--;

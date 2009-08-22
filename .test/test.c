@@ -38,477 +38,500 @@ dword TAP_EventHandler (word event, dword param1, dword param2)
 
 int TAP_Main (void)
 {
-  AddEventHandler(0, NULL, 0, 0);
-  AddSec(0, 0, 0);
-  AddTime(0, 0);
-  BMP_WriteHeader(NULL, 0, 0);
-  BootReason();
-  BuildWindowBorder();
-  BuildWindowInfo();
-  BuildWindowLine();
-  BuildWindowLineSelected();
-  BuildWindowScrollBar();
-  BuildWindowTitle();
-  busyWait();
-  CalcAbsSectorFromFAT(NULL, 0);
-  CalcPrepare();
-  CalcTopIndex(0, 0);
-  Callback(0, NULL, 0, 0, 0, 0);
-  CallbackHelper(NULL, NULL, 0, 0, 0, 0);
-  CallBIOS(0, 0, 0, 0, 0);
-  CallFirmware(0, 0, 0, 0, 0);
-  CallTraceComment(NULL);
-  CallTraceEnable(FALSE);
-  CallTraceEnter(NULL);
-  CallTraceExit(NULL);
-  CallTraceExitResult(NULL, NULL);
-  CallTraceInit();
-  CaptureScreen(0, 0, 0, NULL, 0, 0);
-  ChangeDirRoot();
-  CheckSelectable(0, 0);
-  combineVfdData(NULL, NULL);
-  compact(NULL, 0);
-  CompressBlock(NULL, 0, NULL);
-  CompressedTFDSize(NULL, 0, NULL);
-  CompressTFD(NULL, 0, NULL, 0, 0, NULL);
-  CRC16(0, NULL, 0);
-  CRC32 (0, NULL, 0);
-  Delay(0);
-  DelEventHandler(0, NULL);
-  DialogEvent(NULL, NULL, NULL);
-  DialogMsgBoxButtonAdd(NULL, FALSE);
-  DialogMsgBoxExit();
-  DialogMsgBoxInit(NULL, NULL, NULL, NULL);
-  DialogMsgBoxShow();
-  DialogMsgBoxShowInfo(0);
-  DialogMsgBoxShowOK();
-  DialogMsgBoxShowOKCancel(0);
-  DialogMsgBoxShowYesNo(0);
-  DialogMsgBoxShowYesNoCancel(0);
-  DialogMsgBoxTitleSet(NULL, NULL);
-  DialogProfileChange(NULL);
-  DialogProfileCheck(NULL, NULL);
-  DialogProfileLoad(NULL, NULL);
-  DialogProfileLoadDefault();
-  DialogProfileLoadMy(NULL);
-  DialogProfileSave(NULL, 0, NULL);
-  DialogProfileSaveDefault();
-  DialogProfileScrollBehaviourChange(FALSE, FALSE);
-  DialogProgressBarExit();
-  DialogProgressBarInit(NULL, NULL, 0, 0, NULL, 0, 0);
-  DialogProgressBarSet(0, 0);
-  DialogProgressBarShow();
-  DialogProgressBarTitleSet(NULL);
-  DialogWindowAlpha(0);
-  DialogWindowChange(NULL, FALSE);
-  DialogWindowCursorChange(FALSE);
-  DialogWindowCursorSet(0);
-  DialogWindowExit();
-  DialogWindowHide();
-  DialogWindowInfoAddIcon(0, 0, NULL);
-  DialogWindowInfoAddS(0, 0, 0, NULL, 0, 0, 0, 0, 0);
-  DialogWindowInfoDeleteAll();
-  DialogWindowInit(NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, 0, 0);
-  DialogWindowItemAdd(NULL, 0, NULL, 0, FALSE, FALSE, 0, NULL);
-  DialogWindowItemAddSeparator();
-  DialogWindowItemChangeFlags(0, FALSE, FALSE);
-  DialogWindowItemChangeIcon(0, 0, NULL);
-  DialogWindowItemChangeParameter(0, NULL, 0);
-  DialogWindowItemChangeValue(0, NULL, 0);
-  DialogWindowItemDelete(0);
-  DialogWindowItemDeleteAll();
-  DialogWindowRefresh();
-  DialogWindowReInit(0, 0, 0, 0, 0, 0);
-  DialogWindowScrollDown();
-  DialogWindowScrollDownPage();
-  DialogWindowScrollUp();
-  DialogWindowScrollUpPage();
-  DialogWindowShow();
-  DialogWindowTabulatorSet(0, 0);
-  DialogWindowTitleChange(NULL, NULL, NULL);
-  DialogWindowTypeChange(0);
-  DrawMsgBoxButtons();
-  DrawMsgBoxTitle();
-  DrawOSDLine(0, 0, 0, 0, 0, 0);
-  DrawProgressBarBar(0, 0);
-  DrawProgressBarTitle();
-  DrawWindowBorder();
-  DrawWindowInfo();
-  DrawWindowLine(0);
-  DrawWindowLines();
-  DrawWindowScrollBar();
-  DrawWindowTitle();
-  EndMessageWin();
-  EnqueueEvent(0, 0);
-  exitHook();
-  ExtractLine(NULL, NULL);
-  FileSelector(NULL, NULL, NULL, 0);
-  FileSelectorKey(0, 0);
-  FindDBTrack();
-  FindInstructionSequence(NULL, NULL, 0, 0, 0, 0);
-  findSendToVfdDisplay(0, 0);
-  FIS_fwAddEventHandler();
-  FIS_fwBIOS();
-  FIS_fwDelEventHandler();
-  FIS_fwDSTCheck();
-  FIS_fwEnqueueEvent();
-  FIS_fwEventDispatcher();
-  FIS_fwFlashEraseSector();
-  FIS_fwFlashFindSectorAddressIndex();
-  FIS_fwFlashGetSectorAddress();
-  FIS_fwFWFlashProgram();
-  FIS_fwGetMPVFDDataBuffer();
-  FIS_fwMemMonitor();
-  FIS_fwMHEGDisable();
-  FIS_fwMHEGStatus();
-  FIS_fwMoveOld();
-  FIS_fwObtainResource();
-  FIS_fwPIC2_ISR18();
-  FIS_fwReboot();
-  FIS_fwReleaseResource();
-  FIS_fwSendToFP();
-  FIS_fwSendToLEDDisplay();
-  FIS_fwSetLEDByMode();
-  FIS_fwSetPlaybackMode();
-  FIS_fwSetPlaybackSpeed();
-  FIS_fwSetVFDByMode();
-  FIS_fwShutdownHandler();
-  FIS_fwStopDisplayUpdateTimers();
-  FIS_fwTAPStart();
-  FIS_fwUpdateMPVFD();
-  FIS_fwWriteSectors();
-  FIS_fwWriteSectorsDMA();
-  FIS_GetGP(NULL);
-  FIS_vEEPROM();
-  FIS_vEEPROMPin();
-  FIS_vEventHandlerMap();
-  FIS_vFlash();
-  FIS_vFlashFWMaxSize();
-  FIS_vFlashFWStartOffset();
-  FIS_vFlashInProgress();
-  FIS_vGMT();
-  FIS_vHddInfoStructure1();
-  FIS_vHddInfoStructure2();
-  FIS_vHDDLiveFSFAT1();
-  FIS_vHDDLiveFSRootDir();
-  FIS_vHDDLiveFSSuperblock();
-  FIS_vHDDShutdown();
-  FIS_vHeapMap();
-  FIS_vHeapStart();
-  FIS_vIntVectorTable();
-  FIS_vKeyMap();
-  FIS_vLEDDisplayBuffer();
-  FIS_vMPEGHeader();
-  FIS_vMPVFDBackup();
-  FIS_vMPVFD();
-  FIS_vOSDMap();
-  FIS_vPinStatus();
-  FIS_vPlaybackPaused();
-  FIS_vPlaySlot();
-  FIS_vRecFile(0);
-  FIS_vRECSlotAddress(0);
-  FIS_vSuppressedAutoStart();
-  FIS_vSysOsdControl();
-  FIS_vTAP_Vfd_Control();
-  FIS_vTAP_Vfd_Status();
-  FIS_vTAPTable();
-  FIS_vTaskAddressTable();
-  FIS_vVolume();
-  FIS_vWD1();
-  FlashAddFavourite(NULL, 0, FALSE);
-  FlashDeleteFavourites();
-  FlashFindEndOfServiceNameTableAddress();
-  FlashFindEndOfServiceTableAddress(0);
-  FlashFindServiceAddress(0, 0, 0, 0);
-  FlashFindTransponderIndex(0, 0, 0);
-  FlashGetBlockStartAddress(0);
-  FlashGetChannelNumber(0, 0, 0, 0);
-  FlashGetSatelliteByIndex(0);
-  FlashGetServiceByIndex(0, FALSE);
-  FlashGetServiceByName (NULL, FALSE);
-  FlashGetTransponderCByIndex(0);
-  FlashGetTransponderSByIndex(0, 0);
-  FlashGetTransponderTByIndex(0);
-  FlashGetTrueLocalTime(0, 0);
-  FlashGetType();
-  FlashInitialize(0);
-  FlashProgram();
-  FlashReindexFavourites(0, 0, 0);
-  FlashReindexTimers(0, 0, 0);
-  FlashRemoveCASServices(FALSE);
-  FlashRemoveServiceByIndex(0, FALSE);
-  FlashRemoveServiceByIndexString(NULL, FALSE);
-  FlashRemoveServiceByLCN(NULL, FALSE);
-  FlashRemoveServiceByName(NULL, FALSE);
-  FlashRemoveServiceByPartOfName(NULL, FALSE);
-  FlashRemoveServiceByUHF(NULL, FALSE, FALSE);
-  FlashServiceAddressToServiceIndex(NULL);
-  FlashWrite(NULL, NULL, 0, NULL);
-  FlushCache(NULL, 0);
-  FreeOSDRegion(0);
-  fwHook(0);
-  GetAudioTrackPID(0, NULL);
-  GetClusterPointer(0);
-  GetCurrentEvent(NULL);
-  GetEEPROMAddress();
-  GetEEPROMPin();
-  GetFrameBufferPixel(0, 0);
-  GetFrameSize(0, 0);
-  GetFWInfo(0, 0, 0, 0, 0, 0, 0, 0);
-  GetHeapParameter(NULL, 0);
-  GetLine(NULL, 0);
-  GetOSDMapAddress();
-  GetOSDRegionHeight(0);
-  GetOSDRegionWidth(0);
-  GetPinStatus();
-  GetPIPPosition(NULL, NULL, NULL, NULL);
-  getRECSlotAddress();
-  GetSysOsdControl(0);
-  GetToppyString(0);
-  HasEnoughItemMemory();
-  HDD_AAM_Disable();
-  HDD_AAM_Enable(0);
-  HDD_APM_Disable();
-  HDD_APM_Enable(0);
-  HDD_BigFile_Read(NULL, 0, 0, NULL);
-  HDD_BigFile_Size(NULL);
-  HDD_BigFile_Write(NULL, 0, 0, NULL);
-  HDD_ChangeDir(NULL);
-  HDD_DecodeRECHeader(NULL, NULL);
-  HDD_EncodeRECHeader(NULL, NULL, 0);
-  HDD_FappendOpen(NULL);
-  HDD_FappendWrite(NULL, NULL);
-  HDD_FindPCR(NULL, 0, 0);
-  HDD_FindPMT(NULL, 0, NULL);
-  HDD_FreeSize();
-  HDD_GetClusterSize();
-  HDD_GetFileDir(NULL, 0, NULL);
-  HDD_GetFirmwareDirCluster();
-  HDD_GetHddID(NULL, NULL, NULL);
-  HDD_GetHDDInfo(NULL);
-  HDD_IdentifyDevice(NULL);
-  HDD_isAnyRecording();
-  HDD_isCryptedStream(NULL, 0);
-  HDD_isRecording(0);
-  HDD_LiveFS_GetChainLength(0);
-  HDD_LiveFS_GetFAT1Address();
-  HDD_LiveFS_GetFAT2Address();
-  HDD_LiveFS_GetFirstCluster(0);
-  HDD_LiveFS_GetLastCluster(0);
-  HDD_LiveFS_GetNextCluster(0);
-  HDD_LiveFS_GetPreviousCluster(0);
-  HDD_LiveFS_GetRootDirAddress();
-  HDD_LiveFS_GetSuperBlockAddress();
-  HDD_MakeNewRecName(NULL, 0);
-  HDD_Move(NULL, NULL, NULL);
-  HDD_PausePlayback(FALSE);
-  HDD_PlaySlotGetAddress();
-  HDD_ReadClusterDMA(0, NULL);
-  HDD_ReadSector(0, 0);
-  HDD_ReadSectorDMA(0, 0, NULL);
-  HDD_RecalcPlaytime(NULL, NULL);
-  HDD_RECSlotGetAddress(0);
-  HDD_RECSlotIsPaused(0);
-  HDD_RECSlotPause(0, FALSE);
-  HDD_RECSlotSetDuration(0, 0);
-  HDD_SetCryptFlag(NULL, 0);
-  HDD_SetFileDateTime(NULL, 0, 0, 0);
-  HDD_SetSkipFlag (NULL, FALSE);
-  HDD_SetStandbyTimer(0);
-  HDD_Smart_DisableAttributeAutoSave();
-  HDD_Smart_DisableOperations();
-  HDD_Smart_EnableAttributeAutoSave();
-  HDD_Smart_EnableOperations();
-  HDD_Smart_ExecuteOfflineImmediate(0);
-  HDD_Smart_ReadData(0);
-  HDD_Smart_ReadThresholdData(0);
-  HDD_Smart_ReturnStatus();
-  HDD_Stop();
-  HDD_TAP_Callback(0, NULL, 0, 0, 0, 0);
-  HDD_TAP_Disable(0, 0);
-  HDD_TAP_DisableAll(0);
-  HDD_TAP_DisabledEventHandler(0, 0, 0);
-  HDD_TAP_GetCurrentDir(NULL);
-  HDD_TAP_GetCurrentDirCluster();
-  HDD_TAP_GetIDByFileName(NULL);
-  HDD_TAP_GetIDByIndex(0);
-  HDD_TAP_GetIndexByID(0);
-  HDD_TAP_GetInfo(0, NULL);
-  HDD_TAP_GetStartParameter();
-  HDD_TAP_isAnyRunning();
-  HDD_TAP_isBatchMode();
-  HDD_TAP_isDisabled(0);
-  HDD_TAP_isDisabledAll();
-  HDD_TAP_isRunning(0);
-  HDD_TAP_PopDir();
-  HDD_TAP_PushDir();
-  HDD_TAP_SendEvent(0, FALSE, 0, 0, 0);
-  HDD_TAP_SetCurrentDirCluster(0);
-  HDD_TAP_Start(NULL, FALSE, NULL, NULL);
-  HDD_TAP_StartedByTAP();
-  HDD_TAP_Terminate(0);
-  HDD_TouchFile(NULL);
-  HDD_TranslateDirCluster(0, NULL);
-  HDD_TruncateFile(NULL, 0);
-  HDD_Write(NULL, 0, NULL);
-  HDD_WriteClusterDMA(0, NULL);
-  HDD_WriteSectorDMA(0, 0, NULL);
-  HookEnable(0, 0);
-  HookExit();
-  HookIsEnabled(0);
-  HookMIPS_Clear(0, 0, 0);
-  HookMIPS_Set(0, 0, 0);
-  HookSet(0, 0);
-  IdentifyFirmware (NULL, NULL, NULL, NULL, NULL , NULL);
-  IMEM_Alloc(0);
-  IMEM_Compact();
-  IMEM_Free(NULL);
-  IMEM_GetInfo(NULL, NULL);
-  IMEM_Init(0);
-  IMEM_isInitialized();
-  IMEM_Kill();
-  InfoTestGrid();
-  INICloseFile();
-  INIFindStartEnd(NULL, NULL, NULL, 0);
-  INIGetARGB(NULL, NULL, NULL, NULL, NULL, 0);
-  INIGetHexByte(NULL, 0, 0, 0);
-  INIGetHexDWord(NULL, 0, 0, 0);
-  INIGetHexWord(NULL, 0, 0, 0);
-  INIGetInt(NULL, 0, 0, 0);
-  INIGetRGB(NULL, NULL, NULL, NULL, 0);
-  INIGetRGB8(NULL, NULL, NULL, NULL, 0);
-  INIGetString(NULL, NULL, NULL, 0);
-  INIKeyExists(NULL);
-  INIKillKey(NULL);
-  INILocateFile(NULL, NULL);
-  INIOpenFile(NULL, NULL);
-  INISaveFile(NULL, 0, NULL);
-  INISetARGB(NULL, 0, 0, 0, 0);
-  INISetComment(NULL);
-  INISetHexByte(NULL, 0);
-  INISetHexDWord(NULL, 0);
-  INISetHexWord(NULL, 0);
-  INISetInt(NULL, 0);
-  INISetRGB(NULL, 0, 0, 0);
-  INISetRGB8(NULL, 0, 0, 0);
-  INISetString(NULL, NULL);
-  initCodeWrapper(0);
-  InitTAPAPIFix();
-  InitTAPex();
-  InitTAPexFailedMsg(NULL);
-  InteractiveGetStatus();
-  InteractiveSetStatus(FALSE);
-  intLock();
-  intUnlock(0);
-  isAnyOSDVisible(0, 0, 0, 0);
-  isLegalChar(0, 0);
-  isMasterpiece();
-  isMPMenu();
-  iso639_1(0);
-  isOSDRegionAlive(0);
-  isValidChannel(NULL);
-  LangGetString(0);
-  LangLoadStrings(NULL, 0, 0, NULL);
-  LangUnloadStrings();
-  LoadFirmwareDat(NULL, NULL, NULL);
-  Log(NULL, NULL, FALSE, 0, NULL);
-  LowerCase(NULL);
-  MakeValidFileName(NULL, 0);
-  MHEG_Status();
-  MPDisplayClearDisplay();
-  MPDisplayClearSegments(0, 0);
-  MPDisplayDisplayLongString(NULL);
-  MPDisplayDisplayShortString(NULL);
-  MPDisplayGetDisplayByte(0);
-  MPDisplayGetDisplayMask(0);
-  MPDisplayInstallMPDisplayFwHook();
-  MPDisplaySetAmFlag(0);
-  MPDisplaySetColonFlag(0);
-  MPDisplaySetDisplayByte(0, 0);
-  MPDisplaySetDisplayMask(0, 0);
-  MPDisplaySetDisplayMemory(NULL);
-  MPDisplaySetDisplayMode(0);
-  MPDisplaySetPmFlag(0);
-  MPDisplaySetSegments(0, 0);
-  MPDisplayToggleSegments(0, 0);
-  MPDisplayUninstallMPDisplayFwHook();
-  MPDisplayUpdateDisplay();
-  Now(NULL);
-  OSDCopy(0, 0, 0, 0, 0, 0, 0);
-  OSDLinesForeDirty(FALSE);
-  ParseLine(NULL, NULL, 0);
-  PatchApply (NULL, NULL, NULL, FALSE);
-  PatchCleanList (NULL);
-  PatchFindType (NULL, 0, NULL, NULL);
-  PatchGetInstalled (NULL);
-  PatchInstallID (NULL, NULL);
-  PatchInstructionSequence (0, NULL, NULL);
-  PatchIsInstalled (NULL, NULL);
-  PatchLoadModule (NULL);
-  PatchLoadModuleGP (NULL, 0);
-  PatchReinstallList (NULL);
-  PatchRemoveID (NULL, NULL);
-  PatchUnloadModule (NULL);
-  ProfileDirty();
-  ProfileInit();
-  ProfileLoad(NULL, FALSE, NULL);
-  ProfileMayReload();
-  ReadEEPROM(0, 0, NULL);
-  ReadIICRegister(0, 0, 0, 0, NULL);
-  Reboot(0);
-  ReceiveSector(0);
-  RTrim(NULL);
-  SaveBitmap(NULL, 0, 0, NULL);
-  SendEvent(0, 0, 0, 0);
-  SendEventHelper(NULL, 0, 0, 0);
-  SendHDDCommand(0, 0, 0, 0, 0, 0, 0);
-  SendToFP(NULL);
-  SeparatePathComponents(NULL, NULL, NULL, NULL);
-  SetCrashBehaviour(0);
-  SetRemoteMode(0, FALSE);
-  setSymbol14(0, 0);
-  setSymbol17(0, 0);
-  ShowMessageWin(NULL, NULL, NULL, 0);
-  ShowMessageWindow(NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  Shutdown(0);
-  SoundSinus(0, 0, 0);
-  StrEndsWith(NULL, NULL);
-  stricstr(NULL, NULL);
-  SubtitleGetStatus();
-  SubtitleSetStatus(FALSE);
-  SuppressedAutoStart();
-  SwapDWords(0);
-  SwapWords(0);
-  TAP_Osd_PutFreeColorGd(0, 0, 0, NULL, FALSE, 0);
-  TAPCOM_CloseChannel(NULL);
-  TAPCOM_Finish(NULL, 0);
-  TAPCOM_GetChannel(0, NULL, NULL, NULL, NULL);
-  TAPCOM_GetReturnValue(NULL);
-  TAPCOM_GetStatus(NULL);
-  TAPCOM_LastAlive(NULL);
-  TAPCOM_OpenChannel(0, 0, 0, NULL);
-  TAPCOM_Reject(NULL);
-  TAPCOM_StillAlive(NULL);
-  TFDSize(NULL);
-  TimeDiff(0, 0);
-  TimeFormat(0, 0, 0);
-  TunerGet(0);
-  TunerSet(0);
-  UncompressBlock(NULL, 0, NULL, 0);
-  UncompressedFirmwareSize(NULL);
-  UncompressedLoaderSize(NULL);
-  UncompressedTFDSize(NULL);
-  UncompressFirmware(NULL, NULL, NULL);
-  UncompressLoader(NULL, NULL, NULL);
-  UncompressTFD(NULL, NULL, NULL);
-  UpperCase(NULL);
-  ValidFileName(NULL, 0);
-  WindowDirty();
-  WriteIICRegister(0, 0, 0, 0, NULL);
-  YUV2RGB(0, 0, 0, NULL, NULL, NULL);
-  YUV2RGB2(0, 0, 0, NULL, NULL, NULL);
+  //Generic function (TF5000 and TMS)
+  AddSec(0, 0, 0);                                                      //flash, all
+  AddTime(0, 0);                                                        //flash, all
+  BMP_WriteHeader(NULL, 0, 0);                                          //av, all
+  BootReason();                                                         //main, all
+  BuildWindowBorder();                                                  //dialog, all
+  BuildWindowInfo();                                                    //dialog, all
+  BuildWindowLine();                                                    //dialog, all
+  BuildWindowLineSelected();                                            //dialog, all
+  BuildWindowScrollBar();                                               //dialog, all
+  BuildWindowTitle();                                                   //dialog, all
+  CalcPrepare();                                                        //dialog, all
+  CalcTopIndex(0, 0);                                                   //dialog, all
+  CallTraceComment(NULL);                                               //main, all
+  CallTraceEnable(FALSE);                                               //main, all
+  CallTraceEnter(NULL);                                                 //main, all
+  CallTraceExit(NULL);                                                  //main, all
+  CallTraceExitResult(NULL, NULL);                                      //main, all
+  CallTraceInit();                                                      //main, all
+  ChangeDirRoot();                                                      //hdd, all
+  CheckSelectable(0, 0);                                                //dialog, all
+  compact(NULL, 0);                                                     //imem, all
+  CompressBlock(NULL, 0, NULL);                                         //compression, all
+  CompressedTFDSize(NULL, 0, NULL);                                     //compression, all
+  CompressTFD(NULL, 0, NULL, 0, 0, NULL);                               //compression, all
+  CRC16(0, NULL, 0);                                                    //compression, all
+  CRC32 (0, NULL, 0);                                                   //compression, all
+  Delay(0);                                                             //hdd, all
+  DialogEvent(NULL, NULL, NULL);                                        //dialog, all
+  DialogMsgBoxButtonAdd(NULL, FALSE);                                   //dialog, all
+  DialogMsgBoxExit();                                                   //dialog, all
+  DialogMsgBoxInit(NULL, NULL, NULL, NULL);                             //dialog, all
+  DialogMsgBoxShow();                                                   //dialog, all
+  DialogMsgBoxShowInfo(0);                                              //dialog, all
+  DialogMsgBoxShowOK();                                                 //dialog, all
+  DialogMsgBoxShowOKCancel(0);                                          //dialog, all
+  DialogMsgBoxShowYesNo(0);                                             //dialog, all
+  DialogMsgBoxShowYesNoCancel(0);                                       //dialog, all
+  DialogMsgBoxTitleSet(NULL, NULL);                                     //dialog, all
+  DialogProfileChange(NULL);                                            //dialog, all
+  DialogProfileCheck(NULL, NULL);                                       //dialog, all
+  DialogProfileLoad(NULL, NULL);                                        //dialog, all
+  DialogProfileLoadDefault();                                           //dialog, all
+  DialogProfileLoadMy(NULL);                                            //dialog, all
+  DialogProfileSave(NULL, 0, NULL);                                     //dialog, all
+  DialogProfileSaveDefault();                                           //dialog, all
+  DialogProfileScrollBehaviourChange(FALSE, FALSE);                     //dialog, all
+  DialogProgressBarExit();                                              //dialog, all
+  DialogProgressBarInit(NULL, NULL, 0, 0, NULL, 0, 0);                  //dialog, all
+  DialogProgressBarSet(0, 0);                                           //dialog, all
+  DialogProgressBarShow();                                              //dialog, all
+  DialogProgressBarTitleSet(NULL);                                      //dialog, all
+  DialogWindowAlpha(0);                                                 //dialog, all
+  DialogWindowChange(NULL, FALSE);                                      //dialog, all
+  DialogWindowCursorChange(FALSE);                                      //dialog, all
+  DialogWindowCursorSet(0);                                             //dialog, all
+  DialogWindowExit();                                                   //dialog, all
+  DialogWindowHide();                                                   //dialog, all
+  DialogWindowInfoAddIcon(0, 0, NULL);                                  //dialog, all
+  DialogWindowInfoAddS(0, 0, 0, NULL, 0, 0, 0, 0, 0);                   //dialog, all
+  DialogWindowInfoDeleteAll();                                          //dialog, all
+  DialogWindowInit(NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, 0, 0);  //dialog, all
+  DialogWindowItemAdd(NULL, 0, NULL, 0, FALSE, FALSE, 0, NULL);         //dialog, all
+  DialogWindowItemAddSeparator();                                       //dialog, all
+  DialogWindowItemChangeFlags(0, FALSE, FALSE);                         //dialog, all
+  DialogWindowItemChangeIcon(0, 0, NULL);                               //dialog, all
+  DialogWindowItemChangeParameter(0, NULL, 0);                          //dialog, all
+  DialogWindowItemChangeValue(0, NULL, 0);                              //dialog, all
+  DialogWindowItemDelete(0);                                            //dialog, all
+  DialogWindowItemDeleteAll();                                          //dialog, all
+  DialogWindowRefresh();                                                //dialog, all
+  DialogWindowReInit(0, 0, 0, 0, 0, 0);                                 //dialog, all
+  DialogWindowScrollDown();                                             //dialog, all
+  DialogWindowScrollDownPage();                                         //dialog, all
+  DialogWindowScrollUp();                                               //dialog, all
+  DialogWindowScrollUpPage();                                           //dialog, all
+  DialogWindowShow();                                                   //dialog, all
+  DialogWindowTabulatorSet(0, 0);                                       //dialog, all
+  DialogWindowTitleChange(NULL, NULL, NULL);                            //dialog, all
+  DialogWindowTypeChange(0);                                            //dialog, all
+  DrawMsgBoxButtons();                                                  //dialog, all
+  DrawMsgBoxTitle();                                                    //dialog, all
+  DrawOSDLine(0, 0, 0, 0, 0, 0);                                        //av, all
+  DrawProgressBarBar(0, 0);                                             //dialog, all
+  DrawProgressBarTitle();                                               //dialog, all
+  DrawWindowBorder();                                                   //dialog, all
+  DrawWindowInfo();                                                     //dialog, all
+  DrawWindowLine(0);                                                    //dialog, all
+  DrawWindowLines();                                                    //dialog, all
+  DrawWindowScrollBar();                                                //dialog, all
+  DrawWindowTitle();                                                    //dialog, all
+  DumpMemory(NULL, 0, 0);                                               //main, all
+  EndMessageWin();                                                      //av, all
+  ExtractLine(NULL, NULL);                                              //string, all
+  FileSelector(NULL, NULL, NULL, 0);                                    //fs, all
+  FileSelectorKey(0, 0);                                                //fs, all
+  FIS_vBootReason();                                                    //fis, all
+  FIS_vEEPROM();                                                        //fis, all
+  FIS_vEEPROMPin();                                                     //fis, all
+  FIS_vEtcInfo();                                                       //fis, all
+  FIS_vFlash();                                                         //fis, all
+  FIS_vOSDMap();                                                        //fis, all
+  FIS_vRECSlotAddress(0);                                               //fis, all
+  FlashAddFavourite(NULL, 0, FALSE);                                    //flash, all
+  FlashDeleteFavourites();                                              //flash, all
+  FlashFindCASServices(FALSE, NULL, NULL);                              //flash, all
+  FlashFindEndOfServiceNameTableAddress();                              //flash, all
+  FlashFindEndOfServiceTableAddress(0);                                 //flash, all
+  FlashFindServiceAddress(0, 0, 0, 0);                                  //flash, all
+  FlashFindServiceByLCN(NULL, FALSE, NULL, NULL);                       //flash, all
+  FlashFindServiceByName(NULL, FALSE, NULL, NULL);                      //flash, all
+  FlashFindServiceByPartOfName(NULL, FALSE, NULL, NULL);                //flash, all
+  FlashFindTransponderIndex(0, 0, 0);                                   //flash, all
+  FlashGetBlockStartAddress(0);                                         //flash, all
+  FlashGetSatelliteByIndex(0);                                          //flash, all
+  FlashGetServiceByIndex(0, FALSE);                                     //flash, all
+  FlashGetServiceByName (NULL, FALSE);                                  //flash, all
+  FlashGetTransponderSByIndex(0, 0);                                    //flash, all
+  FlashGetTrueLocalTime(0, 0);                                          //flash, all
+  FlashGetType();                                                       //flash, all
+  FlashInitialize(0);                                                   //flash, all
+  FlashProgram();                                                       //flash, all
+  FlashReindexFavourites(0, 0, 0);                                      //flash, all
+  FlashReindexTimers(0, 0, 0);                                          //flash, all
+  FlashRemoveCASServices(FALSE);                                        //flash, all
+  FlashRemoveServiceByIndex(0, FALSE);                                  //flash, all
+  FlashRemoveServiceByIndexString(NULL, FALSE);                         //flash, all
+  FlashRemoveServiceByLCN(NULL, FALSE);                                 //flash, all
+  FlashRemoveServiceByName(NULL, FALSE);                                //flash, all
+  FlashRemoveServiceByPartOfName(NULL, FALSE);                          //flash, all
+  FlashServiceAddressToServiceIndex(NULL);                              //flash, all
+  FlushCache(NULL, 0);                                                  //main, all
+  FreeOSDRegion(0);                                                     //av, all
+  GetCurrentEvent(NULL);                                                //av, all
+  GetEEPROMAddress();                                                   //flash, all
+  GetEEPROMPin();                                                       //flash, all
+  GetLine(NULL, 0);                                                     //string, all
+  GetOSDMapAddress();                                                   //av, all
+  GetOSDRegionHeight(0);                                                //av, all
+  GetOSDRegionWidth(0);                                                 //av, all
+  GetPIPPosition(NULL, NULL, NULL, NULL);                               //av, all
+  GetSysID();                                                           //main, all
+  GetToppyString(0);                                                    //main, all
+  HasEnoughItemMemory();                                                //dialog, all
+  HDD_AAM_Disable();                                                    //hdd, all
+  HDD_AAM_Enable(0);                                                    //hdd, all
+  HDD_APM_Disable();                                                    //hdd, all
+  HDD_APM_Enable(0);                                                    //hdd, all
+  HDD_ChangeDir(NULL);                                                  //hdd, all
+  HDD_FappendOpen(NULL);                                                //hdd, all
+  HDD_FappendWrite(NULL, NULL);                                         //hdd, all
+  HDD_FindPCR(NULL, 0, 0);                                              //rec, all
+  HDD_GetHddID(NULL, NULL, NULL);                                       //hdd, all
+  HDD_IdentifyDevice(NULL);                                             //hdd, all
+  HDD_isAnyRecording();                                                 //rec, all
+  HDD_isCryptedStream(NULL, 0);                                         //rec, all
+  HDD_isRecording(0);                                                   //rec, all
+  HDD_MakeNewRecName(NULL, 0);                                          //rec, all
+  HDD_Move(NULL, NULL, NULL);                                           //hdd, all
+  HDD_RECSlotGetAddress(0);                                             //rec, all
+  HDD_RECSlotSetDuration(0, 0);                                         //rec, all
+  HDD_Smart_DisableAttributeAutoSave();                                 //hdd, all
+  HDD_Smart_DisableOperations();                                        //hdd, all
+  HDD_Smart_EnableAttributeAutoSave();                                  //hdd, all
+  HDD_Smart_EnableOperations();                                         //hdd, all
+  HDD_Smart_ReadData(0);                                                //hdd, all
+  HDD_Smart_ReadThresholdData(0);                                       //hdd, all
+  HDD_Smart_ReturnStatus();                                             //hdd, all
+  HDD_TAP_GetCurrentDir(NULL);                                          //tap, all
+  HDD_TAP_PopDir();                                                     //tap, all
+  HDD_TAP_PushDir();                                                    //tap, all
+  HDD_Write(NULL, 0, NULL);                                             //hdd, all
+  IMEM_Alloc(0);                                                        //imem, all
+  IMEM_Compact();                                                       //imem, all
+  IMEM_Free(NULL);                                                      //imem, all
+  IMEM_GetInfo(NULL, NULL);                                             //imem, all
+  IMEM_Init(0);                                                         //imem, all
+  IMEM_isInitialized();                                                 //imem, all
+  IMEM_Kill();                                                          //imem, all
+  InfoTestGrid();                                                       //dialog, all
+  INICloseFile();                                                       //ini, all
+  INIFindStartEnd(NULL, NULL, NULL, 0);                                 //ini, all
+  INIGetARGB(NULL, NULL, NULL, NULL, NULL, 0);                          //ini, all
+  INIGetHexByte(NULL, 0, 0, 0);                                         //ini, all
+  INIGetHexDWord(NULL, 0, 0, 0);                                        //ini, all
+  INIGetHexWord(NULL, 0, 0, 0);                                         //ini, all
+  INIGetInt(NULL, 0, 0, 0);                                             //ini, all
+  INIGetRGB(NULL, NULL, NULL, NULL, 0);                                 //ini, all
+  INIGetRGB8(NULL, NULL, NULL, NULL, 0);                                //ini, all
+  INIGetString(NULL, NULL, NULL, 0);                                    //ini, all
+  INIKeyExists(NULL);                                                   //ini, all
+  INIKillKey(NULL);                                                     //ini, all
+  INILocateFile(NULL, NULL);                                            //ini, all
+  INIOpenFile(NULL, NULL);                                              //ini, all
+  INISaveFile(NULL, 0, NULL);                                           //ini, all
+  INISetARGB(NULL, 0, 0, 0, 0);                                         //ini, all
+  INISetComment(NULL);                                                  //ini, all
+  INISetHexByte(NULL, 0);                                               //ini, all
+  INISetHexDWord(NULL, 0);                                              //ini, all
+  INISetHexWord(NULL, 0);                                               //ini, all
+  INISetInt(NULL, 0);                                                   //ini, all
+  INISetRGB(NULL, 0, 0, 0);                                             //ini, all
+  INISetRGB8(NULL, 0, 0, 0);                                            //ini, all
+  INISetString(NULL, NULL);                                             //ini, all
+  InitTAPex();                                                          //main, all
+  InitTAPexFailedMsg(NULL);                                             //main, all
+  isLegalChar(0, 0);                                                    //string, all
+  iso639_1(0);                                                          //main, all
+  LangGetString(0);                                                     //ini, all
+  LangLoadStrings(NULL, 0, 0, NULL);                                    //ini, all
+  LangUnloadStrings();                                                  //ini, all
+  LoadFirmwareDat(NULL, NULL, NULL);                                    //main, all
+  LogEntry(NULL, NULL, FALSE, 0, NULL);                                 //main, all
+  LowerCase(NULL);                                                      //string, all
+  MakeValidFileName(NULL, 0);                                           //string, all
+  Now(NULL);                                                            //flash, all
+  OSDCopy(0, 0, 0, 0, 0, 0, 0);                                         //av, all
+  OSDLinesForeDirty(FALSE);                                             //dialog, all
+  ParseLine(NULL, NULL, 0);                                             //string, all
+  ProfileDirty();                                                       //dialog, all
+  ProfileInit();                                                        //dialog, all
+  ProfileLoad(NULL, FALSE, NULL);                                       //dialog, all
+  ProfileMayReload();                                                   //dialog, all
+  Reboot(0);                                                            //shutdown, all
+  RTrim(NULL);                                                          //string, all
+  SaveBitmap(NULL, 0, 0, NULL);                                         //av, all
+  SeparatePathComponents(NULL, NULL, NULL, NULL);                       //string, all
+  SetEEPROMPin(0);                                                      //flash, all
+  SetRemoteMode(0, FALSE);                                              //av, all
+  ShowMessageWin(NULL, NULL, NULL, 0);                                  //av, all
+  ShowMessageWindow(NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);                   //av, all
+  Shutdown(0);                                                          //shutdown, all
+  SoundSinus(0, 0, 0);                                                  //av, all
+  StrEndsWith(NULL, NULL);                                              //string, all
+  stricstr(NULL, NULL);                                                 //string, all
+  SwapDWords(0);                                                        //hdd, all
+  SwapWords(0);                                                         //hdd, all
+  TAP_Osd_PutFreeColorGd(0, 0, 0, NULL, FALSE, 0);                      //av, all
+  TFDSize(NULL);                                                        //compression, all
+  TimeDiff(0, 0);                                                       //flash, all
+  TimeFormat(0, 0, 0);                                                  //flash, all
+  TunerGet(0);                                                          //av, all
+  TunerSet(0);                                                          //av, all
+  UncompressBlock(NULL, 0, NULL, 0);                                    //compression, all
+  UncompressedFirmwareSize(NULL);                                       //compression, all
+  UncompressedLoaderSize(NULL);                                         //compression, all
+  UncompressedTFDSize(NULL);                                            //compression, all
+  UncompressFirmware(NULL, NULL, NULL);                                 //compression, all
+  UncompressLoader(NULL, NULL, NULL);                                   //compression, all
+  UncompressTFD(NULL, NULL, NULL);                                      //compression, all
+  UpperCase(NULL);                                                      //string, all
+  ValidFileName(NULL, 0);                                               //string, all
+  WindowDirty();                                                        //dialog, all
+  YUV2RGB(0, 0, 0, NULL, NULL, NULL);                                   //av, all
+  YUV2RGB2(0, 0, 0, NULL, NULL, NULL);                                  //av, all
 
 
+  //TF5000 only
+#ifndef _TMS_
+  AddEventHandler(0, NULL, 0, 0);                                       //main, 5k
+  busyWait();                                                           //hdd, 5k
+  CalcAbsSectorFromFAT(NULL, 0);                                        //hdd, 5k
+  Callback(0, NULL, 0, 0, 0, 0);                                        //tap, 5k
+  CallbackHelper(NULL, NULL, 0, 0, 0, 0);                               //tap, 5k
+  CallBIOS(0, 0, 0, 0, 0);                                              //main, 5k
+  CallFirmware(0, 0, 0, 0, 0);                                          //main, 5k
+  CaptureScreen(0, 0, 0, NULL, 0, 0);                                   //av, all but different parameters
+  DelEventHandler(0, NULL);                                             //main, 5k
+  EnqueueEvent(0, 0);                                                   //main, 5k
+  exitHook();                                                           //hook, 5k
+  FindDBTrack();                                                        //av, 5k
+  FindInstructionSequence(NULL, NULL, 0, 0, 0, 0);                      //main, 5k
+  findSendToVfdDisplay(0, 0);                                           //mpvfd, 5k
+  FIS_fwAddEventHandler();                                              //fis, 5k
+  FIS_fwBIOS();                                                         //fis, 5k
+  FIS_fwDelEventHandler();                                              //fis, 5k
+  FIS_fwDSTCheck();                                                     //fis, 5k
+  FIS_fwEnqueueEvent();                                                 //fis, 5k
+  FIS_fwEventDispatcher();                                              //fis, 5k
+  FIS_fwFlashEraseSector();                                             //fis, 5k
+  FIS_fwFlashFindSectorAddressIndex();                                  //fis, 5k
+  FIS_fwFlashGetSectorAddress();                                        //fis, 5k
+  FIS_fwFWFlashProgram();                                               //fis, 5k
+  FIS_fwGetMPVFDDataBuffer();                                           //fis, 5k
+  FIS_fwMemMonitor();                                                   //fis, 5k
+  FIS_fwMHEGDisable();                                                  //fis, 5k
+  FIS_fwMHEGStatus();                                                   //fis, 5k
+  FIS_fwMoveOld();                                                      //fis, 5k
+  FIS_fwObtainResource();                                               //fis, 5k
+  FIS_fwPIC2_ISR18();                                                   //fis, 5k
+  FIS_fwReboot();                                                       //fis, 5k
+  FIS_fwReleaseResource();                                              //fis, 5k
+  FIS_fwSendToFP();                                                     //fis, 5k
+  FIS_fwSendToLEDDisplay();                                             //fis, 5k
+  FIS_fwSetLEDByMode();                                                 //fis, 5k
+  FIS_fwSetPlaybackMode();                                              //fis, 5k
+  FIS_fwSetPlaybackSpeed();                                             //fis, 5k
+  FIS_fwSetVFDByMode();                                                 //fis, 5k
+  FIS_fwShutdownHandler();                                              //fis, 5k
+  FIS_fwStopDisplayUpdateTimers();                                      //fis, 5k
+  FIS_fwTAPStart();                                                     //fis, 5k
+  FIS_fwUpdateMPVFD();                                                  //fis, 5k
+  FIS_fwWriteSectors();                                                 //fis, 5k
+  FIS_fwWriteSectorsDMA();                                              //fis, 5k
+  FIS_GetGP(NULL);                                                      //fis, 5k
+  FIS_vEventHandlerMap();                                               //fis, 5k
+  FIS_vFlashFWMaxSize();                                                //fis, 5k
+  FIS_vFlashFWStartOffset();                                            //fis, 5k
+  FIS_vFlashInProgress();                                               //fis, 5k
+  FIS_vGMT();                                                           //fis, 5k
+  FIS_vHddInfoStructure1();                                             //fis, 5k
+  FIS_vHddInfoStructure2();                                             //fis, 5k
+  FIS_vHDDLiveFSFAT1();                                                 //fis, 5k
+  FIS_vHDDLiveFSRootDir();                                              //fis, 5k
+  FIS_vHDDLiveFSSuperblock();                                           //fis, 5k
+  FIS_vHDDShutdown();                                                   //fis, 5k
+  FIS_vHeapMap();                                                       //fis, 5k
+  FIS_vHeapStart();                                                     //fis, 5k
+  FIS_vIntVectorTable();                                                //fis, 5k
+  FIS_vKeyMap();                                                        //fis, 5k
+  FIS_vLEDDisplayBuffer();                                              //fis, 5k
+  FIS_vMPEGHeader();                                                    //fis, 5k
+  FIS_vMPVFD();                                                         //fis, 5k
+  FIS_vMPVFDBackup();                                                   //fis, 5k
+  FIS_vPinStatus();                                                     //fis, 5k
+  FIS_vPlaybackPaused();                                                //fis, 5k
+  FIS_vPlaySlot();                                                      //fis, 5k
+  FIS_vRecFile(0);                                                      //fis, 5k
+  FIS_vSuppressedAutoStart();                                           //fis, 5k
+  FIS_vSysOsdControl();                                                 //fis, 5k
+  FIS_vTAP_Vfd_Control();                                               //fis, 5k
+  FIS_vTAP_Vfd_Status();                                                //fis, 5k
+  FIS_vTAPTable();                                                      //fis, 5k
+  FIS_vTaskAddressTable();                                              //fis, 5k
+  FIS_vVolume();                                                        //fis, 5k
+  FIS_vWD1();                                                           //fis, 5k
+  FlashFindServiceByUHF(NULL, FALSE, FALSE, NULL, NULL);                //flash, 5k
+  FlashGetChannelNumber(0, 0, 0, 0);                                    //flash, 5k
+  FlashGetTransponderCByIndex(0);                                       //flash, 5k
+  FlashGetTransponderTByIndex(0);                                       //flash, 5k
+  FlashRemoveServiceByUHF(NULL, FALSE, FALSE);                          //flash, 5k
+  FlashWrite(NULL, NULL, 0, NULL);                                      //flash, 5k
+  fwHook(0);                                                            //mpvfd, 5k
+  GetAudioTrackPID(0, NULL);                                            //av, 5k
+  GetClusterPointer(0);                                                 //hdd, 5k
+  GetFrameBufferPixel(0, 0);                                            //av, 5k
+  GetFrameSize(0, 0);                                                   //av, 5k
+  GetFWInfo(0, 0, 0, 0, 0, 0, 0, 0);                                    //main, 5k
+  GetHeapParameter(NULL, 0);                                            //main, 5k
+  GetPinStatus();                                                       //av, 5k
+  GetSysOsdControl(0);                                                  //av, 5k
+  HDD_BigFile_Read(NULL, 0, 0, NULL);                                   //hdd, 5k
+  HDD_BigFile_Size(NULL);                                               //hdd, 5k
+  HDD_BigFile_Write(NULL, 0, 0, NULL);                                  //hdd, 5k
+  HDD_DecodeRECHeader(NULL, NULL);                                      //rec, 5k
+  HDD_EncodeRECHeader(NULL, NULL, 0);                                   //rec, 5k
+  HDD_FindPMT(NULL, 0, NULL);                                           //rec, 5k
+  HDD_FreeSize();                                                       //hdd, 5k
+  HDD_GetClusterSize();                                                 //hdd, 5k
+  HDD_GetFileDir(NULL, 0, NULL);                                        //hdd, 5k
+  HDD_GetFirmwareDirCluster();                                          //hdd, 5k
+  HDD_GetHDDInfo(NULL);                                                 //hdd, 5k
+  HDD_LiveFS_GetChainLength(0);                                         //hdd, 5k
+  HDD_LiveFS_GetFAT1Address();                                          //hdd, 5k
+  HDD_LiveFS_GetFAT2Address();                                          //hdd, 5k
+  HDD_LiveFS_GetFirstCluster(0);                                        //hdd, 5k
+  HDD_LiveFS_GetLastCluster(0);                                         //hdd, 5k
+  HDD_LiveFS_GetNextCluster(0);                                         //hdd, 5k
+  HDD_LiveFS_GetPreviousCluster(0);                                     //hdd, 5k
+  HDD_LiveFS_GetRootDirAddress();                                       //hdd, 5k
+  HDD_LiveFS_GetSuperBlockAddress();                                    //hdd, 5k
+  HDD_PausePlayback(FALSE);                                             //rec, 5k
+  HDD_PlaySlotGetAddress();                                             //rec, 5k
+  HDD_ReadClusterDMA(0, NULL);                                          //hdd, 5k
+  HDD_ReadSector(0, 0);                                                 //hdd, 5k
+  HDD_ReadSectorDMA(0, 0, NULL);                                        //hdd, 5k
+  HDD_RecalcPlaytime(NULL, NULL);                                       //rec, 5k
+  HDD_SetCryptFlag(NULL, 0);                                            //hdd, 5k
+  HDD_SetFileDateTime(NULL, 0, 0, 0);                                   //hdd, 5k
+  HDD_SetSkipFlag (NULL, FALSE);                                        //hdd, 5k
+  HDD_SetStandbyTimer(0);                                               //hdd, 5k
+  HDD_RECSlotIsPaused(0);                                               //rec, 5k
+  HDD_RECSlotPause(0, FALSE);                                           //rec, 5k
+  HDD_Smart_ExecuteOfflineImmediate(0);                                 //hdd, 5k
+  HDD_Stop();                                                           //hdd, 5k
+  HDD_TAP_Callback(0, NULL, 0, 0, 0, 0);                                //tap, 5k
+  HDD_TAP_Disable(0, 0);                                                //tap, 5k
+  HDD_TAP_DisableAll(0);                                                //tap, 5k
+  HDD_TAP_DisabledEventHandler(0, 0, 0);                                //tap, 5k
+  HDD_TAP_GetCurrentDirCluster();                                       //tap, 5k
+  HDD_TAP_GetIDByFileName(NULL);                                        //tap, 5k
+  HDD_TAP_GetIDByIndex(0);                                              //tap, 5k
+  HDD_TAP_GetIndexByID(0);                                              //tap, 5k
+  HDD_TAP_GetInfo(0, NULL);                                             //tap, 5k
+  HDD_TAP_GetStartParameter();                                          //tap, 5k
+  HDD_TAP_isAnyRunning();                                               //tap, 5k
+  HDD_TAP_isBatchMode();                                                //tap, 5k
+  HDD_TAP_isDisabled(0);                                                //tap, 5k
+  HDD_TAP_isDisabledAll();                                              //tap, 5k
+  HDD_TAP_isRunning(0);                                                 //tap, 5k
+  HDD_TAP_SendEvent(0, FALSE, 0, 0, 0);                                 //tap, 5k
+  HDD_TAP_SetCurrentDirCluster(0);                                      //tap, 5k
+  HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, all
+  HDD_TAP_StartedByTAP();                                               //tap, 5k
+  HDD_TAP_Terminate(0);                                                 //tap, 5k
+  HDD_TouchFile(NULL);                                                  //hdd, 5k
+  HDD_TranslateDirCluster(0, NULL);                                     //hdd, 5k
+  HDD_TruncateFile(NULL, 0);                                            //hdd, 5k
+  HDD_WriteClusterDMA(0, NULL);                                         //hdd, 5k
+  HDD_WriteSectorDMA(0, 0, NULL);                                       //hdd, 5k
+  HookEnable(0, 0);                                                     //hook, 5k
+  HookExit();                                                           //hook, 5k
+  HookIsEnabled(0);                                                     //hook, 5k
+  HookMIPS_Clear(0, 0, 0);                                              //hook, 5k
+  HookMIPS_Set(0, 0, 0);                                                //hook, 5k
+  HookSet(0, 0);                                                        //hook, 5k
+  IdentifyFirmware (NULL, NULL, NULL, NULL, NULL , NULL);               //main, 5k
+  initCodeWrapper(0);                                                   //mpvfd, 5k
+  InitTAPAPIFix();                                                      //tapapifix, 5k
+  InteractiveGetStatus();                                               //av, 5k
+  InteractiveSetStatus(FALSE);                                          //av, 5k
+  intLock();                                                            //main, 5k
+  intUnlock(0);                                                         //main, 5k
+  isAnyOSDVisible(0, 0, 0, 0);                                          //av, 5k
+  isMasterpiece();                                                      //main, 5k
+  isMPMenu();                                                           //av, 5k
+  isOSDRegionAlive(0);                                                  //av, 5k
+  isValidChannel(NULL);                                                 //tapcom, 5k
+  MHEG_Status();                                                        //av, 5k
+  MPDisplayClearDisplay();                                              //mpvfd, 5k
+  MPDisplayClearSegments(0, 0);                                         //mpvfd, 5k
+  MPDisplayDisplayLongString(NULL);                                     //mpvfd, 5k
+  MPDisplayDisplayShortString(NULL);                                    //mpvfd, 5k
+  MPDisplayGetDisplayByte(0);                                           //mpvfd, 5k
+  MPDisplayGetDisplayMask(0);                                           //mpvfd, 5k
+  MPDisplayInstallMPDisplayFwHook();                                    //mpvfd, 5k
+  MPDisplaySetAmFlag(0);                                                //mpvfd, 5k
+  MPDisplaySetColonFlag(0);                                             //mpvfd, 5k
+  MPDisplaySetDisplayByte(0, 0);                                        //mpvfd, 5k
+  MPDisplaySetDisplayMask(0, 0);                                        //mpvfd, 5k
+  MPDisplaySetDisplayMemory(NULL);                                      //mpvfd, 5k
+  MPDisplaySetDisplayMode(0);                                           //mpvfd, 5k
+  MPDisplaySetPmFlag(0);                                                //mpvfd, 5k
+  MPDisplaySetSegments(0, 0);                                           //mpvfd, 5k
+  MPDisplayToggleSegments(0, 0);                                        //mpvfd, 5k
+  MPDisplayUninstallMPDisplayFwHook();                                  //mpvfd, 5k
+  MPDisplayUpdateDisplay();                                             //mpvfd, 5k
+  PatchApply (NULL, NULL, NULL, FALSE);                                 //fwpatches, 5k
+  PatchCleanList (NULL);                                                //fwpatches, 5k
+  PatchFindType (NULL, 0, NULL, NULL);                                  //fwpatches, 5k
+  PatchGetInstalled (NULL);                                             //fwpatches, 5k
+  PatchInstallID (NULL, NULL);                                          //fwpatches, 5k
+  PatchInstructionSequence (0, NULL, NULL);                             //main, 5k
+  PatchIsInstalled (NULL, NULL);                                        //fwpatches, 5k
+  PatchLoadModule (NULL);                                               //fwpatches, 5k
+  PatchLoadModuleGP (NULL, 0);                                          //fwpatches, 5k
+  PatchReinstallList (NULL);                                            //fwpatches, 5k
+  PatchRemoveID (NULL, NULL);                                           //fwpatches, 5k
+  PatchUnloadModule (NULL);                                             //fwpatches, 5k
+  ReadEEPROM(0, 0, NULL);                                               //iic, 5k
+  ReadIICRegister(0, 0, 0, 0, NULL);                                    //iic, 5k
+  ReceiveSector(0);                                                     //hdd, 5k
+  SendEvent(0, 0, 0, 0);                                                //tap, 5k
+  SendEventHelper(NULL, 0, 0, 0);                                       //tap, 5k
+  SendToFP(NULL);                                                       //main, 5k
+  SetCrashBehaviour(0);                                                 //main, 5k
+  setSymbol14(0, 0);                                                    //mpvfd, 5k
+  setSymbol17(0, 0);                                                    //mpvfd, 5k
+  SubtitleGetStatus();                                                  //av, 5k
+  SubtitleSetStatus(FALSE);                                             //av, 5k
+  SuppressedAutoStart();                                                //main, 5k
+  TAPCOM_CloseChannel(NULL);                                            //tapcom, 5k
+  TAPCOM_Finish(NULL, 0);                                               //tapcom, 5k
+  TAPCOM_GetChannel(0, NULL, NULL, NULL, NULL);                         //tapcom, 5k
+  TAPCOM_GetReturnValue(NULL);                                          //tapcom, 5k
+  TAPCOM_GetStatus(NULL);                                               //tapcom, 5k
+  TAPCOM_LastAlive(NULL);                                               //tapcom, 5k
+  TAPCOM_OpenChannel(0, 0, 0, NULL);                                    //tapcom, 5k
+  TAPCOM_Reject(NULL);                                                  //tapcom, 5k
+  TAPCOM_StillAlive(NULL);                                              //tapcom, 5k
+  WriteIICRegister(0, 0, 0, 0, NULL);                                   //iic, 5k
+#endif
+
+  //TMS only
+#ifdef _TMS_
+  FIS_fwPowerOff();                                                     //fis, tms
+  FIS_fwSetIrCode();                                                    //fis, tms
+  FIS_vMACAddress();                                                    //fis, tms
+  CaptureScreen(0, 0, NULL, 0, 0);                                      //av, all but different parameters
+  GetMacAddress();                                                      //main, tms
+  PrintNet(NULL);                                                       //main, tms
+  HDD_TAP_Start(NULL, FALSE,  NULL);                                    //tap, all
+  TryResolve(NULL);                                                     //fis, tms
+#endif
 
   return 0;
 }
