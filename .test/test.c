@@ -523,8 +523,11 @@ int TAP_Main (void)
 
   //TMS only
 #ifdef _TMS_
+  FIS_fwApplVfdStart();                                                 //fis, tms
+  FIS_fwApplVfdStop();                                                  //fis, tms
   FIS_fwPowerOff();                                                     //fis, tms
   FIS_fwSetIrCode();                                                    //fis, tms
+  FIS_vgrid();                                                          //fis, tms
   FIS_vMACAddress();                                                    //fis, tms
   CaptureScreen(0, 0, NULL, 0, 0);                                      //av, all but different parameters
   GetMacAddress();                                                      //main, tms

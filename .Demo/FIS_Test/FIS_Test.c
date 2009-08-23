@@ -202,7 +202,10 @@ int TAP_Main (void)
   DEBUG("");
 
 #ifdef _TMS_
+  DEBUG("FIS_fwApplVfdStart                = %8.8x", FIS_fwApplVfdStart());
+  DEBUG("FIS_fwApplVfdStop                 = %8.8x", FIS_fwApplVfdStop());
   DEBUG("FIS_fwPowerOff                    = %8.8x", FIS_fwPowerOff());
+  DEBUG("FIS_fwApplVfdSendData             = %8.8x", FIS_fwApplVfdSendData());
   DEBUG("FIS_fwSetIrCode                   = %8.8x", FIS_fwSetIrCode());
 #else
   DEBUG("FIS_fwAddEventHandler             = %8.8x", FIS_fwAddEventHandler());
@@ -252,6 +255,7 @@ int TAP_Main (void)
 
 #ifdef _TMS_
   DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
+  DEBUG("FIS_vgrid                         = %8.8x", FIS_vgrid());
   DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
 #else
   DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());

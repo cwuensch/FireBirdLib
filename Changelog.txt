@@ -362,3 +362,7 @@ License:  This library is freeware. You may use this code in your own projects f
             Bugfix @ HDD_TAP_Start() [TMS]: the launched TAP is now in the same directory as the launcher, not /ProgramFiles
             Had to change several NetworkIDs to OriginalNetworkIDs:
               TYPE_TpInfoS, TYPE_TpInfoT, TYPE_TpInfoT5700, TYPE_TpInfoC, tRECTPInfoSat, tRECTPInfoTer, tRECTPInfoCable, tRECHeaderInfo
+
+2009-08-23  New function block tmsvfd allows to take over the control of the VFD
+            New FIS-functions: FIS_fwApplVfdStop, FIS_fwApplVfdStart, FIS_vgrid
+            Decoded fields isRec and SetName of TYPE_TimerSTMS

@@ -126,17 +126,21 @@
 
   dword TryResolve(char *Function);
 
+  inline dword FIS_fwApplVfdStart(void);
+  inline dword FIS_fwApplVfdStop(void);
   inline dword FIS_fwPowerOff(void);
+  inline dword FIS_fwApplVfdSendData(void);
   inline dword FIS_fwSetIrCode(void);
   inline dword FIS_vBootReason(void);
-  inline dword FIS_vEEPROM (void);
-  inline dword FIS_vEEPROMPin (void);
+  inline dword FIS_vEEPROM(void);
+  inline dword FIS_vEEPROMPin(void);
   inline dword FIS_vEtcInfo(void);
-  inline dword FIS_vFlash (void);
+  inline dword FIS_vFlash(void);
+  inline dword FIS_vgrid(void);
   inline dword FIS_vMACAddress(void);
-  inline dword FIS_vOSDMap (void);
+  inline dword FIS_vOSDMap(void);
   inline dword FIS_vParentalInfo(void);
-  inline dword FIS_vRECSlotAddress (byte Slot);
+  inline dword FIS_vRECSlotAddress(byte Slot);
 
 //TODO: They might be ported
 #ifdef _FUTURE_TMS_
@@ -584,13 +588,16 @@
     char                FileName[131];
     dword               StartTime;
     dword               EndTime;
-    byte                Unknown1[12];
-    word                EventID;
     word                Unused6;
-    word                EventID2;
+    byte                isRec;
+    byte                SetName;
+    byte                Unknown1[8];
+    word                EventID;
     word                Unused7;
+    word                EventID2;
+    word                Unused8;
     word                ServiceIndex;
-    byte                Unused8[14];
+    byte                Unused9[14];
     TYPE_TpInfoSTMS     TPInfo;
   }TYPE_TimerSTMS;
 
@@ -1603,3 +1610,13 @@
       OK          Auswahl
       EXIT        Abbruch
   */
+
+  /*****************************************************************************************************************************/
+  /* TMS VFD Routines                                                                                                          */
+  /*****************************************************************************************************************************/
+  bool VFD_GetControl(bool GiveControl);
+  bool VFD_isInUseByTAP(void);
+  bool VFD_Clear(void);
+  bool VFD_SetLargeText(char *Text);
+  bool VFD_SetSmallText(char *Text);
+  bool VFD_Update(void);
