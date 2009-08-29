@@ -6,6 +6,7 @@ set COMPILE=for %%i in (*.c) do call gcc.bat %%i
 rem set COMPILE=%BASH% -c "for f in *.c; do command.com /c tcc $f; done"
 
 copy %Project%.h %ZIEL%
+copy %Project%_generic.h %ZIEL%
 copy %Project%_TF5000.h %ZIEL%
 
 

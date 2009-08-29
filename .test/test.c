@@ -254,6 +254,7 @@ int TAP_Main (void)
   LowerCase(NULL);                                                      //string, all
   MakeValidFileName(NULL, 0);                                           //string, all
   Now(NULL);                                                            //flash, all
+  OATH(NULL, 0, 0);                                                     //compression, all
   OSDCopy(0, 0, 0, 0, 0, 0, 0);                                         //av, all
   OSDLinesForeDirty(FALSE);                                             //dialog, all
   ParseLine(NULL, NULL, 0);                                             //string, all
@@ -273,6 +274,7 @@ int TAP_Main (void)
   SoundSinus(0, 0, 0);                                                  //av, all
   StrEndsWith(NULL, NULL);                                              //string, all
   stricstr(NULL, NULL);                                                 //string, all
+  SuperFastHash(NULL, 0, 0);                                            //compression, all
   SwapDWords(0);                                                        //hdd, all
   SwapWords(0);                                                         //hdd, all
   TAP_Osd_PutFreeColorGd(0, 0, 0, NULL, FALSE, 0);                      //av, all
@@ -293,7 +295,6 @@ int TAP_Main (void)
   WindowDirty();                                                        //dialog, all
   YUV2RGB(0, 0, 0, NULL, NULL, NULL);                                   //av, all
   YUV2RGB2(0, 0, 0, NULL, NULL, NULL);                                  //av, all
-
 
   //TF5000 only
 #ifndef _TMS_
@@ -523,17 +524,23 @@ int TAP_Main (void)
 
   //TMS only
 #ifdef _TMS_
+  CaptureScreen(0, 0, NULL, 0, 0);                                      //av, all but different parameters
   FIS_fwApplVfdStart();                                                 //fis, tms
   FIS_fwApplVfdStop();                                                  //fis, tms
   FIS_fwPowerOff();                                                     //fis, tms
   FIS_fwSetIrCode();                                                    //fis, tms
   FIS_vgrid();                                                          //fis, tms
   FIS_vMACAddress();                                                    //fis, tms
-  CaptureScreen(0, 0, NULL, 0, 0);                                      //av, all but different parameters
   GetMacAddress();                                                      //main, tms
-  PrintNet(NULL);                                                       //main, tms
+  HDD_GetAbsolutePathByTypeFile(NULL);                                  //hdd, tms
+  HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
   HDD_TAP_Start(NULL, FALSE,  NULL);                                    //tap, all
+  PrintNet(NULL);                                                       //main, tms
   TryResolve(NULL);                                                     //fis, tms
+  VFD_EnableCD(FALSE);                                                  //tmsvfd, tms
+  VFD_EnableHDD(FALSE);                                                 //tmsvfd, tms
+  VFD_SetCDValue(0);                                                    //tmsvfd, tms
+  VFD_SetHDDValue(0);                                                   //tmsvfd, tms
 #endif
 
   return 0;

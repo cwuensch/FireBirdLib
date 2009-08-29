@@ -7,6 +7,8 @@ bool StrEndsWith(char *text, char *postfix)
   char                  *pStr = text + (strlen(text) - strlen(postfix));
   char                  *pPost = postfix;
 
+  if(!text || !postfix) return TRUE;
+
   if (pStr < text) return FALSE;
 
   if (!*pPost) return TRUE;

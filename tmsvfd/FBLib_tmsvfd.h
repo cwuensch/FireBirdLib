@@ -13,6 +13,8 @@ typedef enum
 
 extern bool  VFDUsedByTAP;
 extern byte *grid;
+extern bool  CDEnabled;
+extern bool  HDDEnabled;
 
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle);
 void  VFD_SetDisplayDigit (byte* DisplayBuffer, byte Character, DISPLAYSTYLE DisplayStyle, byte Digit);

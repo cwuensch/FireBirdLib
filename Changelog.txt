@@ -5,7 +5,7 @@ Descr.:   A collection of useful and dangerous functions ;-)
 
           Code has been taken from several other libs and several people have been contributing to this collection:
 
-          asrael, bdb, Bubendorf, DeadBeef, DeJe, Happy, jkIT, R2-D2, RobbieT, simonc
+          asrael, bdb, Bubendorf, DeadBeef, DeJe, Happy, jkIT, miq, R2-D2, RobbieT, simonc
 
           If you find your code in this lib but aren't mentioned above, please send me a short note
 
@@ -366,3 +366,9 @@ License:  This library is freeware. You may use this code in your own projects f
 2009-08-23  New function block tmsvfd allows to take over the control of the VFD
             New FIS-functions: FIS_fwApplVfdStop, FIS_fwApplVfdStart, FIS_vgrid
             Decoded fields isRec and SetName of TYPE_TimerSTMS
+
+2009-08-29  New TMS functions HDD_GetAbsolutePathByTypeFile and HDD_GetInodeByTypeFile
+            New hash functions SuperFastHash and OATH (thanks to miq)
+            Created a new libFireBird_generic which contains all structs and functions which are common to the 5k/TMS
+            New tmsvfd functions VFD_EnableCD, VFD_EnableHDD, VFD_SetCDValue, VFD_SetHDDValue
+            'Official release'

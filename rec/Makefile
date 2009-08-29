@@ -20,7 +20,7 @@ endif
 
 #TAP_LIBS =  ${BASE}/tapinit.o ${BASE}/libtap.so -lc
 TAP_OBJS := $(patsubst %.c,%.o,$(wildcard *.c))
-TAP_HEAD = ${BASE}/include/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
+TAP_HEAD = ${BASE}/include/libFireBird.h TAP_HEAD = ${BASE}/include/libFireBird.h ${BASE}/include/libFireBird_generic.h ${BASE}/include/libFireBird_TF5000.h ${BASE}/include/libFireBird_TMS.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
 
 all: ${TAP_OBJS}
 	@$(Q_)-${RM} *.d

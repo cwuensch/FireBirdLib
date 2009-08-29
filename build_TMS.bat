@@ -2,6 +2,7 @@
 set Project=libFireBird
 
 copy %Project%.h "C:\sw\prgm\Topfield\API\TMS\include"
+copy %Project%_generic.h "C:\sw\prgm\Topfield\API\TMS\include"
 copy %Project%_TMS.h "C:\sw\prgm\Topfield\API\TMS\include"
 
 set TFROOT=C:\sw\prgm\Topfield

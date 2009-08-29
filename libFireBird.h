@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-#define __FBLIB_VERSION__ "2009-08-22"
+#define __FBLIB_VERSION__ "2009-08-29"
 
 #ifdef PC_BASED
   #define inline
@@ -17,6 +17,8 @@
     #define _TF5000_
   #endif
 #endif
+
+#include "libFireBird_generic.h"
 
 #ifdef _TMS_
   #include "libFireBird_TMS.h"
