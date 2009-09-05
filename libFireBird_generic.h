@@ -403,16 +403,20 @@
   #define WINFILEATTRIBUTE_NOT_CONTENT_INDEXED      0x00200000
   #define WINFILEATTRIBUTE_ENCRYPTED                0x00400000
 
+  void       FixInvalidFileName(char *FileName);
   int        HDD_AAM_Disable (void);
   int        HDD_AAM_Enable (byte AAMLevel);
   int        HDD_APM_Disable (void);
   int        HDD_APM_Enable (byte APMLevel);
   TYPE_File *HDD_FappendOpen (char *filename);
   bool       HDD_ChangeDir (char *Dir);
+  void       HDD_Delete(char *FileName);
   bool       HDD_FappendWrite (TYPE_File *file, char *data);
   bool       HDD_GetHddID (char *ModelNo, char *SerialNo, char *FirmwareNo);
   bool       HDD_IdentifyDevice (char *IdentifyDeviceBuffer);
   bool       HDD_Move(char *FileName, char *FromDir, char *ToDir);
+  void       HDD_Recycle(char *FileName);
+  void       HDD_Rename(char *FileName, char *NewFileName);
   int        HDD_Smart_DisableAttributeAutoSave (void);
   int        HDD_Smart_DisableOperations (void);
   int        HDD_Smart_EnableAttributeAutoSave (void);
@@ -420,7 +424,10 @@
   int        HDD_Smart_ReadData (word *DataBuf);
   int        HDD_Smart_ReadThresholdData (word *DataBuf);
   int        HDD_Smart_ReturnStatus (void);                  ////if 20 is returned then one or more thresholds have been exceeded; -1 upon error
+  void       HDD_Unrecycle(char *FileName);
   bool       HDD_Write (void *data, dword length, TYPE_File *f);
+  void       MakeUniqueFileName(char *FileName);
+  void       SeparateFileNameComponents(char *FileName, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
 
 
   /*****************************************************************************************************************************/
@@ -572,7 +579,10 @@
 
     dword               HeaderMagic;
     word                HeaderVersion;
-    char                HeaderReserved1 [2];
+    byte                HeaderReserved1[2];
+    byte                HeaderReserved2[2];   //TMS
+    byte                HeaderReserved3[11];  //TMS
+    dword               HeaderStartTime;      //TMS
     word                HeaderDuration;
     word                HeaderSvcNumber;
     word                HeaderSvcType;
@@ -590,43 +600,53 @@
     word                SIPCRPID;
     word                SIVideoPID;
     word                SIAudioPID;
-    char                SISvcName [28];
+    char                SISvcName[28];
+    byte                SIVideoStreamType;    //TMS
+    byte                SIAudioStreamType;    //TMS
 
-    byte                TPSatIndex;         //S
-    byte                TPPolarization;     //S
-    byte                TPMode;             //S
-    word                TPChannelNumber;    //T
-    byte                TPBandwidth;        //T
-    byte                TPLPHPStream;       //T
-    byte                TPModulation;       //C
-    dword               TPFrequency;        //STC
-    word                TPSymbolRate;       //SC
-    word                TPTSID;             //STC
-    word                TPOriginalNetworkID;//STC
-    byte                TPReserved1 [2];    //S
-    byte                TPReserved2 [2];    //S
-    byte                TPReserved3;        //ST
-    byte                TPReserved4;        //T
-    byte                TPUnknown1 [2];     //T
-    byte                TPUnknown2 [8];     //T (5700 only)
-    byte                TPReserved5;        //C
+    byte                TPSatIndex;           //S
+    byte                TPPolarization;       //S
+    byte                TPMode;               //S
+    byte                TPSystem;             //TMS
+    byte                TPModulation;         //C TMS
+    byte                TPFEC;                //TMS
+    byte                TPPilot;              //TMS
+    word                TPChannelNumber;      //T
+    byte                TPBandwidth;          //T
+    byte                TPLPHPStream;         //T
+    dword               TPFrequency;          //STC
+    word                TPSymbolRate;         //SC
+    word                TPTSID;               //STC
+    word                TPOriginalNetworkID;  //STC
+    byte                TPClockSync;          //TMS
+    byte                TPReserved1[2];       //S
+    byte                TPReserved2[2];       //S
+    byte                TPReserved3;          //ST
+    byte                TPReserved4;          //T
+    byte                TPUnknown1[2];        //T
+    byte                TPUnknown2[8];        //T (5700 only)
+    byte                TPUnknown3[4];        //TMS
+    byte                TPReserved5;          //C
 
     byte                EventDurationHour;
     byte                EventDurationMin;
-    dword               EventEventID;
+    word                EventEventID;
     dword               EventStartTime;
     dword               EventEndTime;
     byte                EventRunningStatus;
     byte                EventTextLength;
     byte                EventParentalRate;
-    char                EventEventName [257];
-    char                EventEventDescription [257];
-    char                EventUnknown1 [18];
-    byte                EventUnknown2 [2];
+    char                EventEventName[257];
+    char                EventEventDescription[257];
+    byte                EventUnknown1[2];
+    byte                EventUnknown2[2];
+    byte                EventUnknown3[18];
 
+    word                ExtEventServiceID;    //TMS
     word                ExtEventTextLength;
-    dword               ExtEventEventID;
+    word                ExtEventEventID;
     char                ExtEventText [1024];
+    byte                ExtEventUnknown1[2];
 
     byte                CryptReserved1 [4];
     byte                CryptFlag;
@@ -681,9 +701,9 @@
   char   *ParseLine (char *zeile, size_t *n, char delim);
   char   *RTrim (char *s);
   void    SeparatePathComponents (char *FullName, char *Path, char *FileName, char *FileExt);
-  bool    StrEndsWith (char *text, char *postfix);
+  bool    StringEndsWith(char *text, char *postfix);
   void    UpperCase (char *string);
-  char    *ValidFileName (char *strName, eRemoveChars ControlCharacters);
+  char   *ValidFileName (char *strName, eRemoveChars ControlCharacters);
 
 
   /*****************************************************************************************************************************/

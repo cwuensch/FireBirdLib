@@ -69,7 +69,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2007-02-21  Added the TAPCOM library (thanks to asrael)
 2007-03-01  Added ShowMessageWindow
 2007-03-02  Renamed TAPCOM_isStillAlive to TAPCOM_LastAlive
-            Added a tapapifix for the TAP_Hdd_Delete dot-bug (thanks to Happy)
+            Added a tapapifix for the TAP_HDD_Delete dot-bug (thanks to Happy)
 2007-03-09  HDD_TAP_DisableAll now returns how many TAPs couldn't be disabled
             minor internal changes
 2007-03-10  EMMA register definitions extracted from InitTAPex
@@ -311,7 +311,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2008-04-23  TAP_Hdd_StopTs added to TAPAPIFix by R2-D2
             'Official release'
 
-2008-05-01  TAP_Hdd_Delete also seem to be unable to delete files with a very long name. So the APIFixed version now renames every
+2008-05-01  TAP_HDD_Delete also seem to be unable to delete files with a very long name. So the APIFixed version now renames every
               file before deleting it
 2008-05-08  The TYPE_TpInfoT has been updated (thanks to R2-D2). NetworkID has been renamed to OriginalNetworkID!
 2008-05-16  Renamed the FIS_vRecFile parameter from "Slot" to "DemuxPath". This is not a code change, but the parameter has a different
@@ -372,3 +372,12 @@ License:  This library is freeware. You may use this code in your own projects f
             Created a new libFireBird_generic which contains all structs and functions which are common to the 5k/TMS
             New tmsvfd functions VFD_EnableCD, VFD_EnableHDD, VFD_SetCDValue, VFD_SetHDDValue
             'Official release'
+
+2009-08-30  New functions  HDD_GetInodeByRelFileName and HDD_GetInodeByAbsFileName
+
+2009-09-02  Adapted HDD_DecodeRECHeader for the TMS and made it endian safe
+
+2009-09-05  New functions HDD_GetFileTimeByAbsFileName, HDD_GetFileTimeByRelFileName, HDD_GetFileTimeByTypeFile, HDD_GetAbsolutePathByTypeFile
+                          HDD_GetInodeByTypeFile, HDD_GetInodeByRelFileName, HDD_GetInodeByAbsFileName, FixInvalidFileName, HDD_Unrecycle,
+                          HDD_Delete, HDD_Recycle, HDD_Rename, MakeUniqueFileNamea and SeparateFileNameComponents
+            Renamed StrEndsWith to StringEndsWith due to a clash with the TMS development environment

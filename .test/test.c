@@ -141,6 +141,7 @@ int TAP_Main (void)
   FIS_vFlash();                                                         //fis, all
   FIS_vOSDMap();                                                        //fis, all
   FIS_vRECSlotAddress(0);                                               //fis, all
+  FixInvalidFileName(NULL);                                             //hdd, all
   FlashAddFavourite(NULL, 0, FALSE);                                    //flash, all
   FlashDeleteFavourites();                                              //flash, all
   FlashFindCASServices(FALSE, NULL, NULL);                              //flash, all
@@ -187,6 +188,7 @@ int TAP_Main (void)
   HDD_APM_Disable();                                                    //hdd, all
   HDD_APM_Enable(0);                                                    //hdd, all
   HDD_ChangeDir(NULL);                                                  //hdd, all
+  HDD_Delete(NULL);                                                     //hdd, all
   HDD_FappendOpen(NULL);                                                //hdd, all
   HDD_FappendWrite(NULL, NULL);                                         //hdd, all
   HDD_FindPCR(NULL, 0, 0);                                              //rec, all
@@ -199,6 +201,8 @@ int TAP_Main (void)
   HDD_Move(NULL, NULL, NULL);                                           //hdd, all
   HDD_RECSlotGetAddress(0);                                             //rec, all
   HDD_RECSlotSetDuration(0, 0);                                         //rec, all
+  HDD_Recycle(NULL);                                                    //hdd, all
+  HDD_Rename(NULL, NULL);                                               //hdd, all
   HDD_Smart_DisableAttributeAutoSave();                                 //hdd, all
   HDD_Smart_DisableOperations();                                        //hdd, all
   HDD_Smart_EnableAttributeAutoSave();                                  //hdd, all
@@ -209,6 +213,7 @@ int TAP_Main (void)
   HDD_TAP_GetCurrentDir(NULL);                                          //tap, all
   HDD_TAP_PopDir();                                                     //tap, all
   HDD_TAP_PushDir();                                                    //tap, all
+  HDD_Unrecycle(NULL);                                                  //hdd, all
   HDD_Write(NULL, 0, NULL);                                             //hdd, all
   IMEM_Alloc(0);                                                        //imem, all
   IMEM_Compact();                                                       //imem, all
@@ -252,6 +257,7 @@ int TAP_Main (void)
   LoadFirmwareDat(NULL, NULL, NULL);                                    //main, all
   LogEntry(NULL, NULL, FALSE, 0, NULL);                                 //main, all
   LowerCase(NULL);                                                      //string, all
+  MakeUniqueFileName(NULL);                                             //hdd, all
   MakeValidFileName(NULL, 0);                                           //string, all
   Now(NULL);                                                            //flash, all
   OATH(NULL, 0, 0);                                                     //compression, all
@@ -265,6 +271,7 @@ int TAP_Main (void)
   Reboot(0);                                                            //shutdown, all
   RTrim(NULL);                                                          //string, all
   SaveBitmap(NULL, 0, 0, NULL);                                         //av, all
+  SeparateFileNameComponents(NULL, NULL, NULL, NULL, NULL, NULL);       //hdd, all
   SeparatePathComponents(NULL, NULL, NULL, NULL);                       //string, all
   SetEEPROMPin(0);                                                      //flash, all
   SetRemoteMode(0, FALSE);                                              //av, all
@@ -272,7 +279,7 @@ int TAP_Main (void)
   ShowMessageWindow(NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);                   //av, all
   Shutdown(0);                                                          //shutdown, all
   SoundSinus(0, 0, 0);                                                  //av, all
-  StrEndsWith(NULL, NULL);                                              //string, all
+  StringEndsWith(NULL, NULL);                                           //string, all
   stricstr(NULL, NULL);                                                 //string, all
   SuperFastHash(NULL, 0, 0);                                            //compression, all
   SwapDWords(0);                                                        //hdd, all
@@ -532,7 +539,9 @@ int TAP_Main (void)
   FIS_vgrid();                                                          //fis, tms
   FIS_vMACAddress();                                                    //fis, tms
   GetMacAddress();                                                      //main, tms
-  HDD_GetAbsolutePathByTypeFile(NULL);                                  //hdd, tms
+  HDD_GetAbsolutePathByTypeFile(NULL, NULL);                            //hdd, tms
+  HDD_GetInodeByAbsFileName(NULL);                                      //hdd, tms
+  HDD_GetInodeByRelFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
   HDD_TAP_Start(NULL, FALSE,  NULL);                                    //tap, all
   PrintNet(NULL);                                                       //main, tms

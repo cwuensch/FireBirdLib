@@ -9,6 +9,11 @@
 
   char puffer[512];
   void PrintNet(char *puffer);
+
+#define XDATA                                       //don't use XDATA on the TMS
+#define TS_FILE_NAME_SIZE   MAX_FILE_NAME_SIZE      //the name has changed
+#define ATTR_PARENT         0xf0                    //FindFirst/FindNext doesn't know about ..
+
 #ifndef PC_BASED
   #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
 #endif
@@ -287,7 +292,12 @@
   #define TAPFSROOT     "/mnt/hd"
 
   bool  HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
+  dword HDD_GetInodeByAbsFileName(char *Filename);
+  dword HDD_GetInodeByRelFileName(char *Filename);
   dword HDD_GetInodeByTypeFile(TYPE_File *File);
+  dword HDD_GetFileTimeByAbsFileName(char *FileName);
+  dword HDD_GetFileTimeByRelFileName(char *FileName);
+  dword HDD_GetFileTimeByTypeFile(TYPE_File *File);
 
 
   /*****************************************************************************************************************************/
