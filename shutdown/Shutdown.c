@@ -24,7 +24,10 @@ bool Shutdown(TaskEnum Task)
   //which now only accepts key events. Try to inject the shutdown directly
   // SysID 2457 == Topfield TF6000PVR ES
   // SysID 1416 == Topfield TF5000PVR Masterpiece
-  if (((SysID == 2457) || (SysID == 1416)) && EventDispatcherAddress)
+
+
+
+  if (((SysID == 2457) || (SysID == 1416) || ((SysID == 416) && (ApplID >= 0x1500)) ) && EventDispatcherAddress)
   {
     CallFirmware (EventDispatcherAddress, Task, 0, 0, 0);
   }

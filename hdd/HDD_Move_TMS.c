@@ -1,5 +1,6 @@
 #include                <stdio.h>
 #include                <string.h>
+#include                <stdlib.h>
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
@@ -7,42 +8,68 @@
 
 bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
 {
-  char                  TempFromFile [FBLIB_DIR_SIZE << 1], TempToFile [FBLIB_DIR_SIZE << 1];
+  char                  cmd[2048];
+  char                  NewFileName[TS_FILE_NAME_SIZE];
+  char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
+  char                  OldInfName[TS_FILE_NAME_SIZE], NewInfName[TS_FILE_NAME_SIZE];
+  bool                  isRec, isDel;
+  int                   fNumber;
 
-  if(!FileName || !FromDir || !ToDir) return FALSE;
+  if (TAP_Hdd_Exist(FileName))
+  {
+    HDD_TAP_PushDir();
+    HDD_ChangeDir(ToDir);
+    strcpy(NewFileName, FileName);
+    MakeUniqueFileName(NewFileName);
+    HDD_TAP_PopDir();
 
-  //Make a path absolute
-  if(FromDir[0] != '/')
-  {
-    strcpy(TempFromFile, TAPFSROOT);
-    HDD_TAP_GetCurrentDir(&TempFromFile[strlen(TempFromFile)]);
-    if(TempFromFile[strlen(TempFromFile) - 1] != '/') strcat(TempFromFile, "/");
-    strcat(TempFromFile, FromDir);
-    if(TempFromFile[strlen(TempFromFile) - 1] != '/') strcat(TempFromFile, "/");
-  }
-  else
-  {
-    TAP_SPrint(TempFromFile, "%s%s", TAPFSROOT, FromDir);
-    if(TempFromFile[strlen(TempFromFile) - 1] != '/') strcat(TempFromFile, "/");
-  }
-  strcat(TempFromFile, FileName);
+    //Build the unix mv command
+    TAP_SPrint(cmd, "mv \"%s%s%s%s%s\" ", TAPFSROOT, (FromDir[0] != '/') ? "/" : "", FromDir, (FromDir[strlen(FromDir) - 1] != '/') ? "/" : "", FileName);
+    TAP_SPrint(&cmd[strlen(cmd)], "\"%s%s%s%s%s\"", TAPFSROOT, (ToDir[0] != '/') ? "/" : "", ToDir, (ToDir[strlen(ToDir) - 1] != '/') ? "/" : "", NewFileName);
+    TAP_PrintNet("%s\n", cmd);
+    system(cmd);
 
-  if(ToDir[0] != '/')
-  {
-    strcpy(TempToFile, TAPFSROOT);
-    HDD_TAP_GetCurrentDir(&TempToFile[strlen(TempToFile)]);
-    if(TempToFile[strlen(TempToFile) - 1] != '/') strcat(TempToFile, "/");
-    strcat(TempToFile, ToDir);
-    if(TempToFile[strlen(TempToFile) - 1] != '/') strcat(TempToFile, "/");
-  }
-  else
-  {
-    TAP_SPrint(TempToFile, "%s%s", TAPFSROOT, ToDir);
-    if(TempToFile[strlen(TempToFile) - 1] != '/') strcat(TempToFile, "/");
-  }
-  strcat(TempToFile, FileName);
+    SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
+    if(isRec)
+    {
+      if(fNumber)
+        TAP_SPrint(OldInfName, "%s-%d%s.inf%s", Name, fNumber, Ext, isDel ? ".del" : "");
+      else
+        TAP_SPrint(OldInfName, "%s%s.inf%s", Name, Ext, isDel ? ".del" : "");
 
-  return rename(TempFromFile, TempToFile) ? FALSE : TRUE;
+      SeparateFileNameComponents(NewFileName, Name, Ext, &fNumber, &isRec, &isDel);
+      if(fNumber)
+        TAP_SPrint(NewInfName, "%s-%d%s.inf%s", Name, fNumber, Ext, isDel ? ".del" : "");
+      else
+        TAP_SPrint(NewInfName, "%s%s.inf%s", Name, Ext, isDel ? ".del" : "");
+
+      //Build the unix mv command
+      TAP_SPrint(cmd, "mv \"%s%s%s%s%s\" ", TAPFSROOT, (FromDir[0] != '/') ? "/" : "", FromDir, (FromDir[strlen(FromDir) - 1] != '/') ? "/" : "", OldInfName);
+      TAP_SPrint(&cmd[strlen(cmd)], "\"%s%s%s%s%s\"", TAPFSROOT, (ToDir[0] != '/') ? "/" : "", ToDir, (ToDir[strlen(ToDir) - 1] != '/') ? "/" : "", NewInfName);
+      TAP_PrintNet("%s\n", cmd);
+      system(cmd);
+
+      SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
+      if(fNumber)
+        TAP_SPrint(OldInfName, "%s-%d%s.nav%s", Name, fNumber, Ext, isDel ? ".del" : "");
+      else
+        TAP_SPrint(OldInfName, "%s%s.nav%s", Name, Ext, isDel ? ".del" : "");
+
+      SeparateFileNameComponents(NewFileName, Name, Ext, &fNumber, &isRec, &isDel);
+      if(fNumber)
+        TAP_SPrint(NewInfName, "%s-%d%s.nav%s", Name, fNumber, Ext, isDel ? ".del" : "");
+      else
+        TAP_SPrint(NewInfName, "%s%s.nav%s", Name, Ext, isDel ? ".del" : "");
+
+      //Build the unix mv command
+      TAP_SPrint(cmd, "mv \"%s%s%s%s%s\" ", TAPFSROOT, (FromDir[0] != '/') ? "/" : "", FromDir, (FromDir[strlen(FromDir) - 1] != '/') ? "/" : "", OldInfName);
+      TAP_SPrint(&cmd[strlen(cmd)], "\"%s%s%s%s%s\"", TAPFSROOT, (ToDir[0] != '/') ? "/" : "", ToDir, (ToDir[strlen(ToDir) - 1] != '/') ? "/" : "", NewInfName);
+      TAP_PrintNet("%s\n", cmd);
+      system(cmd);
+    }
+  }
+
+  return TRUE;
 }
 
 #endif

@@ -377,7 +377,11 @@ License:  This library is freeware. You may use this code in your own projects f
 
 2009-09-02  Adapted HDD_DecodeRECHeader for the TMS and made it endian safe
 
-2009-09-05  New functions HDD_GetFileTimeByAbsFileName, HDD_GetFileTimeByRelFileName, HDD_GetFileTimeByTypeFile, HDD_GetAbsolutePathByTypeFile
-                          HDD_GetInodeByTypeFile, HDD_GetInodeByRelFileName, HDD_GetInodeByAbsFileName, FixInvalidFileName, HDD_Unrecycle,
-                          HDD_Delete, HDD_Recycle, HDD_Rename, MakeUniqueFileNamea and SeparateFileNameComponents
+2009-09-05  New functions HDD_GetFileTimeByAbsFileName, HDD_GetFileTimeByRelFileName, HDD_GetFileTimeByTypeFile, HDD_GetAbsolutePathByTypeFile,
+                          HDD_GetInodeByTypeFile, FixInvalidFileName, HDD_Unrecycle, HDD_Delete, HDD_Recycle, HDD_Rename,
+                          MakeUniqueFileNamea and SeparateFileNameComponents
             Renamed StrEndsWith to StringEndsWith due to a clash with the TMS development environment
+
+2009-09-05  Changed Shutdown to work with the newest Aussie f/w
+
+2009-09-07  HDD_GetFileTimeByAbsFileName and HDD_GetInodeByAbsFileName need to use lstat64() to work with files >= 4GB

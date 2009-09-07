@@ -1,18 +1,17 @@
 #ifdef _TMS_
 
 #include                <sys/stat.h>
+#include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
 dword HDD_GetFileTimeByAbsFileName(char *FileName)
 {
-  struct stat           statbuf;
+  tstat64               statbuf;
   int                   status;
 
   if(!FileName) return 0;
 
-  if((status = lstat(FileName, &statbuf))) return 0;
-
-  //TAP_PrintNet("st_mtime = 0x%8.8x\n", statbuf.st_mtime);
+  if((status = lstat64(FileName, &statbuf))) return 0;
 
   return statbuf.st_mtime;
 }
