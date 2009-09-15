@@ -1,7 +1,7 @@
 #ifndef FBLIB_AV_H
 #define FBLIB_AV_H
 
-#include "tap.h"
+#include "../libFireBird.h"
 
 extern bool LibInitialized;
 extern dword fbl_rgn;

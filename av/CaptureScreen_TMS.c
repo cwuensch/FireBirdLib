@@ -11,6 +11,10 @@ bool CaptureScreen(int BMPwidth, int BMPheight, byte *BMPPixelBuffer, bool bOSD,
   int                   PIPNorth, PIPSouth, PIPEast, PIPWest;
   bool                  PIPAvail;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("CaptureScreen");
+#endif
+
   PIPAvail = GetPIPPosition (&PIPNorth, &PIPSouth, &PIPEast, &PIPWest);
 
   //Capture main video frame
@@ -52,6 +56,10 @@ bool CaptureScreen(int BMPwidth, int BMPheight, byte *BMPPixelBuffer, bool bOSD,
     TAP_Osd_GetPlaneBaseInfo(&osdBaseInfo, BASE_PLANE);
     OSDToBMP(osdBaseInfo, BMPwidth, BMPheight, BMPPixelBuffer, Alpha);
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return TRUE;
 }

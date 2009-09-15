@@ -3,7 +3,7 @@
 short                   *soundData = NULL;
 dword                   soundDataLength = 0;
 
-void SoundSinus (word freq, dword durationInMilliseconds, word Amplitude)
+void SoundSinus(word freq, dword durationInMilliseconds, word Amplitude)
 {
   dword                 samples, memSize, periode, index;
   short                 *target, *source;
@@ -33,6 +33,11 @@ void SoundSinus (word freq, dword durationInMilliseconds, word Amplitude)
                                       0xEE30, 0xF067, 0xF29F, 0xF4D8, 0xF712, 0xF94D, 0xFB88, 0xFDC4};
 
   (void) Amplitude;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("SoundSinus");
+#endif
+
   samples = durationInMilliseconds * 48;
   memSize = samples * 2;             //Zwei Byte pro Sample (16 bit)
 
@@ -44,16 +49,29 @@ void SoundSinus (word freq, dword durationInMilliseconds, word Amplitude)
 
   if (soundData == NULL)
   {
-    soundData = (word*) TAP_MemAlloc(memSize);
+    soundData = (word*) TAP_MemAlloc_Chk("SoundSinus", memSize);
     soundDataLength = memSize;
   }
 
-  if (soundData == NULL) return;
+  if (soundData == NULL)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
   target = soundData;
   periode = 48000 / freq;            //Anzahl von Samples für eine volle Schwingung
   if (periode > samples)
   {
     //Die Dauer ist zu kurz, um auch nur eine einzelne vollständige Welle abzubilden
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
     return;
   }
 
@@ -86,4 +104,8 @@ void SoundSinus (word freq, dword durationInMilliseconds, word Amplitude)
   }
 
   TAP_PlayPCM ((void *) soundData, 2 * samples, FREQ_48K, NULL);
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
 }

@@ -8,6 +8,10 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
   char                  text[200], Header[20];
   char                  s[255];
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DumpMemory");
+#endif
+
   s[0] = '\0';
   text[0] = '\0';
   CollectedBytes = 0;
@@ -54,5 +58,8 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
       TAP_Print(s);
 #endif
   }
-}
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+}

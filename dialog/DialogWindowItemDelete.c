@@ -1,11 +1,23 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogWindowItemDelete (int ItemIndex)
+void DialogWindowItemDelete(int ItemIndex)
 {
   int                   i, j;
 
-  if (!FBDialogWindow || !FBDialogWindow->DialogItems || !FBDialogWindow->NrItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowItemDelete");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->DialogItems || !FBDialogWindow->NrItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogWindow->NrItems > 1 && ItemIndex != FBDialogWindow->NrItems - 1) memmove(&FBDialogWindow->DialogItems[ItemIndex], &FBDialogWindow->DialogItems[ItemIndex + 1], (FBDialogWindow->NrItems - 1 - ItemIndex) * sizeof(tDialogItem));
 
@@ -19,4 +31,8 @@ void DialogWindowItemDelete (int ItemIndex)
 
     for (j = i; j < FBDialogWindow->NrItemLines; j++) FBDialogWindow->OSDLineForeDirty[j] = TRUE;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

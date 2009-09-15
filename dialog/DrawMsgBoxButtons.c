@@ -1,11 +1,23 @@
 #include                "FBLib_dialog.h"
 
-void DrawMsgBoxButtons (void)
+void DrawMsgBoxButtons(void)
 {
   int                   i;
   dword                 ButtonOffset;
 
-  if (!FBDialogMsgBox || FBDialogMsgBox->InfoBoxTimeout || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawMsgBoxButtons");
+#endif
+
+  if (!FBDialogMsgBox || FBDialogMsgBox->InfoBoxTimeout || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   ButtonOffset = (FBDialogMsgBox->ExpandedBox ? MsgBox_C_Title_Gd->width : 0);
 
@@ -14,4 +26,8 @@ void DrawMsgBoxButtons (void)
     TAP_Osd_PutFreeColorGd_Chk("DrawMsgBoxButtons A", FBDialogMsgBox->OSDRgn, MsgBox_W_Title_Gd->width + i * MsgBox_C_Title_Gd->width + 10 + ButtonOffset, 105, (i == FBDialogMsgBox->SelectedButton && FBDialogMsgBox->NrButtons != 1 ? MsgBox_In_Gd : MsgBox_Out_Gd), TRUE, (i == FBDialogMsgBox->SelectedButton && FBDialogMsgBox->NrButtons != 1 ? FBDialogProfile->ButtonIn : FBDialogProfile->ButtonOut));
     TAP_Osd_PutS (FBDialogMsgBox->OSDRgn, MsgBox_W_Title_Gd->width + i * MsgBox_C_Title_Gd->width + 10 + ButtonOffset, 115, MsgBox_W_Title_Gd->width + i * MsgBox_C_Title_Gd->width + 10 + MsgBox_In_Gd->width + ButtonOffset, FBDialogMsgBox->ButtonText [i], FBDialogProfile->ItemsTextColor, 0, 0, FNT_Size_1419, TRUE, ALIGN_CENTER);
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

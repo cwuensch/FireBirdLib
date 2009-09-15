@@ -17,17 +17,48 @@
 // 4 - block type
 // 6 - uncompressed size (word)
 // 8 .. (compressed size + 5) - compressed data (byte array)
-dword UncompressTFD (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
+dword UncompressTFD(byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
 {
   word                  compSize = 0, uncompSize = 0, NrBlocks = 0;
   dword                 outSize = 0, i;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("UncompressTFD");
+#endif
+
   //PercentFinishedCallback is called for every block. PercentFinished contains a number between 0 and 100
   void (*PercentFinishedCallback) (dword PercentFinished) = pPercentFinishedCallback;
 
-  if (LOAD_WORD(pSrc) != 8) return 0;                              //Invalid header?
-  if (CRC16 (0, pSrc + 4, 6) != LOAD_WORD(pSrc + 2)) return 0;     //Invalid header CRC?
-  if (LOAD_WORD(pSrc + 6) != 1) return 0;                          //Invalid file version?
+  if (LOAD_WORD(pSrc) != 8)                                       //Invalid header?
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return 0;
+  }
+
+  if (CRC16 (0, pSrc + 4, 6) != LOAD_WORD(pSrc + 2))              //Invalid header CRC?
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return 0;
+  }
+
+  if (LOAD_WORD(pSrc + 6) != 1)                                   //Invalid file version?
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return 0;
+  }
+
 
   NrBlocks = LOAD_WORD(pSrc + 8);
 
@@ -40,7 +71,15 @@ dword UncompressTFD (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     compSize   = LOAD_WORD(pSrc) - 6;
     uncompSize = LOAD_WORD(pSrc + 6);
 
-    if (uncompSize > 0x7ffa) return 0;
+    if (uncompSize > 0x7ffa)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return 0;
+    }
 
     pSrc += 8;
 
@@ -52,7 +91,15 @@ dword UncompressTFD (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     else
     {
       // compressed data, uncompress it
-      if (!UncompressBlock (pSrc, compSize, pDest, uncompSize)) return 0;
+      if (!UncompressBlock (pSrc, compSize, pDest, uncompSize))
+      {
+
+#ifdef DEBUG_FIREBIRDLIB
+        CallTraceExit(NULL);
+#endif
+
+        return 0;
+      }
     }
 
     if (pDest) pDest += uncompSize;
@@ -60,6 +107,10 @@ dword UncompressTFD (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     outSize += uncompSize;
   }
   if (PercentFinishedCallback) PercentFinishedCallback (100);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return outSize;
 }

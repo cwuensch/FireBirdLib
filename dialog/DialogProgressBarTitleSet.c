@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogProgressBarTitleSet (char *Title)
+void DialogProgressBarTitleSet(char *Title)
 {
-  if (!FBDialogProgressBar) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogProgressBarTitleSet");
+#endif
+
+  if (!FBDialogProgressBar)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (Title)
   {
@@ -12,4 +24,8 @@ void DialogProgressBarTitleSet (char *Title)
   }
 
   if (FBDialogProgressBar->isVisible) DrawProgressBarTitle();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

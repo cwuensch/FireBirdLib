@@ -70,6 +70,7 @@
   /*****************************************************************************************************************************/
 
   #define TAP_MAX       16
+//  #define DEBUG_FIREBIRDLIB
 
   typedef enum
   {
@@ -204,8 +205,8 @@
   #define YUVB(y,u,v)   ((0x2568*(y) + 0x40cf*(v)) >>13)                //0x2000
 
   #define win_w(w)      ((w) + 51)
-  #define win_h(h)      (((h) / 22 + ((h) % 22 ? 1 : 0)) * 22 + 83)
-  #define win_l(h)      ((win_h(h) - 83) / 22)
+  #define win_h(h)      (((h) / 22 + ((h) % 22 ? 1 : 0)) * 22 + 8)
+  #define win_l(h)      ((win_h(h) - 8) / 22)
 
   #define A1555(x)      (((x)>>15)&0x01)
   #define R1555(x)      (((x)>>10)&0x1f)
@@ -272,6 +273,7 @@
   dword GetOSDMapAddress (void);
   word  GetOSDRegionHeight (word Region);
   word  GetOSDRegionWidth (word Region);
+  bool  isOSDRegionAlive (word Region);
   bool  GetPIPPosition (int *North, int *South, int *East, int *West);
   void  OSDCopy (word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  SaveBitmap (char *strName, int width, int height, byte* pBuffer );
@@ -1039,9 +1041,15 @@
   void DialogProgressBarSet (int Value, dword BarColor);
   void DialogProgressBarExit (void);
 
+  int  TAP_Osd_Create_Chk(char *Comment, dword x, dword y, dword w, dword h, byte lutIdx, int flag);
   int  TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);
   int  TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, bool sprite);
   int  TAP_Osd_PutFreeColorGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, bool sprite, dword FilterColor);
+  int  TAP_Osd_FillBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h, dword color);
+  byte* TAP_Osd_SaveBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h);
+  void TAP_Osd_RestoreBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h, void *data);
+  int  TAP_Osd_PutPixel_Chk(char *Comment, word rgn, dword x, dword y, dword pix);
+  void* TAP_MemAlloc_Chk(char *Comment, dword size);
 
 
   /*****************************************************************************************************************************/

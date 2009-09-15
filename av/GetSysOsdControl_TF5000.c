@@ -3,13 +3,32 @@
 
 #ifndef _TMS_
 
-bool GetSysOsdControl (TYPE_TapSysOsdId OSDID)
+bool GetSysOsdControl(TYPE_TapSysOsdId OSDID)
 {
-  static byte             *TapSysOsdVars;
+  static byte          *TapSysOsdVars;
+  bool                  ret;
 
-  if (!(TapSysOsdVars = (byte*)FIS_vSysOsdControl())) return FALSE;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("GetSysOsdControl");
+#endif
 
-  return (TapSysOsdVars [OSDID] != 0);
+  if (!(TapSysOsdVars = (byte*)FIS_vSysOsdControl()))
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
+
+  ret = (TapSysOsdVars [OSDID] != 0);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+  return ret;
 }
 
 #endif

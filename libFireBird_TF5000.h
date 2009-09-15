@@ -1556,7 +1556,6 @@
   void  InteractiveSetStatus (bool enable);
   bool  isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH);
   bool  isMPMenu (void);
-  bool  isOSDRegionAlive (word Region);
   int   MHEG_Status (void);
   int   SubtitleGetStatus (void);
   void  SubtitleSetStatus (bool enable);

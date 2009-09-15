@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowAlpha (byte Alpha)
+void DialogWindowAlpha(byte Alpha)
 {
   dword                 i, j;
 
-  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogWindow->OSDRgn || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowAlpha");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogWindow->OSDRgn || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogProfile->Fade && !FBDialogWindow->Multiple)
   {
@@ -33,4 +45,8 @@ void DialogWindowAlpha (byte Alpha)
 
   FBDialogWindow->Transparency = Alpha;
   TAP_Osd_SetTransparency(FBDialogWindow->OSDRgn, FBDialogWindow->Transparency);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

@@ -1,8 +1,20 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowExit (void)
+void DialogWindowExit(void)
 {
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowExit");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogWindow->isVisible) DialogWindowHide();
 
@@ -32,4 +44,7 @@ void DialogWindowExit (void)
   TAP_Osd_Sync();
 #endif
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

@@ -1,15 +1,35 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DrawWindowLine (int ItemIndex)
+void DrawWindowLine(int ItemIndex)
 {
   int                   LineIndex, y;
   dword                 IconButtonWidth, color, maxx, x, tabc;
   char                  *p, *t;
 
-  if (!FBDialogWindow || !FBDialogWindow->NrItemLines || !FBDialogWindow->DialogItems || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowLine");
+#endif
 
-  if (ItemIndex < FBDialogWindow->TopItem || ItemIndex > FBDialogWindow->TopItem + FBDialogWindow->NrItemLines - 1 || ItemIndex >= FBDialogWindow->NrItems) return;
+  if (!FBDialogWindow || !FBDialogWindow->NrItemLines || !FBDialogWindow->DialogItems || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
+
+  if (ItemIndex < FBDialogWindow->TopItem || ItemIndex > FBDialogWindow->TopItem + FBDialogWindow->NrItemLines - 1 || ItemIndex >= FBDialogWindow->NrItems)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   switch (FBDialogWindow->Type)
   {
@@ -135,4 +155,8 @@ void DrawWindowLine (int ItemIndex)
     y += (Items_Line_C_Gd->height >> 1);
     DrawOSDLine(FBDialogWindow->MemOSDLines, IconButtonWidth + ITEM_OFFSET_X, y, Items_IconButton_Gd->width + FBDialogWindow->NrItemColumns * Items_Line_C_Gd->width - (FBDialogWindow->NrItems <= FBDialogWindow->NrItemLines ? 0 : Scroll_Back_Gd->width), y, FBDialogProfile->ItemsGridColor);
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

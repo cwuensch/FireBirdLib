@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogMsgBoxShowOKCancel (dword DefaultButton)
+void DialogMsgBoxShowOKCancel(dword DefaultButton)
 {
-  if (!FBDialogMsgBox) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxShowOKCancel");
+#endif
+
+  if (!FBDialogMsgBox)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   strcpy (FBDialogMsgBox->ButtonText [0], "OK");
 
@@ -19,4 +31,8 @@ void DialogMsgBoxShowOKCancel (dword DefaultButton)
   FBDialogMsgBox->ButtonText [2][0] = '\0';
   FBDialogMsgBox->DefaultButton = DefaultButton;
   DialogMsgBoxShow();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

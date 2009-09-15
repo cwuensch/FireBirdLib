@@ -17,7 +17,7 @@ int HDD_TranslateDirCluster (dword DirClusterNr, char* CurrentDir)
 
   if (!CurrentDir || (DirClusterNr > 131071)) return -3;
 
-  DiskBuffer = TAP_MemAlloc (1024 << 7);   //Room for 1024 directory entries of 128 bytes each. Should be enough for everyone ;-)
+  DiskBuffer = TAP_MemAlloc_Chk("HDD_TranslateDirCluster", 1024 << 7);   //Room for 1024 directory entries of 128 bytes each. Should be enough for everyone ;-)
   if (DiskBuffer == NULL) return -1;
 
   memset (Path, 0, sizeof(Path));

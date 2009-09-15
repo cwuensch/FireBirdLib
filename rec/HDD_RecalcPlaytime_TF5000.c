@@ -14,7 +14,7 @@ int HDD_RecalcPlaytime (TYPE_File *f, tRECHeaderInfo *Header)
   int FirstPCR, LastPCR;
   int success = 0;
 
-  if (f && Header && (buffer = TAP_MemAlloc(PCRSECTORS << 9)))
+  if (f && Header && (buffer = TAP_MemAlloc_Chk("HDD_RecalcPlaytime", PCRSECTORS << 9)))
   {
     memset(buffer, 0, PCRSECTORS << 9);
     HDD_ReadSectorDMA((f->startCluster + 1) * HDD_GetClusterSize(), PCRSECTORS, buffer);

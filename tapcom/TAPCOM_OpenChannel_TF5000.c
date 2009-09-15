@@ -9,7 +9,7 @@ TAPCOM_Channel TAPCOM_OpenChannel (dword TargetID, dword ServiceID, dword ParamB
   if (!LibInitialized) InitTAPex();
   if (!LibInitialized) return NULL;
 
-  mesBuf = (TAPCOM_InternalMesBuf *) TAP_MemAlloc(sizeof(TAPCOM_InternalMesBuf));
+  mesBuf = (TAPCOM_InternalMesBuf *) TAP_MemAlloc_Chk("TAPCOM_OpenChannel", sizeof(TAPCOM_InternalMesBuf));
 
   if (mesBuf)
   {

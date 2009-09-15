@@ -9,13 +9,17 @@
 int HDD_TAP_GetCurrentDir(char *CurrentDir)
 {
 #ifdef _TMS_
-  dword                *_curTapTask;
-  tTMSTAPTaskTable     *TAPTaskTable;
+  static dword               *_curTapTask = NULL;
+  static tTMSTAPTaskTable    *TAPTaskTable = NULL;
   dword                *dw;
 
   //Get all needed variables
-  TAPTaskTable = (tTMSTAPTaskTable*)TryResolve("_tapTask");
-  _curTapTask = (dword*)TryResolve("_curTapTask");
+  if(!TAPTaskTable)
+    TAPTaskTable = (tTMSTAPTaskTable*)TryResolve("_tapTask");
+
+  if(!_curTapTask)
+    _curTapTask = (dword*)TryResolve("_curTapTask");
+
   if(!TAPTaskTable || !_curTapTask)
   {
     if(CurrentDir) CurrentDir[0] = '\0';

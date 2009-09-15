@@ -23,7 +23,7 @@ bool LoadFirmwareDat (tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInf
       return FALSE;
     }
 
-    if (!(FWDATBin = TAP_MemAlloc (TAP_Hdd_Flen (fp))))
+    if (!(FWDATBin = TAP_MemAlloc_Chk("LoadFirmwareDat", TAP_Hdd_Flen (fp))))
     {
       TAP_Hdd_Fclose (fp);
       (void) HDD_TAP_PopDir();

@@ -15,22 +15,31 @@ int TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite
 
   register dword        oy, cx, cy, p, P;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("TAP_Osd_PutFreeColorGd");
+#endif
+
   //Use a temporary memory region
-  TempRgn = TAP_Osd_Create (0, 0, gd->width, gd->height, 0, OSD_Flag_MemRgn);
+  TempRgn = TAP_Osd_Create_Chk("TAP_Osd_PutFreeColorGd", 0, 0, gd->width, gd->height, 0, OSD_Flag_MemRgn);
 
   //Copy Gd data into OSD region
   ret = TAP_Osd_PutGd_Chk("TAP_Osd_PutFreeColorGd A", TempRgn, 0, 0, gd, sprite);
 
   //Save the OSD so we get a memory pointer to the pixel data
 #ifdef _TMS_
-  if (!ret) PixelData = (dword *) TAP_Osd_SaveBox (TempRgn, 0, 0, gd->width, gd->height);
+  if (!ret) PixelData = (dword *) TAP_Osd_SaveBox_Chk("TAP_Osd_PutFreeColorGd A", TempRgn, 0, 0, gd->width, gd->height);
 #else
-  if (!ret) PixelData = (word *) TAP_Osd_SaveBox (TempRgn, 0, 0, gd->width, gd->height);
+  if (!ret) PixelData = (word *) TAP_Osd_SaveBox_Chk("TAP_Osd_PutFreeColorGd B", TempRgn, 0, 0, gd->width, gd->height);
 #endif
 
   if (ret || !PixelData)
   {
     TAP_Osd_Delete (TempRgn);
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
     return (ret ? ret : -1);
   }
 
@@ -81,10 +90,14 @@ int TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite
   }
 
   //Restore the modified OSD
-  TAP_Osd_RestoreBox (TempRgn, 0, 0, gd->width, gd->height, PixelData);
+  TAP_Osd_RestoreBox_Chk("TAP_Osd_PutFreeColorGd", TempRgn, 0, 0, gd->width, gd->height, PixelData);
   TAP_Osd_Copy_Chk("TAP_Osd_PutFreeColorGd B", TempRgn, rgn, 0, 0, gd->width, gd->height, x, y, TRUE);
   TAP_MemFree (PixelData);
   TAP_Osd_Delete (TempRgn);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return 0;
 }

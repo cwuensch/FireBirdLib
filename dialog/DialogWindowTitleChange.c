@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogWindowTitleChange (char *LTitle, char *CTitle, char *RTitle)
+void DialogWindowTitleChange(char *LTitle, char *CTitle, char *RTitle)
 {
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowTitleChange");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (LTitle)
   {
@@ -24,4 +36,8 @@ void DialogWindowTitleChange (char *LTitle, char *CTitle, char *RTitle)
   }
 
   FBDialogWindow->OSDTitleForeDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

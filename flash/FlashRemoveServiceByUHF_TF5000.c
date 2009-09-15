@@ -14,7 +14,7 @@ dword FlashRemoveServiceByUHF(char* UHFChannel, bool TVService, bool UseAUSChann
   TAP_Channel_GetTotalNum(&nTvSvc, &nRadioSvc);
   if(!TVService) nTvSvc = nRadioSvc;
 
-  if ((FlagArray = TAP_MemAlloc(nTvSvc * sizeof(bool))))
+  if ((FlagArray = TAP_MemAlloc_Chk("FlashRemoveServiceByUHF", nTvSvc * sizeof(bool))))
   {
     memset(FlagArray, 0, nTvSvc * sizeof(bool));
     FoundCount = FlashFindServiceByUHF (UHFChannel, TVService, UseAUSChannelCoding, FlagArray, NULL);

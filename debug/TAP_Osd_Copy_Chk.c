@@ -18,6 +18,11 @@
 int TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite)
 {
   dword                 RgnH, RgnW;
+  int                   ret;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("TAP_Osd_Copy_Chk");
+#endif
 
   RgnH = GetOSDRegionHeight(srcRgnNum);
   RgnW = GetOSDRegionWidth(srcRgnNum);
@@ -81,5 +86,18 @@ int TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, 
     TAP_Print("TAP_Osd_Copy_Chk Warning: (dstY(%d) + h(%d)) > dstRgnH(%d) @ %s\n", dstY, h, RgnH, Comment);
 #endif
 
-  return TAP_Osd_Copy(srcRgnNum, dstRgnNum, srcX, srcY, w, h, dstX, dstY, sprite);
+  ret = TAP_Osd_Copy(srcRgnNum, dstRgnNum, srcX, srcY, w, h, dstX, dstY, sprite);
+
+  if(ret)
+#ifdef _TMS_
+    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: TAP_Osd_Copy() returned %d @ %s\n", ret, Comment);
+#else
+    TAP_Print("TAP_Osd_Copy_Chk Warning: TAP_Osd_Copy() returned %d @ %s\n", ret, Comment);
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+  return ret;
 }

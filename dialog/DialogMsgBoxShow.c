@@ -30,11 +30,23 @@ TYPE_GrData             *MsgBox_E_Text_Gd;
 TYPE_GrData             *MsgBox_In_Gd;
 TYPE_GrData             *MsgBox_Out_Gd;
 
-void DialogMsgBoxShow (void)
+void DialogMsgBoxShow(void)
 {
   dword                 State, SubState;
 
-  if (!FBDialogMsgBox || FBDialogMsgBox->isVisible || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxShow");
+#endif
+
+  if (!FBDialogMsgBox || FBDialogMsgBox->isVisible || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   MsgBox_W_Title_Gd       = &_MsgBox_W_Title_Gd;
   MsgBox_W_Border_Gd      = &_MsgBox_W_Border_Gd;
@@ -50,7 +62,6 @@ void DialogMsgBoxShow (void)
   MsgBox_E_Text_Gd        = &_MsgBox_E_Text_Gd;
   MsgBox_In_Gd            = &_MsgBox_In_Gd;
   MsgBox_Out_Gd           = &_MsgBox_Out_Gd;
-
 
   TAP_GetState (&State, &SubState);
   FBDialogMsgBox->isNormalMode = ((State == STATE_Normal) && (SubState == SUBSTATE_Normal));
@@ -76,8 +87,8 @@ void DialogMsgBoxShow (void)
   //Draw the main window
   if (!FBDialogMsgBox->MemOSDRgn)
   {
-    //FBDialogMsgBox->MemOSDRgn = TAP_Osd_Create (0, 0, FBDialogMsgBox->DialogWidth, MsgBox_C_Border_Gd->height, 0, OSD_Flag_MemRgn);
-    FBDialogMsgBox->MemOSDRgn = TAP_Osd_Create (0, 0, FBDialogMsgBox->DialogWidth, MsgBox_W_Title_Gd->height + MsgBox_W_SubTitle_Gd->height + MsgBox_W_Text_Gd->height, 0, OSD_Flag_MemRgn);
+    //FBDialogMsgBox->MemOSDRgn = TAP_Osd_Create_Chk(0, 0, FBDialogMsgBox->DialogWidth, MsgBox_C_Border_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogMsgBox->MemOSDRgn = TAP_Osd_Create_Chk("DialogMsgBoxShow A", 0, 0, FBDialogMsgBox->DialogWidth, MsgBox_W_Title_Gd->height + MsgBox_W_SubTitle_Gd->height + MsgBox_W_Text_Gd->height, 0, OSD_Flag_MemRgn);
 
     TAP_Osd_PutFreeColorGd_Chk("DialogMsgBoxShow A", FBDialogMsgBox->MemOSDRgn, 0, 0,                                                        MsgBox_W_Title_Gd,    TRUE, FBDialogProfile->TitleBackgroundColor);
     TAP_Osd_PutFreeColorGd_Chk("DialogMsgBoxShow B", FBDialogMsgBox->MemOSDRgn, 0, MsgBox_W_Title_Gd->height,                                MsgBox_W_SubTitle_Gd, TRUE, FBDialogProfile->TitleBackgroundColor);
@@ -100,9 +111,9 @@ void DialogMsgBoxShow (void)
   }
 
   if (!FBDialogMsgBox->OSDRgn)
-    FBDialogMsgBox->OSDRgn = TAP_Osd_Create ((720 - FBDialogMsgBox->DialogWidth) >> 1, (576 - MsgBox_C_Border_Gd->height) >> 1, FBDialogMsgBox->DialogWidth, GetOSDRegionHeight(FBDialogMsgBox->MemOSDRgn), 0, 0);
+    FBDialogMsgBox->OSDRgn = TAP_Osd_Create_Chk("DialogMsgBoxShow B", (720 - FBDialogMsgBox->DialogWidth) >> 1, (576 - MsgBox_C_Border_Gd->height) >> 1, FBDialogMsgBox->DialogWidth, GetOSDRegionHeight(FBDialogMsgBox->MemOSDRgn), 0, 0);
 
-  FBDialogMsgBox->OSDSaveBox = TAP_Osd_SaveBox (FBDialogMsgBox->OSDRgn, 0, 0, FBDialogMsgBox->DialogWidth, GetOSDRegionHeight(FBDialogMsgBox->OSDRgn));
+  FBDialogMsgBox->OSDSaveBox = TAP_Osd_SaveBox_Chk("DialogMsgBoxShow", FBDialogMsgBox->OSDRgn, 0, 0, FBDialogMsgBox->DialogWidth, GetOSDRegionHeight(FBDialogMsgBox->OSDRgn));
   TAP_Osd_Copy_Chk("DialogMsgBoxShow M", FBDialogMsgBox->MemOSDRgn, FBDialogMsgBox->OSDRgn, 0, 0, FBDialogMsgBox->DialogWidth, GetOSDRegionHeight(FBDialogMsgBox->MemOSDRgn), 0, 0, TRUE);
 
   FBDialogMsgBox->isVisible = TRUE;
@@ -112,5 +123,9 @@ void DialogMsgBoxShow (void)
 
 #ifdef _TMS_
   TAP_Osd_Sync();
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
 #endif
 }

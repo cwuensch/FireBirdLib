@@ -1,8 +1,20 @@
 #include                "FBLib_dialog.h"
 
-void DrawProgressBarTitle (void)
+void DrawProgressBarTitle(void)
 {
-  if (!FBDialogProgressBar || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawProgressBarTitle");
+#endif
+
+  if (!FBDialogProgressBar || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogProgressBar->MemOSDRgn && FBDialogProgressBar->OSDRgn)
   {
@@ -14,4 +26,8 @@ void DrawProgressBarTitle (void)
     TAP_Osd_Sync();
 #endif
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

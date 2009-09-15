@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowScrollUpPage (void)
+void DialogWindowScrollUpPage(void)
 {
   int                   selected;
 
-  if (!FBDialogWindow || !FBDialogWindow->NrItems || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowScrollUpPage");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->NrItems || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   CalcPrepare();
   selected = FBDialogWindow->SelectedItem;
@@ -29,4 +41,8 @@ void DialogWindowScrollUpPage (void)
 
   CalcTopIndex(selected, -1);
   DialogWindowRefresh();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

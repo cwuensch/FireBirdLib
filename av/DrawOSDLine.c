@@ -1,8 +1,12 @@
 #include                "../libFireBird.h"
 
-void DrawOSDLine (word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color)
+void DrawOSDLine(word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color)
 {
   int dX, dY, Xincr, Yincr, dist, Xerr, Yerr, d;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawOSDLine");
+#endif
 
   // distances
   dX = Bx - Ax;
@@ -34,7 +38,7 @@ void DrawOSDLine (word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Col
 
   for (d = 0; d < dist; d++)
   {
-    TAP_Osd_PutPixel(OSDRgn, Ax, Ay, Color);   // plot the pixel
+    TAP_Osd_PutPixel_Chk("DrawOSDLine A", OSDRgn, Ax, Ay, Color);   // plot the pixel
 
     Xerr += dX;
     Yerr += dY;
@@ -52,5 +56,9 @@ void DrawOSDLine (word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Col
     }
   }
 
-  TAP_Osd_PutPixel(OSDRgn, Bx, By, Color);   // plot the pixel
+  TAP_Osd_PutPixel_Chk("DrawOSDLine B", OSDRgn, Bx, By, Color);   // plot the pixel
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

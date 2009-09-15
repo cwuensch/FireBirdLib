@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogMsgBoxShowYesNo (dword DefaultButton)
+void DialogMsgBoxShowYesNo(dword DefaultButton)
 {
-  if (!FBDialogMsgBox) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxShowYesNo");
+#endif
+
+  if (!FBDialogMsgBox)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   switch (TAP_GetSystemVar (SYSVAR_OsdLan))
   {
@@ -19,4 +31,8 @@ void DialogMsgBoxShowYesNo (dword DefaultButton)
   FBDialogMsgBox->ButtonText [2][0] = '\0';
   FBDialogMsgBox->DefaultButton = DefaultButton;
   DialogMsgBoxShow();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

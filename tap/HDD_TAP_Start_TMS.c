@@ -7,20 +7,27 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock)
 {
   dword                 ret;
   dword                 _TempWorkFolder[4];
-  dword                *_hddTapFolder;
+  static dword          *_hddTapFolder = NULL;
   char                  CurrentDir[FBLIB_DIR_SIZE];
 
-  void  (*ApplHdd_SetWorkFolder)(void*);
-  dword (*ApplHdd_SelectFolder)(void*, char  const*);
-  void  (*Appl_ExecProgram)(char*);
+  static void  (*ApplHdd_SetWorkFolder)(void*);
+  static dword (*ApplHdd_SelectFolder)(void*, char  const*);
+  static void  (*Appl_ExecProgram)(char*);
 
   (void)BatchMode;
   (void)ParameterBlock;
 
-  Appl_ExecProgram      = (void*)TryResolve("_Z16Appl_ExecProgramPc");
-  ApplHdd_SetWorkFolder = (void*)TryResolve("_Z21ApplHdd_SetWorkFolderPv");
-  ApplHdd_SelectFolder  = (void*)TryResolve("_Z20ApplHdd_SelectFolderPvPKc");
-  _hddTapFolder         = (dword*)TryResolve("_hddTapFolder");
+  if(!Appl_ExecProgram)
+    Appl_ExecProgram      = (void*)TryResolve("_Z16Appl_ExecProgramPc");
+
+  if(!ApplHdd_SetWorkFolder)
+    ApplHdd_SetWorkFolder = (void*)TryResolve("_Z21ApplHdd_SetWorkFolderPv");
+
+  if(!ApplHdd_SelectFolder)
+    ApplHdd_SelectFolder  = (void*)TryResolve("_Z20ApplHdd_SelectFolderPvPKc");
+
+  if(!_hddTapFolder)
+    _hddTapFolder         = (dword*)TryResolve("_hddTapFolder");
 
   //"Calculate" the current absolute directory of the new TAP
   TAP_SPrint(CurrentDir, "mnt/hd");

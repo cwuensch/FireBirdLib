@@ -3,6 +3,10 @@
 
 void EndMessageWin (void)
 {
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("EndMessageWin");
+#endif
+
   if (fbl_rgn) TAP_Osd_Delete(fbl_rgn);
   fbl_rgn = 0;
 
@@ -10,4 +14,7 @@ void EndMessageWin (void)
   TAP_Osd_Sync();
 #endif
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

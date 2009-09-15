@@ -11,6 +11,10 @@ void VideoToBMP(TYPE_VideoFrame VideoFrame, int BMPwidth, int BMPheight, byte *B
   int                   SX, SY;
   register int          x, y;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("VideoToBMP");
+#endif
+
   VideoData = (dword*)VideoFrame.data;
   for(y = DstY; y < (DstY + DstHeight); y++)
   {
@@ -26,5 +30,10 @@ void VideoToBMP(TYPE_VideoFrame VideoFrame, int BMPwidth, int BMPheight, byte *B
       DstPixel[2] = R8888(*SrcPixel);
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
 }
 #endif

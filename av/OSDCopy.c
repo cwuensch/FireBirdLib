@@ -1,12 +1,16 @@
 #include "../libFireBird.h"
 
-void OSDCopy (word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction)
+void OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction)
 {
   word                  n;
   dword                 nw, nh;
   dword                 dx, dy;
   dword                 rw, rh;
   dword                 xw, xh;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("OSDCopy");
+#endif
 
   nw = w;
   nh = h;
@@ -52,4 +56,8 @@ void OSDCopy (word rgn, dword x, dword y, dword w, dword h, word items, eCopyDir
 
     TAP_Osd_Copy_Chk("OSDCopy B", rgn, rgn, x, y, xw, xh, dx, dy, TRUE);
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

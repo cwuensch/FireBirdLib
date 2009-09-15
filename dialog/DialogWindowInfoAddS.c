@@ -1,11 +1,23 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogWindowInfoAddS (dword X, dword Y, dword MaxX, char *Text, dword FColor, dword BColor, byte FontSize, byte bDot, byte Align)
+void DialogWindowInfoAddS(dword X, dword Y, dword MaxX, char *Text, dword FColor, dword BColor, byte FontSize, byte bDot, byte Align)
 {
   tDialogInfoItem       *item, *last = NULL;
 
-  if (!FBDialogWindow || !Text) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowInfoAddS");
+#endif
+
+  if (!FBDialogWindow || !Text)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   item = FBDialogWindow->InfoItems;
 
@@ -15,7 +27,7 @@ void DialogWindowInfoAddS (dword X, dword Y, dword MaxX, char *Text, dword FColo
     item = item->next;
   }
 
-  if ((item = TAP_MemAlloc(sizeof(tDialogInfoItem) + strlen(Text) + 1)))
+  if ((item = TAP_MemAlloc_Chk("DialogWindowInfoAddS", sizeof(tDialogInfoItem) + strlen(Text) + 1)))
   {
     item->ItemType = InfoString;
     item->X = X;
@@ -36,4 +48,8 @@ void DialogWindowInfoAddS (dword X, dword Y, dword MaxX, char *Text, dword FColo
 
     FBDialogWindow->OSDInfoForeDirty = TRUE;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

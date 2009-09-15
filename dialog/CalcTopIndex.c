@@ -1,11 +1,23 @@
 #include                "FBLib_dialog.h"
 
-void CalcTopIndex (int OldItem, int Direction)
+void CalcTopIndex(int OldItem, int Direction)
 {
   bool                  scrolled = FALSE, alternate;
   int                   LastItem = 0, i;
 
-  if (!FBDialogWindow || !FBDialogWindow->DialogItems || !FBDialogWindow->NrItems) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("CalcTopIndex");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->DialogItems || !FBDialogWindow->NrItems)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if ((alternate = (Direction == 0)))
   {
@@ -84,4 +96,8 @@ void CalcTopIndex (int OldItem, int Direction)
     if (PrevSelItem >= FBDialogWindow->TopItem && PrevSelItem <= FBDialogWindow->TopItem + FBDialogWindow->NrItemLines - 1) FBDialogWindow->OSDLineForeDirty[PrevSelItem - FBDialogWindow->TopItem] = TRUE;
     if (FBDialogWindow->SelectedItem >= FBDialogWindow->TopItem && FBDialogWindow->SelectedItem <= FBDialogWindow->TopItem + FBDialogWindow->NrItemLines - 1) FBDialogWindow->OSDLineForeDirty[FBDialogWindow->SelectedItem - FBDialogWindow->TopItem] = TRUE;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

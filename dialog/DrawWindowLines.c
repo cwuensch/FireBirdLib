@@ -1,12 +1,24 @@
 #include                "FBLib_dialog.h"
 
-void DrawWindowLines (void)
+void DrawWindowLines(void)
 {
   bool                  allLinesDirty;
   int                   i;
   dword                 IconButtonWidth, x;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowLines");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (OSDLinesForeDirty(FALSE) || FBDialogWindow->OSDLineBackDirty || FBDialogWindow->OSDLineSelectedBackDirty)
   {
@@ -90,4 +102,8 @@ void DrawWindowLines (void)
       FBDialogWindow->OSDLineSelectedBackDirty = FALSE;
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

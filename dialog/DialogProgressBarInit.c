@@ -2,9 +2,21 @@
 
 tDialogProgressBar      *FBDialogProgressBar  = NULL;
 
-void DialogProgressBarInit (tDialogProgressBar *DialogProgressBar, tDialogProfile *DialogProfile, dword X, dword Y, char *Title, int Minimum, int Maximum)
+void DialogProgressBarInit(tDialogProgressBar *DialogProgressBar, tDialogProfile *DialogProfile, dword X, dword Y, char *Title, int Minimum, int Maximum)
 {
-  if (FBDialogProgressBar || !(FBDialogProgressBar = DialogProgressBar)) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogProgressBarInit");
+#endif
+
+  if (FBDialogProgressBar || !(FBDialogProgressBar = DialogProgressBar))
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   memset(FBDialogProgressBar, 0, sizeof(tDialogProgressBar));
 
@@ -21,4 +33,8 @@ void DialogProgressBarInit (tDialogProgressBar *DialogProgressBar, tDialogProfil
     FBDialogProfile = DialogProfile;
     ProfileInit();
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

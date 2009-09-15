@@ -1,11 +1,23 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DrawMsgBoxTitle (void)
+void DrawMsgBoxTitle(void)
 {
   char                  *LF;
 
-  if (!FBDialogMsgBox || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawMsgBoxTitle");
+#endif
+
+  if (!FBDialogMsgBox || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogMsgBox->MemOSDRgn && FBDialogMsgBox->OSDRgn)
   {
@@ -42,5 +54,9 @@ void DrawMsgBoxTitle (void)
 
 #ifdef _TMS_
   TAP_Osd_Sync();
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
 #endif
 }

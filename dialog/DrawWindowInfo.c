@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DrawWindowInfo (void)
+void DrawWindowInfo(void)
 {
   tDialogInfoItem       *item;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowInfo");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogWindow->OSDInfoForeDirty || FBDialogWindow->OSDInfoBackDirty)
   {
@@ -56,4 +68,8 @@ void DrawWindowInfo (void)
       FBDialogWindow->OSDInfoBackDirty = FALSE;
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

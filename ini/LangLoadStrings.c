@@ -33,7 +33,7 @@ INILOCATION LangLoadStrings (char *LangFile, dword NrStrings, int FallbackLang, 
   }
 
   //First loop: count the length of all strings
-  LangStringPtr = TAP_MemAlloc (NrStrings * sizeof(dword));
+  LangStringPtr = TAP_MemAlloc_Chk("LangLoadStrings A", NrStrings * sizeof(dword));
   memset (LangStringPtr, 0, NrStrings * sizeof(dword));
   TotalLength = 0;
   for (i = 0; i < NrStrings; i++)
@@ -63,7 +63,7 @@ INILOCATION LangLoadStrings (char *LangFile, dword NrStrings, int FallbackLang, 
   }
 
   //Second loop: Read the strings
-  LangStrings = TAP_MemAlloc (TotalLength);
+  LangStrings = TAP_MemAlloc_Chk("LangLoadStrings B", TotalLength);
   memset (LangStrings, 0, TotalLength);
   for (i = 0; i < NrStrings; i++)
   {

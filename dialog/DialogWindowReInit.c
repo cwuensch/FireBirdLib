@@ -49,9 +49,21 @@ TYPE_GrData             *InfoN_W_Gd;
 TYPE_GrData             *Info_C_Gd;
 TYPE_GrData             *Info_W_Gd;
 
-void DialogWindowReInit (dword X, dword Y, dword Width, dword NrItemLines, dword ParameterWidth, dword InfoHeight)
+void DialogWindowReInit(dword X, dword Y, dword Width, dword NrItemLines, dword ParameterWidth, dword InfoHeight)
 {
-  if (!FBDialogWindow || FBDialogWindow->OSDRgn || FBDialogWindow->MemOSDBorderN || FBDialogWindow->MemOSDBorderW || FBDialogWindow->MemOSDBorderE || FBDialogWindow->MemOSDBorderS || FBDialogWindow->MemOSDTitle || FBDialogWindow->MemOSDLines || FBDialogWindow->MemOSDLineSelected || FBDialogWindow->MemOSDScrollBar || FBDialogWindow->MemOSDInfoN || FBDialogWindow->MemOSDInfo || FBDialogWindow->MemOSDInfoS) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowReInit");
+#endif
+
+  if (!FBDialogWindow || FBDialogWindow->OSDRgn || FBDialogWindow->MemOSDBorderN || FBDialogWindow->MemOSDBorderW || FBDialogWindow->MemOSDBorderE || FBDialogWindow->MemOSDBorderS || FBDialogWindow->MemOSDTitle || FBDialogWindow->MemOSDLines || FBDialogWindow->MemOSDLineSelected || FBDialogWindow->MemOSDScrollBar || FBDialogWindow->MemOSDInfoN || FBDialogWindow->MemOSDInfo || FBDialogWindow->MemOSDInfoS)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   Border_N_Gd                 = &_Border_N_Gd;
   Border_NE_Gd                = &_Border_NE_Gd;
@@ -105,4 +117,8 @@ void DialogWindowReInit (dword X, dword Y, dword Width, dword NrItemLines, dword
   FBDialogWindow->InfoSY = FBDialogWindow->InfoY  + FBDialogWindow->NrInfoLines * Info_C_Gd->height;      //=Border_S
   FBDialogWindow->OSDHeight = FBDialogWindow->InfoSY + Border_S_Gd->height;
   FBDialogWindow->ItemLineWidth = Items_IconButton_Gd->width + FBDialogWindow->NrItemColumns * Items_Line_C_Gd->width  + Items_Line_E_Gd->width;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

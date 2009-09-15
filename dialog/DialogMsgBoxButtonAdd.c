@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogMsgBoxButtonAdd (char *ButtonText, bool Default)
+void DialogMsgBoxButtonAdd(char *ButtonText, bool Default)
 {
-  if (!FBDialogMsgBox || !ButtonText) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxButtonAdd");
+#endif
+
+  if (!FBDialogMsgBox || !ButtonText)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if ((unsigned int) FBDialogMsgBox->NrButtons < sizeof1st(FBDialogMsgBox->ButtonText))
   {
@@ -14,4 +26,8 @@ void DialogMsgBoxButtonAdd (char *ButtonText, bool Default)
 
     FBDialogMsgBox->NrButtons++;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

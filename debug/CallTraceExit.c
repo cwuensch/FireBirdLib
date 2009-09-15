@@ -1,13 +1,15 @@
-#include                "FBLib_main.h"
+#include                "FBLib_debug.h"
 
 void CallTraceExit (dword *Magic)
 {
   char                  Spaces [101];
 
+  if(!CallTraceInitialized) CallTraceInit();
+
   Spaces [0] = '\0';
 
   if (CallLevel > 0) CallLevel--;
-                else TAP_Print ("\n\nCallLevel Underflow!\n\n");
+                else TAP_PrintNet("\n\nCallLevel Underflow!\n\n");
 
 
   if (CallTraceEnabled || Magic)
@@ -18,9 +20,7 @@ void CallTraceExit (dword *Magic)
 
   if (Magic && *Magic != DEFAULTMAGIC)
   {
-    TAP_Print ("\n\n%sINVALID MAGIC!\n\n", Spaces);
+    TAP_PrintNet("\n\n%sINVALID MAGIC!\n\n", Spaces);
     *Magic = DEFAULTMAGIC;
   }
-
-  //if (CallTraceEnabled) TAP_Print ("%s/\n", Spaces);
 }

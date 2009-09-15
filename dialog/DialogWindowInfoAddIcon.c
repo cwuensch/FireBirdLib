@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowInfoAddIcon (dword X, dword Y, TYPE_GrData *IconGd)
+void DialogWindowInfoAddIcon(dword X, dword Y, TYPE_GrData *IconGd)
 {
   tDialogInfoItem       *item, *last = NULL;
 
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowInfoAddIcon");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   item = FBDialogWindow->InfoItems;
 
@@ -14,7 +26,7 @@ void DialogWindowInfoAddIcon (dword X, dword Y, TYPE_GrData *IconGd)
     item = item->next;
   }
 
-  if ((item = TAP_MemAlloc(sizeof(tDialogInfoItem))))
+  if ((item = TAP_MemAlloc_Chk("DialogWindowInfoAddIcon", sizeof(tDialogInfoItem))))
   {
     memset(item, 0, sizeof(tDialogInfoItem));
 
@@ -29,4 +41,8 @@ void DialogWindowInfoAddIcon (dword X, dword Y, TYPE_GrData *IconGd)
 
     FBDialogWindow->OSDInfoForeDirty = TRUE;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

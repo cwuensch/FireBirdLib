@@ -1,12 +1,24 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogWindowTabulatorSet (dword Pos, eDialogItemArea Which)
+void DialogWindowTabulatorSet(dword Pos, eDialogItemArea Which)
 {
   dword                 *tabs;
   int                   i;
 
-  if (!FBDialogWindow || (Which != PARAMETER && Which != VALUE)) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowTabulatorSet");
+#endif
+
+  if (!FBDialogWindow || (Which != PARAMETER && Which != VALUE))
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   tabs = (Which == PARAMETER ? FBDialogWindow->TabsParameter : FBDialogWindow->TabsValue);
 
@@ -24,4 +36,8 @@ void DialogWindowTabulatorSet (dword Pos, eDialogItemArea Which)
       }
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

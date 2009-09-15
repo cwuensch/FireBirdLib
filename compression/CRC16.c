@@ -20,13 +20,21 @@ word CRC16Table[] =
  0x4400, 0x84C1, 0x8581, 0x4540, 0x8701, 0x47C0, 0x4680, 0x8641, 0x8201, 0x42C0, 0x4380, 0x8341, 0x4100, 0x81C1, 0x8081, 0x4040
 };
 
-word CRC16 (word StartValue, void *StartAddress, dword Length)
+word CRC16(word StartValue, void *StartAddress, dword Length)
 {
   volatile byte         *pData;
   word                  CRC = StartValue;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("CRC16");
+#endif
+
   for (pData = StartAddress; pData < (byte *) StartAddress + Length; pData++)
     CRC= CRC16Table [*pData ^ (CRC & 0x00FF)] ^ (CRC >> 8);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return CRC;
 }

@@ -5,11 +5,12 @@ inline dword FIS_vRECSlotAddress(byte Slot)
 {
 #ifdef _TMS_
 
-  byte               *_pvrRecInfo;
+  static byte          *_pvrRecInfo = NULL;
 
   if (Slot > 2) return 0;
 
-  _pvrRecInfo = (byte*)TryResolve("_pvrRecInfo");
+  if(!_pvrRecInfo)
+    _pvrRecInfo = (byte*)TryResolve("_pvrRecInfo");
 
   if(!_pvrRecInfo) return 0;
 

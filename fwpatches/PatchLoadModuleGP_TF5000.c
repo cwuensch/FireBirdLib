@@ -36,7 +36,7 @@ tPatchModule *PatchLoadModuleGP (char *FileName, dword JustGP)
   if ((fp = TAP_Hdd_Fopen (FileName)) == NULL) return (void*)2;
   i = TAP_Hdd_Flen (fp);
 
-  if (!(PatchFile = TAP_MemAlloc (i)))
+  if (!(PatchFile = TAP_MemAlloc_Chk("PatchLoadModuleGP A", i)))
   {
     TAP_Hdd_Fclose (fp);
     return (void*)3;
@@ -111,7 +111,7 @@ tPatchModule *PatchLoadModuleGP (char *FileName, dword JustGP)
               + totSegments * (sizeof (tPatchSegment) + sizeof (dword))              //Leave space for the *PatchSegment pointers
               + (totCodeLens << 4);
 
-  mod = TAP_MemAlloc (BlockSize);
+  mod = TAP_MemAlloc_Chk("PatchLoadModuleGP B", BlockSize);
   if (!mod)
   {
     TAP_MemFree (PatchFile);

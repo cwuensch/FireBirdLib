@@ -1,8 +1,20 @@
 #include                "FBLib_dialog.h"
 
-void BuildWindowScrollBar (void)
+void BuildWindowScrollBar(void)
 {
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("BuildWindowScrollBar");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // cache scrollbar
   if (!FBDialogWindow->MemOSDScrollBar
@@ -10,7 +22,7 @@ void BuildWindowScrollBar (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDScrollBar)
 #endif
      )
-    FBDialogWindow->MemOSDScrollBar = TAP_Osd_Create(0, 0, Scroll_Back_Gd->width << 1, FBDialogWindow->NrItemLines * Scroll_Back_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDScrollBar = TAP_Osd_Create_Chk("BuildWindowScrollBar", 0, 0, Scroll_Back_Gd->width << 1, FBDialogWindow->NrItemLines * Scroll_Back_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -24,4 +36,8 @@ void BuildWindowScrollBar (void)
   }
 
   FBDialogWindow->OSDScrollBarBackDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

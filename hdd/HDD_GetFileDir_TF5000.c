@@ -104,7 +104,7 @@ bool HDD_GetFileDir (char *FileName, eRootDirs Root, char *Dir)
 
   if ((int) Root < DIR_ROOT || (int) Root > DIR_MP3) return FALSE;
 
-  if (!(DirBuffer = TAP_MemAlloc(1024 << 7))) return FALSE;   //Room for 1024 directory entries of 128 bytes each. Should be enough for everyone ;-)
+  if (!(DirBuffer = TAP_MemAlloc_Chk("HDD_GetFileDir", 1024 << 7))) return FALSE;   //Room for 1024 directory entries of 128 bytes each. Should be enough for everyone ;-)
 
   *Dir = '\0';
 

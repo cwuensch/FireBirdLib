@@ -1,12 +1,24 @@
 #include                "FBLib_dialog.h"
 
-void DrawWindowScrollBar (void)
+void DrawWindowScrollBar(void)
 {
   static dword          LastPercent = (dword) -1;
   int                   n;
   dword                 Percent, w, x, max;
 
-  if (!FBDialogWindow || (FBDialogWindow->NrItems <= FBDialogWindow->NrItemLines) || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowScrollBar");
+#endif
+
+  if (!FBDialogWindow || (FBDialogWindow->NrItems <= FBDialogWindow->NrItemLines) || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // for a reasonable scrollbar display
   n = FBDialogWindow->NrItems - (FBDialogWindow->hasCursor ? 1 : FBDialogWindow->NrItemLines);
@@ -36,4 +48,8 @@ void DrawWindowScrollBar (void)
       FBDialogWindow->OSDScrollBarBackDirty = FALSE;
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

@@ -35,7 +35,7 @@ bool IMEM_Init( dword dwSize )
 	//
 	// allocate internal pool memory
 	//
-	pHeap = (byte*) TAP_MemAlloc( imem.dwTotal );
+	pHeap = (byte*) TAP_MemAlloc_Chk("IMEM_Init", imem.dwTotal);
 	if( !pHeap ) return FALSE;
 
 	imem.pHeap		= (UNIT*) pHeap;

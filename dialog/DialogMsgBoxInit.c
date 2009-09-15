@@ -2,9 +2,21 @@
 
 tDialogMsgBox           *FBDialogMsgBox  = NULL;
 
-void DialogMsgBoxInit (tDialogMsgBox *DialogMsgBox, tDialogProfile *DialogProfile, char *Title, char *SubTitle)
+void DialogMsgBoxInit(tDialogMsgBox *DialogMsgBox, tDialogProfile *DialogProfile, char *Title, char *SubTitle)
 {
-  if (FBDialogMsgBox || !(FBDialogMsgBox = DialogMsgBox)) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxInit");
+#endif
+
+  if (FBDialogMsgBox || !(FBDialogMsgBox = DialogMsgBox))
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   memset(FBDialogMsgBox, 0, sizeof(tDialogMsgBox));
 
@@ -15,4 +27,8 @@ void DialogMsgBoxInit (tDialogMsgBox *DialogMsgBox, tDialogProfile *DialogProfil
     FBDialogProfile = DialogProfile;
     ProfileInit();
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

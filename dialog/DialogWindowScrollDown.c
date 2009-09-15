@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowScrollDown (void)
+void DialogWindowScrollDown(void)
 {
   int                   selected;
 
-  if (!FBDialogWindow || !FBDialogWindow->NrItems || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowScrollDown");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->NrItems || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   CalcPrepare();
   selected = FBDialogWindow->SelectedItem;
@@ -16,4 +28,9 @@ void DialogWindowScrollDown (void)
 
   CalcTopIndex(selected, +1);
   DialogWindowRefresh();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }
+

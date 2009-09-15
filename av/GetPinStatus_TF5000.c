@@ -3,11 +3,23 @@
 
 #ifndef _TMS_
 
-int GetPinStatus (void)
+int GetPinStatus(void)
 {
-  int                   *p = (int*)FIS_vPinStatus();
+  int                  *p;
+  int                   ret;
 
-  return (int)(p ? *p : -2);
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("GetPinStatus");
+#endif
+
+  p = (int*)FIS_vPinStatus();
+  ret = (int)(p ? *p : -2);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+  return ret;
 }
 
 #endif

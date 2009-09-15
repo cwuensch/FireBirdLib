@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void BuildWindowBorder (void)
+void BuildWindowBorder(void)
 {
   dword                 wMax, eMax;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("BuildWindowBorder");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // cache northern border
   if (!FBDialogWindow->MemOSDBorderN
@@ -12,7 +24,7 @@ void BuildWindowBorder (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderN)
 #endif
      )
-    FBDialogWindow->MemOSDBorderN = TAP_Osd_Create(0, 0, FBDialogWindow->OSDWidth, Border_N_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDBorderN = TAP_Osd_Create_Chk("BuildWindowBorder A", 0, 0, FBDialogWindow->OSDWidth, Border_N_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -38,7 +50,7 @@ void BuildWindowBorder (void)
 #endif
      )
 
-    FBDialogWindow->MemOSDBorderW = TAP_Osd_Create(0, 0, wMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDBorderW = TAP_Osd_Create_Chk("BuildWindowBorder B", 0, 0, wMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
 
   // cache eastern border
 
@@ -51,7 +63,7 @@ void BuildWindowBorder (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderE)
 #endif
      )
-    FBDialogWindow->MemOSDBorderE = TAP_Osd_Create(0, 0, eMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDBorderE = TAP_Osd_Create_Chk("BuildWindowBorder C", 0, 0, eMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -85,7 +97,7 @@ void BuildWindowBorder (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderS)
 #endif
      )
-    FBDialogWindow->MemOSDBorderS = TAP_Osd_Create(0, 0, FBDialogWindow->OSDWidth, Border_S_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDBorderS = TAP_Osd_Create_Chk("BuildWindowBorder D", 0, 0, FBDialogWindow->OSDWidth, Border_S_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -100,4 +112,8 @@ void BuildWindowBorder (void)
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowBorder L", FBDialogWindow->MemOSDBorderS, Border_SW_Gd->width + FBDialogWindow->NrInfoSColumns * Border_S_Gd->width, 0, Border_SE_Gd, TRUE, FBDialogProfile->BorderColor);
 
   FBDialogWindow->OSDBorderBackDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

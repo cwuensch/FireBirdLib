@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowInfoDeleteAll (void)
+void DialogWindowInfoDeleteAll(void)
 {
   tDialogInfoItem       *item, *next;
 
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowInfoDeleteAll");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   item = FBDialogWindow->InfoItems;
 
@@ -18,4 +30,8 @@ void DialogWindowInfoDeleteAll (void)
   FBDialogWindow->InfoItems = NULL;
   FBDialogWindow->InfoOwnForeColor = TRUE;
   FBDialogWindow->OSDInfoForeDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

@@ -4,8 +4,6 @@
 #include "tap.h"
 #include "../libFireBird.h"
 
-#define DEFAULTMAGIC    0xFB1BB100
-
 #ifdef _TMS_
   #define FIRMWAREDAT   "FirmwareTMS.dat"
 #else
@@ -22,7 +20,5 @@ typedef struct
 
 extern bool             LibInitialized;
 extern int              _appl_version;
-extern dword            CallLevel;
-extern bool             CallTraceEnabled;
 
 #endif

@@ -10,7 +10,8 @@ inline dword FIS_vOSDMap (void)
 
 #ifdef _TMS_
 
-  vOSDMap = TryResolve("_osdInfo");
+  if (!vOSDMap)
+    vOSDMap = TryResolve("_osdInfo");
 
 #else
 

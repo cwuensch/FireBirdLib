@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void BuildWindowTitle (void)
+void BuildWindowTitle(void)
 {
   dword                 TitleCWidth;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("BuildWindowTitle");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // remember: all Title_*_Gd have transparent upper parts of (the visible part of) Border_N_Gd width
 
@@ -17,7 +29,7 @@ void BuildWindowTitle (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDTitle)
 #endif
      )
-    FBDialogWindow->MemOSDTitle = TAP_Osd_Create(0, 0, Title_W_Gd->width + TitleCWidth + Title_E_Gd->width, Title_C_Gd->height << 1, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDTitle = TAP_Osd_Create_Chk("BuildWindowTitle", 0, 0, Title_W_Gd->width + TitleCWidth + Title_E_Gd->width, Title_C_Gd->height << 1, 0, OSD_Flag_MemRgn);
 
   // fill cache
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowTitle A", FBDialogWindow->MemOSDTitle, 0, 0, Title_W_Gd, TRUE, FBDialogProfile->TitleBackgroundColor);
@@ -31,4 +43,8 @@ void BuildWindowTitle (void)
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowTitle C", FBDialogWindow->MemOSDTitle, Title_W_Gd->width + TitleCWidth, 0, Title_E_Gd, TRUE, FBDialogProfile->TitleBackgroundColor);
 
   FBDialogWindow->OSDTitleBackDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

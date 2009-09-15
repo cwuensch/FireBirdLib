@@ -3,7 +3,7 @@
 
 #ifndef _TMS_
 
-bool CaptureScreen ( byte mainSub, int width, int height, byte *pBuffer, bool bOSD, int alpha)
+bool CaptureScreen( byte mainSub, int width, int height, byte *pBuffer, bool bOSD, int alpha)
 {
   int                   nR, nG, nB, n1 = 0, n2 = 0, i;
   dword                 color;
@@ -31,6 +31,11 @@ bool CaptureScreen ( byte mainSub, int width, int height, byte *pBuffer, bool bO
     byte                V;
     byte                U;
   } tLUT;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("CaptureScreen");
+#endif
+
 
   //The Masterpiece uses this RGB lookup table for his 8 bit plane 1
   tLUT     *Plane1LUT = NULL, *Plane2LUT = NULL;
@@ -201,6 +206,11 @@ bool CaptureScreen ( byte mainSub, int width, int height, byte *pBuffer, bool bO
   TAP_MemFree( videoBank.yAddress );
 
   // all done
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
   return nRet;
 }
 

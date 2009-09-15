@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void BuildWindowInfo (void)
+void BuildWindowInfo(void)
 {
   dword                 InfoNCWidth, InfoSCWidth;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("BuildWindowInfo");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // cache info's northern border line
 
@@ -15,7 +27,7 @@ void BuildWindowInfo (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoN)
 #endif
      )
-    FBDialogWindow->MemOSDInfoN = TAP_Osd_Create(0, 0, InfoN_W_Gd->width + InfoNCWidth + InfoN_E_Gd->width, InfoN_C_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDInfoN = TAP_Osd_Create_Chk("BuildWindowInfo A", 0, 0, InfoN_W_Gd->width + InfoNCWidth + InfoN_E_Gd->width, InfoN_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -35,7 +47,7 @@ void BuildWindowInfo (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDInfo)
 #endif
      )
-    FBDialogWindow->MemOSDInfo = TAP_Osd_Create(0, 0, Info_W_Gd->width + FBDialogWindow->NrInfoColumns * Info_C_Gd->width, (FBDialogWindow->NrInfoLines + 1) * Info_C_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDInfo = TAP_Osd_Create_Chk("BuildWindowInfo B", 0, 0, Info_W_Gd->width + FBDialogWindow->NrInfoColumns * Info_C_Gd->width, (FBDialogWindow->NrInfoLines + 1) * Info_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -56,7 +68,7 @@ void BuildWindowInfo (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoS)
 #endif
      )
-    FBDialogWindow->MemOSDInfoS = TAP_Osd_Create(0, 0, InfoS_W_Gd->width + InfoSCWidth + InfoS_E_Gd->width, InfoS_C_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDInfoS = TAP_Osd_Create_Chk("BuildWindowInfo C", 0, 0, InfoS_W_Gd->width + InfoSCWidth + InfoS_E_Gd->width, InfoS_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -71,4 +83,8 @@ void BuildWindowInfo (void)
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowInfo H", FBDialogWindow->MemOSDInfoS, InfoS_W_Gd->width + InfoSCWidth, 0, InfoS_E_Gd, TRUE, FBDialogProfile->InfoBackgroundColor);
 
   FBDialogWindow->OSDInfoBackDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

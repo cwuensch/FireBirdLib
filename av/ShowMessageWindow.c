@@ -2,11 +2,15 @@
 
 dword                   fbl_rgn = 0;
 
-void ShowMessageWindow (char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay)
+void ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay)
 {
   dword                 extra_x, h_y, w = 0, h = 0, w1, i, j, extra, rahmen, y;
   const dword           extra_y = 10;
   word                  fbl_memrgn;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("ShowMessageWindow");
+#endif
 
   if (content[0] == NULL && content[1] == NULL) content[0] = "";
 
@@ -52,13 +56,13 @@ void ShowMessageWindow (char **content, dword pos_x, dword pos_y, byte fntSize, 
   rahmen = extra_x / 4;
   y = 0;
 
-  fbl_memrgn = TAP_Osd_Create(pos_x, pos_y, w, h, 0, OSD_Flag_MemRgn);
+  fbl_memrgn = TAP_Osd_Create_Chk("ShowMessageWindow A", pos_x, pos_y, w, h, 0, OSD_Flag_MemRgn);
 
   // draw border box
-  TAP_Osd_FillBox(fbl_memrgn, 0, 0, w, h, bdcolor);
+  TAP_Osd_FillBox_Chk("ShowMessageWindow A", fbl_memrgn, 0, 0, w, h, bdcolor);
 
   // draw background box
-  TAP_Osd_FillBox(fbl_memrgn, rahmen, rahmen, w - rahmen * 2, h - rahmen * 2, bgcolor);
+  TAP_Osd_FillBox_Chk("ShowMessageWindow B", fbl_memrgn, rahmen, rahmen, w - rahmen * 2, h - rahmen * 2, bgcolor);
 
   // show title
   if (content[0])
@@ -75,7 +79,7 @@ void ShowMessageWindow (char **content, dword pos_x, dword pos_y, byte fntSize, 
   }
 
   if (fbl_rgn) TAP_Osd_Delete (fbl_rgn);
-  fbl_rgn = TAP_Osd_Create(pos_x, pos_y, w, h, 0, 0);
+  fbl_rgn = TAP_Osd_Create_Chk("ShowMessageWindow B", pos_x, pos_y, w, h, 0, 0);
   TAP_Osd_Copy_Chk("ShowMessageWindow A", fbl_memrgn, fbl_rgn, 0, 0, w, h, 0, 0, FALSE);
   TAP_Osd_Delete (fbl_memrgn);
 
@@ -88,4 +92,8 @@ void ShowMessageWindow (char **content, dword pos_x, dword pos_y, byte fntSize, 
     TAP_Delay(delay);
     EndMessageWin();   // release rgn handle
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

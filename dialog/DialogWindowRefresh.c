@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowRefresh (void)
+void DialogWindowRefresh(void)
 {
   int                   i;
 
-  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowRefresh");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // check whether parts of the profile have changed
 
@@ -121,4 +133,8 @@ void DialogWindowRefresh (void)
   DrawWindowTitle();
   DrawWindowLines();
   DrawWindowInfo();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

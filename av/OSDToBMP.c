@@ -11,6 +11,10 @@ void OSDToBMP(TYPE_OsdBaseInfo OsdBaseInfo, int BMPwidth, int BMPheight, byte *B
 
   (void)Alpha;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("OSDToBMP");
+#endif
+
   pixel = OsdBaseInfo.frameBuffer;
   for(y = 0; y < BMPheight; y++)
   {
@@ -39,5 +43,9 @@ void OSDToBMP(TYPE_OsdBaseInfo OsdBaseInfo, int BMPwidth, int BMPheight, byte *B
       pixel++;
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }
 #endif

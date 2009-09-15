@@ -1,14 +1,26 @@
 #include                "../ini/FBLib_ini.h"
 #include                "FBLib_dialog.h"
 
-INILOCATION ProfileLoad (char *FileName, bool useDefaults, char *AppName)
+INILOCATION ProfileLoad(char *FileName, bool useDefaults, char *AppName)
 {
   char                    *OldBuffer, *OldCommentBuffer;
   dword                   OldBufferSize;
   byte                    a, r, g, b;
   INILOCATION             ProfileLocation;
 
-  if (!FBDialogProfile) return INILOCATION_NotFound;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("ProfileLoad");
+#endif
+
+  if (!FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return INILOCATION_NotFound;
+  }
 
   OldBuffer = INIBuffer;
   OldCommentBuffer = INICommentBuffer;
@@ -82,6 +94,10 @@ INILOCATION ProfileLoad (char *FileName, bool useDefaults, char *AppName)
   INIBuffer = OldBuffer;
   INICommentBuffer = OldCommentBuffer;
   BufferSize = OldBufferSize;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return ProfileLocation;
 }

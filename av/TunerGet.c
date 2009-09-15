@@ -3,8 +3,25 @@
 
 byte TunerGet(int MainSub)
 {
+#ifndef _TMS_
+  byte                  ret;
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("TunerGet");
+#endif
+
+
   //Parameter sanity check
-  if (MainSub != CHANNEL_Main && MainSub != CHANNEL_Sub) return -1;
+  if (MainSub != CHANNEL_Main && MainSub != CHANNEL_Sub)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return -1;
+  }
 
 #ifdef _TMS_
 
@@ -17,7 +34,13 @@ byte TunerGet(int MainSub)
 
 
   //Get the tuner number
-  return *(byte *)(GetEEPROMAddress() + 0x16 + MainSub);
+  ret = *(byte *)(GetEEPROMAddress() + 0x16 + MainSub);
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+  return ret;
 
 #endif
 

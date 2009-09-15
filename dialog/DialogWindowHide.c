@@ -1,14 +1,26 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowHide (void)
+void DialogWindowHide(void)
 {
-  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowHide");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->isVisible || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogWindow->Multiple)
   {
     if (FBDialogWindow->MultipleOSDSaveBox)
     {
-      TAP_Osd_RestoreBox (FBDialogWindow->OSDRgn, 0, 0, GetOSDRegionWidth(FBDialogWindow->OSDRgn), GetOSDRegionHeight(FBDialogWindow->OSDRgn), FBDialogWindow->MultipleOSDSaveBox);
+      TAP_Osd_RestoreBox_Chk("DialogWindowHide", FBDialogWindow->OSDRgn, 0, 0, GetOSDRegionWidth(FBDialogWindow->OSDRgn), GetOSDRegionHeight(FBDialogWindow->OSDRgn), FBDialogWindow->MultipleOSDSaveBox);
       TAP_MemFree (FBDialogWindow->MultipleOSDSaveBox);
       FBDialogWindow->MultipleOSDSaveBox = NULL;
     }
@@ -17,7 +29,7 @@ void DialogWindowHide (void)
   else
   {
     DialogWindowAlpha(0);
-    TAP_Osd_FillBox (FBDialogWindow->OSDRgn, 0, 0, FBDialogWindow->OSDWidth, FBDialogWindow->OSDHeight, 0);
+    TAP_Osd_FillBox_Chk("DialogWindowHide", FBDialogWindow->OSDRgn, 0, 0, FBDialogWindow->OSDWidth, FBDialogWindow->OSDHeight, 0);
     TAP_Osd_SetTransparency (FBDialogWindow->OSDRgn, 255);
     TAP_Osd_Delete (FBDialogWindow->OSDRgn);
   }
@@ -31,4 +43,9 @@ void DialogWindowHide (void)
 #endif
 
   if (FBDialogWindow->isNormalMode) TAP_EnterNormal();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
 }

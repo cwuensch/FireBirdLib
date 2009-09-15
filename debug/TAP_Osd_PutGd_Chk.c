@@ -14,6 +14,11 @@
 int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, bool sprite)
 {
   int                   RgnH, RgnW;
+  int                   ret;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("TAP_Osd_PutGd_Chk");
+#endif
 
   if(x < 0)
 #ifdef _TMS_
@@ -60,5 +65,18 @@ int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, b
     TAP_Print("TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%d)) > RgnH(%d) @ %s\n", y, gd->height, RgnH, Comment);
 #endif
 
-  return TAP_Osd_PutGd(rgn, x, y, gd, sprite);
+  ret = TAP_Osd_PutGd(rgn, x, y, gd, sprite);
+
+  if(ret)
+#ifdef _TMS_
+    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s\n", ret, Comment);
+#else
+    TAP_Print("TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s\n", ret, Comment);
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+  return ret;
 }

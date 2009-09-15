@@ -2,7 +2,7 @@
 
 #ifndef _TMS_
 
-bool isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH)
+bool isAnyOSDVisible(dword checkX, dword checkY, dword checkW, dword checkH)
 {
   dword                 *pOSDInfo[2];
   dword                 Plane, pOSDe;
@@ -10,6 +10,9 @@ bool isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH)
   void                  *pAddr;   // speichert die vertikale Adresse
   dword                 x, y;     // Schleifenzähler für Bildschirm-Scan
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("isAnyOSDVisible");
+#endif
 
   // Parameter prüfen
   if (checkX >= 720) checkX = 719;
@@ -38,10 +41,23 @@ bool isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH)
         else pAddr = (word *) (pOSDe + 720 * y * 2);
 
         for (x = checkX; x < (checkX + checkW); x += 4) // Schleife für die Spalten
-          if ((_8bit ? ((byte *) pAddr)[x] : ((word *) pAddr)[x]) != 0) return TRUE;   // wenn ein Wert zurückgemeldet wird, ist irgend etwas auf den Bildschirm gezeichnet - dann TRUE zurückmelden
+          if ((_8bit ? ((byte *) pAddr)[x] : ((word *) pAddr)[x]) != 0)
+          {
+
+#ifdef DEBUG_FIREBIRDLIB
+            CallTraceExit(NULL);
+#endif
+
+            return TRUE;   // wenn ein Wert zurückgemeldet wird, ist irgend etwas auf den Bildschirm gezeichnet - dann TRUE zurückmelden
+          }
       }
     }
   }
+
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return FALSE;
 }

@@ -14,7 +14,7 @@ dword FlashRemoveServiceByPartOfName (char* ChannelName, bool TVService)
   TAP_Channel_GetTotalNum(&nTvSvc, &nRadioSvc);
   if(!TVService) nTvSvc = nRadioSvc;
 
-  if ((FlagArray = TAP_MemAlloc(nTvSvc * sizeof(bool))))
+  if ((FlagArray = TAP_MemAlloc_Chk("FlashRemoveServiceByPartOfName", nTvSvc * sizeof(bool))))
   {
     memset(FlagArray, 0, nTvSvc * sizeof(bool));
     FoundCount = FlashFindServiceByPartOfName(ChannelName, TVService, FlagArray, NULL);

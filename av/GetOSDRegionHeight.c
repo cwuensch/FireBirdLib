@@ -1,19 +1,33 @@
 #include "../libFireBird.h"
 
-word GetOSDRegionHeight (word Region)
+word GetOSDRegionHeight(word Region)
 {
-  tOSDMapInfo           *OSDMapInfo;
-
-  if (!(OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap())) return 0;
+  tOSDMapInfo          *OSDMapInfo;
+  word                  ret;
 
 #ifdef DEBUG_FIREBIRDLIB
-  TAP_Print ("FireBirdLib: %d/%d %dx%d @%8.8x %2.2x %2.2x %2.2x %2.2x\n",
-                                           OSDMapInfo [Region].x, OSDMapInfo [Region].y,
-                                           OSDMapInfo [Region].Width, OSDMapInfo [Region].Height,
-                                           OSDMapInfo [Region].pMemoryOSD,
-                                           OSDMapInfo [Region].Flags [0], OSDMapInfo [Region].Flags [1],
-                                           OSDMapInfo [Region].Flags [2], OSDMapInfo [Region].Flags [3]);
+  TAP_SPrint(tracePuffer, "GetOSDRegionHeight(%d)", Region);
+  CallTraceEnter(tracePuffer);
 #endif
 
-  return OSDMapInfo[Region].Height;
+  OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap();
+
+  if (!OSDMapInfo)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExitResult(NULL, "0");
+#endif
+
+    return 0;
+  }
+
+  ret = OSDMapInfo[Region].Height;
+
+#ifdef DEBUG_FIREBIRDLIB
+  TAP_SPrint(tracePuffer, "%d", ret);
+  CallTraceExitResult(NULL, tracePuffer);
+#endif
+
+  return ret;
 }

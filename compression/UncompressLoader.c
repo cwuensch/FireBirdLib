@@ -15,6 +15,10 @@ dword UncompressLoader (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
   dword                 outSize = 0, NrBlocks = 0, CurrentBlock = 0;
   byte                  *OrigpSrc;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("UncompressLoader");
+#endif
+
   //PercentFinishedCallback is called for every block. PercentFinished contains a number between 0 and 100
   void (*PercentFinishedCallback) (dword PercentFinished) = pPercentFinishedCallback;
 
@@ -27,7 +31,15 @@ dword UncompressLoader (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
   {
     NrBlocks++;
 
-    if (uncompSize > 0x8000) return 0;
+    if (uncompSize > 0x8000)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return 0;
+    }
 
     pSrc += 4;
     pSrc += compSize;
@@ -45,7 +57,15 @@ dword UncompressLoader (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     if (PercentFinishedCallback) PercentFinishedCallback (CurrentBlock * 100 / NrBlocks);
     CurrentBlock++;
 
-    if (uncompSize > 0x8000) return 0;
+    if (uncompSize > 0x8000)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return 0;
+    }
 
     pSrc += 4;
 
@@ -57,7 +77,15 @@ dword UncompressLoader (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     else
     {
       // compressed data, uncompress it
-      if (!UncompressBlock (pSrc, compSize, pDest, uncompSize)) return 0;
+      if (!UncompressBlock (pSrc, compSize, pDest, uncompSize))
+      {
+
+#ifdef DEBUG_FIREBIRDLIB
+        CallTraceExit(NULL);
+#endif
+
+        return 0;
+      }
     }
 
     if (pDest) pDest += uncompSize;
@@ -68,6 +96,10 @@ dword UncompressLoader (byte *pSrc, byte *pDest, void *pPercentFinishedCallback)
     compSize   = LOAD_WORDLE(pSrc + 2);
   }
   if (PercentFinishedCallback) PercentFinishedCallback (100);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return outSize;
 }

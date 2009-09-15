@@ -1,8 +1,12 @@
 #include                "FBLib_dialog.h"
 
-void DialogEvent (word *event, dword *param1, dword *param2)
+void DialogEvent(word *event, dword *param1, dword *param2)
 {
   int                   nr = -1;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogEvent");
+#endif
 
   //The MsgBox has the highest priority
   if (FBDialogMsgBox && FBDialogMsgBox->isVisible)
@@ -80,6 +84,11 @@ void DialogEvent (word *event, dword *param1, dword *param2)
             break;
 
           default:
+
+#ifdef DEBUG_FIREBIRDLIB
+            CallTraceExit(NULL);
+#endif
+
             return;
         }
 
@@ -89,7 +98,11 @@ void DialogEvent (word *event, dword *param1, dword *param2)
     }
 
 #ifdef _TMS_
-  TAP_Osd_Sync();
+    TAP_Osd_Sync();
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
 #endif
 
     return;
@@ -140,6 +153,10 @@ void DialogEvent (word *event, dword *param1, dword *param2)
             break;
 
           default:
+
+#ifdef DEBUG_FIREBIRDLIB
+            CallTraceExit(NULL);
+#endif
             return;
         }
 
@@ -149,9 +166,17 @@ void DialogEvent (word *event, dword *param1, dword *param2)
     }
 
 #ifdef _TMS_
-  TAP_Osd_Sync();
+    TAP_Osd_Sync();
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
 #endif
 
     return;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

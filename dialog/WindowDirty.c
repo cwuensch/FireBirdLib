@@ -1,11 +1,23 @@
 #include                "FBLib_dialog.h"
 
 // just in case someone needs to manipulate a tDialogWindow directly
-void WindowDirty (void)
+void WindowDirty(void)
 {
   int                   i;
 
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("WindowDirty");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // force complete redraw
   FBDialogWindow->OSDBorderBackDirty       = TRUE;
@@ -18,4 +30,8 @@ void WindowDirty (void)
   FBDialogWindow->OSDScrollBarBackDirty    = TRUE;
   FBDialogWindow->OSDInfoForeDirty         = TRUE;
   FBDialogWindow->OSDInfoBackDirty         = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

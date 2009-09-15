@@ -17,11 +17,15 @@
 // 4 - block type
 // 6 - uncompressed size (word)
 // 8 .. (compressed size + 5) - compressed data (byte array)
-dword CompressTFD (byte *pSrc, dword SourceBufferSize, byte *pDest, word TFDType, word SysID, void *pPercentFinishedCallback)
+dword CompressTFD(byte *pSrc, dword SourceBufferSize, byte *pDest, word TFDType, word SysID, void *pPercentFinishedCallback)
 {
   word                  OrigSize, CompSize;
   dword                 OutBufferSize, NrBlocks = 0, FullSize = SourceBufferSize;
   byte                  *FileHeader;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("CompressTFD");
+#endif
 
   //PercentFinishedCallback is called for every block. PercentFinished contains a number between 0 and 100
   void (*PercentFinishedCallback) (dword PercentFinished) = pPercentFinishedCallback;
@@ -69,6 +73,10 @@ dword CompressTFD (byte *pSrc, dword SourceBufferSize, byte *pDest, word TFDType
   }
 
   if (PercentFinishedCallback) PercentFinishedCallback (100);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return OutBufferSize;
 }

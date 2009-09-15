@@ -12,7 +12,7 @@ dword FlashRemoveServiceByLCN (char* LCN, bool TVService)
   TAP_Channel_GetTotalNum(&nTvSvc, &nRadioSvc);
   if(!TVService) nTvSvc = nRadioSvc;
 
-  if ((FlagArray = TAP_MemAlloc(nTvSvc * sizeof(bool))))
+  if ((FlagArray = TAP_MemAlloc_Chk("FlashRemoveServiceByLCN", nTvSvc * sizeof(bool))))
   {
     memset(FlagArray, 0, nTvSvc * sizeof(bool));
     FoundCount = FlashFindServiceByLCN(LCN, TVService, FlagArray, NULL);

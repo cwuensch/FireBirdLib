@@ -7,11 +7,28 @@ int FindDBTrack (void)
 {
   int                   i;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("FindDBTrack");
+#endif
+
   if (pAudioTracks == NULL) InitAudioPointers();
   for (i = 0; i < 64; i++)
   {
-    if ((pAudioTracks->AudioPID [i] & 0x2000) != 0) return i;
+    if ((pAudioTracks->AudioPID [i] & 0x2000) != 0)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return i;
+    }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
   return -1;
 }
 

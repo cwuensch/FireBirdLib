@@ -88,7 +88,7 @@ void FileSelectorFill (void)
 
       DialogWindowReInit((720 - DialogWindow.OSDWidth) >> 1, (576 - DialogWindow.OSDHeight) * 7 / 12, MENU_W, win_l(MENU_H), MENU_W, 0);
     }
-    else FileSelectorRegion = TAP_Osd_Create((720 - win_w(MENU_W)) >> 1, (576 - win_h(MENU_H)) * 7 / 12, win_w(MENU_W), win_h(MENU_H), 0, 0);
+    else FileSelectorRegion = TAP_Osd_Create_Chk("FileSelectorFill", (720 - win_w(MENU_W)) >> 1, (576 - win_h(MENU_H)) * 7 / 12, win_w(MENU_W), win_h(MENU_H), 0, 0);
 
     Window = TRUE;
   }

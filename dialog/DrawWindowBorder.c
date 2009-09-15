@@ -1,8 +1,20 @@
 #include                "FBLib_dialog.h"
 
-void DrawWindowBorder (void)
+void DrawWindowBorder(void)
 {
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowBorder");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogWindow->OSDBorderBackDirty)
   {
@@ -23,4 +35,8 @@ void DrawWindowBorder (void)
       FBDialogWindow->OSDBorderBackDirty = FALSE;
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

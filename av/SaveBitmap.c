@@ -1,15 +1,35 @@
 #include "FBLib_av.h"
 #include "../libFireBird.h"
 
-bool SaveBitmap (char *strName, int width, int height, byte* pBuffer )
+bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
 {
   TYPE_File             *pFile;
 
-  if( !pBuffer || !strName ) return FALSE;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("SaveBitmap");
+#endif
+
+  if( !pBuffer || !strName )
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
 
   TAP_Hdd_Create( strName, ATTR_NORMAL );
   pFile = TAP_Hdd_Fopen( strName );
-  if ( !pFile ) return FALSE;
+  if ( !pFile )
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
 
   // Write Header
   BMP_WriteHeader(pFile, width, height);
@@ -22,6 +42,10 @@ bool SaveBitmap (char *strName, int width, int height, byte* pBuffer )
 #endif
 
   TAP_Hdd_Fclose (pFile);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return TRUE;
 }

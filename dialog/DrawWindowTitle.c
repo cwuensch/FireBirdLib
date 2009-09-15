@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DrawWindowTitle (void)
+void DrawWindowTitle(void)
 {
   dword                 h;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawWindowTitle");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   // remember: all Title_*_Gd have transparent upper parts of (the visible part of) Border_N_Gd width
 
@@ -33,4 +45,8 @@ void DrawWindowTitle (void)
 #endif
     }
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

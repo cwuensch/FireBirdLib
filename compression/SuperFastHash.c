@@ -19,7 +19,19 @@ dword SuperFastHash(register unsigned char * data, int len, dword hash)
    register dword tmp, tmp2;
    int rem;
 
-   if(len <= 0 || data == NULL) return 0;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("SuperFastHash");
+#endif
+
+  if(len <= 0 || data == NULL)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return 0;
+  }
 
    rem = len & 3;
    len >>= 2;
@@ -67,6 +79,10 @@ dword SuperFastHash(register unsigned char * data, int len, dword hash)
    hash += hash >> 15;
    hash ^= hash << 10;
    hash += (hash << 16) | (hash >> 16);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
    return hash;
 }

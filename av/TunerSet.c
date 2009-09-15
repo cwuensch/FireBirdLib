@@ -6,14 +6,33 @@ bool TunerSet(byte Tuner)
 {
   int                   tvRadio, chNum;
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("TunerSet");
+#endif
+
   //Parameter sanity check
-  if (Tuner > 1) return FALSE;
+  if (Tuner > 1)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
 
 #ifdef _TMS_
 
   dword * _etcInfo;
 
-  if (!(_etcInfo  = (dword*)FIS_vEtcInfo())) return FALSE;
+  if (!(_etcInfo  = (dword*)FIS_vEtcInfo()))
+  {
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
 
   *(byte*)(*_etcInfo + 0x12 + CHANNEL_Main) = Tuner;
   *(byte*)(*_etcInfo + 0x12 + CHANNEL_Sub)  = 1 - Tuner;
@@ -28,6 +47,10 @@ bool TunerSet(byte Tuner)
 
   TAP_Channel_GetCurrent (&tvRadio, &chNum);
   TAP_Channel_Start (CHANNEL_Main, tvRadio, chNum);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return TRUE;
 }

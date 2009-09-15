@@ -1,7 +1,19 @@
 #include "FBLib_av.h"
 #include "../libFireBird.h"
 
-dword GetOSDMapAddress (void)
+dword GetOSDMapAddress(void)
 {
-  return FIS_vOSDMap();
+  dword                ret;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("GetOSDMapAddress");
+#endif
+
+  ret = FIS_vOSDMap();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+  return ret;
 }

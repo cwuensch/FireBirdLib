@@ -1,11 +1,23 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowCursorSet (int ItemIndex)
+void DialogWindowCursorSet(int ItemIndex)
 {
   int                   selected;
   int                   direction;
 
-  if (!FBDialogWindow || !FBDialogWindow->DialogItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowCursorSet");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->DialogItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   selected = FBDialogWindow->SelectedItem;
 
@@ -17,4 +29,8 @@ void DialogWindowCursorSet (int ItemIndex)
   FBDialogWindow->TopItem = FBDialogWindow->SelectedItem = ItemIndex;
   CalcTopIndex(selected, direction);
   DialogWindowRefresh();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

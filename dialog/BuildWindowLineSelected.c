@@ -1,11 +1,23 @@
 #include                "FBLib_dialog.h"
 
-void BuildWindowLineSelected (void)
+void BuildWindowLineSelected(void)
 {
   TYPE_GrData           *This_Items_IconButton_Gd, *This_Items_Line_C_Gd, *This_Items_Line_E_Gd;
   dword                 bgcolor;
 
-  if (!FBDialogWindow || !FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("BuildWindowLineSelected");
+#endif
+
+  if (!FBDialogWindow || !FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   switch (FBDialogWindow->Type)
   {
@@ -37,7 +49,7 @@ void BuildWindowLineSelected (void)
       || !isOSDRegionAlive(FBDialogWindow->MemOSDLineSelected)
 #endif
      )
-    FBDialogWindow->MemOSDLineSelected = TAP_Osd_Create(0, 0, FBDialogWindow->ItemLineWidth, This_Items_Line_C_Gd->height, 0, OSD_Flag_MemRgn);
+    FBDialogWindow->MemOSDLineSelected = TAP_Osd_Create_Chk("BuildWindowLineSelected", 0, 0, FBDialogWindow->ItemLineWidth, This_Items_Line_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
 
@@ -52,4 +64,8 @@ void BuildWindowLineSelected (void)
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowLineSelected C", FBDialogWindow->MemOSDLineSelected, This_Items_IconButton_Gd->width + FBDialogWindow->NrItemColumns * This_Items_Line_C_Gd->width, 0, This_Items_Line_E_Gd, TRUE, FBDialogProfile->ItemsLineBackgroundSelectedColor);
 
   FBDialogWindow->OSDLineSelectedBackDirty = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

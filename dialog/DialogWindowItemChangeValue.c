@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogWindowItemChangeValue (int ItemIndex, char *Value, dword ValueColor)
+void DialogWindowItemChangeValue(int ItemIndex, char *Value, dword ValueColor)
 {
-  if (!FBDialogWindow || !FBDialogWindow->DialogItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowItemChangeValue");
+#endif
+
+  if (!FBDialogWindow || !FBDialogWindow->DialogItems || ItemIndex < 0 || ItemIndex >= FBDialogWindow->NrItems)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (Value)
   {
@@ -14,4 +26,8 @@ void DialogWindowItemChangeValue (int ItemIndex, char *Value, dword ValueColor)
   FBDialogWindow->DialogItems[ItemIndex].ValueColor = ValueColor;
 
   if (ItemIndex >= FBDialogWindow->TopItem && ItemIndex <= FBDialogWindow->TopItem + FBDialogWindow->NrItemLines - 1) FBDialogWindow->OSDLineForeDirty[ItemIndex - FBDialogWindow->TopItem] = TRUE;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

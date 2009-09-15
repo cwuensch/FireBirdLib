@@ -7,10 +7,14 @@ tAudioTracks            *pAudioTracks = NULL;
 dword                   RECShadow = 0;  //This points to a structure which also contains the REC shadow
 
 
-void InitAudioPointers (void)
+void InitAudioPointers(void)
 {
   dword                 *p, BaseReg;
   short                 Offset;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("InitAudioPointers");
+#endif
 
   //Where is the audio track information structure?
   //Find the first LBU opcode in TAP_Channel_GetTotalAudioTrack
@@ -18,7 +22,15 @@ void InitAudioPointers (void)
   while ((*p & CMD_MASK) != LBU_CMD)
   {
     p++;
-    if (p > (dword*)0x84000000) return;
+    if (p > (dword*)0x84000000)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return;
+    }
   }
   BaseReg = (*p >> 5) & 0x001f0000;  //Move the register so it has the same position as in the LUI opcode
   Offset  = *p & 0xffff;
@@ -26,7 +38,15 @@ void InitAudioPointers (void)
   do
   {
     p--;
-    if (p < (dword*)0x80000000) return;
+    if (p < (dword*)0x80000000)
+    {
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
+      return;
+    }
   } while (((*p & CMD_MASK) != LUI_CMD) || ((*p & 0x001f0000) != BaseReg));
 
   pAudioTracks = (tAudioTracks*)((*p << 16) + Offset - 1);  //The -1 is needed for the dword alignment
@@ -44,6 +64,11 @@ void InitAudioPointers (void)
     if (p > (dword*)0x84000000)
     {
       pAudioTracks = NULL;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
       return;
     }
   }
@@ -58,6 +83,11 @@ void InitAudioPointers (void)
     if (p > (dword*)0x84000000)
     {
       pAudioTracks = NULL;
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
       return;
     }
   }
@@ -71,6 +101,11 @@ void InitAudioPointers (void)
     if (p > (dword*)0x84000000)
     {
       pAudioTracks = NULL;
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
       return;
     }
   }
@@ -78,7 +113,7 @@ void InitAudioPointers (void)
   RECShadow += (short) (*p & 0xffff);
 
 #ifdef DEBUG_FIREBIRDLIB
-  TAP_Print (", RECShadow: %p\n", RECShadow);
+  CallTraceExit(NULL);
 #endif
 }
 

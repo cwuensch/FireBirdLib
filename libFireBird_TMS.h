@@ -8,6 +8,7 @@
   byte *GetMacAddress(void);
 
   char puffer[512];
+  char tracePuffer[512];
   void PrintNet(char *puffer);
 
 #define XDATA                                       //don't use XDATA on the TMS

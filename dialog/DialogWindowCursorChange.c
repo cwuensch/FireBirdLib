@@ -1,8 +1,20 @@
 #include                "FBLib_dialog.h"
 
-void DialogWindowCursorChange (bool visible)
+void DialogWindowCursorChange(bool visible)
 {
-  if (!FBDialogWindow) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowCursorChange");
+#endif
+
+  if (!FBDialogWindow)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (visible != FBDialogWindow->hasCursor)
   {
@@ -12,4 +24,8 @@ void DialogWindowCursorChange (bool visible)
 
     FBDialogWindow->hasCursor = visible;
   }
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

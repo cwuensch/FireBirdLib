@@ -1,8 +1,12 @@
 #include                "FBLib_dialog.h"
 
-void ProfileDirty (void)
+void ProfileDirty(void)
 {
   if (!FBDialogProfile) return;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("ProfileDirty");
+#endif
 
   // force redraw due to profile changes
   FBDialogProfile->OldBorderColor                      = ~FBDialogProfile->BorderColor;
@@ -19,4 +23,8 @@ void ProfileDirty (void)
   FBDialogProfile->OldInfoBackgroundColor              = ~FBDialogProfile->InfoBackgroundColor;
   FBDialogProfile->OldScrollBarColor                   = ~FBDialogProfile->ScrollBarColor;
   FBDialogProfile->OldFontSize                         = ~FBDialogProfile->FontSize;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

@@ -1,10 +1,22 @@
 #include                "FBLib_dialog.h"
 
-void DrawProgressBarBar (int Value, dword BarColor)
+void DrawProgressBarBar(int Value, dword BarColor)
 {
   int                   Perc;
 
-  if (!FBDialogProgressBar || !FBDialogProfile || !FBDialogProgressBar->MemOSDRgn || !FBDialogProgressBar->OSDRgn) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DrawProgressBarBar");
+#endif
+
+  if (!FBDialogProgressBar || !FBDialogProfile || !FBDialogProgressBar->MemOSDRgn || !FBDialogProgressBar->OSDRgn)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (FBDialogProgressBar->Max == FBDialogProgressBar->Min) Perc = PROGRESSBARWIDTH;
   else Perc = (Value - FBDialogProgressBar->Min) * PROGRESSBARWIDTH / (FBDialogProgressBar->Max - FBDialogProgressBar->Min);
@@ -12,19 +24,27 @@ void DrawProgressBarBar (int Value, dword BarColor)
   if (Perc < 0) Perc = 0;
   if (Perc > PROGRESSBARWIDTH) Perc = PROGRESSBARWIDTH;
 
-  if ((FBDialogProgressBar->Perc == Perc) && (FBDialogProgressBar->BarColor == BarColor)) return;
+  if ((FBDialogProgressBar->Perc == Perc) && (FBDialogProgressBar->BarColor == BarColor))
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (Perc >= FBDialogProgressBar->Perc)
   {
     if (FBDialogProgressBar->BarColor == BarColor)
     {
       //Just draw the new bar
-      TAP_Osd_FillBox (FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + FBDialogProgressBar->Perc, PROGRESSBARTOP, Perc - FBDialogProgressBar->Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
+      TAP_Osd_FillBox_Chk("DrawProgressBarBar A", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + FBDialogProgressBar->Perc, PROGRESSBARTOP, Perc - FBDialogProgressBar->Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
     }
     else
     {
       //Draw the complete bar
-      TAP_Osd_FillBox (FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
+      TAP_Osd_FillBox_Chk("DrawProgressBarBar B", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
     }
   }
   else
@@ -32,13 +52,13 @@ void DrawProgressBarBar (int Value, dword BarColor)
     if (FBDialogProgressBar->BarColor == BarColor)
     {
       //Just erase the delta
-      TAP_Osd_FillBox (FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + Perc, PROGRESSBARTOP, FBDialogProgressBar->Perc - Perc, PROGRESSBARHEIGHT, RGB(0, 0, 0));
+      TAP_Osd_FillBox_Chk("DrawProgressBarBar C", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + Perc, PROGRESSBARTOP, FBDialogProgressBar->Perc - Perc, PROGRESSBARHEIGHT, RGB(0, 0, 0));
     }
     else
     {
       //We need to redraw the bar because the color has changed, then erase the delta
-      TAP_Osd_FillBox (FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
-      TAP_Osd_FillBox (FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + Perc, PROGRESSBARTOP, FBDialogProgressBar->Perc - Perc, PROGRESSBARHEIGHT, RGB(0, 0, 0));
+      TAP_Osd_FillBox_Chk("DrawProgressBarBar D", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, Perc, PROGRESSBARHEIGHT, BarColor ? BarColor : FBDialogProfile->ProgressBarColor);
+      TAP_Osd_FillBox_Chk("DrawProgressBarBar E", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT + Perc, PROGRESSBARTOP, FBDialogProgressBar->Perc - Perc, PROGRESSBARHEIGHT, RGB(0, 0, 0));
     }
   }
 
@@ -52,4 +72,8 @@ void DrawProgressBarBar (int Value, dword BarColor)
   FBDialogProgressBar->Value    = Value;
   FBDialogProgressBar->BarColor = BarColor;
   FBDialogProgressBar->Perc     = Perc;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

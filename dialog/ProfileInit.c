@@ -2,7 +2,7 @@
 
 tDialogProfile          *FBDialogProfile = NULL;
 
-void ProfileInit (void)
+void ProfileInit(void)
 {
   INILOCATION           INILocation;
 
@@ -12,7 +12,19 @@ void ProfileInit (void)
   dword                 CurrentDir;
 #endif
 
-  if (!FBDialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("ProfileInit");
+#endif
+
+  if (!FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   FBDialogProfile->BorderColor                       = DEFAULTBorderColor;
   FBDialogProfile->TitleBackgroundColor              = DEFAULTTitleBackgroundColor;
@@ -58,4 +70,8 @@ void ProfileInit (void)
 #endif
 
   ProfileDirty();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

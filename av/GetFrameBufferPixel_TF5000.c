@@ -2,10 +2,14 @@
 
 #ifndef _TMS_
 
-dword GetFrameBufferPixel (dword x, dword y)
+dword GetFrameBufferPixel(dword x, dword y)
 {
   dword                 Width, Height, picAddr, Offset;
   byte                  Y, U, V;
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("GetFrameBufferPixel");
+#endif
 
   Width  = (*EMMA_MPEG_PARAM_SEQ & 0x000000ff) << 4;
   Height = (*EMMA_MPEG_PARAM_SEQ & 0x0000ff00) >> 4;
@@ -25,6 +29,10 @@ dword GetFrameBufferPixel (dword x, dword y)
   picAddr = (((*EMMA_WMIF_ATBL0_C & 0xffff0000) >> 6) | 0x80000000);
   V = *(byte*)(picAddr + (Offset << 1));
   U = *(byte*)(picAddr + (Offset << 1) + 1);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return (Y << 16) | (U << 8) | V;
 }

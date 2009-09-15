@@ -1,7 +1,7 @@
 #include                "../ini/FBLib_ini.h"
 #include                "FBLib_dialog.h"
 
-bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
+bool DialogProfileSave(char *FileName, INILOCATION INILocation, char *AppName)
 {
   char                    *OldBuffer, *OldCommentBuffer;
   dword                   OldBufferSize;
@@ -13,7 +13,19 @@ bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
   #define SPLIT_ARGB(c) {a = A1555(c); r = R1555(c); g = G1555(c); b = B1555(c);}
 #endif
 
-  if (!FBDialogProfile) return FALSE;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogProfileSave");
+#endif
+
+  if (!FBDialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+#endif
+
+    return FALSE;
+  }
 
   HDD_TAP_PushDir();
 
@@ -24,6 +36,11 @@ bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
     if (!HDD_ChangeDir ("/ProgramFiles"))
     {
       HDD_TAP_PopDir();
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
       return FALSE;
     }
   }
@@ -34,6 +51,11 @@ bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
     if (!HDD_ChangeDir ("Settings"))
     {
       HDD_TAP_PopDir();
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
       return FALSE;
     }
   }
@@ -44,6 +66,11 @@ bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
     if (!HDD_ChangeDir (AppName))
     {
       HDD_TAP_PopDir();
+
+#ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+#endif
+
       return FALSE;
     }
   }
@@ -115,6 +142,10 @@ bool DialogProfileSave (char *FileName, INILOCATION INILocation, char *AppName)
   BufferSize = OldBufferSize;
 
   HDD_TAP_PopDir();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 
   return TRUE;
 }

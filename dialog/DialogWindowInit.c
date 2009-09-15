@@ -39,9 +39,21 @@ TYPE_GrData             *Icon_OK_Gd;
 
 tDialogWindow           *FBDialogWindow  = NULL;
 
-void DialogWindowInit (tDialogWindow *DialogWindow, tDialogProfile *DialogProfile, dword X, dword Y, dword Width, dword NrItemLines, char *LTitle, char *CTitle, char *RTitle, dword ParameterWidth, dword InfoHeight, eDialogWindowTypes WindowType)
+void DialogWindowInit(tDialogWindow *DialogWindow, tDialogProfile *DialogProfile, dword X, dword Y, dword Width, dword NrItemLines, char *LTitle, char *CTitle, char *RTitle, dword ParameterWidth, dword InfoHeight, eDialogWindowTypes WindowType)
 {
-  if (FBDialogWindow || !(FBDialogWindow = DialogWindow) || !DialogProfile) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogWindowInit");
+#endif
+
+  if (FBDialogWindow || !(FBDialogWindow = DialogWindow) || !DialogProfile)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   Items_NoIcons_IconButton_Gd = &_Items_NoIcons_IconButton_Gd;
   Items_NoIcons_Line_C_Gd     = &_Items_NoIcons_Line_C_Gd;
@@ -80,4 +92,8 @@ void DialogWindowInit (tDialogWindow *DialogWindow, tDialogProfile *DialogProfil
 
   FBDialogProfile = DialogProfile;
   if (ProfileMayReload()) ProfileInit();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

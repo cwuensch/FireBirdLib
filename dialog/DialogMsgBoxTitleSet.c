@@ -1,9 +1,21 @@
 #include                <string.h>
 #include                "FBLib_dialog.h"
 
-void DialogMsgBoxTitleSet (char *Title, char *SubTitle)
+void DialogMsgBoxTitleSet(char *Title, char *SubTitle)
 {
-  if (!FBDialogMsgBox) return;
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("DialogMsgBoxTitleSet");
+#endif
+
+  if (!FBDialogMsgBox)
+  {
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
+
+    return;
+  }
 
   if (Title)
   {
@@ -18,4 +30,8 @@ void DialogMsgBoxTitleSet (char *Title, char *SubTitle)
   }
 
   if (FBDialogMsgBox->isVisible) DrawMsgBoxTitle();
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
+#endif
 }

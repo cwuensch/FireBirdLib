@@ -8,11 +8,15 @@ byte FPIRData [] = {0xa5, 0x00, 0x02, 0x34, 0x0a, 0x00,   //Mode 1
                     0xa5, 0x03, 0x20, 0xdf, 0x0a, 0x00,   //Mode 4
                     0xa5, 0x01, 0x50, 0x01, 0x0a, 0x00};  //Mode 5 (can't be used at the same time as mode 2)
 
-void SetRemoteMode (byte Mode, bool Active)
+void SetRemoteMode(byte Mode, bool Active)
 {
 #ifdef _TMS_
 
   void (*DevFront_SetIrCode)(byte P1, byte P2, byte P3, byte P4, byte P5);
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("SetRemoteMode");
+#endif
 
   DevFront_SetIrCode = (void*)FIS_fwSetIrCode();
   if(DevFront_SetIrCode)
@@ -30,6 +34,10 @@ void SetRemoteMode (byte Mode, bool Active)
 
 #else
 
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceEnter("SetRemoteMode");
+#endif
+
   Mode--;   //The user may use mode 1 to 4
   if (Mode < 5)
   {
@@ -38,5 +46,9 @@ void SetRemoteMode (byte Mode, bool Active)
     SendToFP (&FPIRData [Mode * 6]);
   }
 
+#endif
+
+#ifdef DEBUG_FIREBIRDLIB
+  CallTraceExit(NULL);
 #endif
 }
