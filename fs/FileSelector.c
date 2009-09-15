@@ -328,6 +328,14 @@ bool FileSelectorHandle (dword *key, char *filename)
     case RKEY_VolDown:
     case RKEY_ChUp:
     case RKEY_ChDown:
+
+#ifdef _TMS_
+    case RKEY_Right:
+    case RKEY_Left:
+    case RKEY_Up:
+    case RKEY_Down:
+#endif
+
       if (FileSelectorFlags & FS_DIALOGWINDOW) DialogEvent(&event, key, &param2);
       else TAP_Win_Action(FileSelectorWindow, *key);
       *key = 0;

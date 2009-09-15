@@ -13,6 +13,8 @@ dword FileSelectorKey (dword key, dword flags)
 #ifdef _TMS_
           key == RKEY_Right ||
           key == RKEY_Left ||
+          key == RKEY_Up ||
+          key == RKEY_Down ||
 #endif
 
           key == RKEY_Exit ? 0 : key);

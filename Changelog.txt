@@ -388,6 +388,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2009-09-12  Fixed a wrong constant in the win_h and win_l macros (thanks to xyzzyx)
 
 2009-09-15  Moved some functions into the new debug block
-            Stack trace for all functions (lib needs to be compiled with DEBUG_FIREBIRDLIB)
             There might be a memory leak with TryResolve. Made all address variables static
             Added TMS support to isOSDRegionAlive()
+
+            Stack trace for all functions (lib needs to be compiled with DEBUG_FIREBIRDLIB)
