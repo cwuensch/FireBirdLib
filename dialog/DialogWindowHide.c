@@ -33,7 +33,6 @@ void DialogWindowHide(void)
     TAP_Osd_SetTransparency (FBDialogWindow->OSDRgn, 255);
     TAP_Osd_Delete (FBDialogWindow->OSDRgn);
   }
-
   FBDialogWindow->OSDRgn = 0;
 
   FBDialogWindow->isVisible = FALSE;

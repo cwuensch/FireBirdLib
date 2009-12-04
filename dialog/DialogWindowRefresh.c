@@ -91,24 +91,6 @@ void DialogWindowRefresh(void)
   }
 
   // check whether the memory OSDs still exist
-#ifdef _TMS_
-  if (!FBDialogWindow->MemOSDBorderN      ||
-      !FBDialogWindow->MemOSDBorderW      ||
-      !FBDialogWindow->MemOSDBorderE      ||
-      !FBDialogWindow->MemOSDBorderS      )  FBDialogWindow->OSDBorderBackDirty       = TRUE;
-
-  if (!FBDialogWindow->MemOSDTitle        )  FBDialogWindow->OSDTitleBackDirty        = TRUE;
-
-  if (!FBDialogWindow->MemOSDLines        )  FBDialogWindow->OSDLineBackDirty         = TRUE;
-
-  if (!FBDialogWindow->MemOSDLineSelected )  FBDialogWindow->OSDLineSelectedBackDirty = TRUE;
-
-  if (!FBDialogWindow->MemOSDScrollBar    )  FBDialogWindow->OSDScrollBarBackDirty    = TRUE;
-
-  if (!FBDialogWindow->MemOSDInfoN        ||
-      !FBDialogWindow->MemOSDInfo         ||
-      !FBDialogWindow->MemOSDInfoS        )  FBDialogWindow->OSDInfoBackDirty         = TRUE;
-#else
   if (!FBDialogWindow->MemOSDBorderN      || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderN) ||
       !FBDialogWindow->MemOSDBorderW      || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderW) ||
       !FBDialogWindow->MemOSDBorderE      || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderE) ||
@@ -125,7 +107,6 @@ void DialogWindowRefresh(void)
   if (!FBDialogWindow->MemOSDInfoN        || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoN) ||
       !FBDialogWindow->MemOSDInfo         || !isOSDRegionAlive(FBDialogWindow->MemOSDInfo)  ||
       !FBDialogWindow->MemOSDInfoS        || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoS))        FBDialogWindow->OSDInfoBackDirty         = TRUE;
-#endif
 
   // draw the window parts
 

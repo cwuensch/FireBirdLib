@@ -9,8 +9,20 @@ void HDD_Delete(char *FileName)
   int                   fNumber;
 #endif
 
+  tFileInUse            FileInUse;
+
   if (TAP_Hdd_Exist(FileName))
   {
+    FileInUse = HDD_isFileInUse(FileName);
+    switch(FileInUse)
+    {
+      case FIU_No: break;
+      case FIU_Playback: TAP_Hdd_StopTs();      break;
+      case FIU_PlayMP3:  TAP_Hdd_StopMp3();     break;
+      case FIU_RecSlot1: TAP_Hdd_StopRecord(0); break;
+      case FIU_RecSlot2: TAP_Hdd_StopRecord(1); break;
+    }
+
     TAP_Hdd_Rename(FileName, "FilerDelete.tmp");
     TAP_Hdd_Delete("FilerDelete.tmp");
 

@@ -11,9 +11,11 @@ bool VFD_EnableCD(bool Enable)
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 
-  grid[25] &= 0x03;
+  if(CDEnabledAnimation) VFD_EnableCDAnimation(FALSE);
+
+  grid[25] &= 0xfc;
   grid[26]  = 0x00;
-  grid[27] &= 0xe0;
+  grid[27] &= 0x1f;
 
   if(Enable)
     grid[25] |= 0x02;

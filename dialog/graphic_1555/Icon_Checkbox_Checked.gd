@@ -1,4 +1,4 @@
-#include "type.h"
+#include "tap.h"
 
 byte _Icon_Checkbox_Checked_Cpm[] =
 {

@@ -7,9 +7,20 @@ void HDD_Recycle(char *FileName)
   char                  OldName[TS_FILE_NAME_SIZE], NewName[TS_FILE_NAME_SIZE];
   bool                  isRec, isDel;
   int                   fNumber;
+  tFileInUse            FileInUse;
 
   if (TAP_Hdd_Exist(FileName))
   {
+    FileInUse = HDD_isFileInUse(FileName);
+    switch(FileInUse)
+    {
+      case FIU_No: break;
+      case FIU_Playback: TAP_Hdd_StopTs();      break;
+      case FIU_PlayMP3:  TAP_Hdd_StopMp3();     break;
+      case FIU_RecSlot1: TAP_Hdd_StopRecord(0); break;
+      case FIU_RecSlot2: TAP_Hdd_StopRecord(1); break;
+    }
+
     SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
 
     if(!isDel)

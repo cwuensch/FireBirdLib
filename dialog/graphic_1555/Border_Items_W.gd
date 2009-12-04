@@ -1,4 +1,4 @@
-#include "type.h"
+#include "tap.h"
 
 byte _Border_Items_W_Cpm[] =
 {

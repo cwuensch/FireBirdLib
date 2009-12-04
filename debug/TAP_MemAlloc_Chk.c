@@ -10,12 +10,7 @@ void* TAP_MemAlloc_Chk(char *Comment, dword size)
 
   ret = TAP_MemAlloc(size);
 
-  if(!ret)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_MemAlloc_Chk Warning: TAP_MemAlloc(%d) returned NULL pointer @ %s\n", size, Comment);
-#else
-    TAP_Print("TAP_MemAlloc_Chk Warning: TAP_MemAlloc(%d) returned NULL pointer @ %s\n", size, Comment);
-#endif
+  if(!ret) TAP_Print("TAP_MemAlloc_Chk Warning: TAP_MemAlloc(%d) returned NULL pointer @ %s\n", size, Comment);
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceExit(NULL);

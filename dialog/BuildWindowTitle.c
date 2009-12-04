@@ -24,11 +24,7 @@ void BuildWindowTitle(void)
 
   TitleCWidth = FBDialogWindow->NrTitleColumns * Title_C_Gd->width;
 
-  if (!FBDialogWindow->MemOSDTitle
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDTitle)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDTitle || !isOSDRegionAlive(FBDialogWindow->MemOSDTitle))
     FBDialogWindow->MemOSDTitle = TAP_Osd_Create_Chk("BuildWindowTitle", 0, 0, Title_W_Gd->width + TitleCWidth + Title_E_Gd->width, Title_C_Gd->height << 1, 0, OSD_Flag_MemRgn);
 
   // fill cache

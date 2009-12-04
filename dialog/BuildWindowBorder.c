@@ -19,11 +19,7 @@ void BuildWindowBorder(void)
   }
 
   // cache northern border
-  if (!FBDialogWindow->MemOSDBorderN
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderN)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDBorderN || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderN))
     FBDialogWindow->MemOSDBorderN = TAP_Osd_Create_Chk("BuildWindowBorder A", 0, 0, FBDialogWindow->OSDWidth, Border_N_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
@@ -45,9 +41,9 @@ void BuildWindowBorder(void)
   if (Border_Info_W_Gd->width  > wMax) wMax = Border_Info_W_Gd->width;
 
   if (!FBDialogWindow->MemOSDBorderW
-#ifndef _TMS_
+//#ifndef _TMS_
       || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderW)
-#endif
+//#endif
      )
 
     FBDialogWindow->MemOSDBorderW = TAP_Osd_Create_Chk("BuildWindowBorder B", 0, 0, wMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
@@ -59,9 +55,9 @@ void BuildWindowBorder(void)
   if (Border_Info_E_Gd->width  > eMax) eMax = Border_Info_E_Gd->width;
 
   if (!FBDialogWindow->MemOSDBorderE
-#ifndef _TMS_
+//#ifndef _TMS_
       || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderE)
-#endif
+//#endif
      )
     FBDialogWindow->MemOSDBorderE = TAP_Osd_Create_Chk("BuildWindowBorder C", 0, 0, eMax, FBDialogWindow->InfoSY - FBDialogWindow->ItemsY, 0, OSD_Flag_MemRgn);
 
@@ -92,11 +88,7 @@ void BuildWindowBorder(void)
   }
 
   // cache southern border
-  if (!FBDialogWindow->MemOSDBorderS
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderS)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDBorderS || !isOSDRegionAlive(FBDialogWindow->MemOSDBorderS))
     FBDialogWindow->MemOSDBorderS = TAP_Osd_Create_Chk("BuildWindowBorder D", 0, 0, FBDialogWindow->OSDWidth, Border_S_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache

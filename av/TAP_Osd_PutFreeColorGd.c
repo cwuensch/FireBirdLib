@@ -67,19 +67,19 @@ int TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite
       //This algo subtracts the complementary color
 #ifdef _TMS_
       //OSD_8888
-      B = (P & 0xff) - 255 + FB; if (B < 0) B = 0;
+      B = (P & 0xff) - 255 + FB; if (B < 0) B = 0; if (B > 255) B = 255;
       P >>= 8;
-      G = (P & 0xff) - 255 + FG; if (G < 0) G = 0;
+      G = (P & 0xff) - 255 + FG; if (G < 0) G = 0; if (G > 255) G = 255;
       P >>= 8;
-      R = (P & 0xff) - 255 + FR; if (R < 0) R = 0;
+      R = (P & 0xff) - 255 + FR; if (R < 0) R = 0; if (R > 255) R = 255;
       P >>= 8;
 #else
       //OSD_1555
-      B = (P & 0x1f) - 31 + FB; if (B < 0) B = 0;
+      B = (P & 0x1f) - 31 + FB; if (B < 0) B = 0; if (B > 31) B = 31;
       P >>= 5;
-      G = (P & 0x1f) - 31 + FG; if (G < 0) G = 0;
+      G = (P & 0x1f) - 31 + FG; if (G < 0) G = 0; if (G > 31) G = 31;
       P >>= 5;
-      R = (P & 0x1f) - 31 + FR; if (R < 0) R = 0;
+      R = (P & 0x1f) - 31 + FR; if (R < 0) R = 0; if (R > 31) R = 31;
       P >>= 5;
 #endif
 

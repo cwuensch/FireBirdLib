@@ -33,14 +33,8 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
     if(CollectedBytes >= BytesPerLine)
     {
       TAP_SPrint(&s[strlen(s)], "  %s\n", text);
-
-#ifdef _TMS_
-      TAP_PrintNet(Header);
-      TAP_PrintNet(s);
-#else
       TAP_Print(Header);
       TAP_Print(s);
-#endif
       s[0] = '\0';
       text[0] = '\0';
       TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)(p - StartAddress));
@@ -50,13 +44,8 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
   if(strlen(s))
   {
     TAP_SPrint(&s[strlen(s)], "  %s\n", text);
-#ifdef _TMS_
-      TAP_PrintNet(Header);
-      TAP_PrintNet(s);
-#else
-      TAP_Print(Header);
-      TAP_Print(s);
-#endif
+    TAP_Print(Header);
+    TAP_Print(s);
   }
 
 #ifdef DEBUG_FIREBIRDLIB

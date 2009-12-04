@@ -6,6 +6,10 @@ C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWin.o) (ShowMessageWindow)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o) (TAP_Osd_Copy_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o) (TAP_Osd_Create_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o) (TAP_Osd_FillBox_Chk)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
                               FileSelectorDemo.o (FileSelector)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
@@ -24,6 +28,8 @@ C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o) (GetOSDRegionWidth)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o) (pAudioTracks)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o) (isOSDRegionAlive)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o) (DialogEvent)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
@@ -102,10 +108,6 @@ C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o) (ProfileLoad)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o) (ProfileMayReload)
-C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
-                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o) (TAP_Osd_PutFreeColorGd_Chk)
-C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
-                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o) (TAP_Osd_PutGd_Chk)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o) (WindowDirty)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
@@ -146,10 +148,18 @@ C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o) (FreeOSDRegion)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o) (OSDCopy)
-C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
-                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o) (TAP_Osd_PutFreeColorGd)
-C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
-                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o) (isOSDRegionAlive)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o) (TAP_MemAlloc_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o) (TAP_Osd_PutFreeColorGd_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o) (TAP_Osd_PutGd_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o) (TAP_Osd_PutPixel_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o) (TAP_Osd_RestoreBox_Chk)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o) (TAP_Osd_SaveBox_Chk)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o) (BuildWindowBorder)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
@@ -194,6 +204,8 @@ C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetCurrentDirCluster_TF5000.o) (LibInitialized)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIFindStartEnd.o) (stricstr)
+C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o) (TAP_Osd_PutFreeColorGd)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o) (FlashInitialize)
 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
@@ -592,554 +604,585 @@ Linker script and memory map
                 0x0000000000000200      0x400 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                 0x0000000000000200                __startPoint
 
-.text           0x0000000000000600    0x13eb0
+.text           0x0000000000000600    0x14b64
  *(.text)
  .text          0x0000000000000600      0x1dc FileSelectorDemo.o
                 0x0000000000000600                TAP_EventHandler
                 0x00000000000007d4                TAP_Main
  .text          0x00000000000007dc       0x8c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWin.o)
                 0x00000000000007dc                ShowMessageWin
- .text          0x0000000000000868      0x58c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
+ .text          0x0000000000000868      0x5ac C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
                 0x0000000000000868                ShowMessageWindow
- .text          0x0000000000000df4      0x354 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
-                0x0000000000000df4                TAP_Osd_Copy_Chk
- .text          0x0000000000001148     0x1658 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
-                0x0000000000001148                FileSelectorFilterGet
-                0x0000000000002300                FileSelectorHandle
-                0x0000000000001210                FileSelectorFill
-                0x00000000000021e4                FileSelectorInitialize
-                0x0000000000002704                FileSelector
- .text          0x00000000000027a0      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
-                0x00000000000027a0                HDD_ChangeDir
- .text          0x00000000000028f4       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
-                0x00000000000028f4                MakeValidFileName
- .text          0x00000000000029d0      0x148 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isLegalChar.o)
-                0x00000000000029d0                isLegalChar
- .text          0x0000000000002b18      0xc40 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
-                0x00000000000031cc                Fixed_TAP_Channel_SetAudioTrack
-                0x0000000000002ddc                Fixed_TAP_Hdd_Flen
-                0x0000000000002ce0                Need_Flen_Adjust
-                0x0000000000002b18                Fixed_TAP_Hdd_GetPlayInfo
-                0x00000000000034e8                Fixed_TAP_Hdd_StopTs
-                0x0000000000002fa0                Fixed_TAP_Hdd_ChangeDir
-                0x000000000000329c                Fixed_TAP_Hdd_Delete
-                0x0000000000003538                InitTAPAPIFix
-                0x0000000000003410                Fixed_TAP_Hdd_Fopen
-                0x0000000000002bf4                Fixed_TAP_Hdd_GetRecInfo
-                0x0000000000002ea4                Fixed_TAP_Hdd_Fseek
-                0x0000000000003340                Fixed_TAP_Hdd_Fwrite
- .text          0x0000000000003758       0x78 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(EndMessageWin.o)
-                0x0000000000003758                EndMessageWin
- .text          0x00000000000037d0       0x6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionHeight.o)
-                0x00000000000037d0                GetOSDRegionHeight
- .text          0x000000000000383c       0x6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
-                0x000000000000383c                GetOSDRegionWidth
- .text          0x00000000000038a8      0x24c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
-                0x00000000000038a8                InitAudioPointers
- .text          0x0000000000003af4      0x3f4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
-                0x0000000000003af4                DialogEvent
- .text          0x0000000000003ee8      0x1c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
-                0x0000000000003ee8                DialogMsgBoxExit
- .text          0x00000000000040b0       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
-                0x00000000000040b0                DialogMsgBoxInit
- .text          0x000000000000418c      0x100 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxTitleSet.o)
-                0x000000000000418c                DialogMsgBoxTitleSet
- .text          0x000000000000428c       0x98 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileCheck.o)
-                0x000000000000428c                DialogProfileCheck
- .text          0x0000000000004324       0xfc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
-                0x0000000000004324                DialogProfileLoadMy
- .text          0x0000000000004420      0x100 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowCursorSet.o)
-                0x0000000000004420                DialogWindowCursorSet
- .text          0x0000000000004520      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowExit.o)
-                0x0000000000004520                DialogWindowExit
- .text          0x00000000000047bc      0x268 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
-                0x00000000000047bc                DialogWindowHide
- .text          0x0000000000004a24       0xa4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInfoDeleteAll.o)
-                0x0000000000004a24                DialogWindowInfoDeleteAll
- .text          0x0000000000004ac8      0x2d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
-                0x0000000000004ac8                DialogWindowInit
- .text          0x0000000000004da0      0x16c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemAdd.o)
-                0x0000000000004da0                DialogWindowItemAdd
- .text          0x0000000000004f0c       0xe4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeFlags.o)
-                0x0000000000004f0c                DialogWindowItemChangeFlags
- .text          0x0000000000004ff0      0x104 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeIcon.o)
-                0x0000000000004ff0                DialogWindowItemChangeIcon
- .text          0x00000000000050f4      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeParameter.o)
-                0x00000000000050f4                DialogWindowItemChangeParameter
- .text          0x0000000000005248      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeValue.o)
-                0x0000000000005248                DialogWindowItemChangeValue
- .text          0x00000000000053a0       0xd4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemDeleteAll.o)
-                0x00000000000053a0                DialogWindowItemDeleteAll
- .text          0x0000000000005474      0x588 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
-                0x0000000000005474                DialogWindowReInit
- .text          0x00000000000059fc      0x790 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o)
-                0x00000000000059fc                DialogWindowRefresh
- .text          0x000000000000618c      0x188 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDown.o)
-                0x000000000000618c                DialogWindowScrollDown
- .text          0x0000000000006314      0x1b0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDownPage.o)
-                0x0000000000006314                DialogWindowScrollDownPage
- .text          0x00000000000064c4      0x190 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUp.o)
-                0x00000000000064c4                DialogWindowScrollUp
- .text          0x0000000000006654      0x180 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUpPage.o)
-                0x0000000000006654                DialogWindowScrollUpPage
- .text          0x00000000000067d4      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
-                0x00000000000067d4                DialogWindowShow
- .text          0x0000000000006a18      0x110 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTabulatorSet.o)
-                0x0000000000006a18                DialogWindowTabulatorSet
- .text          0x0000000000006b28      0x134 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTitleChange.o)
-                0x0000000000006b28                DialogWindowTitleChange
- .text          0x0000000000006c5c       0xac C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTypeChange.o)
-                0x0000000000006c5c                DialogWindowTypeChange
- .text          0x0000000000006d08      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
-                0x0000000000006d08                DrawMsgBoxButtons
- .text          0x0000000000006fd0      0x644 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
-                0x0000000000006fd0                DrawMsgBoxTitle
- .text          0x0000000000007614      0x350 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
-                0x0000000000007614                DrawWindowBorder
- .text          0x0000000000007964      0x504 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
-                0x0000000000007964                DrawWindowInfo
- .text          0x0000000000007e68      0x7cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
-                0x0000000000007e68                DrawWindowLines
- .text          0x0000000000008634      0x3cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
-                0x0000000000008634                DrawWindowScrollBar
- .text          0x0000000000008a00      0x3f0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
-                0x0000000000008a00                DrawWindowTitle
- .text          0x0000000000008df0      0x18c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
-                0x0000000000008df0                HasEnoughItemMemory
- .text          0x0000000000008f7c       0xb8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDLinesForeDirty.o)
-                0x0000000000008f7c                OSDLinesForeDirty
- .text          0x0000000000009034      0x194 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
-                0x0000000000009034                ProfileInit
- .text          0x00000000000091c8      0xa3c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
-                0x00000000000091c8                ProfileLoad
- .text          0x0000000000009c04       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
-                0x0000000000009c04                ProfileMayReload
- .text          0x0000000000009cc4      0x24c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
-                0x0000000000009cc4                TAP_Osd_PutFreeColorGd_Chk
- .text          0x0000000000009f10      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
-                0x0000000000009f10                TAP_Osd_PutGd_Chk
- .text          0x000000000000a154       0xb0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
-                0x000000000000a154                WindowDirty
- .text          0x000000000000a204      0x104 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
-                0x000000000000a204                ChangeDirRoot
- .text          0x000000000000a308       0x98 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
-                0x000000000000a308                HDD_GetClusterSize
- .text          0x000000000000a3a0       0xb4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
-                0x000000000000a3a0                HDD_ReadSectorDMA
- .text          0x000000000000a454       0xbc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INICloseFile.o)
-                0x000000000000a454                INICloseFile
- .text          0x000000000000a510      0x4b8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
-                0x000000000000a510                INIGetARGB
- .text          0x000000000000a9c8      0x1d4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
-                0x000000000000a9c8                INIGetInt
- .text          0x000000000000ab9c      0x1f8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
-                0x000000000000ab9c                INILocateFile
- .text          0x000000000000ad94      0x2d4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
-                0x000000000000ad94                INIOpenFile
- .text          0x000000000000b068       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
-                0x000000000000b068                FIS_vOSDMap
- .text          0x000000000000b128      0x2bc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FindInstructionSequence_TF5000.o)
-                0x000000000000b128                FindInstructionSequence
- .text          0x000000000000b3e4       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ParseLine.o)
-                0x000000000000b3e4                ParseLine
- .text          0x000000000000b4a4       0xc4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetCurrentDirCluster_TF5000.o)
-                0x000000000000b4a4                HDD_TAP_GetCurrentDirCluster
- .text          0x000000000000b568      0x264 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetInfo_TF5000.o)
-                0x000000000000b568                HDD_TAP_GetInfo
- .text          0x000000000000b7cc       0x8c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PopDir.o)
-                0x000000000000b7cc                HDD_TAP_PopDir
- .text          0x000000000000b858       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
-                0x000000000000b858                HDD_TAP_PushDir
- .text          0x000000000000b918      0x1b8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_SetCurrentDirCluster_TF5000.o)
-                0x000000000000b918                HDD_TAP_SetCurrentDirCluster
- .text          0x000000000000bad0      0x178 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
-                0x000000000000bad0                DrawOSDLine
- .text          0x000000000000bc48       0xa8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
-                0x000000000000bc48                FreeOSDRegion
- .text          0x000000000000bcf0      0x290 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
-                0x000000000000bcf0                OSDCopy
- .text          0x000000000000bf80      0x310 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
-                0x000000000000bf80                TAP_Osd_PutFreeColorGd
- .text          0x000000000000c290       0x80 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
-                0x000000000000c290                isOSDRegionAlive
- .text          0x000000000000c310      0xaf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
-                0x000000000000c310                BuildWindowBorder
- .text          0x000000000000ce00      0x770 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
-                0x000000000000ce00                BuildWindowInfo
- .text          0x000000000000d570      0x340 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
-                0x000000000000d570                BuildWindowLine
- .text          0x000000000000d8b0      0x32c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
-                0x000000000000d8b0                BuildWindowLineSelected
- .text          0x000000000000dbdc      0x2d0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
-                0x000000000000dbdc                BuildWindowScrollBar
- .text          0x000000000000deac      0x2f4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
-                0x000000000000deac                BuildWindowTitle
- .text          0x000000000000e1a0       0x68 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
-                0x000000000000e1a0                CalcPrepare
- .text          0x000000000000e208      0x4d0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcTopIndex.o)
-                0x000000000000e208                CalcTopIndex
- .text          0x000000000000e6d8       0xc8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CheckSelectable.o)
-                0x000000000000e6d8                CheckSelectable
- .text          0x000000000000e7a0      0xc44 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
-                0x000000000000e7a0                DialogMsgBoxShow
- .text          0x000000000000f3e4       0x48 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoad.o)
-                0x000000000000f3e4                DialogProfileLoad
- .text          0x000000000000f42c      0x7ec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
-                0x000000000000f42c                DialogProfileSave
- .text          0x000000000000fc18      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowAlpha.o)
-                0x000000000000fc18                DialogWindowAlpha
- .text          0x000000000000fe60      0xb58 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
-                0x000000000000fe60                DrawWindowLine
- .text          0x00000000000109b8       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileDirty.o)
-                0x00000000000109b8                ProfileDirty
- .text          0x0000000000010aa8      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIFindStartEnd.o)
-                0x0000000000010aa8                INIFindStartEnd
- .text          0x0000000000010c00      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
-                0x0000000000010c00                INISaveFile
- .text          0x0000000000010ec8       0xb0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
-                0x0000000000010ec8                INISetARGB
- .text          0x0000000000010f78       0x80 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
-                0x0000000000010f78                INISetInt
- .text          0x0000000000010ff8      0x430 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
-                0x0000000000010ff8                INISetString
- .text          0x0000000000011428      0x3c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
-                0x0000000000011428                InitTAPex
- .text          0x00000000000117f0      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
-                0x00000000000117f0                stricstr
- .text          0x0000000000011944      0x374 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
-                0x0000000000011944                FlashInitialize
- .text          0x0000000000011cb8       0x9c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
-                0x0000000000011cb8                HDD_TouchFile
- .text          0x0000000000011d54      0x19c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TruncateFile_TF5000.o)
-                0x0000000000011d54                HDD_TruncateFile
- .text          0x0000000000011ef0      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
-                0x0000000000011ef0                FIS_GetGP
- .text          0x0000000000012048       0xa8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
-                0x0000000000012048                FIS_fwBIOS
- .text          0x00000000000120f0       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
-                0x00000000000120f0                FIS_fwEnqueueEvent
- .text          0x00000000000121cc       0xec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
-                0x00000000000121cc                FIS_vFlash
- .text          0x00000000000122b8      0x110 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
-                0x00000000000122b8                FIS_vTAPTable
- .text          0x00000000000123c8       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
-                0x00000000000123c8                FIS_vWD1
- .text          0x00000000000124b8      0x2e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
-                0x00000000000124b8                LoadFirmwareDat
- .text          0x000000000001279c       0x9c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_SetFileDateTime_TF5000.o)
-                0x000000000001279c                HDD_SetFileDateTime
- .text          0x0000000000012838       0xd0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memcpy.o)
-                0x0000000000012838                memcpy
- .text          0x0000000000012908      0x138 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memmove.o)
-                0x0000000000012908                memmove
- .text          0x0000000000012a40       0xc0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memset.o)
-                0x0000000000012a40                memset
- .text          0x0000000000012b00       0xfc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcasecmp.o)
-                0x0000000000012b00                strcasecmp
- .text          0x0000000000012bfc       0xd8 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcat.o)
-                0x0000000000012bfc                strcat
- .text          0x0000000000012cd4      0x11c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strchr.o)
-                0x0000000000012cd4                strchr
- .text          0x0000000000012df0       0xcc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcmp.o)
-                0x0000000000012df0                strcmp
- .text          0x0000000000012ebc       0xac C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcpy.o)
-                0x0000000000012ebc                strcpy
- .text          0x0000000000012f68       0x94 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strlen.o)
-                0x0000000000012f68                strlen
- .text          0x0000000000012ffc      0x120 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncasecmp.o)
-                0x0000000000012ffc                strncasecmp
- .text          0x000000000001311c      0x108 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncmp.o)
-                0x000000000001311c                strncmp
- .text          0x0000000000013224       0xf0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncpy.o)
-                0x0000000000013224                strncpy
- .text          0x0000000000013314       0x9c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strpbrk.o)
-                0x0000000000013314                strpbrk
- .text          0x00000000000133b0       0xb4 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strrchr.o)
-                0x00000000000133b0                strrchr
- .text          0x0000000000013464       0x94 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strstr.o)
-                0x0000000000013464                strstr
- .text          0x00000000000134f8      0x25c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strtoul.o)
-                0x00000000000136f4                strtoul
-                0x00000000000134f8                _strtoul_r
- .text          0x0000000000013754      0xd5c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x0000000000013830                __errno
-                0x0000000000013754                abort
-                0x000000000001375c                TAP_Osd_PutGd
-                0x0000000000013838                _initData
-                0x00000000000137e4                __builtin_new
+ .text          0x0000000000000e14      0x390 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
+                0x0000000000000e14                TAP_Osd_Copy_Chk
+ .text          0x00000000000011a4      0x1d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+                0x00000000000011a4                TAP_Osd_Create_Chk
+ .text          0x000000000000137c      0x220 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+                0x000000000000137c                TAP_Osd_FillBox_Chk
+ .text          0x000000000000159c     0x16fc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+                0x000000000000159c                FileSelectorFilterGet
+                0x00000000000027f8                FileSelectorHandle
+                0x0000000000001664                FileSelectorFill
+                0x00000000000026dc                FileSelectorInitialize
+                0x0000000000002bfc                FileSelector
+ .text          0x0000000000002c98      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
+                0x0000000000002c98                HDD_ChangeDir
+ .text          0x0000000000002dec       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
+                0x0000000000002dec                MakeValidFileName
+ .text          0x0000000000002ec8      0x148 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isLegalChar.o)
+                0x0000000000002ec8                isLegalChar
+ .text          0x0000000000003010      0xc40 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
+                0x00000000000036c4                Fixed_TAP_Channel_SetAudioTrack
+                0x00000000000032d4                Fixed_TAP_Hdd_Flen
+                0x00000000000031d8                Need_Flen_Adjust
+                0x0000000000003010                Fixed_TAP_Hdd_GetPlayInfo
+                0x00000000000039e0                Fixed_TAP_Hdd_StopTs
+                0x0000000000003498                Fixed_TAP_Hdd_ChangeDir
+                0x0000000000003794                Fixed_TAP_Hdd_Delete
+                0x0000000000003a30                InitTAPAPIFix
+                0x0000000000003908                Fixed_TAP_Hdd_Fopen
+                0x00000000000030ec                Fixed_TAP_Hdd_GetRecInfo
+                0x000000000000339c                Fixed_TAP_Hdd_Fseek
+                0x0000000000003838                Fixed_TAP_Hdd_Fwrite
+ .text          0x0000000000003c50       0x78 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(EndMessageWin.o)
+                0x0000000000003c50                EndMessageWin
+ .text          0x0000000000003cc8       0x6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionHeight.o)
+                0x0000000000003cc8                GetOSDRegionHeight
+ .text          0x0000000000003d34       0x6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
+                0x0000000000003d34                GetOSDRegionWidth
+ .text          0x0000000000003da0      0x24c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
+                0x0000000000003da0                InitAudioPointers
+ .text          0x0000000000003fec       0x80 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
+                0x0000000000003fec                isOSDRegionAlive
+ .text          0x000000000000406c      0x3f4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
+                0x000000000000406c                DialogEvent
+ .text          0x0000000000004460      0x1cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
+                0x0000000000004460                DialogMsgBoxExit
+ .text          0x000000000000462c       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
+                0x000000000000462c                DialogMsgBoxInit
+ .text          0x0000000000004708      0x100 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxTitleSet.o)
+                0x0000000000004708                DialogMsgBoxTitleSet
+ .text          0x0000000000004808       0x98 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileCheck.o)
+                0x0000000000004808                DialogProfileCheck
+ .text          0x00000000000048a0       0xfc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
+                0x00000000000048a0                DialogProfileLoadMy
+ .text          0x000000000000499c      0x100 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowCursorSet.o)
+                0x000000000000499c                DialogWindowCursorSet
+ .text          0x0000000000004a9c      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowExit.o)
+                0x0000000000004a9c                DialogWindowExit
+ .text          0x0000000000004d38      0x270 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
+                0x0000000000004d38                DialogWindowHide
+ .text          0x0000000000004fa8       0xa4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInfoDeleteAll.o)
+                0x0000000000004fa8                DialogWindowInfoDeleteAll
+ .text          0x000000000000504c      0x2d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
+                0x000000000000504c                DialogWindowInit
+ .text          0x0000000000005324      0x16c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemAdd.o)
+                0x0000000000005324                DialogWindowItemAdd
+ .text          0x0000000000005490       0xe4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeFlags.o)
+                0x0000000000005490                DialogWindowItemChangeFlags
+ .text          0x0000000000005574      0x104 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeIcon.o)
+                0x0000000000005574                DialogWindowItemChangeIcon
+ .text          0x0000000000005678      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeParameter.o)
+                0x0000000000005678                DialogWindowItemChangeParameter
+ .text          0x00000000000057cc      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeValue.o)
+                0x00000000000057cc                DialogWindowItemChangeValue
+ .text          0x0000000000005924       0xd4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemDeleteAll.o)
+                0x0000000000005924                DialogWindowItemDeleteAll
+ .text          0x00000000000059f8      0x588 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
+                0x00000000000059f8                DialogWindowReInit
+ .text          0x0000000000005f80      0x790 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o)
+                0x0000000000005f80                DialogWindowRefresh
+ .text          0x0000000000006710      0x188 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDown.o)
+                0x0000000000006710                DialogWindowScrollDown
+ .text          0x0000000000006898      0x1b0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDownPage.o)
+                0x0000000000006898                DialogWindowScrollDownPage
+ .text          0x0000000000006a48      0x190 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUp.o)
+                0x0000000000006a48                DialogWindowScrollUp
+ .text          0x0000000000006bd8      0x180 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUpPage.o)
+                0x0000000000006bd8                DialogWindowScrollUpPage
+ .text          0x0000000000006d58      0x254 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
+                0x0000000000006d58                DialogWindowShow
+ .text          0x0000000000006fac      0x110 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTabulatorSet.o)
+                0x0000000000006fac                DialogWindowTabulatorSet
+ .text          0x00000000000070bc      0x134 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTitleChange.o)
+                0x00000000000070bc                DialogWindowTitleChange
+ .text          0x00000000000071f0       0xac C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTypeChange.o)
+                0x00000000000071f0                DialogWindowTypeChange
+ .text          0x000000000000729c      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
+                0x000000000000729c                DrawMsgBoxButtons
+ .text          0x0000000000007564      0x644 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
+                0x0000000000007564                DrawMsgBoxTitle
+ .text          0x0000000000007ba8      0x350 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
+                0x0000000000007ba8                DrawWindowBorder
+ .text          0x0000000000007ef8      0x504 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
+                0x0000000000007ef8                DrawWindowInfo
+ .text          0x00000000000083fc      0x7cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
+                0x00000000000083fc                DrawWindowLines
+ .text          0x0000000000008bc8      0x3cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
+                0x0000000000008bc8                DrawWindowScrollBar
+ .text          0x0000000000008f94      0x3f0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
+                0x0000000000008f94                DrawWindowTitle
+ .text          0x0000000000009384      0x190 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
+                0x0000000000009384                HasEnoughItemMemory
+ .text          0x0000000000009514       0xb8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDLinesForeDirty.o)
+                0x0000000000009514                OSDLinesForeDirty
+ .text          0x00000000000095cc      0x194 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
+                0x00000000000095cc                ProfileInit
+ .text          0x0000000000009760      0xa3c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
+                0x0000000000009760                ProfileLoad
+ .text          0x000000000000a19c       0xb8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
+                0x000000000000a19c                ProfileMayReload
+ .text          0x000000000000a254       0xb0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
+                0x000000000000a254                WindowDirty
+ .text          0x000000000000a304      0x104 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
+                0x000000000000a304                ChangeDirRoot
+ .text          0x000000000000a408       0x98 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
+                0x000000000000a408                HDD_GetClusterSize
+ .text          0x000000000000a4a0       0xb4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
+                0x000000000000a4a0                HDD_ReadSectorDMA
+ .text          0x000000000000a554       0xbc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INICloseFile.o)
+                0x000000000000a554                INICloseFile
+ .text          0x000000000000a610      0x4b8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
+                0x000000000000a610                INIGetARGB
+ .text          0x000000000000aac8      0x1d4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
+                0x000000000000aac8                INIGetInt
+ .text          0x000000000000ac9c      0x1f8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
+                0x000000000000ac9c                INILocateFile
+ .text          0x000000000000ae94      0x2d4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
+                0x000000000000ae94                INIOpenFile
+ .text          0x000000000000b168       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
+                0x000000000000b168                FIS_vOSDMap
+ .text          0x000000000000b228      0x2bc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FindInstructionSequence_TF5000.o)
+                0x000000000000b228                FindInstructionSequence
+ .text          0x000000000000b4e4       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ParseLine.o)
+                0x000000000000b4e4                ParseLine
+ .text          0x000000000000b5a4       0xc4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetCurrentDirCluster_TF5000.o)
+                0x000000000000b5a4                HDD_TAP_GetCurrentDirCluster
+ .text          0x000000000000b668      0x264 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetInfo_TF5000.o)
+                0x000000000000b668                HDD_TAP_GetInfo
+ .text          0x000000000000b8cc       0x8c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PopDir.o)
+                0x000000000000b8cc                HDD_TAP_PopDir
+ .text          0x000000000000b958       0xc0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
+                0x000000000000b958                HDD_TAP_PushDir
+ .text          0x000000000000ba18      0x1b8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_SetCurrentDirCluster_TF5000.o)
+                0x000000000000ba18                HDD_TAP_SetCurrentDirCluster
+ .text          0x000000000000bbd0      0x194 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
+                0x000000000000bbd0                DrawOSDLine
+ .text          0x000000000000bd64       0xa8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
+                0x000000000000bd64                FreeOSDRegion
+ .text          0x000000000000be0c      0x290 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
+                0x000000000000be0c                OSDCopy
+ .text          0x000000000000c09c       0xa8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+                0x000000000000c09c                TAP_MemAlloc_Chk
+ .text          0x000000000000c144      0x288 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                0x000000000000c144                TAP_Osd_PutFreeColorGd_Chk
+ .text          0x000000000000c3cc      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
+                0x000000000000c3cc                TAP_Osd_PutGd_Chk
+ .text          0x000000000000c64c      0x17c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+                0x000000000000c64c                TAP_Osd_PutPixel_Chk
+ .text          0x000000000000c7c8      0x21c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+                0x000000000000c7c8                TAP_Osd_RestoreBox_Chk
+ .text          0x000000000000c9e4      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+                0x000000000000c9e4                TAP_Osd_SaveBox_Chk
+ .text          0x000000000000cbf8      0xb10 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
+                0x000000000000cbf8                BuildWindowBorder
+ .text          0x000000000000d708      0x788 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
+                0x000000000000d708                BuildWindowInfo
+ .text          0x000000000000de90      0x348 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
+                0x000000000000de90                BuildWindowLine
+ .text          0x000000000000e1d8      0x334 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
+                0x000000000000e1d8                BuildWindowLineSelected
+ .text          0x000000000000e50c      0x2d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
+                0x000000000000e50c                BuildWindowScrollBar
+ .text          0x000000000000e7e4      0x2fc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
+                0x000000000000e7e4                BuildWindowTitle
+ .text          0x000000000000eae0       0x68 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
+                0x000000000000eae0                CalcPrepare
+ .text          0x000000000000eb48      0x4d0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcTopIndex.o)
+                0x000000000000eb48                CalcTopIndex
+ .text          0x000000000000f018       0xc8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CheckSelectable.o)
+                0x000000000000f018                CheckSelectable
+ .text          0x000000000000f0e0      0xc54 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+                0x000000000000f0e0                DialogMsgBoxShow
+ .text          0x000000000000fd34       0x48 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoad.o)
+                0x000000000000fd34                DialogProfileLoad
+ .text          0x000000000000fd7c      0x7ec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
+                0x000000000000fd7c                DialogProfileSave
+ .text          0x0000000000010568      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowAlpha.o)
+                0x0000000000010568                DialogWindowAlpha
+ .text          0x00000000000107b0      0xb58 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
+                0x00000000000107b0                DrawWindowLine
+ .text          0x0000000000011308       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileDirty.o)
+                0x0000000000011308                ProfileDirty
+ .text          0x00000000000113f8      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIFindStartEnd.o)
+                0x00000000000113f8                INIFindStartEnd
+ .text          0x0000000000011550      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
+                0x0000000000011550                INISaveFile
+ .text          0x0000000000011818       0xb0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
+                0x0000000000011818                INISetARGB
+ .text          0x00000000000118c8       0x80 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
+                0x00000000000118c8                INISetInt
+ .text          0x0000000000011948      0x430 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
+                0x0000000000011948                INISetString
+ .text          0x0000000000011d78      0x3c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
+                0x0000000000011d78                InitTAPex
+ .text          0x0000000000012140      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
+                0x0000000000012140                stricstr
+ .text          0x0000000000012294      0x360 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                0x0000000000012294                TAP_Osd_PutFreeColorGd
+ .text          0x00000000000125f4      0x374 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+                0x00000000000125f4                FlashInitialize
+ .text          0x0000000000012968       0x9c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
+                0x0000000000012968                HDD_TouchFile
+ .text          0x0000000000012a04      0x19c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TruncateFile_TF5000.o)
+                0x0000000000012a04                HDD_TruncateFile
+ .text          0x0000000000012ba0      0x158 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
+                0x0000000000012ba0                FIS_GetGP
+ .text          0x0000000000012cf8       0xa8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
+                0x0000000000012cf8                FIS_fwBIOS
+ .text          0x0000000000012da0       0xdc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
+                0x0000000000012da0                FIS_fwEnqueueEvent
+ .text          0x0000000000012e7c       0xec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
+                0x0000000000012e7c                FIS_vFlash
+ .text          0x0000000000012f68      0x110 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
+                0x0000000000012f68                FIS_vTAPTable
+ .text          0x0000000000013078       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
+                0x0000000000013078                FIS_vWD1
+ .text          0x0000000000013168      0x2e8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
+                0x0000000000013168                LoadFirmwareDat
+ .text          0x0000000000013450       0x9c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_SetFileDateTime_TF5000.o)
+                0x0000000000013450                HDD_SetFileDateTime
+ .text          0x00000000000134ec       0xd0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memcpy.o)
+                0x00000000000134ec                memcpy
+ .text          0x00000000000135bc      0x138 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memmove.o)
+                0x00000000000135bc                memmove
+ .text          0x00000000000136f4       0xc0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memset.o)
+                0x00000000000136f4                memset
+ .text          0x00000000000137b4       0xfc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcasecmp.o)
+                0x00000000000137b4                strcasecmp
+ .text          0x00000000000138b0       0xd8 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcat.o)
+                0x00000000000138b0                strcat
+ .text          0x0000000000013988      0x11c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strchr.o)
+                0x0000000000013988                strchr
+ .text          0x0000000000013aa4       0xcc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcmp.o)
+                0x0000000000013aa4                strcmp
+ .text          0x0000000000013b70       0xac C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcpy.o)
+                0x0000000000013b70                strcpy
+ .text          0x0000000000013c1c       0x94 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strlen.o)
+                0x0000000000013c1c                strlen
+ .text          0x0000000000013cb0      0x120 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncasecmp.o)
+                0x0000000000013cb0                strncasecmp
+ .text          0x0000000000013dd0      0x108 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncmp.o)
+                0x0000000000013dd0                strncmp
+ .text          0x0000000000013ed8       0xf0 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncpy.o)
+                0x0000000000013ed8                strncpy
+ .text          0x0000000000013fc8       0x9c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strpbrk.o)
+                0x0000000000013fc8                strpbrk
+ .text          0x0000000000014064       0xb4 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strrchr.o)
+                0x0000000000014064                strrchr
+ .text          0x0000000000014118       0x94 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strstr.o)
+                0x0000000000014118                strstr
+ .text          0x00000000000141ac      0x25c C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strtoul.o)
+                0x00000000000143a8                strtoul
+                0x00000000000141ac                _strtoul_r
+ .text          0x0000000000014408      0xd5c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x00000000000144e4                __errno
+                0x0000000000014408                abort
+                0x0000000000014410                TAP_Osd_PutGd
+                0x00000000000144ec                _initData
+                0x0000000000014498                __builtin_new
 
-.text_end       0x00000000000144b0        0x4
- .text_end      0x00000000000144b0        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x00000000000144b0                _tap_textEnd
+.text_end       0x0000000000015164        0x4
+ .text_end      0x0000000000015164        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000015164                _tap_textEnd
 
-.rodata         0x00000000000144b4     0x16f6
+.rodata         0x0000000000015168     0x1ffa
  *(.rodata)
- .rodata        0x00000000000144b4       0x13 FileSelectorDemo.o
- *fill*         0x00000000000144c7 0x41519c00000001 00
- .rodata        0x00000000000144c8       0x18 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
- .rodata        0x00000000000144e0      0x1b5 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
- *fill*         0x0000000000014695 0x41519c00000003 00
- .rodata        0x0000000000014698      0x16c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
- .rodata        0x0000000000014804        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
- *fill*         0x0000000000014806 0x41519c00000002 00
- .rodata        0x0000000000014808       0x22 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
- *fill*         0x000000000001482a 0x41519c00000006 00
- .rodata        0x0000000000014830      0x1e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
- .rodata        0x0000000000014a14        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
- .rodata        0x0000000000014a20       0x14 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
- .rodata        0x0000000000014a34       0x8a C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
- *fill*         0x0000000000014abe 0x41519c00000002 00
- .rodata        0x0000000000014ac0       0x4f C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
- *fill*         0x0000000000014b0f 0x41519c00000001 00
- .rodata        0x0000000000014b10       0x39 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
- *fill*         0x0000000000014b49 0x41519c00000003 00
- .rodata        0x0000000000014b4c       0x4e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
- *fill*         0x0000000000014b9a 0x41519c00000002 00
- .rodata        0x0000000000014b9c       0x46 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
- *fill*         0x0000000000014be2 0x41519c00000002 00
- .rodata        0x0000000000014be4       0x26 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
- *fill*         0x0000000000014c0a 0x41519c00000002 00
- .rodata        0x0000000000014c0c       0x12 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
- *fill*         0x0000000000014c1e 0x41519c00000002 00
- .rodata        0x0000000000014c20      0x195 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
- *fill*         0x0000000000014db5 0x41519c00000003 00
- .rodata        0x0000000000014db8      0x17e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
- *fill*         0x0000000000014f36 0x41519c00000002 00
- .rodata        0x0000000000014f38      0x149 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
- *fill*         0x0000000000015081 0x41519c00000003 00
- .rodata        0x0000000000015084        0xf C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
- *fill*         0x0000000000015093 0x41519c00000001 00
- .rodata        0x0000000000015094        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
- *fill*         0x0000000000015096 0x41519c00000002 00
- .rodata        0x0000000000015098        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
- *fill*         0x000000000001509a 0x41519c00000002 00
- .rodata        0x000000000001509c       0x19 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
- *fill*         0x00000000000150b5 0x41519c00000003 00
- .rodata        0x00000000000150b8       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
- .rodata        0x0000000000015148       0x16 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
- *fill*         0x000000000001515e 0x41519c00000002 00
- .rodata        0x0000000000015160       0x35 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
- *fill*         0x0000000000015195 0x41519c00000003 00
- .rodata        0x0000000000015198       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
- .rodata        0x0000000000015288       0x9e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
- *fill*         0x0000000000015326 0x41519c00000002 00
- .rodata        0x0000000000015328       0x3a C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
- *fill*         0x0000000000015362 0x41519c00000002 00
- .rodata        0x0000000000015364       0x52 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
- *fill*         0x00000000000153b6 0x41519c00000002 00
- .rodata        0x00000000000153b8       0x47 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
- *fill*         0x00000000000153ff 0x41519c00000001 00
- .rodata        0x0000000000015400       0x3b C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
- *fill*         0x000000000001543b 0x41519c00000001 00
- .rodata        0x000000000001543c      0x103 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
- *fill*         0x000000000001553f 0x41519c00000001 00
- .rodata        0x0000000000015540      0x1b2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
- *fill*         0x00000000000156f2 0x41519c00000006 00
- .rodata        0x00000000000156f8       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
- .rodata        0x0000000000015788       0x19 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
- *fill*         0x00000000000157a1 0x41519c00000003 00
- .rodata        0x00000000000157a4       0x18 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
- .rodata        0x00000000000157bc        0x3 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
- *fill*         0x00000000000157bf 0x41519c00000001 00
- .rodata        0x00000000000157c0        0x7 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
- *fill*         0x00000000000157c7 0x41519c00000001 00
- .rodata        0x00000000000157c8       0x1d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
- *fill*         0x00000000000157e5 0x41519c00000003 00
- .rodata        0x00000000000157e8       0x14 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
- .rodata        0x00000000000157fc       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
- .rodata        0x000000000001588c       0x5d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
- *fill*         0x00000000000158e9 0x41519c00000003 00
- .rodata        0x00000000000158ec       0x5d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
- *fill*         0x0000000000015949 0x41519c00000003 00
- .rodata        0x000000000001594c       0xa5 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
- *fill*         0x00000000000159f1 0x41519c00000003 00
- .rodata        0x00000000000159f4        0xd C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
- *fill*         0x0000000000015a01 0x41519c00000003 00
- .rodata        0x0000000000015a04      0x180 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
-                0x0000000000015a83                _ctype_
- .rodata        0x0000000000015b84       0x26 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+ .rodata        0x0000000000015168       0x13 FileSelectorDemo.o
+ *fill*         0x000000000001517b 0x41519c00000001 00
+ .rodata        0x000000000001517c       0x2c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
+ .rodata        0x00000000000151a8      0x1f3 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
+ *fill*         0x000000000001539b 0x41519c00000001 00
+ .rodata        0x000000000001539c      0x12f C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+ *fill*         0x00000000000154cb 0x41519c00000001 00
+ .rodata        0x00000000000154cc      0x17c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+ .rodata        0x0000000000015648      0x184 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+ .rodata        0x00000000000157cc        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
+ *fill*         0x00000000000157ce 0x41519c00000002 00
+ .rodata        0x00000000000157d0       0x22 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
+ *fill*         0x00000000000157f2 0x41519c00000006 00
+ .rodata        0x00000000000157f8      0x1e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
+ .rodata        0x00000000000159dc       0x11 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
+ *fill*         0x00000000000159ed 0x41519c00000003 00
+ .rodata        0x00000000000159f0        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
+ .rodata        0x00000000000159fc       0x11 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
+ *fill*         0x0000000000015a0d 0x41519c00000003 00
+ .rodata        0x0000000000015a10       0x11 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
+ *fill*         0x0000000000015a21 0x41519c00000003 00
+ .rodata        0x0000000000015a24       0x14 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
+ .rodata        0x0000000000015a38       0x8a C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
+ *fill*         0x0000000000015ac2 0x41519c00000002 00
+ .rodata        0x0000000000015ac4       0x4f C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
+ *fill*         0x0000000000015b13 0x41519c00000001 00
+ .rodata        0x0000000000015b14       0x39 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
+ *fill*         0x0000000000015b4d 0x41519c00000003 00
+ .rodata        0x0000000000015b50       0x4e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
+ *fill*         0x0000000000015b9e 0x41519c00000002 00
+ .rodata        0x0000000000015ba0       0x46 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
+ *fill*         0x0000000000015be6 0x41519c00000002 00
+ .rodata        0x0000000000015be8       0x26 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
+ *fill*         0x0000000000015c0e 0x41519c00000002 00
+ .rodata        0x0000000000015c10       0x14 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
+ .rodata        0x0000000000015c24       0x12 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
+ *fill*         0x0000000000015c36 0x41519c00000002 00
+ .rodata        0x0000000000015c38      0x195 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
+ *fill*         0x0000000000015dcd 0x41519c00000003 00
+ .rodata        0x0000000000015dd0        0xf C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
+ *fill*         0x0000000000015ddf 0x41519c00000001 00
+ .rodata        0x0000000000015de0        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
+ *fill*         0x0000000000015de2 0x41519c00000002 00
+ .rodata        0x0000000000015de4        0x2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
+ *fill*         0x0000000000015de6 0x41519c00000002 00
+ .rodata        0x0000000000015de8       0x19 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
+ *fill*         0x0000000000015e01 0x41519c00000003 00
+ .rodata        0x0000000000015e04       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
+ .rodata        0x0000000000015e94       0x1e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
+ *fill*         0x0000000000015eb2 0x41519c00000002 00
+ .rodata        0x0000000000015eb4       0x16 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
+ *fill*         0x0000000000015eca 0x41519c00000002 00
+ .rodata        0x0000000000015ecc       0x47 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+ *fill*         0x0000000000015f13 0x41519c00000001 00
+ .rodata        0x0000000000015f14      0x1cf C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+ *fill*         0x00000000000160e3 0x41519c00000001 00
+ .rodata        0x00000000000160e4      0x189 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
+ *fill*         0x000000000001626d 0x41519c00000003 00
+ .rodata        0x0000000000016270       0xff C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+ *fill*         0x000000000001636f 0x41519c00000001 00
+ .rodata        0x0000000000016370      0x18e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+ *fill*         0x00000000000164fe 0x41519c00000002 00
+ .rodata        0x0000000000016500      0x189 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+ *fill*         0x0000000000016689 0x41519c00000003 00
+ .rodata        0x000000000001668c       0xf0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
+ .rodata        0x000000000001677c       0x9e C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
+ *fill*         0x000000000001681a 0x41519c00000002 00
+ .rodata        0x000000000001681c       0x4a C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
+ *fill*         0x0000000000016866 0x41519c00000002 00
+ .rodata        0x0000000000016868       0x6a C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
+ *fill*         0x00000000000168d2 0x41519c00000002 00
+ .rodata        0x00000000000168d4       0x5f C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
+ *fill*         0x0000000000016933 0x41519c00000001 00
+ .rodata        0x0000000000016934       0x4f C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
+ *fill*         0x0000000000016983 0x41519c00000001 00
+ .rodata        0x0000000000016984      0x117 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+ *fill*         0x0000000000016a9b 0x41519c00000001 00
+ .rodata        0x0000000000016a9c      0x1b2 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
+ *fill*         0x0000000000016c4e 0x41519c00000002 00
+ .rodata        0x0000000000016c50       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
+ .rodata        0x0000000000016ce0       0x19 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
+ *fill*         0x0000000000016cf9 0x41519c00000003 00
+ .rodata        0x0000000000016cfc       0x18 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
+ .rodata        0x0000000000016d14        0x3 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
+ *fill*         0x0000000000016d17 0x41519c00000001 00
+ .rodata        0x0000000000016d18        0x7 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
+ *fill*         0x0000000000016d1f 0x41519c00000001 00
+ .rodata        0x0000000000016d20       0x1d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
+ *fill*         0x0000000000016d3d 0x41519c00000003 00
+ .rodata        0x0000000000016d40       0x4d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+ *fill*         0x0000000000016d8d 0x41519c00000003 00
+ .rodata        0x0000000000016d90       0x14 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+ .rodata        0x0000000000016da4       0x90 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
+ .rodata        0x0000000000016e34       0x5d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
+ *fill*         0x0000000000016e91 0x41519c00000003 00
+ .rodata        0x0000000000016e94       0x5d C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
+ *fill*         0x0000000000016ef1 0x41519c00000003 00
+ .rodata        0x0000000000016ef4       0xa5 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
+ *fill*         0x0000000000016f99 0x41519c00000003 00
+ .rodata        0x0000000000016f9c       0x20 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
+ .rodata        0x0000000000016fbc      0x180 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
+                0x000000000001703b                _ctype_
+ .rodata        0x000000000001713c       0x26 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
  *(.rodata.*)
  *(.gnu.linkonce.r*)
 
 .rel.dyn
 
-.data           0x0000000000015baa     0x21b2
-                0x0000000000015baa                _fdata = .
+.data           0x0000000000017162     0x23ee
+                0x0000000000017162                _fdata = .
  *(.data)
- *fill*         0x0000000000015baa 0x108233800000002 00
- .data          0x0000000000015bac        0x8 FileSelectorDemo.o
- .data          0x0000000000015bb4        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
-                0x0000000000015bb4                fbl_rgn
- .data          0x0000000000015bb8       0x88 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
-                0x0000000000015bb8                _FileSelectorDir_Cpm
-                0x0000000000015c38                FileSelector_initialized
-                0x0000000000015c3c                Window
-                0x0000000000015c28                _FileSelectorDir_Gd
- .data          0x0000000000015c40       0x30 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
-                0x0000000000015c44                real_TAP_Hdd_GetRecInfo
-                0x0000000000015c40                real_TAP_Hdd_GetPlayInfo
-                0x0000000000015c54                real_TAP_Channel_SetAudioTrack
-                0x0000000000015c4c                real_TAP_Hdd_Fseek
-                0x0000000000015c50                real_TAP_Hdd_ChangeDir
-                0x0000000000015c60                real_TAP_Hdd_Fopen
-                0x0000000000015c64                real_TAP_Hdd_StopTs
-                0x0000000000015c68                TAPAPIFixInitiated
-                0x0000000000015c58                real_TAP_Hdd_Delete
-                0x0000000000015c48                real_TAP_Hdd_Flen
-                0x0000000000015c5c                real_TAP_Hdd_Fwrite
- .data          0x0000000000015c70        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
-                0x0000000000015c74                RECShadow
-                0x0000000000015c70                pAudioTracks
- .data          0x0000000000015c78        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
-                0x0000000000015c78                FBDialogMsgBox
- .data          0x0000000000015c7c      0x670 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
-                0x0000000000015e50                _Scroll_Cursor_Cpm
-                0x00000000000162e8                FBDialogWindow
-                0x0000000000015ddc                _Items_NoLinesNoIcons_Line_E_Cpm
-                0x0000000000015eb8                _Scroll_End_Gd
-                0x0000000000015f2c                _InfoS_E_Gd
-                0x0000000000015e40                _Scroll_Back_Gd
-                0x00000000000160d4                _Icon_Checkbox_Unchecked_Gd
-                0x0000000000015f8c                _Icon_Checkbox_Checked_Cpm
-                0x0000000000015e88                _Scroll_End_Cpm
-                0x0000000000015dac                _Items_NoLinesNoIcons_Line_C_Cpm
-                0x0000000000015efc                _InfoS_E_Cpm
-                0x0000000000015cc4                _Items_NoIcons_IconButton_Gd
-                0x0000000000015d00                _Items_NoIcons_Line_C_Gd
-                0x00000000000161fc                _Icon_Wait_Gd
-                0x0000000000015eec                _InfoS_C_Gd
-                0x0000000000016094                _Icon_Checkbox_Unchecked_Cpm
-                0x00000000000162d8                _Icon_OK_Gd
-                0x0000000000015e10                _Items_NoLinesNoIcons_Line_E_Gd
-                0x00000000000160e4                _Icon_Exclamation_Cpm
-                0x0000000000016084                _Icon_Checkbox_Checked_Gd
-                0x0000000000015d9c                _Items_NoLinesNoIcons_IconButton_Gd
-                0x0000000000015cd4                _Items_NoIcons_Line_C_Cpm
-                0x0000000000015c7c                _Items_NoIcons_IconButton_Cpm
-                0x0000000000015d5c                _Items_NoIcons_Line_E_Gd
-                0x0000000000016160                _Icon_Exclamation_Gd
-                0x0000000000015f3c                _InfoS_W_Cpm
-                0x0000000000015d10                _Items_NoIcons_Line_E_Cpm
-                0x0000000000015d6c                _Items_NoLinesNoIcons_IconButton_Cpm
-                0x0000000000015e20                _Scroll_Back_Cpm
-                0x0000000000016170                _Icon_Wait_Cpm
-                0x0000000000015e78                _Scroll_Cursor_Gd
-                0x0000000000015ec8                _InfoS_C_Cpm
-                0x000000000001620c                _Icon_OK_Cpm
-                0x0000000000015f7c                _InfoS_W_Gd
-                0x0000000000015dcc                _Items_NoLinesNoIcons_Line_C_Gd
- .data          0x00000000000162ec      0xa9c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
-                0x0000000000016b7c                _Items_Line_E_Cpm
-                0x0000000000016a0c                _Title_E_Gd
-                0x0000000000016bd8                _InfoN_C_Cpm
-                0x0000000000016c80                _InfoN_E_Gd
-                0x0000000000016858                _Border_SW_Cpm
-                0x0000000000016d44                _Info_W_Cpm
-                0x0000000000016930                _Title_C_Cpm
-                0x000000000001667c                _Border_Info_E_Cpm
-                0x0000000000016440                _Border_NE_Gd
-                0x0000000000016d34                _Info_C_Gd
-                0x00000000000165e0                _Border_InfoN_E_Cpm
-                0x000000000001666c                _Border_InfoN_W_Gd
-                0x0000000000016b6c                _Items_Line_C_Gd
-                0x0000000000016c0c                _InfoN_C_Gd
-                0x0000000000016c90                _InfoN_W_Cpm
-                0x0000000000016b30                _Items_IconButton_Gd
-                0x0000000000016978                _Title_E_Cpm
-                0x0000000000016584                _Border_Items_E_Gd
-                0x0000000000016ab4                _Title_W_Gd
-                0x0000000000016544                _Border_Items_E_Cpm
-                0x0000000000016848                _Border_SE_Gd
-                0x00000000000165d0                _Border_Items_W_Gd
-                0x00000000000166c8                _Border_Info_W_Cpm
-                0x0000000000016bc8                _Items_Line_E_Gd
-                0x0000000000016710                _Border_S_Cpm
-                0x0000000000016450                _Border_NW_Cpm
-                0x0000000000016328                _Border_N_Gd
-                0x00000000000162ec                _Border_N_Cpm
-                0x0000000000016d04                _InfoN_W_Gd
-                0x000000000001661c                _Border_InfoN_E_Gd
-                0x0000000000016338                _Border_NE_Cpm
-                0x0000000000016c1c                _InfoN_E_Cpm
-                0x000000000001662c                _Border_InfoN_W_Cpm
-                0x0000000000016d14                _Info_C_Cpm
-                0x0000000000016920                _Border_SW_Gd
-                0x0000000000016760                _Border_SE_Cpm
-                0x0000000000016750                _Border_S_Gd
-                0x0000000000016d78                _Info_W_Gd
-                0x0000000000016534                _Border_NW_Gd
-                0x0000000000016700                _Border_Info_W_Gd
-                0x0000000000016b40                _Items_Line_C_Cpm
-                0x0000000000016594                _Border_Items_W_Cpm
-                0x0000000000016968                _Title_C_Gd
-                0x00000000000166b8                _Border_Info_E_Gd
-                0x0000000000016ac4                _Items_IconButton_Cpm
-                0x0000000000016a1c                _Title_W_Cpm
- .data          0x0000000000016d88        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
- .data          0x0000000000016d8c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
-                0x0000000000016d8c                FBDialogProfile
- .data          0x0000000000016d90        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
-                0x0000000000016d90                ClusterSize
- .data          0x0000000000016d94        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
-                0x0000000000016d94                TAP_Hdd_ReadSectorDMA
- .data          0x0000000000016d98        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
-                0x0000000000016da0                BufferSize
-                0x0000000000016d9c                INICommentBuffer
-                0x0000000000016d98                INIBuffer
- .data          0x0000000000016da4        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
- .data          0x0000000000016da8        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
-                0x0000000000016da8                TAPDirStackDepth
- .data          0x0000000000016dac      0xe30 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
-                0x0000000000017264                _MsgBox_C_Border_Cpm
-                0x0000000000017094                _MsgBox_W_Border_Gd
-                0x0000000000017780                _MsgBox_E_Text_Gd
-                0x0000000000017308                _MsgBox_C_Text_Cpm
-                0x00000000000176ac                _MsgBox_E_Text_Cpm
-                0x0000000000017790                _MsgBox_In_Cpm
-                0x0000000000017414                _MsgBox_E_Title_Gd
-                0x0000000000017378                _MsgBox_C_Text_Gd
-                0x0000000000017194                _MsgBox_W_Text_Gd
-                0x00000000000172f8                _MsgBox_C_Border_Gd
-                0x0000000000017bcc                _MsgBox_Out_Gd
-                0x000000000001769c                _MsgBox_E_Border_Gd
-                0x0000000000017424                _MsgBox_E_SubTitle_Cpm
-                0x0000000000017388                _MsgBox_E_Title_Cpm
-                0x0000000000017254                _MsgBox_C_SubTitle_Gd
-                0x0000000000017204                _MsgBox_C_SubTitle_Cpm
-                0x00000000000171f4                _MsgBox_C_Title_Gd
-                0x00000000000174b8                _MsgBox_E_Border_Cpm
-                0x0000000000016eb0                _MsgBox_W_SubTitle_Gd
-                0x0000000000016e50                _MsgBox_W_SubTitle_Cpm
-                0x00000000000174a8                _MsgBox_E_SubTitle_Gd
-                0x00000000000170a4                _MsgBox_W_Text_Cpm
-                0x0000000000016dac                _MsgBox_W_Title_Cpm
-                0x0000000000017984                _MsgBox_Out_Cpm
-                0x0000000000016e40                _MsgBox_W_Title_Gd
-                0x00000000000171a4                _MsgBox_C_Title_Cpm
-                0x0000000000017974                _MsgBox_In_Gd
-                0x0000000000016ec0                _MsgBox_W_Border_Cpm
- .data          0x0000000000017bdc        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
-                0x0000000000017be0                LibInitialized
-                0x0000000000017bdc                __fblib_version__
- .data          0x0000000000017be4      0x150 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
-                0x0000000000017c24                FlashBlockOffsetT
-                0x0000000000017be4                FlashBlockOffsetS
-                0x0000000000017d30                SystemType
-                0x0000000000017d2c                FlashOffset
-                0x0000000000017ce4                FlashBlockOffsetSTMS
-                0x0000000000017ca4                FlashBlockOffsetT5700
-                0x0000000000017c64                FlashBlockOffsetC
- .data          0x0000000000017d34        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
- .data          0x0000000000017d3c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
- .data          0x0000000000017d40        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
- .data          0x0000000000017d44        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
- .data          0x0000000000017d48        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
- .data          0x0000000000017d4c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
- .data          0x0000000000017d50        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
- .data          0x0000000000017d54        0x4 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
-                0x0000000000017d54                __ctype_ptr
- .data          0x0000000000017d58        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
-                0x0000000000017d58                _impure_ptr
+ *fill*         0x0000000000017162 0xe4234800000002 00
+ .data          0x0000000000017164        0x8 FileSelectorDemo.o
+ .data          0x000000000001716c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
+                0x000000000001716c                fbl_rgn
+ .data          0x0000000000017170       0x88 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+                0x0000000000017170                _FileSelectorDir_Cpm
+                0x00000000000171f0                FileSelector_initialized
+                0x00000000000171f4                Window
+                0x00000000000171e0                _FileSelectorDir_Gd
+ .data          0x00000000000171f8       0x30 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
+                0x00000000000171fc                real_TAP_Hdd_GetRecInfo
+                0x00000000000171f8                real_TAP_Hdd_GetPlayInfo
+                0x000000000001720c                real_TAP_Channel_SetAudioTrack
+                0x0000000000017204                real_TAP_Hdd_Fseek
+                0x0000000000017208                real_TAP_Hdd_ChangeDir
+                0x0000000000017218                real_TAP_Hdd_Fopen
+                0x000000000001721c                real_TAP_Hdd_StopTs
+                0x0000000000017220                TAPAPIFixInitiated
+                0x0000000000017210                real_TAP_Hdd_Delete
+                0x0000000000017200                real_TAP_Hdd_Flen
+                0x0000000000017214                real_TAP_Hdd_Fwrite
+ .data          0x0000000000017228        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
+                0x000000000001722c                RECShadow
+                0x0000000000017228                pAudioTracks
+ .data          0x0000000000017230        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
+                0x0000000000017230                FBDialogMsgBox
+ .data          0x0000000000017234      0x66c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
+                0x0000000000017408                _Scroll_Cursor_Cpm
+                0x000000000001789c                FBDialogWindow
+                0x0000000000017394                _Items_NoLinesNoIcons_Line_E_Cpm
+                0x0000000000017470                _Scroll_End_Gd
+                0x00000000000174e4                _InfoS_E_Gd
+                0x00000000000173f8                _Scroll_Back_Gd
+                0x000000000001768c                _Icon_Checkbox_Unchecked_Gd
+                0x0000000000017544                _Icon_Checkbox_Checked_Cpm
+                0x0000000000017440                _Scroll_End_Cpm
+                0x0000000000017364                _Items_NoLinesNoIcons_Line_C_Cpm
+                0x00000000000174b4                _InfoS_E_Cpm
+                0x000000000001727c                _Items_NoIcons_IconButton_Gd
+                0x00000000000172b8                _Items_NoIcons_Line_C_Gd
+                0x00000000000177b8                _Icon_Wait_Gd
+                0x00000000000174a4                _InfoS_C_Gd
+                0x000000000001764c                _Icon_Checkbox_Unchecked_Cpm
+                0x000000000001788c                _Icon_OK_Gd
+                0x00000000000173c8                _Items_NoLinesNoIcons_Line_E_Gd
+                0x000000000001769c                _Icon_Exclamation_Cpm
+                0x000000000001763c                _Icon_Checkbox_Checked_Gd
+                0x0000000000017354                _Items_NoLinesNoIcons_IconButton_Gd
+                0x000000000001728c                _Items_NoIcons_Line_C_Cpm
+                0x0000000000017234                _Items_NoIcons_IconButton_Cpm
+                0x0000000000017314                _Items_NoIcons_Line_E_Gd
+                0x0000000000017718                _Icon_Exclamation_Gd
+                0x00000000000174f4                _InfoS_W_Cpm
+                0x00000000000172c8                _Items_NoIcons_Line_E_Cpm
+                0x0000000000017324                _Items_NoLinesNoIcons_IconButton_Cpm
+                0x00000000000173d8                _Scroll_Back_Cpm
+                0x0000000000017728                _Icon_Wait_Cpm
+                0x0000000000017430                _Scroll_Cursor_Gd
+                0x0000000000017480                _InfoS_C_Cpm
+                0x00000000000177c8                _Icon_OK_Cpm
+                0x0000000000017534                _InfoS_W_Gd
+                0x0000000000017384                _Items_NoLinesNoIcons_Line_C_Gd
+ .data          0x00000000000178a0      0xa94 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
+                0x0000000000018128                _Items_Line_E_Cpm
+                0x0000000000017fc0                _Title_E_Gd
+                0x0000000000018184                _InfoN_C_Cpm
+                0x000000000001822c                _InfoN_E_Gd
+                0x0000000000017e0c                _Border_SW_Cpm
+                0x00000000000182f0                _Info_W_Cpm
+                0x0000000000017ee4                _Title_C_Cpm
+                0x0000000000017c30                _Border_Info_E_Cpm
+                0x00000000000179f4                _Border_NE_Gd
+                0x00000000000182e0                _Info_C_Gd
+                0x0000000000017b94                _Border_InfoN_E_Cpm
+                0x0000000000017c20                _Border_InfoN_W_Gd
+                0x0000000000018118                _Items_Line_C_Gd
+                0x00000000000181b8                _InfoN_C_Gd
+                0x000000000001823c                _InfoN_W_Cpm
+                0x00000000000180dc                _Items_IconButton_Gd
+                0x0000000000017f2c                _Title_E_Cpm
+                0x0000000000017b38                _Border_Items_E_Gd
+                0x0000000000018060                _Title_W_Gd
+                0x0000000000017af8                _Border_Items_E_Cpm
+                0x0000000000017dfc                _Border_SE_Gd
+                0x0000000000017b84                _Border_Items_W_Gd
+                0x0000000000017c7c                _Border_Info_W_Cpm
+                0x0000000000018174                _Items_Line_E_Gd
+                0x0000000000017cc4                _Border_S_Cpm
+                0x0000000000017a04                _Border_NW_Cpm
+                0x00000000000178dc                _Border_N_Gd
+                0x00000000000178a0                _Border_N_Cpm
+                0x00000000000182b0                _InfoN_W_Gd
+                0x0000000000017bd0                _Border_InfoN_E_Gd
+                0x00000000000178ec                _Border_NE_Cpm
+                0x00000000000181c8                _InfoN_E_Cpm
+                0x0000000000017be0                _Border_InfoN_W_Cpm
+                0x00000000000182c0                _Info_C_Cpm
+                0x0000000000017ed4                _Border_SW_Gd
+                0x0000000000017d14                _Border_SE_Cpm
+                0x0000000000017d04                _Border_S_Gd
+                0x0000000000018324                _Info_W_Gd
+                0x0000000000017ae8                _Border_NW_Gd
+                0x0000000000017cb4                _Border_Info_W_Gd
+                0x00000000000180ec                _Items_Line_C_Cpm
+                0x0000000000017b48                _Border_Items_W_Cpm
+                0x0000000000017f1c                _Title_C_Gd
+                0x0000000000017c6c                _Border_Info_E_Gd
+                0x0000000000018070                _Items_IconButton_Cpm
+                0x0000000000017fd0                _Title_W_Cpm
+ .data          0x0000000000018334        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
+ .data          0x0000000000018338        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
+                0x0000000000018338                FBDialogProfile
+ .data          0x000000000001833c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
+                0x000000000001833c                ClusterSize
+ .data          0x0000000000018340        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
+                0x0000000000018340                TAP_Hdd_ReadSectorDMA
+ .data          0x0000000000018344        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
+                0x000000000001834c                BufferSize
+                0x0000000000018348                INICommentBuffer
+                0x0000000000018344                INIBuffer
+ .data          0x0000000000018350        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
+ .data          0x0000000000018354        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
+                0x0000000000018354                TAPDirStackDepth
+ .data          0x0000000000018358     0x1074 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+                0x0000000000018894                _MsgBox_C_Border_Cpm
+                0x0000000000018668                _MsgBox_W_Border_Gd
+                0x0000000000018f38                _MsgBox_E_Text_Gd
+                0x0000000000018a20                _MsgBox_C_Text_Cpm
+                0x0000000000018e6c                _MsgBox_E_Text_Cpm
+                0x0000000000018f48                _MsgBox_In_Cpm
+                0x0000000000018bc4                _MsgBox_E_Title_Gd
+                0x0000000000018b28                _MsgBox_C_Text_Gd
+                0x0000000000018770                _MsgBox_W_Text_Gd
+                0x0000000000018a10                _MsgBox_C_Border_Gd
+                0x00000000000193bc                _MsgBox_Out_Gd
+                0x0000000000018e5c                _MsgBox_E_Border_Gd
+                0x0000000000018bd4                _MsgBox_E_SubTitle_Cpm
+                0x0000000000018b38                _MsgBox_E_Title_Cpm
+                0x0000000000018884                _MsgBox_C_SubTitle_Gd
+                0x0000000000018808                _MsgBox_C_SubTitle_Cpm
+                0x00000000000187f8                _MsgBox_C_Title_Gd
+                0x0000000000018c68                _MsgBox_E_Border_Cpm
+                0x0000000000018478                _MsgBox_W_SubTitle_Gd
+                0x000000000001840c                _MsgBox_W_SubTitle_Cpm
+                0x0000000000018c58                _MsgBox_E_SubTitle_Gd
+                0x0000000000018678                _MsgBox_W_Text_Cpm
+                0x0000000000018358                _MsgBox_W_Title_Cpm
+                0x0000000000019154                _MsgBox_Out_Cpm
+                0x00000000000183fc                _MsgBox_W_Title_Gd
+                0x0000000000018780                _MsgBox_C_Title_Cpm
+                0x0000000000019144                _MsgBox_In_Gd
+                0x0000000000018488                _MsgBox_W_Border_Cpm
+ .data          0x00000000000193cc        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
+                0x00000000000193d0                LibInitialized
+                0x00000000000193cc                __fblib_version__
+ .data          0x00000000000193d4      0x154 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+                0x0000000000019414                FlashBlockOffsetT
+                0x00000000000193d4                FlashBlockOffsetS
+                0x0000000000019524                SystemType
+                0x0000000000019520                FlashOffset
+                0x00000000000194d4                FlashBlockOffsetSTMS
+                0x0000000000019494                FlashBlockOffsetT5700
+                0x0000000000019454                FlashBlockOffsetC
+ .data          0x0000000000019528        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
+ .data          0x0000000000019530        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
+ .data          0x0000000000019534        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
+ .data          0x0000000000019538        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
+ .data          0x000000000001953c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
+ .data          0x0000000000019540        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
+ .data          0x0000000000019544        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
+ .data          0x0000000000019548        0x4 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
+                0x0000000000019548                __ctype_ptr
+ .data          0x000000000001954c        0x4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
+                0x000000000001954c                _impure_ptr
  *(.data.*)
  *(.gnu.linkonce.d*)
 
@@ -1150,29 +1193,30 @@ Linker script and memory map
 .dtors
  *(SORT(.dtors.*))
  *(.dtors)
-                0x0000000000017d5c                _gp = .
-                0x0000000000017d5c                _GLOBAL_OFFSET_TABLE_ = .
+                0x0000000000019550                _gp = .
+                0x0000000000019550                _GLOBAL_OFFSET_TABLE_ = .
 
-.got            0x0000000000017d5c      0x878
+.got            0x0000000000019550      0x89c
  *(.ref_start)
- .ref_start     0x0000000000017d5c        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x0000000000017d5c                _tap_gotStart
+ .ref_start     0x0000000000019550        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000019550                _tap_gotStart
  *(*.got*)
- .got           0x0000000000017d60      0x868 FileSelectorDemo.o
+ *fill*         0x0000000000019554 0xe423480000000c 00
+ .got           0x0000000000019560      0x880 FileSelectorDemo.o
  *(*.xdata*)
  *(.ctors)
  *(.dtors)
  *(.fixup_start)
- .fixup_start   0x00000000000185c8        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x00000000000185c8                _tap_fixupStart
+ .fixup_start   0x0000000000019de0        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000019de0                _tap_fixupStart
  *(.fixup)
  *(.dynamic)
  *(.fixup_end)
- .fixup_end     0x00000000000185cc        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x00000000000185cc                _tap_fixupEnd
+ .fixup_end     0x0000000000019de4        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000019de4                _tap_fixupEnd
  *(.ref_end)
- .ref_end       0x00000000000185d0        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                0x00000000000185d0                _tap_gotEnd
+ .ref_end       0x0000000000019de8        0x4 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000019de8                _tap_gotEnd
 
 .rosdata
  *(.rosdata)
@@ -1181,296 +1225,296 @@ Linker script and memory map
  *(.sdata)
  *(.sdata.*)
  *(.gnu.linkonce.s.*)
-                0x00000000000185d4                _edata = .
-                0x00000000000185d4                PROVIDE (edata, .)
-                0x00000000000185d4                __bss_start = .
-                0x00000000000185d4                _fbss = .
+                0x0000000000019dec                _edata = .
+                0x0000000000019dec                PROVIDE (edata, .)
+                0x0000000000019dec                __bss_start = .
+                0x0000000000019dec                _fbss = .
 
-.sbss           0x00000000000185d4      0x38c
+.sbss           0x0000000000019dec      0x38c
  *(.dynsbss)
  *(.sbss)
  *(.sbss.*)
  *(.scommon)
- .scommon       0x00000000000185d4        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+ .scommon       0x0000000000019dec        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
                                           0x0 (size before relaxing)
-                0x00000000000185d4                FileSelectorRegion
-                0x00000000000185d8                FileSelectorWindow
-                0x00000000000185dc                FileSelectorFlags
- .scommon       0x00000000000185e0       0x44 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
+                0x0000000000019dec                FileSelectorRegion
+                0x0000000000019df0                FileSelectorWindow
+                0x0000000000019df4                FileSelectorFlags
+ .scommon       0x0000000000019df8       0x44 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
                                           0x0 (size before relaxing)
-                0x00000000000185e0                Scroll_End_Gd
-                0x00000000000185e4                InfoS_W_Gd
-                0x00000000000185e8                Items_NoLinesNoIcons_Line_C_Gd
-                0x00000000000185ec                Items_NoLinesNoIcons_IconButton_Gd
-                0x00000000000185f0                Items_NoIcons_IconButton_Gd
-                0x00000000000185f4                Icon_Checkbox_Checked_Gd
-                0x00000000000185f8                Items_NoLinesNoIcons_Line_E_Gd
-                0x00000000000185fc                Items_NoIcons_Line_E_Gd
-                0x0000000000018600                Scroll_Cursor_Gd
-                0x0000000000018604                InfoS_C_Gd
-                0x0000000000018608                Scroll_Back_Gd
-                0x000000000001860c                Icon_Wait_Gd
-                0x0000000000018610                Items_NoIcons_Line_C_Gd
-                0x0000000000018614                Icon_OK_Gd
-                0x0000000000018618                Icon_Checkbox_Unchecked_Gd
-                0x000000000001861c                InfoS_E_Gd
-                0x0000000000018620                Icon_Exclamation_Gd
- .scommon       0x0000000000018624       0x5c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
+                0x0000000000019df8                Scroll_End_Gd
+                0x0000000000019dfc                InfoS_W_Gd
+                0x0000000000019e00                Items_NoLinesNoIcons_Line_C_Gd
+                0x0000000000019e04                Items_NoLinesNoIcons_IconButton_Gd
+                0x0000000000019e08                Items_NoIcons_IconButton_Gd
+                0x0000000000019e0c                Icon_Checkbox_Checked_Gd
+                0x0000000000019e10                Items_NoLinesNoIcons_Line_E_Gd
+                0x0000000000019e14                Items_NoIcons_Line_E_Gd
+                0x0000000000019e18                Scroll_Cursor_Gd
+                0x0000000000019e1c                InfoS_C_Gd
+                0x0000000000019e20                Scroll_Back_Gd
+                0x0000000000019e24                Icon_Wait_Gd
+                0x0000000000019e28                Items_NoIcons_Line_C_Gd
+                0x0000000000019e2c                Icon_OK_Gd
+                0x0000000000019e30                Icon_Checkbox_Unchecked_Gd
+                0x0000000000019e34                InfoS_E_Gd
+                0x0000000000019e38                Icon_Exclamation_Gd
+ .scommon       0x0000000000019e3c       0x5c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
                                           0x0 (size before relaxing)
-                0x0000000000018624                Border_Info_E_Gd
-                0x0000000000018628                Title_E_Gd
-                0x000000000001862c                Border_InfoN_E_Gd
-                0x0000000000018630                Border_Items_E_Gd
-                0x0000000000018634                Title_W_Gd
-                0x0000000000018638                InfoN_E_Gd
-                0x000000000001863c                Border_Info_W_Gd
-                0x0000000000018640                Border_NE_Gd
-                0x0000000000018644                Info_W_Gd
-                0x0000000000018648                InfoN_W_Gd
-                0x000000000001864c                Info_C_Gd
-                0x0000000000018650                Border_N_Gd
-                0x0000000000018654                Items_Line_C_Gd
-                0x0000000000018658                Title_C_Gd
-                0x000000000001865c                Border_SW_Gd
-                0x0000000000018660                Border_S_Gd
-                0x0000000000018664                Border_InfoN_W_Gd
-                0x0000000000018668                InfoN_C_Gd
-                0x000000000001866c                Items_IconButton_Gd
-                0x0000000000018670                Border_NW_Gd
-                0x0000000000018674                Border_SE_Gd
-                0x0000000000018678                Border_Items_W_Gd
-                0x000000000001867c                Items_Line_E_Gd
- .scommon       0x0000000000018680        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
+                0x0000000000019e3c                Border_Info_E_Gd
+                0x0000000000019e40                Title_E_Gd
+                0x0000000000019e44                Border_InfoN_E_Gd
+                0x0000000000019e48                Border_Items_E_Gd
+                0x0000000000019e4c                Title_W_Gd
+                0x0000000000019e50                InfoN_E_Gd
+                0x0000000000019e54                Border_Info_W_Gd
+                0x0000000000019e58                Border_NE_Gd
+                0x0000000000019e5c                Info_W_Gd
+                0x0000000000019e60                InfoN_W_Gd
+                0x0000000000019e64                Info_C_Gd
+                0x0000000000019e68                Border_N_Gd
+                0x0000000000019e6c                Items_Line_C_Gd
+                0x0000000000019e70                Title_C_Gd
+                0x0000000000019e74                Border_SW_Gd
+                0x0000000000019e78                Border_S_Gd
+                0x0000000000019e7c                Border_InfoN_W_Gd
+                0x0000000000019e80                InfoN_C_Gd
+                0x0000000000019e84                Items_IconButton_Gd
+                0x0000000000019e88                Border_NW_Gd
+                0x0000000000019e8c                Border_SE_Gd
+                0x0000000000019e90                Border_Items_W_Gd
+                0x0000000000019e94                Items_Line_E_Gd
+ .scommon       0x0000000000019e98        0x8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
                                           0x0 (size before relaxing)
-                0x0000000000018680                PrevTopItem
-                0x0000000000018684                PrevSelItem
- .scommon       0x0000000000018688       0x38 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+                0x0000000000019e98                PrevTopItem
+                0x0000000000019e9c                PrevSelItem
+ .scommon       0x0000000000019ea0       0x38 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
                                           0x0 (size before relaxing)
-                0x0000000000018688                MsgBox_E_Title_Gd
-                0x000000000001868c                MsgBox_C_Border_Gd
-                0x0000000000018690                MsgBox_E_Text_Gd
-                0x0000000000018694                MsgBox_Out_Gd
-                0x0000000000018698                MsgBox_C_Title_Gd
-                0x000000000001869c                MsgBox_In_Gd
-                0x00000000000186a0                MsgBox_E_Border_Gd
-                0x00000000000186a4                MsgBox_W_SubTitle_Gd
-                0x00000000000186a8                MsgBox_E_SubTitle_Gd
-                0x00000000000186ac                MsgBox_W_Title_Gd
-                0x00000000000186b0                MsgBox_C_Text_Gd
-                0x00000000000186b4                MsgBox_W_Border_Gd
-                0x00000000000186b8                MsgBox_C_SubTitle_Gd
-                0x00000000000186bc                MsgBox_W_Text_Gd
- .scommon       0x00000000000186c0       0x64 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
+                0x0000000000019ea0                MsgBox_E_Title_Gd
+                0x0000000000019ea4                MsgBox_C_Border_Gd
+                0x0000000000019ea8                MsgBox_E_Text_Gd
+                0x0000000000019eac                MsgBox_Out_Gd
+                0x0000000000019eb0                MsgBox_C_Title_Gd
+                0x0000000000019eb4                MsgBox_In_Gd
+                0x0000000000019eb8                MsgBox_E_Border_Gd
+                0x0000000000019ebc                MsgBox_W_SubTitle_Gd
+                0x0000000000019ec0                MsgBox_E_SubTitle_Gd
+                0x0000000000019ec4                MsgBox_W_Title_Gd
+                0x0000000000019ec8                MsgBox_C_Text_Gd
+                0x0000000000019ecc                MsgBox_W_Border_Gd
+                0x0000000000019ed0                MsgBox_C_SubTitle_Gd
+                0x0000000000019ed4                MsgBox_W_Text_Gd
+ .scommon       0x0000000000019ed8       0x64 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
                                           0x0 (size before relaxing)
-                0x00000000000186c0                FlashMemory_Settings
-                0x00000000000186c4                pScalerSettingsUnk1
-                0x00000000000186c8                FlashMemory_Defaults
-                0x00000000000186cc                TAPgp
-                0x00000000000186d0                FWgp
-                0x00000000000186d4                TAP_IndexAddress
-                0x00000000000186d8                BIOSAddress
-                0x00000000000186dc                pWD3
-                0x00000000000186e0                pWD4
-                0x00000000000186e4                pFWWDBackup
-                0x00000000000186e8                ApplID
-                0x00000000000186ec                TAP_TableAddress
-                0x00000000000186f0                EnqueueEventAddress
-                0x00000000000186f4                pScalerSettingsPIP
-                0x00000000000186f8                pWD2
-                0x00000000000186fc                FlashMemory_Base
-                0x0000000000018700                pScalerSettingsMain
-                0x0000000000018704                pFWWD
-                0x0000000000018708                pWD1
-                0x000000000001870c                Hardware_bff00000
-                0x0000000000018710                TAP_TableIndex
-                0x0000000000018714                FlashMemory_Firmware
-                0x0000000000018718                pWD5
-                0x000000000001871c                pScalerSettingsUnk2
-                0x0000000000018720                SysID
- .scommon       0x0000000000018724      0x23c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                0x0000000000019ed8                FlashMemory_Settings
+                0x0000000000019edc                pScalerSettingsUnk1
+                0x0000000000019ee0                FlashMemory_Defaults
+                0x0000000000019ee4                TAPgp
+                0x0000000000019ee8                FWgp
+                0x0000000000019eec                TAP_IndexAddress
+                0x0000000000019ef0                BIOSAddress
+                0x0000000000019ef4                pWD3
+                0x0000000000019ef8                pWD4
+                0x0000000000019efc                pFWWDBackup
+                0x0000000000019f00                ApplID
+                0x0000000000019f04                TAP_TableAddress
+                0x0000000000019f08                EnqueueEventAddress
+                0x0000000000019f0c                pScalerSettingsPIP
+                0x0000000000019f10                pWD2
+                0x0000000000019f14                FlashMemory_Base
+                0x0000000000019f18                pScalerSettingsMain
+                0x0000000000019f1c                pFWWD
+                0x0000000000019f20                pWD1
+                0x0000000000019f24                Hardware_bff00000
+                0x0000000000019f28                TAP_TableIndex
+                0x0000000000019f2c                FlashMemory_Firmware
+                0x0000000000019f30                pWD5
+                0x0000000000019f34                pScalerSettingsUnk2
+                0x0000000000019f38                SysID
+ .scommon       0x0000000000019f3c      0x23c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                           0x0 (size before relaxing)
-                0x0000000000018724                TAP_ControlEit
-                0x0000000000018728                TAP_Usb_Write
-                0x000000000001872c                TAP_Timer_Modify
-                0x0000000000018730                TAP_Hdd_StopRecord
-                0x0000000000018734                TAP_GetState
-                0x0000000000018738                TAP_Win_SetAvtice
-                0x000000000001873c                TAP_Channel_Start
-                0x0000000000018740                TAP_Osd_SaveBox
-                0x0000000000018744                TAP_Vfd_GetStatus
-                0x0000000000018748                TAP_WriteSystemVar
-                0x000000000001874c                TAP_Osd_DrawString
-                0x0000000000018750                TAP_Osd_PutGd__
-                0x0000000000018754                TAP_Osd_Draw3dBoxFill
-                0x0000000000018758                TAP_Hdd_SetBookmark
-                0x000000000001875c                TAP_Channel_SetSubtitleTrack
-                0x0000000000018760                TAP_Win_AddItem
-                0x0000000000018764                TAP_Hdd_Rename
-                0x0000000000018768                TAP_Timer_GetTotalNum
-                0x000000000001876c                TAP_Osd_Zoom
-                0x0000000000018770                TAP_Vfd_Control
-                0x0000000000018774                TAP_Win_Action
-                0x0000000000018778                TAP_Usb_Cancel
-                0x000000000001877c                TAP_GetSystemProc
-                0x0000000000018780                TAP_GetSystemVar
-                0x0000000000018784                TAP_Hdd_Flen
-                0x0000000000018788                TAP_MakeMjd
-                0x000000000001878c                TAP_GetCurrentEvent
-                0x0000000000018790                TAP_SetBaudRate
-                0x0000000000018794                TAP_Win_SetColor
-                0x0000000000018798                TAP_Channel_GetAudioTrackName
-                0x000000000001879c                TAP_Channel_GetInfo
-                0x00000000000187a0                TAP_Win_Create
-                0x00000000000187a4                TAP_Channel_Move
-                0x00000000000187a8                TAP_Osd_GetBaseInfo
-                0x00000000000187ac                TAP_Exit
-                0x00000000000187b0                TAP_Channel_GetCurrent
-                0x00000000000187b4                TAP_Usb_PacketRead
-                0x00000000000187b8                TAP_Hdd_GetHddID
-                0x00000000000187bc                TAP_SetInfoboxTime
-                0x00000000000187c0                TAP_GenerateEvent
-                0x00000000000187c4                TAP_Delay
-                0x00000000000187c8                TAP_Win_GetSelection
-                0x00000000000187cc                TAP_Hdd_PlayTs
-                0x00000000000187d0                TAP_Vfd_SendData
-                0x00000000000187d4                TAP_Channel_Scale
-                0x00000000000187d8                TAP_Print
-                0x00000000000187dc                TAP_Hdd_Fseek
-                0x00000000000187e0                TAP_Hdd_FreeSize
-                0x00000000000187e4                TAP_Osd_GetPixel
-                0x00000000000187e8                TAP_Hdd_FindNext
-                0x00000000000187ec                TAP_Win_SetDefaultColor
-                0x00000000000187f0                TAP_ExitNormal
-                0x00000000000187f4                TAP_PutByte
-                0x00000000000187f8                TAP_Hdd_ChangeDir
-                0x00000000000187fc                TAP_Osd_SetLut
-                0x0000000000018800                TAP_Win_SetTitle
-                0x0000000000018804                TAP_SetSoundLevel
-                0x0000000000018808                TAP_SetSystemVar
-                0x000000000001880c                TAP_EnterNormal
-                0x0000000000018810                TAP_Win_SetDrawItemFunc
-                0x0000000000018814                TAP_Channel_Stop
-                0x0000000000018818                TAP_PutEvent
-                0x000000000001881c                TAP_Usb_PacketWrite
-                0x0000000000018820                TAP_Usb_Read
-                0x0000000000018824                TAP_Hdd_TotalSize
-                0x0000000000018828                TAP_Hdd_Fwrite
-                0x000000000001882c                TAP_Channel_SetAudioTrack
-                0x0000000000018830                TAP_Osd_GetW
-                0x0000000000018834                TAP_PrintSys
-                0x0000000000018838                TAP_EPG_GetExtInfo
-                0x000000000001883c                TAP_SetBk
-                0x0000000000018840                TAP_Channel_GetTotalAudioTrack
-                0x0000000000018844                TAP_Win_SetSelection
-                0x0000000000018848                TAP_Hdd_ChangePlaybackPos
-                0x000000000001884c                TAP_EPG_UpdateEvent
-                0x0000000000018850                TAP_Osd_PutBox
-                0x0000000000018854                TAP_Osd_Create
-                0x0000000000018858                TAP_Hdd_Fclose
-                0x000000000001885c                TAP_Win_Delete
-                0x0000000000018860                TAP_Hdd_Create
-                0x0000000000018864                TAP_Osd_Move
-                0x0000000000018868                TAP_Hdd_FindFirst
-                0x000000000001886c                TAP_Cos
-                0x0000000000018870                TAP_GetSignalQuality
-                0x0000000000018874                TAP_Win_Draw
-                0x0000000000018878                TAP_EPG_DeleteEvent
-                0x000000000001887c                TAP_GetTime
-                0x0000000000018880                TAP_CaptureScreen
-                0x0000000000018884                TAP_Hdd_Exist
-                0x0000000000018888                TAP_Hdd_Delete
-                0x000000000001888c                TAP_Win_SetFont
-                0x0000000000018890                TAP_Channel_IsStarted
-                0x0000000000018894                TAP_MemFree
-                0x0000000000018898                TAP_GetCh
-                0x000000000001889c                TAP_PlayPCM
-                0x00000000000188a0                TAP_Hdd_Ftell
-                0x00000000000188a4                TAP_Channel_GetSubtitleTrackName
-                0x00000000000188a8                TAP_Timer_GetInfo
-                0x00000000000188ac                TAP_Timer_Delete
-                0x00000000000188b0                TAP_Osd_SetTransparency
-                0x00000000000188b4                TAP_Hdd_StartRecord
-                0x00000000000188b8                _tap_startAddr
-                0x00000000000188bc                TAP_KbHit
-                0x00000000000188c0                TAP_Osd_PutS
-                0x00000000000188c4                TAP_Channel_IsPlayable
-                0x00000000000188c8                TAP_Channel_GetFirstInfo
-                0x00000000000188cc                TAP_MemInfo
-                0x00000000000188d0                TAP_Channel_GetNextInfo
-                0x00000000000188d4                TAP_SPrint
-                0x00000000000188d8                TAP_Osd_RestoreBox
-                0x00000000000188dc                TAP_Osd_Ctrl
-                0x00000000000188e0                TAP_GetSignalLevel
-                0x00000000000188e4                TAP_Osd_DrawPixmap
-                0x00000000000188e8                TAP_SystemProc
-                0x00000000000188ec                _appl_version
-                0x00000000000188f0                TAP_PutCh
-                0x00000000000188f4                TAP_Hdd_GetRecInfo
-                0x00000000000188f8                TAP_Hdd_Fread
-                0x00000000000188fc                TAP_Osd_Delete
-                0x0000000000018900                TAP_Hdd_Fopen
-                0x0000000000018904                TAP_Timer_Add
-                0x0000000000018908                TAP_Osd_FillBox
-                0x000000000001890c                TAP_Channel_GetTotalNum
-                0x0000000000018910                TAP_GetEvent
-                0x0000000000018914                TAP_Hdd_GotoBookmark
-                0x0000000000018918                TAP_Hdd_StopMp3
-                0x000000000001891c                TAP_Channel_GetCurrentSubTV
-                0x0000000000018920                TAP_Osd_DrawRectangle
-                0x0000000000018924                TAP_ExtractMjd
-                0x0000000000018928                TAP_Osd_PutStringAf
-                0x000000000001892c                TAP_Osd_Draw3dBox
-                0x0000000000018930                TAP_SysOsdControl
-                0x0000000000018934                TAP_MemAlloc
-                0x0000000000018938                TAP_Osd_PutPixel
-                0x000000000001893c                TAP_Channel_GetTotalSubtitleTrack
-                0x0000000000018940                TAP_Hdd_PlayMp3
-                0x0000000000018944                TAP_Hdd_StopTs
-                0x0000000000018948                TAP_Osd_GetBox
-                0x000000000001894c                TAP_Sin
-                0x0000000000018950                TAP_Osd_PutString
-                0x0000000000018954                TAP_Osd_Copy
-                0x0000000000018958                TAP_Hdd_GetPlayInfo
-                0x000000000001895c                TAP_GetTick
+                0x0000000000019f3c                TAP_ControlEit
+                0x0000000000019f40                TAP_Usb_Write
+                0x0000000000019f44                TAP_Timer_Modify
+                0x0000000000019f48                TAP_Hdd_StopRecord
+                0x0000000000019f4c                TAP_GetState
+                0x0000000000019f50                TAP_Win_SetAvtice
+                0x0000000000019f54                TAP_Channel_Start
+                0x0000000000019f58                TAP_Osd_SaveBox
+                0x0000000000019f5c                TAP_Vfd_GetStatus
+                0x0000000000019f60                TAP_WriteSystemVar
+                0x0000000000019f64                TAP_Osd_DrawString
+                0x0000000000019f68                TAP_Osd_PutGd__
+                0x0000000000019f6c                TAP_Osd_Draw3dBoxFill
+                0x0000000000019f70                TAP_Hdd_SetBookmark
+                0x0000000000019f74                TAP_Channel_SetSubtitleTrack
+                0x0000000000019f78                TAP_Win_AddItem
+                0x0000000000019f7c                TAP_Hdd_Rename
+                0x0000000000019f80                TAP_Timer_GetTotalNum
+                0x0000000000019f84                TAP_Osd_Zoom
+                0x0000000000019f88                TAP_Vfd_Control
+                0x0000000000019f8c                TAP_Win_Action
+                0x0000000000019f90                TAP_Usb_Cancel
+                0x0000000000019f94                TAP_GetSystemProc
+                0x0000000000019f98                TAP_GetSystemVar
+                0x0000000000019f9c                TAP_Hdd_Flen
+                0x0000000000019fa0                TAP_MakeMjd
+                0x0000000000019fa4                TAP_GetCurrentEvent
+                0x0000000000019fa8                TAP_SetBaudRate
+                0x0000000000019fac                TAP_Win_SetColor
+                0x0000000000019fb0                TAP_Channel_GetAudioTrackName
+                0x0000000000019fb4                TAP_Channel_GetInfo
+                0x0000000000019fb8                TAP_Win_Create
+                0x0000000000019fbc                TAP_Channel_Move
+                0x0000000000019fc0                TAP_Osd_GetBaseInfo
+                0x0000000000019fc4                TAP_Exit
+                0x0000000000019fc8                TAP_Channel_GetCurrent
+                0x0000000000019fcc                TAP_Usb_PacketRead
+                0x0000000000019fd0                TAP_Hdd_GetHddID
+                0x0000000000019fd4                TAP_SetInfoboxTime
+                0x0000000000019fd8                TAP_GenerateEvent
+                0x0000000000019fdc                TAP_Delay
+                0x0000000000019fe0                TAP_Win_GetSelection
+                0x0000000000019fe4                TAP_Hdd_PlayTs
+                0x0000000000019fe8                TAP_Vfd_SendData
+                0x0000000000019fec                TAP_Channel_Scale
+                0x0000000000019ff0                TAP_Print
+                0x0000000000019ff4                TAP_Hdd_Fseek
+                0x0000000000019ff8                TAP_Hdd_FreeSize
+                0x0000000000019ffc                TAP_Osd_GetPixel
+                0x000000000001a000                TAP_Hdd_FindNext
+                0x000000000001a004                TAP_Win_SetDefaultColor
+                0x000000000001a008                TAP_ExitNormal
+                0x000000000001a00c                TAP_PutByte
+                0x000000000001a010                TAP_Hdd_ChangeDir
+                0x000000000001a014                TAP_Osd_SetLut
+                0x000000000001a018                TAP_Win_SetTitle
+                0x000000000001a01c                TAP_SetSoundLevel
+                0x000000000001a020                TAP_SetSystemVar
+                0x000000000001a024                TAP_EnterNormal
+                0x000000000001a028                TAP_Win_SetDrawItemFunc
+                0x000000000001a02c                TAP_Channel_Stop
+                0x000000000001a030                TAP_PutEvent
+                0x000000000001a034                TAP_Usb_PacketWrite
+                0x000000000001a038                TAP_Usb_Read
+                0x000000000001a03c                TAP_Hdd_TotalSize
+                0x000000000001a040                TAP_Hdd_Fwrite
+                0x000000000001a044                TAP_Channel_SetAudioTrack
+                0x000000000001a048                TAP_Osd_GetW
+                0x000000000001a04c                TAP_PrintSys
+                0x000000000001a050                TAP_EPG_GetExtInfo
+                0x000000000001a054                TAP_SetBk
+                0x000000000001a058                TAP_Channel_GetTotalAudioTrack
+                0x000000000001a05c                TAP_Win_SetSelection
+                0x000000000001a060                TAP_Hdd_ChangePlaybackPos
+                0x000000000001a064                TAP_EPG_UpdateEvent
+                0x000000000001a068                TAP_Osd_PutBox
+                0x000000000001a06c                TAP_Osd_Create
+                0x000000000001a070                TAP_Hdd_Fclose
+                0x000000000001a074                TAP_Win_Delete
+                0x000000000001a078                TAP_Hdd_Create
+                0x000000000001a07c                TAP_Osd_Move
+                0x000000000001a080                TAP_Hdd_FindFirst
+                0x000000000001a084                TAP_Cos
+                0x000000000001a088                TAP_GetSignalQuality
+                0x000000000001a08c                TAP_Win_Draw
+                0x000000000001a090                TAP_EPG_DeleteEvent
+                0x000000000001a094                TAP_GetTime
+                0x000000000001a098                TAP_CaptureScreen
+                0x000000000001a09c                TAP_Hdd_Exist
+                0x000000000001a0a0                TAP_Hdd_Delete
+                0x000000000001a0a4                TAP_Win_SetFont
+                0x000000000001a0a8                TAP_Channel_IsStarted
+                0x000000000001a0ac                TAP_MemFree
+                0x000000000001a0b0                TAP_GetCh
+                0x000000000001a0b4                TAP_PlayPCM
+                0x000000000001a0b8                TAP_Hdd_Ftell
+                0x000000000001a0bc                TAP_Channel_GetSubtitleTrackName
+                0x000000000001a0c0                TAP_Timer_GetInfo
+                0x000000000001a0c4                TAP_Timer_Delete
+                0x000000000001a0c8                TAP_Osd_SetTransparency
+                0x000000000001a0cc                TAP_Hdd_StartRecord
+                0x000000000001a0d0                _tap_startAddr
+                0x000000000001a0d4                TAP_KbHit
+                0x000000000001a0d8                TAP_Osd_PutS
+                0x000000000001a0dc                TAP_Channel_IsPlayable
+                0x000000000001a0e0                TAP_Channel_GetFirstInfo
+                0x000000000001a0e4                TAP_MemInfo
+                0x000000000001a0e8                TAP_Channel_GetNextInfo
+                0x000000000001a0ec                TAP_SPrint
+                0x000000000001a0f0                TAP_Osd_RestoreBox
+                0x000000000001a0f4                TAP_Osd_Ctrl
+                0x000000000001a0f8                TAP_GetSignalLevel
+                0x000000000001a0fc                TAP_Osd_DrawPixmap
+                0x000000000001a100                TAP_SystemProc
+                0x000000000001a104                _appl_version
+                0x000000000001a108                TAP_PutCh
+                0x000000000001a10c                TAP_Hdd_GetRecInfo
+                0x000000000001a110                TAP_Hdd_Fread
+                0x000000000001a114                TAP_Osd_Delete
+                0x000000000001a118                TAP_Hdd_Fopen
+                0x000000000001a11c                TAP_Timer_Add
+                0x000000000001a120                TAP_Osd_FillBox
+                0x000000000001a124                TAP_Channel_GetTotalNum
+                0x000000000001a128                TAP_GetEvent
+                0x000000000001a12c                TAP_Hdd_GotoBookmark
+                0x000000000001a130                TAP_Hdd_StopMp3
+                0x000000000001a134                TAP_Channel_GetCurrentSubTV
+                0x000000000001a138                TAP_Osd_DrawRectangle
+                0x000000000001a13c                TAP_ExtractMjd
+                0x000000000001a140                TAP_Osd_PutStringAf
+                0x000000000001a144                TAP_Osd_Draw3dBox
+                0x000000000001a148                TAP_SysOsdControl
+                0x000000000001a14c                TAP_MemAlloc
+                0x000000000001a150                TAP_Osd_PutPixel
+                0x000000000001a154                TAP_Channel_GetTotalSubtitleTrack
+                0x000000000001a158                TAP_Hdd_PlayMp3
+                0x000000000001a15c                TAP_Hdd_StopTs
+                0x000000000001a160                TAP_Osd_GetBox
+                0x000000000001a164                TAP_Sin
+                0x000000000001a168                TAP_Osd_PutString
+                0x000000000001a16c                TAP_Osd_Copy
+                0x000000000001a170                TAP_Hdd_GetPlayInfo
+                0x000000000001a174                TAP_GetTick
 
-.bss            0x0000000000018960      0xda0
+.bss            0x000000000001a180      0xda0
  *(.dynbss)
  *(.bss)
- .bss           0x0000000000018960       0x64 FileSelectorDemo.o
- *fill*         0x00000000000189c4 0x41519c00000004 00
- .bss           0x00000000000189c8      0x2b4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
- *fill*         0x0000000000018c7c 0x41519c00000004 00
- .bss           0x0000000000018c80        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
+ .bss           0x000000000001a180       0x64 FileSelectorDemo.o
+ *fill*         0x000000000001a1e4 0x41519c00000004 00
+ .bss           0x000000000001a1e8      0x2b4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
+ *fill*         0x000000000001a49c 0x41519c00000004 00
+ .bss           0x000000000001a4a0        0xc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
  *(.bss.*)
  *(COMMON)
- *fill*         0x0000000000018c8c 0x108233800000004 00
- COMMON         0x0000000000018c90      0x3e0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+ *fill*         0x000000000001a4ac 0xe4234800000004 00
+ COMMON         0x000000000001a4b0      0x3e0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
                                           0x0 (size before relaxing)
-                0x0000000000018c90                DialogProfile
-                0x0000000000018d20                DialogWindow
-                0x0000000000019020                FileSelectorFilter
- COMMON         0x0000000000019070      0x200 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
+                0x000000000001a4b0                DialogProfile
+                0x000000000001a540                DialogWindow
+                0x000000000001a840                FileSelectorFilter
+ COMMON         0x000000000001a890      0x200 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
                                           0x0 (size before relaxing)
-                0x0000000000019070                HDDIOBuffer
- COMMON         0x0000000000019270       0x40 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
+                0x000000000001a890                HDDIOBuffer
+ COMMON         0x000000000001aa90       0x40 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
                                           0x0 (size before relaxing)
-                0x0000000000019270                TAPDirStack
- COMMON         0x00000000000192b0       0x4c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+                0x000000000001aa90                TAPDirStack
+ COMMON         0x000000000001aad0       0x4c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
                                           0x0 (size before relaxing)
-                0x00000000000192b0                FlashBlockOffset
- *fill*         0x00000000000192fc 0x41519c00000004 00
- COMMON         0x0000000000019300      0x400 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
+                0x000000000001aad0                FlashBlockOffset
+ *fill*         0x000000000001ab1c 0x41519c00000004 00
+ COMMON         0x000000000001ab20      0x400 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
                                           0x0 (size before relaxing)
-                0x0000000000019300                impure_data
-                0x0000000000019700                . = ALIGN (0x4)
+                0x000000000001ab20                impure_data
+                0x000000000001af20                . = ALIGN (0x4)
 
 .stab
  *(.stab)
 
 .debug
  *(.debug)
-                0x0000000000019700                _end = .
-                0x0000000000019700                PROVIDE (end, .)
+                0x000000000001af20                _end = .
+                0x000000000001af20                PROVIDE (end, .)
 LOAD FileSelectorDemo.o
 LOAD C:/sw/prgm/Topfield/API/TF5000//libFireBird.a
 LOAD C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a
@@ -1482,135 +1526,141 @@ OUTPUT(FileSelectorDemo.elf elf32-bigmips)
 .reginfo        0x0000000000000000       0x18
  .reginfo       0x0000000000000000       0x18 FileSelectorDemo.o
 
-.mdebug         0x0000000000000000     0xcc68
+.mdebug         0x0000000000000000     0xd32c
  .mdebug        0x0000000000000000      0x400 FileSelectorDemo.o
  .mdebug        0x0000000000000400      0x210 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWin.o)
- .mdebug        0x0000000000000610      0x2fc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
- .mdebug        0x000000000000090c      0x270 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
- .mdebug        0x0000000000000b7c      0xa04 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
- .mdebug        0x0000000000001580      0x2a4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
- .mdebug        0x0000000000001824      0x228 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
- .mdebug        0x0000000000001a4c      0x1c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isLegalChar.o)
- .mdebug        0x0000000000001c14      0xd6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
- .mdebug        0x0000000000002980      0x220 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(EndMessageWin.o)
- .mdebug        0x0000000000002ba0      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionHeight.o)
- .mdebug        0x0000000000002db4      0x210 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
- .mdebug        0x0000000000002fc4      0x288 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
- .mdebug        0x000000000000324c      0x344 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
- .mdebug        0x0000000000003590      0x2f4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
- .mdebug        0x0000000000003884      0x28c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
- .mdebug        0x0000000000003b10      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxTitleSet.o)
- .mdebug        0x0000000000003d68      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileCheck.o)
- .mdebug        0x0000000000003fc0      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
- .mdebug        0x000000000000425c      0x27c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowCursorSet.o)
- .mdebug        0x00000000000044d8      0x298 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowExit.o)
- .mdebug        0x0000000000004770      0x37c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
- .mdebug        0x0000000000004aec      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInfoDeleteAll.o)
- .mdebug        0x0000000000004d34      0xabc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
- .mdebug        0x00000000000057f0      0x2f0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemAdd.o)
- .mdebug        0x0000000000005ae0      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeFlags.o)
- .mdebug        0x0000000000005d10      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeIcon.o)
- .mdebug        0x0000000000005f40      0x254 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeParameter.o)
- .mdebug        0x0000000000006194      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeValue.o)
- .mdebug        0x00000000000063dc      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemDeleteAll.o)
- .mdebug        0x0000000000006620      0xa6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
- .mdebug        0x000000000000708c      0x2dc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o)
- .mdebug        0x0000000000007368      0x2a0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDown.o)
- .mdebug        0x0000000000007608      0x2cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDownPage.o)
- .mdebug        0x00000000000078d4      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUp.o)
- .mdebug        0x0000000000007b70      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUpPage.o)
- .mdebug        0x0000000000007e38      0x358 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
- .mdebug        0x0000000000008190      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTabulatorSet.o)
- .mdebug        0x00000000000083e8      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTitleChange.o)
- .mdebug        0x0000000000008624      0x224 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTypeChange.o)
- .mdebug        0x0000000000008848      0x2fc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
- .mdebug        0x0000000000008b44      0x39c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
- .mdebug        0x0000000000008ee0      0x2bc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
- .mdebug        0x000000000000919c      0x33c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
- .mdebug        0x00000000000094d8      0x450 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
- .mdebug        0x0000000000009928      0x3ec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
- .mdebug        0x0000000000009d14      0x2d0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
- .mdebug        0x0000000000009fe4      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
- .mdebug        0x000000000000a264      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDLinesForeDirty.o)
- .mdebug        0x000000000000a478      0x2dc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
- .mdebug        0x000000000000a754      0x2e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
- .mdebug        0x000000000000aa38      0x234 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
- .mdebug        0x000000000000ac6c      0x298 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
- .mdebug        0x000000000000af04      0x270 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
- .mdebug        0x000000000000b174      0x200 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
- .mdebug        0x000000000000b374      0x260 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
- .mdebug        0x000000000000b5d4      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
- .mdebug        0x000000000000b82c      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
- .mdebug        0x000000000000ba70      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INICloseFile.o)
- .mdebug        0x000000000000bcc8      0x2a8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
- .mdebug        0x000000000000bf70      0x274 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
- .mdebug        0x000000000000c1e4      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
- .mdebug        0x000000000000c464      0x360 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
- .mdebug        0x000000000000c7c4      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
- .mdebug        0x000000000000ca00      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FindInstructionSequence_TF5000.o)
- .mdebug        0x000000000000cc3c      0x20c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ParseLine.o)
- .mdebug        0x000000000000ce48      0x294 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetCurrentDirCluster_TF5000.o)
- .mdebug        0x000000000000d0dc      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetInfo_TF5000.o)
- .mdebug        0x000000000000d35c      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PopDir.o)
- .mdebug        0x000000000000d5b4      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
- .mdebug        0x000000000000d80c      0x2d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_SetCurrentDirCluster_TF5000.o)
- .mdebug        0x000000000000dae4      0x204 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
- .mdebug        0x000000000000dce8      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
- .mdebug        0x000000000000df20      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
- .mdebug        0x000000000000e15c      0x2e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
- .mdebug        0x000000000000e440      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
- .mdebug        0x000000000000e67c      0x42c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
- .mdebug        0x000000000000eaa8      0x388 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
- .mdebug        0x000000000000ee30      0x420 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
- .mdebug        0x000000000000f250      0x438 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
- .mdebug        0x000000000000f688      0x344 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
- .mdebug        0x000000000000f9cc      0x308 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
- .mdebug        0x000000000000fcd4      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
- .mdebug        0x000000000000ff0c      0x260 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcTopIndex.o)
- .mdebug        0x000000000001016c      0x20c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CheckSelectable.o)
- .mdebug        0x0000000000010378      0x934 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
- .mdebug        0x0000000000010cac      0x210 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoad.o)
- .mdebug        0x0000000000010ebc      0x370 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
- .mdebug        0x000000000001122c      0x274 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowAlpha.o)
- .mdebug        0x00000000000114a0      0x46c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
- .mdebug        0x000000000001190c      0x208 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileDirty.o)
- .mdebug        0x0000000000011b14      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIFindStartEnd.o)
- .mdebug        0x0000000000011d4c      0x344 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
- .mdebug        0x0000000000012090      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
- .mdebug        0x00000000000122d0      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
- .mdebug        0x00000000000124e4      0x2e8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
- .mdebug        0x00000000000127cc      0x5e0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
- .mdebug        0x0000000000012dac      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
- .mdebug        0x0000000000012fec      0x36c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
- .mdebug        0x0000000000013358      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
- .mdebug        0x0000000000013588      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TruncateFile_TF5000.o)
- .mdebug        0x00000000000137c0      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
- .mdebug        0x0000000000013a04      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
- .mdebug        0x0000000000013c44      0x268 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
- .mdebug        0x0000000000013eac      0x250 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
- .mdebug        0x00000000000140fc      0x250 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
- .mdebug        0x000000000001434c      0x24c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
- .mdebug        0x0000000000014598      0x330 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
- .mdebug        0x00000000000148c8      0x1e8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_SetFileDateTime_TF5000.o)
- .mdebug        0x0000000000014ab0      0x1ac C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
- .mdebug        0x0000000000014c5c      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memcpy.o)
- .mdebug        0x0000000000014e18      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memmove.o)
- .mdebug        0x0000000000014fd4      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memset.o)
- .mdebug        0x0000000000015190      0x1f8 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcasecmp.o)
- .mdebug        0x0000000000015388      0x1ec C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcat.o)
- .mdebug        0x0000000000015574      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strchr.o)
- .mdebug        0x0000000000015730      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcmp.o)
- .mdebug        0x00000000000158ec      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcpy.o)
- .mdebug        0x0000000000015aa8      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strlen.o)
- .mdebug        0x0000000000015c64      0x1fc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncasecmp.o)
- .mdebug        0x0000000000015e60      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncmp.o)
- .mdebug        0x000000000001601c      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncpy.o)
- .mdebug        0x00000000000161d8      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strpbrk.o)
- .mdebug        0x0000000000016394      0x1ec C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strrchr.o)
- .mdebug        0x0000000000016580      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strstr.o)
- .mdebug        0x000000000001673c      0x284 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strtoul.o)
- .mdebug        0x00000000000169c0     0x176c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
- .mdebug        0x000000000001812c      0x188 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
+ .mdebug        0x0000000000000610      0x304 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
+ .mdebug        0x0000000000000914      0x270 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
+ .mdebug        0x0000000000000b84      0x234 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+ .mdebug        0x0000000000000db8      0x254 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+ .mdebug        0x000000000000100c      0xa08 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+ .mdebug        0x0000000000001a14      0x2a4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
+ .mdebug        0x0000000000001cb8      0x228 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
+ .mdebug        0x0000000000001ee0      0x1c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isLegalChar.o)
+ .mdebug        0x00000000000020a8      0xd6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(tapapifix_TF5000.o)
+ .mdebug        0x0000000000002e14      0x220 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(EndMessageWin.o)
+ .mdebug        0x0000000000003034      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionHeight.o)
+ .mdebug        0x0000000000003248      0x210 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
+ .mdebug        0x0000000000003458      0x288 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
+ .mdebug        0x00000000000036e0      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
+ .mdebug        0x0000000000003918      0x344 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
+ .mdebug        0x0000000000003c5c      0x2f8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
+ .mdebug        0x0000000000003f54      0x28c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
+ .mdebug        0x00000000000041e0      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxTitleSet.o)
+ .mdebug        0x0000000000004438      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileCheck.o)
+ .mdebug        0x0000000000004690      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoadMy.o)
+ .mdebug        0x000000000000492c      0x27c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowCursorSet.o)
+ .mdebug        0x0000000000004ba8      0x298 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowExit.o)
+ .mdebug        0x0000000000004e40      0x384 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
+ .mdebug        0x00000000000051c4      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInfoDeleteAll.o)
+ .mdebug        0x000000000000540c      0xabc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowInit.o)
+ .mdebug        0x0000000000005ec8      0x2f0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemAdd.o)
+ .mdebug        0x00000000000061b8      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeFlags.o)
+ .mdebug        0x00000000000063e8      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeIcon.o)
+ .mdebug        0x0000000000006618      0x254 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeParameter.o)
+ .mdebug        0x000000000000686c      0x248 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemChangeValue.o)
+ .mdebug        0x0000000000006ab4      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowItemDeleteAll.o)
+ .mdebug        0x0000000000006cf8      0xa6c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowReInit.o)
+ .mdebug        0x0000000000007764      0x2dc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o)
+ .mdebug        0x0000000000007a40      0x2a0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDown.o)
+ .mdebug        0x0000000000007ce0      0x2cc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollDownPage.o)
+ .mdebug        0x0000000000007fac      0x29c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUp.o)
+ .mdebug        0x0000000000008248      0x2c8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowScrollUpPage.o)
+ .mdebug        0x0000000000008510      0x360 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
+ .mdebug        0x0000000000008870      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTabulatorSet.o)
+ .mdebug        0x0000000000008ac8      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTitleChange.o)
+ .mdebug        0x0000000000008d04      0x224 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowTypeChange.o)
+ .mdebug        0x0000000000008f28      0x2fc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxButtons.o)
+ .mdebug        0x0000000000009224      0x39c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
+ .mdebug        0x00000000000095c0      0x2bc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
+ .mdebug        0x000000000000987c      0x33c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
+ .mdebug        0x0000000000009bb8      0x450 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
+ .mdebug        0x000000000000a008      0x3ec C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
+ .mdebug        0x000000000000a3f4      0x2d0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
+ .mdebug        0x000000000000a6c4      0x284 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
+ .mdebug        0x000000000000a948      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDLinesForeDirty.o)
+ .mdebug        0x000000000000ab5c      0x2dc C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
+ .mdebug        0x000000000000ae38      0x2e4 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
+ .mdebug        0x000000000000b11c      0x234 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
+ .mdebug        0x000000000000b350      0x200 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
+ .mdebug        0x000000000000b550      0x260 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
+ .mdebug        0x000000000000b7b0      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
+ .mdebug        0x000000000000ba08      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ReadSectorDMA_TF5000.o)
+ .mdebug        0x000000000000bc4c      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INICloseFile.o)
+ .mdebug        0x000000000000bea4      0x2a8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetARGB.o)
+ .mdebug        0x000000000000c14c      0x274 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIGetInt.o)
+ .mdebug        0x000000000000c3c0      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INILocateFile.o)
+ .mdebug        0x000000000000c640      0x360 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
+ .mdebug        0x000000000000c9a0      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vOSDMap.o)
+ .mdebug        0x000000000000cbdc      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FindInstructionSequence_TF5000.o)
+ .mdebug        0x000000000000ce18      0x20c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ParseLine.o)
+ .mdebug        0x000000000000d024      0x294 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetCurrentDirCluster_TF5000.o)
+ .mdebug        0x000000000000d2b8      0x280 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_GetInfo_TF5000.o)
+ .mdebug        0x000000000000d538      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PopDir.o)
+ .mdebug        0x000000000000d790      0x258 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_PushDir.o)
+ .mdebug        0x000000000000d9e8      0x2d8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TAP_SetCurrentDirCluster_TF5000.o)
+ .mdebug        0x000000000000dcc0      0x208 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
+ .mdebug        0x000000000000dec8      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
+ .mdebug        0x000000000000e100      0x23c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
+ .mdebug        0x000000000000e33c      0x22c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+ .mdebug        0x000000000000e568      0x298 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+ .mdebug        0x000000000000e800      0x270 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
+ .mdebug        0x000000000000ea70      0x25c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+ .mdebug        0x000000000000eccc      0x264 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+ .mdebug        0x000000000000ef30      0x254 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+ .mdebug        0x000000000000f184      0x430 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
+ .mdebug        0x000000000000f5b4      0x38c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
+ .mdebug        0x000000000000f940      0x424 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
+ .mdebug        0x000000000000fd64      0x43c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
+ .mdebug        0x00000000000101a0      0x348 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
+ .mdebug        0x00000000000104e8      0x30c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
+ .mdebug        0x00000000000107f4      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcPrepare.o)
+ .mdebug        0x0000000000010a2c      0x260 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CalcTopIndex.o)
+ .mdebug        0x0000000000010c8c      0x20c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(CheckSelectable.o)
+ .mdebug        0x0000000000010e98      0x93c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+ .mdebug        0x00000000000117d4      0x210 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileLoad.o)
+ .mdebug        0x00000000000119e4      0x370 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogProfileSave.o)
+ .mdebug        0x0000000000011d54      0x274 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowAlpha.o)
+ .mdebug        0x0000000000011fc8      0x46c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
+ .mdebug        0x0000000000012434      0x208 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileDirty.o)
+ .mdebug        0x000000000001263c      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIFindStartEnd.o)
+ .mdebug        0x0000000000012874      0x344 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISaveFile.o)
+ .mdebug        0x0000000000012bb8      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetARGB.o)
+ .mdebug        0x0000000000012df8      0x214 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetInt.o)
+ .mdebug        0x000000000001300c      0x2e8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
+ .mdebug        0x00000000000132f4      0x5e0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
+ .mdebug        0x00000000000138d4      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
+ .mdebug        0x0000000000013b14      0x2f0 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+ .mdebug        0x0000000000013e04      0x36c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+ .mdebug        0x0000000000014170      0x230 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
+ .mdebug        0x00000000000143a0      0x238 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TruncateFile_TF5000.o)
+ .mdebug        0x00000000000145d8      0x244 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_GetGP_TF5000.o)
+ .mdebug        0x000000000001481c      0x240 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwBIOS_TF5000.o)
+ .mdebug        0x0000000000014a5c      0x268 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_fwEnqueueEvent_TF5000.o)
+ .mdebug        0x0000000000014cc4      0x250 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vFlash.o)
+ .mdebug        0x0000000000014f14      0x250 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
+ .mdebug        0x0000000000015164      0x24c C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vWD1_TF5000.o)
+ .mdebug        0x00000000000153b0      0x334 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
+ .mdebug        0x00000000000156e4      0x1e8 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_SetFileDateTime_TF5000.o)
+ .mdebug        0x00000000000158cc      0x1ac C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(ctype_.o)
+ .mdebug        0x0000000000015a78      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memcpy.o)
+ .mdebug        0x0000000000015c34      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memmove.o)
+ .mdebug        0x0000000000015df0      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memset.o)
+ .mdebug        0x0000000000015fac      0x1f8 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcasecmp.o)
+ .mdebug        0x00000000000161a4      0x1ec C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcat.o)
+ .mdebug        0x0000000000016390      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strchr.o)
+ .mdebug        0x000000000001654c      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcmp.o)
+ .mdebug        0x0000000000016708      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strcpy.o)
+ .mdebug        0x00000000000168c4      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strlen.o)
+ .mdebug        0x0000000000016a80      0x1fc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncasecmp.o)
+ .mdebug        0x0000000000016c7c      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncmp.o)
+ .mdebug        0x0000000000016e38      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strncpy.o)
+ .mdebug        0x0000000000016ff4      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strpbrk.o)
+ .mdebug        0x00000000000171b0      0x1ec C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strrchr.o)
+ .mdebug        0x000000000001739c      0x1bc C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strstr.o)
+ .mdebug        0x0000000000017558      0x284 C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(strtoul.o)
+ .mdebug        0x00000000000177dc     0x176c C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+ .mdebug        0x0000000000018f48      0x188 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
 
 Cross Reference Table
 
@@ -1923,10 +1973,9 @@ GetOSDRegionHeight                                C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
@@ -1934,13 +1983,13 @@ GetOSDRegionHeight                                C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
 GetOSDRegionWidth                                 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLines.o)
@@ -1948,6 +1997,7 @@ GetOSDRegionWidth                                 C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowBorder.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
 HDDIOBuffer                                       C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
 HDD_ChangeDir                                     C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
@@ -2324,14 +2374,16 @@ TAP_Main                                          FileSelectorDemo.o
                                                   C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_MakeMjd                                       C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_MemAlloc                                      C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INIOpenFile.o)
+TAP_MemAlloc_Chk                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
 TAP_MemFree                                       C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(LoadFirmwareDat.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INICloseFile.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)
@@ -2343,10 +2395,10 @@ TAP_MemInfo                                       C:/sw/prgm/Topfield/API/TF5000
 TAP_Osd_Copy                                      C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
 TAP_Osd_Copy_Chk                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowScrollBar.o)
@@ -2356,6 +2408,9 @@ TAP_Osd_Copy_Chk                                  C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawMsgBoxTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
 TAP_Osd_Create                                    C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+TAP_Osd_Create_Chk                                C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
@@ -2363,7 +2418,6 @@ TAP_Osd_Create                                    C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
@@ -2382,6 +2436,8 @@ TAP_Osd_DrawPixmap                                C:/sw/prgm/Topfield/API/TF5000
 TAP_Osd_DrawRectangle                             C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_DrawString                                C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_FillBox                                   C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+TAP_Osd_FillBox_Chk                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
 TAP_Osd_GetBaseInfo                               C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
@@ -2407,11 +2463,13 @@ TAP_Osd_PutFreeColorGd_Chk                        C:/sw/prgm/Topfield/API/TF5000
 TAP_Osd_PutGd                                     C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
 TAP_Osd_PutGd_Chk                                 C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowInfo.o)
 TAP_Osd_PutGd__                                   C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_PutPixel                                  C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+TAP_Osd_PutPixel_Chk                              C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
 TAP_Osd_PutS                                      C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawWindowLine.o)
@@ -2423,12 +2481,16 @@ TAP_Osd_PutS                                      C:/sw/prgm/Topfield/API/TF5000
 TAP_Osd_PutString                                 C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_PutStringAf                               C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_RestoreBox                                C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+TAP_Osd_RestoreBox_Chk                            C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowHide.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
 TAP_Osd_SaveBox                                   C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+TAP_Osd_SaveBox_Chk                               C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxShow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowShow.o)
 TAP_Osd_SetLut                                    C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Osd_SetTransparency                           C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
@@ -2439,8 +2501,14 @@ TAP_Osd_Zoom                                      C:/sw/prgm/Topfield/API/TF5000
 TAP_PlayPCM                                       C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_Print                                         C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FIS_vTAPTable_TF5000.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
 TAP_PrintSys                                      C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
 TAP_PutByte                                       C:/sw/prgm/Topfield/API/TF5000//libtap.a(init.o)
@@ -2657,6 +2725,7 @@ _gp_disp                                          C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TruncateFile_TF5000.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_TouchFile_TF5000.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FlashInitialize.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(stricstr.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitTAPex.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
@@ -2679,8 +2748,12 @@ _gp_disp                                          C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutFreeColorGd.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_MemAlloc_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(OSDCopy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FreeOSDRegion.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DrawOSDLine.o)
@@ -2701,8 +2774,6 @@ _gp_disp                                          C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_GetClusterSize_TF5000.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ChangeDirRoot.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(WindowDirty.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutGd_Chk.o)
-                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_FreeColorPutGd_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileMayReload.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileLoad.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ProfileInit.o)
@@ -2742,6 +2813,7 @@ _gp_disp                                          C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxInit.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogMsgBoxExit.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogEvent.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(InitAudioPointers_TF5000.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionWidth.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(GetOSDRegionHeight.o)
@@ -2750,6 +2822,8 @@ _gp_disp                                          C:/sw/prgm/Topfield/API/TF5000
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HDD_ChangeDir.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(FileSelector.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Create_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Copy_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWindow.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(ShowMessageWin.o)
@@ -2770,14 +2844,18 @@ fbl_rgn                                           C:/sw/prgm/Topfield/API/TF5000
 impure_data                                       C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(strtoul_TF5000.o)
 isLegalChar                                       C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isLegalChar.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(MakeValidFileName.o)
-isOSDRegionAlive                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive_TF5000.o)
+isOSDRegionAlive                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(isOSDRegionAlive.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowTitle.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowScrollBar.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLineSelected.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowLine.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowInfo.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(BuildWindowBorder.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Savebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Restorebox_Chk.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_PutPixel_Chk.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(DialogWindowRefresh.o)
+                                                  C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(TAP_Osd_Fillbox_Chk.o)
 memcpy                                            C:/sw/prgm/Topfield/gccForTF5000/usr/local/lib//libc.a(memcpy.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(INISetString.o)
                                                   C:/sw/prgm/Topfield/API/TF5000//libFireBird.a(HasEnoughItemMemory.o)

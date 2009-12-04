@@ -17,11 +17,7 @@ void BuildWindowScrollBar(void)
   }
 
   // cache scrollbar
-  if (!FBDialogWindow->MemOSDScrollBar
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDScrollBar)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDScrollBar || !isOSDRegionAlive(FBDialogWindow->MemOSDScrollBar))
     FBDialogWindow->MemOSDScrollBar = TAP_Osd_Create_Chk("BuildWindowScrollBar", 0, 0, Scroll_Back_Gd->width << 1, FBDialogWindow->NrItemLines * Scroll_Back_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache

@@ -6,12 +6,12 @@ void CallTraceEnter (char *ProcName)
 
   if(!CallTraceInitialized) CallTraceInit();
 
-  if (CallLevel >= 50) TAP_PrintNet("\n\nCallLevel Overflow!\n\n");
+  if (CallLevel >= 50) TAP_Print("\n\nCallLevel Overflow!\n\n");
   if (CallTraceEnabled)
   {
     memset (Spaces, ' ', CallLevel < 50 ? CallLevel << 1 : 100);
     Spaces [CallLevel < 50 ? CallLevel << 1 : 100] = '\0';
-    TAP_PrintNet("%s%s\n", Spaces, ProcName);
+    TAP_Print("%s%s\n", Spaces, ProcName);
   }
   CallLevel++;
 }

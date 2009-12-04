@@ -9,7 +9,7 @@ void CallTraceExit (dword *Magic)
   Spaces [0] = '\0';
 
   if (CallLevel > 0) CallLevel--;
-                else TAP_PrintNet("\n\nCallLevel Underflow!\n\n");
+                else TAP_Print("\n\nCallLevel Underflow!\n\n");
 
 
   if (CallTraceEnabled || Magic)
@@ -20,7 +20,7 @@ void CallTraceExit (dword *Magic)
 
   if (Magic && *Magic != DEFAULTMAGIC)
   {
-    TAP_PrintNet("\n\n%sINVALID MAGIC!\n\n", Spaces);
+    TAP_Print("\n\n%sINVALID MAGIC!\n\n", Spaces);
     *Magic = DEFAULTMAGIC;
   }
 }

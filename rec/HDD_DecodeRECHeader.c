@@ -57,7 +57,7 @@ void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   p = 0;
   RECHeaderInfo->HeaderVersion = getWord(&Buffer[p + 4], FALSE);
-  memcpy (RECHeaderInfo->HeaderReserved1, &Buffer[p + 6], 2);
+  memcpy(RECHeaderInfo->HeaderReserved1, &Buffer[p + 6], 2);
 
   //Check the endianess of the file
   WrongEndian = (RECHeaderInfo->HeaderVersion == 0x0050) || (RECHeaderInfo->HeaderVersion == 0x1050) || (RECHeaderInfo->HeaderVersion == 0x0080);

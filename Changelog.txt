@@ -390,5 +390,18 @@ License:  This library is freeware. You may use this code in your own projects f
 2009-09-15  Moved some functions into the new debug block
             There might be a memory leak with TryResolve. Made all address variables static
             Added TMS support to isOSDRegionAlive()
-
             Stack trace for all functions (lib needs to be compiled with DEBUG_FIREBIRDLIB)
+            HDD_isFileInUse
+            Added playback/recording check to HDD_Delete() and HDD_Recycle()
+
+2009-12-04  Changed the colors in ShowMessageWin() to make them RGB8888 compatible
+            Upper limit of the color calculation in TAP_Osd_PutFreeColorGd()
+            Replaced a lot of TAPPrintNet() with TAPPrint()
+            Fixed the FlashBlockOffsetSTMS table to make it downward compatible with the 5k versions
+            HDD_Delete() and HDD_Recycle() try to stop a playback before it tries to delete the file
+            New macro isTMS
+            Added the function HDD_isFileInUse() and the enum tFileInUse
+            Added the TYPE_AutoDescrambleTimer struct
+            Added the struct tVFDIcon and the functions VFD_SetIcon(), VFD_EnableCDAnimation() and VFD_CDAnimation()
+            Renamed VFDSegmentMap.inc to VFDSegmentMap.h
+            'Official release'

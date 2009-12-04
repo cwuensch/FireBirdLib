@@ -7,7 +7,7 @@ bool VFD_SetHDDValue(int Percent)
 {
   byte *grid = (byte*)FIS_vgrid();
 
-  if(!VFDUsedByTAP || !grid || !CDEnabled) return FALSE;
+  if(!VFDUsedByTAP || !grid || !HDDEnabled) return FALSE;
 
   VFD_EnableHDD(TRUE);
 

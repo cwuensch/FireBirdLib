@@ -1,5 +1,11 @@
-  extern dword                 SysID;
-  extern word                  ApplID;
+  extern dword          SysID;
+  extern word           ApplID;
+
+#ifdef _TMS_
+  #define isTMS         1
+#else
+  #define isTMS         0
+#endif
 
   /*****************************************************************************************************************************/
   /* MIPS OpCodes                                                                                                              */
@@ -304,6 +310,7 @@
     ServiceNames        = 10,
     ProviderNames       = 11,
     OTA                 = 12,
+    unused              = 13,     //unused on the TF5k, block reserved for downward comp.
     WLAN                = 14,     //Server Settings
     FirmwareServer      = 15,
     NetworkProfiles     = 16,
@@ -405,6 +412,15 @@
   #define WINFILEATTRIBUTE_NOT_CONTENT_INDEXED      0x00200000
   #define WINFILEATTRIBUTE_ENCRYPTED                0x00400000
 
+  typedef enum
+  {
+    FIU_No,
+    FIU_Playback,
+    FIU_PlayMP3,
+    FIU_RecSlot1,
+    FIU_RecSlot2
+  }tFileInUse;
+
   void       FixInvalidFileName(char *FileName);
   int        HDD_AAM_Disable (void);
   int        HDD_AAM_Enable (byte AAMLevel);
@@ -414,6 +430,7 @@
   bool       HDD_ChangeDir (char *Dir);
   void       HDD_Delete(char *FileName);
   bool       HDD_FappendWrite (TYPE_File *file, char *data);
+  tFileInUse HDD_isFileInUse(char *FileName);
   bool       HDD_GetHddID (char *ModelNo, char *SerialNo, char *FirmwareNo);
   bool       HDD_IdentifyDevice (char *IdentifyDeviceBuffer);
   bool       HDD_Move(char *FileName, char *FromDir, char *ToDir);

@@ -45,16 +45,9 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
 
   if (Console)
   {
-#ifdef _TMS_
-    if (TimeStampFormat != TIMESTAMP_NONE) TAP_PrintNet(TS);
-    if (ProgramName && ProgramName [0]) TAP_PrintNet("%s: ", ProgramName);
-    if (Text && Text [0]) TAP_PrintNet("%s", Text);
-    TAP_PrintNet("\n");
-#else
     if (TimeStampFormat != TIMESTAMP_NONE) TAP_Print (TS);
     if (ProgramName && ProgramName [0]) TAP_Print ("%s: ", ProgramName);
     if (Text && Text [0]) TAP_Print ("%s", Text);
     TAP_Print ("\n");
-#endif
   }
 }

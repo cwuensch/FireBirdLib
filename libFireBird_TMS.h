@@ -17,6 +17,10 @@
 
 #ifndef PC_BASED
   #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
+
+  #ifdef _TMS_
+    #define TAP_Print   TAP_PrintNet
+  #endif
 #endif
 
 
@@ -279,6 +283,23 @@
     TYPE_TpInfoSTMS     TPInfo;
   }TYPE_TimerSTMS;
 
+  typedef struct
+  {
+    dword               StartTime;
+    dword               EndTime;
+    word                Duration;
+
+    word                ReservationType:3;  //see TYPE_ReservationType
+    word                unknown3:4;
+    word                DelOrig:1;
+    word                unknown2:1;         //always 1?
+    word                NrOfFiles:6;
+    word                unknown1:1;
+
+    dword               TotalTime;
+    char                FileName[50][128];
+  } TYPE_AutoDescrambleTimer;
+
   TYPE_SatInfoSTMS     *FlashGetSatelliteByIndex (byte SatIdx);
   TYPE_ServiceTMS      *FlashGetServiceByIndex (word ServiceIdx, bool TVService);
   TYPE_ServiceTMS      *FlashGetServiceByName (char* ChannelName, bool TVService);
@@ -408,6 +429,41 @@
   /*****************************************************************************************************************************/
   /* TMS VFD Routines                                                                                                          */
   /*****************************************************************************************************************************/
+
+  typedef enum
+  {
+    VFD_AC3,
+    VFD_AM,
+    VFD_Attn,
+    VFD_CDCenter,
+    VFD_Clock,
+    VFD_Colon,
+    VFD_Dolby,
+    VFD_Dollar,
+    VFD_FFwd,
+    VFD_HDD,
+    VFD_JumpStart,
+    VFD_JumpEnd,
+    VFD_MP3,
+    VFD_Mute,
+    VFD_Network,
+    VFD_Pause,
+    VFD_Play,
+    VFD_PM,
+    VFD_Power,
+    VFD_Radio,
+    VFD_REC,
+    VFD_Slot1,
+    VFD_Slot2,
+    VFD_RepeatLeft,
+    VFD_RepeatRight,
+    VFD_Rwd,
+    VFD_Satellite,
+    VFD_TimeShift,
+    VFD_TV
+  } tVFDIcon;
+
+
   bool VFD_GetControl(bool GiveControl);
   bool VFD_isInUseByTAP(void);
   bool VFD_Clear(void);
@@ -418,3 +474,6 @@
   bool VFD_SetCDValue(int Percent);
   bool VFD_EnableHDD(bool Enable);
   bool VFD_SetHDDValue(int Percent);
+  bool VFD_SetIcon(tVFDIcon VFDIcon, bool On);
+  bool VFD_EnableCDAnimation(bool Enable);
+  bool VFD_CDAnimation(bool Forward);

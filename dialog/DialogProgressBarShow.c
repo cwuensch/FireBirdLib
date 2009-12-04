@@ -39,7 +39,11 @@ void DialogProgressBarShow(void)
   {
     FBDialogProgressBar->MemOSDRgn = TAP_Osd_Create_Chk("DialogProgressBarShow A", 0, 0, ProgressBar_Border_Top_Gd->width, ProgressBar_Border_Top_Gd->height + ProgressBar_Border_Bottom_Gd->height, 0, OSD_Flag_MemRgn);
 
+#ifdef _TMS_
+    TAP_Osd_FillBox_Chk("DialogProgressBarShow", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, PROGRESSBARWIDTH, PROGRESSBARHEIGHT, RGB(0, 0, 8));
+#else
     TAP_Osd_FillBox_Chk("DialogProgressBarShow", FBDialogProgressBar->MemOSDRgn, PROGRESSBARLEFT, PROGRESSBARTOP, PROGRESSBARWIDTH, PROGRESSBARHEIGHT, RGB(0, 0, 0));
+#endif
 
     TAP_Osd_PutFreeColorGd_Chk("DialogProgressBarShow A", FBDialogProgressBar->MemOSDRgn, 0, 0                                , ProgressBar_Title_Gd        , TRUE, FBDialogProfile->TitleBackgroundColor);
     TAP_Osd_PutFreeColorGd_Chk("DialogProgressBarShow B", FBDialogProgressBar->MemOSDRgn, 0, 0                                , ProgressBar_Border_Top_Gd   , TRUE, FBDialogProfile->BorderColor);

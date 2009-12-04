@@ -191,11 +191,13 @@ int TAP_Main (void)
   HDD_Delete(NULL);                                                     //hdd, all
   HDD_FappendOpen(NULL);                                                //hdd, all
   HDD_FappendWrite(NULL, NULL);                                         //hdd, all
+  HDD_isFileInUse(NULL);                                                //hdd, all
   HDD_FindPCR(NULL, 0, 0);                                              //rec, all
   HDD_GetHddID(NULL, NULL, NULL);                                       //hdd, all
   HDD_IdentifyDevice(NULL);                                             //hdd, all
   HDD_isAnyRecording();                                                 //rec, all
   HDD_isCryptedStream(NULL, 0);                                         //rec, all
+  HDD_isFileInUse(NULL);                                                //hdd
   HDD_isRecording(0);                                                   //rec, all
   HDD_MakeNewRecName(NULL, 0);                                          //rec, all
   HDD_Move(NULL, NULL, NULL);                                           //hdd, all

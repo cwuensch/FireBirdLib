@@ -27,8 +27,8 @@ dword FlashBlockOffsetSTMS[] =
                             {0x00000000, 0x00000000, 0x00036B04, 0x0004E208,
                              0x000535B8, 0x0005F140, 0x00061610, 0x00061658,
                              0x00061664, 0x00064D18, 0x00064F4C, 0x00082410,
-                             0x00083D3C, 0x00083D6C, 0x00083DB4, 0x00083E0C,
-                             0x00084314, 0x00085c28};
+                             0x00083D3C, 0x00083D3C, 0x00083D6C, 0x00083DB4,
+                             0x00083E0C, 0x00084314, 0x00085c28};
 
 dword                   FlashBlockOffset[BLOCKS + 1];
 dword                   FlashOffset = 0;

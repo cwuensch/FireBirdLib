@@ -19,15 +19,15 @@
 #define LANGINI         "ProfileEditor.lng"
 
 #ifndef RKEY_Red
-#define RKEY_Red        RKEY_NewF1
+  #define RKEY_Red      RKEY_NewF1
 #endif
 
 #ifndef RKEY_Green
-#define RKEY_Green      RKEY_F2
+  #define RKEY_Green    RKEY_F2
 #endif
 
 #ifndef RKEY_Blue
-#define RKEY_Blue       RKEY_F4
+  #define RKEY_Blue     RKEY_F4
 #endif
 
 TAP_ID                  (0x8E0A42F1);
@@ -242,8 +242,6 @@ void DrawMainWindow (void)
 
   //This is needed because the firmware returns to normal mode after exiting TAP_Main, regardless of a previous TAP_ExitNormal();
   ShowMainWindow = TRUE;
-
-
 }
 
 void AdaptMCFColor (byte *Red, byte *Green, byte *Blue)
@@ -425,9 +423,19 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = (*pProfileColorItem >> 16) & 0xff;
+#else
               c = (*pProfileColorItem >> 10) & 0x1f;
+#endif
               if (c > 0) c--;
+
+#ifdef _TMS_
+              *pProfileColorItem = (*pProfileColorItem & 0xff00ffff) | (c << 16);
+#else
               *pProfileColorItem = (*pProfileColorItem & 0x83ff) | (c << 10);
+#endif
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -437,9 +445,20 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = (*pProfileColorItem >> 8) & 0xff;
+#else
               c = (*pProfileColorItem >> 5) & 0x1f;
+#endif
               if (c > 0) c--;
+
+#ifdef _TMS_
+              *pProfileColorItem = (*pProfileColorItem & 0xffff00ff) | (c << 8);
+#else
               *pProfileColorItem = (*pProfileColorItem & 0xfc1f) | (c << 5);
+#endif
+
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -449,9 +468,20 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = *pProfileColorItem & 0xff;
+#else
               c = *pProfileColorItem & 0x1f;
+#endif
               if (c > 0) c--;
+
+#ifdef _TMS_
+              *pProfileColorItem = (*pProfileColorItem & 0xffffff00) | c;
+#else
               *pProfileColorItem = (*pProfileColorItem & 0xffe0) | c;
+#endif
+
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -471,9 +501,16 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = (*pProfileColorItem >> 16) & 0xff;
+              if (c < 255) c++;
+              *pProfileColorItem = (*pProfileColorItem & 0xff00ffff) | (c << 16);
+#else
               c = (*pProfileColorItem >> 10) & 0x1f;
               if (c < 31) c++;
               *pProfileColorItem = (*pProfileColorItem & 0x83ff) | (c << 10);
+#endif
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -483,9 +520,16 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = (*pProfileColorItem >> 8) & 0xff;
+              if (c < 255) c++;
+              *pProfileColorItem = (*pProfileColorItem & 0xffff00ff) | (c << 8);
+#else
               c = (*pProfileColorItem >> 5) & 0x1f;
               if (c < 31) c++;
               *pProfileColorItem = (*pProfileColorItem & 0xfc1f) | (c << 5);
+#endif
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -495,9 +539,16 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
             if (pProfileColorItem)
             {
               Modified = TRUE;
+
+#ifdef _TMS_
+              c = *pProfileColorItem & 0xff;
+              if (c < 255) c++;
+              *pProfileColorItem = (*pProfileColorItem & 0xffffff00) | c;
+#else
               c = *pProfileColorItem & 0x1f;
               if (c < 31) c++;
               *pProfileColorItem = (*pProfileColorItem & 0xffe0) | c;
+#endif
               DialogWindowItemChangeValue (DialogWindow.SelectedItem, RGB2String (*pProfileColorItem), 0);
               DialogWindowRefresh ();
             }
@@ -693,9 +744,13 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
 
 char *RGB2String (word RGB)
 {
-  static char           s [16];
+  static char           s [28];
 
+#ifdef _TMS_
+  TAP_SPrint (s, "R=%3.3d G=%3.3d B=%3.3d", (RGB >> 16) & 0xff, (RGB >> 8) & 0xff, RGB & 0xff);
+#else
   TAP_SPrint (s, "R=%2.2d G=%2.2d B=%2.2d", (RGB >> 10) & 0x1f, (RGB >> 5) & 0x1f, RGB & 0x1f);
+#endif
 
   return s;
 }

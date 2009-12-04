@@ -44,11 +44,7 @@ void BuildWindowLineSelected(void)
   }
 
   // cache selected line
-  if (!FBDialogWindow->MemOSDLineSelected
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDLineSelected)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDLineSelected || !isOSDRegionAlive(FBDialogWindow->MemOSDLineSelected))
     FBDialogWindow->MemOSDLineSelected = TAP_Osd_Create_Chk("BuildWindowLineSelected", 0, 0, FBDialogWindow->ItemLineWidth, This_Items_Line_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache

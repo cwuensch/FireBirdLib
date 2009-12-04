@@ -27,73 +27,22 @@ int TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, 
   RgnH = GetOSDRegionHeight(srcRgnNum);
   RgnW = GetOSDRegionWidth(srcRgnNum);
 
-  if(srcX >= RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: srcX(%d) >= srcRgnW(%d) @ %s\n", srcX, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: srcX(%d) >= srcRgnW(%d) @ %s\n", srcX, RgnW, Comment);
-#endif
-
-  if(srcY >= RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
-#endif
-
-  if((srcX + w) > RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: (srcX(%d) + w(%d)) > srcRgnW(%d) @ %s\n", srcX, w, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: (srcX(%d) + w(%d)) > srcRgnW(%d) @ %s\n", srcX, w, RgnW, Comment);
-#endif
-
-  if((srcY + h) > RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: (srcY(%d) + h(%d)) > srcRgnH(%d) @ %s\n", srcY, h, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: (srcY(%d) + h(%d)) > srcRgnH(%d) @ %s\n", srcY, h, RgnH, Comment);
-#endif
+  if(srcX >= RgnW) TAP_Print("TAP_Osd_Copy_Chk Warning: srcX(%d) >= srcRgnW(%d) @ %s\n", srcX, RgnW, Comment);
+  if(srcY >= RgnH) TAP_Print("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
+  if((srcX + w) > RgnW) TAP_Print("TAP_Osd_Copy_Chk Warning: (srcX(%d) + w(%d)) > srcRgnW(%d) @ %s\n", srcX, w, RgnW, Comment);
+  if((srcY + h) > RgnH) TAP_Print("TAP_Osd_Copy_Chk Warning: (srcY(%d) + h(%d)) > srcRgnH(%d) @ %s\n", srcY, h, RgnH, Comment);
 
   RgnH = GetOSDRegionHeight(dstRgnNum);
   RgnW = GetOSDRegionWidth(dstRgnNum);
 
-  if(dstX >= RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: dstX(%d) >= srcRgnW(%d) @ %s\n", dstX, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: dstX(%d) >= srcRgnW(%d) @ %s\n", dstX, RgnW, Comment);
-#endif
-
-  if(srcY >= RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
-#endif
-
-  if((dstX + w) > RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: (dstX(%d) + w(%d)) > dstRgnW(%d) @ %s\n", dstX, w, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: (dstX(%d) + w(%d)) > dstRgnW(%d) @ %s\n", dstX, w, RgnW, Comment);
-#endif
-
-  if((dstY + h) > RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: (dstY(%d) + h(%d)) > dstRgnH(%d) @ %s\n", dstY, h, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: (dstY(%d) + h(%d)) > dstRgnH(%d) @ %s\n", dstY, h, RgnH, Comment);
-#endif
+  if(dstX >= RgnW) TAP_Print("TAP_Osd_Copy_Chk Warning: dstX(%d) >= srcRgnW(%d) @ %s\n", dstX, RgnW, Comment);
+  if(srcY >= RgnH) TAP_Print("TAP_Osd_Copy_Chk Warning: srcY(%d) >= srcRgnH(%d) @ %s\n", srcY, RgnH, Comment);
+  if((dstX + w) > RgnW) TAP_Print("TAP_Osd_Copy_Chk Warning: (dstX(%d) + w(%d)) > dstRgnW(%d) @ %s\n", dstX, w, RgnW, Comment);
+  if((dstY + h) > RgnH) TAP_Print("TAP_Osd_Copy_Chk Warning: (dstY(%d) + h(%d)) > dstRgnH(%d) @ %s\n", dstY, h, RgnH, Comment);
 
   ret = TAP_Osd_Copy(srcRgnNum, dstRgnNum, srcX, srcY, w, h, dstX, dstY, sprite);
 
-  if(ret)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_Copy_Chk Warning: TAP_Osd_Copy() returned %d @ %s\n", ret, Comment);
-#else
-    TAP_Print("TAP_Osd_Copy_Chk Warning: TAP_Osd_Copy() returned %d @ %s\n", ret, Comment);
-#endif
+  if(ret) TAP_Print("TAP_Osd_Copy_Chk Warning: TAP_Osd_Copy() returned %d @ %s\n", ret, Comment);
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceExit(NULL);

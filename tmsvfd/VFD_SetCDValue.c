@@ -9,7 +9,9 @@ bool VFD_SetCDValue(int Percent)
 
   if(!VFDUsedByTAP || !grid || !CDEnabled) return FALSE;
 
-  VFD_EnableCD(TRUE);
+  grid[25] &= 0xfe;
+  grid[26]  = 0x00;
+  grid[27] &= 0x1f;
 
   if(Percent >  7) grid[25] |= 0x01;
   if(Percent > 15) grid[26] |= 0x80;

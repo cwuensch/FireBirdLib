@@ -22,11 +22,7 @@ void BuildWindowInfo(void)
 
   InfoNCWidth = FBDialogWindow->NrInfoNColumns * InfoN_C_Gd->width;
 
-  if (!FBDialogWindow->MemOSDInfoN
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoN)
-#endif
-     )
+  if(!FBDialogWindow->MemOSDInfoN || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoN))
     FBDialogWindow->MemOSDInfoN = TAP_Osd_Create_Chk("BuildWindowInfo A", 0, 0, InfoN_W_Gd->width + InfoNCWidth + InfoN_E_Gd->width, InfoN_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
@@ -42,11 +38,7 @@ void BuildWindowInfo(void)
   TAP_Osd_PutFreeColorGd_Chk("BuildWindowInfo C", FBDialogWindow->MemOSDInfoN, InfoN_W_Gd->width + InfoNCWidth, 0, InfoN_E_Gd, TRUE, FBDialogProfile->InfoBackgroundColor);
 
   // cache info lines
-  if (!FBDialogWindow->MemOSDInfo
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDInfo)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDInfo || !isOSDRegionAlive(FBDialogWindow->MemOSDInfo))
     FBDialogWindow->MemOSDInfo = TAP_Osd_Create_Chk("BuildWindowInfo B", 0, 0, Info_W_Gd->width + FBDialogWindow->NrInfoColumns * Info_C_Gd->width, (FBDialogWindow->NrInfoLines + 1) * Info_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache
@@ -63,11 +55,7 @@ void BuildWindowInfo(void)
 
   InfoSCWidth = FBDialogWindow->NrInfoSColumns * InfoS_C_Gd->width;
 
-  if (!FBDialogWindow->MemOSDInfoS
-#ifndef _TMS_
-      || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoS)
-#endif
-     )
+  if (!FBDialogWindow->MemOSDInfoS || !isOSDRegionAlive(FBDialogWindow->MemOSDInfoS))
     FBDialogWindow->MemOSDInfoS = TAP_Osd_Create_Chk("BuildWindowInfo C", 0, 0, InfoS_W_Gd->width + InfoSCWidth + InfoS_E_Gd->width, InfoS_C_Gd->height, 0, OSD_Flag_MemRgn);
 
   // fill cache

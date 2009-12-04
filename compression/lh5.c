@@ -1264,7 +1264,9 @@ static void Encode(ARDATA *ar)
 {
   // initialize encoder variables
   if(!allocate_memory(ar))
+  {
     TAP_Print("unable to allocate memory\n");
+  }
   else
   {
     short lastmatchlen, lastmatchpos;

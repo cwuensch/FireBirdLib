@@ -20,59 +20,20 @@ int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, b
   CallTraceEnter("TAP_Osd_PutGd_Chk");
 #endif
 
-  if(x < 0)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: x(%d) < 0 @ %s\n", x, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: x(%d) < 0 @ %s\n", x, Comment);
-#endif
-
-  if(y < 0)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: y(%d) < 0 @ %s\n", y, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: y(%d) < 0 @ %s\n", y, Comment);
-#endif
+  if(x < 0) TAP_Print("TAP_Osd_PutGd_Chk Warning: x(%d) < 0 @ %s\n", x, Comment);
+  if(y < 0) TAP_Print("TAP_Osd_PutGd_Chk Warning: y(%d) < 0 @ %s\n", y, Comment);
 
   RgnH = GetOSDRegionHeight(rgn);
   RgnW = GetOSDRegionWidth(rgn);
 
-  if(x >= RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: x(%d) >= RgnW(%d) @ %s\n", x, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: x(%d) >= RgnW(%d) @ %s\n", x, RgnW, Comment);
-#endif
-
-  if(y >= RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: y(%d) >= RgnH(%d) @ %s\n", y, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: y(%d) >= RgnH(%d) @ %s\n", y, RgnH, Comment);
-#endif
-
-  if((x + gd->width) > RgnW)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: (x(%d) + gd->width(%d)) > RgnW(%d) @ %s\n", x, gd->width, RgnW, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: (x(%d) + gd->width(%d)) > RgnW(%d) @ %s\n", x, gd->width, RgnW, Comment);
-#endif
-
-  if((y + gd->height) > RgnH)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%d)) > RgnH(%d) @ %s\n", y, gd->height, RgnH, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%d)) > RgnH(%d) @ %s\n", y, gd->height, RgnH, Comment);
-#endif
+  if(x >= RgnW) TAP_Print("TAP_Osd_PutGd_Chk Warning: x(%d) >= RgnW(%d) @ %s\n", x, RgnW, Comment);
+  if(y >= RgnH) TAP_Print("TAP_Osd_PutGd_Chk Warning: y(%d) >= RgnH(%d) @ %s\n", y, RgnH, Comment);
+  if((x + gd->width) > RgnW) TAP_Print("TAP_Osd_PutGd_Chk Warning: (x(%d) + gd->width(%d)) > RgnW(%d) @ %s\n", x, gd->width, RgnW, Comment);
+  if((y + gd->height) > RgnH) TAP_Print("TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%d)) > RgnH(%d) @ %s\n", y, gd->height, RgnH, Comment);
 
   ret = TAP_Osd_PutGd(rgn, x, y, gd, sprite);
 
-  if(ret)
-#ifdef _TMS_
-    TAP_PrintNet("TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s\n", ret, Comment);
-#else
-    TAP_Print("TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s\n", ret, Comment);
-#endif
+  if(ret) TAP_Print("TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s\n", ret, Comment);
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceExit(NULL);

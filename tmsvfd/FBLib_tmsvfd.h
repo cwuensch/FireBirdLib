@@ -14,6 +14,7 @@ typedef enum
 extern bool  VFDUsedByTAP;
 extern byte *grid;
 extern bool  CDEnabled;
+extern bool  CDEnabledAnimation;
 extern bool  HDDEnabled;
 
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle);
