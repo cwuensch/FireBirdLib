@@ -250,8 +250,7 @@
 
   typedef struct
   {
-    byte                TunerIndex:1;
-    byte                Unused1:7;
+    byte                TunerIndex;
 
     byte                RecMode:3;
     byte                DemuxPath:2;
@@ -407,7 +406,17 @@
     dword                 CurrentDir;
   } tTMSTAPTaskTable; //44 Bytes * 16 TAPs = 704 bytes
 
-  dword HDD_TAP_Start (char *TAPFileName, bool BatchMode, void* ParameterBlock);
+  typedef struct
+  {
+    dword               TAPID;
+    dword               Date;
+    char                TAPName[64];
+    char                Author[64];
+    char                Description[128];
+  } tTAPInfo;
+
+  bool HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
+  bool HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo);
 
 
   /*****************************************************************************************************************************/

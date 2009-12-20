@@ -405,3 +405,12 @@ License:  This library is freeware. You may use this code in your own projects f
             Added the struct tVFDIcon and the functions VFD_SetIcon(), VFD_EnableCDAnimation() and VFD_CDAnimation()
             Renamed VFDSegmentMap.inc to VFDSegmentMap.h
             'Official release'
+
+2009-12-15  TunerIndex in TYPE_TimerSTMS changed to a full byte
+2009-12-19  Added GetUptime(), which is mainly for the TMS
+2009-12-20  Ported isAnyOSDVisible()
+
+
+not yet included
+            Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()
+            BatchMode to HDD_TAP_Start() and ported HDD_TAP_isBatchMode()

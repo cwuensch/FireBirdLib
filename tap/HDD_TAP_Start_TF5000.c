@@ -6,7 +6,7 @@ TYPE_Started_Tap        fbl_started_tap;
 TYPE_Parametered_Tap    fbl_parametered_tap;
 
 
-dword HDD_TAP_Start (char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
+dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
 {
   tTAPTableInfo         TAPInfo;
   dword                 ret;

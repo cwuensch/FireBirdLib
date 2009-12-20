@@ -6,6 +6,8 @@
 
 #define MAGIC             0xf1eb1d1b
 #define TAPDIR_MAX_STACK  16
+#define BATCHMODEKEY      0x15227
+#define PARAMBLOCKKEY     0x15228
 
 #ifdef _TMS_
   extern char           TAPDirStack[TAPDIR_MAX_STACK][200];

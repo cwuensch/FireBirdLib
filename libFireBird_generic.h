@@ -108,6 +108,7 @@
   void  FlushCache(dword *pAddr, int Size);
   char *iso639_1 (int OSDLan);
   void DumpMemory(unsigned char* p, dword size, int BytesPerLine);
+  dword GetUptime(void);
 
   void CallTraceInit (void);
   void CallTraceEnable (bool Enable);
@@ -279,6 +280,7 @@
   dword GetOSDMapAddress (void);
   word  GetOSDRegionHeight (word Region);
   word  GetOSDRegionWidth (word Region);
+  bool  isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH);
   bool  isOSDRegionAlive (word Region);
   bool  GetPIPPosition (int *North, int *South, int *East, int *West);
   void  OSDCopy (word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
@@ -732,6 +734,7 @@
   bool  HDD_TAP_PushDir (void);
   bool  HDD_TAP_PopDir (void);
   int   HDD_TAP_GetCurrentDir (char* CurrentDir);
+  dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
 
 
   /*****************************************************************************************************************************/

@@ -1,21 +1,34 @@
-#include <string.h>
-#include "FBLib_tap.h"
+#include                <sys/types.h>
+#include                <sys/shm.h>
+#include                <string.h>
+#include                "FBLib_tap.h"
 
 #ifdef _TMS_
 
-dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock)
+dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
 {
   dword                 ret;
   dword                 _TempWorkFolder[4];
   static dword          *_hddTapFolder = NULL;
   char                  CurrentDir[FBLIB_DIR_SIZE];
+  int                   shmid = 0;
+  char                 *segptr = NULL;
+  tTAPInfo              TAPInfo;
 
   static void  (*ApplHdd_SetWorkFolder)(void*);
   static dword (*ApplHdd_SelectFolder)(void*, char  const*);
   static void  (*Appl_ExecProgram)(char*);
 
-  (void)BatchMode;
   (void)ParameterBlock;
+
+  if(TAPID && HDD_TAP_GetInfo(TAPFileName, &TAPInfo)) *TAPID = TAPInfo.TAPID;
+
+  if(BatchMode)
+  {
+    shmid = shmget(BATCHMODEKEY, 1, IPC_CREAT);
+    segptr = (char *)shmat(shmid, 0, 0);
+  }
+
 
   if(!Appl_ExecProgram)
     Appl_ExecProgram      = (void*)TryResolve("_Z16Appl_ExecProgramPc");
@@ -42,6 +55,12 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock)
     ApplHdd_SetWorkFolder(_TempWorkFolder);
     memcpy((void*)_hddTapFolder[0], &_TempWorkFolder[0], sizeof(_TempWorkFolder));
     Appl_ExecProgram(TAPFileName);
+  }
+
+  if(BatchMode && segptr)
+  {
+    shmdt(segptr);
+    shmctl(shmid, IPC_RMID, 0);
   }
 
   return 1;

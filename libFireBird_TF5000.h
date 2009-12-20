@@ -1554,7 +1554,6 @@
   bool  GetSysOsdControl (TYPE_TapSysOsdId OSDID);
   int   InteractiveGetStatus (void);
   void  InteractiveSetStatus (bool enable);
-  bool  isAnyOSDVisible (dword checkX, dword checkY, dword checkW, dword checkH);
   bool  isMPMenu (void);
   int   MHEG_Status (void);
   int   SubtitleGetStatus (void);
@@ -2826,7 +2825,6 @@
   bool  HDD_TAP_isDisabledAll (void);
   bool  HDD_TAP_isRunning (dword TAPID);
   dword HDD_TAP_SendEvent (dword TAPID, bool AllowParamInterception, word event, dword param1, dword param2);
-  dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
   bool  HDD_TAP_StartedByTAP (void);
   void  HDD_TAP_Terminate (dword TAPID);
 
