@@ -13,7 +13,7 @@ tFileInUse HDD_isFileInUse(char *FileName)
   if (PlayInfo.playMode && PlayInfo.totalBlock > 0)
   {
     strcpy(CorrectedFileName, PlayInfo.file->name);
-    if(StringEndsWith(CorrectedFileName, ".rec.inf")) CorrectedFileName[strlen(CorrectedFileName) - 4] = '\0';
+    if(StringEndsWith(CorrectedFileName, ".rec.inf") || StringEndsWith(CorrectedFileName, ".mpg.inf")) CorrectedFileName[strlen(CorrectedFileName) - 4] = '\0';
     if(!strcmp(FileName, CorrectedFileName))
     {
       if(PlayInfo.playMode == PLAYMODE_Mp3) return FIU_PlayMP3;
@@ -24,14 +24,14 @@ tFileInUse HDD_isFileInUse(char *FileName)
   TAP_Hdd_GetRecInfo(0, &RecInfo);
   if(RecInfo.fileName && RecInfo.fileName[0])
   {
-    if(StringEndsWith(RecInfo.fileName, ".rec.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
+    if(StringEndsWith(RecInfo.fileName, ".rec.inf") || StringEndsWith(RecInfo.fileName, ".mpg.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
     if(!strcmp(FileName, RecInfo.fileName)) return FIU_RecSlot1;
   }
 
   TAP_Hdd_GetRecInfo(0, &RecInfo);
   if(RecInfo.fileName && RecInfo.fileName[0])
   {
-    if(StringEndsWith(RecInfo.fileName, ".rec.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
+    if(StringEndsWith(RecInfo.fileName, ".rec.inf") || StringEndsWith(RecInfo.fileName, ".mpg.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
     if(!strcmp(FileName, RecInfo.fileName)) return FIU_RecSlot2;
   }
 

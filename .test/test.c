@@ -171,6 +171,11 @@ int TAP_Main (void)
   FlashRemoveServiceByPartOfName(NULL, FALSE);                          //flash, all
   FlashServiceAddressToServiceIndex(NULL);                              //flash, all
   FlushCache(NULL, 0);                                                  //main, all
+  FM_FreeFontFile(NULL);                                                //FontManager, all
+  FM_GetStringHeight(NULL,NULL);                                        //FontManager, all
+  FM_GetStringWidth(NULL, NULL);                                        //FontManager, all
+  FM_LoadFontFile(NULL, NULL);                                          //FontManager, all
+  FM_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);                     //FontManager, all
   FreeOSDRegion(0);                                                     //av, all
   GetCurrentEvent(NULL);                                                //av, all
   GetEEPROMAddress();                                                   //flash, all
@@ -191,13 +196,13 @@ int TAP_Main (void)
   HDD_Delete(NULL);                                                     //hdd, all
   HDD_FappendOpen(NULL);                                                //hdd, all
   HDD_FappendWrite(NULL, NULL);                                         //hdd, all
-  HDD_isFileInUse(NULL);                                                //hdd, all
   HDD_FindPCR(NULL, 0, 0);                                              //rec, all
   HDD_GetHddID(NULL, NULL, NULL);                                       //hdd, all
   HDD_IdentifyDevice(NULL);                                             //hdd, all
   HDD_isAnyRecording();                                                 //rec, all
   HDD_isCryptedStream(NULL, 0);                                         //rec, all
   HDD_isFileInUse(NULL);                                                //hdd
+  HDD_isFileInUse(NULL);                                                //hdd, all
   HDD_isRecording(0);                                                   //rec, all
   HDD_MakeNewRecName(NULL, 0);                                          //rec, all
   HDD_Move(NULL, NULL, NULL);                                           //hdd, all
@@ -251,6 +256,7 @@ int TAP_Main (void)
   INISetString(NULL, NULL);                                             //ini, all
   InitTAPex();                                                          //main, all
   InitTAPexFailedMsg(NULL);                                             //main, all
+  isAnyOSDVisible(0, 0, 0, 0);                                          //av, all
   isLegalChar(0, 0);                                                    //string, all
   iso639_1(0);                                                          //main, all
   LangGetString(0);                                                     //ini, all
@@ -265,6 +271,47 @@ int TAP_Main (void)
   OATH(NULL, 0, 0);                                                     //compression, all
   OSDCopy(0, 0, 0, 0, 0, 0, 0);                                         //av, all
   OSDLinesForeDirty(FALSE);                                             //dialog, all
+  OSDMenuButtonAdd(0, 0, NULL, NULL);                                   //TMSOSDMenu, all
+  OSDMenuButtonsClear();                                                //TMSOSDMenu, all
+  OSDMenuDestroy();                                                     //TMSOSDMenu, all
+  OSDMenuEvent(NULL, NULL, NULL);                                       //TMSOSDMenu, all
+  OSDMenuGetCurrentItem();                                              //TMSOSDMenu, all
+  OSDMenuInfoBoxDestroy();                                              //TMSOSDMenu, all
+  OSDMenuInfoBoxIsVisible();                                            //TMSOSDMenu, all
+  OSDMenuInfoBoxShow(NULL, NULL, 0);                                    //TMSOSDMenu, all
+  OSDMenuInitialize(FALSE, FALSE, FALSE, FALSE, NULL, NULL);            //TMSOSDMenu, all
+  OSDMenuIsVisible();                                                   //TMSOSDMenu, all
+  OSDMenuItemAdd(NULL, NULL, NULL, NULL,FALSE, FALSE);                  //TMSOSDMenu, all
+  OSDMenuItemModifyName(0, NULL);                                       //TMSOSDMenu, all
+  OSDMenuItemModifyNameIcon(0, NULL);                                   //TMSOSDMenu, all
+  OSDMenuItemModifySelectable(0,FALSE);                                 //TMSOSDMenu, all
+  OSDMenuItemModifyValue(0, NULL);                                      //TMSOSDMenu, all
+  OSDMenuItemModifyValueIcon(0, NULL);                                  //TMSOSDMenu, all
+  OSDMenuItemsClear();                                                  //TMSOSDMenu, all
+  OSDMenuLogo(0, 0, NULL);                                              //TMSOSDMenu, all
+  OSDMenuMessageBoxButtonAdd(NULL);                                     //TMSOSDMenu, all
+  OSDMenuMessageBoxButtonSelect(0);                                     //TMSOSDMenu, all
+  OSDMenuMessageBoxDestroy();                                           //TMSOSDMenu, all
+  OSDMenuMessageBoxInitialize(NULL, NULL);                              //TMSOSDMenu, all
+  OSDMenuMessageBoxIsVisible();                                         //TMSOSDMenu, all
+  OSDMenuMessageBoxLastButton();                                        //TMSOSDMenu, all
+  OSDMenuMessageBoxShow();                                              //TMSOSDMenu, all
+  OSDMenuModifyItemLongTextScrolling(FALSE);                            //TMSOSDMenu, all
+  OSDMenuModifyItemNumbered(FALSE);                                     //TMSOSDMenu, all
+  OSDMenuModifyItemValueColumn(FALSE);                                  //TMSOSDMenu, all
+  OSDMenuModifyScrollLoop(FALSE);                                       //TMSOSDMenu, all
+  OSDMenuModifyTitleLeft(NULL);                                         //TMSOSDMenu, all
+  OSDMenuModifyTitleRight(NULL);                                        //TMSOSDMenu, all
+  OSDMenuPop();                                                         //TMSOSDMenu, all
+  OSDMenuPush();                                                        //TMSOSDMenu, all
+  OSDMenuScrollDown();                                                  //TMSOSDMenu, all
+  OSDMenuScrollEnd();                                                   //TMSOSDMenu, all
+  OSDMenuScrollHome();                                                  //TMSOSDMenu, all
+  OSDMenuScrollPageDown();                                              //TMSOSDMenu, all
+  OSDMenuScrollPageUp();                                                //TMSOSDMenu, all
+  OSDMenuScrollUp();                                                    //TMSOSDMenu, all
+  OSDMenuSelectItem(0);                                                 //TMSOSDMenu, all
+  OSDMenuUpdate();                                                      //TMSOSDMenu, all
   ParseLine(NULL, NULL, 0);                                             //string, all
   ProfileDirty();                                                       //dialog, all
   ProfileInit();                                                        //dialog, all
@@ -281,8 +328,8 @@ int TAP_Main (void)
   ShowMessageWindow(NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);                   //av, all
   Shutdown(0);                                                          //shutdown, all
   SoundSinus(0, 0, 0);                                                  //av, all
-  StringEndsWith(NULL, NULL);                                           //string, all
   stricstr(NULL, NULL);                                                 //string, all
+  StringEndsWith(NULL, NULL);                                           //string, all
   SuperFastHash(NULL, 0, 0);                                            //compression, all
   SwapDWords(0);                                                        //hdd, all
   SwapWords(0);                                                         //hdd, all
@@ -304,6 +351,7 @@ int TAP_Main (void)
   WindowDirty();                                                        //dialog, all
   YUV2RGB(0, 0, 0, NULL, NULL, NULL);                                   //av, all
   YUV2RGB2(0, 0, 0, NULL, NULL, NULL);                                  //av, all
+
 
   //TF5000 only
 #ifndef _TMS_
@@ -450,7 +498,7 @@ int TAP_Main (void)
   HDD_TAP_isRunning(0);                                                 //tap, 5k
   HDD_TAP_SendEvent(0, FALSE, 0, 0, 0);                                 //tap, 5k
   HDD_TAP_SetCurrentDirCluster(0);                                      //tap, 5k
-  HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, all
+  HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, 5k
   HDD_TAP_StartedByTAP();                                               //tap, 5k
   HDD_TAP_Terminate(0);                                                 //tap, 5k
   HDD_TouchFile(NULL);                                                  //hdd, 5k
@@ -471,7 +519,6 @@ int TAP_Main (void)
   InteractiveSetStatus(FALSE);                                          //av, 5k
   intLock();                                                            //main, 5k
   intUnlock(0);                                                         //main, 5k
-  isAnyOSDVisible(0, 0, 0, 0);                                          //av, 5k
   isMasterpiece();                                                      //main, 5k
   isMPMenu();                                                           //av, 5k
   isOSDRegionAlive(0);                                                  //av, 5k
@@ -545,7 +592,7 @@ int TAP_Main (void)
   HDD_GetInodeByAbsFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByRelFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
-  HDD_TAP_Start(NULL, FALSE,  NULL);                                    //tap, all
+  HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, tms
   PrintNet(NULL);                                                       //main, tms
   TryResolve(NULL);                                                     //fis, tms
   VFD_EnableCD(FALSE);                                                  //tmsvfd, tms

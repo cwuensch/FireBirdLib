@@ -15,8 +15,16 @@ void HDD_Recycle(char *FileName)
     switch(FileInUse)
     {
       case FIU_No: break;
-      case FIU_Playback: TAP_Hdd_StopTs();      break;
-      case FIU_PlayMP3:  TAP_Hdd_StopMp3();     break;
+
+      //Do not differentiate because of a firmware bug
+      case FIU_Playback:
+      case FIU_PlayMP3:
+      {
+        TAP_Hdd_StopTs();
+        TAP_Hdd_StopMp3();
+        break;
+      }
+
       case FIU_RecSlot1: TAP_Hdd_StopRecord(0); break;
       case FIU_RecSlot2: TAP_Hdd_StopRecord(1); break;
     }

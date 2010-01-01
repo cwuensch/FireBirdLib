@@ -44,4 +44,4 @@ $(APP).o: $(APP).c ${BASE}/include/libFireBird.h
 clean:
 	@echo "[Cleaning up...]"
 	@-${RM} *.d *.o
-	@-$(RMDIR) bin
+	@-$(RMDIR) $(BIN_DIR)

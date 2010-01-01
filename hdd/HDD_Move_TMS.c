@@ -15,6 +15,8 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
   bool                  isRec, isDel;
   int                   fNumber;
 
+  HDD_TAP_PushDir();
+  TAP_Hdd_ChangeDir(FromDir);
   if (TAP_Hdd_Exist(FileName))
   {
     HDD_TAP_PushDir();
@@ -65,6 +67,7 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
       system(cmd);
     }
   }
+  HDD_TAP_PopDir();
 
   return TRUE;
 }

@@ -391,6 +391,7 @@
   bool                  SetEEPROMPin(word NewPin);
   long                  TimeDiff (dword FromTime, dword ToTime);
   char                 *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat);
+  char                 *DayOfWeek(byte WeekDay);
 
 
   /*****************************************************************************************************************************/
@@ -413,6 +414,19 @@
   #define WINFILEATTRIBUTE_OFFLINE                  0x00100000
   #define WINFILEATTRIBUTE_NOT_CONTENT_INDEXED      0x00200000
   #define WINFILEATTRIBUTE_ENCRYPTED                0x00400000
+
+  //Some of them are missing in the TF5k hdd.h and alle are missing in the TMS hdd.h
+  #ifndef SEEK_SET
+    #define SEEK_SET  0	/* set file offset to offset */
+  #endif
+
+  #ifndef SEEK_CUR
+    #define SEEK_CUR  1	/* set file offset to current plus offset */
+  #endif
+
+  #ifndef SEEK_END
+    #define SEEK_END  2	/* set file offset to EOF plus offset */
+  #endif
 
   typedef enum
   {
@@ -1198,3 +1212,114 @@
       OK          Auswahl
       EXIT        Abbruch
   */
+
+
+  /*****************************************************************************************************************************/
+  /* FontManager                                                                                                               */
+  /*****************************************************************************************************************************/
+
+  typedef struct
+  {
+    dword                 Width;
+    dword                 Height;
+    dword                 BitmapIndex;
+  } tFontDef;
+
+  typedef struct
+  {
+    byte                 *pFontData;
+    tFontDef              FontDef[191];
+  } tFontData;
+
+  dword FM_GetStringWidth(const char *Text, tFontData *FontData);
+  dword FM_GetStringHeight(const char *Text, tFontData *FontData);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
+  void  FM_FreeFontFile(tFontData *FontData);
+
+
+  /*****************************************************************************************************************************/
+  /* TMS OSD Menu                                                                                                              */
+  /*   Menu, dialog box and message box                                                                                        */
+  /*****************************************************************************************************************************/
+
+  //Main OSD
+  void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
+  void OSDMenuUpdate(void);
+  void OSDMenuModifyTitleLeft(char *Text);
+  void OSDMenuModifyTitleRight(char *Text);
+  void OSDMenuModifyItemLongTextScrolling(bool AllowScrollingOfLongText);
+  void OSDMenuModifyItemValueColumn(bool HasValueColumn);
+  void OSDMenuModifyItemNumbered(bool NumberedItems);
+  void OSDMenuModifyScrollLoop(bool ScrollLoop);
+  void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
+  void OSDMenuDestroy(void);
+  bool OSDMenuIsVisible(void);
+
+  //Buttons
+
+  typedef enum
+  {
+    BI_None,
+    BI_UserDefined,
+    BI_Red,
+    BI_Green,
+    BI_Yellow,
+    BI_Blue,
+    BI_White,
+    BI_Menu,
+    BI_Info,
+    BI_Ok,
+    BI_Exit,
+    BI_Record,
+    BI_Select,
+    BI_Ffwd,
+    BI_Rwd,
+    BI_JumpStart,
+    BI_JumpEnd,
+    BI_Sat
+  } tButtonIcon;
+
+
+  void OSDMenuButtonsClear(void);
+  void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
+
+  //Cursor Functions
+  bool OSDMenuSelectItem(int ItemIndex);
+  int  OSDMenuGetCurrentItem(void);
+  int  OSDMenuScrollUp(void);
+  int  OSDMenuScrollPageUp(void);
+  int  OSDMenuScrollDown(void);
+  int  OSDMenuScrollPageDown(void);
+  int  OSDMenuScrollHome(void);
+  int  OSDMenuScrollEnd(void);
+
+  //Items
+  void OSDMenuItemsClear(void);
+  bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows);
+  bool OSDMenuItemModifyName(int ItemIndex, char *Text);
+  bool OSDMenuItemModifyValue(int ItemIndex, char *Text);
+  bool OSDMenuItemModifyNameIcon(int ItemIndex, TYPE_GrData *pNameIconGd);
+  bool OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
+  bool OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
+
+  //
+  bool OSDMenuPush(void);
+  bool OSDMenuPop(void);
+
+  //Info box
+  void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout);
+  void OSDMenuInfoBoxDestroy(void);
+  bool OSDMenuInfoBoxIsVisible(void);
+
+  //Message box
+  void  OSDMenuMessageBoxInitialize(char *Title, char *Text);
+  void  OSDMenuMessageBoxButtonAdd(char *Text);
+  void  OSDMenuMessageBoxButtonSelect(dword SelectedButton);
+  void  OSDMenuMessageBoxShow(void);
+  void  OSDMenuMessageBoxDestroy(void);
+  bool  OSDMenuMessageBoxIsVisible(void);
+  dword OSDMenuMessageBoxLastButton(void);
+
+  //Event handling
+  bool OSDMenuEvent(word *event, dword *param1, dword *param2);

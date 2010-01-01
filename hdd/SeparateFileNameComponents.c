@@ -16,10 +16,12 @@ void SeparateFileNameComponents(char *FileName, char *Name, char *Ext, int *Inde
   }
 
   if(StringEndsWith(Name, ".rec.inf")) Name[strlen(Name) - 4] = '\0';
+  if(StringEndsWith(Name, ".mpg.inf")) Name[strlen(Name) - 4] = '\0';
   if(StringEndsWith(Name, ".rec.nav")) Name[strlen(Name) - 4] = '\0';
+  if(StringEndsWith(Name, ".mpg.nav")) Name[strlen(Name) - 4] = '\0';
 
   *isRec = FALSE;
-  if(StringEndsWith(Name, ".rec")) *isRec = TRUE;
+  if(StringEndsWith(Name, ".rec") || StringEndsWith(Name, ".mpg")) *isRec = TRUE;
 
   Ext[0] = '\0';
   dot = strrchr(Name, '.');
