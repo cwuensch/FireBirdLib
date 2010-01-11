@@ -3,6 +3,8 @@
 
 #include "..\libFireBird.h"
 
+#ifdef _TMS_
+
 typedef struct
 {
   byte  r;
@@ -20,4 +22,5 @@ void FM_InitAlphaLUT(dword fgColor, dword bgColor);
 dword FM_AlphaBlendRGB(byte Alpha, dword FG, dword BG);
 
 
+#endif
 #endif

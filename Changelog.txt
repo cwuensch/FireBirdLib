@@ -409,11 +409,22 @@ License:  This library is freeware. You may use this code in your own projects f
 2009-12-15  TunerIndex in TYPE_TimerSTMS changed to a full byte
 2009-12-19  Added GetUptime(), which is mainly for the TMS
 2009-12-20  Ported isAnyOSDVisible()
-2009-12-25  HDD_Recycle() and HDD_Delete() adapted to a firmware bug (TAP_Hdd_StopTs() doesn't stop anything, TAP_Hdd_StopMp3() stops .recs and .mp3s)
-            Some changes to make the lib compatible with the Australian TRF-2400 (.rec and .mpg)
+2009-12-25  HDD_Recycle() and HDD_Delete() adapted to a firmware bug (TAP_Hdd_StopTs() doesn't stop anything, TAP_Hdd_StopMp3() stops both .recs and .mp3s)
+            Some changes to make the lib compatible with the Australian TRF-2400 (.rec and .mpg): HDD_isFileInUse(), SeparateFileNameComponents()
 2009-12-28  Despite the FromDir parameter, HDD_Move() expected to be in the FromDir folder, else the FileExist check failed
+            Added: DayOfWeek()
 2010-01-01  Added FontManager
+              Changes to the standalone lib:
+                FM_PutString() maxX parameter will be limited to the width of the OSD region
             Added the TMS style menu/dialog box/message box
+              Changes to the standalone lib:
+                addition parameter ButtonIcon in function OSDMenuButtonAdd()
+                several button icons have been compiled into the lib
+                removed OSDMenuKeyEvent() and added OSDMenuEvent()
+2010-01-04  Increased speed of isAnyOSDVisible() by checking every fourth pixel only
+            Added isAnyOSDVisibleEx(), which allows to check a specific plane
+2010-11-01  Bugfix: FixInvalidFileName() must not rename files, which are currently being recorded or played
+            Added isAnyOSDVisibleEx(), which allows to specify the OSD plane
 
 not yet included
             Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()

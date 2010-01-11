@@ -10,6 +10,7 @@
 #define STDSTRINGSIZE   64
 #define NRMENULEVELS     5
 #define MAXMBBUTTONS     5
+#define FONTYOFFSET     -3
 
 typedef struct
 {
@@ -58,12 +59,12 @@ typedef struct
   char                  Text[STDSTRINGSIZE];
 }tMessageBox;
 
-extern tFontData        Miriam_12_FontData;
-extern tFontData        Miriam_14_FontData;
-extern tFontData        Miriam_16_FontData;
-extern tFontData        Miriam_18_FontData;
-extern tFontData        Miriam_20_FontData;
-extern tFontData        Miriam_20B_FontData;
+extern tFontData        Calibri_12_FontData;
+extern tFontData        Calibri_14_FontData;
+extern tFontData        Calibri_16_FontData;
+extern tFontData        Calibri_18_FontData;
+extern tFontData        Calibri_20_FontData;
+extern tFontData        Calibri_20B_FontData;
 
 extern TYPE_GrData      _Button_blue_Gd;
 extern TYPE_GrData      _Button_exit_Gd;

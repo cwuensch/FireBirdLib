@@ -4,6 +4,8 @@
 void FixInvalidFileName(char *FileName)
 {
   char                  NewRecName[TS_FILE_NAME_SIZE];
+  TYPE_PlayInfo         playInfo;
+  TYPE_RecInfo          recInfo;
 
 #ifdef _TMS_
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
@@ -14,6 +16,16 @@ void FixInvalidFileName(char *FileName)
 
   if (TAP_Hdd_Exist(FileName) && (FileName[0] == 0x05))
   {
+    //Check if the file is busy
+    TAP_Hdd_GetPlayInfo(&playInfo);
+    if(playInfo.file && playInfo.file->name[0] && !strstr(FileName, playInfo.file->name)) return;
+
+    TAP_Hdd_GetRecInfo(0, &recInfo);
+    if(recInfo.fileName[0] && !strstr(FileName, recInfo.fileName)) return;
+
+    TAP_Hdd_GetRecInfo(1, &recInfo);
+    if(recInfo.fileName[0] && !strstr(FileName, recInfo.fileName)) return;
+
     strcpy(NewRecName, &FileName[1]);
     MakeUniqueFileName(NewRecName);
     TAP_Hdd_Rename(FileName, NewRecName);

@@ -52,6 +52,8 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
       OSDMenuItemAdd("10th Name", "10th Value", NULL, NULL, TRUE, TRUE);
       OSDMenuItemAdd("11th Name", "11th Value", NULL, NULL, TRUE, TRUE);
       OSDMenuItemAdd("12th Name", "12th Value", NULL, NULL, TRUE, TRUE);
+      OSDMenuItemAdd("Umlaute", "ABC ƒ÷‹‰ˆ¸ﬂ", NULL, NULL, TRUE, TRUE);
+      OSDMenuItemAdd("This text is too long for this line", "", NULL, NULL, TRUE, TRUE);
 
       OSDMenuButtonAdd(1, BI_Red,    NULL, "Button 1");
       OSDMenuButtonAdd(1, BI_Green,  NULL, "Button 2");
