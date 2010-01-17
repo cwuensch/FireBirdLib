@@ -26,6 +26,8 @@ void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dwor
 
   if(!str || !str[0] || !FontData || !FontData->pFontData) return;
 
+  if(GetOSDRegionWidth(rgn) && GetOSDRegionWidth(rgn) <=  maxX) maxX = GetOSDRegionWidth(rgn) - 1;
+
   strncpy(newstr, str, 256);
   newstr[256] = '\0';
   XEnd = x + FM_GetStringWidthAndRestrict(newstr, FontData, maxX-x, &bRestricted);

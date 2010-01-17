@@ -425,6 +425,10 @@ License:  This library is freeware. You may use this code in your own projects f
             Added isAnyOSDVisibleEx(), which allows to check a specific plane
 2010-11-01  Bugfix: FixInvalidFileName() must not rename files, which are currently being recorded or played
             Added isAnyOSDVisibleEx(), which allows to specify the OSD plane
+2010-01-12  Bugfix: The TMS produzed a reboot if one did a time shift buffer jump after HDD_TAP_Start() has been called by a TAP
+            'Official release'
+
+2010-01-17  Bugfix: FontManager's FM_PutString() didn't check maxX for being larger than the region it should paint on (thx to xyzzyx)
 
 not yet included
             Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()

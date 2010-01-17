@@ -10,14 +10,15 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   dword                 ret;
   dword                 _TempWorkFolder[4];
   static dword          *_hddTapFolder = NULL;
+  static dword          *_hddTsFolder = NULL;
   char                  CurrentDir[FBLIB_DIR_SIZE];
   int                   shmid = 0;
   char                 *segptr = NULL;
   tTAPInfo              TAPInfo;
 
-  static void  (*ApplHdd_SetWorkFolder)(void*);
-  static dword (*ApplHdd_SelectFolder)(void*, char  const*);
-  static void  (*Appl_ExecProgram)(char*);
+  static void  (*ApplHdd_SetWorkFolder)(void*) = NULL;
+  static dword (*ApplHdd_SelectFolder)(void*, char  const*) = NULL;
+  static void  (*Appl_ExecProgram)(char*) = NULL;
 
   (void)ParameterBlock;
 
@@ -29,18 +30,11 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
     segptr = (char *)shmat(shmid, 0, 0);
   }
 
-
-  if(!Appl_ExecProgram)
-    Appl_ExecProgram      = (void*)TryResolve("_Z16Appl_ExecProgramPc");
-
-  if(!ApplHdd_SetWorkFolder)
-    ApplHdd_SetWorkFolder = (void*)TryResolve("_Z21ApplHdd_SetWorkFolderPv");
-
-  if(!ApplHdd_SelectFolder)
-    ApplHdd_SelectFolder  = (void*)TryResolve("_Z20ApplHdd_SelectFolderPvPKc");
-
-  if(!_hddTapFolder)
-    _hddTapFolder         = (dword*)TryResolve("_hddTapFolder");
+  if(!Appl_ExecProgram)      Appl_ExecProgram      = (void*)TryResolve("_Z16Appl_ExecProgramPc");
+  if(!ApplHdd_SetWorkFolder) ApplHdd_SetWorkFolder = (void*)TryResolve("_Z21ApplHdd_SetWorkFolderPv");
+  if(!ApplHdd_SelectFolder)  ApplHdd_SelectFolder  = (void*)TryResolve("_Z20ApplHdd_SelectFolderPvPKc");
+  if(!_hddTapFolder)        _hddTapFolder          = (dword*)TryResolve("_hddTapFolder");
+  if(!_hddTsFolder)         _hddTsFolder           = (dword*)TryResolve("_hddTsFolder");
 
   //"Calculate" the current absolute directory of the new TAP
   TAP_SPrint(CurrentDir, "mnt/hd");
@@ -62,6 +56,9 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
     shmdt(segptr);
     shmctl(shmid, IPC_RMID, 0);
   }
+
+  ApplHdd_SelectFolder(&_hddTapFolder, "mnt/hd/ProgramFiles");
+  ApplHdd_SetWorkFolder((void*)*_hddTsFolder);
 
   return 1;
 }

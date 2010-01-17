@@ -157,7 +157,7 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   if(RECHeaderType == RHT_TMSs)
   {
     //Right now, there is just a sat version of the TMS.
-    memcpy (RECHeaderInfo->TPUnknown3, &Buffer[p +  0], 4);
+    memcpy (RECHeaderInfo->TPUnknown3, &Buffer[p + 0], 4);
     RECHeaderInfo->TPSatIndex           =  *( byte*)(&Buffer[p +  4]);
     RECHeaderInfo->TPPolarization       =  getWord(&Buffer[p +  5], WrongEndian) & 0x01;
     RECHeaderInfo->TPMode               = (getWord(&Buffer[p +  5], WrongEndian) >>  1) & 0x07;
