@@ -1,9 +1,9 @@
+#ifdef _TMS_
+
 #include                <sys/types.h>
 #include                <sys/shm.h>
 #include                <string.h>
 #include                "FBLib_tap.h"
-
-#ifdef _TMS_
 
 dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
 {

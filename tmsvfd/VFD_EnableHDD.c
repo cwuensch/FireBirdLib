@@ -12,7 +12,7 @@ bool VFD_EnableHDD(bool Enable)
   if(!VFDUsedByTAP || !grid) return FALSE;
 
   grid[29] &= 0x1f;
-  grid[28] &= 0x80;
+  grid[28] &= 0xC0;
 
   if(Enable)
     grid[28] |= 0x20;

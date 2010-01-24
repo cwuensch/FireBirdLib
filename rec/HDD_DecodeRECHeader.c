@@ -97,12 +97,13 @@ void HDD_DecodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo
     //TMS
     RECHeaderInfo->SISatIndex  =  *( byte*)(&Buffer[p + 0x0000]);
     RECHeaderInfo->SIReserved1 =  *( byte*)(&Buffer[p + 0x0001]);
-    RECHeaderInfo->SITPIdx     =  getWord(&Buffer[p + 0x0002], WrongEndian) & 0x3f;
-    RECHeaderInfo->SITunerNum  =((getWord(&Buffer[p + 0x0002], WrongEndian) >> 11) & 0x01) | ((getWord(&Buffer[p + 0x0002], WrongEndian) >> 9) & 0x02);
-    RECHeaderInfo->SIDelFlag   = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 15) & 1;
-    RECHeaderInfo->SICASFlag   = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 14) & 1;
-    RECHeaderInfo->SILockFlag  = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 13) & 1;
-    RECHeaderInfo->SISkipFlag  = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 12) & 1;
+
+    RECHeaderInfo->SITPIdx     =  getWord(&Buffer[p +0x0002], WrongEndian) >> 6;
+    RECHeaderInfo->SITunerNum  = (getWord(&Buffer[p +0x0002], WrongEndian) >> 4) & 3;
+    RECHeaderInfo->SIDelFlag   = (getWord(&Buffer[p +0x0002], WrongEndian) >> 3) & 1;
+    RECHeaderInfo->SICASFlag   = (getWord(&Buffer[p +0x0002], WrongEndian) >> 2) & 1;
+    RECHeaderInfo->SILockFlag  = (getWord(&Buffer[p +0x0002], WrongEndian) >> 1) & 1;
+    RECHeaderInfo->SISkipFlag  = (getWord(&Buffer[p +0x0002], WrongEndian)     ) & 1;
 
     RECHeaderInfo->SIServiceID = getWord(&Buffer[p + 0x0004], WrongEndian);
     RECHeaderInfo->SIPMTPID    = getWord(&Buffer[p + 0x0006], WrongEndian);
@@ -306,7 +307,8 @@ void HDD_DecodeRECHeader_EventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   if(RECHeaderType == RHT_TMSs)
   {
     memcpy (RECHeaderInfo->EventUnknown1, &Buffer[p], 2);
-    memcpy (RECHeaderInfo->EventUnknown3, &Buffer[p + 2], 2); //TMS (instead of duration)
+    RECHeaderInfo->EventDurationHour   = *( byte*)(&Buffer[p +  2]);
+    RECHeaderInfo->EventDurationMin    = *( byte*)(&Buffer[p +  3]);
     RECHeaderInfo->EventEventID        = getWord(&Buffer[p + 0x0004], WrongEndian);
     memcpy (RECHeaderInfo->EventUnknown2, &Buffer[p + 0x0006], 2);
     RECHeaderInfo->EventStartTime      = getDword(&Buffer[p + 0x0008], WrongEndian);

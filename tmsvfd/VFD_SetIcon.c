@@ -41,7 +41,7 @@ bool VFD_SetIcon(tVFDIcon VFDIcon, bool On)
     case VFD_Satellite  : GridIndex = 27; OrBit = 4; break;
     case VFD_TimeShift  : GridIndex = 27; OrBit = 1; break;
     case VFD_TV         : GridIndex = 27; OrBit = 2; break;
-
+    case VFD_HDDFull    : GridIndex = 28; OrBit = 6; break;
   }
 
   if(On)

@@ -18,7 +18,7 @@ bool VFD_SetHDDValue(int Percent)
   if(Percent > 55) grid[28] |= 0x02;
   if(Percent > 66) grid[28] |= 0x04;
   if(Percent > 77) grid[28] |= 0x08;
-  if(Percent > 88) grid[28] |= 0x50;
+  if(Percent > 88) grid[28] |= 0x10;
 
   return TRUE;
 }

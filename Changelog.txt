@@ -429,8 +429,10 @@ License:  This library is freeware. You may use this code in your own projects f
             'Official release'
 
 2010-01-17  Bugfix: FontManager's FM_PutString() didn't check maxX for being larger than the region it should paint on (thx to xyzzyx)
+2010-01-19  Bugfix: Renamed TYPE_SatInfoSTMS.SatAngle to TYPE_SatInfoSTMS.Position to be compatible with the 5k version
+2010-01-23  Bugfix: HDD_DecodeRECHeader_ServiceInfo() used the wrong endian for decoding the flags
+2010-01-24  Separated the HDD full icon into a independent icon (VFD_HDDFull)
 
 not yet included
             Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()
             BatchMode to HDD_TAP_Start() and ported HDD_TAP_isBatchMode()
-

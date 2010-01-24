@@ -244,7 +244,7 @@
     TYPE_LNBInfoSTMS    LNB[2];
 
     byte                Unknown1[22];
-    word                SatAngle;
+    word                Position;
     byte                Unused2[8];
   }TYPE_SatInfoSTMS;
 
@@ -451,6 +451,7 @@
     VFD_Dollar,
     VFD_FFwd,
     VFD_HDD,
+    VFD_HDDFull,
     VFD_JumpStart,
     VFD_JumpEnd,
     VFD_MP3,
