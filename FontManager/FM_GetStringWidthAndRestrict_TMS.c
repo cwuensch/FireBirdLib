@@ -15,7 +15,7 @@ dword FM_GetStringWidthAndRestrict(char *Text, tFontData *FontData, int MaxWidth
   {
     if(FM_isValidCharacter(Text[i]))
     Width += FontData->FontDef[FM_CharToIndex(Text[i])].Width;
-    if (Width >= MaxWidth)
+    if (Width > MaxWidth)
     {
         Width -= FontData->FontDef[FM_CharToIndex(Text[i])].Width;
         Text[i] = 0;
