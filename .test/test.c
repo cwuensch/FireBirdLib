@@ -171,11 +171,6 @@ int TAP_Main (void)
   FlashRemoveServiceByPartOfName(NULL, FALSE);                          //flash, all
   FlashServiceAddressToServiceIndex(NULL);                              //flash, all
   FlushCache(NULL, 0);                                                  //main, all
-  FM_FreeFontFile(NULL);                                                //FontManager, all
-  FM_GetStringHeight(NULL,NULL);                                        //FontManager, all
-  FM_GetStringWidth(NULL, NULL);                                        //FontManager, all
-  FM_LoadFontFile(NULL, NULL);                                          //FontManager, all
-  FM_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);                     //FontManager, all
   FreeOSDRegion(0);                                                     //av, all
   GetCurrentEvent(NULL);                                                //av, all
   GetEEPROMAddress();                                                   //flash, all
@@ -271,47 +266,6 @@ int TAP_Main (void)
   OATH(NULL, 0, 0);                                                     //compression, all
   OSDCopy(0, 0, 0, 0, 0, 0, 0);                                         //av, all
   OSDLinesForeDirty(FALSE);                                             //dialog, all
-  OSDMenuButtonAdd(0, 0, NULL, NULL);                                   //TMSOSDMenu, all
-  OSDMenuButtonsClear();                                                //TMSOSDMenu, all
-  OSDMenuDestroy();                                                     //TMSOSDMenu, all
-  OSDMenuEvent(NULL, NULL, NULL);                                       //TMSOSDMenu, all
-  OSDMenuGetCurrentItem();                                              //TMSOSDMenu, all
-  OSDMenuInfoBoxDestroy();                                              //TMSOSDMenu, all
-  OSDMenuInfoBoxIsVisible();                                            //TMSOSDMenu, all
-  OSDMenuInfoBoxShow(NULL, NULL, 0);                                    //TMSOSDMenu, all
-  OSDMenuInitialize(FALSE, FALSE, FALSE, FALSE, NULL, NULL);            //TMSOSDMenu, all
-  OSDMenuIsVisible();                                                   //TMSOSDMenu, all
-  OSDMenuItemAdd(NULL, NULL, NULL, NULL,FALSE, FALSE);                  //TMSOSDMenu, all
-  OSDMenuItemModifyName(0, NULL);                                       //TMSOSDMenu, all
-  OSDMenuItemModifyNameIcon(0, NULL);                                   //TMSOSDMenu, all
-  OSDMenuItemModifySelectable(0,FALSE);                                 //TMSOSDMenu, all
-  OSDMenuItemModifyValue(0, NULL);                                      //TMSOSDMenu, all
-  OSDMenuItemModifyValueIcon(0, NULL);                                  //TMSOSDMenu, all
-  OSDMenuItemsClear();                                                  //TMSOSDMenu, all
-  OSDMenuLogo(0, 0, NULL);                                              //TMSOSDMenu, all
-  OSDMenuMessageBoxButtonAdd(NULL);                                     //TMSOSDMenu, all
-  OSDMenuMessageBoxButtonSelect(0);                                     //TMSOSDMenu, all
-  OSDMenuMessageBoxDestroy();                                           //TMSOSDMenu, all
-  OSDMenuMessageBoxInitialize(NULL, NULL);                              //TMSOSDMenu, all
-  OSDMenuMessageBoxIsVisible();                                         //TMSOSDMenu, all
-  OSDMenuMessageBoxLastButton();                                        //TMSOSDMenu, all
-  OSDMenuMessageBoxShow();                                              //TMSOSDMenu, all
-  OSDMenuModifyItemLongTextScrolling(FALSE);                            //TMSOSDMenu, all
-  OSDMenuModifyItemNumbered(FALSE);                                     //TMSOSDMenu, all
-  OSDMenuModifyItemValueColumn(FALSE);                                  //TMSOSDMenu, all
-  OSDMenuModifyScrollLoop(FALSE);                                       //TMSOSDMenu, all
-  OSDMenuModifyTitleLeft(NULL);                                         //TMSOSDMenu, all
-  OSDMenuModifyTitleRight(NULL);                                        //TMSOSDMenu, all
-  OSDMenuPop();                                                         //TMSOSDMenu, all
-  OSDMenuPush();                                                        //TMSOSDMenu, all
-  OSDMenuScrollDown();                                                  //TMSOSDMenu, all
-  OSDMenuScrollEnd();                                                   //TMSOSDMenu, all
-  OSDMenuScrollHome();                                                  //TMSOSDMenu, all
-  OSDMenuScrollPageDown();                                              //TMSOSDMenu, all
-  OSDMenuScrollPageUp();                                                //TMSOSDMenu, all
-  OSDMenuScrollUp();                                                    //TMSOSDMenu, all
-  OSDMenuSelectItem(0);                                                 //TMSOSDMenu, all
-  OSDMenuUpdate();                                                      //TMSOSDMenu, all
   ParseLine(NULL, NULL, 0);                                             //string, all
   ProfileDirty();                                                       //dialog, all
   ProfileInit();                                                        //dialog, all
@@ -436,6 +390,7 @@ int TAP_Main (void)
   FlashGetChannelNumber(0, 0, 0, 0);                                    //flash, 5k
   FlashGetTransponderCByIndex(0);                                       //flash, 5k
   FlashGetTransponderTByIndex(0);                                       //flash, 5k
+  FlashGetTransponderT5700ByIndex(0);                                   //flash, 5k
   FlashRemoveServiceByUHF(NULL, FALSE, FALSE);                          //flash, 5k
   FlashWrite(NULL, NULL, 0, NULL);                                      //flash, 5k
   fwHook(0);                                                            //mpvfd, 5k
@@ -587,12 +542,58 @@ int TAP_Main (void)
   FIS_fwSetIrCode();                                                    //fis, tms
   FIS_vgrid();                                                          //fis, tms
   FIS_vMACAddress();                                                    //fis, tms
+  FM_FreeFontFile(NULL);                                                //FontManager, all
+  FM_GetStringHeight(NULL,NULL);                                        //FontManager, all
+  FM_GetStringWidth(NULL, NULL);                                        //FontManager, all
+  FM_LoadFontFile(NULL, NULL);                                          //FontManager, all
+  FM_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);                     //FontManager, all
   GetMacAddress();                                                      //main, tms
   HDD_GetAbsolutePathByTypeFile(NULL, NULL);                            //hdd, tms
   HDD_GetInodeByAbsFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByRelFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
   HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, tms
+  OSDMenuButtonAdd(0, 0, NULL, NULL);                                   //TMSOSDMenu, all
+  OSDMenuButtonsClear();                                                //TMSOSDMenu, all
+  OSDMenuDestroy();                                                     //TMSOSDMenu, all
+  OSDMenuEvent(NULL, NULL, NULL);                                       //TMSOSDMenu, all
+  OSDMenuGetCurrentItem();                                              //TMSOSDMenu, all
+  OSDMenuInfoBoxDestroy();                                              //TMSOSDMenu, all
+  OSDMenuInfoBoxIsVisible();                                            //TMSOSDMenu, all
+  OSDMenuInfoBoxShow(NULL, NULL, 0);                                    //TMSOSDMenu, all
+  OSDMenuInitialize(FALSE, FALSE, FALSE, FALSE, NULL, NULL);            //TMSOSDMenu, all
+  OSDMenuIsVisible();                                                   //TMSOSDMenu, all
+  OSDMenuItemAdd(NULL, NULL, NULL, NULL,FALSE, FALSE);                  //TMSOSDMenu, all
+  OSDMenuItemModifyName(0, NULL);                                       //TMSOSDMenu, all
+  OSDMenuItemModifyNameIcon(0, NULL);                                   //TMSOSDMenu, all
+  OSDMenuItemModifySelectable(0,FALSE);                                 //TMSOSDMenu, all
+  OSDMenuItemModifyValue(0, NULL);                                      //TMSOSDMenu, all
+  OSDMenuItemModifyValueIcon(0, NULL);                                  //TMSOSDMenu, all
+  OSDMenuItemsClear();                                                  //TMSOSDMenu, all
+  OSDMenuLogo(0, 0, NULL);                                              //TMSOSDMenu, all
+  OSDMenuMessageBoxButtonAdd(NULL);                                     //TMSOSDMenu, all
+  OSDMenuMessageBoxButtonSelect(0);                                     //TMSOSDMenu, all
+  OSDMenuMessageBoxDestroy();                                           //TMSOSDMenu, all
+  OSDMenuMessageBoxInitialize(NULL, NULL);                              //TMSOSDMenu, all
+  OSDMenuMessageBoxIsVisible();                                         //TMSOSDMenu, all
+  OSDMenuMessageBoxLastButton();                                        //TMSOSDMenu, all
+  OSDMenuMessageBoxShow();                                              //TMSOSDMenu, all
+  OSDMenuModifyItemLongTextScrolling(FALSE);                            //TMSOSDMenu, all
+  OSDMenuModifyItemNumbered(FALSE);                                     //TMSOSDMenu, all
+  OSDMenuModifyItemValueColumn(FALSE);                                  //TMSOSDMenu, all
+  OSDMenuModifyScrollLoop(FALSE);                                       //TMSOSDMenu, all
+  OSDMenuModifyTitleLeft(NULL);                                         //TMSOSDMenu, all
+  OSDMenuModifyTitleRight(NULL);                                        //TMSOSDMenu, all
+  OSDMenuPop();                                                         //TMSOSDMenu, all
+  OSDMenuPush();                                                        //TMSOSDMenu, all
+  OSDMenuScrollDown();                                                  //TMSOSDMenu, all
+  OSDMenuScrollEnd();                                                   //TMSOSDMenu, all
+  OSDMenuScrollHome();                                                  //TMSOSDMenu, all
+  OSDMenuScrollPageDown();                                              //TMSOSDMenu, all
+  OSDMenuScrollPageUp();                                                //TMSOSDMenu, all
+  OSDMenuScrollUp();                                                    //TMSOSDMenu, all
+  OSDMenuSelectItem(0);                                                 //TMSOSDMenu, all
+  OSDMenuUpdate();                                                      //TMSOSDMenu, all
   PrintNet(NULL);                                                       //main, tms
   TryResolve(NULL);                                                     //fis, tms
   VFD_EnableCD(FALSE);                                                  //tmsvfd, tms

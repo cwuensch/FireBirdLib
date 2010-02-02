@@ -2108,6 +2108,7 @@
   TYPE_TpInfoC         *FlashGetTransponderCByIndex (word TpIdx);
   TYPE_TpInfoS         *FlashGetTransponderSByIndex (word TpIdx, byte SatIdx);
   TYPE_TpInfoT         *FlashGetTransponderTByIndex (word TpIdx);
+  TYPE_TpInfoT5700     *FlashGetTransponderT5700ByIndex (word TpIdx);
   word                  FlashServiceAddressToServiceIndex (TYPE_Service *ServiceAddress);
   bool                  FlashWrite (byte *SourceAddress, byte *FlashAddress, dword DataSize, void *pPercentFinishedCallback);
 

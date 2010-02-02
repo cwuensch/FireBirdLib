@@ -39,14 +39,5 @@ void SeparateFileNameComponents(char *FileName, char *Name, char *Ext, int *Inde
       *Index = strtol(&Name[strlen(Name) - 1], NULL, 10);
       Name[strlen(Name) - 2] = '\0';
     }
-
-    if(strlen(Name) > 3)
-    {
-      if((Name[strlen(Name) - 3] == '-') && isdigit(Name[strlen(Name) - 2]) && isdigit(Name[strlen(Name) - 1]))
-      {
-        *Index = strtol(&Name[strlen(Name) - 2], NULL, 10);
-        Name[strlen(Name) - 3] = '\0';
-      }
-    }
   }
 }

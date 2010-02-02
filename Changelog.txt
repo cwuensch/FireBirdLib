@@ -432,6 +432,9 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-01-19  Bugfix: Renamed TYPE_SatInfoSTMS.SatAngle to TYPE_SatInfoSTMS.Position to be compatible with the 5k version
 2010-01-23  Bugfix: HDD_DecodeRECHeader_ServiceInfo() used the wrong endian for decoding the flags
 2010-01-24  Separated the HDD full icon into a independent icon (VFD_HDDFull)
+2010-01-28  Bugfix: Removed the 2 digit file index check in SeparateFileNameComponents() as it may interfere with a date at the end of the file name.
+2010-01-29  Added FlashGetTransponderT5700ByIndex()
+            Added TF5700 support to FlashGetChannelNumber() and FlashFindServiceByUHF()
 
 not yet included
             Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()
