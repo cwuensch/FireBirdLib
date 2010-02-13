@@ -437,6 +437,7 @@ License:  This library is freeware. You may use this code in your own projects f
             Added TF5700 support to FlashGetChannelNumber() and FlashFindServiceByUHF()
 2010-02-02  FM_GetStringWidthAndRestrict_TMS() (thx to Erdnussnase)
 2010-02-10  Removed the 100 items limit of OSDMenuItem*()
+2010-02-13  Added HDD_RemoveDir()
 
 not yet included
             Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()

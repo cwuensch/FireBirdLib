@@ -319,6 +319,7 @@
   dword HDD_GetFileTimeByAbsFileName(char *FileName);
   dword HDD_GetFileTimeByRelFileName(char *FileName);
   dword HDD_GetFileTimeByTypeFile(TYPE_File *File);
+  void  HDD_RemoveDir(char *DirPath, bool Recursive);
 
 
   /*****************************************************************************************************************************/

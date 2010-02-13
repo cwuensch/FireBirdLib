@@ -1212,6 +1212,3 @@
       OK          Auswahl
       EXIT        Abbruch
   */
-
-//Test
-void RemoveTestDir(void);
