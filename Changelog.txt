@@ -436,9 +436,25 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-01-29  Added FlashGetTransponderT5700ByIndex()
             Added TF5700 support to FlashGetChannelNumber() and FlashFindServiceByUHF()
 2010-02-02  FM_GetStringWidthAndRestrict_TMS() (thx to Erdnussnase)
-2010-02-10  Removed the 100 items limit of OSDMenuItem*()
 2010-02-13  Added HDD_RemoveDir()
+2010-02-19  Added tDirEntry struct
+            Added FIS_vcurTapTask()
+            Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()
+            Ported FIS_vTAPTable()
+            Ported HDD_TAP_Callback()
+            Ported HDD_TAP_GetIDByFileName()
+            Ported HDD_TAP_GetIDByIndex()
+            Ported HDD_TAP_GetIndexByID()
+            Ported HDD_TAP_GetStartParameter()
+            Ported HDD_TAP_isAnyRunning()
+            Ported HDD_TAP_isBatchMode()
+            Ported HDD_TAP_SendEvent()
+            Ported HDD_TAP_StartedByTAP()
+            Ported HDD_TAP_Terminate()
+            Ported BatchMode and ParameterBlock parameter in HDD_TAP_Start()
+            Ported TAPCOM
+
 
 not yet included
-            Added HDD_TAP_GetInfo() and HDD_TAP_GetInfoByAbsPath()
-            BatchMode to HDD_TAP_Start() and ported HDD_TAP_isBatchMode()
+
+            Removed the 100 items limit of OSDMenuItem*()

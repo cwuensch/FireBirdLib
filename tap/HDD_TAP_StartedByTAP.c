@@ -1,11 +1,23 @@
-#include "FBLib_tap.h"
+#ifdef _TMS_
 
-#ifndef _TMS_
+  #include              <sys/types.h>
+  #include              <sys/shm.h>
 
-bool HDD_TAP_isBatchMode (void)
+#endif
+
+#include                "FBLib_tap.h"
+
+
+bool HDD_TAP_StartedByTAP (void)
 {
+#ifdef _TMS_
+
+  return (shmget(PARAMBLOCKKEY, sizeof(TYPE_Parametered_Tap), 0) != -1);
+
+#else
+
   tTAPTableInfo         TAPInfo;
-  dword                 i ,LoadAddress, BatchPointer;
+  dword                 i, LoadAddress, BatchPointer;
 
   if (!LibInitialized) InitTAPex ();
   if (!LibInitialized) return FALSE;
@@ -23,14 +35,13 @@ bool HDD_TAP_isBatchMode (void)
       BatchPointer = *(dword *) (LoadAddress + 0x24);
       if ((BatchPointer >= 0x80000000) && (BatchPointer <= 0x84000000 - sizeof(dword)) && (*(dword *) BatchPointer == MAGIC))
       {
-        //Has this TAP being started in batch mode?
-        if (*(dword *) (BatchPointer + sizeof(dword)) == TAPInfo.TAPID) return *(bool *) (BatchPointer + sizeof(dword) * 2);
+        if (*(dword *) (BatchPointer + sizeof(dword)) == TAPInfo.TAPID) return TRUE;
       }
     }
   }
 
   //No launcher found
   return FALSE;
-}
 
 #endif
+}

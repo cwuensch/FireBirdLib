@@ -1,9 +1,18 @@
 #include "../libFireBird.h"
 
-#ifndef _TMS_
-
 dword HDD_TAP_GetIDByFileName (char *TAPFileName)
 {
+#ifdef _TMS_
+
+   tTAPInfo             pTAPInfo;
+
+  if(HDD_TAP_GetInfo(TAPFileName, &pTAPInfo))
+    return pTAPInfo.TAPID;
+  else
+    return 0;
+
+#else
+
   dword                 ret;
   TYPE_File             *fp;
   dword                 buf[128];
@@ -15,6 +24,7 @@ dword HDD_TAP_GetIDByFileName (char *TAPFileName)
   TAP_Hdd_Fclose (fp);
 
   return (ret == 1 ? buf[8] : 0);
-}
 
 #endif
+}
+

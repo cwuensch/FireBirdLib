@@ -2,35 +2,35 @@
 #include "../libFireBird.h"
 
 #ifdef _TMS_
-const char              *__fblib_version__ = "__FBLIB_VERSION_TMS__ " __FBLIB_VERSION__;
+  const char            *__fblib_version__ = "__FBLIB_VERSION_TMS__ " __FBLIB_VERSION__;
 #else
-const char            *__fblib_version__ = "__FBLIB_VERSION__ " __FBLIB_VERSION__;
+  const char            *__fblib_version__ = "__FBLIB_VERSION__ " __FBLIB_VERSION__;
 #endif
 
 #ifndef _TMS_
-dword                 BIOSAddress;                //The address of the callBIOS routine
-dword                 EnqueueEventAddress;        //The address of the EnqueueEvent routine
-dword                 TAPgp, FWgp, TAP_TableAddress, TAP_IndexAddress, TAP_TableIndex;
-dword                 pWD1, pWD2, pWD3, pWD4, pWD5, pFWWD, pFWWDBackup;
+  dword                 BIOSAddress;                //The address of the callBIOS routine
+  dword                 EnqueueEventAddress;        //The address of the EnqueueEvent routine
+  dword                 TAPgp, FWgp, TAP_TableAddress, TAP_IndexAddress;
+  dword                 pWD1, pWD2, pWD3, pWD4, pWD5, pFWWD, pFWWDBackup;
 #endif
 
-dword                 SysID;
-word                  ApplID;
-
-#ifndef _TMS_
-volatile word    *FlashMemory_Base;
-volatile dword   *FlashMemory_Firmware;
-volatile dword   *FlashMemory_Settings;
-volatile dword   *FlashMemory_Defaults;
-volatile dword   *Hardware_bff00000;
-
-volatile tpScalerSettings   *pScalerSettingsMain;
-volatile tpScalerSettings   *pScalerSettingsPIP;
-volatile tpScalerSettings   *pScalerSettingsUnk1;
-volatile tpScalerSettings   *pScalerSettingsUnk2;
-#endif
-
+dword                   SysID;
+word                    ApplID;
+dword                   TAP_TableIndex;
 bool                    LibInitialized = FALSE;
+
+#ifndef _TMS_
+  volatile word        *FlashMemory_Base;
+  volatile dword       *FlashMemory_Firmware;
+  volatile dword       *FlashMemory_Settings;
+  volatile dword       *FlashMemory_Defaults;
+  volatile dword       *Hardware_bff00000;
+
+  volatile tpScalerSettings   *pScalerSettingsMain;
+  volatile tpScalerSettings   *pScalerSettingsPIP;
+  volatile tpScalerSettings   *pScalerSettingsUnk1;
+  volatile tpScalerSettings   *pScalerSettingsUnk2;
+#endif
 
 bool InitTAPex()
 {
@@ -43,6 +43,9 @@ bool InitTAPex()
 #ifdef _TMS_
   SysID    = TAP_GetSystemId();
   ApplID   = TAP_GetVersion();
+
+  dword *pcurTapTask = (dword*)TryResolve("_curTapTask");
+  if(pcurTapTask) TAP_TableIndex = *pcurTapTask;
 
 #ifdef DEBUG_FIREBIRDLIB
   TAP_Print ("FireBirdLib: SystemID=%d, Appl=%4.4x\n", SysID, ApplID);

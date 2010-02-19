@@ -36,6 +36,6 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
   return 0;
 
 #else
-  return HDD_TranslateDirCluster ((dword)HDD_TAP_GetCurrentDirCluster(), CurrentDir);
+  return HDD_TranslateDirCluster((dword)HDD_TAP_GetCurrentDirCluster(), CurrentDir);
 #endif
 }

@@ -12,7 +12,7 @@ void OSDMenuUpdate(void)
     ListDirty    = TRUE;
     ButtonsDirty = TRUE;
     LogoDirty    = TRUE;
-    OSDRgn = TAP_Osd_Create(0, 0, 720, 576, 0, OSD_Flag_PlaneSubt);
+    OSDRgn = TAP_Osd_Create(0, 0, 720, 576, 0, 0);
     TAP_ExitNormal();
   }
 

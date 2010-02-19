@@ -29,7 +29,7 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   if (TAPID != NULL) *TAPID = fbl_started_tap.id;
 
   //Set the batch pointer in the TAP header
-  HDD_TAP_GetInfo (TAP_TableIndex, &TAPInfo);                                      //Get all details about this TAP
+  HDD_TAP_GetInfo (TAP_TableIndex, &TAPInfo);                                 //Get all details about this TAP
   *(dword*)(TAPInfo.LoadAddress + 0x24) = (dword) &fbl_started_tap;
 
   //Set the TAPID and parameter block
@@ -38,7 +38,7 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   fbl_parametered_tap.pParameterBlock = (dword)ParameterBlock;
 
   //Set the parameter pointer in the TAP header
-  HDD_TAP_GetInfo (TAP_TableIndex, &TAPInfo);                                      //Get all details about this TAP
+  HDD_TAP_GetInfo (TAP_TableIndex, &TAPInfo);                                 //Get all details about this TAP
   *(dword*)(TAPInfo.LoadAddress + 0x28) = (dword) &fbl_parametered_tap;
 
 

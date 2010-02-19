@@ -256,6 +256,7 @@ int TAP_Main (void)
 #ifdef _TMS_
   DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
   DEBUG("FIS_vgrid                         = %8.8x", FIS_vgrid());
+  DEBUG("FIS_vcurTapTask                   = %8.8x", FIS_vcurTapTask());
   DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
 #else
   DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());

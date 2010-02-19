@@ -4,7 +4,6 @@
 #include                "tap.h"
 #include                "../libFireBird.h"
 
-#ifndef _TMS_
 extern bool             LibInitialized;
 extern const dword      __tap_ud__;
 
@@ -30,6 +29,5 @@ typedef struct
   int                   ReturnVal;        // Rückgabewert für Aufrufer
   dword                 Reserved;         // Reserved for fuure use
 } TAPCOM_InternalMesBuf;
-#endif
 
 #endif

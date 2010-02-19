@@ -1,9 +1,27 @@
-#include "FBLib_tap.h"
+#ifdef _TMS_
 
-#ifndef _TMS_
+  #include              <sys/types.h>
+  #include              <sys/shm.h>
+
+#endif
+
+#include "FBLib_tap.h"
 
 void *HDD_TAP_GetStartParameter (void)
 {
+#ifdef _TMS_
+  int                   shmidParameterBlock;
+
+  shmidParameterBlock = shmget(PARAMBLOCKKEY, sizeof(TYPE_Parametered_Tap), 0);
+  if(shmidParameterBlock == -1) return NULL;
+
+  fbl_parametered_tap = (TYPE_Parametered_Tap*)shmat(shmidParameterBlock, 0, 0);
+  if((int)fbl_parametered_tap == -1) return NULL;
+
+  return (void*)fbl_parametered_tap->pParameterBlock;
+
+#else
+
   tTAPTableInfo         TAPInfo;
   dword                 i, LoadAddress, ParameterBlockPointer;
 
@@ -34,6 +52,6 @@ void *HDD_TAP_GetStartParameter (void)
 
   //No launcher found
   return NULL;
-}
 
 #endif
+}

@@ -35,6 +35,7 @@
   inline dword FIS_fwPowerOff(void);
   inline dword FIS_fwApplVfdSendData(void);
   inline dword FIS_fwSetIrCode(void);
+  inline dword FIS_vcurTapTask(void);
   inline dword FIS_vgrid(void);
   inline dword FIS_vMACAddress(void);
 
@@ -312,6 +313,14 @@
 
   #define TAPFSROOT     "/mnt/hd"
 
+  typedef struct
+  {
+    dword               Magic; //0xbacaed31
+    char               *Path;
+    dword               unknown1;
+    dword               unknown2;
+  }tDirEntry;
+
   bool  HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
   dword HDD_GetInodeByAbsFileName(char *Filename);
   dword HDD_GetInodeByRelFileName(char *Filename);
@@ -404,7 +413,7 @@
     dword                 unknown7;
     dword                 unknown8;
     dword                 unknown9;
-    dword                 CurrentDir;
+    tDirEntry            *CurrentDir;
   } tTMSTAPTaskTable; //44 Bytes * 16 TAPs = 704 bytes
 
   typedef struct

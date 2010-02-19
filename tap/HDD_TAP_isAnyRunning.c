@@ -1,9 +1,27 @@
 #include "FBLib_tap.h"
 
-#ifndef _TMS_
-
-bool HDD_TAP_isAnyRunning (void)
+bool HDD_TAP_isAnyRunning(void)
 {
+#ifdef _TMS_
+
+  dword                 i;
+  tTMSTAPTaskTable     *TMSTAPTaskTable;
+
+  if (!LibInitialized) InitTAPex ();
+  if (!LibInitialized) return FALSE;
+
+  TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
+  if(!TMSTAPTaskTable) return FALSE;
+
+  for (i = 0; i < TAP_MAX; i++)
+  {
+    if ((TMSTAPTaskTable[i].Status != 0) && (i != TAP_TableIndex)) return TRUE;
+  }
+
+  return FALSE;
+
+#else
+
   dword                 i, LoadAddress;
 
   if (!LibInitialized) InitTAPex ();
@@ -16,6 +34,7 @@ bool HDD_TAP_isAnyRunning (void)
     if ((LoadAddress != 0) && (i != TAP_TableIndex)) return TRUE;
   }
   return FALSE;
-}
 
 #endif
+
+}

@@ -1,7 +1,5 @@
 #include                "FBLib_tapcom.h"
 
-#ifndef _TMS_
-
 TAPCOM_Channel TAPCOM_GetChannel (dword param1, dword *CallerID, dword *ServiceID, dword *ParamBlockVersion, void **ParamBlock)
 {
   TAPCOM_InternalMesBuf *mesBuf = (TAPCOM_InternalMesBuf *) param1;
@@ -35,5 +33,3 @@ TAPCOM_Channel TAPCOM_GetChannel (dword param1, dword *CallerID, dword *ServiceI
 
   return (TAPCOM_Channel) mesBuf;
 }
-
-#endif

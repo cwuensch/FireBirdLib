@@ -1,7 +1,5 @@
 #include                "FBLib_tapcom.h"
 
-#ifndef _TMS_
-
 void TAPCOM_Finish (TAPCOM_Channel Channel, int val)
 {
   TAPCOM_InternalMesBuf *buf = (TAPCOM_InternalMesBuf *) Channel;
@@ -15,5 +13,3 @@ void TAPCOM_Finish (TAPCOM_Channel Channel, int val)
     buf->ServerAlive = TAP_GetTick();
   }
 }
-
-#endif

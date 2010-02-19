@@ -1,7 +1,5 @@
 #include                "FBLib_tapcom.h"
 
-#ifndef _TMS_
-
 TAPCOM_Status TAPCOM_GetStatus (TAPCOM_Channel Channel)
 {
   TAPCOM_InternalMesBuf *buf = (TAPCOM_InternalMesBuf *) Channel;
@@ -15,5 +13,3 @@ TAPCOM_Status TAPCOM_GetStatus (TAPCOM_Channel Channel)
 
   return buf->Status;
 }
-
-#endif

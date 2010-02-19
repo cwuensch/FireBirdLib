@@ -16,9 +16,21 @@
 #endif
 
 extern int TAPDirStackDepth;
+extern bool LibInitialized;
 
+typedef struct
+{
+  dword                 magic;
+  dword                 id;
+  dword                 pParameterBlock;
+} TYPE_Parametered_Tap;
 
-#ifndef _TMS_
+#ifdef _TMS_
+
+extern TYPE_Parametered_Tap *fbl_parametered_tap;
+
+#else
+
 typedef struct
 {
   dword                 TAPgp;
@@ -32,26 +44,17 @@ typedef struct
   bool                  batchmode;
 } TYPE_Started_Tap;
 
-
-typedef struct
-{
-  dword                 magic;
-  dword                 id;
-  dword                 pParameterBlock;
-} TYPE_Parametered_Tap;
-
-
-extern bool LibInitialized;
-extern tDisabledEvents DisabledEvents [16];
-extern bool DisabledEventsArrayInitialized;
-extern TYPE_Started_Tap fbl_started_tap;
-extern TYPE_Parametered_Tap fbl_parametered_tap;
+extern tDisabledEvents        DisabledEvents [16];
+extern bool                   DisabledEventsArrayInitialized;
+extern TYPE_Started_Tap       fbl_started_tap;
+extern TYPE_Parametered_Tap   fbl_parametered_tap;
 
 dword HDD_TAP_DisabledEventHandler(word, dword, dword);
 dword SendEventHelper (tTAPTable* tap, word event, dword param1, dword param2);
 dword SendEvent (int Index, word event, dword param1, dword param2);
 dword CallbackHelper (tTAPTable* tap, void *ProcedureAddress, dword param1, dword param2, dword param3, dword param4);
 dword Callback (int Index, void *ProcedureAddress, dword param1, dword param2, dword param3, dword param4);
+
 #endif
 
 #endif

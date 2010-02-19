@@ -1,7 +1,5 @@
 #include                "FBLib_tapcom.h"
 
-#ifndef _TMS_
-
 dword TAPCOM_LastAlive (TAPCOM_Channel Channel)
 {
   if (isValidChannel (Channel))
@@ -11,5 +9,3 @@ dword TAPCOM_LastAlive (TAPCOM_Channel Channel)
 
   return 0;
 }
-
-#endif

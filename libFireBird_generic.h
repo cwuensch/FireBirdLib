@@ -1,5 +1,6 @@
   extern dword          SysID;
   extern word           ApplID;
+  extern dword          TAP_TableIndex;
 
 #ifdef _TMS_
   #define isTMS         1
@@ -745,10 +746,131 @@
   /* TAPs                                                                                                                      */
   /*****************************************************************************************************************************/
 
+  dword HDD_TAP_Callback (dword TAPID, void *ProcedureAddress, dword param1, dword param2, dword param3, dword param4);
   bool  HDD_TAP_PushDir (void);
   bool  HDD_TAP_PopDir (void);
   int   HDD_TAP_GetCurrentDir (char* CurrentDir);
   dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
+  bool  HDD_TAP_isAnyRunning (void);
+  bool  HDD_TAP_isBatchMode (void);
+  dword HDD_TAP_GetIDByFileName (char *TAPFileName);
+  dword HDD_TAP_GetIDByIndex (int TAPIndex);
+  int   HDD_TAP_GetIndexByID (dword TAPID);
+  void* HDD_TAP_GetStartParameter (void);
+  bool  HDD_TAP_isRunning (dword TAPID);
+  dword HDD_TAP_SendEvent (dword TAPID, bool AllowParamInterception, word event, dword param1, dword param2);
+  bool  HDD_TAP_StartedByTAP (void);
+  void  HDD_TAP_Terminate (dword TAPID);
+
+
+  /*****************************************************************************************************************************/
+  /* TAP Comm                                                                                                                  */
+  /*   Mainly developed by asrael                                                                                              */
+  /*****************************************************************************************************************************/
+  #define EVT_TAPCOM           0xFFF
+  // Ergänzt die event codes in tap.h, da dort alle auf 00 enden, besteht die Hoffnung,
+  // dass 0xFFF auch in zukünftigen API-Versionen nicht verwendet wird.
+
+  // Die folgenden Konstanten werden in TAPCOM_OpenChannel und TAPCOM_GetChannel
+  // verwendet, um die Anwendung zu identifizieren, für die eine Nachricht
+  // bestimmt ist.
+
+  #define TAPCOM_App_BROADCAST      0
+  // Kann verwendet werden, um eine Nachricht an alle TAPs zu schicken, die TAPCOM
+  // unterstützen.
+
+  #define TAPCOM_NO_RETURN_VALUE 0x80000000
+
+
+  typedef enum
+  {
+    TAPCOM_Status_OPEN,                   //Sobald der Block angelegt wird
+    TAPCOM_Status_SERVER_NOT_AVAILABLE,   //Falls das Server-TAP nicht geladen ist (statt OPEN)
+    TAPCOM_Status_ACKNOWLEDGED,           //Sobald der Server via ProcessEvent zugreift
+    TAPCOM_Status_REJECTED,               //Dem Server unbekannter Befehl oder gerade nicht ausführbar
+    TAPCOM_Status_FINISHED,               //Von Server abgeschlossen
+    TAPCOM_Status_VERSIONMISMATCH,        //Die TAPCOM-Versionen des Servers und des Clients passen nicht zusammen
+    TAPCOM_Status_NO_CHANNEL              //Keine gültige Verbindung
+  } TAPCOM_Status;
+
+  typedef void* TAPCOM_Channel;           // Zeiger, der intern als Kommunikationskanal verwendet wird
+
+
+  //Client Funktionen
+
+  TAPCOM_Channel TAPCOM_OpenChannel (     // setzt Remote Procedure Call an andere Anwendung ab
+
+    dword TargetID,                       // ID der gewählten Anwendung (siehe oben)
+    dword ServiceID,                      // Service-ID der gewählten Anwendung
+    dword ParamBlockVersion,              // Version des Parameterblocks
+    void *ParamBlock                      // Pointer auf die zu übertragenden Daten.
+
+  );                                      // Rückgabewert: Pointer auf (internen) Kommunikationskanal. Dieser muss an die
+
+
+  TAPCOM_Status TAPCOM_GetStatus (        // Liefert den Status des Kommunikationskanals
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: Status des Kanals
+
+
+  dword TAPCOM_LastAlive (                // Liefert den Zeitpunkt der letzten Serveraktivität (siehe: TAPCOM_StillAlive)
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: Tickcount der letzten Serveraktivität
+
+
+  int TAPCOM_GetReturnValue (             // Kann vom Client aus aufgerufen werden, um abzufragen,
+                                          // ob der Server den RPC ausgeführt oder zurückgewiesen hat.
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: der vom Server gesetzte Rückgabewert
+
+
+  void TAPCOM_CloseChannel (              // Kann vom Client aufgerufen werden, um Message-Puffer nach Abschluss der
+                                          // Kommunikation freizugeben.
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );
+
+
+  //Server-Funktionen
+  TAPCOM_Channel TAPCOM_GetChannel (      // Liefert Informationen über den vom Client gesendeten Befehl
+
+    dword param1,                         // Wird vom Event geliefert und enthält die Adresse zum Messagebuffer
+    dword *CallerID,                      // ID der aufrufenden Clients (siehe oben)
+    dword *ServiceID,                     // ID des gewünschten Services, frei definierbar
+    dword *ParamBlockVersion,             // Version des Parameterblocks
+    void  **ParamBlock                    // Rückgabe der Adresse, an der eventuelle Parameter für den Service stehen
+
+  );                                      // Rückgabewert: Pointer auf (internen) Kommunikationskanal.
+
+
+  void TAPCOM_Reject (                    // Der Server kennt den Befehl nicht oder kann diesen gerade nicht abarbeiten
+
+    TAPCOM_Channel Channel                // der von TAPCOM_GetChannel zurückgegebene Kanal
+
+  );
+
+  void TAPCOM_Finish (                    // Kann vom Server aus aufgerufen werden, um dem Client ein Ergebnis vom Typ int
+                                          // des RPCs zu übermitteln.
+
+    TAPCOM_Channel Channel,               // der von TAPCOM_GetChannel zurückgegebene Kanal
+    int            val                    // der Rückgabewert vom Server
+
+  );
+
+
+  void TAPCOM_StillAlive (                // Dauert die Befehlsverarbeitung länger, kann der Server dem Client mitteilen,
+                                          // dass er noch aktiv ist (siehe: TAPCOM_LastAlive)
+
+    TAPCOM_Channel Channel                // der von TAPCOM_GetChannel zurückgegebene Kanal
+
+  );
 
 
   /*****************************************************************************************************************************/

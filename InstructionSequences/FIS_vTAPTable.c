@@ -1,10 +1,17 @@
 #include "../libFireBird.h"
 
-#ifndef _TMS_
 
-inline dword FIS_vTAPTable (void)
+inline dword FIS_vTAPTable(void)
 {
   static dword          *vTAP_TableAddress = NULL;
+
+#ifdef _TMS_
+
+  if(!vTAP_TableAddress) vTAP_TableAddress = (dword*)TryResolve("_tapTask");
+  return (dword)vTAP_TableAddress;
+
+#else
+
 
   if (!vTAP_TableAddress)
   {
@@ -16,6 +23,6 @@ inline dword FIS_vTAPTable (void)
 
 
   return (dword)vTAP_TableAddress;
-}
-
 #endif
+
+}

@@ -1,6 +1,6 @@
 PROJECT = libFireBird
 
-DIRS = av compression debug dialog flash FontManager fs fwpatches hdd hook iic imem ini InstructionSequences main mpvfd rec shutdown string tap tap_TMS tapapifix tapcom TMSOSDMenu tmsvfd
+DIRS = av compression debug dialog flash FontManager fs fwpatches hdd hook iic imem ini InstructionSequences main mpvfd rec shutdown string tap tapapifix tapcom TMSOSDMenu tmsvfd
 
 BASE = $(shell cd /tapapi/TMS; pwd)
 include ${BASE}/include/tool.mk
