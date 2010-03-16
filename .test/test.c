@@ -306,6 +306,7 @@ int TAP_Main (void)
   TAPCOM_OpenChannel(0, 0, 0, NULL);                                    //tapcom, all
   TAPCOM_Reject(NULL);                                                  //tapcom, all
   TAPCOM_StillAlive(NULL);                                              //tapcom, all
+  TF2UnixTime(0);                                                       //flash, all
   TFDSize(NULL);                                                        //compression, all
   TimeDiff(0, 0);                                                       //flash, all
   TimeFormat(0, 0, 0);                                                  //flash, all

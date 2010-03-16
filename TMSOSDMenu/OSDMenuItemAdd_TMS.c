@@ -3,7 +3,7 @@
 
 #ifdef _TMS_
 
-bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows)
+bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID)
 {
   tMenu                *pMenu;
 
@@ -21,12 +21,13 @@ bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrDa
     pMenu->Item[pMenu->NrItems].Value[ITEMVALUESIZE - 1] = '\0';
   }
   else
-    pMenu->Item[pMenu->NrItems].Value[0] = '\0';
+    pMenu->Item[pMenu->NrItems].Value[0]    = '\0';
 
-  pMenu->Item[pMenu->NrItems].pNameIconGd = pNameIconGd;
-  pMenu->Item[pMenu->NrItems].pValueIconGd = pValueIconGd;
-  pMenu->Item[pMenu->NrItems].Selectable = Selectable;
-  pMenu->Item[pMenu->NrItems].ValueArrows = ValueArrows;
+  pMenu->Item[pMenu->NrItems].pNameIconGd   = pNameIconGd;
+  pMenu->Item[pMenu->NrItems].pValueIconGd  = pValueIconGd;
+  pMenu->Item[pMenu->NrItems].Selectable    = Selectable;
+  pMenu->Item[pMenu->NrItems].ValueArrows   = ValueArrows;
+  pMenu->Item[pMenu->NrItems].ID            = ID;
   pMenu->NrItems++;
 
   //TODO: only when in visible area

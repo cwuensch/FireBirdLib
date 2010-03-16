@@ -423,7 +423,7 @@ License:  This library is freeware. You may use this code in your own projects f
                 removed OSDMenuKeyEvent() and added OSDMenuEvent()
 2010-01-04  Increased speed of isAnyOSDVisible() by checking every fourth pixel only
             Added isAnyOSDVisibleEx(), which allows to check a specific plane
-2010-11-01  Bugfix: FixInvalidFileName() must not rename files, which are currently being recorded or played
+2010-01-11  Bugfix: FixInvalidFileName() must not rename files, which are currently being recorded or played
             Added isAnyOSDVisibleEx(), which allows to specify the OSD plane
 2010-01-12  Bugfix: The TMS produzed a reboot if one did a time shift buffer jump after HDD_TAP_Start() has been called by a TAP
             'Official release'
@@ -453,7 +453,14 @@ License:  This library is freeware. You may use this code in your own projects f
             Ported HDD_TAP_Terminate()
             Ported BatchMode and ParameterBlock parameter in HDD_TAP_Start()
             Ported TAPCOM
+2010-02-20  'Official release'
 
+2010-03-01  Additional parameter ID in OSDMenuItemAdd()
+            Added OSDMenuItemGetID() and OSDMenuItemGetCurrentID()
+            Added OSDMenuItemModifyValueXPos()
+2010-03-07  Added TF2UnixTime()
+2010-03-15  Fixed the file-busy-check in FixInvalidFileName(). See 2010-01-11
+            'Official release'
 
 not yet included
 

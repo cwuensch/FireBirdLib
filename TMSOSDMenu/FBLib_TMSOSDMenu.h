@@ -20,6 +20,7 @@ typedef struct
   TYPE_GrData          *pValueIconGd;
   bool                  Selectable;
   bool                  ValueArrows;
+  dword                 ID;
 }tItem;
 
 typedef struct
@@ -38,6 +39,7 @@ typedef struct
   int                   CurrentTopIndex;
   bool                  AllowScrollingOfLongText;
   bool                  HasValueColumn;
+  dword                 ValueXPos;
   bool                  ScrollLoop;
   bool                  NumberedItems;
   tButtons              Buttons[20];

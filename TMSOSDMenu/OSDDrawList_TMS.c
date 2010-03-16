@@ -35,7 +35,7 @@ void OSDDrawList(void)
       TAP_Osd_PutGd(OSDRgn,  60 , 95 + (i * 37), &_Selection_Bar_Gd, FALSE);
       if(pMenu->HasValueColumn && pMenu->Item[i + pMenu->CurrentTopIndex].ValueArrows)
       {
-        TAP_Osd_PutGd(OSDRgn, 370 , 95 + 10 +(i * 37), &_pfeil_lGd, FALSE);
+        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 95 + 10 +(i * 37), &_pfeil_lGd, FALSE);
         TAP_Osd_PutGd(OSDRgn, 640 , 95 + 10 +(i * 37), &_pfeil_rGd, FALSE);
       }
     }
@@ -44,7 +44,7 @@ void OSDDrawList(void)
       TAP_Osd_DrawRectangle(OSDRgn, 60, 130 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
     }
 
-    XEnd = (pMenu->HasValueColumn ? 350 : 645);
+    XEnd = (pMenu->HasValueColumn ? pMenu->ValueXPos : 645);
     Y = 99 + (i * 37);
 
     if(pMenu->Item[i + pMenu->CurrentTopIndex].Selectable)
@@ -70,9 +70,9 @@ void OSDDrawList(void)
 
     if(pMenu->HasValueColumn)
     {
-      OSDMenuPutS(OSDRgn, 395 + MaxValueIconWidth, Y + 5, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Value, ItemColor, COLOR_None, 14, TRUE, ALIGN_LEFT);
+      OSDMenuPutS(OSDRgn, pMenu->ValueXPos + 45 + MaxValueIconWidth, Y + 5, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Value, ItemColor, COLOR_None, 14, TRUE, ALIGN_LEFT);
       if(pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd)
-        TAP_Osd_PutGd(OSDRgn, 395 , Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd, TRUE);
+        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 45 , Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd, TRUE);
     }
   }
 }

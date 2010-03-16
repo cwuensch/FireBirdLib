@@ -393,6 +393,7 @@
   long                  TimeDiff (dword FromTime, dword ToTime);
   char                 *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat);
   char                 *DayOfWeek(byte WeekDay);
+  dword                 TF2UnixTime(dword TFTimeStamp);
 
 
   /*****************************************************************************************************************************/

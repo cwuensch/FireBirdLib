@@ -581,16 +581,19 @@
 
   //Items
   void  OSDMenuItemsClear(void);
-  bool  OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows);
+  bool  OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID);
   bool  OSDMenuItemModifyName(int ItemIndex, char *Text);
   bool  OSDMenuItemModifyValue(int ItemIndex, char *Text);
+  void  OSDMenuItemModifyValueXPos(dword NewValueXPos);
   bool  OSDMenuItemModifyNameIcon(int ItemIndex, TYPE_GrData *pNameIconGd);
   bool  OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
+  dword OSDMenuItemGetID(int ItemIndex);
   char *OSDMenuItemGetCurrentValue(void);
   char *OSDMenuItemGetCurrentName(void);
+  dword OSDMenuItemGetCurrentID(void);
 
   //
   bool OSDMenuPush(void);

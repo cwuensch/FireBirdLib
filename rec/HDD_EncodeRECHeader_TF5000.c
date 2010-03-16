@@ -179,7 +179,7 @@ void HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TY
   p += 8;
 
   //Bookmark block
-  memcpy (&Buffer [p], RECHeaderInfo->Bookmark, 64 * sizeof (dword));
+  memcpy(&Buffer [p], RECHeaderInfo->Bookmark, 64 * sizeof (dword));
 
   p += 256;
 

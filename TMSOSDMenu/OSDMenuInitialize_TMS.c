@@ -58,6 +58,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->HasValueColumn = HasValueColumn;
   pMenu->NumberedItems = NumberedItems;
   pMenu->ScrollLoop = ScrollLoop;
+  pMenu->ValueXPos = 350;
 
   strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
   pMenu->TitleLeft[STDSTRINGSIZE - 1] = '\0';

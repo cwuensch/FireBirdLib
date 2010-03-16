@@ -18,13 +18,13 @@ void FixInvalidFileName(char *FileName)
   {
     //Check if the file is busy
     TAP_Hdd_GetPlayInfo(&playInfo);
-    if(playInfo.file && playInfo.file->name[0] && !strstr(FileName, playInfo.file->name)) return;
+    if(playInfo.file && playInfo.file->name[0] && !strstr(&FileName[1], playInfo.file->name)) return;
 
     TAP_Hdd_GetRecInfo(0, &recInfo);
-    if(recInfo.fileName[0] && !strstr(FileName, recInfo.fileName)) return;
+    if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
 
     TAP_Hdd_GetRecInfo(1, &recInfo);
-    if(recInfo.fileName[0] && !strstr(FileName, recInfo.fileName)) return;
+    if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
 
     strcpy(NewRecName, &FileName[1]);
     MakeUniqueFileName(NewRecName);
