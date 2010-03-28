@@ -499,9 +499,10 @@
   bool        INISaveFile (char *FileName, INILOCATION INILocation, char *AppName);
   void        INICloseFile(void);
   bool        INIKeyExists (char *Key);
-  bool        INIGetARGB (char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dword DefaultValue);
   bool        INIGetRGB (char *Key, byte *Red, byte *Green, byte *Blue, dword DefaultValue);
+  bool        INIGetARGB (char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dword DefaultValue);
   bool        INIGetRGB8 (char *Key, byte *Red, byte *Green, byte *Blue, dword DefaultValue);
+  bool        INIGetARGB8(char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dword DefaultValue);
   byte        INIGetHexByte (char *Key, byte DefaultValue, byte MinValue, byte MaxValue);
   dword       INIGetHexDWord (char *Key, dword DefaultValue, dword MinValue, dword MaxValue);
   word        INIGetHexWord (char *Key, word DefaultValue, word MinValue, word MaxValue);
@@ -509,9 +510,10 @@
   bool        INIGetString (char *Key, char *Value, char *DefaultValue, dword MaxLength);
   void        INIKillKey (char *Key);
   INILOCATION INILocateFile (char *FileName, char *AppName);
-  void        INISetARGB (char *Key, byte Alpha, byte Red, byte Green, byte Blue);
   void        INISetRGB (char *Key, byte Red, byte Green, byte Blue);
   void        INISetRGB8 (char *Key, byte Red, byte Green, byte Blue);
+  void        INISetARGB (char *Key, byte Alpha, byte Red, byte Green, byte Blue);
+  void        INISetARGB8(char *Key, byte Alpha, byte Red, byte Green, byte Blue);
   void        INISetComment (char *Comments);
   void        INISetHexByte (char *Key, byte Value);
   void        INISetHexDWord (char *Key, dword Value);
@@ -610,22 +612,36 @@
     dword       Bookmark [64];
   } __attribute__((packed)) tRECBookmarks;              //256 bytes
 
+  typedef enum
+  {
+    RHT_UNKNOWN,
+    RHT_5kS,
+    RHT_5kT,
+    RHT_5kC,
+    RHT_5kT5700,
+    RHT_5kUK,
+    RHT_TMSs
+  } eRECHeaderType;
+
   typedef struct
   {
     SYSTEM_TYPE         HeaderType;
+    eRECHeaderType      RECHeaderType;
 
     dword               HeaderMagic;
     word                HeaderVersion;
-    byte                HeaderReserved1[2];
-    byte                HeaderReserved2[2];   //TMS
-    byte                HeaderReserved3[11];  //TMS
     dword               HeaderStartTime;      //TMS
     word                HeaderDuration;
     word                HeaderSvcNumber;
     word                HeaderSvcType;
+    byte                HeaderFlags;
+    byte                HeaderUnknown1[4];  //T7700HSCI
+    byte                HeaderUnknown2[2];  //TMS
+    byte                HeaderUnknown3[2];  //TMS
+    byte                HeaderUnknown4;     //TMS
 
     byte                SISatIndex;
-    byte                SIReserved1;
+    byte                SIServiceType;
     word                SITPIdx;
     byte                SITunerNum;
     byte                SIDelFlag;
@@ -642,6 +658,7 @@
     byte                SIAudioStreamType;    //TMS
 
     byte                TPSatIndex;           //S
+    word                TPFlags2;
     byte                TPPolarization;       //S
     byte                TPMode;               //S
     byte                TPSystem;             //TMS
@@ -655,53 +672,55 @@
     word                TPSymbolRate;         //SC
     word                TPTSID;               //STC
     word                TPOriginalNetworkID;  //STC
+    word                TPNetworkID;          //T
     byte                TPClockSync;          //TMS
-    byte                TPReserved1[2];       //S
-    byte                TPReserved2[2];       //S
-    byte                TPReserved3;          //ST
-    byte                TPReserved4;          //T
-    byte                TPUnknown1[2];        //T
-    byte                TPUnknown2[8];        //T (5700 only)
-    byte                TPUnknown3[4];        //TMS
-    byte                TPReserved5;          //C
+    byte                TPUnknown1[4];
+    byte                TPUnknown2;
+    byte                TPUnknown3[2];
+    byte                TPUnknown4;
+    byte                TPUnknown5[2];
+    byte                TPUnknown6;
+    byte                TPUnknown7[8];
 
     byte                EventDurationHour;
     byte                EventDurationMin;
-    word                EventEventID;
+    dword               EventEventID;
     dword               EventStartTime;
     dword               EventEndTime;
     byte                EventRunningStatus;
     byte                EventTextLength;
     byte                EventParentalRate;
-    char                EventEventName[257];
-    char                EventEventDescription[257];
+    char                EventEventName[273];
+    char                EventEventDescription[273];
+    word                EventServiceID;
     byte                EventUnknown1[2];
-    byte                EventUnknown2[2];
-    byte                EventUnknown3[18];
+    byte                EventUnknown2[10];
 
     word                ExtEventServiceID;    //TMS
     word                ExtEventTextLength;
-    word                ExtEventEventID;
+    dword               ExtEventEventID;
     char                ExtEventText [1024];
-    byte                ExtEventUnknown1[2];
+    byte                ExtEventUnknown1[5];
+    byte                ExtEventUnknown2[2];
 
     byte                CryptReserved1 [4];
     byte                CryptFlag;
     byte                CryptReserved2 [3];
 
-    dword               Bookmark [64];
+    dword               NrBookmarks;
+    dword               Bookmark[177];
 
     dword               Resume;
   } tRECHeaderInfo;
 
-  SYSTEM_TYPE HDD_DecodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-  void        HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE HeaderType);
-  int         HDD_FindPCR (byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
-  bool        HDD_isAnyRecording (void);
-  bool        HDD_isCryptedStream (char *Buffer, dword BufferSize);
-  bool        HDD_isRecording (byte RecSlot);
-  char       *HDD_MakeNewRecName (char *fname, word sequence);
-  bool        HDD_RECSlotSetDuration (byte Slot, word Duration);
+  eRECHeaderType HDD_DecodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo);
+  void           HDD_EncodeRECHeader (char *Buffer, tRECHeaderInfo *RECHeaderInfo, eRECHeaderType HeaderType);
+  int            HDD_FindPCR (byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
+  bool           HDD_isAnyRecording (void);
+  bool           HDD_isCryptedStream (char *Buffer, dword BufferSize);
+  bool           HDD_isRecording (byte RecSlot);
+  char          *HDD_MakeNewRecName (char *fname, word sequence);
+  bool           HDD_RECSlotSetDuration (byte Slot, word Duration);
 
 
   /*****************************************************************************************************************************/

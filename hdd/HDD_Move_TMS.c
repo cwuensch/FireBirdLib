@@ -31,7 +31,7 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
     system(cmd);
 
     SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
-    if(isRec)
+    if(isRec && strcmp(Ext, ".nav"))
     {
       if(fNumber)
         TAP_SPrint(OldInfName, "%s-%d%s.inf%s", Name, fNumber, Ext, isDel ? ".del" : "");

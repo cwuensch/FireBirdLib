@@ -102,6 +102,8 @@ extern dword            CurrentMenuLevel;
 
 extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
+extern byte            *InfoBoxSaveArea;
+extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;

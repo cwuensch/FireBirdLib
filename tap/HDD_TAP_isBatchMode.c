@@ -1,5 +1,9 @@
 #include                <sys/types.h>
-#include                <sys/shm.h>
+
+#ifdef _TMS_
+  #include              <sys/shm.h>
+#endif
+
 #include                "FBLib_tap.h"
 
 bool HDD_TAP_isBatchMode(void)

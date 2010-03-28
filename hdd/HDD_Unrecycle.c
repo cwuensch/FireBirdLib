@@ -23,7 +23,7 @@ void HDD_Unrecycle(char *FileName)
       MakeUniqueFileName(NewName);
       TAP_Hdd_Rename(OldName, NewName);
 
-      if(isRec)
+      if(isRec && strcmp(Ext, ".nav"))
       {
         OldName[strlen(OldName) - 4] = '\0';
         strcat(OldName, ".inf.del");

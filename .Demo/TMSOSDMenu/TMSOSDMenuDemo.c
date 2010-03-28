@@ -6,7 +6,7 @@
 #include                "graphic/status_bad.gd"
 
 #define PROGRAM_NAME    "TMSOSDMenu Demo"
-#define VERSION         "V0.2"
+#define VERSION         "V0.2a"
 
 TAP_ID                  (0x8E0Affff);
 TAP_PROGRAM_NAME        (PROGRAM_NAME" "VERSION);
@@ -39,21 +39,21 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
       OSDMenuInitialize(FALSE, TRUE, TRUE, TRUE, PROGRAM_NAME, "Main Menu");
       OSDMenuLogo(493, 486, &_qplogoGd);
 
-      OSDMenuItemAdd("31. hr-fernsehen", "30 Min. WL", NULL, NULL, TRUE, FALSE);
-      OSDMenuItemAdd("2nd Name", "2nd Value", NULL, NULL, FALSE, FALSE);
-      OSDMenuItemAdd("3rd Name", "3rd Value", NULL, NULL, TRUE, FALSE);
-      OSDMenuItemAdd("4th Name", "4th Value", &_status_viewed_Gd, &_status_bad_Gd, TRUE, TRUE);
-      OSDMenuItemAdd("5th Name", "5th Value", NULL, NULL, TRUE, TRUE);
+      OSDMenuItemAdd("31. hr-fernsehen", "30 Min. WL", NULL, NULL, TRUE, FALSE, 0);
+      OSDMenuItemAdd("2nd Name", "2nd Value", NULL, NULL, FALSE, FALSE, 0);
+      OSDMenuItemAdd("3rd Name", "3rd Value", NULL, NULL, TRUE, FALSE, 0);
+      OSDMenuItemAdd("4th Name", "4th Value", &_status_viewed_Gd, &_status_bad_Gd, TRUE, TRUE, 0);
+      OSDMenuItemAdd("5th Name", "5th Value", NULL, NULL, TRUE, TRUE, 0);
 
-      OSDMenuItemAdd("6th Name", "6th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("7th Name", "7th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("8th Name", "8th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("9th Name", "9th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("10th Name", "10th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("11th Name", "11th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("12th Name", "12th Value", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("Umlaute", "ABC ƒ÷‹‰ˆ¸ﬂ", NULL, NULL, TRUE, TRUE);
-      OSDMenuItemAdd("This text is too long for this line", "", NULL, NULL, TRUE, TRUE);
+      OSDMenuItemAdd("6th Name", "6th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("7th Name", "7th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("8th Name", "8th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("9th Name", "9th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("10th Name", "10th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("11th Name", "11th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("12th Name", "12th Value", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("Umlaute", "ABC ƒ÷‹‰ˆ¸ﬂ", NULL, NULL, TRUE, TRUE, 0);
+      OSDMenuItemAdd("This text is too long for this line", "", NULL, NULL, TRUE, TRUE, 0);
 
       OSDMenuButtonAdd(1, BI_Red,    NULL, "Button 1");
       OSDMenuButtonAdd(1, BI_Green,  NULL, "Button 2");

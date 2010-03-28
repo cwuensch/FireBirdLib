@@ -8,7 +8,5 @@ inline dword FIS_vcurTapTask(void)
 
   if(!vcurTapTask) vcurTapTask = (dword*)TryResolve("_curTapTask");
   return (dword)vcurTapTask;
-
-#endif
-
 }
+#endif

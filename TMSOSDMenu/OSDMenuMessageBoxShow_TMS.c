@@ -20,6 +20,12 @@ void OSDMenuMessageBoxShow(void)
   {
     x = (720 - _InfoBox_Gd.width) >> 1;
     y = (576 - _InfoBox_Gd.height) >> 1;
+    if(OSDRgn)
+    {
+      InfoBoxSaveAreaX = x;
+      InfoBoxSaveAreaY = y;
+      InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _InfoBox_Gd.width, _InfoBox_Gd.height);
+    }
     MessageBoxOSDRgn = TAP_Osd_Create(x, y, _InfoBox_Gd.width, _InfoBox_Gd.height, 0, 0);
     TAP_ExitNormal();
   }

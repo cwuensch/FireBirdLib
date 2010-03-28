@@ -462,6 +462,15 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-03-15  Fixed the file-busy-check in FixInvalidFileName(). See 2010-01-11
             'Official release'
 
+2010-03-21  HDD_TAP_SendEvent() return the return value of TAP_EventHandler() instead of param1
+2010-03-23  Modified HDD_Delete(), HDD_Recycle() and HDD_Rename() so that they work on the rec/inf/nav tripple only if the .rec file name has been provided
+2010-03-26  Fixed some mess in INIGetRGB8(),INISetRGB8() and added INIGetARGB8() and INISetARGB8(). This fixes some confusion but the conversion
+              between 1555 INIs und 8888 INIs has to be done by the application
+2010-03-28  Fixed some bugs in HDD_DecodeRECHeader() and HDD_EncodeRECHeader() and added the TMS to HDD_EncodeRECHeader()
+              SYSTEM_TYPE has been changed to eRECHeaderType for the above functions.
+            Added UTCtoLocal()
+            Bugfix: OSDMenuInfoBox and OSDMenuMessageBox do not bite a hole into OSDMenu
+
 not yet included
 
             Removed the 100 items limit of OSDMenuItem*()

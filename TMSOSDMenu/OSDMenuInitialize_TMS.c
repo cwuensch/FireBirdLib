@@ -36,6 +36,8 @@ dword                   CurrentMenuLevel = 0;
 
 word                    InfoBoxOSDRgn = 0;
 dword                   InfoBoxTimeOut = 0;
+byte                   *InfoBoxSaveArea = NULL;
+dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 word                    MessageBoxOSDRgn = 0;
 tMessageBox             MessageBox;

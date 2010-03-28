@@ -39,8 +39,8 @@ dword TAP_EventHandler (word event, dword param1, dword param2)
 int TAP_Main (void)
 {
   //Generic function (TF5000 and TMS)
-  AddSec(0, 0, 0);                                                      //flash, all
-  AddTime(0, 0);                                                        //flash, all
+  AddSec(0, 0, 0);                                                      //time, all
+  AddTime(0, 0);                                                        //time, all
   BMP_WriteHeader(NULL, 0, 0);                                          //av, all
   BootReason();                                                         //main, all
   BuildWindowBorder();                                                  //dialog, all
@@ -51,12 +51,12 @@ int TAP_Main (void)
   BuildWindowTitle();                                                   //dialog, all
   CalcPrepare();                                                        //dialog, all
   CalcTopIndex(0, 0);                                                   //dialog, all
-  CallTraceComment(NULL);                                               //main, all
-  CallTraceEnable(FALSE);                                               //main, all
-  CallTraceEnter(NULL);                                                 //main, all
-  CallTraceExit(NULL);                                                  //main, all
-  CallTraceExitResult(NULL, NULL);                                      //main, all
-  CallTraceInit();                                                      //main, all
+  CallTraceComment(NULL);                                               //debug, all
+  CallTraceEnable(FALSE);                                               //debug, all
+  CallTraceEnter(NULL);                                                 //debug, all
+  CallTraceExit(NULL);                                                  //debug, all
+  CallTraceExitResult(NULL, NULL);                                      //debug, all
+  CallTraceInit();                                                      //debug, all
   ChangeDirRoot();                                                      //hdd, all
   CheckSelectable(0, 0);                                                //dialog, all
   compact(NULL, 0);                                                     //imem, all
@@ -65,6 +65,7 @@ int TAP_Main (void)
   CompressTFD(NULL, 0, NULL, 0, 0, NULL);                               //compression, all
   CRC16(0, NULL, 0);                                                    //compression, all
   CRC32 (0, NULL, 0);                                                   //compression, all
+  DayOfWeek(0);                                                         //time, all
   Delay(0);                                                             //hdd, all
   DialogEvent(NULL, NULL, NULL);                                        //dialog, all
   DialogMsgBoxButtonAdd(NULL, FALSE);                                   //dialog, all
@@ -129,7 +130,7 @@ int TAP_Main (void)
   DrawWindowLines();                                                    //dialog, all
   DrawWindowScrollBar();                                                //dialog, all
   DrawWindowTitle();                                                    //dialog, all
-  DumpMemory(NULL, 0, 0);                                               //main, all
+  DumpMemory(NULL, 0, 0);                                               //debug, all
   EndMessageWin();                                                      //av, all
   ExtractLine(NULL, NULL);                                              //string, all
   FileSelector(NULL, NULL, NULL, 0);                                    //fs, all
@@ -183,6 +184,7 @@ int TAP_Main (void)
   GetPIPPosition(NULL, NULL, NULL, NULL);                               //av, all
   GetSysID();                                                           //main, all
   GetToppyString(0);                                                    //main, all
+  GetUptime();                                                          //time, all
   HasEnoughItemMemory();                                                //dialog, all
   HDD_AAM_Disable();                                                    //hdd, all
   HDD_AAM_Enable(0);                                                    //hdd, all
@@ -236,6 +238,7 @@ int TAP_Main (void)
   INICloseFile();                                                       //ini, all
   INIFindStartEnd(NULL, NULL, NULL, 0);                                 //ini, all
   INIGetARGB(NULL, NULL, NULL, NULL, NULL, 0);                          //ini, all
+  INIGetARGB8(NULL, NULL, NULL, NULL, NULL, 0);                         //ini, all
   INIGetHexByte(NULL, 0, 0, 0);                                         //ini, all
   INIGetHexDWord(NULL, 0, 0, 0);                                        //ini, all
   INIGetHexWord(NULL, 0, 0, 0);                                         //ini, all
@@ -249,6 +252,7 @@ int TAP_Main (void)
   INIOpenFile(NULL, NULL);                                              //ini, all
   INISaveFile(NULL, 0, NULL);                                           //ini, all
   INISetARGB(NULL, 0, 0, 0, 0);                                         //ini, all
+  INISetARGB8(NULL, 0, 0, 0, 0);                                        //ini, all
   INISetComment(NULL);                                                  //ini, all
   INISetHexByte(NULL, 0);                                               //ini, all
   INISetHexDWord(NULL, 0);                                              //ini, all
@@ -271,7 +275,7 @@ int TAP_Main (void)
   LowerCase(NULL);                                                      //string, all
   MakeUniqueFileName(NULL);                                             //hdd, all
   MakeValidFileName(NULL, 0);                                           //string, all
-  Now(NULL);                                                            //flash, all
+  Now(NULL);                                                            //time, all
   OATH(NULL, 0, 0);                                                     //compression, all
   OSDCopy(0, 0, 0, 0, 0, 0, 0);                                         //av, all
   OSDLinesForeDirty(FALSE);                                             //dialog, all
@@ -306,10 +310,10 @@ int TAP_Main (void)
   TAPCOM_OpenChannel(0, 0, 0, NULL);                                    //tapcom, all
   TAPCOM_Reject(NULL);                                                  //tapcom, all
   TAPCOM_StillAlive(NULL);                                              //tapcom, all
-  TF2UnixTime(0);                                                       //flash, all
+  TF2UnixTime(0);                                                       //time, all
   TFDSize(NULL);                                                        //compression, all
-  TimeDiff(0, 0);                                                       //flash, all
-  TimeFormat(0, 0, 0);                                                  //flash, all
+  TimeDiff(0, 0);                                                       //time, all
+  TimeFormat(0, 0, 0);                                                  //time, all
   TunerGet(0);                                                          //av, all
   TunerSet(0);                                                          //av, all
   UncompressBlock(NULL, 0, NULL, 0);                                    //compression, all
@@ -565,7 +569,7 @@ int TAP_Main (void)
   OSDMenuInfoBoxShow(NULL, NULL, 0);                                    //TMSOSDMenu, tms
   OSDMenuInitialize(FALSE, FALSE, FALSE, FALSE, NULL, NULL);            //TMSOSDMenu, tms
   OSDMenuIsVisible();                                                   //TMSOSDMenu, tms
-  OSDMenuItemAdd(NULL, NULL, NULL, NULL,FALSE, FALSE);                  //TMSOSDMenu, tms
+  OSDMenuItemAdd(NULL, NULL, NULL, NULL, FALSE, FALSE, 0);              //TMSOSDMenu, tms
   OSDMenuItemModifyName(0, NULL);                                       //TMSOSDMenu, tms
   OSDMenuItemModifyNameIcon(0, NULL);                                   //TMSOSDMenu, tms
   OSDMenuItemModifySelectable(0,FALSE);                                 //TMSOSDMenu, tms
@@ -596,8 +600,9 @@ int TAP_Main (void)
   OSDMenuScrollUp();                                                    //TMSOSDMenu, tms
   OSDMenuSelectItem(0);                                                 //TMSOSDMenu, tms
   OSDMenuUpdate();                                                      //TMSOSDMenu, tms
-  PrintNet(NULL);                                                       //main, tms
+  PrintNet(NULL);                                                       //debug, tms
   TryResolve(NULL);                                                     //fis, tms
+  UTCtoLocal(0);                                                        //time, tms
   VFD_EnableCD(FALSE);                                                  //tmsvfd, tms
   VFD_EnableHDD(FALSE);                                                 //tmsvfd, tms
   VFD_SetCDValue(0);                                                    //tmsvfd, tms

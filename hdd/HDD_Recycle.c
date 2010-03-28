@@ -42,7 +42,7 @@ void HDD_Recycle(char *FileName)
       MakeUniqueFileName(NewName);
       TAP_Hdd_Rename(OldName, NewName);
 
-      if(isRec)
+      if(isRec && StringEndsWith(FileName, ".rec"))
       {
         strcat(OldName, ".inf");
         NewName[strlen(NewName) - 4] = '\0';

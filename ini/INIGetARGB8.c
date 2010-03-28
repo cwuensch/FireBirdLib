@@ -4,7 +4,7 @@
 #include "FBLib_ini.h"
 #include "../libFireBird.h"
 
-bool INIGetARGB (char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dword DefaultValue)
+bool INIGetARGB8(char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dword DefaultValue)
 {
   char                  *i = NULL, *j = NULL, *k;
   char                  TempKey [80];
@@ -40,24 +40,24 @@ bool INIGetARGB (char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dwo
       // alpha
       if ((k = ParseLine(k, &plen, ',')) && (plen > 0 && k + plen < j))
       {
-        x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 1) << 15;
+        x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0xff) << 24;
         k += plen;
 
         // red
         if ((k = ParseLine(k, &plen, ',')) && (plen > 0 && k + plen < j))
         {
-          x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0x1f) << 10;
+          x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0xff) << 16;
           k += plen;
 
           // green
           if ((k = ParseLine(k, &plen, ',')) && (plen > 0 && k + plen < j))
           {
-            x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0x1f) << 5;
+            x |= (strtoul(k, NULL, (plen > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0xff) << 8;
             k += plen;
 
             // blue
             if (*k == ',') k++;
-            x |= strtoul(k, NULL, (j - k > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0x1f;
+            x |= strtoul(k, NULL, (j - k > 2 && tolower(*(k + 1)) == 'x' ? 16 : 10)) & 0xff;
           }
           else x = DefaultValue;
         }
@@ -67,10 +67,10 @@ bool INIGetARGB (char *Key, byte *Alpha, byte *Red, byte *Green, byte *Blue, dwo
     }
   }
 
-  if(Alpha) *Alpha = A1555(x);
-  if(Red)   *Red   = R1555(x);
-  if(Green) *Green = G1555(x);
-  if(Blue)  *Blue  = B1555(x);
+  if(Alpha) *Alpha = A8888(x);
+  if(Red)   *Red   = R8888(x);
+  if(Green) *Green = G8888(x);
+  if(Blue)  *Blue  = B8888(x);
 
   return TRUE;
 }

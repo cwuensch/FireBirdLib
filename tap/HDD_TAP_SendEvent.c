@@ -49,7 +49,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
     }
   }
 
-  return param1;
+  return Ret;
 
 #else
 
@@ -77,7 +77,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
     }
   }
 
-  return param1;
+  return Ret;
 
 #endif
 }

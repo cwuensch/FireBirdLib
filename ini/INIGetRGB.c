@@ -13,7 +13,7 @@ bool INIGetRGB (char *Key, byte *Red, byte *Green, byte *Blue, dword DefaultValu
   dword                 l, x;
   size_t                plen;
 
-  if (!Key || !Red || !Green || !Blue) return FALSE;
+  if (!Key) return FALSE;
 
   strncpy (TempKey, Key, sizeof(TempKey) - 2);
   TempKey[sizeof(TempKey) - 2] = '\0';
@@ -49,9 +49,9 @@ bool INIGetRGB (char *Key, byte *Red, byte *Green, byte *Blue, dword DefaultValu
     else x = DefaultValue;
   }
 
-  *Red   = R1555(x);
-  *Green = G1555(x);
-  *Blue  = B1555(x);
+  if(Red)   *Red   = R1555(x);
+  if(Green) *Green = G1555(x);
+  if(Blue)  *Blue  = B1555(x);
 
   return TRUE;
 }

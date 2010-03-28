@@ -1,17 +1,6 @@
 #include <string.h>
 #include "FBLib_rec.h"
 
-typedef enum
-{
-  RHT_UNKNOWN,
-  RHT_5kS,
-  RHT_5kT,
-  RHT_5kC,
-  RHT_5kT5700,
-  RHT_5kUK,
-  RHT_TMSs
-} eRECHeaderType;
-
 word getWord(void *buffer, bool NeedsByteSwapping)
 {
   word                  w;
@@ -41,15 +30,6 @@ dword getDword(void *buffer, bool NeedsByteSwapping)
 }
 
 bool                    WrongEndian = FALSE;
-eRECHeaderType          RECHeaderType = RHT_UNKNOWN;
-
-                                             //unknown 5kS     5kT     5kC     5kT5700 5kUK    TMSs
-dword                   OffsetServiceInfo[] = {     0, 0x000e, 0x000e, 0x000e, 0x000e, 0x000e, 0x001c};
-dword                   OffsetTPInfo[]      = {     0, 0x0034, 0x0034, 0x0034, 0x0038, 0x0038, 0x0570};
-dword                   OffsetEventInfo[]   = {     0, 0x0044, 0x0044, 0x0040, 0x0050, 0x0048, 0x0044};
-dword                   OffsetExtEventInfo[]= {     0, 0x016a, 0x016a, 0x0166, 0x0176, 0x016e, 0x0168};
-dword                   OffsetCryptInfo[]   = {     0, 0x0570, 0x0570, 0x056c, 0x057c, 0x0574,      0};
-dword                   OffsetBookmarks[]   = {     0, 0x0578, 0x0578, 0x0574, 0x0584, 0x057c,      0};
 
 void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
@@ -57,28 +37,29 @@ void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   p = 0;
   RECHeaderInfo->HeaderVersion = getWord(&Buffer[p + 4], FALSE);
-  memcpy(RECHeaderInfo->HeaderReserved1, &Buffer[p + 6], 2);
+  memcpy(RECHeaderInfo->HeaderUnknown2, &Buffer[p + 6], 2);
 
   //Check the endianess of the file
   WrongEndian = (RECHeaderInfo->HeaderVersion == 0x0050) || (RECHeaderInfo->HeaderVersion == 0x1050) || (RECHeaderInfo->HeaderVersion == 0x0080);
 
   if(WrongEndian)
-    RECHeaderInfo->HeaderVersion = getWord(&RECHeaderInfo->HeaderVersion, TRUE);
+    RECHeaderInfo->HeaderVersion = getWord(&Buffer[p + 4], TRUE);
 
   if(RECHeaderInfo->HeaderVersion == 0x8000)
   {
     //TMS
-    RECHeaderType = RHT_TMSs;
+    RECHeaderInfo->RECHeaderType = RHT_TMSs;
     RECHeaderInfo->HeaderStartTime = getDword(&Buffer[p + 0x0008], WrongEndian);
     RECHeaderInfo->HeaderDuration  = getWord(&Buffer[p + 0x000c], WrongEndian);
-    memcpy (RECHeaderInfo->HeaderReserved2, &Buffer[p + 0x000e], 2);
-    RECHeaderInfo->CryptFlag = getDword(&Buffer[p + 0x0010], WrongEndian);
-    memcpy (RECHeaderInfo->HeaderReserved3, &Buffer[p + 0x0011], 11);
+    memcpy (RECHeaderInfo->HeaderUnknown3, &Buffer[p + 0x000e], 2);
+    RECHeaderInfo->CryptFlag = Buffer[p + 0x0010];
+    RECHeaderInfo->HeaderFlags = Buffer[p + 0x0011];
+    RECHeaderInfo->HeaderUnknown4 = Buffer[p + 0x0012];
   }
   else
   {
     //5k
-    RECHeaderType = RHT_5kS;
+    RECHeaderInfo->RECHeaderType = RHT_5kS;
     RECHeaderInfo->HeaderDuration  = getWord(&Buffer[p + 0x0008], WrongEndian);
     RECHeaderInfo->HeaderSvcNumber = getWord(&Buffer[p + 0x000a], WrongEndian);
     RECHeaderInfo->HeaderSvcType   = getWord(&Buffer[p + 0x000c], WrongEndian);
@@ -88,22 +69,24 @@ void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 void HDD_DecodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
+  word                  Flags;
 
   //known: 5k? and TMSs
-  p = OffsetServiceInfo[RECHeaderType];
+  p = OffsetServiceInfo[RECHeaderInfo->RECHeaderType];
 
-  if(RECHeaderType == RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType == RHT_TMSs)
   {
     //TMS
-    RECHeaderInfo->SISatIndex  =  *( byte*)(&Buffer[p + 0x0000]);
-    RECHeaderInfo->SIReserved1 =  *( byte*)(&Buffer[p + 0x0001]);
+    RECHeaderInfo->SISatIndex    =  *( byte*)(&Buffer[p + 0x0000]);
+    RECHeaderInfo->SIServiceType =  *( byte*)(&Buffer[p + 0x0001]);
 
-    RECHeaderInfo->SITPIdx     =  getWord(&Buffer[p +0x0002], WrongEndian) >> 6;
-    RECHeaderInfo->SITunerNum  = (getWord(&Buffer[p +0x0002], WrongEndian) >> 4) & 3;
-    RECHeaderInfo->SIDelFlag   = (getWord(&Buffer[p +0x0002], WrongEndian) >> 3) & 1;
-    RECHeaderInfo->SICASFlag   = (getWord(&Buffer[p +0x0002], WrongEndian) >> 2) & 1;
-    RECHeaderInfo->SILockFlag  = (getWord(&Buffer[p +0x0002], WrongEndian) >> 1) & 1;
-    RECHeaderInfo->SISkipFlag  = (getWord(&Buffer[p +0x0002], WrongEndian)     ) & 1;
+    Flags = getWord(&Buffer[p +0x0002], WrongEndian);
+    RECHeaderInfo->SITPIdx     =  Flags >> 6;
+    RECHeaderInfo->SITunerNum  = (Flags >> 4) & 3;
+    RECHeaderInfo->SIDelFlag   = (Flags >> 3) & 1;
+    RECHeaderInfo->SICASFlag   = (Flags >> 2) & 1;
+    RECHeaderInfo->SILockFlag  = (Flags >> 1) & 1;
+    RECHeaderInfo->SISkipFlag  =  Flags       & 1;
 
     RECHeaderInfo->SIServiceID = getWord(&Buffer[p + 0x0004], WrongEndian);
     RECHeaderInfo->SIPMTPID    = getWord(&Buffer[p + 0x0006], WrongEndian);
@@ -120,7 +103,7 @@ void HDD_DecodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo
   {
     //5k
     RECHeaderInfo->SISatIndex  =  *( byte*)(&Buffer[p + 0x0000]);
-    RECHeaderInfo->SIReserved1 =  *( byte*)(&Buffer[p + 0x0001]);
+    RECHeaderInfo->SIServiceType =  *( byte*)(&Buffer[p + 0x0001]);
     RECHeaderInfo->SITPIdx     =  getWord(&Buffer[p + 0x0002], WrongEndian) >> 6;
     RECHeaderInfo->SITunerNum  = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 4) & 3;
     RECHeaderInfo->SIDelFlag   = (getWord(&Buffer[p + 0x0002], WrongEndian) >> 3) & 1;
@@ -137,7 +120,7 @@ void HDD_DecodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo
     if (RECHeaderInfo->HeaderVersion == 0x5010)
     {
       memcpy (RECHeaderInfo->SISvcName, &Buffer[p + 0x000e], 28);
-      RECHeaderType = RHT_5kUK;
+      RECHeaderInfo->RECHeaderType = RHT_5kUK;
     }
     else
       memcpy (RECHeaderInfo->SISvcName, &Buffer[p + 0x000e], 24);
@@ -151,27 +134,31 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 Frequency, SymbolRate;
   byte                  Modulation, Polarization, BandWidth, LPHPStream;
   word                  v1, v2;
+  word                  TPFlags1;
 
   //known: 5k?, RHT_5kUK and TMSs
-  p = OffsetServiceInfo[RECHeaderType];
+  p = OffsetTPInfo[RECHeaderInfo->RECHeaderType];
 
-  if(RECHeaderType == RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType == RHT_TMSs)
   {
-    //Right now, there is just a sat version of the TMS.
-    memcpy (RECHeaderInfo->TPUnknown3, &Buffer[p + 0], 4);
+    memcpy (RECHeaderInfo->TPUnknown1, &Buffer[p + 0], 4);
     RECHeaderInfo->TPSatIndex           =  *( byte*)(&Buffer[p +  4]);
-    RECHeaderInfo->TPPolarization       =  getWord(&Buffer[p +  5], WrongEndian) & 0x01;
-    RECHeaderInfo->TPMode               = (getWord(&Buffer[p +  5], WrongEndian) >>  1) & 0x07;
-    RECHeaderInfo->TPSystem             = (getWord(&Buffer[p +  5], WrongEndian) >>  4) & 0x01;
-    RECHeaderInfo->TPModulation         = (getWord(&Buffer[p +  5], WrongEndian) >>  5) & 0x03;
-    RECHeaderInfo->TPFEC                = (getWord(&Buffer[p +  5], WrongEndian) >>  7) & 0x0f;
-    RECHeaderInfo->TPPilot              = (getWord(&Buffer[p +  5], WrongEndian) >> 11) & 0x01;
-    RECHeaderInfo->TPFrequency          =  getDword(&Buffer[p +  7], WrongEndian);
-    RECHeaderInfo->TPSymbolRate         = getWord(&Buffer  [p + 11], WrongEndian);
-    RECHeaderInfo->TPTSID               = getWord(&Buffer  [p + 13], WrongEndian);
-    memcpy (RECHeaderInfo->TPReserved2,     &Buffer[p + 15], 2);
-    RECHeaderInfo->TPClockSync          = RECHeaderInfo->TPReserved2[0] & 0x01;
-    RECHeaderInfo->TPOriginalNetworkID  =  getWord(&Buffer[p + 17], WrongEndian);
+
+    TPFlags1                            = getWord(&Buffer[p +  5], WrongEndian);
+    RECHeaderInfo->TPPolarization       =  TPFlags1 & 0x01;
+    RECHeaderInfo->TPMode               = (TPFlags1 >>  1) & 0x07;
+    RECHeaderInfo->TPSystem             = (TPFlags1 >>  4) & 0x01;
+    RECHeaderInfo->TPModulation         = (TPFlags1 >>  5) & 0x03;
+    RECHeaderInfo->TPFEC                = (TPFlags1 >>  7) & 0x0f;
+    RECHeaderInfo->TPPilot              = (TPFlags1 >> 11) & 0x01;
+
+    RECHeaderInfo->TPUnknown2           = Buffer[p + 7];
+    RECHeaderInfo->TPFrequency          =  getDword(&Buffer[p +  8], WrongEndian);
+    RECHeaderInfo->TPSymbolRate         = getWord(&Buffer  [p + 12], WrongEndian);
+    RECHeaderInfo->TPTSID               = getWord(&Buffer  [p + 14], WrongEndian);
+    RECHeaderInfo->TPFlags2             = getWord(&Buffer  [p + 16], WrongEndian);
+    RECHeaderInfo->TPClockSync          = RECHeaderInfo->TPFlags2 & 0x0001;
+    RECHeaderInfo->TPOriginalNetworkID  =  getWord(&Buffer[p + 18], WrongEndian);
     RECHeaderInfo->HeaderType           = ST_DVBSTMS;
   }
   else
@@ -218,7 +205,7 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
     if ((sPoints == 3) && (tPoints  < 3) && (cPoints  < 3))
     {
       RECHeaderInfo->HeaderType = ST_DVBS;
-      RECHeaderType = RHT_5kS;
+      RECHeaderInfo->RECHeaderType = RHT_5kS;
     }
 
     if ((sPoints <  3) && (tPoints == 3) && (cPoints  < 3))
@@ -229,15 +216,15 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
       RECHeaderInfo->HeaderType = (v1 && v2 && (v1 == v2 || v1 + 1 == v2) ? ST_DVBT5700 : ST_DVBT);
 
       if(RECHeaderInfo->HeaderType == ST_DVBT)
-        RECHeaderType = RHT_5kT;
+        RECHeaderInfo->RECHeaderType = RHT_5kT;
       else
-        RECHeaderType = RHT_5kT5700;
+        RECHeaderInfo->RECHeaderType = RHT_5kT5700;
     }
 
     if ((sPoints <  3) && (tPoints  < 3) && (cPoints == 3))
     {
       RECHeaderInfo->HeaderType = ST_DVBC;
-      RECHeaderType = RHT_5kC;
+      RECHeaderInfo->RECHeaderType = RHT_5kC;
     }
 
 #ifdef DEBUG_FIREBIRDLIB
@@ -250,14 +237,14 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
       case ST_DVBS:
       {
         RECHeaderInfo->TPSatIndex           = *( byte*)(&Buffer[p +  0]);
-        RECHeaderInfo->TPPolarization       = *( byte*)(&Buffer[p +  1]) >> 7;
-        RECHeaderInfo->TPMode               = (*( byte*)(&Buffer[p +  1]) >> 4) & 7;
-        RECHeaderInfo->TPReserved3          = (*( byte*)(&Buffer[p +  1])     ) & 15;
-        memcpy (RECHeaderInfo->TPReserved1,     &Buffer[p +  2], 2);
+        TPFlags1                            = *( byte*)(&Buffer[p +  1]);
+        RECHeaderInfo->TPPolarization       =  TPFlags1 >> 7;
+        RECHeaderInfo->TPMode               = (TPFlags1 >> 4) & 7;
+        memcpy(RECHeaderInfo->TPUnknown3, &Buffer[p + 2], 2);
         RECHeaderInfo->TPFrequency          = getDword(&Buffer[p +  4], WrongEndian);
         RECHeaderInfo->TPSymbolRate         = getWord(&Buffer[p +  8], WrongEndian);
         RECHeaderInfo->TPTSID               = getWord(&Buffer[p + 10], WrongEndian);
-        memcpy (RECHeaderInfo->TPReserved2,     &Buffer[p + 12], 2);
+        memcpy (RECHeaderInfo->TPUnknown5, &Buffer[p + 12], 2);
         RECHeaderInfo->TPOriginalNetworkID  = getWord(&Buffer[p + 14], WrongEndian);
         break;
       }
@@ -267,15 +254,15 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
       {
         RECHeaderInfo->TPChannelNumber      = getWord(&Buffer[p +  0], WrongEndian);
         RECHeaderInfo->TPBandwidth          = *( byte*)(&Buffer[p +  2]);
-        RECHeaderInfo->TPReserved3          = *( byte*)(&Buffer[p +  3]);
+        RECHeaderInfo->TPUnknown2           = *( byte*)(&Buffer[p +  3]);
         RECHeaderInfo->TPFrequency          = getDword(&Buffer[p +  4], WrongEndian);
         RECHeaderInfo->TPTSID               = getWord(&Buffer[p +  8], WrongEndian);
         RECHeaderInfo->TPLPHPStream         = *( byte*)(&Buffer[p + 10]);
-        RECHeaderInfo->TPReserved4          = *( byte*)(&Buffer[p + 11]);
+        RECHeaderInfo->TPUnknown4           = *( byte*)(&Buffer[p + 11]);
         RECHeaderInfo->TPOriginalNetworkID  = getWord(&Buffer[p + 12], WrongEndian);
-        memcpy (RECHeaderInfo->TPUnknown1,     &Buffer[p + 14], 2);
+        RECHeaderInfo->TPNetworkID          = getWord(&Buffer[p + 14], WrongEndian);
         if (RECHeaderInfo->HeaderType == ST_DVBT5700)
-          memcpy(RECHeaderInfo->TPUnknown2, &Buffer[p + 16], 8);
+          memcpy(RECHeaderInfo->TPUnknown7, &Buffer[p + 16], 8);
         break;
       }
 
@@ -286,7 +273,7 @@ void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
         RECHeaderInfo->TPTSID               = getWord(&Buffer[p +  6], WrongEndian);
         RECHeaderInfo->TPOriginalNetworkID  = getWord(&Buffer[p +  8], WrongEndian);
         RECHeaderInfo->TPModulation         = *( byte*)(&Buffer[p + 10]);
-        RECHeaderInfo->TPReserved5          = *( byte*)(&Buffer[p + 11]);
+        RECHeaderInfo->TPUnknown6           = *( byte*)(&Buffer[p + 11]);
         break;
 
       case ST_UNKNOWN:
@@ -301,16 +288,14 @@ void HDD_DecodeRECHeader_EventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
 
-  //known: all
-  p = OffsetEventInfo[RECHeaderType];
+  p = OffsetEventInfo[RECHeaderInfo->RECHeaderType];
 
-  if(RECHeaderType == RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType == RHT_TMSs)
   {
     memcpy (RECHeaderInfo->EventUnknown1, &Buffer[p], 2);
-    RECHeaderInfo->EventDurationHour   = *( byte*)(&Buffer[p +  2]);
-    RECHeaderInfo->EventDurationMin    = *( byte*)(&Buffer[p +  3]);
-    RECHeaderInfo->EventEventID        = getWord(&Buffer[p + 0x0004], WrongEndian);
-    memcpy (RECHeaderInfo->EventUnknown2, &Buffer[p + 0x0006], 2);
+    RECHeaderInfo->EventDurationHour   = *( byte*)(&Buffer[p +  3]);
+    RECHeaderInfo->EventDurationMin    = *( byte*)(&Buffer[p +  2]);
+    RECHeaderInfo->EventEventID        = getDword(&Buffer[p + 0x0004], WrongEndian);
     RECHeaderInfo->EventStartTime      = getDword(&Buffer[p + 0x0008], WrongEndian);
     RECHeaderInfo->EventEndTime        = getDword(&Buffer[p + 0x000c], WrongEndian);
     RECHeaderInfo->EventRunningStatus  = *( byte*)(&Buffer[p + 0x0010]);
@@ -324,16 +309,16 @@ void HDD_DecodeRECHeader_EventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
     memcpy (RECHeaderInfo->EventUnknown1, &Buffer[p], 2);
     RECHeaderInfo->EventDurationHour   = *( byte*)(&Buffer[p +  2]);
     RECHeaderInfo->EventDurationMin    = *( byte*)(&Buffer[p +  3]);
-    memcpy (RECHeaderInfo->EventUnknown2, &Buffer[p + 4], 2);
-    RECHeaderInfo->EventEventID        =  getWord(&Buffer[p +  6], WrongEndian);
-    RECHeaderInfo->EventStartTime      = (getWord(&Buffer[p +  8], WrongEndian) << 16) | (Buffer[p + 10] << 8) | Buffer[p + 11];
-    RECHeaderInfo->EventEndTime        = (getWord(&Buffer[p + 12], WrongEndian) << 16) | (Buffer[p + 14] << 8) | Buffer[p + 15];
+    RECHeaderInfo->EventEventID        =  getDword(&Buffer[p +  4], WrongEndian);
+    RECHeaderInfo->EventStartTime      =  getDword(&Buffer[p +  8], WrongEndian);
+    RECHeaderInfo->EventEndTime        =  getDword(&Buffer[p + 12], WrongEndian);
     RECHeaderInfo->EventRunningStatus  = *( byte*)(&Buffer[p + 16]);
     RECHeaderInfo->EventTextLength     = *( byte*)(&Buffer[p + 17]);
     RECHeaderInfo->EventParentalRate   = *( byte*)(&Buffer[p + 18]);
     memcpy (RECHeaderInfo->EventEventName, &Buffer[p + 19], RECHeaderInfo->EventTextLength);
-    memcpy (RECHeaderInfo->EventEventDescription, &Buffer[p + 19 + RECHeaderInfo->EventTextLength], 257 - RECHeaderInfo->EventTextLength);
-    memcpy (RECHeaderInfo->EventUnknown3, &Buffer[p + 276], 18);
+    memcpy (RECHeaderInfo->EventEventDescription, &Buffer[p + 19 + RECHeaderInfo->EventTextLength], 273 - RECHeaderInfo->EventTextLength);
+    RECHeaderInfo->EventServiceID      =  getWord(&Buffer[p + 276], WrongEndian);
+    memcpy (RECHeaderInfo->EventUnknown2, &Buffer[p + 278], 10);
   }
 }
 
@@ -342,22 +327,22 @@ void HDD_DecodeRECHeader_ExtendedEventInfo(char *Buffer, tRECHeaderInfo *RECHead
   dword                 p;
 
   //known: all
-  p = OffsetExtEventInfo[RECHeaderType];
+  p = OffsetExtEventInfo[RECHeaderInfo->RECHeaderType];
 
-  if(RECHeaderType == RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType == RHT_TMSs)
   {
     RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
     RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
-    RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0004], WrongEndian);
-    memcpy (RECHeaderInfo->ExtEventUnknown1, &Buffer[p + 0x0006], 2);
+    RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
     memcpy (RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
   }
   else
   {
-    RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0000], WrongEndian);
-    memcpy (RECHeaderInfo->ExtEventUnknown1, &Buffer[p + 0x0002], 2);
-    RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0004], WrongEndian);
-    memcpy (RECHeaderInfo->ExtEventText, &Buffer[p + 0x0006], 1024);
+    RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
+    RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+    memcpy (RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
+    RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
+    memcpy (RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
   }
 }
 
@@ -366,10 +351,10 @@ void HDD_DecodeRECHeader_CryptInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
 
   //known: all
-  p = OffsetCryptInfo[RECHeaderType];
+  p = OffsetCryptInfo[RECHeaderInfo->RECHeaderType];
 
   //The TMS crypt info is already included in the file header block
-  if(RECHeaderType != RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType != RHT_TMSs)
   {
     memcpy (RECHeaderInfo->CryptReserved1, &Buffer[p], 4);
     RECHeaderInfo->CryptFlag =   *( byte*)(&Buffer[p + 0x0004]);
@@ -382,23 +367,27 @@ void HDD_DecodeRECHeader_Bookmarks(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
 
   //known: all
-  p = OffsetBookmarks[RECHeaderType];
+  p = OffsetBookmarks[RECHeaderInfo->RECHeaderType];
 
-  //It's not yet known if the bookmark block exists on the TMS
-  if(RECHeaderType != RHT_TMSs)
+  if(RECHeaderInfo->RECHeaderType != RHT_TMSs)
   {
     memcpy (RECHeaderInfo->Bookmark, &Buffer[p], 64 * sizeof (dword));
     RECHeaderInfo->Resume = getDword(&Buffer[p + 0x0100], WrongEndian);
   }
+  else
+  {
+    RECHeaderInfo->NrBookmarks = getDword(&Buffer[p + 0x0000], WrongEndian);
+    memcpy (RECHeaderInfo->Bookmark, &Buffer[p + 0x0004], 177 * sizeof (dword));
+    RECHeaderInfo->Resume = getDword(&Buffer[p + 0x02c8], WrongEndian);
+  }
 }
 
-SYSTEM_TYPE HDD_DecodeRECHeader(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
+eRECHeaderType HDD_DecodeRECHeader(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   memset (RECHeaderInfo, 0, sizeof (tRECHeaderInfo));
   RECHeaderInfo->HeaderType = ST_UNKNOWN;
-
-  if (!LibInitialized) InitTAPex ();
-  if (!LibInitialized) return RECHeaderInfo->HeaderType;
+  RECHeaderInfo->RECHeaderType = RHT_UNKNOWN;
+  WrongEndian = FALSE;
 
   //Is this a REC header?
   RECHeaderInfo->HeaderMagic     = (Buffer[0] << 24) | (Buffer[1] << 16) | (Buffer[2] << 8) | Buffer[3];
@@ -412,5 +401,5 @@ SYSTEM_TYPE HDD_DecodeRECHeader(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
   HDD_DecodeRECHeader_CryptInfo(Buffer, RECHeaderInfo);
   HDD_DecodeRECHeader_Bookmarks(Buffer, RECHeaderInfo);
 
-  return RECHeaderInfo->HeaderType;
+  return RECHeaderInfo->RECHeaderType;
 }

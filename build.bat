@@ -138,12 +138,18 @@ if exist *.o del *.o
 %COMPILE%
 cd ..
 
+echo --time
+cd time
+if exist *.o del *.o
+%COMPILE%
+cd ..
+
 echo -Building library...
 echo.
 
 if exist %Project%.a del %Project%.a
 
-mips-ar -r %Project%.a av/*.o compression/*.o debug/*.o dialog/*.o flash/*.o fs/*.o fwpatches/*.o hdd/*.o hook/*.o iic/*.o imem/*.o ini/*.o InstructionSequences/*.o main/*.o mpvfd/*.o rec/*.o shutdown/*.o string/*.o tap/*.o tapcom/*.o tapapifix/*.o
+mips-ar -r %Project%.a av/*.o compression/*.o debug/*.o dialog/*.o flash/*.o fs/*.o fwpatches/*.o hdd/*.o hook/*.o iic/*.o imem/*.o ini/*.o InstructionSequences/*.o main/*.o mpvfd/*.o rec/*.o shutdown/*.o string/*.o tap/*.o tapcom/*.o tapapifix/*.o time/*.o
 mips-ranlib %Project%.a
 
 del av\*.o
@@ -167,6 +173,7 @@ del string\*.o
 del tap\*.o
 del tapcom\*.o
 del tapapifix\*.o
+del time\*.o
 
 copy %Project%.a %ZIEL%
 
