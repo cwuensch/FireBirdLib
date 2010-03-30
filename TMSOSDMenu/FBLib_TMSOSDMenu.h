@@ -61,6 +61,20 @@ typedef struct
   char                  Text[STDSTRINGSIZE];
 }tMessageBox;
 
+typedef enum
+{
+  CCS_Red,
+  CCS_Green,
+  CCS_Blue
+}tCurrentColorSelected;
+
+typedef enum
+{
+  CPC_None,
+  CPC_Deselected,
+  CPC_Selected
+}tColorPickerCursor;
+
 extern tFontData        Calibri_12_FontData;
 extern tFontData        Calibri_14_FontData;
 extern tFontData        Calibri_16_FontData;
@@ -94,6 +108,10 @@ extern TYPE_GrData      _ScrollBarKnob_Gd;
 extern TYPE_GrData      _ScrollBarVisible_Gd;
 extern TYPE_GrData      _Selection_Bar_Gd;
 
+extern TYPE_GrData      _ColorPicker_Gd;
+extern TYPE_GrData      _ColorPicker_CursorNone_Gd;
+extern TYPE_GrData      _ColorPicker_CursorDeselected_Gd;
+extern TYPE_GrData      _ColorPicker_CursorSelected_Gd;
 
 extern word             OSDRgn;
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
@@ -108,6 +126,11 @@ extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
 
+extern word             ColorPickerOSDRgn;
+extern dword            ColorPickerColor;
+extern dword            ColorPickerDefaultColor;
+extern tCurrentColorSelected  CurrentColorSelected;
+extern int              ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
 
 int  OSDMenuGetW(const char * str, byte fntSize);
 void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
@@ -121,5 +144,6 @@ void OSDDrawButtons(void);
 void OSDCalcIndices(void);
 void OSDDrawScrollBar(void);
 void OSDDrawList(void);
+void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, tColorPickerCursor CursorType);
 
 #endif

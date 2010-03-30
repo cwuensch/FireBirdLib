@@ -561,6 +561,10 @@ int TAP_Main (void)
   HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, tms
   OSDMenuButtonAdd(0, 0, NULL, NULL);                                   //TMSOSDMenu, tms
   OSDMenuButtonsClear();                                                //TMSOSDMenu, tms
+  OSDMenuColorPickerShow(NULL, 0);                                      //TMSOSDMenu, tms
+  OSDMenuColorPickerDestroy();                                          //TMSOSDMenu, tms
+  OSDMenuColorPickerIsVisible();                                        //TMSOSDMenu, tms
+  OSDMenuColorPickerColor();                                            //TMSOSDMenu, tms
   OSDMenuDestroy();                                                     //TMSOSDMenu, tms
   OSDMenuEvent(NULL, NULL, NULL);                                       //TMSOSDMenu, tms
   OSDMenuGetCurrentItem();                                              //TMSOSDMenu, tms

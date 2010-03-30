@@ -151,6 +151,7 @@
     byte                AudioLanguage;
   }EEPROMSTRUCT;
 
+  dword UTCtoLocal(dword UTCTime);
 
   /**********************************************************************************/
   /* TMS specific definitions                                                       */
@@ -612,6 +613,12 @@
   void  OSDMenuMessageBoxDestroy(void);
   bool  OSDMenuMessageBoxIsVisible(void);
   dword OSDMenuMessageBoxLastButton(void);
+
+  //Color Picker
+  void  OSDMenuColorPickerShow(char *Title, dword DefaultColor);
+  void  OSDMenuColorPickerDestroy(void);
+  bool  OSDMenuColorPickerIsVisible(void);
+  dword OSDMenuColorPickerColor(void);
 
   //Event handling
   bool OSDMenuEvent(word *event, dword *param1, dword *param2);

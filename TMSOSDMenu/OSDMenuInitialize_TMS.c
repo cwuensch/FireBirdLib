@@ -27,6 +27,11 @@
 #include                "graphic/Button_jumpend.gd"
 #include                "graphic/Button_sat.gd"
 
+#include                "graphic/ColorPicker.gd"
+#include                "graphic/ColorPicker_CursorNone.gd"
+#include                "graphic/ColorPicker_CursorDeselected.gd"
+#include                "graphic/ColorPicker_CursorSelected.gd"
+
 #ifdef _TMS_
 
 word                    OSDRgn = 0;
@@ -41,6 +46,12 @@ dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 word                    MessageBoxOSDRgn = 0;
 tMessageBox             MessageBox;
+
+word                    ColorPickerOSDRgn = 0;
+dword                   ColorPickerColor;
+dword                   ColorPickerDefaultColor;
+tCurrentColorSelected   CurrentColorSelected;
+int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
 
 void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
 {
