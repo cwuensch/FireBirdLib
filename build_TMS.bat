@@ -1,9 +1,11 @@
 @echo off
 set Project=libFireBird
 
-copy %Project%.h "C:\sw\prgm\Topfield\API\TMS\include"
-copy %Project%_generic.h "C:\sw\prgm\Topfield\API\TMS\include"
-copy %Project%_TMS.h "C:\sw\prgm\Topfield\API\TMS\include"
+set ZIEL=C:\sw\prgm\Topfield\API\TMS\include
+
+copy %Project%.h %ZIEL%
+copy %Project%_generic.h %ZIEL%
+copy %Project%_TMS.h %ZIEL%
 
 set TFROOT=C:\sw\prgm\Topfield
 set PATH=%TFROOT%\gccForTMS\crosstool\bin;C:\sw\OS\cygwin\bin

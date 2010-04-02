@@ -6,49 +6,6 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
 {
   (void) param2;
 
-  if(OSDRgn)
-  {
-    if(event && param1 && (*event == EVT_KEY))
-    {
-      switch(*param1)
-      {
-        case RKEY_Up:
-        {
-          OSDMenuScrollUp();
-          OSDMenuUpdate();
-          *param1 = 0;
-          return TRUE;
-        }
-
-        case RKEY_Down:
-        {
-          OSDMenuScrollDown();
-          OSDMenuUpdate();
-          *param1 = 0;
-          return TRUE;
-        }
-
-        case RKEY_ChDown:
-        case RKEY_VolDown:
-        {
-          OSDMenuScrollPageDown();
-          OSDMenuUpdate();
-          *param1 = 0;
-          return TRUE;
-        }
-
-        case RKEY_ChUp:
-        case RKEY_VolUp:
-        {
-          OSDMenuScrollPageUp();
-          OSDMenuUpdate();
-          *param1 = 0;
-          return TRUE;
-        }
-      }
-    }
-  }
-
   if(InfoBoxOSDRgn)
   {
     if(event && param1 && (*event == EVT_KEY))
@@ -111,8 +68,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         {
           if(CurrentColorSelected != CCS_Red)
           {
-            OSDMenuColorPickerDrawCursor(CCS_Red, CPC_Selected);
-            OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Deselected);
+            OSDMenuColorPickerDrawCursor(CCS_Red, TRUE);
+            OSDMenuColorPickerDrawCursor(CurrentColorSelected, FALSE);
             CurrentColorSelected = CCS_Red;
             TAP_Osd_Sync();
           }
@@ -123,8 +80,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         {
           if(CurrentColorSelected != CCS_Green)
           {
-            OSDMenuColorPickerDrawCursor(CCS_Green, CPC_Selected);
-            OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Deselected);
+            OSDMenuColorPickerDrawCursor(CCS_Green, TRUE);
+            OSDMenuColorPickerDrawCursor(CurrentColorSelected, FALSE);
             CurrentColorSelected = CCS_Green;
             TAP_Osd_Sync();
           }
@@ -135,8 +92,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         {
           if(CurrentColorSelected != CCS_Blue)
           {
-            OSDMenuColorPickerDrawCursor(CCS_Blue, CPC_Selected);
-            OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Deselected);
+            OSDMenuColorPickerDrawCursor(CCS_Blue, TRUE);
+            OSDMenuColorPickerDrawCursor(CurrentColorSelected, FALSE);
             CurrentColorSelected = CCS_Blue;
             TAP_Osd_Sync();
           }
@@ -162,8 +119,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             case CCS_Green: ColorPickerColor = (ColorPickerColor & 0xffff00ff) | (Color <<  8); break;
             case CCS_Blue:  ColorPickerColor = (ColorPickerColor & 0xffffff00) |  Color; break;
           }
-          OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Selected);
-          //TODO: draw color field
+          OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
           TAP_Osd_Sync();
 
           break;
@@ -188,8 +144,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             case CCS_Green: ColorPickerColor = (ColorPickerColor & 0xffff00ff) | (Color <<  8); break;
             case CCS_Blue:  ColorPickerColor = (ColorPickerColor & 0xffffff00) |  Color; break;
           }
-          OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Selected);
-          //TODO: draw color field
+          OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
           TAP_Osd_Sync();
 
           break;
@@ -215,8 +170,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
               case CCS_Green: ColorPickerColor = (ColorPickerColor & 0xffff00ff) | (Color <<  8); break;
               case CCS_Blue:  ColorPickerColor = (ColorPickerColor & 0xffffff00) |  Color; break;
             }
-            OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Selected);
-            //TODO: draw color field
+            OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
             TAP_Osd_Sync();
           }
 
@@ -243,8 +197,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
               case CCS_Green: ColorPickerColor = (ColorPickerColor & 0xffff00ff) | (Color <<  8); break;
               case CCS_Blue:  ColorPickerColor = (ColorPickerColor & 0xffffff00) |  Color; break;
             }
-            OSDMenuColorPickerDrawCursor(CurrentColorSelected, CPC_Selected);
-            //TODO: draw color field
+            OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
             TAP_Osd_Sync();
           }
           break;
@@ -265,6 +218,51 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
       }
       *param1 = 0;
       return TRUE;
+    }
+  }
+
+  if(OSDRgn)
+  {
+    if(event && param1 && (*event == EVT_KEY))
+    {
+      switch(*param1)
+      {
+        case RKEY_Up:
+        {
+          OSDMenuScrollUp();
+          OSDMenuUpdate();
+          *param1 = 0;
+          return TRUE;
+        }
+
+        case RKEY_Down:
+        {
+          int ret;
+
+          ret = OSDMenuScrollDown();
+          OSDMenuUpdate();
+          *param1 = 0;
+          return TRUE;
+        }
+
+        case RKEY_ChDown:
+        case RKEY_VolDown:
+        {
+          OSDMenuScrollPageDown();
+          OSDMenuUpdate();
+          *param1 = 0;
+          return TRUE;
+        }
+
+        case RKEY_ChUp:
+        case RKEY_VolUp:
+        {
+          OSDMenuScrollPageUp();
+          OSDMenuUpdate();
+          *param1 = 0;
+          return TRUE;
+        }
+      }
     }
   }
 

@@ -6,10 +6,23 @@
 bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID)
 {
   tMenu                *pMenu;
+  int                   NewNrItems;
+  tItem                *TempItem;
 
   pMenu = &Menu[CurrentMenuLevel];
 
-  if(pMenu->NrItems >= MAXITEMS) return FALSE;
+  if(pMenu->NrItems >= pMenu->MaxItems)
+  {
+    NewNrItems = pMenu->MaxItems + 30;
+    TempItem = TAP_MemAlloc(NewNrItems * sizeof(tItem));
+    if(!TempItem) return FALSE;
+    memset(TempItem, 0, NewNrItems * sizeof(tItem));
+    memcpy(TempItem, pMenu->Item, pMenu->NrItems * sizeof(tItem));
+    TAP_MemFree(pMenu->Item);
+    pMenu->Item = TempItem;
+    pMenu->MaxItems = NewNrItems;
+  }
+
   if(!Name || !Name[0]) return FALSE;
 
   strncpy(pMenu->Item[pMenu->NrItems].Name, Name, ITEMNAMESIZE);
@@ -28,6 +41,7 @@ bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrDa
   pMenu->Item[pMenu->NrItems].Selectable    = Selectable;
   pMenu->Item[pMenu->NrItems].ValueArrows   = ValueArrows;
   pMenu->Item[pMenu->NrItems].ID            = ID;
+  pMenu->Item[pMenu->NrItems].ColorPatch    = 0;
   pMenu->NrItems++;
 
   //TODO: only when in visible area

@@ -2,10 +2,11 @@
 
 #ifdef _TMS_
 
-void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, tColorPickerCursor CursorType)
+void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected)
 {
   int                  y = 0, CurrentX = 0, NewX = 0, TextY = 0;
   char                 s[24];
+  TYPE_GrData          *MB;
 
 #define CURSORXOFFET   8
 
@@ -45,30 +46,20 @@ void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, tColorPicke
     }
 
     if (CurrentX > -1)TAP_Osd_PutGd(ColorPickerOSDRgn, CurrentX , y, &_ColorPicker_CursorNone_Gd, FALSE);
-    switch(CursorType)
-    {
-      case CPC_None:
-      {
-        TAP_Osd_PutGd(ColorPickerOSDRgn, NewX , y, &_ColorPicker_CursorNone_Gd, FALSE);
-        break;
-      }
+    TAP_Osd_PutGd(ColorPickerOSDRgn, NewX , y, &_ColorPicker_CursorDeselected_Gd, FALSE);
 
-      case CPC_Deselected:
-      {
-        TAP_Osd_PutGd(ColorPickerOSDRgn, NewX , y, &_ColorPicker_CursorDeselected_Gd, FALSE);
-        break;
-      }
-
-      case CPC_Selected:
-      {
-        TAP_Osd_PutGd(ColorPickerOSDRgn, NewX , y, &_ColorPicker_CursorSelected_Gd, FALSE);
-        break;
-      }
-    }
-
+    MB = &_ColorPicker_ValueBackroundSelected_Gd;
     TAP_SPrint(s, "%d", NewX - CURSORXOFFET);
-    TAP_Osd_FillBox(ColorPickerOSDRgn, 280, TextY, 50, 12, RGB(40,40,40));
-    OSDMenuPutS(ColorPickerOSDRgn, 280, TextY, 350, s, RGB(192,192,192), COLOR_None, 12, FALSE, ALIGN_LEFT);
+    if(Selected)
+    {
+      TAP_Osd_PutGd(ColorPickerOSDRgn, 310 - (MB->width >> 1), TextY, MB, FALSE);
+      OSDMenuPutS(ColorPickerOSDRgn, 310 - (MB->width >> 1), TextY, 310 + (MB->width >> 1), s, RGB(40,40,40), COLOR_None, 12, FALSE, ALIGN_CENTER);
+    }
+    else
+    {
+      TAP_Osd_FillBox(ColorPickerOSDRgn, 280, TextY, 60, 17, RGB(40,40,40));
+      OSDMenuPutS(ColorPickerOSDRgn, 310 - (MB->width >> 1), TextY, 310 + (MB->width >> 1), s, RGB(192,192,192), COLOR_None, 12, FALSE, ALIGN_CENTER);
+    }
 
     TAP_Osd_FillBox(ColorPickerOSDRgn, 211, 116, 60, 18, ColorPickerColor | 0xff000000);
     TAP_Osd_DrawRectangle(ColorPickerOSDRgn, 211, 116, 60, 18, 1, RGB(192,192,192));

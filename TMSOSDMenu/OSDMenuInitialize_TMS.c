@@ -30,7 +30,7 @@
 #include                "graphic/ColorPicker.gd"
 #include                "graphic/ColorPicker_CursorNone.gd"
 #include                "graphic/ColorPicker_CursorDeselected.gd"
-#include                "graphic/ColorPicker_CursorSelected.gd"
+#include                "graphic/ColorPicker_ValueBackroundSelected.gd"
 
 #ifdef _TMS_
 
@@ -60,6 +60,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
 
   //Clear everything
   pMenu = &Menu[CurrentMenuLevel];
+
   memset(pMenu, 0, sizeof(tMenu));
   for(i = 0; i < 4; i++)
     pMenu->ButtonXStart[i] = 55;
@@ -72,11 +73,20 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->NumberedItems = NumberedItems;
   pMenu->ScrollLoop = ScrollLoop;
   pMenu->ValueXPos = 350;
+  pMenu->Item = TAP_MemAlloc(30 * sizeof(tItem));
+  pMenu->MaxItems = 30;
+  memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
 
-  strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
+  if(TitleLeft)
+    strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
+  else
+    pMenu->TitleLeft[0] = '\0';
   pMenu->TitleLeft[STDSTRINGSIZE - 1] = '\0';
 
-  strncpy(pMenu->TitleRight, TitleRight, STDSTRINGSIZE);
+  if(TitleRight)
+    strncpy(pMenu->TitleRight, TitleRight, STDSTRINGSIZE);
+  else
+    pMenu->TitleRight[0] = '\0';
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 }
 

@@ -21,8 +21,10 @@ void OSDDrawList(void)
   {
     if(pMenu->Item[i].pNameIconGd && (pMenu->Item[i].pNameIconGd->width > MaxNameIconWidth)) MaxNameIconWidth = pMenu->Item[i].pNameIconGd->width;
     if(pMenu->Item[i].pValueIconGd && (pMenu->Item[i].pValueIconGd->width > MaxValueIconWidth)) MaxValueIconWidth = pMenu->Item[i].pValueIconGd->width;
+    if(pMenu->Item[i].ColorPatch && (MaxValueIconWidth < 50)) MaxValueIconWidth = 50;
   }
 
+  //The background
   TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 367, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
 
   LastIndex = pMenu->NrItems + pMenu->CurrentTopIndex;
@@ -30,6 +32,7 @@ void OSDDrawList(void)
 
   for(i = 0; i < 10; i++)
   {
+    //Draw the background or selection bar and the optional value arrows
     if((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection)
     {
       TAP_Osd_PutGd(OSDRgn,  60 , 95 + (i * 37), &_Selection_Bar_Gd, FALSE);
@@ -52,6 +55,7 @@ void OSDDrawList(void)
     else
       ItemColor = RGB(128, 128, 140);
 
+    //Line numbers
     if(pMenu->NumberedItems)
     {
       XStart = 101;
@@ -63,16 +67,29 @@ void OSDDrawList(void)
       XStart = 76;
     }
 
+    //Icons on the left column
     if(pMenu->Item[i + pMenu->CurrentTopIndex].pNameIconGd)
       TAP_Osd_PutGd(OSDRgn, XStart, Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pNameIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pNameIconGd, TRUE);
 
+    //The text of the left column
     OSDMenuPutS(OSDRgn, XStart + MaxNameIconWidth, Y + 5, XEnd, pMenu->Item[i + pMenu->CurrentTopIndex].Name, ItemColor, COLOR_None, 14, TRUE, ALIGN_LEFT);
 
     if(pMenu->HasValueColumn)
     {
+      //The text of the right column
       OSDMenuPutS(OSDRgn, pMenu->ValueXPos + 45 + MaxValueIconWidth, Y + 5, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Value, ItemColor, COLOR_None, 14, TRUE, ALIGN_LEFT);
-      if(pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd)
-        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 45 , Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd, TRUE);
+
+      //The color patch or icon of the right column. The former has priority
+      if(pMenu->Item[i + pMenu->CurrentTopIndex].ColorPatch)
+      {
+        TAP_Osd_FillBox(OSDRgn, pMenu->ValueXPos + 45, Y + 5, 50, 18, (pMenu->Item[i + pMenu->CurrentTopIndex].ColorPatch & 0x00ffffff) | 0xff000000);
+        TAP_Osd_DrawRectangle(OSDRgn, pMenu->ValueXPos + 45, Y + 5, 50, 18, 1, RGB(192,192,192));
+      }
+      else
+      {
+        if(pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd)
+          TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 45 , Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pValueIconGd, TRUE);
+      }
     }
   }
 }

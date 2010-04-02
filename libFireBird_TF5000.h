@@ -2810,13 +2810,9 @@
   } tTAPTableInfo;
 
 
-  bool  HDD_TAP_Disable (dword TAPID, bool DisableEvents);
-  dword HDD_TAP_DisableAll (bool DisableEvents);
   int   HDD_TAP_GetCurrentDirCluster (void);
   bool  HDD_TAP_SetCurrentDirCluster (dword DirCluster);
   void  HDD_TAP_GetInfo (int TAPIndex, tTAPTableInfo *pTAPInfo);
-  dword HDD_TAP_isDisabled (dword TAPID);
-  bool  HDD_TAP_isDisabledAll (void);
 
 
   /*****************************************************************************************************************************/

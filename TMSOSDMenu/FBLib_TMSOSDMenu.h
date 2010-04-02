@@ -4,7 +4,6 @@
 #include                "tap.h"
 #include                "..\libFireBird.h"
 
-#define MAXITEMS        100
 #define ITEMNAMESIZE    64
 #define ITEMVALUESIZE   64
 #define STDSTRINGSIZE   64
@@ -18,6 +17,7 @@ typedef struct
   char                  Value[ITEMVALUESIZE];
   TYPE_GrData          *pNameIconGd;
   TYPE_GrData          *pValueIconGd;
+  dword                 ColorPatch;
   bool                  Selectable;
   bool                  ValueArrows;
   dword                 ID;
@@ -33,8 +33,9 @@ typedef struct
 
 typedef struct
 {
-  tItem                 Item[MAXITEMS];
+  tItem                *Item;
   int                   NrItems;
+  int                   MaxItems;
   int                   CurrentSelection;
   int                   CurrentTopIndex;
   bool                  AllowScrollingOfLongText;
@@ -67,13 +68,6 @@ typedef enum
   CCS_Green,
   CCS_Blue
 }tCurrentColorSelected;
-
-typedef enum
-{
-  CPC_None,
-  CPC_Deselected,
-  CPC_Selected
-}tColorPickerCursor;
 
 extern tFontData        Calibri_12_FontData;
 extern tFontData        Calibri_14_FontData;
@@ -111,7 +105,7 @@ extern TYPE_GrData      _Selection_Bar_Gd;
 extern TYPE_GrData      _ColorPicker_Gd;
 extern TYPE_GrData      _ColorPicker_CursorNone_Gd;
 extern TYPE_GrData      _ColorPicker_CursorDeselected_Gd;
-extern TYPE_GrData      _ColorPicker_CursorSelected_Gd;
+extern TYPE_GrData      _ColorPicker_ValueBackroundSelected_Gd;
 
 extern word             OSDRgn;
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
@@ -144,6 +138,6 @@ void OSDDrawButtons(void);
 void OSDCalcIndices(void);
 void OSDDrawScrollBar(void);
 void OSDDrawList(void);
-void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, tColorPickerCursor CursorType);
+void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected);
 
 #endif

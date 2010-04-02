@@ -216,11 +216,15 @@ int TAP_Main (void)
   HDD_Smart_ReadThresholdData(0);                                       //hdd, all
   HDD_Smart_ReturnStatus();                                             //hdd, all
   HDD_TAP_Callback(0, NULL, 0, 0, 0, 0);                                //tap, all
+  HDD_TAP_Disable(0, 0);                                                //tap, all
+  HDD_TAP_DisableAll(0);                                                //tap, all
   HDD_TAP_GetCurrentDir(NULL);                                          //tap, all
   HDD_TAP_GetIDByFileName(NULL);                                        //tap, all
   HDD_TAP_GetIDByIndex(0);                                              //tap, all
   HDD_TAP_GetIndexByID(0);                                              //tap, all
   HDD_TAP_isAnyRunning();                                               //tap, all
+  HDD_TAP_isDisabled(0);                                                //tap, all
+  HDD_TAP_isDisabledAll();                                              //tap, all
   HDD_TAP_PopDir();                                                     //tap, all
   HDD_TAP_PushDir();                                                    //tap, all
   HDD_TAP_SendEvent(0, FALSE, 0, 0, 0);                                 //tap, all
@@ -458,15 +462,11 @@ int TAP_Main (void)
   HDD_RECSlotPause(0, FALSE);                                           //rec, 5k
   HDD_Smart_ExecuteOfflineImmediate(0);                                 //hdd, 5k
   HDD_Stop();                                                           //hdd, 5k
-  HDD_TAP_Disable(0, 0);                                                //tap, 5k
-  HDD_TAP_DisableAll(0);                                                //tap, 5k
   HDD_TAP_DisabledEventHandler(0, 0, 0);                                //tap, 5k
   HDD_TAP_GetCurrentDirCluster();                                       //tap, 5k
   HDD_TAP_GetInfo(0, NULL);                                             //tap, 5k
   HDD_TAP_GetStartParameter();                                          //tap, 5k
   HDD_TAP_isBatchMode();                                                //tap, 5k
-  HDD_TAP_isDisabled(0);                                                //tap, 5k
-  HDD_TAP_isDisabledAll();                                              //tap, 5k
   HDD_TAP_isRunning(0);                                                 //tap, 5k
   HDD_TAP_SetCurrentDirCluster(0);                                      //tap, 5k
   HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, 5k
@@ -577,6 +577,7 @@ int TAP_Main (void)
   OSDMenuItemModifyName(0, NULL);                                       //TMSOSDMenu, tms
   OSDMenuItemModifyNameIcon(0, NULL);                                   //TMSOSDMenu, tms
   OSDMenuItemModifySelectable(0,FALSE);                                 //TMSOSDMenu, tms
+  OSDMenuItemModifyColorPatch(0, 0);                                    //TMSOSDMenu, tms
   OSDMenuItemModifyValue(0, NULL);                                      //TMSOSDMenu, tms
   OSDMenuItemModifyValueIcon(0, NULL);                                  //TMSOSDMenu, tms
   OSDMenuItemsClear();                                                  //TMSOSDMenu, tms

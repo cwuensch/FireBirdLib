@@ -24,7 +24,6 @@ bool HDD_TAP_Disable (dword TAPID, bool DisableEvents)
   //Disabled by another TAP? Do not touch.
   if (isDisabled == 2) return FALSE;
 
-
   TAPIndex = HDD_TAP_GetIndexByID (TAPID);
   if (TAPIndex < 0) return FALSE;
 

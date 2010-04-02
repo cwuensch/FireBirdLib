@@ -767,18 +767,22 @@
   /*****************************************************************************************************************************/
 
   dword HDD_TAP_Callback (dword TAPID, void *ProcedureAddress, dword param1, dword param2, dword param3, dword param4);
-  bool  HDD_TAP_PushDir (void);
-  bool  HDD_TAP_PopDir (void);
+  bool  HDD_TAP_Disable (dword TAPID, bool DisableEvents);
+  dword HDD_TAP_DisableAll (bool DisableEvents);
   int   HDD_TAP_GetCurrentDir (char* CurrentDir);
-  dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
-  bool  HDD_TAP_isAnyRunning (void);
-  bool  HDD_TAP_isBatchMode (void);
   dword HDD_TAP_GetIDByFileName (char *TAPFileName);
   dword HDD_TAP_GetIDByIndex (int TAPIndex);
   int   HDD_TAP_GetIndexByID (dword TAPID);
   void* HDD_TAP_GetStartParameter (void);
+  bool  HDD_TAP_isAnyRunning (void);
+  bool  HDD_TAP_isBatchMode (void);
+  dword HDD_TAP_isDisabled (dword TAPID);
+  bool  HDD_TAP_isDisabledAll (void);
   bool  HDD_TAP_isRunning (dword TAPID);
+  bool  HDD_TAP_PopDir (void);
+  bool  HDD_TAP_PushDir (void);
   dword HDD_TAP_SendEvent (dword TAPID, bool AllowParamInterception, word event, dword param1, dword param2);
+  dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
   bool  HDD_TAP_StartedByTAP (void);
   void  HDD_TAP_Terminate (dword TAPID);
 

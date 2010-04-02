@@ -589,6 +589,7 @@
   bool  OSDMenuItemModifyNameIcon(int ItemIndex, TYPE_GrData *pNameIconGd);
   bool  OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
+  bool  OSDMenuItemModifyColorPatch(int ItemIndex, dword Color); //set to 0 to disable
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
   dword OSDMenuItemGetID(int ItemIndex);

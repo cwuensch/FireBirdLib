@@ -43,9 +43,9 @@ void OSDMenuColorPickerShow(char *Title, dword Color)
   x += (_Button_ok_Gd.width + 5);
   TAP_Osd_PutGd(ColorPickerOSDRgn, x , 115, &_Button_exit_Gd, TRUE);
 
-  OSDMenuColorPickerDrawCursor(CCS_Red, CPC_Selected);
-  OSDMenuColorPickerDrawCursor(CCS_Green, CPC_Deselected);
-  OSDMenuColorPickerDrawCursor(CCS_Blue, CPC_Deselected);
+  OSDMenuColorPickerDrawCursor(CCS_Red, TRUE);
+  OSDMenuColorPickerDrawCursor(CCS_Green, FALSE);
+  OSDMenuColorPickerDrawCursor(CCS_Blue, FALSE);
 
   TAP_Osd_Sync();
 }
