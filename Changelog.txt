@@ -476,3 +476,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-03-31  The number of OSDMenu items is not limited to 100 entries any more
 2010-04-01  Ported HDD_TAP_Disable(), HDD_TAP_DisableAll(), HDD_TAP_isDisabled() and HDD_TAP_isDisabledAll()
 2010-04-02  'Official release'
+
+2010-04-03  Increased STDSTRINGSIZE from 64 to 80
+2010-04-11  Added HDD_TAP_GetFileNameByIndex()

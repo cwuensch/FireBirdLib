@@ -6,7 +6,7 @@
 
 #define ITEMNAMESIZE    64
 #define ITEMVALUESIZE   64
-#define STDSTRINGSIZE   64
+#define STDSTRINGSIZE   80
 #define NRMENULEVELS     5
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
