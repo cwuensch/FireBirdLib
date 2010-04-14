@@ -479,3 +479,5 @@ License:  This library is freeware. You may use this code in your own projects f
 
 2010-04-03  Increased STDSTRINGSIZE from 64 to 80
 2010-04-11  Added HDD_TAP_GetFileNameByIndex()
+2010-04-14  Added the parameter SuppressOSDSync to OSDMenuUpdate(). If set to true, the calling TAP may
+              add some graphics but needs to do the TAP_Osd_Sync()

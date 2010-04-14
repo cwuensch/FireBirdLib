@@ -604,7 +604,7 @@ int TAP_Main (void)
   OSDMenuScrollPageUp();                                                //TMSOSDMenu, tms
   OSDMenuScrollUp();                                                    //TMSOSDMenu, tms
   OSDMenuSelectItem(0);                                                 //TMSOSDMenu, tms
-  OSDMenuUpdate();                                                      //TMSOSDMenu, tms
+  OSDMenuUpdate(FALSE);                                                 //TMSOSDMenu, tms
   PrintNet(NULL);                                                       //debug, tms
   TryResolve(NULL);                                                     //fis, tms
   UTCtoLocal(0);                                                        //time, tms

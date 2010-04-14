@@ -2,7 +2,7 @@
 
 #ifdef _TMS_
 
-void OSDMenuUpdate(void)
+void OSDMenuUpdate(bool SuppressOSDSync)
 {
   //Create an OSD region if not already available
   if(OSDRgn == 0)
@@ -42,7 +42,7 @@ void OSDMenuUpdate(void)
   }
 
   //Show OSD
-  TAP_Osd_Sync();
+  if(!SuppressOSDSync) TAP_Osd_Sync();
 }
 
 #endif

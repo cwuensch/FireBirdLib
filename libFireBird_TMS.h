@@ -532,7 +532,7 @@
 
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
-  void OSDMenuUpdate(void);
+  void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
   void OSDMenuModifyTitleRight(char *Text);
   void OSDMenuModifyItemLongTextScrolling(bool AllowScrollingOfLongText);
