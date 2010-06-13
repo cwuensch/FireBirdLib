@@ -230,7 +230,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         case RKEY_Up:
         {
           OSDMenuScrollUp();
-          OSDMenuUpdate();
+          OSDMenuUpdate(FALSE);
           *param1 = 0;
           return TRUE;
         }
@@ -240,7 +240,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           int ret;
 
           ret = OSDMenuScrollDown();
-          OSDMenuUpdate();
+          OSDMenuUpdate(FALSE);
           *param1 = 0;
           return TRUE;
         }
@@ -249,7 +249,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         case RKEY_VolDown:
         {
           OSDMenuScrollPageDown();
-          OSDMenuUpdate();
+          OSDMenuUpdate(FALSE);
           *param1 = 0;
           return TRUE;
         }
@@ -258,7 +258,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         case RKEY_VolUp:
         {
           OSDMenuScrollPageUp();
-          OSDMenuUpdate();
+          OSDMenuUpdate(FALSE);
           *param1 = 0;
           return TRUE;
         }

@@ -15,7 +15,7 @@ void HDD_EncodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
     memcpy(&Buffer[0x0006], RECHeaderInfo->HeaderUnknown2, 2);
     *(dword*)(&Buffer[0x0008]) = RECHeaderInfo->HeaderStartTime;
     *( word*)(&Buffer[0x000c]) = RECHeaderInfo->HeaderDuration;
-    memcpy(&Buffer[0x000e], RECHeaderInfo->HeaderUnknown3, 2);
+    *( word*)(&Buffer[0x000e]) = RECHeaderInfo->HeaderDurationSec;
     Buffer[0x0010] = RECHeaderInfo->CryptFlag;
     Buffer[0x0011] = RECHeaderInfo->HeaderFlags;
     Buffer[0x0012] = RECHeaderInfo->HeaderUnknown4;

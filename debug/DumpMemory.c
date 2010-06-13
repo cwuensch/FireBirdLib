@@ -4,9 +4,10 @@
 void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
 {
   unsigned char        *StartAddress = p;
-  int                   CollectedBytes;
+  int                   CollectedBytes, i;
   char                  text[200], Header[20];
   char                  s[255];
+  dword                 Remaining;
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceEnter("DumpMemory");
@@ -18,7 +19,8 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
 
   TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)(p - StartAddress));
 
-  while(size > 0)
+  Remaining = size;
+  while(Remaining > 0)
   {
     TAP_SPrint(&s[strlen(s)], "%2.2x ", *p);
     if((*p >= 0x20) && (*p <= 0x7e))
@@ -28,7 +30,7 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
 
     CollectedBytes++;
     p++;
-    size--;
+    Remaining--;
 
     if(CollectedBytes >= BytesPerLine)
     {
@@ -43,6 +45,14 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
   }
   if(strlen(s))
   {
+    size %= BytesPerLine;
+    if(size)
+    {
+      size = BytesPerLine - size;
+      for(i = 0; i < (int)size; i++)
+        strcat(s, "   ");
+    }
+
     TAP_SPrint(&s[strlen(s)], "  %s\n", text);
     TAP_Print(Header);
     TAP_Print(s);

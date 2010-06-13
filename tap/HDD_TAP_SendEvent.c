@@ -8,7 +8,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
   dword                *curTapTask;
   dword                 OrigCurTapTask;
   tTMSTAPTaskTable     *TMSTAPTaskTable;
-  dword                 Ret, i;
+  dword                 Ret = 0, i;
 
   dword (*TAPEventHandler)(word Event, dword Param1, dword Param2) = NULL;
 

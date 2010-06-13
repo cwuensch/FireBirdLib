@@ -60,7 +60,7 @@ void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo)
     RECHeaderInfo->RECHeaderType = RHT_TMSs;
     RECHeaderInfo->HeaderStartTime = getDword(&Buffer[p + 0x0008], WrongEndian);
     RECHeaderInfo->HeaderDuration  = getWord(&Buffer[p + 0x000c], WrongEndian);
-    memcpy (RECHeaderInfo->HeaderUnknown3, &Buffer[p + 0x000e], 2);
+    RECHeaderInfo->HeaderDurationSec  = getWord(&Buffer[p + 0x000e], WrongEndian);
     RECHeaderInfo->CryptFlag = Buffer[p + 0x0010];
     RECHeaderInfo->HeaderFlags = Buffer[p + 0x0011];
     RECHeaderInfo->HeaderUnknown4 = Buffer[p + 0x0012];

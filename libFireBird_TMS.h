@@ -1,3 +1,5 @@
+#include                <sys/types.h>
+
   /*****************************************************************************************************************************/
   /* Firmware & Low Level                                                                                                      */
   /*****************************************************************************************************************************/
@@ -6,6 +8,7 @@
   #define LE32(p)       (p)
 
   byte *GetMacAddress(void);
+  char *GetApplVer(void);
 
   char puffer[512];
   char tracePuffer[512];
@@ -323,12 +326,13 @@
   }tDirEntry;
 
   bool  HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
-  dword HDD_GetInodeByAbsFileName(char *Filename);
-  dword HDD_GetInodeByRelFileName(char *Filename);
-  dword HDD_GetInodeByTypeFile(TYPE_File *File);
   dword HDD_GetFileTimeByAbsFileName(char *FileName);
   dword HDD_GetFileTimeByRelFileName(char *FileName);
   dword HDD_GetFileTimeByTypeFile(TYPE_File *File);
+  bool  HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, __off64_t *FileSize);
+  dword HDD_GetInodeByAbsFileName(char *Filename);
+  dword HDD_GetInodeByRelFileName(char *Filename);
+  dword HDD_GetInodeByTypeFile(TYPE_File *File);
   void  HDD_RemoveDir(char *DirPath, bool Recursive);
 
 
@@ -429,12 +433,6 @@
   bool HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
   bool HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo);
   bool HDD_TAP_GetFileNameByIndex(int Index, char **TAPFileName);
-
-
-  /*****************************************************************************************************************************/
-  /* TAP Comm                                                                                                                  */
-  /*   Mainly developed by asrael                                                                                              */
-  /*****************************************************************************************************************************/
 
 
   /*****************************************************************************************************************************/

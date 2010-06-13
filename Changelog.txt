@@ -481,3 +481,15 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-04-11  Added HDD_TAP_GetFileNameByIndex()
 2010-04-14  Added the parameter SuppressOSDSync to OSDMenuUpdate(). If set to true, the calling TAP may
               add some graphics but needs to do the TAP_Osd_Sync()
+2010-04-28  Replaced reserved2 in tRECHeaderTMS with DurationSec
+            Replaced HeaderUnknown3 in tRECHeaderInfo with HeaderDurationSec
+2010-05-25  Bugfix: text output of DumpMemory() moved to the correct column if (size mod BytesPerLine) != 0
+            Added: HDD_GetFileSizeAndInode()
+            Added: GetApplVer() returns a pointer to a version string as seen in the information menu
+
+2010-05-26  Version 1.08 of the TMS firmware introduces the UTF-8 encoding of the file system. While the TAP API is transparent
+              to this modification, all Linux commands, which access the files on the drive, needed to be modified.
+              Added: CharToUTF8(), StrToUTF8()
+              Fixed: HDD_GetFileSizeAndInode(), HDD_RemoveDir(), HDD_GetInodeByAbsFileName(), HDD_GetFileTimeByAbsFileName(), HDD_Move()
+            Added: StrMkUTF8()
+2010-05-28  Added: Unix2TFTime()

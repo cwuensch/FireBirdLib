@@ -394,6 +394,7 @@
   char                 *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat);
   char                 *DayOfWeek(byte WeekDay);
   dword                 TF2UnixTime(dword TFTimeStamp);
+  dword                 Unix2TFTime(dword UnixTimeStamp);
 
 
   /*****************************************************************************************************************************/
@@ -547,7 +548,7 @@
     byte        reserved1[2];
     dword       StartTime;
     word        Duration;       //in minutes
-    byte        reserved2[2];
+    word        DurationSec;
     byte        CryptFlag;
     byte        reserved3[11];
   } __attribute__((packed)) tRECHeaderTMS;              //28 bytes
@@ -632,12 +633,12 @@
     word                HeaderVersion;
     dword               HeaderStartTime;      //TMS
     word                HeaderDuration;
+    word                HeaderDurationSec;    //TMS
     word                HeaderSvcNumber;
     word                HeaderSvcType;
     byte                HeaderFlags;
     byte                HeaderUnknown1[4];  //T7700HSCI
     byte                HeaderUnknown2[2];  //TMS
-    byte                HeaderUnknown3[2];  //TMS
     byte                HeaderUnknown4;     //TMS
 
     byte                SISatIndex;
@@ -750,6 +751,7 @@
     NonPrintableChars    = 8
   } eRemoveChars;
 
+  dword   CharToUTF8(byte *p);
   void    ExtractLine (char *Text, char *Line);
   size_t  GetLine (char *data, bool strip);
   void    LowerCase (char *string);
@@ -758,6 +760,8 @@
   char   *RTrim (char *s);
   void    SeparatePathComponents (char *FullName, char *Path, char *FileName, char *FileExt);
   bool    StringEndsWith(char *text, char *postfix);
+  void    StrToUTF8(byte *SourceString, byte *DestString);
+  bool    StrMkUTF8(byte *SourceString);
   void    UpperCase (char *string);
   char   *ValidFileName (char *strName, eRemoveChars ControlCharacters);
 

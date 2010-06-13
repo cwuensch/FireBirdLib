@@ -58,6 +58,7 @@ int TAP_Main (void)
   CallTraceExitResult(NULL, NULL);                                      //debug, all
   CallTraceInit();                                                      //debug, all
   ChangeDirRoot();                                                      //hdd, all
+  CharToUTF8(NULL);                                                     //string, all
   CheckSelectable(0, 0);                                                //dialog, all
   compact(NULL, 0);                                                     //imem, all
   CompressBlock(NULL, 0, NULL);                                         //compression, all
@@ -301,6 +302,8 @@ int TAP_Main (void)
   SoundSinus(0, 0, 0);                                                  //av, all
   stricstr(NULL, NULL);                                                 //string, all
   StringEndsWith(NULL, NULL);                                           //string, all
+  StrMkUTF8(NULL);                                                      //string, all
+  StrToUTF8(NULL, NULL);                                                //string, all
   SuperFastHash(NULL, 0, 0);                                            //compression, all
   SwapDWords(0);                                                        //hdd, all
   SwapWords(0);                                                         //hdd, all
@@ -327,6 +330,7 @@ int TAP_Main (void)
   UncompressFirmware(NULL, NULL, NULL);                                 //compression, all
   UncompressLoader(NULL, NULL, NULL);                                   //compression, all
   UncompressTFD(NULL, NULL, NULL);                                      //compression, all
+  Unix2TFTime(0);                                                       //time, all
   UpperCase(NULL);                                                      //string, all
   ValidFileName(NULL, 0);                                               //string, all
   WindowDirty();                                                        //dialog, all
@@ -554,7 +558,12 @@ int TAP_Main (void)
   FM_LoadFontFile(NULL, NULL);                                          //FontManager, tms
   FM_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);                     //FontManager, tms
   GetMacAddress();                                                      //main, tms
+  GetApplVer();                                                         //main, tms
   HDD_GetAbsolutePathByTypeFile(NULL, NULL);                            //hdd, tms
+  HDD_GetFileTimeByAbsFileName(NULL);                                   //hdd, tms
+  HDD_GetFileTimeByRelFileName(NULL);                                   //hdd, tms
+  HDD_GetFileTimeByTypeFile(NULL);                                      //hdd, tms
+  HDD_GetFileSizeAndInode(NULL, NULL, NULL, NULL);                      //hdd, tms
   HDD_GetInodeByAbsFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByRelFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
