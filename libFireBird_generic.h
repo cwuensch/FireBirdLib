@@ -525,6 +525,7 @@
   INILOCATION LangLoadStrings (char *LangFile, dword NrStrings, int FallbackLang, char *AppName);
   void        LangUnloadStrings (void);
   char       *LangGetString (dword StringID);
+  char       *LangGetStringDefault(dword StringID, char *DefaultString);
 
 
   /*****************************************************************************************************************************/

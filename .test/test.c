@@ -273,6 +273,7 @@ int TAP_Main (void)
   iso639_1(0);                                                          //main, all
   isValidChannel(NULL);                                                 //tapcom, all
   LangGetString(0);                                                     //ini, all
+  LangGetStringDefault(0, NULL);                                        //ini, all
   LangLoadStrings(NULL, 0, 0, NULL);                                    //ini, all
   LangUnloadStrings();                                                  //ini, all
   LoadFirmwareDat(NULL, NULL, NULL);                                    //main, all

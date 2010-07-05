@@ -493,3 +493,4 @@ License:  This library is freeware. You may use this code in your own projects f
               Fixed: HDD_GetFileSizeAndInode(), HDD_RemoveDir(), HDD_GetInodeByAbsFileName(), HDD_GetFileTimeByAbsFileName(), HDD_Move()
             Added: StrMkUTF8()
 2010-05-28  Added: Unix2TFTime()
+2010-07-01  Added: LangGetStringDefault()
