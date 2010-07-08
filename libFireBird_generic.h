@@ -752,6 +752,7 @@
     NonPrintableChars    = 8
   } eRemoveChars;
 
+  byte    CharToISO(byte *p);
   dword   CharToUTF8(byte *p);
   void    ExtractLine (char *Text, char *Line);
   size_t  GetLine (char *data, bool strip);
@@ -761,7 +762,9 @@
   char   *RTrim (char *s);
   void    SeparatePathComponents (char *FullName, char *Path, char *FileName, char *FileExt);
   bool    StringEndsWith(char *text, char *postfix);
+  void    StrToISO(byte *SourceString, byte *DestString);
   void    StrToUTF8(byte *SourceString, byte *DestString);
+  bool    StrMkISO(byte *SourceString);
   bool    StrMkUTF8(byte *SourceString);
   void    UpperCase (char *string);
   char   *ValidFileName (char *strName, eRemoveChars ControlCharacters);

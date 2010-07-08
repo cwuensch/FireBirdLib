@@ -3,7 +3,7 @@
 #include "../libFireBird.h"
 
 
-bool HDD_ChangeDir (char *Dir)
+bool HDD_ChangeDir(char *Dir)
 {
 #ifdef _TMS_
 

@@ -1,6 +1,6 @@
 #include "FBLib_tap.h"
 
-dword HDD_TAP_GetIDByIndex (int TAPIndex)
+dword HDD_TAP_GetIDByIndex(int TAPIndex)
 {
 #ifdef _TMS_
 

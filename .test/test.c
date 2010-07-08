@@ -58,6 +58,7 @@ int TAP_Main (void)
   CallTraceExitResult(NULL, NULL);                                      //debug, all
   CallTraceInit();                                                      //debug, all
   ChangeDirRoot();                                                      //hdd, all
+  CharToISO(NULL);                                                      //string, all
   CharToUTF8(NULL);                                                     //string, all
   CheckSelectable(0, 0);                                                //dialog, all
   compact(NULL, 0);                                                     //imem, all
@@ -303,7 +304,9 @@ int TAP_Main (void)
   SoundSinus(0, 0, 0);                                                  //av, all
   stricstr(NULL, NULL);                                                 //string, all
   StringEndsWith(NULL, NULL);                                           //string, all
+  StrMkISO(NULL);                                                       //string, all
   StrMkUTF8(NULL);                                                      //string, all
+  StrToISO(NULL, NULL);                                                 //string, all
   StrToUTF8(NULL, NULL);                                                //string, all
   SuperFastHash(NULL, 0, 0);                                            //compression, all
   SwapDWords(0);                                                        //hdd, all

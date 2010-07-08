@@ -494,3 +494,6 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: StrMkUTF8()
 2010-05-28  Added: Unix2TFTime()
 2010-07-01  Added: LangGetStringDefault()
+2010-07-06  Added: StrToISO(), StrMkISO() and CharToISO()
+            Fixed: HDD_GetAbsolutePathByTypeFile() wasn't UTF8 aware. This should fix all functions, which depend
+                   on this routine: HDD_TAP_GetIDByIndex(), HDD_GetInodeByTypeFile(), HDD_GetFileTimeByTypeFile()
