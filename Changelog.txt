@@ -497,3 +497,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-07-06  Added: StrToISO(), StrMkISO() and CharToISO()
             Fixed: HDD_GetAbsolutePathByTypeFile() wasn't UTF8 aware. This should fix all functions, which depend
                    on this routine: HDD_TAP_GetIDByIndex(), HDD_GetInodeByTypeFile(), HDD_GetFileTimeByTypeFile()
+2010-07-13  Added: a fix for TAP_Hdd_ChangeDir(), which fails to change into directories with German Umlaute. HDD_ChangeDir()
+              retries a TAP_Hdd_ChangeDir() with the UTF-8 version of the directory name, if the original name fails.
+              All FBLib functions now use HDD_ChangeDir().
+

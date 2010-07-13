@@ -17,8 +17,13 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
   char                  cmdUTF8[256];
 
   HDD_TAP_PushDir();
-  TAP_Hdd_ChangeDir(FromDir);
-  if (TAP_Hdd_Exist(FileName))
+  if(HDD_ChangeDir(FromDir) == FALSE)
+  {
+    HDD_TAP_PopDir();
+    return FALSE;
+  }
+
+  if(TAP_Hdd_Exist(FileName))
   {
     HDD_TAP_PushDir();
     HDD_ChangeDir(ToDir);
@@ -82,6 +87,11 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
       }
       system(cmd);
     }
+  }
+  else
+  {
+    HDD_TAP_PopDir();
+    return FALSE;
   }
   HDD_TAP_PopDir();
 

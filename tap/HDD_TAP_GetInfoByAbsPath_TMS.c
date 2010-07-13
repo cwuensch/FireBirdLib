@@ -22,8 +22,12 @@ bool HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo)
   *Slash = '\0';
 
   HDD_TAP_PushDir();
-  TAP_Hdd_ChangeDir(&AbsFileName[strlen(TAPFSROOT)]);
-  ret = HDD_TAP_GetInfo(&Slash[1], pTAPInfo);
+
+  if(HDD_ChangeDir(&AbsFileName[strlen(TAPFSROOT)]))
+    ret = HDD_TAP_GetInfo(&Slash[1], pTAPInfo);
+  else
+    ret = FALSE;
+
   HDD_TAP_PopDir();
 
   return ret;
