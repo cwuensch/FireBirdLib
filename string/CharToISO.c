@@ -6,7 +6,7 @@ byte CharToISO(byte *p)
 
   if(!p) return 0;
 
-  if(*p < 0xc0) return *p;
+  if(!isUTF8Char(p)) return *p;
 
   //If the UTF8 code needs more than one byte, increment the pointer
   //In our case, we just support 2-byte UTF8 codes because the Toppy doesn't use Unicode strings

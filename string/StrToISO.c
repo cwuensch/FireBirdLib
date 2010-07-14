@@ -7,7 +7,7 @@ void StrToISO(byte *SourceString, byte *DestString)
   while(*SourceString)
   {
     *DestString = CharToISO(SourceString);
-    if(*SourceString >= 0xc0) SourceString++;
+    if(isUTF8Char(SourceString)) SourceString++;
     SourceString++;
     DestString++;
   }

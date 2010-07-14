@@ -756,6 +756,7 @@
   dword   CharToUTF8(byte *p);
   void    ExtractLine (char *Text, char *Line);
   size_t  GetLine (char *data, bool strip);
+  bool    isUTF8Char(byte *p);
   void    LowerCase (char *string);
   void    MakeValidFileName (char *strName, eRemoveChars ControlCharacters);
   char   *ParseLine (char *zeile, size_t *n, char delim);
