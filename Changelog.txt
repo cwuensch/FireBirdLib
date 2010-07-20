@@ -505,3 +505,4 @@ License:  This library is freeware. You may use this code in your own projects f
               HDD_RemoveDir(), HDD_Move(), HDD_GetInodeByAbsFileName(), HDD_GetInodeByTypeFile(), HDD_GetInodeByRelFileName(),
               HDD_GetFileTimeByAbsFileName(), HDD_GetFileTimeByRelFileName(), HDD_GetFileTimeByTypeFile(), HDD_GetFileSizeAndInode(),
               HDD_GetAbsolutePathByTypeFile(), HDD_TAP_GetIDByIndex(), HDD_GetFileTimeByTypeFile(), HDD_GetInodeByTypeFile()
+2010-07-19  Fixed: Removed the firmware version check in HDD_ChangeDir()

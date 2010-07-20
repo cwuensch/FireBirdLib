@@ -8,20 +8,24 @@ bool HDD_ChangeDir(char *Dir)
 #ifdef _TMS_
 
   char                  DirUTF8[256];
+  static bool           ReturnTypeToBeChecked = TRUE;
+  static int            ChDirSuccessfull = 0;
 
   //The TMS supports absolute paths.
-  //Starting with 2009-08-13 (version 0105), TF changed the return value
+  //Starting with 2009-08-13 (SysID 22010, version 0105), TF changed the return value
   //  of TAP_Hdd_ChangeDir() to the same type as the current TF5000 API
-  if(TAP_GetVersion() > 0x0104)
+  //The firmware version is not suitable as other machine with this version work well
+  if(ReturnTypeToBeChecked)
   {
-    //On some versions, TAP_Hdd_ChangeDir() fails to change into directories with German Umlaute. Try it in UTF-8 format instead.
-    if(TAP_Hdd_ChangeDir(Dir)) return TRUE;
-
-    StrToUTF8(Dir, DirUTF8);
-    return TAP_Hdd_ChangeDir(DirUTF8);
+    ChDirSuccessfull = TAP_Hdd_ChangeDir("/ProgramFiles");
+    ReturnTypeToBeChecked = FALSE;
   }
-  else
-    return !TAP_Hdd_ChangeDir(Dir);
+
+  //On some versions, TAP_Hdd_ChangeDir() fails to change into directories with German Umlaute. Try it in UTF-8 format instead.
+  if(TAP_Hdd_ChangeDir(Dir) == ChDirSuccessfull) return TRUE;
+
+  StrToUTF8(Dir, DirUTF8);
+  return (TAP_Hdd_ChangeDir(DirUTF8) == ChDirSuccessfull);
 
 #else
 
