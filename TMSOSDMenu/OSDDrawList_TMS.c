@@ -58,9 +58,21 @@ void OSDDrawList(void)
     //Line numbers
     if(pMenu->NumberedItems)
     {
+      int MaxX = 100;
+
       XStart = 101;
       TAP_SPrint(s, "%2.2d", i + pMenu->CurrentTopIndex + 1);
-      OSDMenuPutS(OSDRgn, 71, Y + 5, 100, s, ItemColor, COLOR_None, 14, FALSE, ALIGN_LEFT);
+      if(i + pMenu->CurrentTopIndex + 1 > 99)
+      {
+        XStart += 10;
+        MaxX += 10;
+      }
+      if(i + pMenu->CurrentTopIndex + 1 > 999)
+      {
+        XStart += 10;
+        MaxX += 10;
+      }
+      OSDMenuPutS(OSDRgn, 71, Y + 5, MaxX, s, ItemColor, COLOR_None, 14, FALSE, ALIGN_LEFT);
     }
     else
     {
