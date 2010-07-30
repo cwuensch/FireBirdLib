@@ -275,7 +275,7 @@
   } eCopyDirection;
 
   TYPE_TapEvent *GetCurrentEvent(int *curEvent);
-  void  DrawOSDLine (word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color);
+  void  DrawOSDLine(word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color);
   void  EndMessageWin (void);
   void  FreeOSDRegion (word Region);
   dword GetOSDMapAddress (void);

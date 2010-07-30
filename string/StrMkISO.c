@@ -1,14 +1,18 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-char   _isostring[512];
-
 bool StrMkISO(byte *SourceString)
 {
-  if(!SourceString || (strlen(SourceString) > 511)) return FALSE;
+  char                 *_isostring;
+
+  if(!SourceString) return FALSE;
+
+  _isostring = TAP_MemAlloc(strlen(SourceString) << 1);
+  if(!_isostring) return FALSE;
 
   StrToISO(SourceString, _isostring);
   strcpy(SourceString, _isostring);
+  TAP_MemFree(_isostring);
 
   return TRUE;
 }
