@@ -487,8 +487,9 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: HDD_GetFileSizeAndInode()
             Added: GetApplVer() returns a pointer to a version string as seen in the information menu
 
-2010-05-26  Version 1.08 of the TMS firmware introduces the UTF-8 encoding of the file system. While the TAP API is transparent
-              to this modification, all Linux commands, which access the files on the drive, needed to be modified.
+2010-05-26  Version 1.08 of the TMS firmware introduces the UTF-8 encoding of the file system. While the TAP API is
+              transparent to this modification, all Linux commands, which access the files on the drive, needed to
+              be modified.
               Added: CharToUTF8(), StrToUTF8()
               Fixed: HDD_GetFileSizeAndInode(), HDD_RemoveDir(), HDD_GetInodeByAbsFileName(), HDD_GetFileTimeByAbsFileName(), HDD_Move()
             Added: StrMkUTF8()
@@ -506,6 +507,12 @@ License:  This library is freeware. You may use this code in your own projects f
               HDD_GetFileTimeByAbsFileName(), HDD_GetFileTimeByRelFileName(), HDD_GetFileTimeByTypeFile(), HDD_GetFileSizeAndInode(),
               HDD_GetAbsolutePathByTypeFile(), HDD_TAP_GetIDByIndex(), HDD_GetFileTimeByTypeFile(), HDD_GetInodeByTypeFile()
 2010-07-19  Fixed: Removed the firmware version check in HDD_ChangeDir()
-2010-07-24  Fixed: A numbered line in TMS OSD menu should now correctly display until 10000. It has been truncated starting from 100.
+2010-07-24  Fixed: A numbered line in TMS OSD menu should now correctly display until 10000.
+                   It has been truncated starting from 100.
 2010-07-26  Fixed: Endless loop if a menu doesn't have a single selectable item
 2010-07-30  Fixed: Modified StrMkISO() and StrMkUTF8() so that they dynamically allocate the necessary memory
+2010-08-06  Added: StrReplace()
+2010-08-08  Added: OSDMenuItemGetNrOfItems();
+2010-08-16  Added: FileList button to OSDMenu (BI_FileList)
+2010-08-26  Added: Added a memo dialog (displays large text)
+            Added: FirmwareTMS.dat SysID 22122 (2410M)

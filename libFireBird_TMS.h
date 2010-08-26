@@ -562,7 +562,8 @@
     BI_Rwd,
     BI_JumpStart,
     BI_JumpEnd,
-    BI_Sat
+    BI_Sat,
+    BI_FileList
   } tButtonIcon;
 
 
@@ -595,10 +596,14 @@
   char *OSDMenuItemGetCurrentValue(void);
   char *OSDMenuItemGetCurrentName(void);
   dword OSDMenuItemGetCurrentID(void);
+  dword OSDMenuItemGetNrOfItems(void);
 
   //
   bool OSDMenuPush(void);
   bool OSDMenuPop(void);
+
+  //Memo
+  void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char *Text);
 
   //Info box
   void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout);

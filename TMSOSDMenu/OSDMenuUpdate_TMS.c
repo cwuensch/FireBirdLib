@@ -38,7 +38,11 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   if(ListDirty)
   {
     OSDDrawScrollBar();
-    OSDDrawList();
+    switch(OSDMenuDisplayMode)
+    {
+      case OMDM_Standard: OSDDrawList(); break;
+      case OMDM_Memo:     OSDDrawMemo(); break;
+    }
   }
 
   //Show OSD

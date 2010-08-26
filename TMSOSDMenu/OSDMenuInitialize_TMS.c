@@ -22,6 +22,7 @@
 #include                "graphic/Button_record.gd"
 #include                "graphic/Button_select.gd"
 #include                "graphic/Button_ffwd.gd"
+#include                "graphic/Button_filelist.gd"
 #include                "graphic/Button_rwd.gd"
 #include                "graphic/Button_jumpstart.gd"
 #include                "graphic/Button_jumpend.gd"
@@ -38,6 +39,7 @@ word                    OSDRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
+tOSDMenuDisplayMode     OSDMenuDisplayMode;
 
 word                    InfoBoxOSDRgn = 0;
 dword                   InfoBoxTimeOut = 0;
@@ -52,6 +54,8 @@ dword                   ColorPickerColor;
 dword                   ColorPickerDefaultColor;
 tCurrentColorSelected   CurrentColorSelected;
 int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
+
+
 
 void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
 {
@@ -88,6 +92,8 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   else
     pMenu->TitleRight[0] = '\0';
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
+
+  OSDMenuDisplayMode = OMDM_Standard;
 }
 
 #endif

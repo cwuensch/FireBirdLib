@@ -6,7 +6,6 @@ void OSDDrawList(void)
 {
   int                   i;
   dword                 XStart, XEnd, Y;
-  int                   LastIndex;
   tMenu                *pMenu;
   dword                 ItemColor;
   char                  s[4];
@@ -26,9 +25,6 @@ void OSDDrawList(void)
 
   //The background
   TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 367, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
-
-  LastIndex = pMenu->NrItems + pMenu->CurrentTopIndex;
-  if(LastIndex >= 10) LastIndex = 10;
 
   for(i = 0; i < 10; i++)
   {

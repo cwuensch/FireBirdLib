@@ -7,7 +7,7 @@ bool StrMkISO(byte *SourceString)
 
   if(!SourceString) return FALSE;
 
-  _isostring = TAP_MemAlloc(strlen(SourceString) << 1);
+  _isostring = TAP_MemAlloc(strlen(SourceString));
   if(!_isostring) return FALSE;
 
   StrToISO(SourceString, _isostring);

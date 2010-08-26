@@ -11,6 +11,8 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
   dword                 Lines;
   char                  s[256];
 
+  if(MessageBoxOSDRgn)OSDMenuMessageBoxDestroy();
+
   if(!InfoBoxOSDRgn)
   {
     x = (720 - _InfoBox_Gd.width) >> 1;

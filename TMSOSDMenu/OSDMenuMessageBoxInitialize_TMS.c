@@ -5,6 +5,8 @@
 
 void OSDMenuMessageBoxInitialize(char *Title, char *Text)
 {
+  if(InfoBoxOSDRgn)OSDMenuInfoBoxDestroy();
+
   if(MessageBoxOSDRgn) OSDMenuMessageBoxDestroy();
   MessageBox.NrButtons = 0;
   MessageBox.CurrentButton = 0;

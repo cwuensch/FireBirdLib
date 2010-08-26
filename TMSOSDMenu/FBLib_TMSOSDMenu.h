@@ -4,8 +4,8 @@
 #include                "tap.h"
 #include                "..\libFireBird.h"
 
-#define ITEMNAMESIZE    64
-#define ITEMVALUESIZE   64
+#define ITEMNAMESIZE    128
+#define ITEMVALUESIZE   128
 #define STDSTRINGSIZE   80
 #define NRMENULEVELS     5
 #define MAXMBBUTTONS     5
@@ -69,6 +69,12 @@ typedef enum
   CCS_Blue
 }tCurrentColorSelected;
 
+typedef enum
+{
+  OMDM_Standard,
+  OMDM_Memo
+} tOSDMenuDisplayMode;
+
 extern tFontData        Calibri_12_FontData;
 extern tFontData        Calibri_14_FontData;
 extern tFontData        Calibri_16_FontData;
@@ -79,6 +85,7 @@ extern tFontData        Calibri_20B_FontData;
 extern TYPE_GrData      _Button_blue_Gd;
 extern TYPE_GrData      _Button_exit_Gd;
 extern TYPE_GrData      _Button_ffwd_Gd;
+extern TYPE_GrData      _Button_filelist_Gd;
 extern TYPE_GrData      _Button_green_Gd;
 extern TYPE_GrData      _Button_info_Gd;
 extern TYPE_GrData      _Button_jumpend_Gd;
@@ -111,6 +118,7 @@ extern word             OSDRgn;
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
+extern tOSDMenuDisplayMode  OSDMenuDisplayMode;
 
 extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
@@ -138,6 +146,7 @@ void OSDDrawButtons(void);
 void OSDCalcIndices(void);
 void OSDDrawScrollBar(void);
 void OSDDrawList(void);
+void OSDDrawMemo(void);
 void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected);
 
 #endif

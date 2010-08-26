@@ -306,6 +306,7 @@ int TAP_Main (void)
   StringEndsWith(NULL, NULL);                                           //string, all
   StrMkISO(NULL);                                                       //string, all
   StrMkUTF8(NULL);                                                      //string, all
+  StrReplace(NULL, NULL, NULL);                                         //string, all
   StrToISO(NULL, NULL);                                                 //string, all
   StrToUTF8(NULL, NULL);                                                //string, all
   SuperFastHash(NULL, 0, 0);                                            //compression, all

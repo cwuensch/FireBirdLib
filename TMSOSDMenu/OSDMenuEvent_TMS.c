@@ -19,6 +19,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
     {
       if(TAP_GetTick() > InfoBoxTimeOut) OSDMenuInfoBoxDestroy();
     }
+
+    return FALSE;
   }
 
   if(MessageBoxOSDRgn)
@@ -56,6 +58,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
       *param1 = 0;
       return TRUE;
     }
+
+    return FALSE;
   }
 
   if(ColorPickerOSDRgn)
@@ -219,6 +223,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
       *param1 = 0;
       return TRUE;
     }
+
+    return FALSE;
   }
 
   if(OSDRgn)
@@ -264,6 +270,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         }
       }
     }
+
+    return FALSE;
   }
 
   return FALSE;

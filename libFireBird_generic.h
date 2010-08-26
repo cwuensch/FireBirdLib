@@ -767,6 +767,7 @@
   void    StrToUTF8(byte *SourceString, byte *DestString);
   bool    StrMkISO(byte *SourceString);
   bool    StrMkUTF8(byte *SourceString);
+  bool    StrReplace(char *String, char *Find, char *Replace);
   void    UpperCase (char *string);
   char   *ValidFileName (char *strName, eRemoveChars ControlCharacters);
 
