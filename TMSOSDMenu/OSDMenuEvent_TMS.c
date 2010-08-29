@@ -268,6 +268,30 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           *param1 = 0;
           return TRUE;
         }
+
+        case RKEY_Left:
+        {
+          if(!Menu[CurrentMenuLevel].hasValueArrows)
+          {
+            OSDMenuScrollPageUp();
+            OSDMenuUpdate(FALSE);
+            *param1 = 0;
+            return TRUE;
+          }
+          break;
+        }
+
+        case RKEY_Right:
+        {
+          if(!Menu[CurrentMenuLevel].hasValueArrows)
+          {
+            OSDMenuScrollPageDown();
+            OSDMenuUpdate(FALSE);
+            *param1 = 0;
+            return TRUE;
+          }
+          break;
+        }
       }
     }
 

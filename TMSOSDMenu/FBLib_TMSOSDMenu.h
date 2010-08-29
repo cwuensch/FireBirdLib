@@ -43,6 +43,7 @@ typedef struct
   dword                 ValueXPos;
   bool                  ScrollLoop;
   bool                  NumberedItems;
+  bool                  hasValueArrows;
   tButtons              Buttons[20];
   dword                 NrButtons;
   dword                 ButtonXStart[4];

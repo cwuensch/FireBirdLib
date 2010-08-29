@@ -42,6 +42,9 @@ bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrDa
   pMenu->Item[pMenu->NrItems].ValueArrows   = ValueArrows;
   pMenu->Item[pMenu->NrItems].ID            = ID;
   pMenu->Item[pMenu->NrItems].ColorPatch    = 0;
+
+  if(ValueArrows) pMenu->hasValueArrows = TRUE;
+
   pMenu->NrItems++;
 
   //TODO: only when in visible area

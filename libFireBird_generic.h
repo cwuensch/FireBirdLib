@@ -1294,7 +1294,8 @@
     byte                  unused4 [32];
   } tFWInfo;
 
-  bool          LoadFirmwareDat (tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo);
+  bool   LoadFirmwareDat(tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo);
+  dword  FirmwareDatMJD(void);
 
 
   /*****************************************************************************************************************************/

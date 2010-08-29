@@ -29,6 +29,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   while(*from)
   {
     p = strpbrk(to, " \n");
+
     if(p == NULL)
     {
       //Nothing has been found, terminate
@@ -41,7 +42,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
       if(*p == '\n')
       {
         from = p + 1;
-        OSDMenuItemAdd("", NULL, NULL, NULL, TRUE, FALSE, 0);
+        OSDMenuItemAdd(" ", NULL, NULL, NULL, TRUE, FALSE, 0);
       }
       to = p + 1;
     }

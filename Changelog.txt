@@ -516,3 +516,5 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-08-16  Added: FileList button to OSDMenu (BI_FileList)
 2010-08-26  Added: Added a memo dialog (displays large text)
             Added: FirmwareTMS.dat SysID 22122 (2410M)
+2010-08-28  If no item has ValueArrows, the keys RKEY_Right and RKEY_Left are used for page up and down scrolling
+2010-08-29  Added: new function FirmwareDatMJD(), which returns the compile date of the Firmware.dat file

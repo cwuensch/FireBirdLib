@@ -34,6 +34,68 @@ dword TAP_EventHandler (word event, dword param1, dword param2)
 
 char                    x[256];
 
+void APIBug_ChangeDir()
+{
+  int             ret;
+
+  ret = TAP_Hdd_ChangeDir("/DataFiles");  //correct directory
+  DEBUG("API check TAP_Hdd_ChangeDir()     : existing directory %s", ret ? "OK" : "failed");
+
+  ret = TAP_Hdd_ChangeDir("/Mp3");        //wrong directory
+  DEBUG("API check TAP_Hdd_ChangeDir()     : non-existing directory %s", ret ? "failed" : "OK");
+}
+
+void APIBug_fReadWrite()
+{
+  byte           *buffer;
+  TYPE_File      *fp;
+  dword           ret;
+
+  HDD_ChangeDir("/ProgramFiles");
+  TAP_Hdd_Create(PROGRAM_NAME ".test", ATTR_NORMAL);
+  fp = TAP_Hdd_Fopen(PROGRAM_NAME ".test");
+  if(fp)
+  {
+    buffer = TAP_MemAlloc(5000);
+    if(buffer)
+    {
+      ret = TAP_Hdd_Fwrite(buffer, 500, 10, fp);
+      if(ret == 10)
+      {
+        DEBUG("API check TAP_Hdd_Fwrite()        : OK");
+      }
+      else
+      {
+        DEBUG("API check TAP_Hdd_Fwrite()        : failed (%d instead of 10)", ret);
+      }
+
+      TAP_Hdd_Fseek(fp, 0, 0);
+      ret = TAP_Hdd_Fread(buffer, 500, 10, fp);
+      if(ret == 10)
+      {
+        DEBUG("API check TAP_Hdd_Fread()         : OK");
+      }
+      else
+      {
+        DEBUG("API check TAP_Hdd_Fread()         : failed (%d instead of 10)", ret);
+      }
+
+      TAP_MemFree(buffer);
+    }
+    else
+    {
+      DEBUG("API check TAP_Hdd_Fread()         : failed (out of memory)");
+    }
+    TAP_Hdd_Fclose(fp);
+  }
+  else
+  {
+    DEBUG("API check TAP_Hdd_Fread()         : failed (failed to open .test)");
+  }
+
+  TAP_Hdd_Delete(PROGRAM_NAME ".test");
+}
+
 int TAP_Main (void)
 {
   word                  SystemID;
@@ -51,12 +113,16 @@ int TAP_Main (void)
   SystemID = GetSysID();
 
 #ifdef _TMS_
-  DEBUG("SysID=%d, ApplID=%4.4x", SystemID, TAP_GetVersion());
+  DEBUG("SysID=%d, ApplVer=%s (0x%4.4x)", SystemID, GetApplVer(), TAP_GetVersion());
 #else
   DEBUG("SysID=%d, ApplID=%4.4x, FWgp=%8.8x", SystemID, _appl_version, FIS_GetGP((dword*)0x80000000));
 #endif
   DEBUG("Built with FBLib version %s", __FBLIB_VERSION__);
   DEBUG("");
+
+  APIBug_ChangeDir();
+  APIBug_fReadWrite();
+
 
   //Details about Flash access
   if (InitTAPex())
