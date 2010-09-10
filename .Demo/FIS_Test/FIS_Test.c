@@ -320,9 +320,11 @@ int TAP_Main (void)
   DEBUG("FIS_vRECSlotAddress1              = %8.8x", FIS_vRECSlotAddress(1));
 
 #ifdef _TMS_
+  DEBUG("FIS_vAudioTrack                   = %8.8x", FIS_vAudioTrack());
   DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
   DEBUG("FIS_vgrid                         = %8.8x", FIS_vgrid());
   DEBUG("FIS_vcurTapTask                   = %8.8x", FIS_vcurTapTask());
+  DEBUG("FIS_viboxTimerId                  = %8.8x", FIS_viboxTimerId());
   DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
 #else
   DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());

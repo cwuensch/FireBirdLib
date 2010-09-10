@@ -437,7 +437,9 @@
     FIU_Playback,
     FIU_PlayMP3,
     FIU_RecSlot1,
-    FIU_RecSlot2
+    FIU_RecSlot2,
+    FIU_RecSlot3,
+    FIU_RecSlot4,
   }tFileInUse;
 
   void       FixInvalidFileName(char *FileName);
@@ -590,7 +592,7 @@
     byte        EndTimeHour;
     byte        EndTimeMin;
     byte        reserved2;
-    byte        TextLength;
+    byte        TextLength;                     //Length of the event name
     byte        ParentalRate;
     char        EventNameAndDescription [275];  //EventName has no 0x00 terminator, use strncpy!
   } __attribute__((packed)) tRECEventInfo;              //294 bytes
@@ -723,6 +725,7 @@
   bool           HDD_isRecording (byte RecSlot);
   char          *HDD_MakeNewRecName (char *fname, word sequence);
   bool           HDD_RECSlotSetDuration (byte Slot, word Duration);
+  dword          HDD_NumberOfRECSlots(void);
 
 
   /*****************************************************************************************************************************/

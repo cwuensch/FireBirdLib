@@ -7,21 +7,14 @@ inline dword FIS_vRECSlotAddress(byte Slot)
 
   static byte          *_pvrRecInfo = NULL;
 
-  if (Slot > 2) return 0;
+  if (Slot > HDD_NumberOfRECSlots()) return 0;
 
   if(!_pvrRecInfo)
     _pvrRecInfo = (byte*)TryResolve("_pvrRecInfo");
 
   if(!_pvrRecInfo) return 0;
 
-  switch(Slot)
-  {
-    case 0: return (dword)&_pvrRecInfo[0]; break;
-    case 1: return (dword)&_pvrRecInfo[sizeof(TYPE_TimerSTMS)]; break;
-    case 2: return (dword)&_pvrRecInfo[2 * sizeof(TYPE_TimerSTMS)]; break;
-  }
-
-  return 0;
+  return (dword)&_pvrRecInfo[Slot * sizeof(TYPE_TimerSTMS)];
 
 #else
 

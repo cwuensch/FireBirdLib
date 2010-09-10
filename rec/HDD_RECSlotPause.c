@@ -6,7 +6,7 @@
 bool HDD_RECSlotPause(byte Slot, bool Pause)
 {
   //Sanity check of the parameters
-  if (Slot > 2) return FALSE;
+  if (Slot > HDD_NumberOfRECSlots()) return FALSE;
 
   //Find the address of the two RECslot structures
   if (RECSlot[0] == NULL) getRECSlotAddress();

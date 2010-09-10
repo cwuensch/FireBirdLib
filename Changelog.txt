@@ -518,3 +518,18 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: FirmwareTMS.dat SysID 22122 (2410M)
 2010-08-28  If no item has ValueArrows, the keys RKEY_Right and RKEY_Left are used for page up and down scrolling
 2010-08-29  Added: new function FirmwareDatMJD(), which returns the compile date of the Firmware.dat file
+2010-08-30  Added: Support for more than 2 parallel recs. The following functions have been modified:
+                   FixInvalidFileName(), HDD_isFileInUse(), HDD_isAnyRecording(), HDD_Delete(), HDD_Recycle(),
+                   FIS_vRECSlotAddress(), getRECSlotAddress(), HDD_NumberOfRECSlots(), HDD_RECSlotGetAddress(),
+                   HDD_RECSlotIsPaused(), HDD_RECSlotPause(), HDD_RECSlotIsPaused() and HDD_RECSlotSetDuration.
+                   The following SysIDs have been registered as 4 rec slot machines:
+                   SRP-2401CI+ (22120)
+                   SRP-2410 (22121)
+                   SRP-2410M (22122)
+                   TF-7100HDPlus (32030)
+                   TRF-7160 (33021)
+                   TRF-2400 Masterpiece HD (32020)
+                   TRF-2460 Masterpiece HD Plus (32026)
+            Added: isInfoBoxVisible()
+2010-09-10  Added: tAudioTrk struct and AudioTrackInfo()
+                   STDSTRINGSIZE for the dialogs expanded from 80 to 256 characters

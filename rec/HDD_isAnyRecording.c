@@ -1,6 +1,12 @@
 #include "../libFireBird.h"
 
-bool HDD_isAnyRecording (void)
+bool HDD_isAnyRecording(void)
 {
-  return HDD_isRecording(0) || HDD_isRecording(1);
+  int                   i, NrRecSlots;
+
+  NrRecSlots = (int)HDD_NumberOfRECSlots();
+  for(i = 0; i < NrRecSlots; i++)
+    if(HDD_isRecording(i)) return TRUE;
+
+  return FALSE;
 }

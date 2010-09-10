@@ -30,6 +30,8 @@ void HDD_Delete(char *FileName)
 
       case FIU_RecSlot1: TAP_Hdd_StopRecord(0); break;
       case FIU_RecSlot2: TAP_Hdd_StopRecord(1); break;
+      case FIU_RecSlot3: TAP_Hdd_StopRecord(2); break;
+      case FIU_RecSlot4: TAP_Hdd_StopRecord(3); break;
     }
 
     TAP_Hdd_Rename(FileName, "FilerDelete.tmp");

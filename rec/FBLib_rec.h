@@ -5,7 +5,7 @@
 
 #define PCRSECTORS  900
 
-extern tRECSlot         *RECSlot[3];
+extern tRECSlot        *RECSlot[5];
 extern bool             LibInitialized;
 
 bool getRECSlotAddress (void);

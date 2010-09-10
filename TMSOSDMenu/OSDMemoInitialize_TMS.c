@@ -9,7 +9,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   int                   Width;
   char                 *Buffer;
 
-#define HORSPACE        560
+#define HORSPACE        550
 
   OSDMenuInitialize(FALSE, FALSE, FALSE, ScrollLoop, TitleLeft, TitleRight);
   OSDMenuDisplayMode = OMDM_Memo;
@@ -28,66 +28,49 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   to = Buffer;
   while(*from)
   {
-    p = strpbrk(to, " \n");
+    p = strpbrk(to + 1, " \n");
 
     if(p == NULL)
     {
       //Nothing has been found, terminate
-      //if from != to
+      //TAP_PrintNet("A: -----\n");
       break;
-    }
-    else if(p == to)
-    {
-      //if p points to a LF then add an empty line, else ignore
-      if(*p == '\n')
-      {
-        from = p + 1;
-        OSDMenuItemAdd(" ", NULL, NULL, NULL, TRUE, FALSE, 0);
-      }
-      to = p + 1;
-    }
-    else if(*p == '\n')
-    {
-      //We've found a LF; print the line
-      *p = '\0';
-      Width = FM_GetStringWidth(from, &Calibri_14_FontData);
-      if(Width < HORSPACE)
-      {
-        //Everything fits into a single line; print it
-        OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-      }
-      else
-      {
-        //We need to break it into 2 separate lines (from-to, to-p)
-        *(to - 1) = '\0';
-        OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-        OSDMenuItemAdd(to, NULL, NULL, NULL, TRUE, FALSE, 0);
-      }
-      from = p + 1;
-      to = from;
     }
     else
     {
-      //We've found a SPACE. Check the width
       c = *p;
-      *p = 0;
+      *p = '\0';
       Width = FM_GetStringWidth(from, &Calibri_14_FontData);
-
-      if(Width < HORSPACE)
+      if(Width > HORSPACE)
       {
-        //Still within the available space
-        to = p + 1;
-      }
-      else
-      {
-        //Needs too much space. Print from-to and advance pointers
-        *(to - 1) = 0;
+        *to = '\0';
         OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-        from = to;
+        //TAP_PrintNet("B: %s\n", from);
+        from = to + 1;
+        to = p;
       }
       *p = c;
+
+      if(c == '\n')
+      {
+        if(from >= to)
+        {
+          OSDMenuItemAdd(" ", NULL, NULL, NULL, TRUE, FALSE, 0);
+          //TAP_PrintNet("C:\n");
+        }
+        else
+        {
+          *p = '\0';
+          OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
+          //TAP_PrintNet("D: %s\n", from);
+        }
+        from = p + 1;
+      }
+      to = p;
     }
   }
+  //TAP_PrintNet("E: -----\n");
+
   TAP_MemFree(Buffer);
 }
 

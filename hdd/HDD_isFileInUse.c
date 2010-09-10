@@ -8,6 +8,7 @@ tFileInUse HDD_isFileInUse(char *FileName)
   TYPE_PlayInfo         PlayInfo;
   TYPE_RecInfo          RecInfo;
   char                  CorrectedFileName[TS_FILE_NAME_SIZE];
+  int                   i, NrRecSlots;
 
   TAP_Hdd_GetPlayInfo(&PlayInfo);
   if (PlayInfo.playMode && PlayInfo.totalBlock > 0)
@@ -21,18 +22,15 @@ tFileInUse HDD_isFileInUse(char *FileName)
     }
   }
 
-  TAP_Hdd_GetRecInfo(0, &RecInfo);
-  if(RecInfo.fileName && RecInfo.fileName[0])
+  NrRecSlots = (int)HDD_NumberOfRECSlots();
+  for(i = 0; i < NrRecSlots; i++)
   {
-    if(StringEndsWith(RecInfo.fileName, ".rec.inf") || StringEndsWith(RecInfo.fileName, ".mpg.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
-    if(!strcmp(FileName, RecInfo.fileName)) return FIU_RecSlot1;
-  }
-
-  TAP_Hdd_GetRecInfo(0, &RecInfo);
-  if(RecInfo.fileName && RecInfo.fileName[0])
-  {
-    if(StringEndsWith(RecInfo.fileName, ".rec.inf") || StringEndsWith(RecInfo.fileName, ".mpg.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
-    if(!strcmp(FileName, RecInfo.fileName)) return FIU_RecSlot2;
+    TAP_Hdd_GetRecInfo(i, &RecInfo);
+    if(RecInfo.fileName && RecInfo.fileName[0])
+    {
+      if(StringEndsWith(RecInfo.fileName, ".rec.inf") || StringEndsWith(RecInfo.fileName, ".mpg.inf")) RecInfo.fileName[strlen(RecInfo.fileName) - 4] = '\0';
+      if(!strcmp(FileName, RecInfo.fileName)) return (FIU_RecSlot1 + i);
+    }
   }
 
   return FIU_No;

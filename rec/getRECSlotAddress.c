@@ -1,13 +1,13 @@
 #include "FBLib_rec.h"
 
-//Slot 0, Slot 1 and Timeshift
-tRECSlot                *RECSlot[3] = {NULL, NULL, NULL};
+tRECSlot                *RECSlot[5] = {NULL, NULL, NULL, NULL, NULL};
 
 bool getRECSlotAddress(void)
 {
-  RECSlot[0] = (tRECSlot*) FIS_vRECSlotAddress(0);
-  RECSlot[1] = (tRECSlot*) FIS_vRECSlotAddress(1);
-  RECSlot[2] = (tRECSlot*) FIS_vRECSlotAddress(2);
+  int                   i;
+
+  for(i = 0; i < (int)HDD_NumberOfRECSlots(); i++)
+    RECSlot[i] = (tRECSlot*) FIS_vRECSlotAddress(i);
 
   return TRUE;
 }

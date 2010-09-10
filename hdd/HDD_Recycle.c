@@ -27,6 +27,8 @@ void HDD_Recycle(char *FileName)
 
       case FIU_RecSlot1: TAP_Hdd_StopRecord(0); break;
       case FIU_RecSlot2: TAP_Hdd_StopRecord(1); break;
+      case FIU_RecSlot3: TAP_Hdd_StopRecord(2); break;
+      case FIU_RecSlot4: TAP_Hdd_StopRecord(3); break;
     }
 
     SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);

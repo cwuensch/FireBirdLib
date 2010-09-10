@@ -6,6 +6,7 @@ void FixInvalidFileName(char *FileName)
   char                  NewRecName[TS_FILE_NAME_SIZE];
   TYPE_PlayInfo         playInfo;
   TYPE_RecInfo          recInfo;
+  int                   i, NrRecSlots;
 
 #ifdef _TMS_
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
@@ -20,11 +21,12 @@ void FixInvalidFileName(char *FileName)
     TAP_Hdd_GetPlayInfo(&playInfo);
     if(playInfo.file && playInfo.file->name[0] && !strstr(&FileName[1], playInfo.file->name)) return;
 
-    TAP_Hdd_GetRecInfo(0, &recInfo);
-    if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
-
-    TAP_Hdd_GetRecInfo(1, &recInfo);
-    if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
+    NrRecSlots = (int)HDD_NumberOfRECSlots();
+    for(i = 0; i < NrRecSlots; i++)
+    {
+      TAP_Hdd_GetRecInfo(i, &recInfo);
+      if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
+    }
 
     strcpy(NewRecName, &FileName[1]);
     MakeUniqueFileName(NewRecName);

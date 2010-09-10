@@ -137,6 +137,7 @@ int TAP_Main (void)
   ExtractLine(NULL, NULL);                                              //string, all
   FileSelector(NULL, NULL, NULL, 0);                                    //fs, all
   FileSelectorKey(0, 0);                                                //fs, all
+  FirmwareDatMJD();                                                     //main, all
   FIS_vBootReason();                                                    //fis, all
   FIS_vEEPROM();                                                        //fis, all
   FIS_vEEPROMPin();                                                     //fis, all
@@ -549,6 +550,7 @@ int TAP_Main (void)
 
   //TMS only
 #ifdef _TMS_
+  AudioTrackInfo();                                                     //av, tms
   CaptureScreen(0, 0, NULL, 0, 0);                                      //av, all but different parameters
   FIS_fwApplVfdStart();                                                 //fis, tms
   FIS_fwApplVfdStop();                                                  //fis, tms
@@ -573,6 +575,7 @@ int TAP_Main (void)
   HDD_GetInodeByRelFileName(NULL);                                      //hdd, tms
   HDD_GetInodeByTypeFile(NULL);                                         //hdd, tms
   HDD_TAP_Start(NULL, FALSE, NULL, NULL);                               //tap, tms
+  isInfoBoxVisible();                                                   //av, tms
   OSDMenuButtonAdd(0, 0, NULL, NULL);                                   //TMSOSDMenu, tms
   OSDMenuButtonsClear();                                                //TMSOSDMenu, tms
   OSDMenuColorPickerShow(NULL, 0);                                      //TMSOSDMenu, tms

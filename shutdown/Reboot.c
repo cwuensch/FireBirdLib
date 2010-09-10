@@ -1,21 +1,25 @@
 #include "FBLib_shutdown.h"
 #include "../libFireBird.h"
 
-bool Reboot (bool StopRecordings)
+bool Reboot(bool StopRecordings)
 {
 #ifdef _TMS_
-  TAP_Reboot();
+  if(StopRecordings || !HDD_isAnyRecording())
+  {
+    TAP_Reboot();
+  }
+
 #else
   dword                 HDDShutdown;
 
   if (!LibInitialized) InitTAPex ();
   if (!LibInitialized) return FALSE;
 
-  if (HDD_isRecording (0) || HDD_isRecording (1))
+  if(HDD_isAnyRecording())
   {
     if (StopRecordings)
     {
-      Shutdown (TaskRecordings);
+      Shutdown(TaskRecordings);
     }
     else
     {

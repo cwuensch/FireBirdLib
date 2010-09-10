@@ -33,14 +33,16 @@
 
   dword TryResolve(char *Function);
 
+  inline dword FIS_fwApplVfdSendData(void);
   inline dword FIS_fwApplVfdStart(void);
   inline dword FIS_fwApplVfdStop(void);
   inline dword FIS_fwPowerOff(void);
-  inline dword FIS_fwApplVfdSendData(void);
   inline dword FIS_fwSetIrCode(void);
+  inline dword FIS_vAudioTrack(void);
+  inline dword FIS_vMACAddress(void);
   inline dword FIS_vcurTapTask(void);
   inline dword FIS_vgrid(void);
-  inline dword FIS_vMACAddress(void);
+  inline dword FIS_viboxTimerId(void);
 
 
   /*****************************************************************************************************************************/
@@ -53,8 +55,24 @@
   #define TAP_ALPHA     255
 #endif
 
+  typedef struct
+  {
+    byte                  unused1[4677];
+    byte                  NrOfTracks;
+    byte                  CurrentTrack;
+    byte                  unused2;
+    word                  PID[64];
+    byte                  StreamType[64];
+    char                  StreamName[64][32];
+    word                  unknown1[64];
+    byte                  unused4[64 * 32];
+    dword                 unknown2[64];
+  } tAudioTrk;
+
+  tAudioTrk *AudioTrackInfo(void);
   bool CaptureScreen(int BMPwidth, int BMPheight, byte *BMPPixelBuffer, bool bOSD, int Alpha);
   bool isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, byte Plane);
+  bool isInfoBoxVisible(void);
 
   /*****************************************************************************************************************************/
   /* Flash & EEPROM                                                                                                            */
@@ -399,7 +417,7 @@
     word        OriginalNetworkID;
   } __attribute__((packed)) tRECTPInfoSat;              //16 bytes
 
-  tRECSlot   *HDD_RECSlotGetAddress (byte Slot);
+  tRECSlot   *HDD_RECSlotGetAddress(byte Slot);
 
 
   /*****************************************************************************************************************************/
