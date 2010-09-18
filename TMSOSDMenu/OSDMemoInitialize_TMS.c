@@ -33,11 +33,13 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
     if(p == NULL)
     {
       //Nothing has been found, terminate
-      //TAP_PrintNet("A: -----\n");
+      //TAP_PrintNet("{%4.4x/%4.4x/NULL} A: -----\n", from-Buffer, to-Buffer);
       break;
     }
     else
     {
+      if(from > to) to = p;
+
       c = *p;
       *p = '\0';
       Width = FM_GetStringWidth(from, &Calibri_14_FontData);
@@ -45,7 +47,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
       {
         *to = '\0';
         OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-        //TAP_PrintNet("B: %s\n", from);
+        //TAP_PrintNet("{%4.4x/%4.4x/%4.4x} B: %s\n", from-Buffer, to-Buffer, p-Buffer, from);
         from = to + 1;
         to = p;
       }
@@ -56,20 +58,20 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
         if(from >= to)
         {
           OSDMenuItemAdd(" ", NULL, NULL, NULL, TRUE, FALSE, 0);
-          //TAP_PrintNet("C:\n");
+          //TAP_PrintNet("{%4.4x/%4.4x/%4.4x} C:\n", from-Buffer, to-Buffer, p-Buffer);
         }
         else
         {
           *p = '\0';
           OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-          //TAP_PrintNet("D: %s\n", from);
+          //TAP_PrintNet("{%4.4x/%4.4x/%4.4x} D: %s\n", from-Buffer, to-Buffer, p-Buffer, from);
         }
         from = p + 1;
       }
       to = p;
     }
   }
-  //TAP_PrintNet("E: -----\n");
+  //TAP_PrintNet("{%4.4x/%4.4x/----} E: -----\n", from-Buffer, to-Buffer);
 
   TAP_MemFree(Buffer);
 }

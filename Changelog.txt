@@ -507,6 +507,8 @@ License:  This library is freeware. You may use this code in your own projects f
               HDD_GetFileTimeByAbsFileName(), HDD_GetFileTimeByRelFileName(), HDD_GetFileTimeByTypeFile(), HDD_GetFileSizeAndInode(),
               HDD_GetAbsolutePathByTypeFile(), HDD_TAP_GetIDByIndex(), HDD_GetFileTimeByTypeFile(), HDD_GetInodeByTypeFile()
 2010-07-19  Fixed: Removed the firmware version check in HDD_ChangeDir()
+            'Official release'
+
 2010-07-24  Fixed: A numbered line in TMS OSD menu should now correctly display until 10000.
                    It has been truncated starting from 100.
 2010-07-26  Fixed: Endless loop if a menu doesn't have a single selectable item
@@ -533,3 +535,8 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: isInfoBoxVisible()
 2010-09-10  Added: tAudioTrk struct and AudioTrackInfo()
                    STDSTRINGSIZE for the dialogs expanded from 80 to 256 characters
+2010-09-18  Fixed: HDD_Delete(), HDD_Recycle() and HDD_Rename() didn't work correctly with .mpg recordings
+            Added: KeyTranslate() which translates the keys for some incompatible models
+                     SRP-2410(22121), SRP-2411(22122), SRP-2411(CZ)(22241): Red key only
+                     TF7100HD+(32030), TRF7160(33021), TF2401CI+(22120): Vol+, Vol-, Ch+, Ch-, VF, Red, Green, Yellow, Blue, Option
+            Fixed: the memo dialog forgot to display some lines of text (mostly after two \n)

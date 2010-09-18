@@ -40,7 +40,7 @@ void HDD_Delete(char *FileName)
 #ifdef _TMS_
 
     SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
-    if(isRec && StringEndsWith(FileName, ".rec"))
+    if(isRec && (StringEndsWith(FileName, ".rec") || StringEndsWith(FileName, ".mpg")))
     {
       if(fNumber)
         TAP_SPrint(TempName, "%s-%d%s.inf%s", Name, fNumber, Ext, isDel ? ".del" : "");

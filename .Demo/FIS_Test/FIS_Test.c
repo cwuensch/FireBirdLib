@@ -268,6 +268,34 @@ int TAP_Main (void)
   DEBUG("");
 
 #ifdef _TMS_
+  DEBUG("DevEeprom_GetMacAddr              = %8.8x", TryResolve("DevEeprom_GetMacAddr"));
+  DEBUG("DevFront_SetIlluminate            = %8.8x", TryResolve("DevFront_SetIlluminate"));
+
+  DEBUG("Appl_WaitEvt                      = %8.8x", TryResolve("_Z12Appl_WaitEvtjPjjjj"));
+  DEBUG("Appl_ClrTimer                     = %8.8x", TryResolve("_Z13Appl_ClrTimerRh"));
+  DEBUG("Appl_ShoutCast                    = %8.8x", TryResolve("_Z14Appl_ShoutCast10TYPE_OsdOp"));
+  DEBUG("Appl_SetApplVer                   = %8.8x", TryResolve("_Z15Appl_SetApplVerPc"));
+  DEBUG("ApplOsd_DrawJpeg                  = %8.8x", TryResolve("_Z16ApplOsd_DrawJpegtjjjjPvjj"));
+  DEBUG("Appl_ExecProgram                  = %8.8x", TryResolve("_Z16Appl_ExecProgramPc"));
+  DEBUG("Appl_InitTempRec                  = %8.8x", TryResolve("_Z16Appl_InitTempRecv"));
+  DEBUG("Appl_StopPlaying                  = %8.8x", TryResolve("_Z16Appl_StopPlayingv"));
+  DEBUG("Appl_StopTempRec                  = %8.8x", TryResolve("_Z16Appl_StopTempRecbb"));
+  DEBUG("Appl_TimeToLocal                  = %8.8x", TryResolve("_Z16Appl_TimeToLocalj"));
+  DEBUG("Appl_ExportChData                 = %8.8x", TryResolve("_Z17Appl_ExportChDataPKc"));
+  DEBUG("Appl_ImportChData                 = %8.8x", TryResolve("_Z17Appl_ImportChDataPKc"));
+  DEBUG("Appl_SetTimeShift                 = %8.8x", TryResolve("_Z17Appl_SetTimeShifti"));
+  DEBUG("Appl_StartTempRec                 = %8.8x", TryResolve("_Z17Appl_StartTempRecb"));
+  DEBUG("ApplHdd_GetFileInfo               = %8.8x", TryResolve("_Z19ApplHdd_GetFileInfotPjS_hh"));
+  DEBUG("Appl_IsTimeShifting               = %8.8x", TryResolve("_Z19Appl_IsTimeShiftingv"));
+  DEBUG("ApplHdd_FileCutPaste              = %8.8x", TryResolve("_Z20ApplHdd_FileCutPastePKcjjS0_"));
+  DEBUG("ApplHdd_SelectFolder;             = %8.8x", TryResolve("_Z20ApplHdd_SelectFolderPvPKc"));
+  DEBUG("ApplHdd_SetWorkFolder             = %8.8x", TryResolve("_Z21ApplHdd_SetWorkFolderPv"));
+  DEBUG("ApplHdd_SaveWorkFolder            = %8.8x", TryResolve("_Z22ApplHdd_SaveWorkFolderv"));
+  DEBUG("ApplTimer_OptimizeList            = %8.8x", TryResolve("_Z22ApplTimer_OptimizeListv"));
+  DEBUG("ApplTap_CallEventHandlert         = %8.8x", TryResolve("_Z24ApplTap_CallEventHandlertjj"));
+  DEBUG("Appl_RestartTimeShiftSvc          = %8.8x", TryResolve("_Z24Appl_RestartTimeShiftSvcbj"));
+  DEBUG("ApplHdd_RestoreWorkFolder         = %8.8x", TryResolve("_Z25ApplHdd_RestoreWorkFolderv"));
+
   DEBUG("FIS_fwApplVfdStart                = %8.8x", FIS_fwApplVfdStart());
   DEBUG("FIS_fwApplVfdStop                 = %8.8x", FIS_fwApplVfdStop());
   DEBUG("FIS_fwPowerOff                    = %8.8x", FIS_fwPowerOff());
@@ -308,6 +336,25 @@ int TAP_Main (void)
 #endif
 
   DEBUG("");
+
+  DEBUG("_applEepromAddr                   = %8.8x", TryResolve("_applEepromAddr"));
+  DEBUG("_applFlashAddr                    = %8.8x", TryResolve("_applFlashAddr"));
+  DEBUG("_checkAutoDecTimerId              = %8.8x", TryResolve("_checkAutoDecTimerId"));
+  DEBUG("_hddTapFolder                     = %8.8x", TryResolve("_hddTapFolder"));
+  DEBUG("_hddTsFolder                      = %8.8x", TryResolve("_hddTsFolder"));
+  DEBUG("_isPipActive                      = %8.8x", TryResolve("_isPipActive"));
+  DEBUG("_nPipSvcNum                       = %8.8x", TryResolve("_nPipSvcNum"));
+  DEBUG("_osdOutBuf                        = %8.8x", TryResolve("_osdOutBuf"));
+  DEBUG("_pipH                             = %8.8x", TryResolve("_pipH"));
+  DEBUG("_pipSvcNum                        = %8.8x", TryResolve("_pipSvcNum"));
+  DEBUG("_pipW                             = %8.8x", TryResolve("_pipW"));
+  DEBUG("_pipX                             = %8.8x", TryResolve("_pipX"));
+  DEBUG("_pipY                             = %8.8x", TryResolve("_pipY"));
+  DEBUG("_shoutCastInfo                    = %8.8x", TryResolve("_shoutCastInfo"));
+  DEBUG("_shoutCastState                   = %8.8x", TryResolve("_shoutCastState"));
+  DEBUG("_tapTask                          = %8.8x", TryResolve("_tapTask"));
+  DEBUG("_vfdBrightTimerId                 = %8.8x", TryResolve("_vfdBrightTimerId"));
+  DEBUG("_vfdTimerId                       = %8.8x", TryResolve("_vfdTimerId"));
 
   DEBUG("FIS_vBootReason                   = %8.8x", FIS_vBootReason());
   DEBUG("FIS_vEEPROM                       = %8.8x", FIS_vEEPROM());

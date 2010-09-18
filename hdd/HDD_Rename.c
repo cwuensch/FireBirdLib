@@ -18,7 +18,7 @@ void HDD_Rename(char *FileName, char *NewFileName)
 #ifdef _TMS_
 
     SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
-    if(isRec && StringEndsWith(FileName, ".rec"))
+    if(isRec && (StringEndsWith(FileName, ".rec") || StringEndsWith(FileName, ".mpg")))
     {
       if(fNumber)
         TAP_SPrint(OldInfName, "%s-%d%s.inf%s", Name, fNumber, Ext, isDel ? ".del" : "");
