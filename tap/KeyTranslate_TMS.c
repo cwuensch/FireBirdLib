@@ -50,6 +50,7 @@ void KeyTranslate(dword *param1)
         case RKEY_NewF1:    *param1 = RKEY_VolUp;     break;
         case RKEY_ChUp:     *param1 = RKEY_VFormat;   break;
         case RKEY_VolUp:    *param1 = RKEY_NewF1;     break;
+        case RKEY_VolDown:  *param1 = RKEY_Bookmark;  break;
         case 0x10049:       *param1 = RKEY_Goto;      break;
         case 0x1004a:       *param1 = RKEY_Check;     break;
       }
