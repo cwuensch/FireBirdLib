@@ -35,6 +35,13 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           break;
         }
 
+        case RKEY_Exit:
+        {
+          OSDMenuMessageBoxDestroy();
+          MessageBox.CurrentButton = (dword) -1;
+          break;
+        }
+
         case RKEY_Right:
         {
           if(MessageBox.CurrentButton < (MessageBox.NrButtons - 1))

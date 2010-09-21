@@ -540,3 +540,7 @@ License:  This library is freeware. You may use this code in your own projects f
                      SRP-2410(22121), SRP-2411(22122), SRP-2411(CZ)(22241): Red key only
                      TF7100HD+(32030), TRF7160(33021), TF2401CI+(22120): Vol+, Vol-, Ch+, Ch-, VF, Red, Green, Yellow, Blue, Option
             Fixed: the memo dialog forgot to display some lines of text (mostly after two \n)
+2010-09-20  Added: Exit allows to exit a messagebox. In that case, OSDMenuMessageBoxLastButton() returns (dword) -1.
+2010-09-21  Fixed: Changed KeyTranslate() so that it returns the modified param1 instead of modifying the original param1. The reason
+                   is that a "return param1;" in the TAP_EventHandler may also forward a modified param1 to the firmware. This is
+                   different to the 5000 and is not what one wants most of the time.
