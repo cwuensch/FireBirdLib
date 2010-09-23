@@ -451,7 +451,7 @@
   bool HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
   bool HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo);
   bool HDD_TAP_GetFileNameByIndex(int Index, char **TAPFileName);
-  dword KeyTranslate(dword param1);
+  bool KeyTranslate(bool Enable, void *EventHandler);
 
 
   /*****************************************************************************************************************************/
