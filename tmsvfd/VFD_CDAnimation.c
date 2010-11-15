@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 //Animation: AGBH
 //           CIBH
 //           CIDJ
@@ -88,5 +86,3 @@ bool VFD_CDAnimation(bool Forward)
 
   return TRUE;
 }
-
-#endif

@@ -53,19 +53,8 @@ bool INISaveFile (char *FileName, INILOCATION INILocation, char *AppName)
     return FALSE;
   }
 
-#ifdef _TMS_
   ret = TAP_Hdd_Fwrite (INIBuffer, strlen(INIBuffer), 1, f);
-#else
-  ret = TAP_Hdd_Fwrite (INIBuffer, BufferSize, 1, f);
-#endif
-
-#ifndef _TMS_
-  if (ret == 1) HDD_TruncateFile (f, strlen(INIBuffer));
-  HDD_TouchFile (f);
-#endif
-
   TAP_Hdd_Fclose (f);
-
   HDD_TAP_PopDir();
 
   return (ret == 1);

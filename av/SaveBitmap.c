@@ -36,11 +36,6 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
 
   // write bitmap data
   TAP_Hdd_Fwrite(pBuffer, width * 3, height, pFile);
-
-#ifndef _TMS_
-  HDD_TouchFile  (pFile);
-#endif
-
   TAP_Hdd_Fclose (pFile);
 
 #ifdef DEBUG_FIREBIRDLIB

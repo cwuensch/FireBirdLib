@@ -5,9 +5,6 @@
 dword GetUptime(void)
 {
   dword                 uptime = 0;
-
-#ifdef _TMS_
-
   FILE                 *fp;
   double                upsecs;
 
@@ -29,12 +26,6 @@ dword GetUptime(void)
     }
     fclose (fp);
   }
-
-#else
-
-  uptime = TAP_GetTick();
-
-#endif
 
   return uptime;
 }

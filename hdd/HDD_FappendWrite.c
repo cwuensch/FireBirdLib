@@ -7,10 +7,6 @@ bool HDD_FappendWrite (TYPE_File *file, char *data)
   char buffer[256 + 512];
   dword len, pos, extra, blks;
 
-#ifndef _TMS_
-  InitTAPAPIFix();
-#endif
-
   len = strlen(data);
 
   if (file == NULL || len > 256) return FALSE;
@@ -18,12 +14,7 @@ bool HDD_FappendWrite (TYPE_File *file, char *data)
   strcpy(buffer, data);
   memset(buffer + len, 0, sizeof(buffer) - len);
 
-#ifdef _TMS_
   pos = TAP_Hdd_Ftell(file);
-#else
-  pos = file->currentPos;
-#endif
-
   extra = 512 - ((pos + len) % 512);
 
   if (extra == 512) extra = 0;

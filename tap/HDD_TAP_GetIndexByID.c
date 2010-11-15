@@ -5,9 +5,6 @@
 //
 int HDD_TAP_GetIndexByID (dword TAPID)
 {
-
-#ifdef _TMS_
-
   int                   i;
 
   for (i = 0; i < TAP_MAX; i++)
@@ -16,26 +13,4 @@ int HDD_TAP_GetIndexByID (dword TAPID)
   }
 
   return -1;
-
-#else
-
-  dword                 LoadAddress;
-  int                   i;
-
-  if (!LibInitialized) InitTAPex ();
-  if (!LibInitialized) return -1;
-
-  for (i = 0; i < TAP_MAX; i++)
-  {
-    LoadAddress = *(dword*) (TAP_TableAddress + (i << 5) + 12);
-    if (LoadAddress != 0)
-    {
-      if (*(dword*)(LoadAddress + 0x0020) == TAPID) return i;
-    }
-  }
-
-  return -1;
-
-#endif
-
 }

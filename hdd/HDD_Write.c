@@ -3,12 +3,7 @@
 bool HDD_Write (void *data, dword length, TYPE_File *f)
 {
   static byte           block[512];
-
-#ifdef _TMS_
   static byte           *b = block;
-#else
-  static byte           *b XDATA = block;
-#endif
   bool                  success = TRUE;
   dword                 blen;
 

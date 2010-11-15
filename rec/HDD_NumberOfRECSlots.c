@@ -2,17 +2,27 @@
 
 dword HDD_NumberOfRECSlots(void)
 {
-  switch(TAP_GetSystemId())
+  static dword          MaxRecStreams = 0;
+  dword                 i;
+  tToppyInfo           *ToppyInfo;
+  tFWDATHeader         *FWDatHeader;
+
+  if(MaxRecStreams == 0)
   {
-    case 22120:
-    case 22121:
-    case 22122:
-    case 32030:
-    case 33021:
-    case 32020:
-    case 32026:
-      return 4;
+    if(LoadFirmwareDat(&FWDatHeader, &ToppyInfo, NULL))
+    {
+      for (i = 0; i < FWDatHeader->NrOfToppyInfoEntries; i++, ToppyInfo++)
+      {
+        if(ToppyInfo->SysID == GetSysID())
+        {
+          MaxRecStreams = ToppyInfo->MaxRecStreams;
+          break;
+        }
+      }
+    }
+
+    if(MaxRecStreams == 0) MaxRecStreams = 2;
   }
 
-  return 2;
+  return MaxRecStreams;
 }

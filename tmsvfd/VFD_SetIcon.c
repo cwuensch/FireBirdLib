@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool VFD_SetIcon(tVFDIcon VFDIcon, bool On)
 {
   byte *grid = (byte*)FIS_vgrid();
@@ -52,5 +50,3 @@ bool VFD_SetIcon(tVFDIcon VFDIcon, bool On)
 
   return TRUE;
 }
-
-#endif

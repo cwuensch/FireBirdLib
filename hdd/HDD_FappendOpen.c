@@ -8,10 +8,6 @@ TYPE_File *HDD_FappendOpen (char *filename)
   dword pos, blks, i;
   char *end;
 
-#ifndef _TMS_
-  InitTAPAPIFix();
-#endif
-
   if (!TAP_Hdd_Exist(filename)) TAP_Hdd_Create(filename, ATTR_NORMAL);
 
   if ((file = TAP_Hdd_Fopen(filename)))

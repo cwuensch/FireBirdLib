@@ -1,4 +1,5 @@
 APP = FIS_Test
+OBJS = Setup_busybox.o
 BASE = $(shell cd /tapapi/TMS; pwd)
 CUR_DIR = $(shell pwd)
 
@@ -24,15 +25,19 @@ TAP_INCLUDE_DIRS = $(addprefix -I, $(INCLUDE_DIRS))
 TAP_FLAGS += $(TAP_INCLUDE_DIRS)
 TAP_LIBS = ${BASE}/tapinit.o ${BASE}/libtap.so -lFireBird -ldl -lc
 
-all: $(BIN_DIR) $(APP).tap clean
+all: $(BIN_DIR) $(OBJS) $(APP).tap clean
 
 $(BIN_DIR):
 	@echo "[Making directory... $@]"
 	@$(MKDIR) "$@"
 
+Setup_busybox.o: Setup_busybox.c Setup_busybox.h Makefile
+	@echo "[Compiling... $@]"
+	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
+
 $(APP).tap: $(APP).o
 	@echo "[Linking... $@]"
-	@$(LD) -shared --no-undefined --allow-shlib-undefined  -o $(BIN_DIR)/$@ $< $(TAP_LIBS)
+	@$(LD) -shared --no-undefined --allow-shlib-undefined ${OBJS} -o $(BIN_DIR)/$@ $< $(TAP_LIBS)
 	@$(JB) $(BIN_DIR)/$@
 	@-${RM} $(subst .tap,_TMS.tap,$@)
 	@$(MV) $(BIN_DIR)/$@ $(subst .tap,_TMS.tap,$@)

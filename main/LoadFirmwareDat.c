@@ -1,6 +1,6 @@
 #include                "FBLib_main.h"
 
-bool LoadFirmwareDat (tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo)
+bool LoadFirmwareDat(tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo)
 {
   static byte           *FWDATBin = NULL;
   TYPE_File             *fp;

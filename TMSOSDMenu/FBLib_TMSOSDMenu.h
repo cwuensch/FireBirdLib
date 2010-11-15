@@ -2,7 +2,7 @@
 #define FBLIB_TMSOSDMENU_H
 
 #include                "tap.h"
-#include                "..\libFireBird.h"
+#include                "../libFireBird.h"
 
 #define ITEMNAMESIZE    128
 #define ITEMVALUESIZE   128
@@ -128,6 +128,10 @@ extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
+
+extern word             ProgressBarOSDRgn;
+extern word             ProgressBarFullRgn;
+extern dword            ProgressBarLastValue;
 
 extern word             ColorPickerOSDRgn;
 extern dword            ColorPickerColor;

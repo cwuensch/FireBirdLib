@@ -1,7 +1,5 @@
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool  VFDUsedByTAP = FALSE;
 byte *grid = NULL;
 
@@ -28,5 +26,3 @@ bool VFD_GetControl(bool GiveControl)
   VFDUsedByTAP = GiveControl;
   return TRUE;
 }
-
-#endif

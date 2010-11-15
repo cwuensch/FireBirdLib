@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool CDEnabled = FALSE;
 
 bool VFD_EnableCD(bool Enable)
@@ -24,5 +22,3 @@ bool VFD_EnableCD(bool Enable)
 
   return TRUE;
 }
-
-#endif

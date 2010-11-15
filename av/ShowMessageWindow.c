@@ -82,10 +82,7 @@ void ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, b
   fbl_rgn = TAP_Osd_Create_Chk("ShowMessageWindow B", pos_x, pos_y, w, h, 0, 0);
   TAP_Osd_Copy_Chk("ShowMessageWindow A", fbl_memrgn, fbl_rgn, 0, 0, w, h, 0, 0, FALSE);
   TAP_Osd_Delete (fbl_memrgn);
-
-#ifdef _TMS_
   TAP_Osd_Sync();
-#endif
 
   if (delay)
   {

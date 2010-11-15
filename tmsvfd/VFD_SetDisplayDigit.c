@@ -1,7 +1,5 @@
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 void VFD_SetDisplayDigit(byte* DisplayBuffer, byte Character, DISPLAYSTYLE DisplayStyle, byte Digit)
 {
   switch (DisplayStyle)
@@ -392,5 +390,3 @@ void VFD_SetDisplayDigit(byte* DisplayBuffer, byte Character, DISPLAYSTYLE Displ
     }
   }
 }
-
-#endif

@@ -4,12 +4,7 @@
 
 char *HDD_MakeNewRecName (char *fname, word sequence)
 {
-#ifdef _TMS_
   static char           try[MAX_FILE_NAME_SIZE + 1];
-#else
-  static char           try[TS_FILE_NAME_SIZE + 1];
-#endif
-
   size_t                len;
   char                  *p;
   int                   j;
@@ -21,12 +16,7 @@ char *HDD_MakeNewRecName (char *fname, word sequence)
   len = strlen(try);
 
   if (!(p = strrchr(try, '.'))) p = try + len;
-
-#ifdef _TMS_
   if ((j = MAX_FILE_NAME_SIZE - len - 4) < 0)
-#else
-  if ((j = TS_FILE_NAME_SIZE - len - 4) < 0)
-#endif
   {
     strcpy(p + j, p);
     p += j;

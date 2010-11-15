@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool VFD_SetCDValue(int Percent)
 {
   byte *grid = (byte*)FIS_vgrid();
@@ -28,5 +26,3 @@ bool VFD_SetCDValue(int Percent)
 
   return TRUE;
 }
-
-#endif

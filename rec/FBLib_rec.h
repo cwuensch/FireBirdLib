@@ -3,36 +3,31 @@
 
 #include                "../libFireBird.h"
 
-#define PCRSECTORS  900
+#define PCRSECTORS      900
 
-extern tRECSlot        *RECSlot[5];
 extern bool             LibInitialized;
 
-bool getRECSlotAddress (void);
 word getWord(void *buffer, bool NeedsByteSwapping);
 dword getDword(void *buffer, bool NeedsByteSwapping);
+void setWord(void *buffer, word Data, bool BigEndian);
+void setDword(void *buffer, dword Data, bool BigEndian);
 
-extern dword OffsetServiceInfo[];
-extern dword OffsetTPInfo[];
-extern dword OffsetEventInfo[];
-extern dword OffsetExtEventInfo[];
-extern dword OffsetCryptInfo[];
-extern dword OffsetBookmarks[];
+void HDD_DecodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_TUK(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_DecodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
 
-void HDD_DecodeRECHeader_Bookmarks(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_CryptInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_EventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_ExtendedEventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_DecodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-
-void HDD_EncodeRECHeader_Header(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_ServiceInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_TPInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_EventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_ExtendedEventInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_CryptInfo(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
-void HDD_EncodeRECHeader_Bookmarks(char *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_TUK(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
+void HDD_EncodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
 
 #endif

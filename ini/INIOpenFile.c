@@ -22,10 +22,6 @@ INILOCATION INIOpenFile (char *FileName, char *AppName)
     return INILOCATION_NewFile;
   }
 
-#ifndef _TMS_
-  InitTAPAPIFix();
-#endif
-
   f = TAP_Hdd_Fopen (FileName);
   if (f == NULL)
   {
@@ -33,21 +29,26 @@ INILOCATION INIOpenFile (char *FileName, char *AppName)
     return INILOCATION_NotFound;
   }
 
-  flen = TAP_Hdd_Flen (f);
-  BufferSize = ((flen >> 9) + 1) << 9;
+  flen = TAP_Hdd_Flen(f);
+  BufferSize = (((flen >> 9) + 2) << 9);
 
   INIBuffer = malloc (BufferSize);
-  if (INIBuffer) ret = TAP_Hdd_Fread (INIBuffer, flen, 1, f);
-
+  if(INIBuffer)
+  {
+    memset(INIBuffer, 0, BufferSize);
+    ret = TAP_Hdd_Fread (INIBuffer, flen, 1, f);
+    if((INIBuffer[flen] != '\x0d') && (INIBuffer[flen] != '\x0a'))
+    {
+      INIBuffer[flen] = '\x0d';
+      INIBuffer[flen + 1] = '\x0a';
+    }
+  }
   TAP_Hdd_Fclose (f);
-
-  memset(INIBuffer + flen, 0, BufferSize - flen);
 
   if(INIBuffer && !flen)
   {
     INIBuffer[0] = '\x0d';
     INIBuffer[1] = '\x0a';
-    INIBuffer[2] = 0;
 
     ret = 1;
   }

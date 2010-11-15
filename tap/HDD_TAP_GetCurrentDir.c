@@ -8,17 +8,13 @@
 
 int HDD_TAP_GetCurrentDir(char *CurrentDir)
 {
-#ifdef _TMS_
-  static dword               *_curTapTask = NULL;
-  static tTMSTAPTaskTable    *TAPTaskTable = NULL;
+  dword                *_curTapTask;
+  tTMSTAPTaskTable     *TAPTaskTable;
   dword                *dw;
 
   //Get all needed variables
-  if(!TAPTaskTable)
-    TAPTaskTable = (tTMSTAPTaskTable*)TryResolve("_tapTask");
-
-  if(!_curTapTask)
-    _curTapTask = (dword*)TryResolve("_curTapTask");
+  TAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
+  _curTapTask = (dword*)FIS_vcurTapTask();
 
   if(!TAPTaskTable || !_curTapTask)
   {
@@ -34,8 +30,4 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
     strcpy(CurrentDir, (char*)(dw[1] + 7));
 
   return 0;
-
-#else
-  return HDD_TranslateDirCluster((dword)HDD_TAP_GetCurrentDirCluster(), CurrentDir);
-#endif
 }

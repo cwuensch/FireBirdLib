@@ -1,5 +1,3 @@
-#ifdef _TMS_
-
 #include                "../libFireBird.h"
 
 char *GetApplVer(void)
@@ -27,5 +25,3 @@ char *GetApplVer(void)
 
   return osdOutBuf;
 }
-
-#endif

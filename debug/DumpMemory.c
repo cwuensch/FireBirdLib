@@ -23,7 +23,7 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
   while(Remaining > 0)
   {
     TAP_SPrint(&s[strlen(s)], "%2.2x ", *p);
-    if((*p >= 0x20) && (*p <= 0x7e))
+    if((*p >= 0x20) && (*p <= 0x7e))  // && (*p != 0x25)
       TAP_SPrint(&text[strlen(text)], "%c", *p);
     else
       TAP_SPrint(&text[strlen(text)], ".");

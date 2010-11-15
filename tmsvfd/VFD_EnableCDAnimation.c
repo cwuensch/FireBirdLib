@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool CDEnabledAnimation = FALSE;
 
 bool VFD_EnableCDAnimation(bool Enable)
@@ -24,5 +22,3 @@ bool VFD_EnableCDAnimation(bool Enable)
 
   return TRUE;
 }
-
-#endif

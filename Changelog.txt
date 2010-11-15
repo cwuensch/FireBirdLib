@@ -544,3 +544,38 @@ License:  This library is freeware. You may use this code in your own projects f
 2010-09-21  Fixed: Changed KeyTranslate() so that it returns the modified param1 instead of modifying the original param1. The reason
                    is that a "return param1;" in the TAP_EventHandler may also forward a modified param1 to the firmware. This is
                    different to the 5000 and is not what one wants most of the time.
+2010-09-26  Added: INIOpenFile() adds an \r\n at the end of the INI buffer to make sure that the last line is terminated
+2010-09-28  Removed all TF5000 code
+2010-10-18  Removed TYPE_FlashBlock and FlashGetBlockStartAddress() as the TMS firmware exports the block start addresses as names
+              Use the following exported names:
+                TVServices          = _tvSvc                FIS_vFlashBlockTVServices()
+                RadioServices       = _radioSvc             FIS_vFlashBlockRadioServices()
+                Satellites          = _satInfo              FIS_vFlashBlockSatInfo()
+                Transponders        = _tpInfo               FIS_vFlashBlockTransponderInfo()
+                Favourites          = _favGrp               FIS_vFlashBlockFavoriteGroup()
+                ClockSetup          = _timeInfo             FIS_vFlashBlockTimeInfo()
+                Timers              = _timer                FIS_vFlashBlockTimer()
+                ServiceNames        = _svcName              FIS_vFlashServiceName()
+                ProviderNames       = _providerInfo         FIS_vFlashProviderInfo()
+                IP                  = _oldLanIpConfig,      FIS_vFlashBlockLanIPConfig()
+                Server Settings     = _serverData           FIS_vFlashBlockServerData()
+                FirmwareServer      = _networkUpdateConfig  FIS_vFlashBlockNetworkUpdateConfig()
+                NetworkProfiles     = _network,             FIS_vFlashBlockNetwork()
+                AutoDescrambleTimer = _autoDec              FIS_vFlashBlockAutoDec()
+                DLNA                = _dlnaData             FIS_vFlashBlockDLNAData()
+
+              With these changes, a new layer has been added (namely structs tFlashChannel, tFlashLNB, tFlashSatTable,
+              tFlashTransponderTable, tFlashTimeInfo and tAutoDescrambleTimer). These structs are meant to be common
+              for all the different Toppy models and a TAP doesn’t necessarily need to know the system type. At this
+              moment, only their getters have been implemented. Also because of that big change, all
+              the old flash functions have been removed (see flash_old folder). If you need specific functions for a project,
+              please get in touch with me.
+
+2010-10-19  Added the RemoteType to the FirmwareTMS.dat and adapted KeyTranslate so that it uses that information
+2010-10-30  Added the number of max rec streams to the FirmwareTMS.dat
+            Removed all 5k firmwares and machines from FirmwareTMS.dat to make the file smaller
+            Added a progress bar to the OSD menu library
+            Added the StringDB functions
+            Added the ELF section
+2010-11-14  Added HookFirmware(), UnhookFirmware() and FindGotPointer() functions
+            Added NoAutoStartTAP()

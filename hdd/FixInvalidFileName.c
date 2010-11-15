@@ -7,13 +7,10 @@ void FixInvalidFileName(char *FileName)
   TYPE_PlayInfo         playInfo;
   TYPE_RecInfo          recInfo;
   int                   i, NrRecSlots;
-
-#ifdef _TMS_
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   bool                  isRec, isDel;
   int                   fNumber;
   char                  OldInfName[TS_FILE_NAME_SIZE], NewInfName[TS_FILE_NAME_SIZE];
-#endif
 
   if (TAP_Hdd_Exist(FileName) && (FileName[0] == 0x05))
   {
@@ -31,8 +28,6 @@ void FixInvalidFileName(char *FileName)
     strcpy(NewRecName, &FileName[1]);
     MakeUniqueFileName(NewRecName);
     TAP_Hdd_Rename(FileName, NewRecName);
-
-#ifdef _TMS_
 
     if(isRec)
     {
@@ -65,10 +60,7 @@ void FixInvalidFileName(char *FileName)
       TAP_Hdd_Rename(OldInfName, NewInfName);
     }
 
-#endif
-
     strcpy(FileName, NewRecName);
     FileName[strlen(NewRecName)] = '\0';
   }
 }
-

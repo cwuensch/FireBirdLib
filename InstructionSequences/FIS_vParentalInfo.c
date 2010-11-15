@@ -3,9 +3,6 @@
 inline dword FIS_vParentalInfo(void)
 {
   static dword          vParentalInfo = 0;
-
-#ifdef _TMS_
-
   dword                 *d;
 
   if(!vParentalInfo)
@@ -14,13 +11,5 @@ inline dword FIS_vParentalInfo(void)
     if(d) vParentalInfo = *d;
   }
 
-#else
-
-  if(!vParentalInfo)
-    vParentalInfo = FIS_vEEPROM() + 0x24;
-
-#endif
-
   return vParentalInfo;
 }
-

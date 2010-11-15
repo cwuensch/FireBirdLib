@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool HDDEnabled = FALSE;
 
 bool VFD_EnableHDD(bool Enable)
@@ -21,5 +19,3 @@ bool VFD_EnableHDD(bool Enable)
 
   return TRUE;
 }
-
-#endif

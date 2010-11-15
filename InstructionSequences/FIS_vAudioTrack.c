@@ -1,7 +1,5 @@
 #include "../libFireBird.h"
 
-#ifdef _TMS_
-
 inline dword FIS_vAudioTrack(void)
 {
   static tAudioTrk     *AudioTracks = NULL;
@@ -10,5 +8,3 @@ inline dword FIS_vAudioTrack(void)
 
   return (dword)AudioTracks;
 }
-
-#endif

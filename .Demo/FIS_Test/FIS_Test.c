@@ -1,15 +1,17 @@
 #include                <string.h>
+#include                <sys/types.h>
+#include                <sys/stat.h>
+#include                <fcntl.h>
+#include                <unistd.h>
+#include                <stdlib.h>
+#include                <stdio.h>
 #include                "tap.h"
+#include                "Setup_busybox.h"
 #include                "../../libFireBird.h"
 
 #define PROGRAM_NAME    "FIS_Test"
 #define LOGNAME         "FIS_Test.log"
-
-#ifdef _TMS_
-  #define FIRMWAREDAT   "FirmwareTMS.dat"
-#else
-  #define FIRMWAREDAT   "Firmware.dat"
-#endif
+#define FIRMWAREDAT     "FirmwareTMS.dat"
 
 TAP_ID(1);
 TAP_PROGRAM_NAME        (PROGRAM_NAME);
@@ -28,20 +30,20 @@ dword TAP_EventHandler (word event, dword param1, dword param2)
   return param1;
 }
 
-#ifndef _TMS_
-  extern int            _appl_version;
-#endif
-
 char                    x[256];
 
 void APIBug_ChangeDir()
 {
   int             ret;
 
+  HDD_TAP_PushDir();
   ret = TAP_Hdd_ChangeDir("/DataFiles");  //correct directory
+  HDD_TAP_PopDir();
   DEBUG("API check TAP_Hdd_ChangeDir()     : existing directory %s", ret ? "OK" : "failed");
 
+  HDD_TAP_PushDir();
   ret = TAP_Hdd_ChangeDir("/Mp3");        //wrong directory
+  HDD_TAP_PopDir();
   DEBUG("API check TAP_Hdd_ChangeDir()     : non-existing directory %s", ret ? "failed" : "OK");
 }
 
@@ -96,33 +98,14 @@ void APIBug_fReadWrite()
   TAP_Hdd_Delete(PROGRAM_NAME ".test");
 }
 
-int TAP_Main (void)
+void DumpInfo(void)
 {
-  word                  SystemID;
-  dword                 i;
   tFWDATHeader         *FWDatHeader;
   tToppyInfo           *ToppyInfo;
   tFWInfo              *FWInfo;
   INILOCATION           Loc;
   SYSTEM_TYPE           SystemType = ST_UNKNOWN;
-
-#ifndef _TMS_
-  int                   FWID = -1;
-#endif
-
-  SystemID = GetSysID();
-
-#ifdef _TMS_
-  DEBUG("SysID=%d, ApplVer=%s (0x%4.4x)", SystemID, GetApplVer(), TAP_GetVersion());
-#else
-  DEBUG("SysID=%d, ApplID=%4.4x, FWgp=%8.8x", SystemID, _appl_version, FIS_GetGP((dword*)0x80000000));
-#endif
-  DEBUG("Built with FBLib version %s", __FBLIB_VERSION__);
-  DEBUG("");
-
-  APIBug_ChangeDir();
-  APIBug_fReadWrite();
-
+  int                   i;
 
   //Details about Flash access
   if (InitTAPex())
@@ -131,42 +114,7 @@ int TAP_Main (void)
   }
   else
   {
-
-#ifdef _TMS_
     DEBUG("Main init failed");
-#else
-
-    x[0] = '\0';
-    if (!FWgp) strcat(x, "FWgp");
-    if (!pFWWD)
-    {
-      if(x[0]) strcat(x, ",");
-      strcat(x, "pFWWD");
-    }
-    if (!TAP_TableAddress)
-    {
-      if(x[0]) strcat(x, ",");
-      strcat(x, "TAP_TableAddress");
-    }
-    if (!EnqueueEventAddress)
-    {
-      if(x[0]) strcat(x, ",");
-      strcat(x, "EnqueueEventAddress");
-    }
-    DEBUG("Main init failed (%s not found)", x);
-#endif
-  }
-
-  if(FlashInitialize(SystemID))
-  {
-    DEBUG("Flash init = OK");
-  }
-  else
-  {
-    DEBUG("Flash init failed.");
-    DEBUG("  This might be due to a failed main init, a failed attempt to open Firmware.dat,");
-    DEBUG("  your system ID missing in Firmware.dat (see next paragraph) or the failure to");
-    DEBUG("  locate FIS_vFlash()");
   }
 
   //Details about Firmware.dat
@@ -205,135 +153,86 @@ int TAP_Main (void)
       DEBUG("  %d SysIDs, %d F/W IDs", FWDatHeader->NrOfToppyInfoEntries, FWDatHeader->NrOfFWInfoEntries);
     }
 
-    for (i = 0; i < FWDatHeader->NrOfToppyInfoEntries; i++, ToppyInfo++)
-    {
-      if (ToppyInfo->SysID == SystemID)
-      {
-        SystemType = ToppyInfo->SystemType;
-        break;
-      }
-    }
-
+    SystemType = GetSystemType();
     if(ToppyInfo->SystemType == ST_UNKNOWN)
     {
-      DEBUG("  Your SysID is not included in %s!", FIRMWAREDAT);
+      DEBUG("  Your SysID (%d) is not included in %s!", GetSysID(), FIRMWAREDAT);
     }
     else
     {
-      DEBUG("  %s", ToppyInfo->Device);
-      DEBUG("  %s", ToppyInfo->AppType);
+      for (i = 0; i < (int)FWDatHeader->NrOfToppyInfoEntries; i++, ToppyInfo++)
+        if(ToppyInfo->SysID == GetSysID()) break;
+
+      DEBUG("  SysID         =  %d", ToppyInfo->SysID);
+      DEBUG("  Device        =  %s", ToppyInfo->Device);
+      DEBUG("  AppType       =  %s", ToppyInfo->AppType);
 
       switch (ToppyInfo->SystemType)
       {
-        case ST_DVBS    : DEBUG("  DVBs"); break;
-        case ST_DVBT    : DEBUG("  DVBt"); break;
-        case ST_DVBC    : DEBUG("  DVBc"); break;
-        case ST_DVBT5700: DEBUG("  Modified DVBt (TF5700)"); break;
-        case ST_DVBSTMS : DEBUG("  DVBs (TMS)"); break;
+        case ST_UNKNOWN : break;
+        case ST_S       : DEBUG("  SystemType    =  ST_S"); break;
+        case ST_ST      : DEBUG("  SystemType    =  ST_ST"); break;
+        case ST_T       : DEBUG("  SystemType    =  ST_T"); break;
+        case ST_C       : DEBUG("  SystemType    =  ST_C"); break;
+        case ST_CT      : DEBUG("  SystemType    =  ST_CT"); break;
+        case ST_T5700   : DEBUG("  SystemType    =  ST_T5700"); break;
+        case ST_TUK     : DEBUG("  SystemType    =  ST_TUK"); break;
+        case ST_TMSS    : DEBUG("  SystemType    =  ST_TMSS"); break;
+        case ST_TMST    : DEBUG("  SystemType    =  ST_TMST"); break;
+        case ST_TMSC    : DEBUG("  SystemType    =  ST_TMSC"); break;
         default:;
       }
 
       switch(ToppyInfo->DisplayType)
       {
-        case DT_LED:     DEBUG("  DisplayType   =  LED"); break;
-        case DT_VFD5500: DEBUG("  DisplayType   =  TF5500 dot matrix VFD"); break;
-        case DT_VFDMP:   DEBUG("  DisplayType   =  Masterpiece VFD"); break;
+        case DT_LED:      DEBUG("  DisplayType   =  LED"); break;
+        case DT_VFD5500:  DEBUG("  DisplayType   =  TF5500 dot matrix VFD"); break;
+        case DT_VFDMP:    DEBUG("  DisplayType   =  Masterpiece VFD"); break;
       }
-    }
 
-#ifndef _TMS_
-    for (i = 0; i < FWDatHeader->NrOfFWInfoEntries; i++, FWInfo++)
-    {
-      if (FWInfo->SysID == SystemID && FWInfo->FWgp == FWgp)
+      switch(ToppyInfo->RemoteType)
       {
-        FWID = i;
-        break;
+        case RT_5000:     DEBUG("  RemoteType    =  5000"); break;
+        case RT_2100:     DEBUG("  RemoteType    =  2100"); break;
+        case RT_7100PLUS: DEBUG("  RemoteType    =  7100+"); break;
       }
     }
-
-    if(FWID == -1)
-    {
-      DEBUG("  Your firmware is not included in %s!", FIRMWAREDAT);
-    }
-    else
-    {
-      DEBUG("  FW Date       = %d-%02d-%02d", FWInfo->FWDate >> 16, (FWInfo->FWDate >> 8) & 0xff, FWInfo->FWDate & 0xff);
-      DEBUG("  FW AppVersion = %x", FWInfo->AppVersion);
-      DEBUG("  FW beta state = %s", FWInfo->Beta ? "yes": "no");
-    }
-#endif
   }
 
   //Details about the FindInstructionSequences
   DEBUG("");
 
-#ifdef _TMS_
-  DEBUG("DevEeprom_GetMacAddr              = %8.8x", TryResolve("DevEeprom_GetMacAddr"));
-  DEBUG("DevFront_SetIlluminate            = %8.8x", TryResolve("DevFront_SetIlluminate"));
-
-  DEBUG("Appl_WaitEvt                      = %8.8x", TryResolve("_Z12Appl_WaitEvtjPjjjj"));
-  DEBUG("Appl_ClrTimer                     = %8.8x", TryResolve("_Z13Appl_ClrTimerRh"));
-  DEBUG("Appl_ShoutCast                    = %8.8x", TryResolve("_Z14Appl_ShoutCast10TYPE_OsdOp"));
-  DEBUG("Appl_SetApplVer                   = %8.8x", TryResolve("_Z15Appl_SetApplVerPc"));
+  DEBUG("ApplHdd_FileCutPaste              = %8.8x", TryResolve("_Z20ApplHdd_FileCutPastePKcjjS0_"));
+  DEBUG("ApplHdd_GetFileInfo               = %8.8x", TryResolve("_Z19ApplHdd_GetFileInfotPjS_hh"));
+  DEBUG("ApplHdd_RestoreWorkFolder         = %8.8x", TryResolve("_Z25ApplHdd_RestoreWorkFolderv"));
+  DEBUG("ApplHdd_SaveWorkFolder            = %8.8x", TryResolve("_Z22ApplHdd_SaveWorkFolderv"));
+  DEBUG("ApplHdd_SelectFolder;             = %8.8x", TryResolve("_Z20ApplHdd_SelectFolderPvPKc"));
+  DEBUG("ApplHdd_SetWorkFolder             = %8.8x", TryResolve("_Z21ApplHdd_SetWorkFolderPv"));
   DEBUG("ApplOsd_DrawJpeg                  = %8.8x", TryResolve("_Z16ApplOsd_DrawJpegtjjjjPvjj"));
+  DEBUG("ApplTap_CallEventHandlert         = %8.8x", TryResolve("_Z24ApplTap_CallEventHandlertjj"));
+  DEBUG("ApplTimer_OptimizeList            = %8.8x", TryResolve("_Z22ApplTimer_OptimizeListv"));
+  DEBUG("Appl_ClrTimer                     = %8.8x", TryResolve("_Z13Appl_ClrTimerRh"));
   DEBUG("Appl_ExecProgram                  = %8.8x", TryResolve("_Z16Appl_ExecProgramPc"));
+  DEBUG("Appl_ExportChData                 = %8.8x", TryResolve("_Z17Appl_ExportChDataPKc"));
+  DEBUG("Appl_ImportChData                 = %8.8x", TryResolve("_Z17Appl_ImportChDataPKc"));
   DEBUG("Appl_InitTempRec                  = %8.8x", TryResolve("_Z16Appl_InitTempRecv"));
+  DEBUG("Appl_IsTimeShifting               = %8.8x", TryResolve("_Z19Appl_IsTimeShiftingv"));
+  DEBUG("Appl_RestartTimeShiftSvc          = %8.8x", TryResolve("_Z24Appl_RestartTimeShiftSvcbj"));
+  DEBUG("Appl_SetApplVer                   = %8.8x", TryResolve("_Z15Appl_SetApplVerPc"));
+  DEBUG("Appl_SetTimeShift                 = %8.8x", TryResolve("_Z17Appl_SetTimeShifti"));
+  DEBUG("Appl_ShoutCast                    = %8.8x", TryResolve("_Z14Appl_ShoutCast10TYPE_OsdOp"));
+  DEBUG("Appl_StartTempRec                 = %8.8x", TryResolve("_Z17Appl_StartTempRecb"));
   DEBUG("Appl_StopPlaying                  = %8.8x", TryResolve("_Z16Appl_StopPlayingv"));
   DEBUG("Appl_StopTempRec                  = %8.8x", TryResolve("_Z16Appl_StopTempRecbb"));
   DEBUG("Appl_TimeToLocal                  = %8.8x", TryResolve("_Z16Appl_TimeToLocalj"));
-  DEBUG("Appl_ExportChData                 = %8.8x", TryResolve("_Z17Appl_ExportChDataPKc"));
-  DEBUG("Appl_ImportChData                 = %8.8x", TryResolve("_Z17Appl_ImportChDataPKc"));
-  DEBUG("Appl_SetTimeShift                 = %8.8x", TryResolve("_Z17Appl_SetTimeShifti"));
-  DEBUG("Appl_StartTempRec                 = %8.8x", TryResolve("_Z17Appl_StartTempRecb"));
-  DEBUG("ApplHdd_GetFileInfo               = %8.8x", TryResolve("_Z19ApplHdd_GetFileInfotPjS_hh"));
-  DEBUG("Appl_IsTimeShifting               = %8.8x", TryResolve("_Z19Appl_IsTimeShiftingv"));
-  DEBUG("ApplHdd_FileCutPaste              = %8.8x", TryResolve("_Z20ApplHdd_FileCutPastePKcjjS0_"));
-  DEBUG("ApplHdd_SelectFolder;             = %8.8x", TryResolve("_Z20ApplHdd_SelectFolderPvPKc"));
-  DEBUG("ApplHdd_SetWorkFolder             = %8.8x", TryResolve("_Z21ApplHdd_SetWorkFolderPv"));
-  DEBUG("ApplHdd_SaveWorkFolder            = %8.8x", TryResolve("_Z22ApplHdd_SaveWorkFolderv"));
-  DEBUG("ApplTimer_OptimizeList            = %8.8x", TryResolve("_Z22ApplTimer_OptimizeListv"));
-  DEBUG("ApplTap_CallEventHandlert         = %8.8x", TryResolve("_Z24ApplTap_CallEventHandlertjj"));
-  DEBUG("Appl_RestartTimeShiftSvc          = %8.8x", TryResolve("_Z24Appl_RestartTimeShiftSvcbj"));
-  DEBUG("ApplHdd_RestoreWorkFolder         = %8.8x", TryResolve("_Z25ApplHdd_RestoreWorkFolderv"));
-
+  DEBUG("Appl_WaitEvt                      = %8.8x", TryResolve("_Z12Appl_WaitEvtjPjjjj"));
+  DEBUG("DevEeprom_GetMacAddr              = %8.8x", TryResolve("DevEeprom_GetMacAddr"));
+  DEBUG("DevFront_SetIlluminate            = %8.8x", TryResolve("DevFront_SetIlluminate"));
+  DEBUG("FIS_fwApplVfdSendData             = %8.8x", FIS_fwApplVfdSendData());
   DEBUG("FIS_fwApplVfdStart                = %8.8x", FIS_fwApplVfdStart());
   DEBUG("FIS_fwApplVfdStop                 = %8.8x", FIS_fwApplVfdStop());
   DEBUG("FIS_fwPowerOff                    = %8.8x", FIS_fwPowerOff());
-  DEBUG("FIS_fwApplVfdSendData             = %8.8x", FIS_fwApplVfdSendData());
   DEBUG("FIS_fwSetIrCode                   = %8.8x", FIS_fwSetIrCode());
-#else
-  DEBUG("FIS_fwAddEventHandler             = %8.8x", FIS_fwAddEventHandler());
-  DEBUG("FIS_fwBIOS                        = %8.8x", FIS_fwBIOS());
-  DEBUG("FIS_fwDelEventHandler             = %8.8x", FIS_fwDelEventHandler());
-  DEBUG("FIS_fwDSTCheck                    = %8.8x", FIS_fwDSTCheck());
-  DEBUG("FIS_fwEnqueueEvent                = %8.8x", FIS_fwEnqueueEvent());
-  DEBUG("FIS_fwEventDispatcher             = %8.8x", FIS_fwEventDispatcher());
-  DEBUG("FIS_fwFlashEraseSector            = %8.8x", FIS_fwFlashEraseSector());
-  DEBUG("FIS_fwFlashFindSectorAddressIndex = %8.8x", FIS_fwFlashFindSectorAddressIndex());
-  DEBUG("FIS_fwFlashGetSectorAddress       = %8.8x", FIS_fwFlashGetSectorAddress());
-  DEBUG("FIS_fwFWFlashProgram              = %8.8x", FIS_fwFWFlashProgram());
-  DEBUG("FIS_fwGetMPVFDDataBuffer          = %8.8x", FIS_fwGetMPVFDDataBuffer());
-  DEBUG("FIS_fwMemMonitor                  = %8.8x", FIS_fwMemMonitor());
-  DEBUG("FIS_fwMHEGDisable                 = %8.8x", FIS_fwMHEGDisable());
-  DEBUG("FIS_fwMHEGStatus                  = %8.8x", FIS_fwMHEGStatus());
-  DEBUG("FIS_fwMoveOld                     = %8.8x", FIS_fwMoveOld());
-  DEBUG("FIS_fwObtainResource              = %8.8x", FIS_fwObtainResource());
-  DEBUG("FIS_fwPIC2_ISR18                  = %8.8x", FIS_fwPIC2_ISR18());
-  DEBUG("FIS_fwReboot                      = %8.8x", FIS_fwReboot());
-  DEBUG("FIS_fwReleaseResource             = %8.8x", FIS_fwReleaseResource());
-  DEBUG("FIS_fwSendToFP                    = %8.8x", FIS_fwSendToFP());
-  DEBUG("FIS_fwSendToLEDDisplay            = %8.8x", FIS_fwSendToLEDDisplay());
-  DEBUG("FIS_fwSetLEDByMode                = %8.8x", FIS_fwSetLEDByMode());
-  DEBUG("FIS_fwSetPlaybackMode             = %8.8x", FIS_fwSetPlaybackMode());
-  DEBUG("FIS_fwSetPlaybackSpeed            = %8.8x", FIS_fwSetPlaybackSpeed());
-  DEBUG("FIS_fwSetVFDByMode                = %8.8x", FIS_fwSetVFDByMode());
-  DEBUG("FIS_fwShutdownHandler             = %8.8x", FIS_fwShutdownHandler());
-  DEBUG("FIS_fwStopDisplayUpdateTimers     = %8.8x", FIS_fwStopDisplayUpdateTimers());
-  DEBUG("FIS_fwTAPStart                    = %8.8x", FIS_fwTAPStart());
-  DEBUG("FIS_fwUpdateMPVFD                 = %8.8x", FIS_fwUpdateMPVFD());
-  DEBUG("FIS_fwWriteSectors                = %8.8x", FIS_fwWriteSectors());
-  DEBUG("FIS_fwWriteSectorsDMA             = %8.8x", FIS_fwWriteSectorsDMA());
-#endif
 
   DEBUG("");
 
@@ -356,57 +255,229 @@ int TAP_Main (void)
   DEBUG("_vfdBrightTimerId                 = %8.8x", TryResolve("_vfdBrightTimerId"));
   DEBUG("_vfdTimerId                       = %8.8x", TryResolve("_vfdTimerId"));
 
+  DEBUG("FIS_vAudioTrack                   = %8.8x", FIS_vAudioTrack());
   DEBUG("FIS_vBootReason                   = %8.8x", FIS_vBootReason());
   DEBUG("FIS_vEEPROM                       = %8.8x", FIS_vEEPROM());
   DEBUG("FIS_vEEPROMPin                    = %8.8x", FIS_vEEPROMPin());
   DEBUG("FIS_vEtcInfo                      = %8.8x", FIS_vEtcInfo());
   DEBUG("FIS_vFlash                        = %8.8x", FIS_vFlash());
+  DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
   DEBUG("FIS_vOSDMap                       = %8.8x", FIS_vOSDMap());
   DEBUG("FIS_vParentalInfo                 = %8.8x", FIS_vParentalInfo());
-  DEBUG("FIS_vRECSlotAddress0              = %8.8x", FIS_vRECSlotAddress(0));
-  DEBUG("FIS_vRECSlotAddress1              = %8.8x", FIS_vRECSlotAddress(1));
-
-#ifdef _TMS_
-  DEBUG("FIS_vAudioTrack                   = %8.8x", FIS_vAudioTrack());
-  DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
-  DEBUG("FIS_vgrid                         = %8.8x", FIS_vgrid());
+  //DEBUG("FIS_vRECSlotAddress0              = %8.8x", FIS_vRECSlotAddress(0));
+  //DEBUG("FIS_vRECSlotAddress1              = %8.8x", FIS_vRECSlotAddress(1));
+  //DEBUG("FIS_vRECSlotAddress2              = %8.8x", FIS_vRECSlotAddress(2));
   DEBUG("FIS_vcurTapTask                   = %8.8x", FIS_vcurTapTask());
+  DEBUG("FIS_vgrid                         = %8.8x", FIS_vgrid());
   DEBUG("FIS_viboxTimerId                  = %8.8x", FIS_viboxTimerId());
-  DEBUG("FIS_vMACAddress                   = %8.8x", FIS_vMACAddress());
-#else
-  DEBUG("FIS_vEventHandlerMap              = %8.8x", FIS_vEventHandlerMap());
-  DEBUG("FIS_vFlashFWMaxSize               = %8.8x", FIS_vFlashFWMaxSize());
-  DEBUG("FIS_vFlashFWStartOffset           = %8.8x", FIS_vFlashFWStartOffset());
-  DEBUG("FIS_vFlashInProgress              = %8.8x", FIS_vFlashInProgress());
-  DEBUG("FIS_vGMT                          = %8.8x", FIS_vGMT());
-  DEBUG("FIS_vHddInfoStructure1            = %8.8x", FIS_vHddInfoStructure1());
-  DEBUG("FIS_vHddInfoStructure2            = %8.8x", FIS_vHddInfoStructure2());
-  DEBUG("FIS_vHDDLiveFSFAT1                = %8.8x", FIS_vHDDLiveFSFAT1());
-  DEBUG("FIS_vHDDLiveFSRootDir             = %8.8x", FIS_vHDDLiveFSRootDir());
-  DEBUG("FIS_vHDDLiveFSSuperblock          = %8.8x", FIS_vHDDLiveFSSuperblock());
-  DEBUG("FIS_vHDDShutdown                  = %8.8x", FIS_vHDDShutdown());
-  DEBUG("FIS_vHeapMap                      = %8.8x", FIS_vHeapMap());
-  DEBUG("FIS_vHeapStart                    = %8.8x", FIS_vHeapStart());
-  DEBUG("FIS_vIntVectorTable               = %8.8x", FIS_vIntVectorTable());
-  DEBUG("FIS_vKeyMap                       = %8.8x", FIS_vKeyMap());
-  DEBUG("FIS_vLEDDisplayBuffer             = %8.8x", FIS_vLEDDisplayBuffer());
-  DEBUG("FIS_vMPEGHeader                   = %8.8x", FIS_vMPEGHeader());
-  DEBUG("FIS_vMPVFD                        = %8.8x", FIS_vMPVFD());
-  DEBUG("FIS_vMPVFDBackup                  = %8.8x", FIS_vMPVFDBackup());
-  DEBUG("FIS_vPinStatus                    = %8.8x", FIS_vPinStatus());
-  DEBUG("FIS_vPlaybackPaused               = %8.8x", FIS_vPlaybackPaused());
-  DEBUG("FIS_vPlaySlot                     = %8.8x", FIS_vPlaySlot());
-  DEBUG("FIS_vRecFile0                     = %8.8x", FIS_vRecFile(0));
-  DEBUG("FIS_vRecFile1                     = %8.8x", FIS_vRecFile(1));
-  DEBUG("FIS_vSuppressedAutoStart          = %8.8x", FIS_vSuppressedAutoStart());
-  DEBUG("FIS_vSysOsdControl                = %8.8x", FIS_vSysOsdControl());
-  DEBUG("FIS_vTAP_Vfd_Control              = %8.8x", FIS_vTAP_Vfd_Control());
-  DEBUG("FIS_vTAP_Vfd_Status               = %8.8x", FIS_vTAP_Vfd_Status());
-  DEBUG("FIS_vTAPTable                     = %8.8x", FIS_vTAPTable());
-  DEBUG("FIS_vTaskAddressTable             = %8.8x", FIS_vTaskAddressTable());
-  DEBUG("FIS_vVolume                       = %8.8x", FIS_vVolume());
-  DEBUG("FIS_vWD1                          = %8.8x", FIS_vWD1());
-#endif
+
+  DEBUG("Flash");
+  DEBUG("_tvSvc                            = %8.8x", FIS_vFlashBlockTVServices());
+  DEBUG("_radioSvc                         = %8.8x", FIS_vFlashBlockRadioServices());
+  DEBUG("_satInfo                          = %8.8x", FIS_vFlashBlockSatInfo());
+  DEBUG("_tpInfo                           = %8.8x", FIS_vFlashBlockTransponderInfo());
+  DEBUG("_favGrp                           = %8.8x", FIS_vFlashBlockFavoriteGroup());
+  DEBUG("_gameSaveData                     = %8.8x", FIS_vFlashBlockGameSaveData());
+  DEBUG("_timeInfo                         = %8.8x", FIS_vFlashBlockTimeInfo());
+  DEBUG("_timer                            = %8.8x", FIS_vFlashBlockTimer());
+  DEBUG("_svcName                          = %8.8x", FIS_vFlashBlockServiceName());
+  DEBUG("_providerInfo                     = %8.8x", FIS_vFlashBlockProviderInfo());
+  DEBUG("_otaInfo                          = %8.8x", FIS_vFlashBlockOTAInfo());
+  DEBUG("_oldLanIpConfig                   = %8.8x", FIS_vFlashBlockLanIPConfig());
+  DEBUG("_serverData                       = %8.8x", FIS_vFlashBlockServerData());
+  DEBUG("_networkUpdateConfig              = %8.8x", FIS_vFlashBlockNetworkUpdateConfig());
+  DEBUG("_network                          = %8.8x", FIS_vFlashBlockNetwork());
+  DEBUG("_autoDec                          = %8.8x", FIS_vFlashBlockAutoDec());
+  DEBUG("_dlnaData                         = %8.8x", FIS_vFlashBlockDLNAData());
+}
+
+void ExtractSettingsMTD(void)
+{
+  char                  fn[12];
+  int                   fd;
+  byte                  Data[2];
+  ssize_t               ret;
+  int                   i;
+
+  for(i = 0; i < 10; i++)
+  {
+    TAP_SPrint(fn, "/dev/mtd%d", i);
+    fd = open(fn, O_RDONLY);
+    if(fd)
+    {
+      ret = read(fd, Data, 2);
+      close(fd);
+
+      if((ret == 2) && (Data[0] == 0x1d) && (Data[1] == 0x1f))
+      {
+        TAP_SPrint(x, "/bin/busybox dd if=%s of=/mnt/hd/ProgramFiles/mtd%d", fn, i);
+        system(x);
+        break;
+      }
+    }
+  }
+}
+
+void GetMTDInfo(void)
+{
+  system("cp /proc/mtd /mnt/hd/ProgramFiles/mtd.log");
+}
+
+void DumpEEPROM(void)
+{
+  byte                 *EEPROM;
+  TYPE_File            *f;
+
+  #define EEPROMFN      "EEPROM.bin"
+
+  EEPROM = (byte*)FIS_vEEPROM();
+  if(!EEPROM)
+  {
+    DEBUG("EEPROM address not found");
+    return;
+  }
+
+  TAP_Hdd_ChangeDir("/ProgramFiles");
+  TAP_Hdd_Create(EEPROMFN, ATTR_NORMAL);
+  f = TAP_Hdd_Fopen(EEPROMFN);
+  if(!f)
+  {
+    DEBUG("Failed to open %s", EEPROMFN);
+    return;
+  }
+
+  TAP_Hdd_Fwrite(EEPROM, 512, 1, f);
+  TAP_Hdd_Fclose(f);
+}
+
+void DumpFlashPointer(dword SectionStart, dword SectionEnd, dword FlashStart, dword FlashEnd, char *SectionName)
+{
+  dword                *i, d;
+  char                  s[100];
+
+  for(i = (dword*)SectionStart; i < (dword*)SectionEnd; i++)
+  {
+    d = *i;
+    if((d >= FlashStart) && (d <= FlashEnd))
+    {
+      s[0] = '\0';
+      if(d == FIS_vFlashBlockAutoDec())             TAP_SPrint(s, "(_autoDec)");
+      if(d == FIS_vFlashBlockDLNAData())            TAP_SPrint(s, "(_dlnaData)");
+      if(d == FIS_vFlashBlockFavoriteGroup())       TAP_SPrint(s, "(_favGrp)");
+      if(d == FIS_vFlashBlockGameSaveData())        TAP_SPrint(s, "(_gameSaveData)");
+      if(d == FIS_vFlashBlockLanIPConfig())         TAP_SPrint(s, "(_oldLanIpConfig)");
+      if(d == FIS_vFlashBlockNetwork())             TAP_SPrint(s, "(_network)");
+      if(d == FIS_vFlashBlockNetworkUpdateConfig()) TAP_SPrint(s, "(_networkUpdateConfig)");
+      if(d == FIS_vFlashBlockOTAInfo())             TAP_SPrint(s, "(_otaInfo)");
+      if(d == FIS_vFlashBlockProviderInfo())        TAP_SPrint(s, "(_providerInfo)");
+      if(d == FIS_vFlashBlockRadioServices())       TAP_SPrint(s, "(_radioSvc)");
+      if(d == FIS_vFlashBlockSatInfo())             TAP_SPrint(s, "(_satInfo)");
+      if(d == FIS_vFlashBlockServerData())          TAP_SPrint(s, "(_serverData)");
+      if(d == FIS_vFlashBlockServiceName())         TAP_SPrint(s, "(_svcName)");
+      if(d == FIS_vFlashBlockTVServices())          TAP_SPrint(s, "(_tvSvc)");
+      if(d == FIS_vFlashBlockTimeInfo())            TAP_SPrint(s, "(_timeInfo)");
+      if(d == FIS_vFlashBlockTimer())               TAP_SPrint(s, "(_timer)");
+      if(d == FIS_vFlashBlockTransponderInfo())     TAP_SPrint(s, "(_tpInfo)");
+      DEBUG("Flash pointer %8.8p (%s) -> abs=0x%8.8x rel=%8.8x %s", i, SectionName, d, d - FlashStart, s);
+    }
+  }
+}
+
+void SearchForFlashPointer(void)
+{
+  dword                 FlashStart, FlashEnd;
+  dword                 SectionIndex, SectionStart, SectionSize, SectionEnd;
+
+  FlashStart = FIS_vFlashBlockTVServices();
+  FlashEnd = FlashStart + 0x200000;
+
+  if(ELFOpenAbsFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
+  {
+    SectionIndex = ELFGetSectionIndex(".sbss");
+    if(SectionIndex)
+    {
+      ELFGetSectionAddress(SectionIndex, &SectionStart, &SectionSize);
+      SectionEnd = SectionStart + SectionSize;
+      DumpFlashPointer(SectionStart, SectionEnd, FlashStart, FlashEnd, ".sbss");
+    }
+
+    SectionIndex = ELFGetSectionIndex(".bss");
+    if(SectionIndex)
+    {
+      ELFGetSectionAddress(SectionIndex, &SectionStart, &SectionSize);
+      SectionEnd = SectionStart + SectionSize;
+      DumpFlashPointer(SectionStart, SectionEnd, FlashStart, FlashEnd, ".bss");
+    }
+  }
+  else
+  {
+    TAP_PrintNet("ELFOpenAbsFile() failed on /root/pvr\n");
+  }
+
+  ELFCleanup();
+}
+
+void CopyInf(void)
+{
+  TYPE_FolderEntry      FolderEntry;
+  int                   NrFiles, Got, i;
+
+  HDD_TAP_PushDir();
+  TAP_Hdd_ChangeDir("/DataFiles");
+  NrFiles = TAP_Hdd_FindFirst(&FolderEntry, "inf");
+  Got = 0;
+  for (i = 0; i < NrFiles; i++)
+  {
+    if(FolderEntry.attr == ATTR_NORMAL)
+    {
+      Got++;
+      TAP_SPrint(x, "cp '/mnt/hd/DataFiles/%s' /mnt/hd/ProgramFiles/inf%2.2d.inf", FolderEntry.name, Got);
+      system(x);
+      if(Got == 10) break;
+    }
+    TAP_Hdd_FindNext(&FolderEntry);
+  }
+  HDD_TAP_PopDir();
+}
+
+void PackAndDelete(void)
+{
+  #define FILELIST      "EEPROM.bin FIS_Test.log inf*.inf mtd.log mtd?"
+  #define ROOTDIR       "/mnt/hd/ProgramFiles"
+
+  TAP_SPrint(x, "cd "ROOTDIR"; ./busybox tar cvf FIS_Test.tar %s", FILELIST);
+  system(x);
+
+  TAP_SPrint(x, "cd "ROOTDIR";rm %s", FILELIST);
+  system(x);
+
+  system("cd "ROOTDIR"; ./busybox gzip FIS_Test.tar");
+  rename(ROOTDIR"/FIS_Test.tar.gz", ROOTDIR"/FIS_Test.tgz");
+}
+
+int TAP_Main (void)
+{
+  word                  SystemID;
+
+  InstallBusybox();
+
+  SystemID = GetSysID();
+
+  DEBUG("SysID=%d, ApplVer=%s (0x%4.4x)", SystemID, GetApplVer(), TAP_GetVersion());
+  DEBUG("Built with FBLib version %s", __FBLIB_VERSION__);
+  DEBUG("");
+
+  APIBug_ChangeDir();
+  APIBug_fReadWrite();
+
+  DumpInfo();
+  DEBUG("");
+  ExtractSettingsMTD();
+  GetMTDInfo();
+  DumpEEPROM();
+  SearchForFlashPointer();
+  CopyInf();
+  PackAndDelete();
 
   return 0;
 }

@@ -1,8 +1,6 @@
 #include                <string.h>
 #include                "FBLib_tmsvfd.h"
 
-#ifdef _TMS_
-
 bool VFD_SetSmallText(char *Text)
 {
   dword                 i;
@@ -25,5 +23,3 @@ bool VFD_SetSmallText(char *Text)
   }
   return TRUE;
 }
-
-#endif

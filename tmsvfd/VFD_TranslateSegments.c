@@ -1,8 +1,6 @@
 #include                "FBLib_tmsvfd.h"
 #include                "VFDSegmentMap.h"
 
-#ifdef _TMS_
-
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
 {
   switch (DisplayStyle)
@@ -17,5 +15,3 @@ dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
 
   return 0;
 }
-
-#endif

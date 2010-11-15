@@ -3,9 +3,7 @@
 
 int HDD_Smart_DisableAttributeAutoSave (void)
 {
-#ifdef _TMS_
-
-  unsigned char         CommandBlock[HDIO_DRIVE_TASK_HDR_SIZE] = {WIN_SMART,        //COMMAND
+  unsigned char         CommandBlock[FBHDIO_DRIVE_TASK_HDR_SIZE] = {WIN_SMART,        //COMMAND
                                                                   SMART_AUTOSAVE,   //FEATURE
                                                                   0x00,             //NSECTOR
                                                                   0,                //SECTOR
@@ -15,16 +13,4 @@ int HDD_Smart_DisableAttributeAutoSave (void)
                                                                   0};               //COMMAND
 
   return SendHDDCommand(HDIO_DRIVE_TASK, CommandBlock, 0);
-
-#else
-
-  int                   Ret;
-
-  Ret = SendHDDCommand (SMART_AUTOSAVE, 0x00, 0, 0x4F, 0xC2, 0xA0, WIN_SMART);
-#ifdef DEBUG_FIREBIRDLIB
-  if (Ret != 0) TAP_Print ("FireBirdLib: HDDSmartDisableAttributeAutoSave: Ret=%d\r\n", Ret);
-#endif
-  return Ret;
-
-#endif
 }

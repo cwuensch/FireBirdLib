@@ -1,7 +1,5 @@
 #include "../libFireBird.h"
 
-#ifdef _TMS_
-
 inline dword FIS_viboxTimerId(void)
 {
   static byte   *iboxTimerId = NULL;
@@ -10,5 +8,3 @@ inline dword FIS_viboxTimerId(void)
 
   return (dword)iboxTimerId;
 }
-
-#endif

@@ -4,11 +4,7 @@
 #include "tap.h"
 #include "../libFireBird.h"
 
-#ifdef _TMS_
-  #define FIRMWAREDAT   "FirmwareTMS.dat"
-#else
-  #define FIRMWAREDAT   "Firmware.dat"
-#endif
+#define FIRMWAREDAT   "FirmwareTMS.dat"
 
 typedef struct
 {

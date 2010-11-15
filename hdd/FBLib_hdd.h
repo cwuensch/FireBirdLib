@@ -33,8 +33,8 @@
 #define oTAP_Hdd_WriteSectorDMA 0x01
 #define oTAP_Hdd_Move           0x13
 
-#define HDIO_DRIVE_CMD_HDR_SIZE         (4 * sizeof(unsigned char))
-#define HDIO_DRIVE_TASK_HDR_SIZE        (8 * sizeof(unsigned char))
+#define FBHDIO_DRIVE_CMD_HDR_SIZE       (4 * sizeof(unsigned char))
+#define FBHDIO_DRIVE_TASK_HDR_SIZE      (8 * sizeof(unsigned char))
 #define WIN_SMART                       0xB0
 #define SMART_READ_VALUES               0xD0
 #define SMART_READ_THRESHOLDS           0xD1
@@ -67,34 +67,32 @@ typedef struct
   dword DirLen;
 } DirEntry;
 
-#ifdef _TMS_
-  //We've to use the 64-bit version of lstat() else it will fail with files >= 4GB
-  typedef struct
-  {
-    __dev_t st_dev;
-    long int st_pad1[2];
-    __ino64_t st_ino;
-    __mode_t st_mode;
-    __nlink_t st_nlink;
-    __uid_t st_uid;
-    __gid_t st_gid;
-    __dev_t st_rdev;
-    long int st_pad2[2];
-    __off64_t st_size;
-    __time_t st_atime;
-    long int __reserved0;
-    __time_t st_mtime;
-    long int __reserved1;
-    __time_t st_ctime;
-    long int __reserved2;
-    __blksize_t st_blksize;
-    long int st_pad4;
-    __blkcnt64_t st_blocks;
-    long int st_pad5[14];
-  } tstat64;
+//We've to use the 64-bit version of lstat() else it will fail with files >= 4GB
+typedef struct
+{
+  __dev_t st_dev;
+  long int st_pad1[2];
+  __ino64_t st_ino;
+  __mode_t st_mode;
+  __nlink_t st_nlink;
+  __uid_t st_uid;
+  __gid_t st_gid;
+  __dev_t st_rdev;
+  long int st_pad2[2];
+  __off64_t st_size;
+  __time_t st_atime;
+  long int __reserved0;
+  __time_t st_mtime;
+  long int __reserved1;
+  __time_t st_ctime;
+  long int __reserved2;
+  __blksize_t st_blksize;
+  long int st_pad4;
+  __blkcnt64_t st_blocks;
+  long int st_pad5[14];
+} tstat64;
 
-  extern int lstat64(__const char *__restrict __file, tstat64 *__restrict __buf) __THROW;
-#endif
+extern int lstat64(__const char *__restrict __file, tstat64 *__restrict __buf) __THROW;
 
 extern volatile word *HDD_pData;
 extern volatile byte *HDD_pError;
@@ -119,11 +117,7 @@ void  busyWait(void);
 void  Delay(dword);
 int   GetClusterPointer(int);
 
-#ifdef _TMS_
 int   SendHDDCommand(dword, byte*, int);
-#else
-int   SendHDDCommand(byte, byte, byte, byte, byte, byte, byte);
-#endif
 
 void  SwapWords(word *);
 void  SwapDWords(dword *);
