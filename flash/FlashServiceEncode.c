@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_flash.h"
 
-bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service)
+bool FlashServiceSetInfo(int SvcType, int SvcNum, tFlashService *Service)
 {
   //SvcType out of range
   if((SvcType < 0) || (SvcType > SVC_TYPE_Radio)) return FALSE;
@@ -35,7 +35,7 @@ bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service)
         p = (TYPE_Service_TMSS*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMSS));
       if(!p) return FALSE;
 
-      return FlashServiceDecode(p, Service);
+      return FlashServiceEncode(p, Service);
     }
 
     case ST_TMST:
@@ -48,7 +48,7 @@ bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service)
         p = (TYPE_Service_TMST*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMST));
       if(!p) return FALSE;
 
-      return FlashServiceDecode(p, Service);
+      return FlashServiceEncode(p, Service);
     }
 
     case ST_TMSC:
@@ -61,7 +61,7 @@ bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service)
         p = (TYPE_Service_TMSC*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMSC));
       if(!p) return FALSE;
 
-      return FlashServiceDecode(p, Service);
+      return FlashServiceEncode(p, Service);
     }
 
     case ST_NRTYPES: break;
@@ -70,7 +70,7 @@ bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service)
   return FALSE;
 }
 
-bool FlashServiceDecode(void *Data, tFlashService *Service)
+bool FlashServiceEncode(void *Data, tFlashService *Service)
 {
   //Service is NULL
   if(!Data || !Service) return FALSE;
@@ -88,9 +88,9 @@ bool FlashServiceDecode(void *Data, tFlashService *Service)
     case ST_T5800:
     case ST_TF7k7HDPVR: return FALSE;
 
-    case ST_TMSS: return FlashServiceDecode_ST_TMSS(Data, Service);
-    case ST_TMST: return FlashServiceDecode_ST_TMST(Data, Service);
-    case ST_TMSC: return FlashServiceDecode_ST_TMSC(Data, Service);
+    case ST_TMSS: return FlashServiceEncode_ST_TMSS(Data, Service);
+    case ST_TMST: return FlashServiceEncode_ST_TMST(Data, Service);
+    case ST_TMSC: return FlashServiceEncode_ST_TMSC(Data, Service);
 
     case ST_NRTYPES: break;
   }
@@ -98,47 +98,60 @@ bool FlashServiceDecode(void *Data, tFlashService *Service)
   return FALSE;
 }
 
-bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
+bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
 {
 
   char                 *Text;
 
-  memset(Service, 0, sizeof(tFlashService));
-  Service->SatIndex        = Data->SatIdx;
-  Service->VideoStreamType = Data->VideoStreamType;
-  Service->FlagDelete      = Data->DelFlag;
-  Service->FlagCAS         = Data->CASFlag;
-  Service->FlagLock        = Data->LockFlag;
-  Service->FlagSkip        = Data->SkipFlag;
-  Service->Tuner           = Data->TunerNum;
-  Service->TransponderIndex= Data->TPIdx;
-  Service->ServiceID       = Data->SVCID;
-  Service->PMTPID          = Data->PMTPID;
-  Service->PCRPID          = Data->PCRPID;
-  Service->VideoPID        = Data->VideoPID;
-  Service->AudioPID        = Data->AudioPID;
-  Service->LCN             = Data->LCN;
-  Service->AudioStreamType = Data->AudioStreamType;
-  Service->unknown1        = Data->unknown1;
-  memcpy(Service->unknown2, Data->unknown2, 6);
+  memset(Data, 0, sizeof(TYPE_Service_TMSS));
+  Data->SatIdx          = Service->SatIndex;
+  Data->VideoStreamType = Service->VideoStreamType;
+  Data->DelFlag         = Service->FlagDelete;
+  Data->CASFlag         = Service->FlagCAS;
+  Data->LockFlag        = Service->FlagLock;
+  Data->SkipFlag        = Service->FlagSkip;
+  Data->TunerNum        = Service->Tuner;
+  Data->TPIdx           = Service->TransponderIndex;
+  Data->SVCID           = Service->ServiceID;
+  Data->PMTPID          = Service->PMTPID;
+  Data->PCRPID          = Service->PCRPID;
+  Data->VideoPID        = Service->VideoPID;
+  Data->AudioPID        = Service->AudioPID;
+  Data->LCN             = Service->LCN;
+  Data->AudioStreamType = Service->AudioStreamType;
+  Data->unknown1        = Service->unknown1;
+  memcpy(Data->unknown2, Service->unknown2, 6);
 
-  Text = (char*)(FIS_vFlashBlockServiceName() + Data->NameOffset);
-  strncpy(Service->ServiceName, Text, MAX_SvcName - 1);
+  Text = (char*)FIS_vFlashBlockServiceName();
+  while(Text[0])
+  {
+    if(strncmp(Text, Service->ServiceName, MAX_SvcName) == 0) break;
+    Text += (strlen(Text) + 1);
+  }
+  if(!Text[0]) strncpy(Text, Service->ServiceName, MAX_SvcName);
+  Data->NameOffset = (dword)Text - FIS_vFlashBlockServiceName();
 
-  Text = (char*)(FIS_vFlashBlockProviderInfo() + 21 * Data->ProviderIdx);
-  strncpy(Service->ProviderName, Text, 20);
+  Text = (char*)FIS_vFlashBlockProviderInfo();
+  Data->ProviderIdx = 0;
+  while(Text[0])
+  {
+    if(strncmp(Text, Service->ProviderName, 20) == 0) break;
+    Text += 21;
+    Data->ProviderIdx = Data->ProviderIdx + 1;
+  }
+  if(!*Text) strncpy(Text, Service->ProviderName, 20);
 
   return TRUE;
 }
 
-bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service)
+bool FlashServiceEncode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service)
 {
   //The TV and radio service structures are identical
-  return FlashServiceDecode_ST_TMSS(Data, Service);
+  return FlashServiceEncode_ST_TMSS(Data, Service);
 }
 
-bool FlashServiceDecode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service)
+bool FlashServiceEncode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service)
 {
   //The TV and radio service structures are identical
-  return FlashServiceDecode_ST_TMSS(Data, Service);
+  return FlashServiceEncode_ST_TMSS(Data, Service);
 }

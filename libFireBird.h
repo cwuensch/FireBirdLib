@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2010-11-14"
+  #define __FBLIB_VERSION__ "2011-01-13"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -27,15 +27,16 @@
   {
     ST_UNKNOWN,
     ST_S,
-    ST_ST,
     ST_T,
     ST_C,
-    ST_CT,
     ST_T5700,
-    ST_TUK,
     ST_TMSS,
     ST_TMST,
     ST_TMSC,
+    ST_T5800,
+    ST_ST,
+    ST_CT,
+    ST_TF7k7HDPVR,
     ST_NRTYPES
   } SYSTEM_TYPE;
 
@@ -377,8 +378,11 @@
 
   int  FlashServiceGetTotal(int SvcType);
   bool FlashServiceGetInfo(int SvcType, int SvcNum, tFlashService *Service);
+  bool FlashServiceSetInfo(int SvcType, int SvcNum, tFlashService *Service);
+  bool FlashServiceAdd(int SvcType, tFlashService *Service);
+  int  FlashServiceFind(int SvcType, word ServiceID, word PMTPID, word PCRPID, tFlashService *Service);
   bool FlashServiceDecode(void *Data, tFlashService *Service);
-
+  bool FlashServiceEncode(void *Data, tFlashService *Service);
 
   typedef struct
   {
@@ -449,6 +453,7 @@
   int  FlashTransponderTablesGetTotal(int SatNum);
   bool FlashTransponderTablesGetInfo(int SatNum, int TransponderNum, tFlashTransponderTable *TransponderTable);
   bool FlashTransponderTablesDecode(void *Data, tFlashTransponderTable *TransponderTable);
+  int  FlashTransponderFindIndex(dword SatIndex, dword NetworkID, dword TSID);
 
   typedef struct
   {
@@ -503,6 +508,7 @@
   }tFlashTimer;
 
   bool FlashTimerGetInfo(int TimerIndex, tFlashTimer *TimerInfo);
+  bool FlashTimerSetInfo(int TimerIndex, tFlashTimer *TimerInfo);
   bool FlashTimerDecode(void *Data, tFlashTimer *TimerInfo);
   bool FlashTimerEncode(void *Data, tFlashTimer *TimerInfo);
 
@@ -558,14 +564,12 @@
   //dword                 FlashFindCASServices (bool TVService, bool *FlagArray, dword *NewFlags);
   //dword                 FlashFindEndOfServiceNameTableAddress (void);
   //dword                 FlashFindEndOfServiceTableAddress(bool TVService);
-  //dword                 FlashFindServiceAddress (word ServiceID, word PMTPID, word PCRPID, bool TVService);    //Returns an address to the ServiceTable; -1 if not found
   //dword                 FlashFindServiceByLCN (char* LCN, bool TVService, bool *FlagArray, dword *NewFlags);
   //dword                 FlashFindServiceByName (char* ChannelName, bool TVService, bool *FlagArray, dword *NewFlags);
   //dword                 FlashFindServiceByPartOfName (char* ChannelName, bool TVService, bool *FlagArray, dword *NewFlags);
-  //int                   FlashFindTransponderIndex (dword SatIndex, dword NetworkID, dword TSID);
   //SYSTEM_TYPE           FlashGetType (void);
   //dword                 FlashInitialize (dword SystemID);
-  //void                  FlashProgram(void);
+  void                  FlashProgram(void);
   //void                  FlashReindexFavourites (word ServiceIndex, int ServiceType, ReindexType itype);
   //void                  FlashReindexTimers (word ServiceIndex, int ServiceType, ReindexType itype);
   //dword                 FlashRemoveCASServices (bool TVService);
@@ -575,9 +579,9 @@
   //dword                 FlashRemoveServiceByName (char* ChannelName, bool TVService);
   //dword                 FlashRemoveServiceByPartOfName (char* ChannelName, bool TVService);
   //dword                 FlashRemoveServiceByUHF (char* UHFChannel, bool TVService, bool UseAUSChannelCoding);
-  //dword                 GetEEPROMAddress(void);
-  //word                  GetEEPROMPin(void);
-  //bool                  SetEEPROMPin(word NewPin);
+  dword                 GetEEPROMAddress(void);
+  word                  GetEEPROMPin(void);
+  bool                  SetEEPROMPin(word NewPin);
 
   //TYPE_SatInfoSTMS     *FlashGetSatelliteByIndex (byte SatIdx);
   //TYPE_ServiceTMS      *FlashGetServiceByIndex (word ServiceIdx, bool TVService);
@@ -750,6 +754,7 @@
   inline dword FIS_fwAppl_StopPlaying(void);
   inline dword FIS_fwAppl_StopTempRec(void);
   inline dword FIS_fwAppl_WaitEvt(void);
+  inline dword FIS_fwAppl_WriteFlash(void);
   inline dword FIS_fwApplChannel_GetAgc(void);
   inline dword FIS_fwApplChannel_GetBer(void);
   inline dword FIS_fwApplHdd_FileCutPaste(void);
@@ -811,45 +816,46 @@
   //ST_C       = 4
   //ST_CT      = 5
   //ST_T5700   = 6
-  //ST_TUK     = 7
+  //ST_T5800     = 7
   //ST_TMSS    = 8
-  //ST_TMS     = 9
+  //ST_TMST    = 9
   //ST_TMSC    = a
 
   typedef struct
   {
     dword               HeaderMagic;                 //123456789a
     word                HeaderVersion;               //123456789a
-    dword               HeaderStartTime;             //       89
-    word                HeaderDuration;              //13467  89
-    word                HeaderDurationSec;           //       89
+    dword               HeaderStartTime;             //       89a
+    word                HeaderDuration;              //13467  89a
+    word                HeaderDurationSec;           //       89a
     word                HeaderSvcNumber;             //13467
     word                HeaderSvcType;               //13467
-    byte                HeaderFlags;                 //       89
-    bool                HeaderCopyFlag;              //       89
-    byte                HeaderFlags2;                //       89
+    byte                HeaderFlags;                 //       89a
+    bool                HeaderCopyFlag;              //       89a
+    bool                HeaderTSFlag;                //       89a
+    byte                HeaderFlags2;                //       89a
     byte                HeaderUnknown1[4];           //
-    byte                HeaderUnknown2[2];           //13467  89
-    byte                HeaderUnknown4[10];          //       89
+    byte                HeaderUnknown2[2];           //13467  89a
+    byte                HeaderUnknown4[10];          //       89a
 
-    byte                SISatIndex;                  //13467  89
-    byte                SIServiceType;               //13467  89
-    word                SITPIdx;                     //13467  89
-    byte                SITunerNum;                  //13467  89
-    byte                SIDelFlag;                   //13467  89
-    byte                SICASFlag;                   //13467  89
-    byte                SILockFlag;                  //13467  89
-    byte                SISkipFlag;                  //13467  89
-    word                SIServiceID;                 //13467  89
-    word                SIPMTPID;                    //13467  89
-    word                SIPCRPID;                    //13467  89
-    word                SIVideoPID;                  //13467  89
-    word                SIAudioPID;                  //13467  89
-    char                SISvcName[28];               //13467  89
-    byte                SIVideoStreamType;           //       89
-    byte                SIAudioStreamType;           //       89
+    byte                SISatIndex;                  //13467  89a
+    byte                SIServiceType;               //13467  89a
+    word                SITPIdx;                     //13467  89a
+    byte                SITunerNum;                  //13467  89a
+    byte                SIDelFlag;                   //13467  89a
+    byte                SICASFlag;                   //13467  89a
+    byte                SILockFlag;                  //13467  89a
+    byte                SISkipFlag;                  //13467  89a
+    word                SIServiceID;                 //13467  89a
+    word                SIPMTPID;                    //13467  89a
+    word                SIPCRPID;                    //13467  89a
+    word                SIVideoPID;                  //13467  89a
+    word                SIAudioPID;                  //13467  89a
+    char                SISvcName[28];               //13467  89a
+    byte                SIVideoStreamType;           //       89a
+    byte                SIAudioStreamType;           //       89a
 
-    byte                TPSatIndex;                  //1      89
+    byte                TPSatIndex;                  //1      89a
     word                TPFlags2;                    //       8
     byte                TPPolarization;              //1      8
     byte                TPMode;                      //1      8
@@ -857,49 +863,48 @@
     byte                TPModulation;                //4      8
     byte                TPFEC;                       //       8
     byte                TPPilot;                     //       8
-    word                TPChannelNumber;             //367    9
-    byte                TPBandwidth;                 //367    9
-    byte                TPLPHPStream;                //367    9
-    dword               TPFrequency;                 //13467  89
+    word                TPChannelNumber;             //367    9a
+    byte                TPBandwidth;                 //367    9a
+    byte                TPLPHPStream;                //367    9a
+    dword               TPFrequency;                 //13467  89a
     word                TPSymbolRate;                //14     8
-    word                TPTSID;                      //13467  89
-    word                TPOriginalNetworkID;         //3467   89
-    word                TPNetworkID;                 //367    9
+    word                TPTSID;                      //13467  89a
+    word                TPOriginalNetworkID;         //3467   89a
+    word                TPNetworkID;                 //367    9a
     byte                TPClockSync;                 //       8
-    byte                TPUnknown1[4];               //       89
-    byte                TPUnknown2;                  //367    89
+    byte                TPUnknown1[4];               //       89a
+    byte                TPUnknown2;                  //367    89a
     byte                TPUnknown3[2];               //1
-    byte                TPUnknown4;                  //367    9
+    byte                TPUnknown4;                  //367    9a
     byte                TPUnknown5[2];               //1
     byte                TPUnknown6;                  //4
     byte                TPUnknown7[8];               //6
 
-    byte                EventDurationHour;           //13467  89
-    byte                EventDurationMin;            //13467  89
-    dword               EventEventID;                //13467  89
-    dword               EventStartTime;              //13467  89
-    dword               EventEndTime;                //13467  89
-    byte                EventRunningStatus;          //13467  89
-    byte                EventParentalRate;           //13467  89
-    char                EventEventName[273];         //13467  89
-    char                EventEventDescription[273];  //13467  89
+    dword               EventDuration;               //13467  89a
+    dword               EventEventID;                //13467  89a
+    dword               EventStartTime;              //13467  89a
+    dword               EventEndTime;                //13467  89a
+    byte                EventRunningStatus;          //13467  89a
+    byte                EventParentalRate;           //13467  89a
+    char                EventEventName[273];         //13467  89a
+    char                EventEventDescription[273];  //13467  89a
     word                EventServiceID;              //13467
-    byte                EventUnknown1[2];            //13467  89
-    byte                EventUnknown2[10];           //13467
+    byte                EventUnknown1[2];            //13467  89a
+    byte                EventUnknown2[14];           //13467
 
-    word                ExtEventServiceID;           //13467  89
-    dword               ExtEventEventID;             //13467  89
-    char                ExtEventText [1024];         //13467  89
+    word                ExtEventServiceID;           //13467  89a
+    dword               ExtEventEventID;             //13467  89a
+    char                ExtEventText[1024];          //13467  89a
     byte                ExtEventUnknown1[6];         //
     byte                ExtEventUnknown2[2];         //13467
 
-    byte                CryptFlag;                   //13467  89
-    byte                CryptReserved1 [4];          //13467
-    byte                CryptReserved2 [3];          //13467
+    byte                CryptFlag;                   //13467  89a
+    byte                CryptUnknown1[4];           //13467
+    byte                CryptUnknown2[3];           //13467
 
     dword               NrBookmarks;                 //13467
-    dword               Bookmark[177];               //13467  89
-    dword               Resume;                      //13467  89
+    dword               Bookmark[177];               //13467  89a
+    dword               Resume;                      //13467  89a
   } tRECHeaderInfo;
 
   bool   HDD_DecodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
@@ -986,6 +991,7 @@
   bool  StringDBDel(tStringDB *StringDB);
   bool  StringDBLoad(tStringDB *StringDB, char *FileName);
   bool  StringDBSave(tStringDB *StringDB, char *FileName);
+  bool  StringDBEOF(tStringDB *StringDB);
   bool  StringDBDestroy(tStringDB *StringDB);
 
 
@@ -1181,6 +1187,7 @@
   dword  AddTime(dword date, int add);
   char  *DayOfWeek(byte WeekDay);
   dword  FlashGetTrueLocalTime (dword ToppyLocalDate, int StandardOffsetMin);
+  bool   isMJD(dword MJD);
   dword  Now(byte *Sec);
   dword  TF2UnixTime(dword TFTimeStamp);
   long   TimeDiff(dword FromTime, dword ToTime);
@@ -1267,6 +1274,7 @@
   //
   bool OSDMenuPush(void);
   bool OSDMenuPop(void);
+  void OSDMenuSaveMyRegion(word Rgn);
 
   //Memo
   void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char *Text);

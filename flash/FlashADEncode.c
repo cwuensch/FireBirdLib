@@ -16,7 +16,8 @@ bool FlashADSetInfo(tAutoDescrambleTimer *ADTimer)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS:
     {
@@ -69,7 +70,8 @@ bool FlashADEncode(void *Data, tAutoDescrambleTimer *ADTimer)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS: return FlashADEncode_ST_TMSS(Data, ADTimer);
     case ST_TMST: return FlashADEncode_ST_TMST(Data, ADTimer);

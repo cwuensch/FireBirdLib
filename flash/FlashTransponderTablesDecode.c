@@ -22,7 +22,8 @@ bool FlashTransponderTablesGetInfo(int SatNum, int TransponderNum, tFlashTranspo
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS:
     {
@@ -92,7 +93,8 @@ bool FlashTransponderTablesDecode(void *Data, tFlashTransponderTable *Transponde
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS: return FlashTransponderTablesDecode_ST_TMSS(Data, TransponderTable);
     case ST_TMST: return FlashTransponderTablesDecode_ST_TMST(Data, TransponderTable);

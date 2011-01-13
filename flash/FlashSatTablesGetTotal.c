@@ -17,8 +17,8 @@ int FlashSatTablesGetTotal(void)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:
-      return 0;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return 0;
 
     case ST_TMSS:
     {

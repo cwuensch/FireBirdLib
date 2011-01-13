@@ -19,7 +19,8 @@ bool FlashTimerGetInfo(int TimerIndex, tFlashTimer *TimerInfo)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS:
     {
@@ -74,7 +75,8 @@ bool FlashTimerDecode(void *Data, tFlashTimer *TimerInfo)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS: return FlashTimerDecode_ST_TMSS(Data, TimerInfo);
     case ST_TMST: return FlashTimerDecode_ST_TMST(Data, TimerInfo);

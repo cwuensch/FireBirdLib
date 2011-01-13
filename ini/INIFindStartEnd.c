@@ -4,7 +4,7 @@
 
 void INIFindStartEnd (char *Key, char **Start, char **End, dword MaxEntrylen)
 {
-  char                  *CR, *LF;
+  char                  *CR, *LF, *p;
 
   if(!Start || !End || !MaxEntrylen) return;
 
@@ -14,10 +14,15 @@ void INIFindStartEnd (char *Key, char **Start, char **End, dword MaxEntrylen)
     return;
   }
 
-  *Start = stricstr (INIBuffer, Key);
   *End = NULL;
-
-  if (*Start == NULL) return;
+  *Start = INIBuffer - 1;
+  do
+  {
+    *Start = stricstr (*Start + 1, Key);
+    if (*Start == NULL) return;
+    p = *Start;
+    if(*Start > INIBuffer) p--;
+  } while((*p == '#') || (*p == ';'));
 
   CR = strchr (*Start, '\x0d');
   LF = strchr (*Start, '\x0a');

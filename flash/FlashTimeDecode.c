@@ -16,7 +16,8 @@ bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS:
     {
@@ -69,7 +70,8 @@ bool FlashTimeDecode(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS: return FlashTimeDecode_ST_TMSS(Data, TimeInfo);
     case ST_TMST: return FlashTimeDecode_ST_TMST(Data, TimeInfo);

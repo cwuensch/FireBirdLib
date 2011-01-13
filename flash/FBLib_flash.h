@@ -37,8 +37,11 @@
   #define TYPE_Service_TMSC   TYPE_Service_TMSS
 
   bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
+  bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
   bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
+  bool FlashServiceEncode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
   bool FlashServiceDecode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
+  bool FlashServiceEncode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
 
   typedef struct
   {
@@ -259,6 +262,10 @@
   bool FlashTimerDecode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
   bool FlashTimerDecode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
   bool FlashTimerDecode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
+
+  bool FlashTimerEncode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
+  bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
+  bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
 
   typedef struct
   {

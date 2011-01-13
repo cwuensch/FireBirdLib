@@ -4,6 +4,7 @@
 void OSDMenuColorPickerShow(char *Title, dword Color)
 {
   dword                 x, y;
+  tOSDMapInfo          *OSDMapInfo;
 
   ColorPickerDefaultColor = Color;
   ColorPickerColor = Color;
@@ -16,11 +17,18 @@ void OSDMenuColorPickerShow(char *Title, dword Color)
   {
     x = (720 - _ColorPicker_Gd.width) >> 1;
     y = (576 - _ColorPicker_Gd.height) >> 1;
-    if(OSDRgn)
+    if(OSDRgn || MyOSDRgn)
     {
       InfoBoxSaveAreaX = x;
       InfoBoxSaveAreaY = y;
-      InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _ColorPicker_Gd.width, _ColorPicker_Gd.height);
+      if(MyOSDRgn)
+      {
+        OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap();
+        if(OSDMapInfo)
+          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
+      }
+      else
+        InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _ColorPicker_Gd.width, _ColorPicker_Gd.height);
     }
 
     ColorPickerOSDRgn = TAP_Osd_Create(x, y, _ColorPicker_Gd.width, _ColorPicker_Gd.height, 0, 0);

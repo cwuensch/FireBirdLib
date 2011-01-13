@@ -7,6 +7,7 @@ bool isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, b
   dword                 x, y;
 
   TAP_Osd_GetPlaneBaseInfo(&OSDBaseInfo, Plane);
+  if(OSDBaseInfo.frameBuffer == NULL) return FALSE;
 
   for(y = checkY; y < (checkY + checkH); y += 4)
   {

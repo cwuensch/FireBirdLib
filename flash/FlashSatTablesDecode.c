@@ -19,7 +19,8 @@ bool FlashSatTablesGetInfo(int SatNum, tFlashSatTable *SatTable)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS:
     {
@@ -70,7 +71,8 @@ bool FlashSatTablesDecode(void *Data, tFlashSatTable *SatTable)
     case ST_C:
     case ST_CT:
     case ST_T5700:
-    case ST_TUK:  return FALSE;
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
 
     case ST_TMSS: return FlashSatTablesDecode_ST_TMSS(Data, SatTable);
     case ST_TMST: return FlashSatTablesDecode_ST_TMST(Data, SatTable);

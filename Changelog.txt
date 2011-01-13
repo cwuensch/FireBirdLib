@@ -540,6 +540,8 @@ License:  This library is freeware. You may use this code in your own projects f
                      SRP-2410(22121), SRP-2411(22122), SRP-2411(CZ)(22241): Red key only
                      TF7100HD+(32030), TRF7160(33021), TF2401CI+(22120): Vol+, Vol-, Ch+, Ch-, VF, Red, Green, Yellow, Blue, Option
             Fixed: the memo dialog forgot to display some lines of text (mostly after two \n)
+            'Official release'
+
 2010-09-20  Added: Exit allows to exit a messagebox. In that case, OSDMenuMessageBoxLastButton() returns (dword) -1.
 2010-09-21  Fixed: Changed KeyTranslate() so that it returns the modified param1 instead of modifying the original param1. The reason
                    is that a "return param1;" in the TAP_EventHandler may also forward a modified param1 to the firmware. This is
@@ -568,7 +570,7 @@ License:  This library is freeware. You may use this code in your own projects f
               tFlashTransponderTable, tFlashTimeInfo and tAutoDescrambleTimer). These structs are meant to be common
               for all the different Toppy models and a TAP doesn’t necessarily need to know the system type. At this
               moment, only their getters have been implemented. Also because of that big change, all
-              the old flash functions have been removed (see flash_old folder). If you need specific functions for a project,
+              the old flash functions have been removed. If you need specific functions for a project,
               please get in touch with me.
 
 2010-10-19  Added the RemoteType to the FirmwareTMS.dat and adapted KeyTranslate so that it uses that information
@@ -579,3 +581,18 @@ License:  This library is freeware. You may use this code in your own projects f
             Added the ELF section
 2010-11-14  Added HookFirmware(), UnhookFirmware() and FindGotPointer() functions
             Added NoAutoStartTAP()
+2010-11-15  'Official release'
+
+2010-11-18  The TMS version of HDD_TAP_DisableAll() reported the number of disabled TAPs instead of the number failed attempts
+            The FirmwareTMS.dat reported the wrong number of simultaneous recordings
+            Reordered the SYSTEM_TYPE enum to make it compatible with the 5k version
+2010-12-18  Combined RECHeaderInfo.EventDurationHour and RECHeaderInfo.EventDurationMin into RecHeaderInfo.EventDuration
+            Added isMJD() function
+2011-01-02  Change all ST_TUK to ST_T5800
+            Added FlashProgram(), which reprogramms the settings in the flash memory
+2011-01-02  Added OSDMenuSaveMyRegion(). Call this prior to OSDMenuInfoBoxShow(), OSDMenuMessageBoxShow() or OSDMenuColorPickerShow() to
+              prevent them drilling a whole into your OSD
+2011-01-07  The INI functions will now ignore lines starting with # or ;
+2011-01-11  Fixed: TAP_Osd_GetPlaneBaseInfo(...,TAP_PLANE) returns a NULL pointer and crashes isAnyOSDVisible() on a 2401. Until it has been
+              clarified if this is an API change or a firmware bug, the function will return FALSE on these machines.
+2011-01-13  Added: FlashTimerSetInfo()

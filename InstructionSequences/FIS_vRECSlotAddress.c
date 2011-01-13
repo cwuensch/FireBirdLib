@@ -20,7 +20,8 @@ inline dword FIS_vRECSlotAddress(byte Slot)
       case ST_C:
       case ST_CT:
       case ST_T5700:
-      case ST_TUK:
+      case ST_T5800:
+      case ST_TF7k7HDPVR:
         //No break to return any arbitrary value.
 
       case ST_TMSS:

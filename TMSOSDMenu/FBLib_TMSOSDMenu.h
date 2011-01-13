@@ -116,6 +116,7 @@ extern TYPE_GrData      _ColorPicker_CursorDeselected_Gd;
 extern TYPE_GrData      _ColorPicker_ValueBackroundSelected_Gd;
 
 extern word             OSDRgn;
+extern word             MyOSDRgn; //Used by OSDMenuSaveMyRegion()
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
