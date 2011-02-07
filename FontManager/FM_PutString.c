@@ -66,7 +66,7 @@ void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dwor
 
     case ALIGN_CENTER:
     {
-      SaveBoxX = x + ((maxX - x - (XEnd - x)/*FM_GetStringWidth(newstr, FontData)*/) >> 1);
+      SaveBoxX = x + ((maxX - XEnd) >> 1);
       break;
     }
 

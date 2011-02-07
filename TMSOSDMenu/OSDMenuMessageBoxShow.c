@@ -66,20 +66,22 @@ void OSDMenuMessageBoxShow(void)
 
   dx = _InfoBox_Gd.width / (MessageBox.NrButtons + 1);
   x = dx;
+
+  //With more than 3 buttons, they overlap. This means that the text is not centered.
+  //Therefore draw inactive buttons first, then the active one
   for(i = 0; i < MessageBox.NrButtons; i++)
   {
-    if(i == MessageBox.CurrentButton)
-    {
-      TAP_Osd_PutGd(MessageBoxOSDRgn, x - (MB->width >> 1), 120, MB, FALSE);
-      OSDMenuPutS(MessageBoxOSDRgn, x - (MB->width >> 1), 124, x + (MB->width >> 1), MessageBox.Button[i], RGB(40,40,40), COLOR_None, 14, FALSE, ALIGN_CENTER);
-    }
-    else
+    if(i != MessageBox.CurrentButton)
     {
       TAP_Osd_FillBox(MessageBoxOSDRgn, x - (MB->width >> 1), 120, MB->width, MB->height, RGB(36,36,36));
       OSDMenuPutS(MessageBoxOSDRgn, x - (MB->width >> 1), 124, x + (MB->width >> 1), MessageBox.Button[i], RGB(230,230,250), COLOR_None, 14, FALSE, ALIGN_CENTER);
     }
     x += dx;
   }
+
+  x = (MessageBox.CurrentButton + 1) * dx;
+  TAP_Osd_PutGd(MessageBoxOSDRgn, x - (MB->width >> 1), 120, MB, FALSE);
+  OSDMenuPutS(MessageBoxOSDRgn, x - (MB->width >> 1), 124, x + (MB->width >> 1), MessageBox.Button[MessageBox.CurrentButton], RGB(40,40,40), COLOR_None, 14, FALSE, ALIGN_CENTER);
 
   TAP_Osd_Sync();
 }

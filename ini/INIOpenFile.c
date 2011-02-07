@@ -1,10 +1,11 @@
-#include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include                <string.h>
+#include                "FBLib_ini.h"
+#include                "../libFireBird.h"
 
 char                    *INIBuffer = NULL, *INICommentBuffer = NULL;
 dword                   BufferSize = 0;
 
-INILOCATION INIOpenFile (char *FileName, char *AppName)
+INILOCATION INIOpenFile(char *FileName, char *AppName)
 {
   TYPE_File             *f;
   dword                 flen, ret = 0;
@@ -37,10 +38,11 @@ INILOCATION INIOpenFile (char *FileName, char *AppName)
   {
     memset(INIBuffer, 0, BufferSize);
     ret = TAP_Hdd_Fread (INIBuffer, flen, 1, f);
-    if((INIBuffer[flen] != '\x0d') && (INIBuffer[flen] != '\x0a'))
+    flen = strlen(INIBuffer);
+    if((INIBuffer[flen - 1] != '\x0d') && (INIBuffer[flen - 1] != '\x0a'))
     {
-      INIBuffer[flen] = '\x0d';
-      INIBuffer[flen + 1] = '\x0a';
+      INIBuffer[flen - 1] = '\x0d';
+      INIBuffer[flen] = '\x0a';
     }
   }
   TAP_Hdd_Fclose (f);

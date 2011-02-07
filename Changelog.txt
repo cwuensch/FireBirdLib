@@ -596,3 +596,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-01-11  Fixed: TAP_Osd_GetPlaneBaseInfo(...,TAP_PLANE) returns a NULL pointer and crashes isAnyOSDVisible() on a 2401. Until it has been
               clarified if this is an API change or a firmware bug, the function will return FALSE on these machines.
 2011-01-13  Added: FlashTimerSetInfo()
+2011-02-05  Fixed the FlashDecode demo TAP
+2011-02-07  Added: FIS_fwAppl_GetIsExternal(), FIS_vextPartitionInfo(), FIS_vextTsFolder(), FIS_visAllPartitionInvalid(), FIS_vnExtPartition(),
+                   FIS_fwAppl_SetIsExternal(), FIS_vselectedPartition(), HDD_isExtRecording(), HDD_SetExtRecording()
+            Fixed: INIOpenFile() added a new line every time

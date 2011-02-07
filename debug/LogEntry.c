@@ -18,7 +18,7 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
   if (FileName && FileName [0])
   {
     TAP_Hdd_Create (FileName, ATTR_NORMAL);
-    if ((File = TAP_Hdd_Fopen (FileName)) != NULL)
+    if((File = TAP_Hdd_Fopen (FileName)) != NULL)
     {
       LogSize = TAP_Hdd_Flen (File);
       TAP_Hdd_Fseek (File, 0, SEEK_END);

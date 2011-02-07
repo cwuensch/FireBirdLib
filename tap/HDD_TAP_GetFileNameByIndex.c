@@ -5,7 +5,11 @@ bool HDD_TAP_GetFileNameByIndex(int Index, char **TAPFileName)
   tTMSTAPTaskTable      *TMSTAPTaskTable;
   dword                 *FileHandle;
 
-  if((Index < 0) || (Index >= TAP_MAX) || !TAPFileName) return FALSE;
+  if((Index < 0) || (Index >= TAP_MAX) || !TAPFileName)
+  {
+    if(TAPFileName) *TAPFileName = NULL;
+    return FALSE;
+  }
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
 

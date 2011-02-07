@@ -105,18 +105,19 @@ void DumpSystemType(void)
 
       switch (ToppyInfo->SystemType)
       {
-        case ST_UNKNOWN : break;
-        case ST_S       : PRINTLOG("  SystemType    =  ST_S"); break;
-        case ST_ST      : PRINTLOG("  SystemType    =  ST_ST"); break;
-        case ST_T       : PRINTLOG("  SystemType    =  ST_T"); break;
-        case ST_C       : PRINTLOG("  SystemType    =  ST_C"); break;
-        case ST_CT      : PRINTLOG("  SystemType    =  ST_CT"); break;
-        case ST_T5700   : PRINTLOG("  SystemType    =  ST_T5700"); break;
-        case ST_TUK     : PRINTLOG("  SystemType    =  ST_TUK"); break;
-        case ST_TMSS    : PRINTLOG("  SystemType    =  ST_TMSS"); break;
-        case ST_TMST    : PRINTLOG("  SystemType    =  ST_TMST"); break;
-        case ST_TMSC    : PRINTLOG("  SystemType    =  ST_TMSC"); break;
-        default         : PRINTLOG("  SystemType    =  unhandled");
+        case ST_UNKNOWN   : break;
+        case ST_S         : PRINTLOG("  SystemType    =  ST_S"); break;
+        case ST_T         : PRINTLOG("  SystemType    =  ST_T"); break;
+        case ST_C         : PRINTLOG("  SystemType    =  ST_C"); break;
+        case ST_T5700     : PRINTLOG("  SystemType    =  ST_T5700"); break;
+        case ST_TMSS      : PRINTLOG("  SystemType    =  ST_TMSS"); break;
+        case ST_TMST      : PRINTLOG("  SystemType    =  ST_TMST"); break;
+        case ST_TMSC      : PRINTLOG("  SystemType    =  ST_TMSC"); break;
+        case ST_T5800     : PRINTLOG("  SystemType    =  ST_T5800"); break;
+        case ST_ST        : PRINTLOG("  SystemType    =  ST_ST"); break;
+        case ST_CT        : PRINTLOG("  SystemType    =  ST_CT"); break;
+        case ST_TF7k7HDPVR: PRINTLOG("  SystemType    =  ST_TF7k7HDPVR"); break;
+        default           : PRINTLOG("  SystemType    =  unhandled");
       }
 
       switch(ToppyInfo->DisplayType)
@@ -220,14 +221,16 @@ void DumpSatTables(void)
       {
         case ST_UNKNOWN:
         case ST_S:
-        case ST_ST:
         case ST_T:
         case ST_C:
-        case ST_CT:
         case ST_T5700:
-        case ST_TUK:
         case ST_TMST:
         case ST_TMSC:
+        case ST_T5800:
+        case ST_ST:
+        case ST_CT:
+        case ST_TF7k7HDPVR:
+        case ST_NRTYPES:
           break;
 
         case ST_TMSS:
@@ -311,12 +314,14 @@ void DumpTransponderTable(void)
         {
           case ST_UNKNOWN:
           case ST_S:
-          case ST_ST:
           case ST_T:
           case ST_C:
-          case ST_CT:
           case ST_T5700:
-          case ST_TUK:
+          case ST_T5800:
+          case ST_ST:
+          case ST_CT:
+          case ST_TF7k7HDPVR:
+          case ST_NRTYPES:
             break;
 
           case ST_TMSS:

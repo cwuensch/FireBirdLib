@@ -13,8 +13,8 @@ bool HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, __o
 
   if((status = lstat64(AbsFileName, &statbuf))) return FALSE;
 
-  *CInode = statbuf.st_ino;
-  *FileSize = statbuf.st_size;
+  if(CInode) *CInode = statbuf.st_ino;
+  if(FileSize) *FileSize = statbuf.st_size;
 
   return TRUE;
 }

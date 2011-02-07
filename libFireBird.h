@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-01-13"
+  #define __FBLIB_VERSION__ "2011-02-07"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -654,6 +654,15 @@
     FIU_RecSlot4,
   }tFileInUse;
 
+  typedef struct
+  {
+    char                DevPath[10];
+    char                MountPath[10];
+    char                DevName[16];
+    dword               SizeMB;
+    dword               PartType; //1 = jfs, 4 = FAT32, 5 = NTFS
+  }textPartitionInfo;   //used by the _extPartitionInfo struct
+
   void       FixInvalidFileName(char *FileName);
   int        HDD_AAM_Disable(void);
   int        HDD_AAM_Enable(byte AAMLevel);
@@ -673,10 +682,12 @@
   dword      HDD_GetInodeByRelFileName(char *Filename);
   dword      HDD_GetInodeByTypeFile(TYPE_File *File);
   bool       HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
+  bool       HDD_isExtRecording(void);
   bool       HDD_Move(char *FileName, char *FromDir, char *ToDir);
   void       HDD_Recycle(char *FileName);
   void       HDD_RemoveDir(char *DirPath, bool Recursive);
   void       HDD_Rename(char *FileName, char *NewFileName);
+  word       HDD_SetExtRecording(bool ExtDisk);
   int        HDD_Smart_DisableAttributeAutoSave(void);
   int        HDD_Smart_DisableOperations(void);
   int        HDD_Smart_EnableAttributeAutoSave(void);
@@ -747,8 +758,10 @@
   inline dword FIS_fwAppl_ClrTimer(void);
   inline dword FIS_fwAppl_ExecProgram(void);
   inline dword FIS_fwAppl_ExportChData(void);
+  inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_RestartTimeShiftSvc(void);
+  inline dword FIS_fwAppl_SetIsExternal(void);
   inline dword FIS_fwAppl_ShoutCast(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);
@@ -783,14 +796,18 @@
   inline dword FIS_vEEPROM(void);
   inline dword FIS_vEEPROMPin(void);
   inline dword FIS_vEtcInfo(void);
+  inline dword FIS_vextPartitionInfo(void);
+  inline dword FIS_vextTsFolder(void);
   inline dword FIS_vfdTimerId(void);
   inline dword FIS_vFlash(void);
   inline dword FIS_vgrid(void);
   inline dword FIS_vhddTapFolder(void);
   inline dword FIS_vhddTsFolder(void);
   inline dword FIS_viboxTimerId(void);
+  inline dword FIS_visAllPartitionInvalid(void);
   inline dword FIS_vIsPipActive(void);
   inline dword FIS_vMACAddress(void);
+  inline dword FIS_vnExtPartition(void);
   inline dword FIS_vnPipSvcNum(void);
   inline dword FIS_vOSDMap(void);
   inline dword FIS_vParentalInfo(void);
@@ -800,6 +817,7 @@
   inline dword FIS_vPipX(void);
   inline dword FIS_vPipY(void);
   inline dword FIS_vRECSlotAddress(byte Slot);
+  inline dword FIS_vselectedPartition(void);
   inline dword FIS_vShoutCastInfo(void);
   inline dword FIS_vShoutCastState(void);
   inline dword FIS_vTAPTable(void);
@@ -816,7 +834,7 @@
   //ST_C       = 4
   //ST_CT      = 5
   //ST_T5700   = 6
-  //ST_T5800     = 7
+  //ST_T5800   = 7
   //ST_TMSS    = 8
   //ST_TMST    = 9
   //ST_TMSC    = a
