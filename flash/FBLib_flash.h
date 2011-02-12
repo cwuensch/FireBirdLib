@@ -36,12 +36,19 @@
   #define TYPE_Service_TMST   TYPE_Service_TMSS
   #define TYPE_Service_TMSC   TYPE_Service_TMSS
 
-  bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
-  bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
-  bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
-  bool FlashServiceEncode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
+  bool FlashServiceDecode(void *Data, tFlashService *Service);
   bool FlashServiceDecode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
+  bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
+  bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
+  bool FlashServiceDelete(void *Data);
+  bool FlashServiceDelete_ST_TMSC(TYPE_Service_TMSC *Data);
+  bool FlashServiceDelete_ST_TMSS(TYPE_Service_TMSS *Data);
+  bool FlashServiceDelete_ST_TMST(TYPE_Service_TMST *Data);
+  bool FlashServiceDelServiceName(dword ServiceNameOffset);
+  bool FlashServiceEncode(void *Data, tFlashService *Service);
   bool FlashServiceEncode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
+  bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
+  bool FlashServiceEncode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
 
   typedef struct
   {
@@ -142,9 +149,13 @@
     byte                unused1;
   }__attribute__((packed)) TYPE_TpInfo_TMSC;
 
+  bool FlashTransponderTablesDecode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable);
   bool FlashTransponderTablesDecode_ST_TMSS(TYPE_TpInfo_TMSS *Data, tFlashTransponderTable *TransponderTable);
   bool FlashTransponderTablesDecode_ST_TMST(TYPE_TpInfo_TMST *Data, tFlashTransponderTable *TransponderTable);
-  bool FlashTransponderTablesDecode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesEncode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesEncode_ST_TMSS(TYPE_TpInfo_TMSS *Data, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesEncode_ST_TMST(TYPE_TpInfo_TMST *Data, tFlashTransponderTable *TransponderTable);
+
 
   bool FlashTimeDecode_ST_TMSS(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);
   bool FlashTimeDecode_ST_TMST(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);

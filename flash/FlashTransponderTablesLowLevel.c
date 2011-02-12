@@ -1,83 +1,6 @@
 #include                <string.h>
 #include                "FBLib_flash.h"
 
-bool FlashTransponderTablesGetInfo(int SatNum, int TransponderNum, tFlashTransponderTable *TransponderTable)
-{
-  //SatNum out of range
-  if((SatNum < 0) || (SatNum >= FlashSatTablesGetTotal())) return FALSE;
-
-  //TransponderNum out of range
-  if((TransponderNum < 0) || (TransponderNum >= FlashTransponderTablesGetTotal(SatNum))) return FALSE;
-
-  //TransponderTable is NULL
-  if(!TransponderTable) return FALSE;
-
-  switch(GetSystemType())
-  {
-    //Unknown and old 5k/6k systems are not supported
-    case ST_UNKNOWN:
-    case ST_S:
-    case ST_ST:
-    case ST_T:
-    case ST_C:
-    case ST_CT:
-    case ST_T5700:
-    case ST_T5800:
-    case ST_TF7k7HDPVR: return FALSE;
-
-    case ST_TMSS:
-    {
-      TYPE_TpInfo_TMSS *p;
-      int               d, i, TPIdx;
-
-      p = (TYPE_TpInfo_TMSS*)(FIS_vFlashBlockTransponderInfo());
-      if(!p) return FALSE;
-
-      d = *(int*)FIS_vFlashBlockTransponderInfo();
-      TPIdx = 0;
-      for(i = 0; i < d; i++)
-      {
-        if(p->SatIdx == SatNum)
-        {
-          if(TPIdx == TransponderNum) break;
-
-          TPIdx++;
-        }
-        p++;
-      }
-      if((i >= d) || (p->SatIdx != SatNum) || (TPIdx != TransponderNum)) return FALSE;
-
-      return FlashTransponderTablesDecode(p, TransponderTable);
-    }
-
-    case ST_TMST:
-    {
-      TYPE_TpInfo_TMST     *p;
-
-      p = (TYPE_TpInfo_TMST*)FIS_vFlashBlockTransponderInfo();
-      if(!p) return FALSE;
-      p = p + TransponderNum;
-
-      return FlashTransponderTablesDecode(p, TransponderTable);
-    }
-
-    case ST_TMSC:
-    {
-      TYPE_TpInfo_TMSC     *p;
-
-      p = (TYPE_TpInfo_TMSC*)FIS_vFlashBlockTransponderInfo();
-      if(!p) return FALSE;
-      p = p + TransponderNum;
-
-      return FlashTransponderTablesDecode(p, TransponderTable);
-    }
-
-    case ST_NRTYPES: break;
-  }
-
-  return FALSE;
-}
-
 bool FlashTransponderTablesDecode(void *Data, tFlashTransponderTable *TransponderTable)
 {
   //TransponderTable is NULL
@@ -154,6 +77,86 @@ bool FlashTransponderTablesDecode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTranspon
   TransponderTable->OriginalNetworkID = Data->OriginalNetworkID;
   TransponderTable->Modulation        = Data->ModulationType;
   TransponderTable->unused1           = Data->unused1;
+
+  return TRUE;
+}
+
+bool FlashTransponderTablesEncode(void *Data, tFlashTransponderTable *TransponderTable)
+{
+  //TransponderTable is NULL
+  if(!Data || !TransponderTable) return FALSE;
+
+  switch(GetSystemType())
+  {
+    //Unknown and old 5k/6k systems are not supported
+    case ST_UNKNOWN:
+    case ST_S:
+    case ST_ST:
+    case ST_T:
+    case ST_C:
+    case ST_CT:
+    case ST_T5700:
+    case ST_T5800:
+    case ST_TF7k7HDPVR: return FALSE;
+
+    case ST_TMSS: return FlashTransponderTablesEncode_ST_TMSS(Data, TransponderTable);
+    case ST_TMST: return FlashTransponderTablesEncode_ST_TMST(Data, TransponderTable);
+    case ST_TMSC: return FlashTransponderTablesEncode_ST_TMSC(Data, TransponderTable);
+
+    case ST_NRTYPES: break;
+  }
+
+  return FALSE;
+}
+
+bool FlashTransponderTablesEncode_ST_TMSS(TYPE_TpInfo_TMSS *Data, tFlashTransponderTable *TransponderTable)
+{
+  memset(Data, 0, sizeof(TYPE_TpInfo_TMSS));
+  Data->SatIdx            = TransponderTable->SatIndex;
+  Data->Polar             = TransponderTable->Polarisation;
+  Data->ModulationSystem  = TransponderTable->ModSystem;
+  Data->ModulationType    = TransponderTable->Modulation;
+  Data->FECMode           = TransponderTable->FEC;
+  Data->Pilot             = TransponderTable->Pilot;
+  Data->Frequency         = TransponderTable->Frequency;
+  Data->SymbolRate        = TransponderTable->SymbolRate;
+  Data->TSID              = TransponderTable->TSID;
+  Data->AllowTimeSync     = TransponderTable->ClockSync;
+  Data->OriginalNetworkID = TransponderTable->OriginalNetworkID;
+  Data->unused1           = TransponderTable->unused1;
+  Data->unused2           = TransponderTable->unused2;
+  Data->unused3           = TransponderTable->unused3;
+  Data->unused4           = TransponderTable->unused4;
+
+  return TRUE;
+}
+
+bool FlashTransponderTablesEncode_ST_TMST(TYPE_TpInfo_TMST *Data, tFlashTransponderTable *TransponderTable)
+{
+  memset(Data, 0, sizeof(TYPE_TpInfo_TMST));
+  Data->SatIdx            = TransponderTable->SatIndex;
+  Data->ChannelNr         = TransponderTable->ChannelNr;
+  Data->Bandwidth         = TransponderTable->Bandwidth;
+  Data->Frequency         = TransponderTable->Frequency;
+  Data->TSID              = TransponderTable->TSID;
+  Data->LPHP              = TransponderTable->LPHP;
+  Data->OriginalNetworkID = TransponderTable->OriginalNetworkID;
+  Data->NetworkID         = TransponderTable->NetworkID;
+  Data->unused1           = TransponderTable->unused1;
+  Data->unused2           = TransponderTable->unused2;
+
+  return TRUE;
+}
+
+bool FlashTransponderTablesEncode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable)
+{
+  memset(Data, 0, sizeof(TYPE_TpInfo_TMSC));
+  Data->Frequency         = TransponderTable->Frequency << 8;
+  Data->SymbolRate        = TransponderTable->SymbolRate;
+  Data->TSID              = TransponderTable->TSID;
+  Data->OriginalNetworkID = TransponderTable->OriginalNetworkID;
+  Data->ModulationType    = TransponderTable->Modulation;
+  Data->unused1           = TransponderTable->unused1;
 
   return TRUE;
 }

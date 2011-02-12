@@ -1,6 +1,6 @@
 #include "FBLib_flash.h"
 
-int FlashTransponderFindIndex(dword SatIndex, dword NetworkID, dword TSID)
+int FlashTransponderFindIndex2(dword SatIndex, dword NetworkID, dword TSID, byte ModSystem)
 {
   int                     TrCount, i;
   tFlashTransponderTable  TransponderTable;
@@ -10,7 +10,7 @@ int FlashTransponderFindIndex(dword SatIndex, dword NetworkID, dword TSID)
   {
     if(FlashTransponderTablesGetInfo(SatIndex, i, &TransponderTable))
     {
-      if((TransponderTable.OriginalNetworkID == NetworkID) && (TransponderTable.TSID == TSID)) return i;
+      if((TransponderTable.OriginalNetworkID == NetworkID) && (TransponderTable.TSID == TSID) && (TransponderTable.ModSystem == ModSystem)) return i;
     }
   }
 

@@ -56,7 +56,7 @@ word HDD_SetExtRecording(bool ExtDisk)
 
     DirEntry->Magic = 0xbacaed31;
     DirEntry->Path = TAP_MemAlloc(strlen(ExtDiskPart) + 1);
-    if(!DirEntry->Path)      return 0xf007;
+    if(!DirEntry->Path) return 0xf007;
 
     memset(DirEntry->Path, 0, strlen(ExtDiskPart) + 1);
     strcpy(DirEntry->Path, ExtDiskPart);

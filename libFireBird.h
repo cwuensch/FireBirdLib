@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-02-07"
+  #define __FBLIB_VERSION__ "2011-02-11"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -381,6 +381,8 @@
   bool FlashServiceSetInfo(int SvcType, int SvcNum, tFlashService *Service);
   bool FlashServiceAdd(int SvcType, tFlashService *Service);
   int  FlashServiceFind(int SvcType, word ServiceID, word PMTPID, word PCRPID, tFlashService *Service);
+  bool FlashServiceDel(int SvcType, int SvcNum);
+
   bool FlashServiceDecode(void *Data, tFlashService *Service);
   bool FlashServiceEncode(void *Data, tFlashService *Service);
 
@@ -452,8 +454,14 @@
 
   int  FlashTransponderTablesGetTotal(int SatNum);
   bool FlashTransponderTablesGetInfo(int SatNum, int TransponderNum, tFlashTransponderTable *TransponderTable);
-  bool FlashTransponderTablesDecode(void *Data, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesSetInfo(int SatNum, int TransponderNum, tFlashTransponderTable *TransponderTable);
+  int  FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesDel(int SatNum, int TransponderNum);
   int  FlashTransponderFindIndex(dword SatIndex, dword NetworkID, dword TSID);
+  int  FlashTransponderFindIndex2(dword SatIndex, dword NetworkID, dword TSID, byte ModSystem);
+
+  bool FlashTransponderTablesDecode(void *Data, tFlashTransponderTable *TransponderTable);
+  bool FlashTransponderTablesEncode(void *Data, tFlashTransponderTable *TransponderTable);
 
   typedef struct
   {
