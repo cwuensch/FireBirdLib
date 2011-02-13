@@ -22,35 +22,37 @@ void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dwor
   dword                 StrLen;
   bool                  bRestricted;
 
-  if(!str || !str[0] || !FontData || !FontData->pFontData) return;
+  if(!str || !str[0] || !FontData || !FontData->pFontData || (maxX <= x)) return;
 
   if(GetOSDRegionWidth(rgn) && GetOSDRegionWidth(rgn) <=  maxX) maxX = GetOSDRegionWidth(rgn) - 1;
 
-  strncpy(newstr, str, 256);
-  newstr[256] = '\0';
+  strncpy(newstr, str, sizeof(newstr));
+  newstr[sizeof(newstr) - 1] = '\0';
   XEnd = x + FM_GetStringWidthAndRestrict(newstr, FontData, maxX-x, &bRestricted);
 
-  if (bRestricted && bDot)
+  if(bRestricted && bDot)
   {
     dotWidth = FM_GetStringWidth("...", FontData);
-
     newstrlen = strlen(newstr);
-    do
+    if(newstrlen)
     {
-      LastChar = newstr[newstrlen-1];
-      if(FM_isValidCharacter(LastChar))
+      do
       {
-          width = FontData->FontDef[FM_CharToIndex(LastChar)].Width;
-          XEnd -= width;
-      }
-      newstr[newstrlen - 1]= '\0';
-      newstrlen--;
-    }while(  ((XEnd + dotWidth) > maxX)
-           &&(width != 0)
-           &&(newstrlen > 0));
-
+        LastChar = newstr[newstrlen - 1];
+        if(FM_isValidCharacter(LastChar))
+        {
+            width = FontData->FontDef[FM_CharToIndex(LastChar)].Width;
+            XEnd -= width;
+        }
+        newstr[newstrlen - 1]= '\0';
+        newstrlen--;
+      }while(((XEnd + dotWidth) > maxX) &&
+             (width != 0) &&
+             (newstrlen > 0));
+    }
     strcat(newstr, "...");
-    XEnd += FM_GetStringWidth("...", FontData);
+    XEnd += dotWidth;
+    if(XEnd > maxX) return;
   }
 
   YEnd = y + FM_GetStringHeight(newstr, FontData);
