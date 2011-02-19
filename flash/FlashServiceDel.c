@@ -4,7 +4,6 @@
 bool FlashServiceDel(int SvcType, int SvcNum)
 {
   word                 *nSvc;
-  dword                 NameOffset;
 
   //SvcType out of range
   if((SvcType < 0) || (SvcType > SVC_TYPE_Radio)) return FALSE;
@@ -17,6 +16,7 @@ bool FlashServiceDel(int SvcType, int SvcNum)
     nSvc = (word*)TryResolve("_nTvSvc");
   else
     nSvc = (word*)TryResolve("_nRadioSvc");
+  if(!nSvc) return FALSE;
 
   switch(GetSystemType())
   {
@@ -37,18 +37,16 @@ bool FlashServiceDel(int SvcType, int SvcNum)
       tFlashTimer           TimerInfo;
       int                   i;
 
+      FlashServiceDelServiceName(SvcType, SvcNum);
+
       if(SvcType == SVC_TYPE_Tv)
         p = (TYPE_Service_TMSS*)(FIS_vFlashBlockTVServices() + SvcNum * sizeof(TYPE_Service_TMSS));
       else
         p = (TYPE_Service_TMSS*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMSS));
       if(!p) return FALSE;
 
-      NameOffset = p->NameOffset;
-
       if(!FlashServiceDelete(p)) return FALSE;
       *nSvc = *nSvc - 1;
-
-      FlashServiceDelServiceName(NameOffset);
 
       //Delete provider
 
@@ -71,18 +69,16 @@ bool FlashServiceDel(int SvcType, int SvcNum)
       tFlashTimer           TimerInfo;
       int                   i;
 
+      FlashServiceDelServiceName(SvcType, SvcNum);
+
       if(SvcType == SVC_TYPE_Tv)
         p = (TYPE_Service_TMST*)(FIS_vFlashBlockTVServices() + SvcNum * sizeof(TYPE_Service_TMST));
       else
         p = (TYPE_Service_TMST*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMST));
       if(!p) return FALSE;
 
-      NameOffset = p->NameOffset;
-
       if(!FlashServiceDelete(p)) return FALSE;
       *nSvc = *nSvc - 1;
-
-      FlashServiceDelServiceName(NameOffset);
 
       //Delete provider
 
@@ -105,18 +101,16 @@ bool FlashServiceDel(int SvcType, int SvcNum)
       tFlashTimer           TimerInfo;
       int                   i;
 
+      FlashServiceDelServiceName(SvcType, SvcNum);
+
       if(SvcType == SVC_TYPE_Tv)
         p = (TYPE_Service_TMSC*)(FIS_vFlashBlockTVServices() + SvcNum * sizeof(TYPE_Service_TMSC));
       else
         p = (TYPE_Service_TMSC*)(FIS_vFlashBlockRadioServices() + SvcNum * sizeof(TYPE_Service_TMSC));
       if(!p) return FALSE;
 
-      NameOffset = p->NameOffset;
-
       if(!FlashServiceDelete(p)) return FALSE;
       *nSvc = *nSvc - 1;
-
-      FlashServiceDelServiceName(NameOffset);
 
       //Delete provider
 

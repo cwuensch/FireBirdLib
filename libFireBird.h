@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-02-13"
+  #define __FBLIB_VERSION__ "2011-02-19"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -763,13 +763,17 @@
 
   dword TryResolve(char *Function);
 
+  inline dword FIS_fwAppl_AddSvcName(void);
   inline dword FIS_fwAppl_ClrTimer(void);
+  inline dword FIS_fwAppl_DeleteRadioSvcName(void);
+  inline dword FIS_fwAppl_DeleteTvSvcName(void);
   inline dword FIS_fwAppl_ExecProgram(void);
   inline dword FIS_fwAppl_ExportChData(void);
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_RestartTimeShiftSvc(void);
   inline dword FIS_fwAppl_SetIsExternal(void);
+  inline dword FIS_fwAppl_SetProviderName(void);
   inline dword FIS_fwAppl_ShoutCast(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);

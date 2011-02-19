@@ -48,8 +48,4 @@ void INIFindStartEnd (char *Key, char **Start, char **End, dword MaxEntrylen)
   }
 
   if (*End >= *Start + MaxEntrylen) *End = *Start + MaxEntrylen - 1;
-
-#ifdef DEBUG_FIREBIRDLIB
-  TAP_Print ("FireBirdLib: INIFindStartEnd %x - %x\n", *Start, *End);
-#endif
 }

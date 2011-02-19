@@ -623,10 +623,6 @@ static void CountLen(ARDATA *ar, short i, word *lencnt, short nparm)
       }
       else
       {
-#if 0
-static int max = 0;
-if(newsz+2 > max) {TAP_Print("sz=%d, max=%d\n", newsz+2, sizeof(buf1)/sizeof(short)); max = newsz+2; }
-#endif
         new[newsz] = ar->Left[j];
         new[newsz+1] = ar->Right[j];
         newsz += 2;

@@ -41,10 +41,10 @@
   bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
   bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
   bool FlashServiceDelete(void *Data);
+  bool FlashServiceDelServiceName(int SvcType, int SvcNum);
   bool FlashServiceDelete_ST_TMSC(TYPE_Service_TMSC *Data);
   bool FlashServiceDelete_ST_TMSS(TYPE_Service_TMSS *Data);
   bool FlashServiceDelete_ST_TMST(TYPE_Service_TMST *Data);
-  bool FlashServiceDelServiceName(dword ServiceNameOffset);
   bool FlashServiceEncode(void *Data, tFlashService *Service);
   bool FlashServiceEncode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
   bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);

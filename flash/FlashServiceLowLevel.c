@@ -105,8 +105,14 @@ bool FlashServiceEncode(void *Data, tFlashService *Service)
 
 bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
 {
-
   char                 *Text;
+  bool                  isRadio;
+  int                   ServiceIndex;
+
+  char *(*Appl_AddSvcName)(char const*);
+  void  (*Appl_DeleteTvSvcName)(unsigned short, bool);
+  void  (*Appl_DeleteRadioSvcName)(unsigned short, bool);
+  word  (*Appl_SetProviderName)(char const*);
 
   memset(Data, 0, sizeof(TYPE_Service_TMSS));
   Data->SatIdx          = Service->SatIndex;
@@ -127,24 +133,32 @@ bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
   Data->unknown1        = Service->unknown1;
   memcpy(Data->unknown2, Service->unknown2, 6);
 
-  Text = (char*)FIS_vFlashBlockServiceName();
-  while(Text[0])
-  {
-    if(strncmp(Text, Service->ServiceName, MAX_SvcName) == 0) break;
-    Text += (strlen(Text) + 1);
-  }
-  if(!Text[0]) strncpy(Text, Service->ServiceName, MAX_SvcName);
-  Data->NameOffset = (dword)Text - FIS_vFlashBlockServiceName();
+  isRadio = (dword)Data >= FIS_vFlashBlockRadioServices();
 
-  Text = (char*)FIS_vFlashBlockProviderInfo();
-  Data->ProviderIdx = 0;
-  while(Text[0])
+  //Change the service name if necessary
+  Text = (char*)(FIS_vFlashBlockServiceName() + Data->NameOffset);
+  if((Data->NameOffset == 0) || (Data->NameOffset == 0xffffffff) || (strncmp(Text, Service->ServiceName, MAX_SvcName) != 0))
   {
-    if(strncmp(Text, Service->ProviderName, 20) == 0) break;
-    Text += 21;
-    Data->ProviderIdx = Data->ProviderIdx + 1;
+    if(isRadio)
+    {
+      ServiceIndex = ((dword)Data - FIS_vFlashBlockRadioServices()) / sizeof(TYPE_Service_TMSS);
+      Appl_DeleteRadioSvcName = (void*)FIS_fwAppl_DeleteRadioSvcName();
+      if(Appl_DeleteRadioSvcName) Appl_DeleteRadioSvcName(ServiceIndex, FALSE);
+    }
+    else
+    {
+      ServiceIndex = ((dword)Data - FIS_vFlashBlockTVServices()) / sizeof(TYPE_Service_TMSS);
+      Appl_DeleteTvSvcName = (void*)FIS_fwAppl_DeleteTvSvcName();
+      if(Appl_DeleteTvSvcName) Appl_DeleteTvSvcName(ServiceIndex, FALSE);
+    }
+
+    Appl_AddSvcName = (void*)FIS_fwAppl_AddSvcName();
+    if(Appl_AddSvcName) Data->NameOffset = (dword)Appl_AddSvcName(Service->ServiceName);
   }
-  if(!*Text) strncpy(Text, Service->ProviderName, 20);
+
+  //Update the provider name
+  Appl_SetProviderName = (void*)FIS_fwAppl_SetProviderName();
+  if(Appl_SetProviderName) Data->ProviderIdx = Appl_SetProviderName(Service->ProviderName);
 
   return TRUE;
 }
@@ -218,214 +232,22 @@ bool FlashServiceDelete_ST_TMSC(TYPE_Service_TMSC *Data)
   return FlashServiceDelete_ST_TMSS(Data);
 }
 
-bool FlashServiceDelServiceName(dword ServiceNameOffset)
+bool FlashServiceDelServiceName(int SvcType, int SvcNum)
 {
-  int                   NrServices;
-  char                 *Text, *d;
-  int                   i, l;
+  void (*Appl_DeleteTvSvcName)(unsigned short, bool);
+  void (*Appl_DeleteRadioSvcName)(unsigned short, bool);
 
-  //Check that no TV service references this ServiceNameOffset
-  NrServices = FlashServiceGetTotal(SVC_TYPE_Tv);
-  for(i = 0; i < NrServices; i++)
+  if(SvcType == SVC_TYPE_Tv)
   {
-    switch(GetSystemType())
-    {
-      //Unknown and old 5k/6k systems are not supported
-      case ST_UNKNOWN:
-      case ST_S:
-      case ST_ST:
-      case ST_T:
-      case ST_C:
-      case ST_CT:
-      case ST_T5700:
-      case ST_T5800:
-      case ST_TF7k7HDPVR: return FALSE;
-
-      case ST_TMSS:
-      {
-        TYPE_Service_TMSS    *p;
-
-        p = (TYPE_Service_TMSS*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMSS));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_TMST:
-      {
-        TYPE_Service_TMST    *p;
-
-        p = (TYPE_Service_TMST*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMST));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_TMSC:
-      {
-        TYPE_Service_TMSC    *p;
-
-        p = (TYPE_Service_TMSC*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMSC));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_NRTYPES: break;
-    }
+    Appl_DeleteTvSvcName = (void*)FIS_fwAppl_DeleteTvSvcName();
+    if(!Appl_DeleteTvSvcName) return FALSE;
+    Appl_DeleteTvSvcName(SvcNum, FALSE);
   }
-
-  //Check that no radio service references this ServiceNameOffset
-  NrServices = FlashServiceGetTotal(SVC_TYPE_Radio);
-  for(i = 0; i < NrServices; i++)
+  else
   {
-    switch(GetSystemType())
-    {
-      //Unknown and old 5k/6k systems are not supported
-      case ST_UNKNOWN:
-      case ST_S:
-      case ST_ST:
-      case ST_T:
-      case ST_C:
-      case ST_CT:
-      case ST_T5700:
-      case ST_T5800:
-      case ST_TF7k7HDPVR: return FALSE;
-
-      case ST_TMSS:
-      {
-        TYPE_Service_TMSS    *p;
-
-        p = (TYPE_Service_TMSS*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMSS));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_TMST:
-      {
-        TYPE_Service_TMST    *p;
-
-        p = (TYPE_Service_TMST*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMST));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_TMSC:
-      {
-        TYPE_Service_TMSC    *p;
-
-        p = (TYPE_Service_TMSC*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMSC));
-        if(!p || (p->NameOffset == ServiceNameOffset)) return FALSE;
-        break;
-      }
-
-      case ST_NRTYPES: break;
-    }
-  }
-
-  //Find the end of the ServiceNameList
-  Text = (char*)(FIS_vFlashBlockServiceName() + ServiceNameOffset);
-  while(Text[0])
-  {
-    Text += (strlen(Text) + 1);
-  }
-
-  //Move all strings
-  d = (char*)FIS_vFlashBlockServiceName() + ServiceNameOffset;
-  l = strlen(d) + 1;
-  memcpy(d, d + l, Text - d - l);
-
-  //Reindex all TV services
-  NrServices = FlashServiceGetTotal(SVC_TYPE_Tv);
-  for(i = 0; i < NrServices; i++)
-  {
-    switch(GetSystemType())
-    {
-      //Unknown and old 5k/6k systems are not supported
-      case ST_UNKNOWN:
-      case ST_S:
-      case ST_ST:
-      case ST_T:
-      case ST_C:
-      case ST_CT:
-      case ST_T5700:
-      case ST_T5800:
-      case ST_TF7k7HDPVR: return FALSE;
-
-      case ST_TMSS:
-      {
-        TYPE_Service_TMSS    *p;
-
-        p = (TYPE_Service_TMSS*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMSS));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-        break;
-      }
-
-      case ST_TMST:
-      {
-        TYPE_Service_TMST    *p;
-
-        p = (TYPE_Service_TMST*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMST));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-
-        break;
-      }
-
-      case ST_TMSC:
-      {
-        TYPE_Service_TMSC    *p;
-
-        p = (TYPE_Service_TMSC*)(FIS_vFlashBlockTVServices() + i * sizeof(TYPE_Service_TMSC));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-        break;
-      }
-
-      case ST_NRTYPES: break;
-    }
-  }
-
-  //Reindex all radio services
-  NrServices = FlashServiceGetTotal(SVC_TYPE_Radio);
-  for(i = 0; i < NrServices; i++)
-  {
-    switch(GetSystemType())
-    {
-      //Unknown and old 5k/6k systems are not supported
-      case ST_UNKNOWN:
-      case ST_S:
-      case ST_ST:
-      case ST_T:
-      case ST_C:
-      case ST_CT:
-      case ST_T5700:
-      case ST_T5800:
-      case ST_TF7k7HDPVR: return FALSE;
-
-      case ST_TMSS:
-      {
-        TYPE_Service_TMSS    *p;
-
-        p = (TYPE_Service_TMSS*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMSS));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-        break;
-      }
-
-      case ST_TMST:
-      {
-        TYPE_Service_TMST    *p;
-
-        p = (TYPE_Service_TMST*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMST));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-        break;
-      }
-
-      case ST_TMSC:
-      {
-        TYPE_Service_TMSC    *p;
-
-        p = (TYPE_Service_TMSC*)(FIS_vFlashBlockRadioServices() + i * sizeof(TYPE_Service_TMSC));
-        if(p && (p->NameOffset > ServiceNameOffset)) p->NameOffset = p->NameOffset - l;
-        break;
-      }
-      case ST_NRTYPES: break;
-    }
+    Appl_DeleteRadioSvcName = (void*)FIS_fwAppl_DeleteRadioSvcName();
+    if(!Appl_DeleteRadioSvcName) return FALSE;
+    Appl_DeleteRadioSvcName(SvcNum, FALSE);
   }
 
   return TRUE;

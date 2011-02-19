@@ -601,4 +601,6 @@ License:  This library is freeware. You may use this code in your own projects f
                    FIS_fwAppl_SetIsExternal(), FIS_vselectedPartition(), HDD_isExtRecording(), HDD_SetExtRecording()
             Fixed: INIOpenFile() added a new line every time
 2011-02-11  Added: FlashServiceDel(), FlashTransponderTablesSetInfo(), FlashTransponderTablesAdd(), FlashTransponderTablesDel(), FlashTransponderFindIndex2()
-2011-02-13  Fixed: FM_PutString() could end up in an endless if there wasn't enough OSD space for a single character. In addition the "..." have been drawn beyond maxX
+2011-02-13  Fixed: FM_PutString() accessed memory outside of the newstr array if there wasn't enough OSD space for a single character. In addition the "..." have been drawn beyond maxX
+2011-02-19  Fixed: the firmware didn't recognize the service name of services added by FlashServiceAdd(). Used some f/w functions to fix this.
+            Added: FIS_fwAppl_AddSvcName(), FIS_fwAppl_DeleteTvSvcName(), FIS_fwAppl_DeleteRadioSvcName() and FIS_fwAppl_SetProviderName()

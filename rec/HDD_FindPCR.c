@@ -16,9 +16,6 @@ int HDD_FindPCR (byte *pBuffer, dword BufferSize, word PID)
       //the 33 bit number can be shifted right 6 times and divided by 84375
       PCR = (pBuffer [i + 6] << 19) | (pBuffer [i + 7] << 11) | (pBuffer [i + 8] << 3) | (pBuffer [i + 9] >> 5);
       PCR /= 84375;
-#ifdef DEBUG_FIREBIRDLIB
-      TAP_Print ("PCR @  0x%8.8x = %d\n", i, PCR);
-#endif
       return (int) PCR;
     }
     i += 188;

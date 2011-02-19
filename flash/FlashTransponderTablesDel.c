@@ -4,11 +4,9 @@
 bool FlashTransponderTablesDel(int SatNum, int TransponderNum)
 {
   //SatNum out of range
-  TAP_PrintNet("A");
   if((SatNum < 0) || (SatNum >= FlashSatTablesGetTotal())) return FALSE;
 
   //TransponderNum out of range
-  TAP_PrintNet("B");
   if((TransponderNum < 0) || (TransponderNum >= FlashTransponderTablesGetTotal(SatNum))) return FALSE;
 
   switch(GetSystemType())
@@ -31,11 +29,9 @@ bool FlashTransponderTablesDel(int SatNum, int TransponderNum)
       int                     i, TPIdx;
       dword                  *NrTransponders;
 
-      TAP_PrintNet("C");
       pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       if(!pSat) return FALSE;
 
-      TAP_PrintNet("D");
       pTransp = (TYPE_TpInfo_TMSS*)(FIS_vFlashBlockTransponderInfo());
       if(!pTransp) return FALSE;
 
@@ -47,12 +43,10 @@ bool FlashTransponderTablesDel(int SatNum, int TransponderNum)
         pSat++;
       }
       pTransp += (TPIdx + TransponderNum);
-      TAP_PrintNet("Delete at TP %d\n", TPIdx);
 
       //Find the end of the transponder list
       pTranspEnd = pTransp;
       while(pTranspEnd->Frequency) pTranspEnd++;
-      TAP_PrintNet("TPEnd @ %x\n", (dword)pTranspEnd - FIS_vFlashBlockTransponderInfo());
 
       //Move all transponders
       while(pTranspEnd > pTransp)
@@ -66,7 +60,6 @@ bool FlashTransponderTablesDel(int SatNum, int TransponderNum)
       *NrTransponders = *NrTransponders - 1;
       pSat->NrOfTransponders--;
 
-      TAP_PrintNet("E\n");
       return TRUE;
     }
 

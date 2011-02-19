@@ -44,12 +44,10 @@ int FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTab
       }
       pSat--;
       pTransp += TPIdx;
-      TAP_PrintNet("Insert after TP %d\n", TPIdx);
 
       //Find the end of the transponder list
       pTranspEnd = pTransp;
       while(pTranspEnd->Frequency) pTranspEnd++;
-      TAP_PrintNet("TPEnd @ %x\n", (dword)pTranspEnd - FIS_vFlashBlockTransponderInfo());
 
       //Create a hole for the new transponder
       while(pTranspEnd > pTransp)
