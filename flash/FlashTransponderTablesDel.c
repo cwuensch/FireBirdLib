@@ -26,27 +26,34 @@ bool FlashTransponderTablesDel(int SatNum, int TransponderNum)
     {
       TYPE_TpInfo_TMSS       *pTransp, *pTranspEnd;
       TYPE_SatInfo_TMSS      *pSat;
-      int                     i, TPIdx;
+      int                     i, TPIdx, NrSats;
       dword                  *NrTransponders;
 
       pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       if(!pSat) return FALSE;
 
+      NrSats = FlashSatTablesGetTotal();
+
       pTransp = (TYPE_TpInfo_TMSS*)(FIS_vFlashBlockTransponderInfo());
       if(!pTransp) return FALSE;
 
+      //Find the end of the transponder list
+      pTranspEnd = pTransp;
+      for(i = 0; i <= NrSats; i++)
+      {
+        pTranspEnd += (pSat->NrOfTransponders);
+        pSat++;
+      }
+
       //Find the location where to delete the transponder
       TPIdx = 0;
+      pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       for(i = 0; i < SatNum; i++)
       {
         TPIdx += pSat->NrOfTransponders;
         pSat++;
       }
       pTransp += (TPIdx + TransponderNum);
-
-      //Find the end of the transponder list
-      pTranspEnd = pTransp;
-      while(pTranspEnd->Frequency) pTranspEnd++;
 
       //Move all transponders
       while(pTranspEnd > pTransp)

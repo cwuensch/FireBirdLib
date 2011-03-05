@@ -29,8 +29,6 @@ int FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTab
       int                     i, TPIdx, NrSats;
       dword                  *NrTransponders;
 
-      TYPE_TpInfo_TMSS       *pTranspStart;
-
       pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       if(!pSat) return -1;
 
@@ -38,10 +36,9 @@ int FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTab
 
       pTransp = (TYPE_TpInfo_TMSS*)(FIS_vFlashBlockTransponderInfo());
       if(!pTransp) return -1;
-      pTranspStart = pTransp;
 
       //Find the end of the transponder list
-      pTranspEnd = pTranspStart;
+      pTranspEnd = pTransp;
       for(i = 0; i <= NrSats; i++)
       {
         pTranspEnd += (pSat->NrOfTransponders);
