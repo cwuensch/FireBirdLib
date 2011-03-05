@@ -34,8 +34,6 @@ bool FlashServiceDel(int SvcType, int SvcNum)
     case ST_TMSS:
     {
       TYPE_Service_TMSS    *p;
-      tFlashTimer           TimerInfo;
-      int                   i;
 
       FlashServiceDelServiceName(SvcType, SvcNum);
 
@@ -50,15 +48,8 @@ bool FlashServiceDel(int SvcType, int SvcNum)
 
       //Delete provider
 
-      //Reindex all timer
-      for(i = 0; i < TAP_Timer_GetTotalNum(); i++)
-      {
-        if(FlashTimerGetInfo(i, &TimerInfo) && (TimerInfo.ServiceType == SvcType) && (TimerInfo.ServiceIndex > SvcNum))
-        {
-          TimerInfo.ServiceIndex--;
-          FlashTimerSetInfo(i, &TimerInfo);
-        }
-      }
+      FlashReindexFavorites(SvcType, SvcNum, -1);
+      FlashReindexTimers(SvcType, SvcNum, -1);
 
       return TRUE;
     }
@@ -66,8 +57,6 @@ bool FlashServiceDel(int SvcType, int SvcNum)
     case ST_TMST:
     {
       TYPE_Service_TMST    *p;
-      tFlashTimer           TimerInfo;
-      int                   i;
 
       FlashServiceDelServiceName(SvcType, SvcNum);
 
@@ -82,15 +71,8 @@ bool FlashServiceDel(int SvcType, int SvcNum)
 
       //Delete provider
 
-      //Reindex all timer
-      for(i = 0; i < TAP_Timer_GetTotalNum(); i++)
-      {
-        if(FlashTimerGetInfo(i, &TimerInfo) && (TimerInfo.ServiceType == SvcType) && (TimerInfo.ServiceIndex > SvcNum))
-        {
-          TimerInfo.ServiceIndex--;
-          FlashTimerSetInfo(i, &TimerInfo);
-        }
-      }
+      FlashReindexFavorites(SvcType, SvcNum, -1);
+      FlashReindexTimers(SvcType, SvcNum, -1);
 
       return TRUE;
     }
@@ -98,8 +80,6 @@ bool FlashServiceDel(int SvcType, int SvcNum)
     case ST_TMSC:
     {
       TYPE_Service_TMSC    *p;
-      tFlashTimer           TimerInfo;
-      int                   i;
 
       FlashServiceDelServiceName(SvcType, SvcNum);
 
@@ -114,15 +94,8 @@ bool FlashServiceDel(int SvcType, int SvcNum)
 
       //Delete provider
 
-      //Reindex all timer
-      for(i = 0; i < TAP_Timer_GetTotalNum(); i++)
-      {
-        if(FlashTimerGetInfo(i, &TimerInfo) && (TimerInfo.ServiceType == SvcType) && (TimerInfo.ServiceIndex > SvcNum))
-        {
-          TimerInfo.ServiceIndex--;
-          FlashTimerSetInfo(i, &TimerInfo);
-        }
-      }
+      FlashReindexFavorites(SvcType, SvcNum, -1);
+      FlashReindexTimers(SvcType, SvcNum, -1);
 
       return TRUE;
     }

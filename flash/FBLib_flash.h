@@ -278,6 +278,8 @@
   bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
   bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
 
+  void FlashReindexTimers(int SvcType, int FromSvcNum, int ToSvcNum);
+
   typedef struct
   {
     dword               StartTime;
@@ -302,5 +304,16 @@
   bool FlashADEncode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
   bool FlashADEncode_ST_TMST(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
   bool FlashADEncode_ST_TMSC(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
+
+  typedef struct
+  {
+    char                GroupName[12];
+    word                SvcNum[100];
+    byte                SvcType[100];
+    byte                NrEntries;
+    byte                unused;
+  } TYPE_Favorites;
+
+  void FlashReindexFavorites(int SvcType, int FromSvcNum, int ToSvcNum);
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-02-19"
+  #define __FBLIB_VERSION__ "2011-03-05"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -382,6 +382,7 @@
   bool FlashServiceAdd(int SvcType, tFlashService *Service);
   int  FlashServiceFind(int SvcType, word ServiceID, word PMTPID, word PCRPID, tFlashService *Service);
   bool FlashServiceDel(int SvcType, int SvcNum);
+  bool FlashServiceMove(int SvcType, int FromSvcNum, int ToSvcNum);
 
   bool FlashServiceDecode(void *Data, tFlashService *Service);
   bool FlashServiceEncode(void *Data, tFlashService *Service);

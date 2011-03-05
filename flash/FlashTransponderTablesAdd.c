@@ -26,17 +26,31 @@ int FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTab
     {
       TYPE_TpInfo_TMSS       *pTransp, *pTranspEnd;
       TYPE_SatInfo_TMSS      *pSat;
-      int                     i, TPIdx;
+      int                     i, TPIdx, NrSats;
       dword                  *NrTransponders;
+
+      TYPE_TpInfo_TMSS       *pTranspStart;
 
       pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       if(!pSat) return -1;
 
+      NrSats = FlashSatTablesGetTotal();
+
       pTransp = (TYPE_TpInfo_TMSS*)(FIS_vFlashBlockTransponderInfo());
       if(!pTransp) return -1;
+      pTranspStart = pTransp;
+
+      //Find the end of the transponder list
+      pTranspEnd = pTranspStart;
+      for(i = 0; i <= NrSats; i++)
+      {
+        pTranspEnd += (pSat->NrOfTransponders);
+        pSat++;
+      }
 
       //Find the location where to insert the new transponder
       TPIdx = 0;
+      pSat = (TYPE_SatInfo_TMSS*)(FIS_vFlashBlockSatInfo());
       for(i = 0; i <= SatNum; i++)
       {
         TPIdx += pSat->NrOfTransponders;
@@ -44,10 +58,6 @@ int FlashTransponderTablesAdd(int SatNum, tFlashTransponderTable *TransponderTab
       }
       pSat--;
       pTransp += TPIdx;
-
-      //Find the end of the transponder list
-      pTranspEnd = pTransp;
-      while(pTranspEnd->Frequency) pTranspEnd++;
 
       //Create a hole for the new transponder
       while(pTranspEnd > pTransp)
