@@ -248,6 +248,7 @@
 
   typedef enum
   {
+    PLT_Unchanged,
     PLT_DataFiles,
     PLT_ProgramFiles,
     PLT_MP3Files,

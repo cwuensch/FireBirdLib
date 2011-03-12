@@ -7,6 +7,7 @@ bool Shutdown(TaskEnum Task)
 
   Appl_EvtProc_PowerOff = (void*)FIS_fwPowerOff();
   if(!Appl_EvtProc_PowerOff) return FALSE;
+
   Appl_EvtProc_PowerOff(Task, 0);
 
   return TRUE;
