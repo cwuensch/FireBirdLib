@@ -1,5 +1,5 @@
 Name:     FireBirdLib
-For:      Topfield TF5xxxPVR
+For:      Topfield SRP (TMS) series
 Author:   FireBird & ibbi
 Descr.:   A collection of useful and dangerous functions ;-)
 
@@ -606,3 +606,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: FIS_fwAppl_AddSvcName(), FIS_fwAppl_DeleteTvSvcName(), FIS_fwAppl_DeleteRadioSvcName() and FIS_fwAppl_SetProviderName()
 2011-03-05  Fixed: Some Timer and Favorites reindexing bugs with FlashServiceAdd(), FlashServiceDel() and FlashTransponderTablesAdd()
             Added: FlashServiceMove()
+2011-03-12  Added: ShowPvrList() allows to show the Toppie's file list from within a TAP

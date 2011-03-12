@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-03-05"
+  #define __FBLIB_VERSION__ "2011-03-12"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -246,6 +246,14 @@
     dword                 unknown2[64];
   } tAudioTrk;
 
+  typedef enum
+  {
+    PLT_DataFiles,
+    PLT_ProgramFiles,
+    PLT_MP3Files,
+    PLT_MediaFiles,
+  } tPvrListType;
+
   tAudioTrk *AudioTrackInfo(void);
   bool  CaptureScreen(int BMPwidth, int BMPheight, byte *BMPPixelBuffer, bool bOSD, int Alpha);
   void  DrawOSDLine(word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color);
@@ -265,6 +273,7 @@
   void  SetRemoteMode(byte Mode, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
   void  ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay);
+  bool  ShowPvrList(tPvrListType PvrListType);
   void  SoundSinus(word freq, dword durationInMilliseconds, word Amplitude);
   int   TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite, dword FilterColor);
   byte  TunerGet(int MainSub);
@@ -772,6 +781,8 @@
   inline dword FIS_fwAppl_ExportChData(void);
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_ImportChData(void);
+  inline dword FIS_fwAppl_PvrList(void);
+  inline dword FIS_fwAppl_PvrList_SetListType(void);
   inline dword FIS_fwAppl_RestartTimeShiftSvc(void);
   inline dword FIS_fwAppl_SetIsExternal(void);
   inline dword FIS_fwAppl_SetProviderName(void);
