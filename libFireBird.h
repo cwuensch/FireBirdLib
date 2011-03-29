@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-03-12"
+  #define __FBLIB_VERSION__ "2011-03-26"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -136,6 +136,7 @@
   bool        InitTAPex(void);
   void        InitTAPexFailedMsg(char *ProgramName);
   tBootReason BootReason(void);
+  void        TAP_EnterNormalNoInfo(void);
   dword       FirmwareDatMJD(void);
   void        FlushCache(dword *pAddr, int Size);
   char       *GetApplVer(void);
@@ -778,6 +779,7 @@
   inline dword FIS_fwAppl_ClrTimer(void);
   inline dword FIS_fwAppl_DeleteRadioSvcName(void);
   inline dword FIS_fwAppl_DeleteTvSvcName(void);
+  inline dword FIS_fwAppl_EnterNormal(void);
   inline dword FIS_fwAppl_ExecProgram(void);
   inline dword FIS_fwAppl_ExportChData(void);
   inline dword FIS_fwAppl_GetIsExternal(void);

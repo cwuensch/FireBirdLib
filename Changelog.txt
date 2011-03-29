@@ -607,3 +607,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-03-05  Fixed: Some Timer and Favorites reindexing bugs with FlashServiceAdd(), FlashServiceDel() and FlashTransponderTablesAdd()
             Added: FlashServiceMove()
 2011-03-12  Added: ShowPvrList() allows to show the Toppie's file list from within a TAP
+2011-03-26  Added: TAP_EnterNormalNoInfo() which allows to enter normal mode without displaying the pvr infos
+            Added: FIS_fwAppl_EnterNormal()
+            Changed FIS_vEtcInfo: Instead of returing a point to _etcInfo, it returns a pointer to the _etcInfo struct
