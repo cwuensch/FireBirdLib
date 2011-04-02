@@ -19,6 +19,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
   if(TAPID)
   {
     int Index = HDD_TAP_GetIndexByID(TAPID);
+
     if(Index < 0 || Index >= TAP_MAX) return 0;
 
     TAPEventHandler = (void*)TMSTAPTaskTable[Index].TAP_EventHandler;

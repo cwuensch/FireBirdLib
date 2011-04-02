@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-03-26"
+  #define __FBLIB_VERSION__ "2011-04-02"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -147,6 +147,7 @@
   dword       GetUptime(void);
   char       *iso639_1(int OSDLan);
   bool        LoadFirmwareDat(tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo);
+  bool        PutDevEvent(word Event, dword Param1);
 
 
   /*****************************************************************************************************************************/
@@ -318,6 +319,7 @@
   /*****************************************************************************************************************************/
 
   void   DumpMemory(unsigned char* p, dword size, int BytesPerLine);
+  void   DumpMemoryDword(dword *p, dword size);
   dword *FindGotPointer(dword FunctionAddress);
   void   LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text);
 
@@ -815,6 +817,7 @@
   inline dword FIS_fwDevHdd_DeviceOpen(void);
   inline dword FIS_fwEeprom_DirectWrite(void);
   inline dword FIS_fwPowerOff(void);
+  inline dword FIS_fwPutDevEvt(void);
   inline dword FIS_fwSetIrCode(void);
   inline dword FIS_vAudioTrack(void);
   inline dword FIS_vBootReason(void);
@@ -980,6 +983,8 @@
 
   bool Shutdown(TaskEnum Task);
   bool Reboot(bool StopRecordings);
+  bool SDS(void);
+  void SDSTerminate(void);
 
 
   /*****************************************************************************************************************************/
@@ -1406,6 +1411,11 @@
   bool VFD_EnableCDAnimation(bool Enable);
   bool VFD_CDAnimation(bool Forward);
 
+  /*****************************************************************************************************************************/
+  /* USB Keyboard                                                                                                              */
+  /*****************************************************************************************************************************/
+
+  #define EVT_USBKEYBOARD   0x0ffe
 
   /*****************************************************************************************************************************/
   /* MIPS OpCodes                                                                                                              */
