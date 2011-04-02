@@ -612,6 +612,7 @@ License:  This library is freeware. You may use this code in your own projects f
             Changed FIS_vEtcInfo: Instead of returing a point to _etcInfo, it returns a pointer to the _etcInfo struct
 2011-03-30  Added: PutDevEvent() and FIS_fwPutDevEvt()
             Changed Shutdown() so that it puts an event into the event queue instead of directly calling Appl_EvtProc_PowerOff(). This makes it possible to intercept the shutdown
-
+2011-04-01  Added: DumpMemoryDword()
+            Added: PutDevEvent() and FIS_fwPutDevEvt()
 2011-04-02  Added: SDS = ShutDownServer, which allows to intercept and cancel a shutdown command. This way a TAP can perform some tasks when the user shuts the Toppy down.
                    A sample is available in the .Demo\SDS_Demo folder
