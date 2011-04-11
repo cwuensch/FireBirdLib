@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-04-02"
+  #define __FBLIB_VERSION__ "2011-04-10"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -543,7 +543,7 @@
     TYPE_ReservationType ReservationType;
     bool                DelOrig;
     word                NrOfFiles;
-    dword               TotalTime;
+    dword               AutomaticMode;
     char                FileName[50][128];
 
     word                unknown1;
@@ -1236,7 +1236,6 @@
   dword  AddSec(dword date, byte dateSec, int add);
   dword  AddTime(dword date, int add);
   char  *DayOfWeek(byte WeekDay);
-  dword  FlashGetTrueLocalTime (dword ToppyLocalDate, int StandardOffsetMin);
   bool   isMJD(dword MJD);
   dword  Now(byte *Sec);
   dword  TF2UnixTime(dword TFTimeStamp);

@@ -169,17 +169,18 @@ void DumpInfo(void)
 
       switch (ToppyInfo->SystemType)
       {
-        case ST_UNKNOWN : break;
-        case ST_S       : DEBUG("  SystemType    =  ST_S"); break;
-        case ST_ST      : DEBUG("  SystemType    =  ST_ST"); break;
-        case ST_T       : DEBUG("  SystemType    =  ST_T"); break;
-        case ST_C       : DEBUG("  SystemType    =  ST_C"); break;
-        case ST_CT      : DEBUG("  SystemType    =  ST_CT"); break;
-        case ST_T5700   : DEBUG("  SystemType    =  ST_T5700"); break;
-        case ST_TUK     : DEBUG("  SystemType    =  ST_TUK"); break;
-        case ST_TMSS    : DEBUG("  SystemType    =  ST_TMSS"); break;
-        case ST_TMST    : DEBUG("  SystemType    =  ST_TMST"); break;
-        case ST_TMSC    : DEBUG("  SystemType    =  ST_TMSC"); break;
+        case ST_UNKNOWN   : break;
+        case ST_S         : DEBUG("  SystemType    =  ST_S"); break;
+        case ST_T         : DEBUG("  SystemType    =  ST_T"); break;
+        case ST_C         : DEBUG("  SystemType    =  ST_C"); break;
+        case ST_T5700     : DEBUG("  SystemType    =  ST_T5700"); break;
+        case ST_TMSS      : DEBUG("  SystemType    =  ST_TMSS"); break;
+        case ST_TMST      : DEBUG("  SystemType    =  ST_TMST"); break;
+        case ST_TMSC      : DEBUG("  SystemType    =  ST_TMSC"); break;
+        case ST_T5800     : DEBUG("  SystemType    =  ST_T5800"); break;
+        case ST_ST        : DEBUG("  SystemType    =  ST_ST"); break;
+        case ST_CT        : DEBUG("  SystemType    =  ST_CT"); break;
+        case ST_TF7k7HDPVR: DEBUG("  SystemType    =  ST_TF7k7HDPVR"); break;
         default:;
       }
 
@@ -196,6 +197,8 @@ void DumpInfo(void)
         case RT_2100:     DEBUG("  RemoteType    =  2100"); break;
         case RT_7100PLUS: DEBUG("  RemoteType    =  7100+"); break;
       }
+
+      DEBUG("  NrRecs        =  %d", ToppyInfo->MaxRecStreams);
     }
   }
 

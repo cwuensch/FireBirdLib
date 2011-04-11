@@ -5,9 +5,13 @@ bool isLegalChar(unsigned char c, eRemoveChars ControlCharacters)
   if ((ControlCharacters & ControlChars) != 0)
   {
     // Anything below 32 is a control character!
-    if ((c < 0x20) && (c != 0x0a)) return FALSE;
+    if((c < 0x20) && (c != 0x0a)) return FALSE;
+
     // these characters are unused in Windows system font and cause trouble
-    if ((c >= 0x7f) && (c <= 0x9f) && (c != 0x80) && (c != 0x8a) && (c != 0x91) && (c != 0x92)) return FALSE;
+    if((c >= 0x7f) && (c <= 0x9f) && (c != 0x80) && (c != 0x8a) && (c != 0x91) && (c != 0x92)) return FALSE;
+
+    //Control codes used by some channels
+    if((c == 0x05) || (c == 0x86) || (c == 0x87)) return FALSE;
   }
 
   if ((ControlCharacters & LFChars) != 0)

@@ -292,8 +292,7 @@
     word                unknown2:1;         //always 1?
     word                NrOfFiles:6;
     word                unknown3:1;
-
-    dword               TotalTime;
+    dword               AutomaticMode;
     char                FileName[50][128];
   } TYPE_AutoDescrambleTimer;
 

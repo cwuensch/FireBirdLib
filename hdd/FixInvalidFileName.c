@@ -12,7 +12,7 @@ void FixInvalidFileName(char *FileName)
   int                   fNumber;
   char                  OldInfName[TS_FILE_NAME_SIZE], NewInfName[TS_FILE_NAME_SIZE];
 
-  if (TAP_Hdd_Exist(FileName) && (FileName[0] == 0x05))
+  if(TAP_Hdd_Exist(FileName))
   {
     //Check if the file is busy
     TAP_Hdd_GetPlayInfo(&playInfo);
@@ -25,7 +25,10 @@ void FixInvalidFileName(char *FileName)
       if(recInfo.fileName[0] && !strstr(&FileName[1], recInfo.fileName)) return;
     }
 
-    strcpy(NewRecName, &FileName[1]);
+    strcpy(NewRecName, FileName);
+    MakeValidFileName(NewRecName, ControlChars);
+    if(!strcmp(FileName, NewRecName)) return;
+
     MakeUniqueFileName(NewRecName);
     TAP_Hdd_Rename(FileName, NewRecName);
 

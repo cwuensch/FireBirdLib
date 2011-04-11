@@ -616,3 +616,5 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: PutDevEvent() and FIS_fwPutDevEvt()
 2011-04-02  Added: SDS = ShutDownServer, which allows to intercept and cancel a shutdown command. This way a TAP can perform some tasks when the user shuts the Toppy down.
                    A sample is available in the .Demo\SDS_Demo folder
+2011-04-06  Added: FixInvalidFileName() now also removes 0x86 and 0x87 control characters
+2011-04-10  Changed: it seems that the meaning of the AutoDescramble timer field TotalTime has changed into a auto/manual mode

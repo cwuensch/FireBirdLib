@@ -40,7 +40,7 @@ bool FlashADDecode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer 
   ADTimer->ReservationType  = Data->ReservationType;
   ADTimer->DelOrig          = Data->DelOrig;
   ADTimer->NrOfFiles        = Data->NrOfFiles;
-  ADTimer->TotalTime        = Data->TotalTime;
+  ADTimer->AutomaticMode    = Data->AutomaticMode;
   ADTimer->unknown1         = Data->unknown1;
   ADTimer->unknown2         = Data->unknown2;
   ADTimer->unknown3         = Data->unknown3;
@@ -100,7 +100,7 @@ bool FlashADEncode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer 
   Data->ReservationType  = ADTimer->ReservationType;
   Data->DelOrig          = ADTimer->DelOrig;
   Data->NrOfFiles        = ADTimer->NrOfFiles;
-  Data->TotalTime        = ADTimer->TotalTime;
+  Data->AutomaticMode    = ADTimer->AutomaticMode;
   Data->unknown1         = ADTimer->unknown1;
   Data->unknown2         = ADTimer->unknown2;
   Data->unknown3         = ADTimer->unknown3;
