@@ -105,7 +105,6 @@ bool FlashServiceEncode(void *Data, tFlashService *Service)
 
 bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
 {
-  char                 *Text;
   bool                  isRadio;
   int                   ServiceIndex;
 
@@ -113,6 +112,22 @@ bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
   void  (*Appl_DeleteTvSvcName)(unsigned short, bool);
   void  (*Appl_DeleteRadioSvcName)(unsigned short, bool);
   word  (*Appl_SetProviderName)(char const*);
+
+  isRadio = (dword)Data >= FIS_vFlashBlockRadioServices();
+
+  //Change the service name if necessary
+  if(isRadio)
+  {
+    ServiceIndex = ((dword)Data - FIS_vFlashBlockRadioServices()) / sizeof(TYPE_Service_TMSS);
+    Appl_DeleteRadioSvcName = (void*)FIS_fwAppl_DeleteRadioSvcName();
+    if(Appl_DeleteRadioSvcName) Appl_DeleteRadioSvcName(ServiceIndex, FALSE);
+  }
+  else
+  {
+    ServiceIndex = ((dword)Data - FIS_vFlashBlockTVServices()) / sizeof(TYPE_Service_TMSS);
+    Appl_DeleteTvSvcName = (void*)FIS_fwAppl_DeleteTvSvcName();
+    if(Appl_DeleteTvSvcName) Appl_DeleteTvSvcName(ServiceIndex, FALSE);
+  }
 
   memset(Data, 0, sizeof(TYPE_Service_TMSS));
   Data->SatIdx          = Service->SatIndex;
@@ -133,28 +148,8 @@ bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service)
   Data->unknown1        = Service->unknown1;
   memcpy(Data->unknown2, Service->unknown2, 6);
 
-  isRadio = (dword)Data >= FIS_vFlashBlockRadioServices();
-
-  //Change the service name if necessary
-  Text = (char*)(FIS_vFlashBlockServiceName() + Data->NameOffset);
-  if((Data->NameOffset == 0) || (Data->NameOffset == 0xffffffff) || (strncmp(Text, Service->ServiceName, MAX_SvcName) != 0))
-  {
-    if(isRadio)
-    {
-      ServiceIndex = ((dword)Data - FIS_vFlashBlockRadioServices()) / sizeof(TYPE_Service_TMSS);
-      Appl_DeleteRadioSvcName = (void*)FIS_fwAppl_DeleteRadioSvcName();
-      if(Appl_DeleteRadioSvcName) Appl_DeleteRadioSvcName(ServiceIndex, FALSE);
-    }
-    else
-    {
-      ServiceIndex = ((dword)Data - FIS_vFlashBlockTVServices()) / sizeof(TYPE_Service_TMSS);
-      Appl_DeleteTvSvcName = (void*)FIS_fwAppl_DeleteTvSvcName();
-      if(Appl_DeleteTvSvcName) Appl_DeleteTvSvcName(ServiceIndex, FALSE);
-    }
-
-    Appl_AddSvcName = (void*)FIS_fwAppl_AddSvcName();
-    if(Appl_AddSvcName) Data->NameOffset = (dword)Appl_AddSvcName(Service->ServiceName);
-  }
+  Appl_AddSvcName = (void*)FIS_fwAppl_AddSvcName();
+  if(Appl_AddSvcName) Data->NameOffset = (dword)Appl_AddSvcName(Service->ServiceName);
 
   //Update the provider name
   Appl_SetProviderName = (void*)FIS_fwAppl_SetProviderName();

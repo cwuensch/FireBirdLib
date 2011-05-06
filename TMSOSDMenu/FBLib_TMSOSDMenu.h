@@ -100,6 +100,7 @@ extern TYPE_GrData      _Button_sat_Gd;
 extern TYPE_GrData      _Button_select_Gd;
 extern TYPE_GrData      _Button_white_Gd;
 extern TYPE_GrData      _Button_yellow_Gd;
+extern TYPE_GrData      _Button_recall_Gd;
 extern TYPE_GrData      _InfoBox_Gd;
 extern TYPE_GrData      _Messagebox_Gd;
 extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;

@@ -27,6 +27,7 @@
 #include                "graphic/Button_jumpstart.gd"
 #include                "graphic/Button_jumpend.gd"
 #include                "graphic/Button_sat.gd"
+#include                "graphic/Button_recall.gd"
 
 #include                "graphic/ColorPicker.gd"
 #include                "graphic/ColorPicker_CursorNone.gd"

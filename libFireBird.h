@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-04-10"
+  #define __FBLIB_VERSION__ "2011-05-06"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -359,6 +359,38 @@
   bool  ELFReadData(dword SectionIndex, byte *Data);
   void  ELFCleanup(void);
 
+  /*****************************************************************************************************************************/
+  /* Firmware functions                                                                                                        */
+  /*****************************************************************************************************************************/
+
+  typedef struct
+  {
+    dword               Magic; //0xbacaed31
+    char               *Path;
+    dword               unknown1;
+    dword               unknown2;
+  }tDirEntry;
+
+  byte  DevFront_SetIlluminate(byte a0, byte Brightness);
+  dword DevHdd_DeviceClose(tDirEntry **hddPlaybackFolder);
+  dword DevHdd_DeviceOpen(tDirEntry **hddPlaybackFolder, tDirEntry *DirEntry);
+  void  Appl_ClrTimer(byte *TimerHandle);
+  dword Appl_GetFreeExtRecordSpace(char *MountPath);
+  void  Appl_ShoutCast(void);
+  dword Appl_StopPlaying(void);
+  dword Appl_WaitEvt(uint Event, uint *a1, uint a2, uint a3, uint Timeout);
+  byte  ApplChannel_GetAgc(unsigned char TunerIndex, unsigned char *AGC);
+  byte  ApplChannel_GetBer(unsigned char TunerIndex, unsigned char *BER);
+  dword ApplHdd_FileCutPaste(char  const* SourceFileName, unsigned int StartBlock, unsigned int NrBlocks, char const* CutFileName);
+  dword ApplHdd_FreeSize(char *MountPath, bool a1);
+  dword ApplHdd_GetInfoFromExternalDevice(dword *TotalSpaceMB, dword *FreeSpaceMB, char  const *MountPath);
+  void  ApplHdd_RestoreWorkFolder(void);
+  void  ApplHdd_SaveWorkFolder(void);
+  dword ApplHdd_SelectFolder(tDirEntry *FolderStruct, char const *FolderPath);
+  void  ApplHdd_SetWorkFolder(tDirEntry *FolderStruct);
+  void  ApplNewVfd_Stop(void);
+  void  ApplTimer_OptimizeList(void);
+
 
   /*****************************************************************************************************************************/
   /* Flash & EEPROM                                                                                                            */
@@ -657,14 +689,6 @@
     #define SEEK_END  2	/* set file offset to EOF plus offset */
   #endif
 
-  typedef struct
-  {
-    dword               Magic; //0xbacaed31
-    char               *Path;
-    dword               unknown1;
-    dword               unknown2;
-  }tDirEntry;
-
   typedef enum
   {
     FIU_No,
@@ -784,6 +808,7 @@
   inline dword FIS_fwAppl_EnterNormal(void);
   inline dword FIS_fwAppl_ExecProgram(void);
   inline dword FIS_fwAppl_ExportChData(void);
+  inline dword FIS_fwAppl_GetFreeExtRecordSpace(void);
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_PvrList(void);
@@ -800,7 +825,9 @@
   inline dword FIS_fwApplChannel_GetAgc(void);
   inline dword FIS_fwApplChannel_GetBer(void);
   inline dword FIS_fwApplHdd_FileCutPaste(void);
+  inline dword FIS_fwApplHdd_FreeSize(void);
   inline dword FIS_fwApplHdd_GetFileInfo(void);
+  inline dword FIS_fwApplHdd_GetInfoFromExternalDevice(void);
   inline dword FIS_fwApplHdd_RestoreWorkFolder(void);
   inline dword FIS_fwApplHdd_SaveWorkFolder(void);
   inline dword FIS_fwApplHdd_SelectFolder(void);
@@ -1285,7 +1312,8 @@
     BI_JumpStart,
     BI_JumpEnd,
     BI_Sat,
-    BI_FileList
+    BI_FileList,
+    BI_Recall
   } tButtonIcon;
 
 

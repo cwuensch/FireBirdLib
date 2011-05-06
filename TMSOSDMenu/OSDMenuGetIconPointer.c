@@ -23,6 +23,7 @@ TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefi
     case BI_JumpEnd     : return &_Button_jumpend_Gd;
     case BI_Sat         : return &_Button_sat_Gd;
     case BI_FileList    : return &_Button_filelist_Gd;
+    case BI_Recall      : return &_Button_recall_Gd;
   }
 
   return NULL;

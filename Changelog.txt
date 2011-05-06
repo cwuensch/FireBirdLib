@@ -618,3 +618,5 @@ License:  This library is freeware. You may use this code in your own projects f
                    A sample is available in the .Demo\SDS_Demo folder
 2011-04-06  Added: FixInvalidFileName() now also removes 0x86 and 0x87 control characters
 2011-04-10  Changed: it seems that the meaning of the AutoDescramble timer field TotalTime has changed into a auto/manual mode
+2011-04-13  Added the Recall button icon
+2011-05-06  Fixed: FlashServiceSetInfo() didn't remove the old service name table entry and that created an ever growing table until the Toppy failed to report the correct service names

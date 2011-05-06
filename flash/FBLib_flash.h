@@ -163,18 +163,15 @@
 
   typedef struct
   {
-    byte                TunerIndex;
-
-    byte                RecMode:3;
-    byte                DemuxPath:2;
-    byte                ManualRec:1;
-    byte                unused1:2;
-
-    byte                SatIndex;
-
-    byte                ServiceType:1;
-    byte                ReservationType:3;
-    byte                unused2:4;
+    dword               TunerIndex:8;
+    dword               RecMode:3;
+    dword               DemuxPath:2;
+    dword               ManualRec:1;
+    dword               unused1:2;
+    dword               SatIndex:8;
+    dword               ServiceType:1;
+    dword               ReservationType:3;
+    dword               unused2:4;
 
     word                ServiceID;
     word                Duration;
