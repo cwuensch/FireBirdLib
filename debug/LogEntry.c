@@ -2,12 +2,9 @@
 #include  <string.h>
 #include  "../libFireBird.h"
 
-#define DUMMYNAME       "FBDUMMYFILE"
-
 void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
 {
   TYPE_File             *File;
-  dword                 LogSize;
   char                  *TS;
   char                  CRLF[] = {'\r', '\n'};
   byte                  Sec;
@@ -20,7 +17,6 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
     TAP_Hdd_Create (FileName, ATTR_NORMAL);
     if((File = TAP_Hdd_Fopen (FileName)) != NULL)
     {
-      LogSize = TAP_Hdd_Flen (File);
       TAP_Hdd_Fseek (File, 0, SEEK_END);
       TAP_Hdd_Fwrite (TS, strlen (TS), 1, File);
       if (Text && Text [0]) TAP_Hdd_Fwrite (Text, strlen (Text), 1, File);

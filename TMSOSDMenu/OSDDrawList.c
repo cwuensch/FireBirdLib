@@ -98,4 +98,6 @@ void OSDDrawList(void)
       }
     }
   }
+
+  if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);
 }

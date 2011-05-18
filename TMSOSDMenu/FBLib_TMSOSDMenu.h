@@ -156,4 +156,7 @@ void OSDDrawList(void);
 void OSDDrawMemo(void);
 void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected);
 
+extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
+
+
 #endif

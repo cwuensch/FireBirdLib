@@ -7,4 +7,6 @@ void OSDDrawLogo(void)
   pMenu = &Menu[CurrentMenuLevel];
 
   if(pMenu->pLogoGd) TAP_Osd_PutGd(OSDRgn, pMenu->LogoX , pMenu->LogoY, pMenu->pLogoGd, FALSE);
+
+  if(CallbackProcedure) CallbackProcedure(OSDCB_Logo, OSDRgn);
 }

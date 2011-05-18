@@ -19,4 +19,6 @@ void OSDDrawMemo(void)
     if((i + pMenu->CurrentTopIndex) < pMenu->NrItems)
       OSDMenuPutS(OSDRgn, 76, Y + 5, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Name, RGB(255, 255, 255), COLOR_None, 14, TRUE, ALIGN_LEFT);
   }
+
+  if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);
 }

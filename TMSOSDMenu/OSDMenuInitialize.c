@@ -58,7 +58,7 @@ dword                   ColorPickerDefaultColor;
 tCurrentColorSelected   CurrentColorSelected;
 int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
 
-
+void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn) = NULL;
 
 void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
 {
@@ -99,4 +99,6 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 
   OSDMenuDisplayMode = OMDM_Standard;
+
+  CallbackProcedure = NULL;
 }

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-05-06"
+  #define __FBLIB_VERSION__ "2011-05-18"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -322,6 +322,7 @@
   void   DumpMemoryDword(dword *p, dword size);
   dword *FindGotPointer(dword FunctionAddress);
   void   LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text);
+  void   LogEntryGeneric(char *ProgramName, bool Console, char *Text);
 
   bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
   bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
@@ -1289,6 +1290,16 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   bool OSDMenuIsVisible(void);
+  void OSDMenuSetCallback(void *OSDCallbackProcedure);
+
+  typedef enum
+  {
+    OSDCB_Title,
+    OSDCB_List,
+    OSDCB_Buttons,
+    OSDCB_Logo
+  } tOSDCB;
+
 
   //Buttons
 

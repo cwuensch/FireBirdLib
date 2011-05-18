@@ -620,3 +620,10 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-04-10  Changed: it seems that the meaning of the AutoDescramble timer field TotalTime has changed into a auto/manual mode
 2011-04-13  Added the Recall button icon
 2011-05-06  Fixed: FlashServiceSetInfo() didn't remove the old service name table entry and that created an ever growing table until the Toppy failed to report the correct service names
+2011-05-11  Fixed: SeparateFileNameComponents() doesn't interpret a -0 as an index
+            Added: The new function LogEntryGeneric() generates the log file "TAPSystem.log" in the folder /ProgramFiles/Settings and is meant to combine the output of several TAPs in a single log.
+                   OSDMenuSetCallback(void *OSDCallbackProcedure) should be used to set the callback after a OSDMenuInitialize()
+                   void CallbackProcedure(tOSDCB OSDCBType, word OSDRgn) gets called, informing the TAP which region of the menu has been refreshed and its OSD region ID
+
+2011-05-18  Added: Callback method to the TMS menu, which allows custom drawings on the menu
+            Fixed: OSDMenuDestroy() didn't release some memory
