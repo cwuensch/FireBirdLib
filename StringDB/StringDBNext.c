@@ -1,6 +1,6 @@
 #include                "../libFireBird.h"
 
-char *StringDBNext(tStringDB *StringDB)
+dword StringDBNext(tStringDB *StringDB)
 {
   char                 *p;
 
@@ -11,5 +11,5 @@ char *StringDBNext(tStringDB *StringDB)
   p++;
   StringDB->DBPtr = p;
 
-  return p;
+  return (dword)p - (dword)StringDB->DB;
 }

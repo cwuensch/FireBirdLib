@@ -1,10 +1,10 @@
 #include                "../libFireBird.h"
 
-char *StringDBFirst(tStringDB *StringDB)
+dword StringDBFirst(tStringDB *StringDB)
 {
   if(!StringDB) return '\0';
 
   StringDB->DBPtr = StringDB->DB;
 
-  return StringDB->DBPtr;
+  return (dword)StringDB->DBPtr - (dword)StringDB->DB;
 }

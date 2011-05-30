@@ -588,7 +588,7 @@ License:  This library is freeware. You may use this code in your own projects f
             Reordered the SYSTEM_TYPE enum to make it compatible with the 5k version
 2010-12-18  Combined RECHeaderInfo.EventDurationHour and RECHeaderInfo.EventDurationMin into RecHeaderInfo.EventDuration
             Added isMJD() function
-2011-01-02  Change all ST_TUK to ST_T5800
+2011-01-02  Changed all ST_TUK to ST_T5800
             Added FlashProgram(), which reprogramms the settings in the flash memory
 2011-01-02  Added OSDMenuSaveMyRegion(). Call this prior to OSDMenuInfoBoxShow(), OSDMenuMessageBoxShow() or OSDMenuColorPickerShow() to
               prevent them drilling a whole into your OSD
@@ -622,8 +622,13 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-05-06  Fixed: FlashServiceSetInfo() didn't remove the old service name table entry and that created an ever growing table until the Toppy failed to report the correct service names
 2011-05-11  Fixed: SeparateFileNameComponents() doesn't interpret a -0 as an index
             Added: The new function LogEntryGeneric() generates the log file "TAPSystem.log" in the folder /ProgramFiles/Settings and is meant to combine the output of several TAPs in a single log.
+            Added: A new callback feature for the TMS OSD menu functions. This allows to add custom drawings to a menu.
                    OSDMenuSetCallback(void *OSDCallbackProcedure) should be used to set the callback after a OSDMenuInitialize()
                    void CallbackProcedure(tOSDCB OSDCBType, word OSDRgn) gets called, informing the TAP which region of the menu has been refreshed and its OSD region ID
 
 2011-05-18  Added: Callback method to the TMS menu, which allows custom drawings on the menu
             Fixed: OSDMenuDestroy() didn't release some memory
+2011-05-20  'Official release'
+
+2011-05-29  Added StringDBLoadFromFile() and StringDBSaveToFile()
+            Modified StringDBAdd() so that it will add the same string only once

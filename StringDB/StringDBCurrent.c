@@ -1,8 +1,8 @@
 #include                "../libFireBird.h"
 
-char *StringDBCurrent(tStringDB *StringDB)
+dword StringDBCurrent(tStringDB *StringDB)
 {
   if(!StringDB) return '\0';
 
-  return StringDB->DBPtr;
+  return (dword)StringDB->DBPtr - (dword)StringDB->DB;
 }

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-05-18"
+  #define __FBLIB_VERSION__ "2011-05-29"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1060,15 +1060,18 @@
   } tStringDB;
 
   bool  StringDBInit(tStringDB *StringDB, dword InitialSize);
-  char *StringDBAdd(tStringDB *StringDB, char *Text);
+  char *StringDBGet(tStringDB *StringDB, dword Index);
+  dword StringDBAdd(tStringDB *StringDB, char *Text);
   int   StringDBCountRecords(tStringDB *StringDB);
-  char *StringDBCurrent(tStringDB *StringDB);
-  char *StringDBFirst(tStringDB *StringDB);
-  char *StringDBNext(tStringDB *StringDB);
-  char *StringDBPrev(tStringDB *StringDB);
+  dword StringDBCurrent(tStringDB *StringDB);
+  dword StringDBFirst(tStringDB *StringDB);
+  dword StringDBNext(tStringDB *StringDB);
+  dword StringDBPrev(tStringDB *StringDB);
   bool  StringDBDel(tStringDB *StringDB);
   bool  StringDBLoad(tStringDB *StringDB, char *FileName);
+  bool  StringDBLoadFromFile(tStringDB *StringDB, TYPE_File *f);
   bool  StringDBSave(tStringDB *StringDB, char *FileName);
+  bool  StringDBSaveToFile(tStringDB *StringDB, TYPE_File *f);
   bool  StringDBEOF(tStringDB *StringDB);
   bool  StringDBDestroy(tStringDB *StringDB);
 

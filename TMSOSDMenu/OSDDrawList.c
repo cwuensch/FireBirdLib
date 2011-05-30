@@ -21,6 +21,9 @@ void OSDDrawList(void)
     if(pMenu->Item[i].ColorPatch && (MaxValueIconWidth < 50)) MaxValueIconWidth = 50;
   }
 
+  if(MaxNameIconWidth) MaxNameIconWidth += 8;
+  if(MaxValueIconWidth) MaxValueIconWidth += 8;
+
   //The background
   TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 367, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
 
