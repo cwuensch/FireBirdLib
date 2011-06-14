@@ -632,7 +632,7 @@ License:  This library is freeware. You may use this code in your own projects f
 
 2011-05-29  Added StringDBLoadFromFile() and StringDBSaveToFile()
             Modified StringDBAdd() so that it will add the same string only once
-2011-06-01  OSDMenuItemModifyTextColor()
+2011-06-01  Added OSDMenuItemModifyTextColor()
 2011-06-04  Added the STOP key to the TMSMenu block
             Rearranged the tFlashTimer struct so that it more closely corresponds to the access pattern of the firmware
 2011-06-11  Added OSDMenuItemGetTopIndex() and OSDMenuSelectTopItem()
