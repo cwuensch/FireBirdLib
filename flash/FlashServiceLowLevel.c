@@ -252,10 +252,10 @@ bool FlashServiceDelServiceName(int SvcType, int SvcNum)
 //or  ToSvcNum = -1 to deleting a service entry
 void FlashReindexFavorites(int SvcType, int FromSvcNum, int ToSvcNum)
 {
-  TYPE_Favorites       *Favorites;
+  tFavorites           *Favorites;
   int                   i, j;
 
-  Favorites = (TYPE_Favorites*)FIS_vFlashBlockFavoriteGroup();
+  Favorites = (tFavorites*)FIS_vFlashBlockFavoriteGroup();
 
   for(i = 0; i < MAXFAVS; i++)
   {

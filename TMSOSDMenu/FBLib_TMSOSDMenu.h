@@ -18,6 +18,7 @@ typedef struct
   TYPE_GrData          *pNameIconGd;
   TYPE_GrData          *pValueIconGd;
   dword                 ColorPatch;
+  dword                 TextColor;
   bool                  Selectable;
   bool                  ValueArrows;
   dword                 ID;
@@ -76,6 +77,7 @@ typedef enum
   OMDM_Memo
 } tOSDMenuDisplayMode;
 
+extern tFontData        Calibri_10_FontData;
 extern tFontData        Calibri_12_FontData;
 extern tFontData        Calibri_14_FontData;
 extern tFontData        Calibri_16_FontData;
@@ -101,6 +103,8 @@ extern TYPE_GrData      _Button_select_Gd;
 extern TYPE_GrData      _Button_white_Gd;
 extern TYPE_GrData      _Button_yellow_Gd;
 extern TYPE_GrData      _Button_recall_Gd;
+extern TYPE_GrData      _Button_stop_Gd;
+
 extern TYPE_GrData      _InfoBox_Gd;
 extern TYPE_GrData      _Messagebox_Gd;
 extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;

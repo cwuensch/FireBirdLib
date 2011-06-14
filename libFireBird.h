@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-05-29"
+  #define __FBLIB_VERSION__ "2011-06-14"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -551,12 +551,12 @@
     word                PMTPID;
     byte                isRec;
     byte                NameSet;
-    word                EPGMarker;
-    byte                unused5[6];
-    word                EventID1;
-    word                unused6;
-    word                EventID2;
-    word                unused7;
+    byte                unused4;
+    byte                EPGMarker;
+    byte                unused5[2];
+    dword               unknown1;
+    dword               EventID1;
+    dword               EventID2;
     word                ServiceIndex;
     byte                unused8[14];
     tFlashTransponderTable    TpInfo;
@@ -588,6 +588,21 @@
   bool FlashADDecode(void *Data, tAutoDescrambleTimer *ADTimer);
   bool FlashADSetInfo(tAutoDescrambleTimer *ADTimer);
   bool FlashADEncode(void *Data, tAutoDescrambleTimer *ADTimer);
+
+
+  typedef struct
+  {
+    char                GroupName[12];
+    word                SvcNum[100];
+    byte                SvcType[100];
+    byte                NrEntries;
+    byte                unused1;
+  } tFavorites;
+
+  int  FlashFavoritesGetTotal(void);
+  bool FlashFavoritesGetInfo(int FavNum, tFavorites *Favorites);
+  bool FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites);
+  int  FlashFavoritesFindService(int SvcType, int SvcNum);
 
 
   dword FIS_vFlashBlockAutoDec(void);
@@ -1293,7 +1308,11 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   bool OSDMenuIsVisible(void);
+
+  //Callback function for custom menu drawings
   void OSDMenuSetCallback(void *OSDCallbackProcedure);
+
+  //void CallbackProcedure(tOSDCB OSDCBType, word OSDRgn);
 
   typedef enum
   {
@@ -1327,7 +1346,8 @@
     BI_JumpEnd,
     BI_Sat,
     BI_FileList,
-    BI_Recall
+    BI_Recall,
+    BI_Stop
   } tButtonIcon;
 
 
@@ -1336,6 +1356,7 @@
 
   //Cursor Functions
   bool OSDMenuSelectItem(int ItemIndex);
+  bool OSDMenuSelectTopItem(int TopIndex);
   int  OSDMenuGetCurrentItem(void);
   int  OSDMenuScrollUp(void);
   int  OSDMenuScrollPageUp(void);
@@ -1354,6 +1375,7 @@
   bool  OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
   bool  OSDMenuItemModifyColorPatch(int ItemIndex, dword Color); //set to 0 to disable
+  bool  OSDMenuItemModifyTextColor(int ItemIndex, dword Color);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
   dword OSDMenuItemGetID(int ItemIndex);
@@ -1361,6 +1383,7 @@
   char *OSDMenuItemGetCurrentName(void);
   dword OSDMenuItemGetCurrentID(void);
   dword OSDMenuItemGetNrOfItems(void);
+  dword OSDMenuItemGetTopIndex(void);
 
   //
   bool OSDMenuPush(void);

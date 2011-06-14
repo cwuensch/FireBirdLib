@@ -110,12 +110,12 @@ bool FlashTimerEncode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo)
   Data->PMTPID                = TimerInfo->PMTPID;
   Data->isRec                 = TimerInfo->isRec;
   Data->NameSet               = TimerInfo->NameSet;
+  Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 6);
+  memcpy(Data->unused5, TimerInfo->unused5, 2);
+  Data->unknown1              = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
-  Data->unused6               = TimerInfo->unused6;
   Data->EventID2              = TimerInfo->EventID2;
-  Data->unused7               = TimerInfo->unused7;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;
   memcpy(Data->unused8, TimerInfo->unused8, 14);
   Data->TpInfo.SatIdx             = TimerInfo->TpInfo.SatIndex;
@@ -159,12 +159,12 @@ bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo)
   Data->PMTPID                = TimerInfo->PMTPID;
   Data->isRec                 = TimerInfo->isRec;
   Data->NameSet               = TimerInfo->NameSet;
+  Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 6);
+  memcpy(Data->unused5, TimerInfo->unused5, 2);
+  Data->unknown1               = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
-  Data->unused6               = TimerInfo->unused6;
   Data->EventID2              = TimerInfo->EventID2;
-  Data->unused7               = TimerInfo->unused7;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;
   memcpy(Data->unused8, TimerInfo->unused8, 22);
   Data->TpInfo.SatIdx               = TimerInfo->TpInfo.SatIndex;
@@ -203,12 +203,12 @@ bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo)
   Data->PMTPID                = TimerInfo->PMTPID;
   Data->isRec                 = TimerInfo->isRec;
   Data->NameSet               = TimerInfo->NameSet;
+  Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 6);
+  memcpy(Data->unused5, TimerInfo->unused5, 2);
+  Data->unknown1               = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
-  Data->unused6               = TimerInfo->unused6;
   Data->EventID2              = TimerInfo->EventID2;
-  Data->unused7               = TimerInfo->unused7;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;
   memcpy(Data->unused8, TimerInfo->unused8, 14);
 

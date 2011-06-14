@@ -40,6 +40,7 @@ bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrDa
   pMenu->Item[pMenu->NrItems].ValueArrows   = ValueArrows;
   pMenu->Item[pMenu->NrItems].ID            = ID;
   pMenu->Item[pMenu->NrItems].ColorPatch    = 0;
+  pMenu->Item[pMenu->NrItems].TextColor     = RGB(255, 255, 255);
 
   if(ValueArrows) pMenu->hasValueArrows = TRUE;
 

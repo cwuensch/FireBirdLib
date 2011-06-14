@@ -48,7 +48,7 @@ void OSDDrawList(void)
     Y = 99 + (i * 37);
 
     if(pMenu->Item[i + pMenu->CurrentTopIndex].Selectable)
-      ItemColor = RGB(255, 255, 255);
+      ItemColor = pMenu->Item[i + pMenu->CurrentTopIndex].TextColor;
     else
       ItemColor = RGB(128, 128, 140);
 

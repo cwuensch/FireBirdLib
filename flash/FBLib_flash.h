@@ -163,15 +163,17 @@
 
   typedef struct
   {
-    dword               TunerIndex:8;
-    dword               RecMode:3;
-    dword               DemuxPath:2;
-    dword               ManualRec:1;
-    dword               unused1:2;
-    dword               SatIndex:8;
-    dword               ServiceType:1;
-    dword               ReservationType:3;
-    dword               unused2:4;
+    word                TunerIndex:8;
+    word                RecMode:3;
+    word                DemuxPath:2;
+    word                ManualRec:1;
+    word                unused1:2;          //uumd drrr tttt tttt
+
+    byte                SatIndex;
+
+    byte                ServiceType:1;
+    byte                ReservationType:3;
+    byte                unused2:4;          //uuuu rrrt
 
     word                ServiceID;
     word                Duration;
@@ -182,12 +184,12 @@
     word                PMTPID;
     byte                isRec;
     byte                NameSet;
-    word                EPGMarker;
-    byte                unused5[6];
-    word                EventID1;
-    word                unused6;
-    word                EventID2;
-    word                unused7;
+    byte                unused4;
+    byte                EPGMarker;
+    byte                unused5[2];
+    dword               unknown1;
+    dword               EventID1;
+    dword               EventID2;
     word                ServiceIndex;
     byte                unused8[14];
 
@@ -196,12 +198,11 @@
 
   typedef struct
   {
-    byte                TunerIndex;
-
-    byte                RecMode:3;
-    byte                DemuxPath:2;
-    byte                ManualRec:1;
-    byte                unused1:2;
+    word                TunerIndex:8;
+    word                RecMode:3;
+    word                DemuxPath:2;
+    word                ManualRec:1;
+    word                unused1:2;
 
     byte                SatIndex;
 
@@ -218,12 +219,12 @@
     word                PMTPID;
     byte                isRec;
     byte                NameSet;
-    word                EPGMarker;
-    byte                unused5[6];
-    word                EventID1;
-    word                unused6;
-    word                EventID2;
-    word                unused7;
+    byte                unused4;
+    byte                EPGMarker;
+    byte                unused5[2];
+    dword               unknown1;
+    dword               EventID1;
+    dword               EventID2;
     word                ServiceIndex;
     byte                unused8[22];
 
@@ -232,12 +233,11 @@
 
   typedef struct
   {
-    byte                TunerIndex;
-
-    byte                RecMode:3;
-    byte                DemuxPath:2;
-    byte                ManualRec:1;
-    byte                unused1:2;
+    word                TunerIndex:8;
+    word                RecMode:3;
+    word                DemuxPath:2;
+    word                ManualRec:1;
+    word                unused1:2;
 
     byte                SatIndex;
 
@@ -254,12 +254,12 @@
     word                PMTPID;
     byte                isRec;
     byte                NameSet;
-    word                EPGMarker;
-    byte                unused5[6];
-    word                EventID1;
-    word                unused6;
-    word                EventID2;
-    word                unused7;
+    byte                unused4;
+    byte                EPGMarker;
+    byte                unused5[2];
+    dword               unknown1;
+    dword               EventID1;
+    dword               EventID2;
     word                ServiceIndex;
     byte                unused8[14];
 
@@ -300,15 +300,6 @@
   bool FlashADEncode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
   bool FlashADEncode_ST_TMST(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
   bool FlashADEncode_ST_TMSC(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-
-  typedef struct
-  {
-    char                GroupName[12];
-    word                SvcNum[100];
-    byte                SvcType[100];
-    byte                NrEntries;
-    byte                unused;
-  } TYPE_Favorites;
 
   void FlashReindexFavorites(int SvcType, int FromSvcNum, int ToSvcNum);
 
