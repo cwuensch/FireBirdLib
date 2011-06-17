@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-06-14"
+  #define __FBLIB_VERSION__ "2011-06-16"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1307,6 +1307,7 @@
   void OSDMenuModifyScrollLoop(bool ScrollLoop);
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
+  void OSDMenuDestroyNoOSDUpdate(void);
   bool OSDMenuIsVisible(void);
 
   //Callback function for custom menu drawings

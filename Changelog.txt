@@ -637,3 +637,6 @@ License:  This library is freeware. You may use this code in your own projects f
             Rearranged the tFlashTimer struct so that it more closely corresponds to the access pattern of the firmware
 2011-06-11  Added OSDMenuItemGetTopIndex() and OSDMenuSelectTopItem()
 2011-06-14  Added FlashFavoritesGetTotal(), FlashFavoritesGetInfo(), FlashFavoritesSetInfo() and FlashFavoritesFindService()
+2011-06-16  Added OSDMenuDestroyNoOSDUpdate()
+2001-06-17  Added OSDMenuDestroyNoOSDUpdate()
+            Fixed the scrollbar graphic (TV picture visible on the right end side)
