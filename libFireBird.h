@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-06-16"
+  #define __FBLIB_VERSION__ "2011-06-18"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1461,6 +1461,12 @@
     VFD_TV
   } tVFDIcon;
 
+  typedef enum
+  {
+    CS_8859_1,
+    CS_8859_5,
+    CS_8859_1_HAPPY
+  } tVFDCharset;
 
   bool VFD_GetControl(bool GiveControl);
   bool VFD_isInUseByTAP(void);
@@ -1475,6 +1481,7 @@
   bool VFD_SetIcon(tVFDIcon VFDIcon, bool On);
   bool VFD_EnableCDAnimation(bool Enable);
   bool VFD_CDAnimation(bool Forward);
+  bool VFD_SetCharacterSet(tVFDCharset VFDCharset);
 
   /*****************************************************************************************************************************/
   /* USB Keyboard                                                                                                              */

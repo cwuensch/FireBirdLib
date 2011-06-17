@@ -15,6 +15,7 @@ extern byte *grid;
 extern bool  CDEnabled;
 extern bool  CDEnabledAnimation;
 extern bool  HDDEnabled;
+extern tVFDCharset CurrentCharset;
 
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle);
 void  VFD_SetDisplayDigit (byte* DisplayBuffer, byte Character, DISPLAYSTYLE DisplayStyle, byte Digit);

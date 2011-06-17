@@ -1,17 +1,41 @@
 #include                "FBLib_tmsvfd.h"
 #include                "VFDSegmentMap.h"
+#include                "VFDSegmentMapCyrillic.h"
+#include                "VFDSegmentMapHappy.h"
 
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
 {
-  switch (DisplayStyle)
-  {
-    case VFD_7:  return VFDSegmentMap7[Character];
-    case VFD_14: return VFDSegmentMap14[Character];
-    case VFD_17: return VFDSegmentMap17[Character];
+  TAP_Print("%d",
+  if (CurrentCharset == CS_8859_5)
+    switch (DisplayStyle)
+    {
+      case VFD_7:  return VFDSegmentMap7_c[Character];
+      case VFD_14: return VFDSegmentMap14_c[Character];
+      case VFD_17: return VFDSegmentMap17_c[Character];
 
-    default:
-      ;
-  }
+      default:
+        ;
+    }
+  else if (CurrentCharset == CS_8859_1_HAPPY)
+    switch (DisplayStyle)
+    {
+      case VFD_7:  return VFDSegmentMap7_h[Character];
+      case VFD_14: return VFDSegmentMap14_h[Character];
+      case VFD_17: return VFDSegmentMap17_h[Character];
+
+      default:
+        ;
+    }
+  else
+    switch (DisplayStyle)
+    {
+      case VFD_7:  return VFDSegmentMap7[Character];
+      case VFD_14: return VFDSegmentMap14[Character];
+      case VFD_17: return VFDSegmentMap17[Character];
+
+      default:
+        ;
+    }
 
   return 0;
 }
