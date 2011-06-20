@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-06-18"
+  #define __FBLIB_VERSION__ "2011-06-20"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1329,26 +1329,49 @@
   typedef enum
   {
     BI_None,
-    BI_UserDefined,
-    BI_Red,
-    BI_Green,
-    BI_Yellow,
+    BI_0,
+    BI_1,
+    BI_2,
+    BI_3,
+    BI_4,
+    BI_5,
+    BI_6,
+    BI_7,
+    BI_8,
+    BI_9,
+    BI_AR,
+    BI_Audio,
     BI_Blue,
-    BI_White,
-    BI_Menu,
-    BI_Info,
-    BI_Ok,
+    BI_Cut,
     BI_Exit,
-    BI_Record,
-    BI_Select,
     BI_Ffwd,
-    BI_Rwd,
-    BI_JumpStart,
-    BI_JumpEnd,
-    BI_Sat,
     BI_FileList,
+    BI_Green,
+    BI_Guide,
+    BI_Info,
+    BI_JumpEnd,
+    BI_JumpStart,
+    BI_M,
+    BI_Menu,
+    BI_Ok,
+    BI_Option,
+    BI_Pause,
     BI_Recall,
-    BI_Stop
+    BI_Record,
+    BI_Red,
+    BI_Rwd,
+    BI_Sat,
+    BI_Select,
+    BI_Sleep,
+    BI_Step,
+    BI_Stop,
+    BI_Subtitle,
+    BI_TTX,
+    BI_TV_Radio,
+    BI_VF,
+    BI_White,
+    BI_Yellow,
+    BI_UserDefined
   } tButtonIcon;
 
 

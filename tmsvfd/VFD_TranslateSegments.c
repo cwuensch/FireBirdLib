@@ -5,7 +5,6 @@
 
 dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
 {
-  TAP_Print("%d",
   if (CurrentCharset == CS_8859_5)
     switch (DisplayStyle)
     {
