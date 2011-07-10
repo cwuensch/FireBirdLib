@@ -32,6 +32,7 @@ TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefi
     case BI_Ok          : return &_Button_ok_Gd;
     case BI_Option      : return &_Button_option_Gd;
     case BI_Pause       : return &_Button_pause_Gd;
+    case BI_Play        : return &_Button_play_Gd;
     case BI_Recall      : return &_Button_recall_Gd;
     case BI_Record      : return &_Button_record_Gd;
     case BI_Red         : return &_Button_red_Gd;

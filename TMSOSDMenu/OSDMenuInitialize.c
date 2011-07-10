@@ -37,6 +37,7 @@
 #include                "graphic/Button_ok.gd"
 #include                "graphic/Button_option.gd"
 #include                "graphic/Button_pause.gd"
+#include                "graphic/Button_play.gd"
 #include                "graphic/Button_recall.gd"
 #include                "graphic/Button_record.gd"
 #include                "graphic/Button_red.gd"

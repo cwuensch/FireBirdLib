@@ -112,6 +112,7 @@ extern TYPE_GrData      _Button_menu_Gd;
 extern TYPE_GrData      _Button_ok_Gd;
 extern TYPE_GrData      _Button_option_Gd;
 extern TYPE_GrData      _Button_pause_Gd;
+extern TYPE_GrData      _Button_play_Gd;
 extern TYPE_GrData      _Button_recall_Gd;
 extern TYPE_GrData      _Button_record_Gd;
 extern TYPE_GrData      _Button_red_Gd;

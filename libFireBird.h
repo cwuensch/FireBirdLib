@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-06-20"
+  #define __FBLIB_VERSION__ "2011-07-10"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -270,6 +270,7 @@
   bool  isAnyOSDVisible(dword checkX, dword checkY, dword checkW, dword checkH);
   bool  isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, byte Plane);
   bool  isInfoBoxVisible(void);
+  bool  isDirectSvcNumVisible(void);
   bool  isOSDRegionAlive(word Region);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer );
@@ -866,6 +867,7 @@
   inline dword FIS_vBootReason(void);
   inline dword FIS_vCheckAutoDecTimerId(void);
   inline dword FIS_vcurTapTask(void);
+  inline dword FIS_vdirectSvcNumTimerId(void);
   inline dword FIS_vEEPROM(void);
   inline dword FIS_vEEPROMPin(void);
   inline dword FIS_vEtcInfo(void);
@@ -1050,6 +1052,7 @@
   void    LowerCase(char *string);
   void    MakeValidFileName(char *strName, eRemoveChars ControlCharacters);
   char   *ParseLine(char *zeile, size_t *n, char delim);
+  void    ReplaceInvalidFileNameChars(char *strName);
   char   *RTrim(char *s);
   void    SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt);
   bool    StringEndsWith(char *text, char *postfix);
@@ -1356,6 +1359,7 @@
     BI_Ok,
     BI_Option,
     BI_Pause,
+    BI_Play,
     BI_Recall,
     BI_Record,
     BI_Red,
@@ -1379,15 +1383,16 @@
   void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
 
   //Cursor Functions
-  bool OSDMenuSelectItem(int ItemIndex);
-  bool OSDMenuSelectTopItem(int TopIndex);
-  int  OSDMenuGetCurrentItem(void);
-  int  OSDMenuScrollUp(void);
-  int  OSDMenuScrollPageUp(void);
-  int  OSDMenuScrollDown(void);
-  int  OSDMenuScrollPageDown(void);
-  int  OSDMenuScrollHome(void);
-  int  OSDMenuScrollEnd(void);
+  bool  OSDMenuSelectItem(int ItemIndex);
+  bool  OSDMenuSelectTopItem(int TopIndex);
+  int   OSDMenuGetCurrentItem(void);
+  dword OSDMenuItemGetTopIndex(void);
+  int   OSDMenuScrollUp(void);
+  int   OSDMenuScrollPageUp(void);
+  int   OSDMenuScrollDown(void);
+  int   OSDMenuScrollPageDown(void);
+  int   OSDMenuScrollHome(void);
+  int   OSDMenuScrollEnd(void);
 
   //Items
   void  OSDMenuItemsClear(void);
@@ -1407,7 +1412,8 @@
   char *OSDMenuItemGetCurrentName(void);
   dword OSDMenuItemGetCurrentID(void);
   dword OSDMenuItemGetNrOfItems(void);
-  dword OSDMenuItemGetTopIndex(void);
+  void  OSDMenuItemSortNameColumn(bool Ascending);
+  void  OSDMenuItemSortValueColumn(bool Ascending);
 
   //
   bool OSDMenuPush(void);
@@ -1511,6 +1517,8 @@
   /*****************************************************************************************************************************/
 
   #define EVT_USBKEYBOARD   0x0ffe
+
+  #define EVT_TMSREMOTEASCII 0x0ffd
 
   /*****************************************************************************************************************************/
   /* MIPS OpCodes                                                                                                              */

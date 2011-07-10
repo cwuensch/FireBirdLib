@@ -18,12 +18,7 @@ dword KeyTranslateHook(word event, dword param1, dword param2)
 
     //Nothing to do for RT_5000 and RT_2100
     SysID = GetSysID();
-    if((SysID == 32030) || //TF7100HD+
-       (SysID == 32031) || //TF7100HD+
-       (SysID == 33021) || //TRF7160
-       (SysID == 22120) || //SRP2401CI+
-       (SysID == 22130) || //SRP2401CI+
-       (RemoteType == RT_7100PLUS))
+    if(RemoteType == RT_7100PLUS)
     {
       switch(NativeKeyCode)
       {

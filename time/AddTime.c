@@ -28,10 +28,13 @@ dword AddTime (dword date, int add) //add minutes to the day
     day-=1;
     hour+=24;
   }
-  else if (hour > 23)
+  else
   {
-    day+=1;
-    hour-=24;
+    while(hour > 23)
+    {
+      day+=1;
+      hour-=24;
+    }
   }
 
   return ((day<<16)|(hour<<8)|min);

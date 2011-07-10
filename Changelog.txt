@@ -641,5 +641,8 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-06-17  Added OSDMenuDestroyNoOSDUpdate()
             Fixed the scrollbar graphic (TV picture visible on the right end side)
 2011-06-18  Added (Happy) VFD_SetCharacterSet() to select characterset for VFD, i.e. cyrillic
-2011-06-20  Added a lot of buttons for the TMS OSD Menu (thanks to JayTee for the icons)
+2011-06-20  Added a lot of buttons for the TMS OSD menu (thanks to JayTee for the icons)
               BI_0, BI_1, BI_2, BI_3, BI_4, BI_5, BI_6, BI_7, BI_8, BI_9, BI_AR, BI_Audio, BI_Cut, BI_Guide, BI_M, BI_Option, BI_Pause, BI_Sleep, BI_Step, BI_Subtitle, BI_TV_Radio, BI_TTX, BI_VF
+2011-07-03  Fixed AddTime() so that it will allow large number of minutes to add
+2011-07-08  Added OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn()
+2011-07-10  Added the Play button for the TMS OSD menu
