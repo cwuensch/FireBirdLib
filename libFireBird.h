@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-07-10"
+  #define __FBLIB_VERSION__ "2011-07-16"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -898,6 +898,75 @@
   inline dword FIS_vTAPTable(void);
   inline dword FIS_vvfdBrightTimerId(void);
 
+  /*****************************************************************************************************************************/
+  /* LogoManager                                                                                                               */
+  /*****************************************************************************************************************************/
+
+  #define LOGOROOT        "/ProgramFiles/Settings/Logos"
+  #define LOGOPACK        "LogoPack.tar"
+  #define LOGOCACHE       "Logo.cache"
+  #define LOGOCACHEID     "LGC"
+  #define LOGOCACHEVERSION 1
+  #define LILNAME         "Logos.lil"
+
+  typedef enum
+  {
+    LGST_3pgstyle,
+    LGST_QtstyleBlue,
+    LGST_QtstyleGrey,
+    LGST_QtstyleTMS,
+    LGST_TransBlack,
+    LGST_TransIBBlue,
+    LGST_TransIBGrey,
+    LGST_TransQTBlue,
+    LGST_TransQTGrey,
+    LGST_NRITEMS
+  } tLogoStyle;
+
+  typedef enum
+  {
+    LGSZ_qtl,
+    LGSZ_ibl,
+    LGSZ_qsl,
+    LGSZ_NRITEMS
+  } tLogoSize;
+
+  typedef enum
+  {
+    LGAR_43,
+    LGAR_169,
+    LGAR_NRITEMS
+  } tLogoAspect;
+
+  void          LogoManager_Initialize(void *Callback);
+  char         *LogoManager_ChannelNameToLogoName(char *ChannelName);
+  void          LogoManager_Cleanup(void);
+  bool          LogoManager_LogoCacheLoad(void);
+  void          LogoManager_LogoCacheRebuild(void);
+  TYPE_GrData  *LogoManager_GetLogoByChannelID(ulong64 ChannelID, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
+  TYPE_GrData  *LogoManager_GetLogoByLogoName(char *LogoName, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
+  TYPE_GrData  *LogoManager_GetLogoByChannelName(char *ChannelName, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
+  TYPE_GrData  *LogoManager_GetLogoByChannel(int SvcType, int SvcNum, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
+  char         *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR);
+  bool          LogoManager_LogosAvailable(tLogoStyle LogoStyle);
+  int           LogoManager_UpdateLIL(void);
+  ulong64       LogoManager_CalculateChannelID(word SatLongitude, word NetworkID, word TSID, word ServiceID);
+  ulong64       LogoManager_GetChannelID(int SvcType, int SvcNum);
+
+  //The callback parameter may point to the following prototype
+  // void Callback(int CallbackType, int Param);
+  //
+  //It gets called under the following circumstances:
+  //  * Reports the number of successfully loaded logos (CallbackType=0, Param1=number of logos)
+  //  * A new logo package (Logos.tar) has been found (CallbackType=1, Param1=0)
+  //  * The cache file needs to be rebuilt (CallbackType=2, Param1 reflects the progress)
+  //  * The number of of lgoo files found during the rebuild (CallbackType=4, Param1 is the number of files)
+  //  * The cache rebuild has finished (CallbackType=3, Param1=0)
+  //  * An error occurs (CallbackType=-1, Param1 reports one of the following errors:
+  //    * 0: failed to reserve memory for LogoData
+  //    * 1: cache file is invalid
+  //    * 2: failed to open a logo file
+
 
   /*****************************************************************************************************************************/
   /* REC Stream functions                                                                                                      */
@@ -1046,8 +1115,10 @@
 
   byte    CharToISO(byte *p);
   dword   CharToUTF8(byte *p);
+  void    DeleteAt(char *SourceString, int Pos, int Len);
   void    ExtractLine(char *Text, char *Line);
   size_t  GetLine(char *data, bool strip);
+  void    InsertAt(char *SourceString, int Pos, char *NewString);
   bool    isUTF8Char(byte *p);
   void    LowerCase(char *string);
   void    MakeValidFileName(char *strName, eRemoveChars ControlCharacters);
@@ -1380,6 +1451,7 @@
 
 
   void OSDMenuButtonsClear(void);
+  void OSDMenuButtonColor(dword Color);
   void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
 
   //Cursor Functions

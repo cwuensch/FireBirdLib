@@ -646,3 +646,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-07-03  Fixed AddTime() so that it will allow large number of minutes to add
 2011-07-08  Added OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn()
 2011-07-10  Added the Play button for the TMS OSD menu
+2011-07-11  Fixed OSDMenu: the right hand title will be truncated if both right and left hand title are long, so that the won't overlap
+2011-07-16  Added the LogoManager
+            Added InsertAt() and DeleteAt()

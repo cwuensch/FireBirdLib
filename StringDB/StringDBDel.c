@@ -12,7 +12,7 @@ bool StringDBDel(tStringDB *StringDB)
 
   l = strlen(StringDB->DBPtr) + 1;
   d = StringDB->DBPtr;
-  s = StringDBNext(StringDB);
+  s = StringDBGet(StringDB, StringDBNext(StringDB));
   StringDB->DBPtr = d;
 
   while(s < StringDB->DBEnd)

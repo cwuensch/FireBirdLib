@@ -5,6 +5,7 @@ bool StrReplace(char *String, char *Find, char *Replace)
 {
   int                   FindLen, ReplaceLen;
   char                 *p;
+  bool                  ret = FALSE;
 
   //No NULL pointers?
   if(!String || !Find || !Replace) return FALSE;
@@ -26,6 +27,7 @@ bool StrReplace(char *String, char *Find, char *Replace)
       p = strstr(p, Find);
       if(p)
       {
+        ret = TRUE;
         TAP_MemCpy(p, Replace, ReplaceLen);
         strcpy(p + ReplaceLen, p + FindLen);
         p += ReplaceLen;
@@ -45,6 +47,7 @@ bool StrReplace(char *String, char *Find, char *Replace)
       p = strstr(p, Find);
       if(p)
       {
+        ret = TRUE;
         NrOfOccurences++;
         p += FindLen;
       }
@@ -75,5 +78,5 @@ bool StrReplace(char *String, char *Find, char *Replace)
     TAP_MemFree(TempBuffer);
   }
 
-  return TRUE;
+  return ret;
 }

@@ -29,6 +29,7 @@ typedef struct
   dword                 X;
   dword                 Y;
   TYPE_GrData          *pButtonGd;
+  dword                 Color;
   char                  Text[STDSTRINGSIZE];
 }tButtons;
 
@@ -150,6 +151,7 @@ extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
 extern tOSDMenuDisplayMode  OSDMenuDisplayMode;
+dword                   ButtonColor;
 
 extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
