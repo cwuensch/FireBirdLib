@@ -649,3 +649,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-07-11  Fixed OSDMenu: the right hand title will be truncated if both right and left hand title are long, so that the won't overlap
 2011-07-16  Added the LogoManager
             Added InsertAt() and DeleteAt()
+            Fixed a bug in INISaveFile(), which left junk at the end of the INI

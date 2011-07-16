@@ -44,20 +44,23 @@ void INISetString (char *Key, char *Value)
   }
   else
   {
-    l = strlen (INIBuffer) - (j - i) + strlen (TempKey) + strlen (Value) + 1;
+    l = strlen(INIBuffer) - (j - i) + strlen (TempKey) + strlen (Value) + 1;
 
-    if (l > BufferSize) BS = ((BufferSize >> 10) + 1) << 10;
-    else BS = BufferSize;
+    if (l > BufferSize)
+      BS = ((BufferSize >> 10) + 1) << 10;
+    else
+      BS = BufferSize;
 
     if (l > BS || !(NewBuffer = malloc(BS))) return;
 
-    memset (NewBuffer, 0, BS);
-    strncpy (NewBuffer, INIBuffer, i - INIBuffer);
-    strcat (NewBuffer, TempKey);
-    strcat (NewBuffer, Value);
-    strcat (NewBuffer, j + 1);
+    memset(NewBuffer, 0, BS);
+    strncpy(NewBuffer, INIBuffer, i - INIBuffer);
+    strcat(NewBuffer, TempKey);
+    strcat(NewBuffer, Value);
+    strcat(NewBuffer, j + 1);
     free (INIBuffer);
     INIBuffer = NewBuffer;
+
     BufferSize = BS;
   }
 }

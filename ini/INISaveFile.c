@@ -46,6 +46,7 @@ bool INISaveFile (char *FileName, INILOCATION INILocation, char *AppName)
     }
   }
 
+  TAP_Hdd_Delete(FileName);
   TAP_Hdd_Create (FileName, ATTR_NORMAL);
   if (!(f = TAP_Hdd_Fopen (FileName)))
   {
