@@ -906,7 +906,7 @@
   #define LOGOPACK        "LogoPack.tar"
   #define LOGOCACHE       "Logo.cache"
   #define LOGOCACHEID     "LGC"
-  #define LOGOCACHEVERSION 1
+  #define LOGOCACHEVERSION 2
   #define LILNAME         "Logos.lil"
 
   typedef enum

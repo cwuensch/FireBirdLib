@@ -651,3 +651,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Added InsertAt() and DeleteAt()
             Fixed a bug in INISaveFile(), which left junk at the end of the INI
 2011-07-22  Fixed a bug in StringDBAdd(), which left junk in the database and therefore prevented a correct EOF
+            Bugfix in the Logo name handling of the cache file

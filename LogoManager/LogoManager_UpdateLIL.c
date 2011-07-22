@@ -8,7 +8,7 @@ int LogoManager_UpdateLIL(void)
   typedef struct
   {
     ulong64             ChannelID;
-    char                Name[MAX_SvcName];
+    char                Name[MAXLOGONAME+1];
   }tNewIDs;
 
   int                   nTvSvc, nRadioSvc;

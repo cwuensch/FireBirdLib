@@ -3,10 +3,12 @@
 
   #include "tap.h"
 
+  #define MAXLOGONAME         40
+
   typedef struct
   {
     ulong64             ChannelID;     //(SatLong << 48) | (NetworkID << 32) | (StreamID << 16) | SID
-    char                LogoName[MAX_SvcName+1];
+    char                LogoName[MAXLOGONAME+1];
     tLogoStyle          Style;
     tLogoSize           Size;
     tLogoAspect         Aspect;

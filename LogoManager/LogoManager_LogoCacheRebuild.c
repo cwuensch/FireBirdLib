@@ -83,8 +83,8 @@ void LogoManager_LogoCacheRebuild(void)
               if(FolderEntry.attr == ATTR_NORMAL)
               {
                 LogoManager_LogoData[LogoIndex].ChannelID = 0;
-                strncpy(LogoManager_LogoData[LogoIndex].LogoName, FolderEntry.name, MAX_SvcName);
-                LogoManager_LogoData[LogoIndex].LogoName[MAX_SvcName] = '\0';
+                strncpy(LogoManager_LogoData[LogoIndex].LogoName, FolderEntry.name, MAXLOGONAME);
+                LogoManager_LogoData[LogoIndex].LogoName[MAXLOGONAME] = '\0';
                 LogoManager_LogoData[LogoIndex].LogoName[strlen(LogoManager_LogoData[LogoIndex].LogoName) - 4] = '\0';
                 LogoManager_LogoData[LogoIndex].Style  = i;
 
