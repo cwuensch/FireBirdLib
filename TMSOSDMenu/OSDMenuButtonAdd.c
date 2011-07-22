@@ -27,5 +27,5 @@ void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd,
 
   ButtonsDirty = TRUE;
 
-  pMenu->ButtonXStart[Line] = pMenu->ButtonXStart[Line] + IconGd->width + OSDMenuGetW(Text, 12) + 6;
+  pMenu->ButtonXStart[Line] = pMenu->ButtonXStart[Line] + IconGd->width + OSDMenuGetW(Text, 12) + 8;
 }

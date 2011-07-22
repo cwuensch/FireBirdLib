@@ -138,7 +138,7 @@ void LogoManager_LogoCacheRebuild(void)
         }
       }
 
-      //Step 5: if the LUT exists, read and update the LogoIDs
+      //Step 5: if the LIL exists, read and update the ChannelID of all Logos
 
       //Step 6: rewrite the cache structure to update all pointers
       TAP_Hdd_Fseek(f, sizeof(ID) + sizeof(dword) + sizeof(dword), SEEK_SET);

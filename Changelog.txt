@@ -638,15 +638,16 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-06-11  Added OSDMenuItemGetTopIndex() and OSDMenuSelectTopItem()
 2011-06-14  Added FlashFavoritesGetTotal(), FlashFavoritesGetInfo(), FlashFavoritesSetInfo() and FlashFavoritesFindService()
 2011-06-16  Added OSDMenuDestroyNoOSDUpdate()
-2011-06-17  Added OSDMenuDestroyNoOSDUpdate()
-            Fixed the scrollbar graphic (TV picture visible on the right end side)
+2011-06-17  Fixed the scrollbar graphic (TV picture visible on the right end side)
 2011-06-18  Added (Happy) VFD_SetCharacterSet() to select characterset for VFD, i.e. cyrillic
 2011-06-20  Added a lot of buttons for the TMS OSD menu (thanks to JayTee for the icons)
               BI_0, BI_1, BI_2, BI_3, BI_4, BI_5, BI_6, BI_7, BI_8, BI_9, BI_AR, BI_Audio, BI_Cut, BI_Guide, BI_M, BI_Option, BI_Pause, BI_Sleep, BI_Step, BI_Subtitle, BI_TV_Radio, BI_TTX, BI_VF
 2011-07-03  Fixed AddTime() so that it will allow large number of minutes to add
 2011-07-08  Added OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn()
+            Added EVT_TMSREMOTEASCII
 2011-07-10  Added the Play button for the TMS OSD menu
 2011-07-11  Fixed OSDMenu: the right hand title will be truncated if both right and left hand title are long, so that the won't overlap
 2011-07-16  Added the LogoManager
             Added InsertAt() and DeleteAt()
             Fixed a bug in INISaveFile(), which left junk at the end of the INI
+2011-07-22  Fixed a bug in StringDBAdd(), which left junk in the database and therefore prevented a correct EOF

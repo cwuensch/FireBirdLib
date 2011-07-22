@@ -29,7 +29,7 @@ dword StringDBAdd(tStringDB *StringDB, char *Text)
     NewStringDB = TAP_MemAlloc(NewStringDBSize);
     if(!NewStringDB) return 0;
     memset(NewStringDB, 0, NewStringDBSize);
-    memcpy(NewStringDB, StringDB->DB, NewStringDBSize);
+    memcpy(NewStringDB, StringDB->DB, StringDB->DBSize);
     TAP_MemFree(StringDB->DB);
 
     StringDB->DBPtr = StringDB->DBPtr - StringDB->DB + NewStringDB;
