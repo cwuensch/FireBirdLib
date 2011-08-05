@@ -22,9 +22,12 @@
 #include                "graphic/Button_9.gd"
 #include                "graphic/Button_ar.gd"
 #include                "graphic/Button_audio.gd"
+#include                "graphic/Button_aux.gd"
 #include                "graphic/Button_blue.gd"
 #include                "graphic/Button_cut.gd"
+#include                "graphic/Button_down.gd"
 #include                "graphic/Button_exit.gd"
+#include                "graphic/Button_fav.gd"
 #include                "graphic/Button_ffwd.gd"
 #include                "graphic/Button_filelist.gd"
 #include                "graphic/Button_green.gd"
@@ -32,15 +35,22 @@
 #include                "graphic/Button_info.gd"
 #include                "graphic/Button_jumpend.gd"
 #include                "graphic/Button_jumpstart.gd"
+#include                "graphic/Button_left.gd"
+#include                "graphic/Button_list.gd"
 #include                "graphic/Button_m.gd"
 #include                "graphic/Button_menu.gd"
+#include                "graphic/Button_mute.gd"
+#include                "graphic/Button_nouse.gd"
 #include                "graphic/Button_ok.gd"
 #include                "graphic/Button_option.gd"
 #include                "graphic/Button_pause.gd"
 #include                "graphic/Button_play.gd"
+#include                "graphic/Button_progminus.gd"
+#include                "graphic/Button_progplus.gd"
 #include                "graphic/Button_recall.gd"
 #include                "graphic/Button_record.gd"
 #include                "graphic/Button_red.gd"
+#include                "graphic/Button_right.gd"
 #include                "graphic/Button_rwd.gd"
 #include                "graphic/Button_sat.gd"
 #include                "graphic/Button_select.gd"
@@ -50,7 +60,10 @@
 #include                "graphic/Button_subtitle.gd"
 #include                "graphic/Button_ttx.gd"
 #include                "graphic/Button_tv_radio.gd"
+#include                "graphic/Button_up.gd"
 #include                "graphic/Button_vf.gd"
+#include                "graphic/Button_volminus.gd"
+#include                "graphic/Button_volplus.gd"
 #include                "graphic/Button_white.gd"
 #include                "graphic/Button_yellow.gd"
 
@@ -125,6 +138,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 
   OSDMenuDisplayMode = OMDM_Standard;
+  ButtonColor = RGB(230, 230, 250);
 
   CallbackProcedure = NULL;
 }

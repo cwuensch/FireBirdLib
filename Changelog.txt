@@ -652,3 +652,10 @@ License:  This library is freeware. You may use this code in your own projects f
             Fixed a bug in INISaveFile(), which left junk at the end of the INI
 2011-07-22  Fixed a bug in StringDBAdd(), which left junk in the database and therefore prevented a correct EOF
             Bugfix in the Logo name handling of the cache file
+            Fixed a bug in OSDMenuScrollPageDown(), which prevent a scroll down if there were less than 10 items in the list
+2011-07-24  Added OSDMenuItemFindName() and OSDMenuItemFindValue()
+2011-07-30  Added a lot of new buttons
+2011-08-01  Added the Mute button
+2011-08-04  Fixed OSDMenuScrollPageDown(), which went one line too far
+            Bugfix: The TMSMenu button color will be reset by OSDMenuInitialize()
+2011-08-05  'Official release'

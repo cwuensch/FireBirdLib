@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-07-22"
+  #define __FBLIB_VERSION__ "2011-08-04"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1415,9 +1415,12 @@
     BI_9,
     BI_AR,
     BI_Audio,
+    BI_Aux,
     BI_Blue,
     BI_Cut,
+    BI_Down,
     BI_Exit,
+    BI_Fav,
     BI_Ffwd,
     BI_FileList,
     BI_Green,
@@ -1425,15 +1428,21 @@
     BI_Info,
     BI_JumpEnd,
     BI_JumpStart,
+    BI_Left,
+    BI_List,
     BI_M,
     BI_Menu,
+    BI_Mute,
     BI_Ok,
     BI_Option,
     BI_Pause,
     BI_Play,
+    BI_ProgMinus,
+    BI_ProgPlus,
     BI_Recall,
     BI_Record,
     BI_Red,
+    BI_Right,
     BI_Rwd,
     BI_Sat,
     BI_Select,
@@ -1443,9 +1452,13 @@
     BI_Subtitle,
     BI_TTX,
     BI_TV_Radio,
+    BI_Up,
     BI_VF,
+    BI_VolMinus,
+    BI_VolPlus,
     BI_White,
     BI_Yellow,
+    BI_NoUse,
     BI_UserDefined
   } tButtonIcon;
 
@@ -1486,6 +1499,8 @@
   dword OSDMenuItemGetNrOfItems(void);
   void  OSDMenuItemSortNameColumn(bool Ascending);
   void  OSDMenuItemSortValueColumn(bool Ascending);
+  int   OSDMenuItemFindName(char *Text);
+  int   OSDMenuItemFindValue(char *Text);
 
   //
   bool OSDMenuPush(void);

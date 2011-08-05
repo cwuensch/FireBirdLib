@@ -7,9 +7,9 @@ int OSDMenuFindNextSelectableEntry(int CurrentSelection)
 
   pMenu = &Menu[CurrentMenuLevel];
 
-  if((CurrentSelection >= (pMenu->NrItems - 1)) && !pMenu->ScrollLoop) return -1;
+  if((CurrentSelection >= (pMenu->NrItems - 1)) && !pMenu->ScrollLoop) return CurrentSelection;
 
-  //Count the number of selectable EndMessageWin
+  //Count the number of selectable items
   Cnt = 0;
   for(i = 0; i < pMenu->NrItems; i++)
   {
