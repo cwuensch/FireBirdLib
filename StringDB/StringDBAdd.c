@@ -24,10 +24,11 @@ dword StringDBAdd(tStringDB *StringDB, char *Text)
     if(StringDB->DBSize == 0)
       NewStringDBSize = 2 * strlen(Text);
     else
-      NewStringDBSize = StringDB->DBSize << 1;
+      NewStringDBSize = StringDB->DBSize + 4096;
 
     NewStringDB = TAP_MemAlloc(NewStringDBSize);
     if(!NewStringDB) return 0;
+
     memset(NewStringDB, 0, NewStringDBSize);
     memcpy(NewStringDB, StringDB->DB, StringDB->DBSize);
     TAP_MemFree(StringDB->DB);

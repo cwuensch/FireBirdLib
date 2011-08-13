@@ -1,21 +1,38 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuItemSortNameColumn(bool Ascending)
+void OSDMenuItemSortNameColumn(bool Ascending, bool CaseSensitive)
 {
   int                   i, j, NrItems;
-  tItem                *Menu1, *Menu2, TempItem;
+  tItem                 TempItem;
+  char                 *p1, *p2;
+  bool                  Swap;
 
   NrItems = Menu[CurrentMenuLevel].NrItems;
 
   for(i = 0; i < NrItems - 1; i++)
   {
-    Menu1 = &Menu[CurrentMenuLevel].Item[i];
     for(j = i + 1; j < NrItems; j++)
     {
-      Menu2 = &Menu[CurrentMenuLevel].Item[j];
-      if((Ascending && strcmp(Menu1->Name, Menu2->Name) > 0) ||
-         (!Ascending && strcmp(Menu1->Name, Menu2->Name) < 0))
+      p1 = Menu[CurrentMenuLevel].Item[i].Name;
+      while(*p1 && (*p1 < ' '))
+        p1++;
+
+      p2 = Menu[CurrentMenuLevel].Item[j].Name;
+      while(*p2 && (*p2 < ' '))
+        p2++;
+
+      switch((Ascending ? 1 : 0) + (CaseSensitive ? 2 : 0))
+      {
+        case 0: Swap = (strcasecmp(p1, p2) < 0); break;
+        case 1: Swap = (strcasecmp(p1, p2) > 0); break;
+        case 2: Swap = (strcmp(p1, p2) < 0); break;
+        case 3: Swap = (strcmp(p1, p2) > 0); break;
+        default:
+          Swap = FALSE;
+      }
+
+      if(Swap)
       {
         memcpy(&TempItem, &Menu[CurrentMenuLevel].Item[i], sizeof(tItem));
         memcpy(&Menu[CurrentMenuLevel].Item[i], &Menu[CurrentMenuLevel].Item[j], sizeof(tItem));

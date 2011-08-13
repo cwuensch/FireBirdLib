@@ -4,17 +4,18 @@
 bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
 {
   TYPE_File             *pFile;
+  dword									rowlength;
 
-#ifdef DEBUG_FIREBIRDLIB
-  CallTraceEnter("SaveBitmap");
-#endif
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceEnter("SaveBitmap");
+  #endif
 
   if( !pBuffer || !strName )
   {
 
-#ifdef DEBUG_FIREBIRDLIB
+  #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
-#endif
+  #endif
 
     return FALSE;
   }
@@ -24,9 +25,9 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
   if ( !pFile )
   {
 
-#ifdef DEBUG_FIREBIRDLIB
+  #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
-#endif
+  #endif
 
     return FALSE;
   }
@@ -35,12 +36,14 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
   BMP_WriteHeader(pFile, width, height);
 
   // write bitmap data
-  TAP_Hdd_Fwrite(pBuffer, width * 3, height, pFile);
+	// according to spec.: the rowlength must be a multiple of 4 bytes, if necessary fill up with zero-bytes
+	rowlength = ((width*3/4)+1)*4;
+  TAP_Hdd_Fwrite(pBuffer, rowlength, height, pFile);
   TAP_Hdd_Fclose (pFile);
 
-#ifdef DEBUG_FIREBIRDLIB
-  CallTraceExit(NULL);
-#endif
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+  #endif
 
   return TRUE;
 }

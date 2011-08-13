@@ -44,7 +44,6 @@ void HDD_EncodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  w;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -113,11 +112,9 @@ void HDD_EncodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , TRUE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, TRUE);
-  memcpy(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventUnknown2, 2);
-  setWord(&Buffer[p + 0x0006], RECHeaderInfo->ExtEventEventID, TRUE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, TRUE);
+  setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, TRUE);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0570;
@@ -136,7 +133,6 @@ void HDD_EncodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -205,11 +201,9 @@ void HDD_EncodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , TRUE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, TRUE);
-  memcpy(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventUnknown2, 2);
-  setWord(&Buffer[p + 0x0006], RECHeaderInfo->ExtEventEventID, TRUE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, TRUE);
+  setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, TRUE);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0570;
@@ -228,7 +222,6 @@ void HDD_EncodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -293,12 +286,10 @@ void HDD_EncodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x0164;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, TRUE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, TRUE);
-  memcpy(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventUnknown2, 2);
-  setWord(&Buffer[p + 0x0006], RECHeaderInfo->ExtEventEventID, TRUE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , TRUE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, TRUE);
+  setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, TRUE);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x056c;
@@ -317,7 +308,6 @@ void HDD_EncodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -386,12 +376,10 @@ void HDD_EncodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x0170;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, TRUE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, TRUE);
-  memcpy(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventUnknown2, 2);
-  setWord(&Buffer[p + 0x0006], RECHeaderInfo->ExtEventEventID, TRUE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , TRUE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, TRUE);
+  setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, TRUE);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0578;
@@ -410,7 +398,6 @@ void HDD_EncodeRECHeader_ST_T5800(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -479,12 +466,10 @@ void HDD_EncodeRECHeader_ST_T5800(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x016c;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, TRUE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, TRUE);
-  memcpy(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventUnknown2, 2);
-  setWord(&Buffer[p + 0x0006], RECHeaderInfo->ExtEventEventID, TRUE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , TRUE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, TRUE);
+  setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, TRUE);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0574;
@@ -504,7 +489,6 @@ void HDD_EncodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   word                  Flags;
   word                  TPFlags1;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -588,11 +572,10 @@ void HDD_EncodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x0168;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, FALSE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, FALSE);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , FALSE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, FALSE);
   setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, FALSE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info: see header flags
 
@@ -608,7 +591,6 @@ void HDD_EncodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -683,11 +665,10 @@ void HDD_EncodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x0168;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, FALSE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, FALSE);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , FALSE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, FALSE);
   setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, FALSE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info: see header flags
 
@@ -703,7 +684,6 @@ void HDD_EncodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -764,11 +744,10 @@ void HDD_EncodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 
   //Extended Event Info
   p = 0x0168;
-  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID, FALSE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, FALSE);
+  setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , FALSE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, FALSE);
   setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, FALSE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
    //Transponder info
   p = 0x0570;
@@ -794,7 +773,6 @@ void HDD_EncodeRECHeader_ST_TF7k7HDPVR(byte *Buffer, tRECHeaderInfo *RECHeaderIn
   dword                 p;
   word                  w;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0x4d0;
@@ -863,10 +841,9 @@ void HDD_EncodeRECHeader_ST_TF7k7HDPVR(byte *Buffer, tRECHeaderInfo *RECHeaderIn
   //Extended Event Info
   p = 0x063c;
   setWord(&Buffer[p + 0x0000], RECHeaderInfo->ExtEventServiceID , FALSE);
-  ExtEventTextLength = strlen(RECHeaderInfo->ExtEventText);
-  setWord(&Buffer[p + 0x0002], ExtEventTextLength, FALSE);
+  setWord(&Buffer[p + 0x0002], RECHeaderInfo->ExtEventTextLength, FALSE);
   setDword(&Buffer[p + 0x0004], RECHeaderInfo->ExtEventEventID, FALSE);
-  strncpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, 1024);
+  memcpy(&Buffer[p + 0x0008], RECHeaderInfo->ExtEventText, RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0a44;

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-08-04"
+  #define __FBLIB_VERSION__ "2011-08-13"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -303,6 +303,8 @@
   dword CompressedTFDSize(byte *pSrc, dword SourceBufferSize, void *pPercentFinishedCallback);
   word  CRC16(word StartValue, void *StartAddress, dword Length);
   dword CRC32(dword StartValue, void *StartAddress, dword Length);
+  bool  MD5String(char *inString, byte *Digest);
+  bool  MD5File(char *FileName, byte *Digest);
   dword OATH(register unsigned char * data, int len, dword hash);
   dword SuperFastHash(register unsigned char * data, int len, dword hash);
   word  UncompressBlock(byte *pInput, word compCount, byte *pOutput, word bufSize);
@@ -376,6 +378,8 @@
   byte  DevFront_SetIlluminate(byte a0, byte Brightness);
   dword DevHdd_DeviceClose(tDirEntry **hddPlaybackFolder);
   dword DevHdd_DeviceOpen(tDirEntry **hddPlaybackFolder, tDirEntry *DirEntry);
+  int   Appl_CheckRecording(int SvcType, int SvcNum, bool Unknown);
+  int   Appl_CheckRecording_Tuner(byte TunerIndex, int SvcType, int SvcNum, bool Unknown);
   void  Appl_ClrTimer(byte *TimerHandle);
   dword Appl_GetFreeExtRecordSpace(char *MountPath);
   void  Appl_ShoutCast(void);
@@ -819,6 +823,8 @@
   dword TryResolve(char *Function);
 
   inline dword FIS_fwAppl_AddSvcName(void);
+  inline dword FIS_fwAppl_CheckRecording(void);
+  inline dword FIS_fwAppl_CheckRecording_Tuner(void);
   inline dword FIS_fwAppl_ClrTimer(void);
   inline dword FIS_fwAppl_DeleteRadioSvcName(void);
   inline dword FIS_fwAppl_DeleteTvSvcName(void);
@@ -1056,6 +1062,7 @@
 
     word                ExtEventServiceID;           //13467  89a
     dword               ExtEventEventID;             //13467  89a
+    word                ExtEventTextLength;          //13467  89a
     char                ExtEventText[1024];          //13467  89a
     byte                ExtEventUnknown1[6];         //
     byte                ExtEventUnknown2[2];         //13467
@@ -1497,8 +1504,9 @@
   char *OSDMenuItemGetCurrentName(void);
   dword OSDMenuItemGetCurrentID(void);
   dword OSDMenuItemGetNrOfItems(void);
-  void  OSDMenuItemSortNameColumn(bool Ascending);
-  void  OSDMenuItemSortValueColumn(bool Ascending);
+  void  OSDMenuItemSortNameColumn(bool Ascending, bool CaseSensitive);
+  void  OSDMenuItemSortValueColumn(bool Ascending, bool CaseSensitive);
+  void  OSDMenuItemSortID(bool Ascending);
   int   OSDMenuItemFindName(char *Text);
   int   OSDMenuItemFindValue(char *Text);
 

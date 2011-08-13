@@ -36,7 +36,6 @@ void HDD_DecodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  TPFlags1;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -96,10 +95,9 @@ void HDD_DecodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
-  memcpy(RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
-  RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0570;
@@ -117,7 +115,6 @@ void HDD_DecodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -174,10 +171,9 @@ void HDD_DecodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
-  memcpy(RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
-  RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0570;
@@ -195,7 +191,6 @@ void HDD_DecodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -249,10 +244,9 @@ void HDD_DecodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0164;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
-  memcpy(RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
-  RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x056c;
@@ -270,7 +264,6 @@ void HDD_DecodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -328,10 +321,9 @@ void HDD_DecodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0170;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
-  memcpy(RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
-  RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0578;
@@ -349,7 +341,6 @@ void HDD_DecodeRECHeader_ST_T5800(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
 {
   dword                 p;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -406,10 +397,9 @@ void HDD_DecodeRECHeader_ST_T5800(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x016c;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
-  memcpy(RECHeaderInfo->ExtEventUnknown2, &Buffer[p + 0x0004], 2);
-  RECHeaderInfo->ExtEventEventID     = getWord(&Buffer[p + 0x0006], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0574;
@@ -428,7 +418,6 @@ void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -510,9 +499,9 @@ void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info: see header flags
 
@@ -528,7 +517,6 @@ void HDD_DecodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -587,9 +575,9 @@ void HDD_DecodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Transponder info
   p = 0x0570;
@@ -619,7 +607,6 @@ void HDD_DecodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   dword                 p;
   word                  Flags;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0;
@@ -677,9 +664,9 @@ void HDD_DecodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   //Extended Event Info
   p = 0x0168;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Transponder info
   p = 0x0570;
@@ -705,7 +692,6 @@ void HDD_DecodeRECHeader_ST_TF7k7HDPVR(byte *Buffer, tRECHeaderInfo *RECHeaderIn
   dword                 p;
   word                  TPFlags1;
   byte                  EventTextLength;
-  word                  ExtEventTextLength;
 
   //Header
   p = 0x4d0;
@@ -768,9 +754,9 @@ void HDD_DecodeRECHeader_ST_TF7k7HDPVR(byte *Buffer, tRECHeaderInfo *RECHeaderIn
   //Extended Event Info
   p = 0x063c;
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
-  ExtEventTextLength                 = getWord(&Buffer[p + 0x0002], WrongEndian);
+  RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
-  strncpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], 1024);
+  memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info
   p = 0x0a44;

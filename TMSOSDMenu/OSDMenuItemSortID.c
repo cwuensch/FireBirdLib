@@ -1,11 +1,11 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuItemSortValueColumn(bool Ascending, bool CaseSensitive)
+void OSDMenuItemSortID(bool Ascending)
 {
   int                   i, j, NrItems;
   tItem                 TempItem;
-  char                 *p1, *p2;
+  dword                 ID1, ID2;
   bool                  Swap;
 
   NrItems = Menu[CurrentMenuLevel].NrItems;
@@ -14,20 +14,13 @@ void OSDMenuItemSortValueColumn(bool Ascending, bool CaseSensitive)
   {
     for(j = i + 1; j < NrItems; j++)
     {
-      p1 = Menu[CurrentMenuLevel].Item[i].Value;
-      while(*p1 && (*p1 < ' '))
-        p1++;
+      ID1 = Menu[CurrentMenuLevel].Item[i].ID;
+      ID2 = Menu[CurrentMenuLevel].Item[j].ID;
 
-      p2 = Menu[CurrentMenuLevel].Item[j].Value;
-      while(*p2 && (*p2 < ' '))
-        p2++;
-
-      switch((Ascending ? 1 : 0) + (CaseSensitive ? 2 : 0))
+      switch(Ascending ? 1 : 0)
       {
-        case 0: Swap = (strcasecmp(p1, p2) < 0); break;
-        case 1: Swap = (strcasecmp(p1, p2) > 0); break;
-        case 2: Swap = (strcmp(p1, p2) < 0); break;
-        case 3: Swap = (strcmp(p1, p2) > 0); break;
+        case 0: Swap = (ID1 < ID2); break;
+        case 1: Swap = (ID1 > ID2); break;
         default:
           Swap = FALSE;
       }

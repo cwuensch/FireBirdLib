@@ -5,13 +5,16 @@ void BMP_WriteHeader (TYPE_File *pFile, int width, int height )
 {
   static struct BMP_HEAD head;
   static struct BMP_INFO info;
-  dword                  i, size;
+  dword                  i, size, rowlength;
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceEnter("BMP_WriteHeader");
 #endif
 
-  size = sizeof( head ) + sizeof( info ) + (width * height) * 3;
+	// according to spec.: the rowlength must be a multiple of 4 bytes, if necessary fill up with zero-bytes
+	rowlength = ((width*3/4)+1)*4;
+
+ 	size = sizeof( head ) + sizeof( info ) + rowlength*height;
 
   head.id[0]          = 'B';
   head.id[1]          = 'M';
@@ -27,7 +30,7 @@ void BMP_WriteHeader (TYPE_File *pFile, int width, int height )
   info.plane          = LE16( 1 );
   info.bits_per_pixel = LE16( 24 );
   info.compress       = LE32( 0 );
-  info.img_size       = LE32( (width * height) * 3 );
+  info.img_size       = LE32( rowlength*height );
   info.x_res          = 0;
   info.y_res          = 0;
   info.color          = 0;
