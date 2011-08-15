@@ -37,7 +37,7 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer )
 
   // write bitmap data
 	// according to spec.: the rowlength must be a multiple of 4 bytes, if necessary fill up with zero-bytes
-	rowlength = ((width*3/4)+1)*4;
+	rowlength = (width*3%4==0) ? width*3 : ((width*3/4)+1)*4;
   TAP_Hdd_Fwrite(pBuffer, rowlength, height, pFile);
   TAP_Hdd_Fclose (pFile);
 

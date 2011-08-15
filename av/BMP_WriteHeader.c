@@ -12,7 +12,7 @@ void BMP_WriteHeader (TYPE_File *pFile, int width, int height )
 #endif
 
 	// according to spec.: the rowlength must be a multiple of 4 bytes, if necessary fill up with zero-bytes
-	rowlength = ((width*3/4)+1)*4;
+	rowlength = (width*3%4==0) ? width*3 : ((width*3/4)+1)*4;
 
  	size = sizeof( head ) + sizeof( info ) + rowlength*height;
 

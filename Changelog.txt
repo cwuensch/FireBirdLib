@@ -661,10 +661,11 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-08-05  'Official release'
 
 2011-08-06  Added the parameter CaseSensitive to OSDMenuItemSortNameColumn() and OSDMenuItemSortValueColumn()
-            Added the function OSDMenuItemSortNameID()
+            Added the function OSDMenuItemSortID()
 2011-08-11  Added Appl_CheckRecording(), Appl_CheckRecording_Tuner(), FIS_fwAppl_CheckRecording() and FIS_fwAppl_CheckRecording_Tuner()
 2011-08-12  Added MD5String() and MD5File()
 2011-08-13  Fixed: As it seems to be allowed that extended event information strings may contain NULL bytes as line terminators, ExtEventTextLength has been added to tRECHeaderInfo and
                    HDD_De/EncodeRECHeader() has been modified so that the number of bytes is transfered and not just strings. So do not forget to set ExtEventTextLength before encoding.
             Fixed: BMP_WriteHeader() and SaveBitmap() now create rows with a multiple of 4 bytes (thx to xyzzyx)
-            Fixed: OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn() and OSDMenuItemSortNameID()
+            Fixed: OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn() and OSDMenuItemSortID()
+2011-08-15: Fixed: Another fix in BMP_WriteHeader() and SaveBitmap()

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-08-13"
+  #define __FBLIB_VERSION__ "2011-08-15"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1394,7 +1394,7 @@
   //Callback function for custom menu drawings
   void OSDMenuSetCallback(void *OSDCallbackProcedure);
 
-  //void CallbackProcedure(tOSDCB OSDCBType, word OSDRgn);
+  //void OSDCallbackProcedure(tOSDCB OSDCBType, word OSDRgn);
 
   typedef enum
   {
@@ -1510,7 +1510,7 @@
   int   OSDMenuItemFindName(char *Text);
   int   OSDMenuItemFindValue(char *Text);
 
-  //
+  //Menu Stack
   bool OSDMenuPush(void);
   bool OSDMenuPop(void);
   void OSDMenuSaveMyRegion(word Rgn);
