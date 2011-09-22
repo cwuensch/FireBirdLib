@@ -11,7 +11,7 @@ void CallTraceComment(char *Comment)
   if (CallTraceEnabled)
   {
     memset (Spaces, ' ', CallLevel < 50 ? CallLevel << 1 : 100);
-    Spaces [CallLevel < 50 ? CallLevel << 1 : 100] = '\0';
+    Spaces [CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100] = '\0';
     if (Comment && *Comment) TAP_Print("%s# %s\n", Spaces, Comment);
   }
 }

@@ -16,7 +16,6 @@ void INISetString (char *Key, char *Value)
   strcat (TempKey, "=");
 
   INIFindStartEnd (TempKey, &i, &j, BufferSize);
-
   if (!i || !j)
   {
     l = strlen (INIBuffer) + strlen (TempKey) + strlen (Value) + 3;

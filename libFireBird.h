@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-08-15"
+  #define __FBLIB_VERSION__ "2011-09-01"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -336,6 +336,9 @@
   void   CallTraceExit(dword *Magic);
   void   CallTraceExitResult(dword *Magic, char *Result);
   void   CallTraceComment(char *Comment);
+  void   CallTraceExportStats(char *FileName);
+  void   CallTraceResetStats(void);
+
 
   void* TAP_MemAlloc_Chk(char *Comment, dword size);
   int   TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);
@@ -954,8 +957,10 @@
   TYPE_GrData  *LogoManager_GetLogoByChannelName(char *ChannelName, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
   TYPE_GrData  *LogoManager_GetLogoByChannel(int SvcType, int SvcNum, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
   char         *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR);
+  char         *LogoManager_GetPathToLogoByChannelID(ulong64 ChannelID, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
   bool          LogoManager_LogosAvailable(tLogoStyle LogoStyle);
   int           LogoManager_UpdateLIL(void);
+  void          LogoManager_ProcessLILAdd(char *AddFileName);
   ulong64       LogoManager_CalculateChannelID(word SatLongitude, word NetworkID, word TSID, word ServiceID);
   ulong64       LogoManager_GetChannelID(int SvcType, int SvcNum);
 
@@ -1521,6 +1526,7 @@
   //Info box
   void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout);
   void OSDMenuInfoBoxDestroy(void);
+  void OSDMenuInfoBoxNoOSDUpdate(void);
   bool OSDMenuInfoBoxIsVisible(void);
 
   //Message box

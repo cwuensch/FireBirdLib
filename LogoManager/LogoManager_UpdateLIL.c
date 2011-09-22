@@ -85,7 +85,7 @@ int LogoManager_UpdateLIL(void)
     if(!INIKeyExists(s))
     {
       NewIDs[NewIDCount].ChannelID = ChannelID;
-      strcpy(NewIDs[NewIDCount].Name, LogoManager_ChannelNameToLogoName(chInfo.chName));
+      TAP_SPrint(NewIDs[NewIDCount].Name, "r_%s", LogoManager_ChannelNameToLogoName(chInfo.chName));
       if(NewIDs[NewIDCount].Name[0]) NewIDCount++;
     }
   }

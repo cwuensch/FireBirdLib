@@ -12,6 +12,8 @@ void (*LogoManager_CB)(int CallbackType, int Param1) = NULL;
 void LogoManager_Initialize(void *Callback)
 {
   char                  cmd[255];
+  TYPE_FolderEntry      FolderEntry;
+  int                   NrFiles, i;
 
   LogoManager_CB = Callback;
 
@@ -28,6 +30,24 @@ void LogoManager_Initialize(void *Callback)
       system(cmd);
       TAP_Hdd_Delete(LOGOPACK);
       TAP_Hdd_Delete(LOGOCACHE);
+    }
+
+    if(!TAP_Hdd_Exist(LILNAME))
+      LogoManager_UpdateLIL();
+
+    //Check if there are lil updates
+    NrFiles = TAP_Hdd_FindFirst(&FolderEntry, "add");
+    for(i = 0; i < NrFiles; i++)
+    {
+      if(FolderEntry.attr == ATTR_NORMAL)
+      {
+        if(LogoManager_CB) LogoManager_CB(1, 0);
+        LogoManager_ProcessLILAdd(FolderEntry.name);
+        TAP_Hdd_Delete(FolderEntry.name);
+        TAP_Hdd_Delete(LOGOCACHE);
+      }
+
+      TAP_Hdd_FindNext(&FolderEntry);
     }
 
     //Check if the cache file already exists

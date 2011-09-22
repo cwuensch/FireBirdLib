@@ -12,11 +12,14 @@ bool StringDBLoadFromFile(tStringDB *StringDB, TYPE_File *f)
   //DB Size
   TAP_Hdd_Fread(&l, sizeof(dword), 1, f);
   StringDB->DB = TAP_MemAlloc(l);
+
   if(!StringDB->DB)
   {
+    StringDB->DBSize = 0;
     TAP_Hdd_Fclose(f);
     return FALSE;
   }
+  StringDB->DBSize = l;
   StringDB->DBEnd = l + StringDB->DB - 1;
 
   //Current pointer

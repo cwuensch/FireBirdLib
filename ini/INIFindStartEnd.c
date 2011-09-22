@@ -27,25 +27,28 @@ void INIFindStartEnd (char *Key, char **Start, char **End, dword MaxEntrylen)
   CR = strchr (*Start, '\x0d');
   LF = strchr (*Start, '\x0a');
 
-  if (CR)
+  if(CR)
   {
-    if (LF)
+    if(LF)
     {
-      if (CR + 1 == LF) *End = CR - 1;   // Windows
-      else                               // junk
+      if(CR + 1 == LF)
+        *End = CR - 1;      // Windows
+      else                  // junk
       {
-        *End = NULL;
+        *End = LF - 1;
         return;
       }
     }
-    else *End = CR - 1;                  // Mac
+    else *End = CR - 1;     // Mac
   }
-  else if (LF) *End = LF - 1;            // Unix
-  else                                   // junk
-  {
-    *End = NULL;
-    return;
-  }
+  else
+    if(LF)
+      *End = LF - 1;        // Unix
+    else                    // junk
+    {
+      *End = NULL;
+      return;
+    }
 
   if (*End >= *Start + MaxEntrylen) *End = *Start + MaxEntrylen - 1;
 }

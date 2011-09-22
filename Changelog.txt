@@ -668,4 +668,15 @@ License:  This library is freeware. You may use this code in your own projects f
                    HDD_De/EncodeRECHeader() has been modified so that the number of bytes is transfered and not just strings. So do not forget to set ExtEventTextLength before encoding.
             Fixed: BMP_WriteHeader() and SaveBitmap() now create rows with a multiple of 4 bytes (thx to xyzzyx)
             Fixed: OSDMenuItemSortNameColumn(), OSDMenuItemSortValueColumn() and OSDMenuItemSortID()
-2011-08-15: Fixed: Another fix in BMP_WriteHeader() and SaveBitmap()
+2011-08-15  Fixed: Another fix in BMP_WriteHeader() and SaveBitmap()
+2011-08-19  LogoManager Update: added the rule that German umlauts (הצü) will be replaced by ae, oe and ue respectively
+                                Another one is that a "r_" preceedes the name of radio channels
+            Added LogoManager_ProcessLILAdd()
+            Fixed: INISetString() failed on files with mixed LF and CRLF line terminations
+            Fixed: StringDBLoadFromFile() didn't set the DBSize field
+            Fixed: LogEntry() crashed on text lengths > 512 because the TAP_PrintNet() macro doesn't allow more than that. The text is now separated in 510 char junks
+            Added: OSDMenuInfoBoxNoOSDUpdate()
+2011-08-31  Added: CallTraceExportStats() and CallTraceResetStats(). The CallTrace-API now logs how often a particular function gets called and how long it takes. CallTraceExportStats()
+                   exports the data to a csv file.
+            Fixed: LogoManager_ChannelNameToLogoName() might produce a buffer overrun
+2011-09-01  Added: LogoManager_GetPathToLogoByChannelID()

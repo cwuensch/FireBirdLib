@@ -6,8 +6,6 @@
 #include                <string.h>
 #include                "tap.h"
 
-char                       puffer[256];
-
 void PrintNet(char *puffer)
 {
   int                   i = 0;

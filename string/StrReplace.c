@@ -37,7 +37,7 @@ bool StrReplace(char *String, char *Find, char *Replace)
   else
   {
     char *TempBuffer, *s, *d;
-    int   NrOfOccurences;
+    int   NrOfOccurences, l;
 
     //Count the number of hits to calculate the buffer size
     NrOfOccurences = 0;
@@ -53,9 +53,11 @@ bool StrReplace(char *String, char *Find, char *Replace)
       }
     } while(p);
 
-    TempBuffer = TAP_MemAlloc(strlen(String) + NrOfOccurences*(ReplaceLen - FindLen));
+    l = strlen(String) + NrOfOccurences*(ReplaceLen - FindLen) + 2;
+    TempBuffer = TAP_MemAlloc(l);
+    memset(TempBuffer, 0, l);
 
-    s =String;
+    s = String;
     p = String;
     d = TempBuffer;
     do

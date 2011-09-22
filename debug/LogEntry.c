@@ -29,7 +29,34 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
   {
     if (TimeStampFormat != TIMESTAMP_NONE) TAP_Print (TS);
     if (ProgramName && ProgramName [0]) TAP_Print ("%s: ", ProgramName);
-    if (Text && Text [0]) TAP_Print ("%s", Text);
+
+    //Max length is 512. If above, a buffer overflow may occur
+    if(Text && Text [0])
+    {
+      if(strlen(Text) < 510)
+      {
+        TAP_Print("%s", Text);
+      }
+      else
+      {
+        char *p = Text;
+
+        while(*p)
+        {
+          int     l;
+          char    q;
+
+          l = strlen(p);
+          if(l > 510) l = 510;
+
+          q = p[l];
+          p[l] = '\0';
+          TAP_Print("%s", p);
+          p[l] = q;
+          p += l;
+        }
+      }
+    }
     TAP_Print ("\n");
   }
 }
