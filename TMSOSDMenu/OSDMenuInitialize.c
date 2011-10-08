@@ -76,7 +76,6 @@ word                    OSDRgn = 0, MyOSDRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
-tOSDMenuDisplayMode     OSDMenuDisplayMode;
 dword                   ButtonColor;
 
 word                    InfoBoxOSDRgn = 0;
@@ -122,6 +121,15 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->ValueXPos = 350;
   pMenu->hasValueArrows = FALSE;
   pMenu->Item = TAP_MemAlloc(30 * sizeof(tItem));
+
+  pMenu->FontLeftTitle          = &Calibri_20_FontData;
+  pMenu->FontRightTitle         = &Calibri_16_FontData;
+  pMenu->FontListLineNumber     = &Calibri_14_FontData;
+  pMenu->FontListNameColumn     = &Calibri_14_FontData;
+  pMenu->FontListValueColumn    = &Calibri_14_FontData;
+  pMenu->FontButtons            = &Calibri_12_FontData;
+  pMenu->FontMemo               = &Calibri_14_FontData;
+
   pMenu->MaxItems = 30;
   memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
 
@@ -137,7 +145,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
     pMenu->TitleRight[0] = '\0';
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 
-  OSDMenuDisplayMode = OMDM_Standard;
+  pMenu->OSDMenuDisplayMode = OMDM_Standard;
   ButtonColor = RGB(230, 230, 250);
 
   CallbackProcedure = NULL;

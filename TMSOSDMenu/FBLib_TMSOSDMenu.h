@@ -33,6 +33,12 @@ typedef struct
   char                  Text[STDSTRINGSIZE];
 }tButtons;
 
+typedef enum
+{
+  OMDM_Standard,
+  OMDM_Memo
+} tOSDMenuDisplayMode;
+
 typedef struct
 {
   tItem                *Item;
@@ -54,6 +60,14 @@ typedef struct
   dword                 LogoX;
   dword                 LogoY;
   TYPE_GrData          *pLogoGd;
+  tOSDMenuDisplayMode  OSDMenuDisplayMode;
+  tFontData            *FontLeftTitle;
+  tFontData            *FontRightTitle;
+  tFontData            *FontListLineNumber;
+  tFontData            *FontListNameColumn;
+  tFontData            *FontListValueColumn;
+  tFontData            *FontButtons;
+  tFontData            *FontMemo;
 }tMenu;
 
 typedef struct
@@ -63,6 +77,8 @@ typedef struct
   char                  Button[MAXMBBUTTONS][STDSTRINGSIZE];
   char                  Title[STDSTRINGSIZE];
   char                  Text[STDSTRINGSIZE];
+//  tFontData            *FontColorPickerTitle;
+//  tFontData            *FontColorPickerCursor;
 }tMessageBox;
 
 typedef enum
@@ -71,12 +87,6 @@ typedef enum
   CCS_Green,
   CCS_Blue
 }tCurrentColorSelected;
-
-typedef enum
-{
-  OMDM_Standard,
-  OMDM_Memo
-} tOSDMenuDisplayMode;
 
 extern tFontData        Calibri_10_FontData;
 extern tFontData        Calibri_12_FontData;
@@ -163,7 +173,6 @@ extern word             MyOSDRgn; //Used by OSDMenuSaveMyRegion()
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
-extern tOSDMenuDisplayMode  OSDMenuDisplayMode;
 dword                   ButtonColor;
 
 extern word             InfoBoxOSDRgn;
@@ -185,10 +194,10 @@ extern tCurrentColorSelected  CurrentColorSelected;
 extern int              ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
 
 int  OSDMenuGetW(const char * str, byte fntSize);
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
 int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
+void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDDrawBackground(void);
 void OSDDrawTitle(void);
 void OSDDrawLogo(void);

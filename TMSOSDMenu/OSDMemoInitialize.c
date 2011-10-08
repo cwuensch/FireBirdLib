@@ -6,11 +6,13 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   char                 *from, *to, *p, c;
   int                   Width;
   char                 *Buffer;
+  tMenu                *pMenu;
 
 #define HORSPACE        550
 
   OSDMenuInitialize(FALSE, FALSE, FALSE, ScrollLoop, TitleLeft, TitleRight);
-  OSDMenuDisplayMode = OMDM_Memo;
+  pMenu = &Menu[CurrentMenuLevel];
+  pMenu->OSDMenuDisplayMode = OMDM_Memo;
 
   if(!Text || !Text[0]) return;
 

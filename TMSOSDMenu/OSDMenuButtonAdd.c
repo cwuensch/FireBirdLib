@@ -10,7 +10,6 @@ void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd,
   if((Line == 0) || (Line > 3) || (!IconGd) || (!Text)) return;
 
   pMenu = &Menu[CurrentMenuLevel];
-  pMenu = &Menu[CurrentMenuLevel];
   pMenu->Buttons[pMenu->NrButtons].X = pMenu->ButtonXStart[Line];
 
   switch(Line)

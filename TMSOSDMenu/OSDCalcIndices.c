@@ -10,7 +10,7 @@ void OSDCalcIndices(void)
   //if TopIndex or SelectionIndex has changed, make list dirty
   //TODO: Verhalten der Originalbox. Wo wird gescrollt?
 
-  if(OSDMenuDisplayMode == OMDM_Memo)
+  if(pMenu->OSDMenuDisplayMode == OMDM_Memo)
   {
     pMenu->CurrentTopIndex = pMenu->CurrentSelection;
   }

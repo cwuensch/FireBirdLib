@@ -680,3 +680,5 @@ License:  This library is freeware. You may use this code in your own projects f
                    exports the data to a csv file.
             Fixed: LogoManager_ChannelNameToLogoName() might produce a buffer overrun
 2011-09-01  Added: LogoManager_GetPathToLogoByChannelID()
+2011-10-08  Added: OSDMenuSetFont() which allows to modify the fonts used in the OSDMenu API
+            Fixed: Moved a global variable onto the menu stack so that menus and memos are correctly handled OSDMenuPush() and OSDMenuPop()

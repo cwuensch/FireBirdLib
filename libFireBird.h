@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-09-01"
+  #define __FBLIB_VERSION__ "2011-10-08"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1384,6 +1384,7 @@
 
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
+  void OSDMenuSetFont(tFontData *LeftTitle, tFontData *RightTitle, tFontData *ListNumber, tFontData *ListName, tFontData *ListValue, tFontData *Buttons, tFontData *Memo);
   void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
   void OSDMenuModifyTitleRight(char *Text);

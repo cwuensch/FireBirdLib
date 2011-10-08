@@ -17,7 +17,7 @@ void OSDDrawMemo(void)
 
     //The text of the left column
     if((i + pMenu->CurrentTopIndex) < pMenu->NrItems)
-      OSDMenuPutS(OSDRgn, 76, Y + 5, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Name, RGB(255, 255, 255), COLOR_None, 14, TRUE, ALIGN_LEFT);
+      FM_PutString(OSDRgn, 76, Y + 5, 645 + FONTYOFFSET, pMenu->Item[i + pMenu->CurrentTopIndex].Name, RGB(255, 255, 255), COLOR_None, pMenu->FontMemo, TRUE, ALIGN_LEFT);
   }
 
   if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);

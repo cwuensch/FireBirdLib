@@ -10,6 +10,13 @@ char *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat)
   Hour = HOUR   (DateTime);
   Min  = MINUTE (DateTime);
   TAP_ExtractMjd (Mjd, &Year, &Month, &Day, &WeekDay);
+  if(Mjd == 0)
+  {
+    Year = 0;
+    Month = 0;
+    Day = 0;
+    WeekDay = 0;
+  }
 
   switch (TimeStampFormat)
   {
