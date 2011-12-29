@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-10-08"
+  #define __FBLIB_VERSION__ "2011-12-29"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -267,11 +267,13 @@
   word  GetOSDRegionHeight(word Region);
   word  GetOSDRegionWidth(word Region);
   bool  GetPIPPosition(int *North, int *South, int *East, int *West);
+  byte  GetStreamFormat(byte Index);
   bool  isAnyOSDVisible(dword checkX, dword checkY, dword checkW, dword checkH);
   bool  isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, byte Plane);
   bool  isInfoBoxVisible(void);
   bool  isDirectSvcNumVisible(void);
   bool  isOSDRegionAlive(word Region);
+  bool  isPIPActive(void);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer );
   void  SetRemoteMode(byte Mode, bool Active);
@@ -688,7 +690,7 @@
   dword FM_GetStringWidth(const char *Text, tFontData *FontData);
   dword FM_GetStringWidthAndRestrict(char *Text, tFontData *FontData, int MaxWidth, bool *pbRestricted);
   dword FM_GetStringHeight(const char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
   bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
@@ -836,6 +838,7 @@
   inline dword FIS_fwAppl_ExportChData(void);
   inline dword FIS_fwAppl_GetFreeExtRecordSpace(void);
   inline dword FIS_fwAppl_GetIsExternal(void);
+  inline dword FIS_fwAppl_GetStreamFormat(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_PvrList(void);
   inline dword FIS_fwAppl_PvrList_SetListType(void);

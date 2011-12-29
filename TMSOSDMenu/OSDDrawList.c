@@ -69,7 +69,7 @@ void OSDDrawList(void)
         XStart += 10;
         MaxX += 10;
       }
-      FM_PutString(OSDRgn, 71, Y + 5 + FONTYOFFSET, MaxX, s, ItemColor, COLOR_None, pMenu->FontListLineNumber, FALSE, ALIGN_LEFT);
+      FM_PutString(OSDRgn, 71, Y + 5 + FONTYOFFSET, MaxX, s, ItemColor, COLOR_None, pMenu->FontListLineNumber, FALSE, ALIGN_LEFT, 1);
     }
     else
     {
@@ -81,12 +81,12 @@ void OSDDrawList(void)
       TAP_Osd_PutGd(OSDRgn, XStart, Y + 13 - (pMenu->Item[i + pMenu->CurrentTopIndex].pNameIconGd->height >> 1), pMenu->Item[i + pMenu->CurrentTopIndex].pNameIconGd, TRUE);
 
     //The text of the left column
-    FM_PutString(OSDRgn, XStart + MaxNameIconWidth, Y + 5 + FONTYOFFSET, XEnd, pMenu->Item[i + pMenu->CurrentTopIndex].Name, ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT);
+    FM_PutString(OSDRgn, XStart + MaxNameIconWidth, Y + 5 + FONTYOFFSET, XEnd, pMenu->Item[i + pMenu->CurrentTopIndex].Name, ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT, 1);
 
     if(pMenu->HasValueColumn)
     {
       //The text of the right column
-      FM_PutString(OSDRgn, pMenu->ValueXPos + 45 + MaxValueIconWidth, Y + 5 + FONTYOFFSET, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT);
+      FM_PutString(OSDRgn, pMenu->ValueXPos + 45 + MaxValueIconWidth, Y + 5 + FONTYOFFSET, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT, 1);
 
       //The color patch or icon of the right column. The former has priority
       if(pMenu->Item[i + pMenu->CurrentTopIndex].ColorPatch)

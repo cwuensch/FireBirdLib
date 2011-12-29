@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align)
+void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor)
 {
   dword                 XEnd, YEnd;
   dword                *PixelData;
@@ -85,7 +85,7 @@ void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dwor
   if(bcolor & 0xff000000)
   {
     TAP_Osd_FillBox(rgn, x, y, maxX - x, YEnd - y + 1, bcolor);
-    FM_InitAlphaLUT(fcolor, bcolor);
+    FM_InitAlphaLUT(fcolor, bcolor, AntiAliasFactor);
   }
 
   PixelData = (dword*)TAP_Osd_SaveBox(rgn, SaveBoxX, y, XEnd - x + 1, YEnd - y + 1);
@@ -128,7 +128,7 @@ void FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dwor
                           {
                             LastBackgroundPixel = PixelData[CX + X + CY];
                             LastForegroundPixel = Grey;
-                            LastPixel = (fcolor & 0xff000000) | FM_AlphaBlendRGB(Grey, fcolor, LastBackgroundPixel);
+                            LastPixel = (fcolor & 0xff000000) | FM_AlphaBlendRGB(Grey, fcolor, LastBackgroundPixel, AntiAliasFactor);
                           }
 
                           PixelData[CX + X + CY] = LastPixel;

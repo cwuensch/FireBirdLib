@@ -682,3 +682,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-09-01  Added: LogoManager_GetPathToLogoByChannelID()
 2011-10-08  Added: OSDMenuSetFont() which allows to modify the fonts used in the OSDMenu API
             Fixed: Moved a global variable onto the menu stack so that menus and memos are correctly handled OSDMenuPush() and OSDMenuPop()
+2011-10-22  Fixed: GetCurrentEvent() ignored the radio EPG
+            Added: GetStreamFormat() and FIS_fwAppl_GetStreamFormat().
+2011-11-05  Added: isPIPActive()
+2011-12-29  Added: AntiAliasFactor parameter to FM_PutString(). Standard value is 1. This parameter allows to make text a bit brighter but 1.2 seems to be the limit where grey text starts to look ugly.

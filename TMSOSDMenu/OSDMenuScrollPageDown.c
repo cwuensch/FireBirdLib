@@ -15,7 +15,10 @@ int OSDMenuScrollPageDown(void)
   {
     x = pMenu->CurrentSelection + 9;
     if(x >= pMenu->NrItems) x = pMenu->NrItems - 2;
-    ret = OSDMenuFindNextSelectableEntry(x);
+    if(x < (pMenu->NrItems - 1))
+      ret = OSDMenuFindNextSelectableEntry(x);
+    else
+      ret = x;
   }
   else
   {

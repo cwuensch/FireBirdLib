@@ -4,10 +4,10 @@ void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword
 {
   switch(fntSize)
   {
-    case 10: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_10_FontData, bDot, align); break;
-    case 12: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_12_FontData, bDot, align); break;
-    case 14: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_14_FontData, bDot, align); break;
-    case 16: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_16_FontData, bDot, align); break;
-    case 20: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_20_FontData, bDot, align); break;
+    case 10: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_10_FontData, bDot, align, 1); break;
+    case 12: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_12_FontData, bDot, align, 1); break;
+    case 14: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_14_FontData, bDot, align, 1); break;
+    case 16: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_16_FontData, bDot, align, 1); break;
+    case 20: FM_PutString(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &Calibri_20_FontData, bDot, align, 1); break;
   }
 }
