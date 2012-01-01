@@ -1,9 +1,6 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-#include                "graphic/Selection_Bar.gd"
-#include                "graphic/Pfeil_l.gd"
-#include                "graphic/Pfeil_r.gd"
 #include                "graphic/ScrollBarInvisible.gd"
 #include                "graphic/ScrollBarVisible.gd"
 #include                "graphic/ScrollBarKnob.gd"
@@ -77,6 +74,7 @@ bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
 dword                   ButtonColor;
+tCursorType             MenuCursorType;
 
 word                    InfoBoxOSDRgn = 0;
 dword                   InfoBoxTimeOut = 0;
@@ -147,6 +145,8 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
 
   pMenu->OSDMenuDisplayMode = OMDM_Standard;
   ButtonColor = RGB(230, 230, 250);
+
+  MenuCursorType = CT_Standard;
 
   CallbackProcedure = NULL;
 }

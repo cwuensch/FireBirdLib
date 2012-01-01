@@ -1,5 +1,10 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+#include                "graphic/pfeil_l.gd"
+#include                "graphic/pfeil_l_bright.gd"
+#include                "graphic/pfeil_r.gd"
+#include                "graphic/pfeil_r_bright.gd"
+
 void OSDDrawList(void)
 {
   int                   i;
@@ -32,11 +37,12 @@ void OSDDrawList(void)
     //Draw the background or selection bar and the optional value arrows
     if((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection)
     {
-      TAP_Osd_PutGd(OSDRgn,  60 , 95 + (i * 37), &_Selection_Bar_Gd, FALSE);
+      OSDMenuDrawCursor(60, 95 + (i * 37), 600);
+
       if(pMenu->HasValueColumn && pMenu->Item[i + pMenu->CurrentTopIndex].ValueArrows)
       {
-        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 95 + 10 +(i * 37), &_pfeil_lGd, FALSE);
-        TAP_Osd_PutGd(OSDRgn, 640 , 95 + 10 +(i * 37), &_pfeil_rGd, FALSE);
+        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 95 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_l_Gd : &_pfeil_l_bright_Gd), TRUE);
+        TAP_Osd_PutGd(OSDRgn, 640 , 95 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
       }
     }
     else

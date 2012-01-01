@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2011-12-29"
+  #define __FBLIB_VERSION__ "2012-01-01"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1385,9 +1385,18 @@
   /*   Menu, dialog box and message box                                                                                        */
   /*****************************************************************************************************************************/
 
+  typedef enum
+  {
+    CT_Standard,
+    CT_Dark,
+    CT_Box,
+    CT_NRITEMS
+  } tCursorType;
+
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
   void OSDMenuSetFont(tFontData *LeftTitle, tFontData *RightTitle, tFontData *ListNumber, tFontData *ListName, tFontData *ListValue, tFontData *Buttons, tFontData *Memo);
+  void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
   void OSDMenuModifyTitleRight(char *Text);

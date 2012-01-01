@@ -156,8 +156,6 @@ extern TYPE_GrData      _Button_yellow_Gd;
 extern TYPE_GrData      _InfoBox_Gd;
 extern TYPE_GrData      _Messagebox_Gd;
 extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;
-extern TYPE_GrData      _pfeil_lGd;
-extern TYPE_GrData      _pfeil_rGd;
 extern TYPE_GrData      _ScrollBarInvisible_Gd;
 extern TYPE_GrData      _ScrollBarKnob_Gd;
 extern TYPE_GrData      _ScrollBarVisible_Gd;
@@ -173,7 +171,8 @@ extern word             MyOSDRgn; //Used by OSDMenuSaveMyRegion()
 extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
-dword                   ButtonColor;
+dword            ButtonColor;
+extern tCursorType      MenuCursorType;
 
 extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
@@ -199,6 +198,7 @@ int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
 int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
 void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDDrawBackground(void);
+void OSDMenuDrawCursor(dword x, dword y, dword w);
 void OSDDrawTitle(void);
 void OSDDrawLogo(void);
 void OSDDrawButtons(void);
