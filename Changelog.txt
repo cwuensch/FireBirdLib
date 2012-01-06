@@ -687,3 +687,5 @@ License:  This library is freeware. You may use this code in your own projects f
 2011-11-05  Added: isPIPActive()
 2011-12-29  Added: AntiAliasFactor parameter to FM_PutString(). Standard value is 1. This parameter allows to make text a bit brighter but 1.2 seems to be the limit where grey text starts to look ugly.
 2012-01-01  Added: As some people state that they can't easily read the text below the Topfield-blue menu cursor, OSDMenuSetCursor() has been added, which adds 2 additional cursor types to the OSDMenu-API.
+2012-01-05  Added: OSDMenuItemModifyID()
+2012-01-06  Fixed: FIS_vRECSlotAddress() calculated the wrong address on cable boxes

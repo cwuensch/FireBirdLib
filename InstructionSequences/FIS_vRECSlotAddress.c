@@ -2,51 +2,25 @@
 
 inline dword FIS_vRECSlotAddress(byte Slot)
 {
-  static byte          *_pvrRecInfo = NULL;
-  dword                 StructSize = sizeof(TYPE_Timer_TMSS);
+  static byte          *__pvrRecInfo = NULL;
+  static byte          *__isSnapshotComplete = NULL;
+  static int            infSize = 200;
 
   if (Slot > HDD_NumberOfRECSlots()) return 0;
 
-  if(!_pvrRecInfo)
+  if(!__pvrRecInfo)
   {
-    _pvrRecInfo = (byte*)TryResolve("_pvrRecInfo");
-
-    switch(GetSystemType())
-    {
-      case ST_UNKNOWN:
-      case ST_S:
-      case ST_ST:
-      case ST_T:
-      case ST_C:
-      case ST_CT:
-      case ST_T5700:
-      case ST_T5800:
-      case ST_TF7k7HDPVR:
-        //No break to return any arbitrary value.
-
-      case ST_TMSS:
-      {
-        StructSize = sizeof(TYPE_Timer_TMSS);
-        break;
-      }
-
-      case ST_TMST:
-      {
-        StructSize = sizeof(TYPE_Timer_TMST);
-        break;
-      }
-
-      case ST_TMSC:
-      {
-        StructSize = sizeof(TYPE_Timer_TMSC);
-        break;
-      }
-
-      case ST_NRTYPES: break;
-    }
+    __pvrRecInfo = (byte*)TryResolve("_pvrRecInfo");
+    if(!__pvrRecInfo) return 0;
   }
 
-  if(!_pvrRecInfo) return 0;
+  if(!__isSnapshotComplete)
+  {
+    __isSnapshotComplete = (byte*)TryResolve("_isSnapshotComplete");
+    if(!__isSnapshotComplete) return 0;
 
-  return (dword)&_pvrRecInfo[Slot * StructSize];
+    infSize = ((dword)__isSnapshotComplete - (dword)__pvrRecInfo) / (HDD_NumberOfRECSlots() + 1);
+  }
+
+  return (dword)&__pvrRecInfo[Slot * infSize];
 }

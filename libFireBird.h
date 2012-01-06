@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2012-01-01"
+  #define __FBLIB_VERSION__ "2012-01-06"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
@@ -1515,6 +1515,7 @@
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
   bool  OSDMenuItemModifyColorPatch(int ItemIndex, dword Color); //set to 0 to disable
   bool  OSDMenuItemModifyTextColor(int ItemIndex, dword Color);
+  bool  OSDMenuItemModifyID(int ItemIndex, dword ID);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
   dword OSDMenuItemGetID(int ItemIndex);
