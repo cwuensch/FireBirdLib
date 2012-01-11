@@ -689,3 +689,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-01-01  Added: As some people state that they can't easily read the text below the Topfield-blue menu cursor, OSDMenuSetCursor() has been added, which adds 2 additional cursor types to the OSDMenu-API.
 2012-01-05  Added: OSDMenuItemModifyID()
 2012-01-06  Fixed: FIS_vRECSlotAddress() calculated the wrong address on cable boxes
+2012-01-11  Fixed: MakeUniqueFileName() forgot to add the .del extension if it had to look for a new name index (thanks to Töppi for spotting this)

@@ -12,6 +12,6 @@ void MakeUniqueFileName(char *FileName)
   TAP_SPrint(FileName, "%s%s%s", Name, Ext, isDel ? ".del" : "");
   while(TAP_Hdd_Exist(FileName))
   {
-    TAP_SPrint(FileName, "%s-%d%s", Name, fNumber++, Ext, isDel ? ".del" : "");
+    TAP_SPrint(FileName, "%s-%d%s%s", Name, fNumber++, Ext, isDel ? ".del" : "");
   }
 }

@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2012-01-06"
+  #define __FBLIB_VERSION__ "2012-01-11"
 //  #define DEBUG_FIREBIRDLIB
   #define isTMS         1
 
