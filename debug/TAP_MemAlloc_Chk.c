@@ -1,4 +1,5 @@
-#include "../libFireBird.h"
+#include                <stdio.h>
+#include                "../libFireBird.h"
 
 void* TAP_MemAlloc_Chk(char *Comment, dword size)
 {

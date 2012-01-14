@@ -6,7 +6,7 @@ int TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite
   int                   R, G, B;
   dword                 FR, FG, FB;
   word                  TempRgn;
-  dword                 *PixelData;
+  dword                 *PixelData = NULL;
   register dword        oy, cx, cy, p, P;
 
 #ifdef DEBUG_FIREBIRDLIB

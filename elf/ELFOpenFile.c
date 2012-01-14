@@ -1,3 +1,4 @@
+#include                <stdio.h>
 #include                "ELF.h"
 #include                "FBLib_elf.h"
 

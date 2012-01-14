@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include  <string.h>
 #include  "../libFireBird.h"
 
@@ -17,7 +18,7 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
   text[0] = '\0';
   CollectedBytes = 0;
 
-  TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)(p - StartAddress));
+  TAP_SPrint(Header, "%p 0x%4.4x: ", p, (dword)(p - StartAddress));
 
   Remaining = size;
   while(Remaining > 0)
@@ -39,7 +40,7 @@ void DumpMemory(unsigned char* p, dword size, int BytesPerLine)
       TAP_Print(s);
       s[0] = '\0';
       text[0] = '\0';
-      TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)(p - StartAddress));
+      TAP_SPrint(Header, "%p 0x%4.4x: ", p, (dword)(p - StartAddress));
       CollectedBytes = 0;
     }
   }

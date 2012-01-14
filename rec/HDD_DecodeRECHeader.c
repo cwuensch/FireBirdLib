@@ -501,6 +501,12 @@ void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventServiceID   = getWord(&Buffer[p + 0x0000], WrongEndian);
   RECHeaderInfo->ExtEventTextLength  = getWord(&Buffer[p + 0x0002], WrongEndian);
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
+
+  if(RECHeaderInfo->ExtEventTextLength > 1024)
+  {
+    RECHeaderInfo->ExtEventTextLength = strlen(&Buffer[p + 0x0008]);
+    if(RECHeaderInfo->ExtEventTextLength > 1024) RECHeaderInfo->ExtEventTextLength = 1024;
+  }
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
 
   //Crypt Info: see header flags

@@ -1,5 +1,6 @@
-#include  <string.h>
-#include  "../libFireBird.h"
+#include                <stdio.h>
+#include                <string.h>
+#include                "../libFireBird.h"
 
 void DumpMemoryDword(dword *p, dword size)
 {
@@ -12,7 +13,7 @@ void DumpMemoryDword(dword *p, dword size)
   s[0] = '\0';
   CollectedBytes = 0;
 
-  TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)p - (dword)StartAddress);
+  TAP_SPrint(Header, "%p 0x%4.4x: ", p, (dword)p - (dword)StartAddress);
 
   Remaining = size;
   while(Remaining > 0)
@@ -29,7 +30,7 @@ void DumpMemoryDword(dword *p, dword size)
       TAP_Print(Header);
       TAP_Print(s);
       s[0] = '\0';
-      TAP_SPrint(Header, "%8.8p 0x%4.4x: ", p, (dword)p - (dword)StartAddress);
+      TAP_SPrint(Header, "%p 0x%4.4x: ", p, (dword)p - (dword)StartAddress);
       CollectedBytes = 0;
     }
   }

@@ -1,16 +1,32 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_VERSION__ "2012-01-11"
 //  #define DEBUG_FIREBIRDLIB
+
+  #define __FBLIB_RELEASEDATE__ "2012-01-11"
+
+  #ifdef _TMSEMU_
+    #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
+  #else
+    #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
+  #endif
+
   #define isTMS         1
 
   #ifdef PC_BASED
     #define inline
     #define __attribute__(a)
   #else
-    #include "tap.h"
+    #ifdef _TMSEMU_
+      #include "tap_tmsemu.h"
+    #else
+      #include "tap.h"
+    #endif
   #endif
+
+  #define __USE_LARGEFILE64
+  #define _LARGEFILE64_SOURCE
+  #define _FILE_OFFSET_BITS     64
 
   #include              <sys/types.h>
 
@@ -130,7 +146,9 @@
   #ifndef PC_BASED
     #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
 
-    #define TAP_Print   TAP_PrintNet
+    #ifndef _TMSEMU_
+      #define TAP_Print   TAP_PrintNet
+    #endif
   #endif
 
   bool        InitTAPex(void);
@@ -690,7 +708,8 @@
   dword FM_GetStringWidth(const char *Text, tFontData *FontData);
   dword FM_GetStringWidthAndRestrict(char *Text, tFontData *FontData, int MaxWidth, bool *pbRestricted);
   dword FM_GetStringHeight(const char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
   bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
@@ -745,7 +764,13 @@
   TYPE_File *HDD_FappendOpen(char *filename);
   bool       HDD_FappendWrite(TYPE_File *file, char *data);
   bool       HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
-  bool       HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, __off64_t *FileSize);
+
+  #ifdef _TMSEMU_
+    bool     HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, off_t *FileSize);
+  #else
+    bool     HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, __off64_t *FileSize);
+  #endif
+
   dword      HDD_GetFileTimeByAbsFileName(char *FileName);
   dword      HDD_GetFileTimeByRelFileName(char *FileName);
   dword      HDD_GetFileTimeByTypeFile(TYPE_File *File);

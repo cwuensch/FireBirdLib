@@ -1,5 +1,6 @@
-#include <string.h>
-#include "../libFireBird.h"
+#include                <stdio.h>
+#include                <string.h>
+#include                "../libFireBird.h"
 
 void HDD_Rename(char *FileName, char *NewFileName)
 {

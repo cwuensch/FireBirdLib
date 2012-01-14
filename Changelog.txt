@@ -690,3 +690,5 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-01-05  Added: OSDMenuItemModifyID()
 2012-01-06  Fixed: FIS_vRECSlotAddress() calculated the wrong address on cable boxes
 2012-01-11  Fixed: MakeUniqueFileName() forgot to add the .del extension if it had to look for a new name index (thanks to Töppi for spotting this)
+2012-01-14  Changed: Removed the AntiAlias parameter from FM_PutString() and added an new FM_PutStringAA()
+            Fixed: HDD_DecodeRECHeader() could crash with a defective .inf and a bad extended event text length

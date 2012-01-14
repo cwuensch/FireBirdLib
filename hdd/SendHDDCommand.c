@@ -3,12 +3,17 @@
 
 int SendHDDCommand(dword Command, byte *CommandBlock, int BufferSize)
 {
-
-#include                <sys/ioctl.h>
-#include                <unistd.h>
-#include                <linux/hdreg.h>
-#include                <fcntl.h>
-#include                <linux/fs.h>
+  //Unsupport in the TMSEmu environment
+#ifdef _TMSEMU_
+  (void) Command;
+  (void) CommandBlock;
+  (void) BufferSize;
+#else
+  #include                <sys/ioctl.h>
+  #include                <unistd.h>
+  #include                <linux/hdreg.h>
+  #include                <fcntl.h>
+  #include                <linux/fs.h>
 
   int                   fd, ret, i;
   unsigned short int    *p;
@@ -38,5 +43,6 @@ int SendHDDCommand(dword Command, byte *CommandBlock, int BufferSize)
     i -= 2;
   }
 
+#endif
   return 0;
 }

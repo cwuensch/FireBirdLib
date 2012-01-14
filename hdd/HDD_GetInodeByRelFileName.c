@@ -1,3 +1,4 @@
+#include                <stdio.h>
 #include                "../libFireBird.h"
 
 dword HDD_GetInodeByRelFileName(char *FileName)
