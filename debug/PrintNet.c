@@ -4,7 +4,12 @@
 #include                <fcntl.h>
 #include                <unistd.h>
 #include                <string.h>
-#include                "tap.h"
+
+#ifdef _TMSEMU_
+  #include              "tap_tmsemu.h"
+#else
+  #include              "tap.h"
+#endif
 
 void PrintNet(char *puffer)
 {

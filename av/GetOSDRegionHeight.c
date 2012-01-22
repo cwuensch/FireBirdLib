@@ -10,7 +10,7 @@ word GetOSDRegionHeight(word Region)
   CallTraceEnter(tracePuffer);
 #endif
 
-  OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap();
+  OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
 
   if (!OSDMapInfo)
   {

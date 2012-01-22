@@ -20,7 +20,7 @@ char *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR)
     case LGST_TransQTBlue:  strcat(Path, "/trans-qtblue/"); break;
     case LGST_TransQTGrey:  strcat(Path, "/trans-qtgrey/"); break;
     default:
-      ;
+      break;
   }
 
   switch(LogoAR)
@@ -28,7 +28,7 @@ char *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR)
     case LGAR_43:  strcat(Path, "43"); break;
     case LGAR_169: strcat(Path, "169"); break;
     default:
-      ;
+      break;
   }
 
   return Path;

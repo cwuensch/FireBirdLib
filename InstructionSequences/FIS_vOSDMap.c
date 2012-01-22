@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vOSDMap (void)
+inline dword FIS_vOsdMap (void)
 {
   static dword          vOSDMap = 0;
 

@@ -9,7 +9,7 @@ void FreeOSDRegion(word Region)
 #endif
 
 
-  if (!(OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap()))
+  if (!(OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap()))
   {
 
 #ifdef DEBUG_FIREBIRDLIB

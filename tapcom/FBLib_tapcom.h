@@ -1,7 +1,6 @@
  #ifndef FBLIB_TAPCOM_H
 #define FBLIB_TAPCOM_H
 
-#include                "tap.h"
 #include                "../libFireBird.h"
 
 extern bool             LibInitialized;

@@ -30,6 +30,7 @@ void OSDMenuItemSortNameColumn(bool Ascending, bool CaseSensitive)
         case 3: Swap = (strcmp(p1, p2) > 0); break;
         default:
           Swap = FALSE;
+          break;
       }
 
       if(Swap)

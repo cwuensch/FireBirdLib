@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vextTsFolder(void)
+inline dword FIS_vExtTsFolder(void)
 {
   static dword          vextTsFolder = 0;
 

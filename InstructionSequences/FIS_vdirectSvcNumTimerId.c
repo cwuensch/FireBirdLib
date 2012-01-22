@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vdirectSvcNumTimerId(void)
+inline dword FIS_vDirectSvcNumTimerId(void)
 {
   static dword          _directSvcNumTimerId = 0;
 

@@ -1,4 +1,4 @@
-#include <ctype.h>
+//#include <ctype.h>
 #include "../libFireBird.h"
 
 void LowerCase (char *string)
@@ -23,6 +23,7 @@ void LowerCase (char *string)
 
       default:
         string[i] = tolower (string[i]);
+        break;
     }
 
     i++;

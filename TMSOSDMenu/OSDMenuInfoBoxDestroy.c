@@ -13,7 +13,7 @@ void OSDMenuInfoBoxDestroy(void)
     {
       if(MyOSDRgn)
       {
-        OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap();
+        OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
           TAP_Osd_RestoreBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height, InfoBoxSaveArea);
       }

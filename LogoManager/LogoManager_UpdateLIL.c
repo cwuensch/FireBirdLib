@@ -51,6 +51,7 @@ int LogoManager_UpdateLIL(void)
 
       default:
         SatPos = 0;
+        break;
     }
 
     ChannelID = LogoManager_CalculateChannelID(SatPos, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);
@@ -79,6 +80,7 @@ int LogoManager_UpdateLIL(void)
 
       default:
         SatPos = 0;
+        break;
     }
 
     ChannelID = LogoManager_CalculateChannelID(SatPos, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);

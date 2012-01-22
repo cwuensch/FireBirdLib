@@ -63,13 +63,16 @@ dword SuperFastHash(register unsigned char * data, int len, dword hash)
       hash ^= data[sizeof (word)] << 18;
       hash += hash >> 11;
       break;
+
    case 2: hash += get16bits(data);
       hash ^= hash << 11;
       hash += hash >> 17;
       break;
+
    case 1: hash += *data;
       hash ^= hash << 10;
       hash += hash >> 1;
+      break;
    }
 
 /* Force "avalanching" of final 127 bits */

@@ -10,7 +10,7 @@ word GetOSDRegionWidth(word Region)
   CallTraceEnter(tracePuffer);
 #endif
 
-  if (!(OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap()))
+  if (!(OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap()))
   {
 
 #ifdef DEBUG_FIREBIRDLIB

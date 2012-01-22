@@ -13,10 +13,6 @@ INCLUDE_DIRS = ${BASE}/include
 CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32
 CFLAGS += $(addprefix -I, $(INCLUDE_DIRS))
 CFLAGS += $(addprefix -I, /opt/crosstool/include)
-ifeq (${DEBUG},y)
-CFLAGS += -g -DDEBUG
-endif
-
 
 #TAP_LIBS =  ${BASE}/tapinit.o ${BASE}/libtap.so -lc
 TAP_OBJS := $(patsubst %.c,%.o,$(wildcard *.c))

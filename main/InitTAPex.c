@@ -13,7 +13,7 @@ bool InitTAPex()
 
   ApplID   = TAP_GetVersion();
 
-  dword *pcurTapTask = (dword*)FIS_vcurTapTask();
+  dword *pcurTapTask = (dword*)FIS_vCurTapTask();
   if(pcurTapTask) TAP_TableIndex = *pcurTapTask;
 
 #ifdef DEBUG_FIREBIRDLIB

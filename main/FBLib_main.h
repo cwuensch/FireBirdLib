@@ -1,7 +1,6 @@
 #ifndef FBLIB_MAIN_H
 #define FBLIB_MAIN_H
 
-#include "tap.h"
 #include "../libFireBird.h"
 
 #define FIRMWAREDAT   "FirmwareTMS.dat"

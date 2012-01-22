@@ -13,7 +13,7 @@ dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
       case VFD_17: return VFDSegmentMap17_c[Character];
 
       default:
-        ;
+        break;
     }
   else if (CurrentCharset == CS_8859_1_HAPPY)
     switch (DisplayStyle)
@@ -23,7 +23,7 @@ dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
       case VFD_17: return VFDSegmentMap17_h[Character];
 
       default:
-        ;
+        break;
     }
   else
     switch (DisplayStyle)
@@ -33,7 +33,7 @@ dword VFD_TranslateSegments(byte Character, DISPLAYSTYLE DisplayStyle)
       case VFD_17: return VFDSegmentMap17[Character];
 
       default:
-        ;
+        break;
     }
 
   return 0;

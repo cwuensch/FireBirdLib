@@ -5,7 +5,7 @@ bool CDEnabledAnimation = FALSE;
 
 bool VFD_EnableCDAnimation(bool Enable)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 

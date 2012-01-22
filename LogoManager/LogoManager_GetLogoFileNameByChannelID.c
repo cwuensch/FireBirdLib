@@ -29,7 +29,7 @@ char *LogoManager_GetPathToLogoByChannelID(ulong64 ChannelID, tLogoStyle LogoSty
       case LGSZ_ibl: strcat(LogoName, ".ibl"); break;
       case LGSZ_qsl: strcat(LogoName, ".qsl"); break;
         default:
-          ;
+          break;
     }
 
     return LogoName;

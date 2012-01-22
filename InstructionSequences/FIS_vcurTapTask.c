@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vcurTapTask(void)
+inline dword FIS_vCurTapTask(void)
 {
   static dword          *vcurTapTask = NULL;
 

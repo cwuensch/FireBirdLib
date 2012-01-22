@@ -5,7 +5,7 @@ bool CDEnabled = FALSE;
 
 bool VFD_EnableCD(bool Enable)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 

@@ -9,7 +9,7 @@ dword GetOSDMapAddress(void)
   CallTraceEnter("GetOSDMapAddress");
 #endif
 
-  ret = FIS_vOSDMap();
+  ret = FIS_vOsdMap();
 
 #ifdef DEBUG_FIREBIRDLIB
   CallTraceExit(NULL);

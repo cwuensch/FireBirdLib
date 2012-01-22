@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-01-11"
+  #define __FBLIB_RELEASEDATE__ "2012-01-19"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -115,7 +115,8 @@
     DISPLAY_TYPE          DisplayType;
     REMOTE_TYPE           RemoteType;
     dword                 MaxRecStreams;
-    byte                  unused2[19];
+    byte                  RecExtension;   //0=.rec, 1=.mpg
+    byte                  unused2[18];
   } tToppyInfo;
 
   typedef struct
@@ -135,7 +136,7 @@
   #define LE16(p)       (p)
   #define LE32(p)       (p)
 
-  char puffer[512];
+  char puffer[1024];
   char tracePuffer[512];
   void PrintNet(char *puffer);
 
@@ -144,10 +145,11 @@
   #define ATTR_PARENT         0xf0                    //FindFirst/FindNext doesn't know about ..
 
   #ifndef PC_BASED
-    #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
-
     #ifndef _TMSEMU_
+      #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
       #define TAP_Print   TAP_PrintNet
+    #else
+      #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); TAP_Output(puffer);}
     #endif
   #endif
 
@@ -299,6 +301,7 @@
   void  ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay);
   bool  ShowPvrList(tPvrListType PvrListType);
   void  SoundSinus(word freq, dword durationInMilliseconds, word Amplitude);
+  bool  TAP_GetSysOsdControl(TYPE_TapSysOsdId osdId);
   int   TAP_Osd_PutFreeColorGd(word rgn, int x, int y, TYPE_GrData * gd, bool sprite, dword FilterColor);
   byte  TunerGet(int MainSub);
   bool  TunerSet(byte Tuner);
@@ -594,6 +597,7 @@
   bool FlashTimerSetInfo(int TimerIndex, tFlashTimer *TimerInfo);
   bool FlashTimerDecode(void *Data, tFlashTimer *TimerInfo);
   bool FlashTimerEncode(void *Data, tFlashTimer *TimerInfo);
+  int  FlashTimerStructSize(void);
 
 
   typedef struct
@@ -865,17 +869,25 @@
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_GetStreamFormat(void);
   inline dword FIS_fwAppl_ImportChData(void);
+  inline dword FIS_fwAppl_InitTempRec(void);
+  inline dword FIS_fwAppl_IsTimeShifting(void);
   inline dword FIS_fwAppl_PvrList(void);
   inline dword FIS_fwAppl_PvrList_SetListType(void);
   inline dword FIS_fwAppl_RestartTimeShiftSvc(void);
+  inline dword FIS_fwAppl_SetApplVer(void);
   inline dword FIS_fwAppl_SetIsExternal(void);
   inline dword FIS_fwAppl_SetProviderName(void);
+  inline dword FIS_fwAppl_SetTimeShift(void);
   inline dword FIS_fwAppl_ShoutCast(void);
+  inline dword FIS_fwAppl_StartPlaybackMedia(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);
+  inline dword FIS_fwAppl_StopRecPlaying(void);
   inline dword FIS_fwAppl_StopTempRec(void);
+  inline dword FIS_fwAppl_TimeToLocal(void);
   inline dword FIS_fwAppl_WaitEvt(void);
   inline dword FIS_fwAppl_WriteFlash(void);
+  inline dword FIS_fwAppl_WriteRecInfo(void);
   inline dword FIS_fwApplChannel_GetAgc(void);
   inline dword FIS_fwApplChannel_GetBer(void);
   inline dword FIS_fwApplHdd_FileCutPaste(void);
@@ -886,13 +898,18 @@
   inline dword FIS_fwApplHdd_SaveWorkFolder(void);
   inline dword FIS_fwApplHdd_SelectFolder(void);
   inline dword FIS_fwApplHdd_SetWorkFolder(void);
+  inline dword FIS_fwApplOsd_DrawJpeg(void);
+  inline dword FIS_fwApplTap_CallEventHandler(void);
   inline dword FIS_fwApplTap_GetEmptyTask(void);
   inline dword FIS_fwApplTimer_OptimizeList(void);
   inline dword FIS_fwApplTimeToLocal(void);
   inline dword FIS_fwApplVfdSendData(void);
   inline dword FIS_fwApplVfdStart(void);
   inline dword FIS_fwApplVfdStop(void);
+  inline dword FIS_fwDevEeprom_GetMacAddr(void);
   inline dword FIS_fwDevEeprom_Info(void);
+  inline dword FIS_fwDevFront_PowerOffCancel(void);
+  inline dword FIS_fwDevFront_PowerOffReply(void);
   inline dword FIS_fwDevFront_SetIlluminate(void);
   inline dword FIS_fwDevHdd_DeviceClose(void);
   inline dword FIS_fwDevHdd_DeviceOpen(void);
@@ -900,40 +917,54 @@
   inline dword FIS_fwPowerOff(void);
   inline dword FIS_fwPutDevEvt(void);
   inline dword FIS_fwSetIrCode(void);
+
+  inline dword FIS_vApplState(void);
   inline dword FIS_vAudioTrack(void);
   inline dword FIS_vBootReason(void);
   inline dword FIS_vCheckAutoDecTimerId(void);
-  inline dword FIS_vcurTapTask(void);
-  inline dword FIS_vdirectSvcNumTimerId(void);
+  inline dword FIS_vCurTapTask(void);
+  inline dword FIS_vDirectSvcNumTimerId(void);
   inline dword FIS_vEEPROM(void);
   inline dword FIS_vEEPROMPin(void);
   inline dword FIS_vEtcInfo(void);
-  inline dword FIS_vextPartitionInfo(void);
-  inline dword FIS_vextTsFolder(void);
-  inline dword FIS_vfdTimerId(void);
+  inline dword FIS_vExtPartitionInfo(void);
+  inline dword FIS_vExtTsFolder(void);
+  inline dword FIS_vVfdTimerId(void);
   inline dword FIS_vFlash(void);
-  inline dword FIS_vgrid(void);
-  inline dword FIS_vhddTapFolder(void);
-  inline dword FIS_vhddTsFolder(void);
-  inline dword FIS_viboxTimerId(void);
-  inline dword FIS_visAllPartitionInvalid(void);
+  inline dword FIS_vGrid(void);
+  inline dword FIS_vHddDivxFolder(void);
+  inline dword FIS_vHddTapFolder(void);
+  inline dword FIS_vHddTsFolder(void);
+  inline dword FIS_vIboxTimerId(void);
+  inline dword FIS_vIsAllPartitionInvalid(void);
   inline dword FIS_vIsPipActive(void);
+  inline dword FIS_vIsPopUpOn(void);
   inline dword FIS_vMACAddress(void);
   inline dword FIS_vnExtPartition(void);
   inline dword FIS_vnPipSvcNum(void);
-  inline dword FIS_vOSDMap(void);
+  inline dword FIS_vnRadioSvc(void);
+  inline dword FIS_vnTvSvc(void);
+  inline dword FIS_vOsdMap(void);
+  inline dword FIS_vOsdOutBuf(void);
   inline dword FIS_vParentalInfo(void);
+  inline dword FIS_vPhotoAlbumInfo(void);
   inline dword FIS_vPipH(void);
   inline dword FIS_vPipSvcNum(void);
   inline dword FIS_vPipW(void);
   inline dword FIS_vPipX(void);
   inline dword FIS_vPipY(void);
+  inline dword FIS_vPvrRecTsInfo(void);
+  inline dword FIS_vPvrRecTsPlayInfo(void);
   inline dword FIS_vRECSlotAddress(byte Slot);
-  inline dword FIS_vselectedPartition(void);
+  inline dword FIS_vSelectedPartition(void);
   inline dword FIS_vShoutCastInfo(void);
   inline dword FIS_vShoutCastState(void);
   inline dword FIS_vTAPTable(void);
-  inline dword FIS_vvfdBrightTimerId(void);
+  inline dword FIS_vTapSysOsdCtrl(void);
+  inline dword FIS_vTimerEditInfo(void);
+  inline dword FIS_vTimerTempInfo(void);
+  inline dword FIS_vTopEvent(void);
+  inline dword FIS_vVfdBrightTimerId(void);
 
   /*****************************************************************************************************************************/
   /* LogoManager                                                                                                               */
@@ -1109,6 +1140,7 @@
     dword               Resume;                      //13467  89a
   } tRECHeaderInfo;
 
+  char  *GetRecExtension(void);
   bool   HDD_DecodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   bool   HDD_EncodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   int    HDD_FindPCR(byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes

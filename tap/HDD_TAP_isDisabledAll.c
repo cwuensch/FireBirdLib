@@ -7,7 +7,7 @@ bool HDD_TAP_isDisabledAll(void)
   dword                *curTAPTask;
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  curTAPTask = (dword*)FIS_vcurTapTask();
+  curTAPTask = (dword*)FIS_vCurTapTask();
   if(!curTAPTask || !TMSTAPTaskTable) return FALSE;
 
   for(i = 0; i < TAP_MAX; i++)

@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vhddTapFolder(void)
+inline dword FIS_vHddTapFolder(void)
 {
   static dword          _hddTapFolder = 0;
 

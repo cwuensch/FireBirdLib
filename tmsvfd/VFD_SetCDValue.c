@@ -3,7 +3,7 @@
 
 bool VFD_SetCDValue(int Percent)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid || !CDEnabled) return FALSE;
 

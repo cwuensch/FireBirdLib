@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vextPartitionInfo(void)
+inline dword FIS_vExtPartitionInfo(void)
 {
   static dword          vextPartitionInfo = 0;
 

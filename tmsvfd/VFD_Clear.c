@@ -2,7 +2,7 @@
 
 bool VFD_Clear(void)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 

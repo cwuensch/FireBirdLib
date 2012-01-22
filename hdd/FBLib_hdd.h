@@ -2,7 +2,11 @@
 #define FBLIB_HDD_H
 
 #include                <sys/types.h>
-#include                "tap.h"
+#ifdef _TMSEMU_
+  #include              "tap_tmsemu.h"
+#else
+  #include              "tap.h"
+#endif
 
 //HDD Functions
 //               CCD DD

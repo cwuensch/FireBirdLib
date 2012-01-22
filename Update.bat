@@ -1,7 +1,7 @@
 @echo off
-
 set Project=libFireBird
-set ZIEL=C:\sw\prgm\Topfield\API\TMS\include
+set TFROOT=C:\sw\prgm\Topfield
 
-copy %Project%.h %ZIEL%
-copy %Project%.a "C:\sw\prgm\Topfield\gccForTMS\crosstool\lib\%Project%.a"
+copy %Project%.h %TFROOT%\API\TMS\include
+copy %Project%.a "%TFROOT%\gccForTMS\crosstool\lib\%Project%.a"
+copy %Project%_tmsemu.a "%TFROOT%\gccForTMS\crosstool\lib\%Project%_tmsemu.a"

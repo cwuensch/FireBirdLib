@@ -14,7 +14,7 @@ bool NoAutoStartTAP(void)
   HDD_TAP_GetCurrentDir(CurrentDir);
   if(strstr(CurrentDir, "/ProgramFiles/AutoStart") || strstr(CurrentDir, "/ProgramFiles/XStart"))
   {
-    curTapTask = (dword*)FIS_vcurTapTask();
+    curTapTask = (dword*)FIS_vCurTapTask();
     HDD_TAP_GetFileNameByIndex(*curTapTask, &FileName);
 
     TAP_SPrint(cmd, "mv %s /mnt/hd/ProgramFiles", FileName);

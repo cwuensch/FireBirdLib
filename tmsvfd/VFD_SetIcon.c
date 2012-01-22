@@ -3,7 +3,7 @@
 
 bool VFD_SetIcon(tVFDIcon VFDIcon, bool On)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
   byte GridIndex = 0, OrBit = 0;
 
   if(!VFDUsedByTAP || !grid) return FALSE;

@@ -78,9 +78,24 @@ bool FlashTimerDecode(void *Data, tFlashTimer *TimerInfo)
     case ST_T5800:
     case ST_TF7k7HDPVR: return FALSE;
 
-    case ST_TMSS: return FlashTimerDecode_ST_TMSS(Data, TimerInfo);
-    case ST_TMST: return FlashTimerDecode_ST_TMST(Data, TimerInfo);
-    case ST_TMSC: return FlashTimerDecode_ST_TMSC(Data, TimerInfo);
+    case ST_TMSS:
+    {
+      return FlashTimerDecode_ST_TMSS(Data, TimerInfo);
+    }
+
+    case ST_TMST:
+    {
+      //Depending on the firmware, some Australian machines use the sat structures (200 bytes)
+      if(FlashTimerStructSize() == 208)
+        return FlashTimerDecode_ST_TMST(Data, TimerInfo);
+      else
+        return FlashTimerDecode_ST_TMSS(Data, TimerInfo);
+    }
+
+    case ST_TMSC:
+    {
+      return FlashTimerDecode_ST_TMSC(Data, TimerInfo);
+    }
 
     case ST_NRTYPES: break;
   }

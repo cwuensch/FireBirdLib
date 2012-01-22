@@ -22,7 +22,7 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
       InfoBoxSaveAreaY = y;
       if(MyOSDRgn)
       {
-        OSDMapInfo = (tOSDMapInfo*) FIS_vOSDMap();
+        OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
           InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
       }

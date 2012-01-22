@@ -13,9 +13,9 @@ bool FlashServiceDel(int SvcType, int SvcNum)
 
   //Prepare the nSvc pointer
   if(SvcType == SVC_TYPE_Tv)
-    nSvc = (word*)TryResolve("_nTvSvc");
+    nSvc = (word*)FIS_vnTvSvc();
   else
-    nSvc = (word*)TryResolve("_nRadioSvc");
+    nSvc = (word*)FIS_vnRadioSvc();
   if(!nSvc) return FALSE;
 
   switch(GetSystemType())

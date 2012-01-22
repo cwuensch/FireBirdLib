@@ -5,7 +5,7 @@ bool HDDEnabled = FALSE;
 
 bool VFD_EnableHDD(bool Enable)
 {
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 

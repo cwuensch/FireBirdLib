@@ -1,7 +1,6 @@
 #ifndef FBLIB_TAP_H
 #define FBLIB_TAP_H
 
-#include "tap.h"
 #include "../libFireBird.h"
 
 #define MAGIC             0xf1eb1d1b

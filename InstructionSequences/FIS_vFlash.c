@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vFlash (void)
+inline dword FIS_vFlash(void)
 {
   static dword          vFlash = 0;
 

@@ -80,7 +80,7 @@ bool SetHandler(dword EventID, void *Handler, void **OrigHandler)
 
   if(!__topEvent)
   {
-    __topEvent = (dword*)TryResolve("_topEvent");
+    __topEvent = (dword*)FIS_vTopEvent();
     if(!__topEvent)
     {
       if(LastStatus != -10) WriteLog("Failed to resolve _topEvent");
@@ -168,7 +168,7 @@ bool SDS(void)
       //Init some firmware routines
       if(!__DevFront_PowerOffReply)
       {
-        __DevFront_PowerOffReply = (void*)TryResolve("DevFront_PowerOffReply");
+        __DevFront_PowerOffReply = (void*)FIS_fwDevFront_PowerOffReply();
         if(!__DevFront_PowerOffReply)
         {
           if(LastStatus != -1) WriteLog("Failed to resolve DevFront_PowerOffReply()");
@@ -180,7 +180,7 @@ bool SDS(void)
 
       if(!__DevFront_PowerOffCancel)
       {
-        __DevFront_PowerOffCancel = (void*)TryResolve("DevFront_PowerOffCancel");
+        __DevFront_PowerOffCancel = (void*)FIS_fwDevFront_PowerOffCancel();
         if(!__DevFront_PowerOffCancel)
         {
           if(LastStatus != -2) WriteLog("Failed to resolve DevFront_PowerOffCancel()");
@@ -193,7 +193,7 @@ bool SDS(void)
       //Modify the handler pointer of the ef00 event queue
       if(!SetHandler(0xef00, Hooked_ApplEvent_CallHandler, (void*)&OrigHandler)) return FALSE;
 
-      curTapTask = (dword*)FIS_vcurTapTask();
+      curTapTask = (dword*)FIS_vCurTapTask();
       Slot = *curTapTask;
       if(HDD_TAP_GetFileNameByIndex(Slot, &TAPFileName))
       {

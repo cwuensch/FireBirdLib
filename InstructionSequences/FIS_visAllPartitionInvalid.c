@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_visAllPartitionInvalid(void)
+inline dword FIS_vIsAllPartitionInvalid(void)
 {
   static dword          visAllPartitionInvalid = 0;
 

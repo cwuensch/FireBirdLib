@@ -10,7 +10,7 @@ dword HDD_TAP_Callback(dword TAPID, void *ProcedureAddress, dword param1, dword 
 
   if(TAPID)
   {
-    curTapTask = (dword*)FIS_vcurTapTask();
+    curTapTask = (dword*)FIS_vCurTapTask();
     if(!curTapTask) return 0;
 
     int Index = HDD_TAP_GetIndexByID(TAPID);

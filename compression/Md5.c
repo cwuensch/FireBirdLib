@@ -357,7 +357,13 @@ UINT4 *in;
 #include <sys/types.h>
 #include <time.h>
 #include <string.h>
-#include <tap.h>
+
+#ifdef _TMSEMU_
+  #include              <tap_tmsemu.h>
+#else
+  #include              <tap.h>
+#endif
+
 #include "../libFireBird.h"
 /* -- include the following file if the file md5.h is separate -- */
 /* #include "md5.h" */

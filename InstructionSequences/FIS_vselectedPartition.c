@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vselectedPartition(void)
+inline dword FIS_vSelectedPartition(void)
 {
   static dword          vselectedPartition = 0;
 

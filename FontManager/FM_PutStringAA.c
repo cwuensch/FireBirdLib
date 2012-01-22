@@ -80,6 +80,7 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
 
     default:
       SaveBoxX = x;
+      break;
   }
 
   if(bcolor & 0xff000000)

@@ -11,7 +11,7 @@
 bool VFD_CDAnimation(bool Forward)
 {
   static int            Counter = 0;
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid || !CDEnabledAnimation) return FALSE;
 

@@ -11,7 +11,7 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
   if(TAPIndex == -1) return FALSE;
 
   //Don't disable ourself
-  curTAPTask = (dword*)FIS_vcurTapTask();
+  curTAPTask = (dword*)FIS_vCurTapTask();
   if(!curTAPTask || ((dword)TAPIndex == *curTAPTask)) return FALSE;
 
   //The TAP has already the requested state

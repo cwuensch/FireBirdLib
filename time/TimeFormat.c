@@ -1,9 +1,10 @@
 #include                <stdio.h>
 #include                "../libFireBird.h"
 
+static char             sTimeStamp [25];      //Log adds a SPACE to sTimeStamp. Do not make it too small!
+
 char *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat)
 {
-  static char           sTimeStamp [25];      //Log adds a SPACE to sTimeStamp. Do not make it too small!
   word                  Mjd, Year;
   byte                  Month, Day, WeekDay, Hour, Min;
 
@@ -27,7 +28,7 @@ char *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat)
     case TIMESTAMP_YMDHM  : TAP_SPrint (sTimeStamp, "%04d-%02d-%02d %02d:%02d", Year, Month, Day, Hour, Min); break;
     case TIMESTAMP_YMDHMS : TAP_SPrint (sTimeStamp, "%04d-%02d-%02d %02d:%02d:%02d", Year, Month, Day, Hour, Min, Sec); break;
     case TIMESTAMP_FNYMDHM: TAP_SPrint (sTimeStamp, "%04d%02d%02d_%02d%02d", Year, Month, Day, Hour, Min); break;
-    default               : sTimeStamp [0] = '\0';
+    default               : sTimeStamp [0] = '\0'; break;
   }
 
   return sTimeStamp;

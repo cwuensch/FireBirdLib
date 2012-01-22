@@ -14,7 +14,7 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
 
   //Get all needed variables
   TAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  _curTapTask = (dword*)FIS_vcurTapTask();
+  _curTapTask = (dword*)FIS_vCurTapTask();
 
   if(!TAPTaskTable || !_curTapTask)
   {

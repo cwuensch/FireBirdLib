@@ -27,6 +27,7 @@ void ReplaceInvalidFileNameChars(char *strName)
 
         default:
           *p = '-';
+          break;
       }
     }
     p++;

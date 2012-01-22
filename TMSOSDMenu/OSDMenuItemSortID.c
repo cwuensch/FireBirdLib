@@ -23,6 +23,7 @@ void OSDMenuItemSortID(bool Ascending)
         case 1: Swap = (ID1 > ID2); break;
         default:
           Swap = FALSE;
+          break;
       }
 
       if(Swap)

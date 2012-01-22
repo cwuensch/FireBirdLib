@@ -8,9 +8,9 @@ bool FlashServiceAdd(int SvcType, tFlashService *Service)
   NrServices = FlashServiceGetTotal(SvcType);
 
   if(SvcType == SVC_TYPE_Tv)
-    nSvc = (word*)TryResolve("_nTvSvc");
+    nSvc = (word*)FIS_vnTvSvc();
   else
-    nSvc = (word*)TryResolve("_nRadioSvc");
+    nSvc = (word*)FIS_vnRadioSvc();
 
   *nSvc = *nSvc + 1;
 

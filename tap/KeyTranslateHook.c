@@ -71,7 +71,7 @@ bool KeyTranslate(bool Enable, void *EventHandler)
   if(!TMSTAPTaskTable) return FALSE;
 
   //Get the pointer to the currently active TAP index
-  curTAPTask = (dword*)FIS_vcurTapTask();
+  curTAPTask = (dword*)FIS_vCurTapTask();
   if(!curTAPTask) return FALSE;
 
   if(Enable && (TMSTAPTaskTable[*curTAPTask].TAP_EventHandler == (dword)EventHandler))

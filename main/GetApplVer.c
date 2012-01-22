@@ -7,7 +7,7 @@ char *GetApplVer(void)
 
   if(!osdOutBuf)
   {
-    osdOutBuf = (void*)TryResolve("_osdOutBuf");
+    osdOutBuf = (void*)FIS_vOsdOutBuf();
     if(!osdOutBuf) return NULL;
   }
 
@@ -15,7 +15,7 @@ char *GetApplVer(void)
 
   if(!Appl_SetApplVer)
   {
-    Appl_SetApplVer = (void*)TryResolve("_Z15Appl_SetApplVerPc");
+    Appl_SetApplVer = (void*)FIS_fwAppl_SetApplVer();
     if(!Appl_SetApplVer) return osdOutBuf;
   }
 

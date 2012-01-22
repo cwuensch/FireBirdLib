@@ -50,8 +50,8 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   if(!Appl_ExecProgram)      Appl_ExecProgram      = (void*)FIS_fwAppl_ExecProgram();
   if(!ApplHdd_SetWorkFolder) ApplHdd_SetWorkFolder = (void*)FIS_fwApplHdd_SetWorkFolder();
   if(!ApplHdd_SelectFolder)  ApplHdd_SelectFolder  = (void*)FIS_fwApplHdd_SelectFolder();
-  if(!_hddTapFolder)        _hddTapFolder          = (dword*)FIS_vhddTapFolder();
-  if(!_hddTsFolder)         _hddTsFolder           = (dword*)FIS_vhddTsFolder();
+  if(!_hddTapFolder)        _hddTapFolder          = (dword*)FIS_vHddTapFolder();
+  if(!_hddTsFolder)         _hddTsFolder           = (dword*)FIS_vHddTsFolder();
 
   //"Calculate" the current absolute directory of the new TAP
   TAP_SPrint(CurrentDir, "mnt/hd");

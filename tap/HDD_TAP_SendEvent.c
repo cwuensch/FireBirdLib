@@ -10,7 +10,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
 
   dword (*TAPEventHandler)(word Event, dword Param1, dword Param2) = NULL;
 
-  curTapTask = (dword*)FIS_vcurTapTask();
+  curTapTask = (dword*)FIS_vCurTapTask();
   if(!curTapTask) return 0;
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();

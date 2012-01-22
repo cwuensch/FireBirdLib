@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_vgrid(void)
+inline dword FIS_vGrid(void)
 {
   static dword          _grid = 0;
 

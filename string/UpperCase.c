@@ -23,6 +23,7 @@ void UpperCase (char *string)
 
       default:
         string[i] = toupper (string[i]);
+        break;
     }
 
     i++;

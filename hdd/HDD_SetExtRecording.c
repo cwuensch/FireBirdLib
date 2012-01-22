@@ -24,16 +24,16 @@ word HDD_SetExtRecording(bool ExtDisk)
   Appl_SetIsExternal = (void*)FIS_fwAppl_SetIsExternal();
   if(!Appl_SetIsExternal) return 0xf001;
 
-  __extPartitionInfo = (textPartitionInfo*)FIS_vextPartitionInfo();
+  __extPartitionInfo = (textPartitionInfo*)FIS_vExtPartitionInfo();
   if(!__extPartitionInfo) return 0xf002;
 
-  __extTsFolder = (dword*)FIS_vextTsFolder();
+  __extTsFolder = (dword*)FIS_vExtTsFolder();
   if(!__extTsFolder) return 0xf003;
 
-  __isAllPartitionInvalid = (byte*)FIS_visAllPartitionInvalid();
+  __isAllPartitionInvalid = (byte*)FIS_vIsAllPartitionInvalid();
   if(!__isAllPartitionInvalid) return 0xf004;
 
-  __selectedPartition = (int*)FIS_vselectedPartition();
+  __selectedPartition = (int*)FIS_vSelectedPartition();
   if(!__selectedPartition) return 0xf005;
 
   if(ExtDisk)

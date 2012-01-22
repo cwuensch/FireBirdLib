@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-inline dword FIS_viboxTimerId(void)
+inline dword FIS_vIboxTimerId(void)
 {
   static byte   *iboxTimerId = NULL;
 

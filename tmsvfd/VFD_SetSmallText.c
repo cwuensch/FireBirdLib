@@ -4,7 +4,7 @@
 bool VFD_SetSmallText(char *Text)
 {
   dword                 i;
-  byte *grid = (byte*)FIS_vgrid();
+  byte *grid = (byte*)FIS_vGrid();
 
   if(!VFDUsedByTAP || !grid) return FALSE;
 
