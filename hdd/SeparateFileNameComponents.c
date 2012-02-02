@@ -1,4 +1,6 @@
-//#include <ctype.h>
+#ifndef _TMSEMU_
+  #include <ctype.h>
+#endif
 #include <string.h>
 #include <stdlib.h>
 #include "../libFireBird.h"

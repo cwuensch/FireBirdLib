@@ -1,5 +1,7 @@
 #include <string.h>
-//#include <ctype.h>
+#ifndef _TMSEMU_
+  #include <ctype.h>
+#endif
 #include "FBLib_string.h"
 
 // case-insensitive version of strstr()

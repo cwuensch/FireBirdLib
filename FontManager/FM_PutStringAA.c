@@ -50,7 +50,33 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
              (width != 0) &&
              (newstrlen > 0));
     }
-    strcat(newstr, "...");
+
+    switch(bDot)
+    {
+      case 2:
+      {
+        int i;
+
+        i = strlen(newstr) - 1;
+        newstr[i+4] = '\0';
+        while(i >= 0)
+        {
+          newstr[i] = newstr[i+3];
+          i--;
+        }
+        newstr[0] = '.';
+        newstr[1] = '.';
+        newstr[2] = '.';
+
+        break;
+      }
+
+      default:
+      {
+        strcat(newstr, "...");
+        break;
+      }
+    }
     XEnd += dotWidth;
     if(XEnd > maxX) return;
   }

@@ -35,13 +35,27 @@ bool FlashTimerSetInfo(int TimerIndex, tFlashTimer *TimerInfo)
 
     case ST_TMST:
     {
-     TYPE_Timer_TMST  *p;
+      //Depending on the firmware, some Australian machines use the sat structures (200 bytes)
+      if(FlashTimerStructSize() == 200)
+      {
+        TYPE_Timer_TMST200  *p;
 
-      p = (TYPE_Timer_TMST*)(FIS_vFlashBlockTimer());
-      if(!p) return FALSE;
-      p = p + TimerIndex;
+        p = (TYPE_Timer_TMST200*)(FIS_vFlashBlockTimer());
+        if(!p) return FALSE;
+        p = p + TimerIndex;
 
-      return FlashTimerEncode(p, TimerInfo);
+        return FlashTimerEncode(p, TimerInfo);
+      }
+      else
+      {
+        TYPE_Timer_TMST  *p;
+
+        p = (TYPE_Timer_TMST*)(FIS_vFlashBlockTimer());
+        if(!p) return FALSE;
+        p = p + TimerIndex;
+
+        return FlashTimerEncode(p, TimerInfo);
+      }
     }
 
     case ST_TMSC:
@@ -86,10 +100,10 @@ bool FlashTimerEncode(void *Data, tFlashTimer *TimerInfo)
     case ST_TMST:
     {
       //Depending on the firmware, some Australian machines use the sat structures (200 bytes)
-      if(FlashTimerStructSize() == 208)
-        return FlashTimerEncode_ST_TMST(Data, TimerInfo);
+      if(FlashTimerStructSize() == 200)
+        return FlashTimerEncode_ST_TMST200(Data, TimerInfo);
       else
-        return FlashTimerEncode_ST_TMSS(Data, TimerInfo);
+        return FlashTimerEncode_ST_TMST(Data, TimerInfo);
     }
 
     case ST_TMSC:
@@ -196,6 +210,49 @@ bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo)
   return TRUE;
 }
 
+bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo)
+{
+  memset(Data, 0, sizeof(TYPE_Timer_TMST));
+
+  Data->TunerIndex            = TimerInfo->TunerIndex;
+  Data->RecMode               = TimerInfo->RecMode;
+  Data->DemuxPath             = TimerInfo->DemuxPath;
+  Data->ManualRec             = TimerInfo->ManualRec;
+  Data->unused1               = TimerInfo->unused1;
+  Data->SatIndex              = TimerInfo->SatIndex;
+  Data->ServiceType           = TimerInfo->ServiceType;
+  Data->ReservationType       = TimerInfo->ReservationType;
+  Data->unused2               = TimerInfo->unused2;
+  Data->ServiceID             = TimerInfo->ServiceID;
+  Data->Duration              = TimerInfo->Duration;
+  Data->unused3               = TimerInfo->unused3;
+  strncpy(Data->FileName, TimerInfo->FileName, 130);
+  Data->StartTime             = TimerInfo->StartTime;
+  Data->EndTime               = TimerInfo->EndTime;
+  Data->PMTPID                = TimerInfo->PMTPID;
+  Data->isRec                 = TimerInfo->isRec;
+  Data->NameSet               = TimerInfo->NameSet;
+  Data->unused4               = TimerInfo->unused4;
+  Data->EPGMarker             = TimerInfo->EPGMarker;
+  memcpy(Data->unused5, TimerInfo->unused5, 2);
+  Data->unknown1               = TimerInfo->unknown1;
+  Data->EventID1              = TimerInfo->EventID1;
+  Data->EventID2              = TimerInfo->EventID2;
+  Data->ServiceIndex          = TimerInfo->ServiceIndex;
+  memcpy(Data->unused8, TimerInfo->unused8, 14);
+  Data->TpInfo.SatIdx               = TimerInfo->TpInfo.SatIndex;
+  Data->TpInfo.ChannelNr            = TimerInfo->TpInfo.ChannelNr;
+  Data->TpInfo.Bandwidth            = TimerInfo->TpInfo.Bandwidth;
+  Data->TpInfo.Frequency            = TimerInfo->TpInfo.Frequency;
+  Data->TpInfo.TSID                 = TimerInfo->TpInfo.TSID;
+  Data->TpInfo.LPHP                 = TimerInfo->TpInfo.LPHP;
+  Data->TpInfo.OriginalNetworkID    = TimerInfo->TpInfo.OriginalNetworkID;
+  Data->TpInfo.NetworkID            = TimerInfo->TpInfo.NetworkID;
+  Data->TpInfo.unused1              = TimerInfo->TpInfo.unused1;
+  Data->TpInfo.unused2              = TimerInfo->TpInfo.unused2;
+
+  return TRUE;
+}
 bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo)
 {
   memset(Data, 0, sizeof(TYPE_Timer_TMSC));

@@ -1,4 +1,6 @@
-//#include <ctype.h>
+#ifndef _TMSEMU_
+  #include <ctype.h>
+#endif
 #include "../libFireBird.h"
 
 void LowerCase (char *string)

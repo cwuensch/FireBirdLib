@@ -263,16 +263,53 @@
     word                ServiceIndex;
     byte                unused8[14];
 
+    TYPE_TpInfo_TMST    TpInfo;
+  }__attribute__((packed)) TYPE_Timer_TMST200;
+
+  typedef struct
+  {
+    word                TunerIndex:8;
+    word                RecMode:3;
+    word                DemuxPath:2;
+    word                ManualRec:1;
+    word                unused1:2;
+
+    byte                SatIndex;
+
+    byte                ServiceType:1;
+    byte                ReservationType:3;
+    byte                unused2:4;
+
+    word                ServiceID;
+    word                Duration;
+    byte                unused3;
+    char                FileName[131];
+    dword               StartTime;
+    dword               EndTime;
+    word                PMTPID;
+    byte                isRec;
+    byte                NameSet;
+    byte                unused4;
+    byte                EPGMarker;
+    byte                unused5[2];
+    dword               unknown1;
+    dword               EventID1;
+    dword               EventID2;
+    word                ServiceIndex;
+    byte                unused8[14];
+
     TYPE_TpInfo_TMSC    TpInfo;
   }__attribute__((packed)) TYPE_Timer_TMSC;
 
 
   bool FlashTimerDecode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
   bool FlashTimerDecode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
+  bool FlashTimerDecode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo);
   bool FlashTimerDecode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
 
   bool FlashTimerEncode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
   bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
+  bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo);
   bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
 
   void FlashReindexTimers(int SvcType, int FromSvcNum, int ToSvcNum);

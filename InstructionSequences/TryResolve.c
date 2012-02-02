@@ -1,6 +1,13 @@
 #include "../libFireBird.h"
 
-#include <dlfcn.h>
+#ifdef _TMSEMU_
+  #define dlopen      TAP_Linux_dlopen
+  #define dlsym       TAP_Linux_dlsym
+  #define dlerror     TAP_Linux_dlerror
+  #define dlclose     TAP_Linux_dlclose
+#endif
+
+#include            <dlfcn.h>
 
 dword TryResolve(char *Function)
 {
