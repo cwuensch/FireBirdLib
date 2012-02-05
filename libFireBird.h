@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-02-02"
+  #define __FBLIB_RELEASEDATE__ "2012-02-03"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1144,6 +1144,7 @@
   bool   HDD_DecodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   bool   HDD_EncodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   int    HDD_FindPCR(byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
+  byte  *HDD_GetPvrRecTsInfoPointer(byte Slot);
   bool   HDD_isAnyRecording(void);
   bool   HDD_isCryptedStream(char *Buffer, dword BufferSize);
   bool   HDD_isRecording(byte RecSlot);

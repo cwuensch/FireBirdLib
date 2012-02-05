@@ -57,16 +57,21 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
       {
         int i;
 
+        TAP_PrintNet("1: '%s'\n", newstr);
         i = strlen(newstr) - 1;
+        TAP_PrintNet("2: %d\n", i);
         newstr[i+4] = '\0';
+        TAP_PrintNet("3: '%s'\n", newstr);
         while(i >= 0)
         {
-          newstr[i] = newstr[i+3];
+          newstr[i+3] = newstr[i];
           i--;
         }
+        TAP_PrintNet("4: '%s'\n", newstr);
         newstr[0] = '.';
         newstr[1] = '.';
         newstr[2] = '.';
+        TAP_PrintNet("5: '%s'\n", newstr);
 
         break;
       }

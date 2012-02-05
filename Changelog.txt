@@ -698,5 +698,7 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: FlashTimerStructSize(), which calculates the size of the timer structure in the firmware. In Australia, some machines use the old DVBt structure (208 bytes), some the DVBs structure (200 bytes)
             Fixed: FlashTimerDecode() and FlashTimerEncode() are using FlashTimerStructSize() to determine the correct structure
             'Official release'
+
 2012-02-02  Updated FM_PutString(): Topfield has declared the bDot parameter in TAP_Osd_PutS() as byte tough bool would be more logical. I've now abused that parameter and if a 2 is passed, the ... for
             long texts will appear on the left side instead of right of the text.
+2012-02-03  Added: HDD_GetPvrRecTsInfoPointer()
