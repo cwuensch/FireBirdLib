@@ -12,7 +12,6 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
   dword                 dotWidth;
   char                  newstr[256];
   int                   width = 0, newstrlen;
-  char                  LastChar;
   int                   CharIndex;
 
   dword                 LastBackgroundPixel = 0;
@@ -20,71 +19,97 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
   dword                 LastPixel = 0;
   byte                  Grey;
   dword                 StrLen;
-  bool                  bRestricted;
 
   if(!str || !str[0] || !FontData || !FontData->pFontData || (maxX <= x)) return;
 
-  if(GetOSDRegionWidth(rgn) && GetOSDRegionWidth(rgn) <=  maxX) maxX = GetOSDRegionWidth(rgn) - 1;
+  if(GetOSDRegionWidth(rgn) && GetOSDRegionWidth(rgn) <= maxX) maxX = GetOSDRegionWidth(rgn) - 1;
 
   strncpy(newstr, str, sizeof(newstr));
   newstr[sizeof(newstr) - 1] = '\0';
-  XEnd = x + FM_GetStringWidthAndRestrict(newstr, FontData, maxX-x, &bRestricted);
 
-  if(bRestricted && bDot)
+  XEnd = x + FM_GetStringWidth(newstr, FontData);
+  dotWidth = 0;
+
+  switch(bDot)
   {
-    dotWidth = FM_GetStringWidth("...", FontData);
-    newstrlen = strlen(newstr);
-    if(newstrlen)
+    case 0:
     {
-      do
+      char *p;
+
+      p = &newstr[strlen(newstr) - 1];
+      if(XEnd > maxX)
       {
-        LastChar = newstr[newstrlen - 1];
-        if(FM_isValidCharacter(LastChar))
+        newstrlen = strlen(newstr);
+        do
         {
-            width = FontData->FontDef[FM_CharToIndex(LastChar)].Width;
+          if(FM_isValidCharacter(*p))
+          {
+            width = FontData->FontDef[FM_CharToIndex(*p)].Width;
             XEnd -= width;
-        }
-        newstr[newstrlen - 1]= '\0';
-        newstrlen--;
-      }while(((XEnd + dotWidth) > maxX) &&
-             (width != 0) &&
-             (newstrlen > 0));
+          }
+          *p = '\0';
+          p--;
+          newstrlen--;
+        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+      }
+      break;
     }
 
-    switch(bDot)
+    case 1:
     {
-      case 2:
-      {
-        int i;
+      char *p;
 
-        TAP_PrintNet("1: '%s'\n", newstr);
-        i = strlen(newstr) - 1;
-        TAP_PrintNet("2: %d\n", i);
-        newstr[i+4] = '\0';
-        TAP_PrintNet("3: '%s'\n", newstr);
-        while(i >= 0)
+      p = &newstr[strlen(newstr) - 1];
+      if(XEnd > maxX)
+      {
+        dotWidth = FM_GetStringWidth("...", FontData);
+        XEnd += dotWidth;
+        newstrlen = strlen(newstr);
+        do
         {
-          newstr[i+3] = newstr[i];
-          i--;
-        }
-        TAP_PrintNet("4: '%s'\n", newstr);
-        newstr[0] = '.';
-        newstr[1] = '.';
-        newstr[2] = '.';
-        TAP_PrintNet("5: '%s'\n", newstr);
-
-        break;
+          if(FM_isValidCharacter(*p))
+          {
+            width = FontData->FontDef[FM_CharToIndex(*p)].Width;
+            XEnd -= width;
+          }
+          *p = '\0';
+          p--;
+          newstrlen--;
+        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
       }
-
-      default:
-      {
-        strcat(newstr, "...");
-        break;
-      }
+      strcat(newstr, "...");
+      break;
     }
-    XEnd += dotWidth;
-    if(XEnd > maxX) return;
+
+    case 2:
+    {
+      char *p;
+
+      p = newstr;
+      if(XEnd > maxX)
+      {
+        dotWidth = FM_GetStringWidth("...", FontData);
+        XEnd += dotWidth;
+        newstrlen = strlen(newstr);
+        do
+        {
+          if(FM_isValidCharacter(*p))
+          {
+            width = FontData->FontDef[FM_CharToIndex(*p)].Width;
+            XEnd -= width;
+          }
+          p++;
+          newstrlen--;
+        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+      }
+      DeleteAt(newstr, 0, (int)(p - newstr));
+      InsertAt(newstr, 0, "...");
+
+      break;
+    }
   }
+
+  if(XEnd > maxX) return;
 
   YEnd = y + FM_GetStringHeight(newstr, FontData);
   if(XEnd > maxX) XEnd = maxX;
@@ -120,7 +145,7 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
     FM_InitAlphaLUT(fcolor, bcolor, AntiAliasFactor);
   }
 
-  PixelData = (dword*)TAP_Osd_SaveBox(rgn, SaveBoxX, y, XEnd - x + 1, YEnd - y + 1);
+  PixelData = (dword*) TAP_Osd_SaveBox(rgn, SaveBoxX, y, XEnd - x + 1, YEnd - y + 1);
 
   if(PixelData)
   {
@@ -130,47 +155,47 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
     {
       if(FM_isValidCharacter(newstr[i]))
       {
-          CharIndex = FM_CharToIndex(newstr[i]);
-          FontBitmap = &FontData->pFontData[FontData->FontDef[CharIndex].BitmapIndex];
-          CW = FontData->FontDef[CharIndex].Width;
-          CH = FontData->FontDef[CharIndex].Height;
+        CharIndex = FM_CharToIndex(newstr[i]);
+        FontBitmap = &FontData->pFontData[FontData->FontDef[CharIndex].BitmapIndex];
+        CW = FontData->FontDef[CharIndex].Width;
+        CH = FontData->FontDef[CharIndex].Height;
 
-          for(Y = 0; Y < CH; Y++)
+        for(Y = 0; Y < CH; Y++)
+        {
+          CY = (XEnd - x + 1) * Y;
+          for(X = 0; X < CW; X++)
           {
-              CY = (XEnd - x + 1) * Y;
-              for(X = 0; X < CW; X++)
+            Grey = *FontBitmap;
+            if(Grey != 0x00)
+            {
+              if(Grey == 0xff)
               {
-                Grey = *FontBitmap;
-                if(Grey != 0x00)
+                PixelData[CX + X + CY] = fcolor;
+              }
+              else
+              {
+                //Verhalten von bcolor.A
+                if(bcolor & 0xff000000)
                 {
-                    if(Grey == 0xff)
-                    {
-                      PixelData[CX + X + CY] = fcolor;
-                    }
-                    else
-                    {
-                        //Verhalten von bcolor.A
-                        if(bcolor & 0xff000000)
-                        {
-                          PixelData[CX + X + CY] = (fcolor & 0xff000000) | (AlphaLUT[Grey].r << 16) | (AlphaLUT[Grey].g << 8) | AlphaLUT[Grey].b;
-                        }
-                        else
-                        {
-                          if((LastForegroundPixel != Grey) || (LastBackgroundPixel != PixelData[CX + X + CY]))
-                          {
-                            LastBackgroundPixel = PixelData[CX + X + CY];
-                            LastForegroundPixel = Grey;
-                            LastPixel = (fcolor & 0xff000000) | FM_AlphaBlendRGB(Grey, fcolor, LastBackgroundPixel, AntiAliasFactor);
-                          }
+                  PixelData[CX + X + CY] = (fcolor & 0xff000000) | (AlphaLUT[Grey].r << 16) | (AlphaLUT[Grey].g << 8) | AlphaLUT[Grey].b;
+                }
+                else
+                {
+                  if((LastForegroundPixel != Grey) || (LastBackgroundPixel != PixelData[CX + X + CY]))
+                  {
+                    LastBackgroundPixel = PixelData[CX + X + CY];
+                    LastForegroundPixel = Grey;
+                    LastPixel = (fcolor & 0xff000000) | FM_AlphaBlendRGB(Grey, fcolor, LastBackgroundPixel, AntiAliasFactor);
+                  }
 
-                          PixelData[CX + X + CY] = LastPixel;
-                        }
-                    }
-                } // if grey else
-                FontBitmap++;
-              } // for x
-          } // for y
-          CX += CW;
+                  PixelData[CX + X + CY] = LastPixel;
+                }
+              }
+            } // if grey else
+            FontBitmap++;
+          } // for x
+        } // for y
+        CX += CW;
       } // if FM_ValidChar
     } // for i
 

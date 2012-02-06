@@ -261,7 +261,6 @@ int TAP_Main ()
   FM_FreeFontFile(NULL);
   FM_GetStringHeight(NULL, NULL);
   FM_GetStringWidth(NULL, NULL);
-  FM_GetStringWidthAndRestrict(NULL, NULL, 0, NULL);
   FM_LoadFontFile(NULL, NULL);
   FM_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);
   FM_PutStringAA(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0, 0);

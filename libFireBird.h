@@ -710,7 +710,6 @@
   } tFontData;
 
   dword FM_GetStringWidth(const char *Text, tFontData *FontData);
-  dword FM_GetStringWidthAndRestrict(char *Text, tFontData *FontData, int MaxWidth, bool *pbRestricted);
   dword FM_GetStringHeight(const char *Text, tFontData *FontData);
   void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
   void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
