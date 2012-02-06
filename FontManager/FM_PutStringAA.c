@@ -76,8 +76,8 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
           p--;
           newstrlen--;
         } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+        strcat(newstr, "...");
       }
-      strcat(newstr, "...");
       break;
     }
 
@@ -101,9 +101,9 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dw
           p++;
           newstrlen--;
         } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+        DeleteAt(newstr, 0, (int)(p - newstr));
+        InsertAt(newstr, 0, "...");
       }
-      DeleteAt(newstr, 0, (int)(p - newstr));
-      InsertAt(newstr, 0, "...");
 
       break;
     }
