@@ -180,6 +180,7 @@ extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
+extern bool             MessageBoxNoNormalMode;
 
 extern word             ProgressBarOSDRgn;
 extern word             ProgressBarFullRgn;

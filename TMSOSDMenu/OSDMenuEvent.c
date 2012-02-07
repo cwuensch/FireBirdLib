@@ -29,13 +29,19 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
       {
         case RKEY_Ok:
         {
-          OSDMenuMessageBoxDestroy();
+          if(MessageBoxNoNormalMode)
+            OSDMenuMessageBoxDestroyNoOSDUpdate();
+          else
+            OSDMenuMessageBoxDestroy();
           break;
         }
 
         case RKEY_Exit:
         {
-          OSDMenuMessageBoxDestroy();
+          if(MessageBoxNoNormalMode)
+            OSDMenuMessageBoxDestroyNoOSDUpdate();
+          else
+            OSDMenuMessageBoxDestroy();
           MessageBox.CurrentButton = (dword) -1;
           break;
         }

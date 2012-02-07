@@ -702,3 +702,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-02-02  Updated FM_PutString(): Topfield has declared the bDot parameter in TAP_Osd_PutS() as byte tough bool would be more logical. I've now abused that parameter and if a 2 is passed, the ... for
             long texts will appear on the left side instead of right of the text.
 2012-02-03  Added: HDD_GetPvrRecTsInfoPointer()
+2012-02-07  Added: OSDMenuMessageBoxDestroyNoOSDUpdate()
+            Renamed OSDMenuInfoBoxNoOSDUpdate() to OSDMenuInfoBoxDestroyNoOSDUpdate()
+            Added: OSDMenuMessageBoxDoNotEnterNormalMode()

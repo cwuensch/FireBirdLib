@@ -83,6 +83,7 @@ dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 
 word                    MessageBoxOSDRgn = 0;
 tMessageBox             MessageBox;
+bool                    MessageBoxNoNormalMode = FALSE;
 
 word                    ProgressBarOSDRgn = 0;
 word                    ProgressBarFullRgn = 0;

@@ -1,6 +1,6 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuInfoBoxNoOSDUpdate(void)
+void OSDMenuInfoBoxDestroyNoOSDUpdate(void)
 {
   tOSDMapInfo          *OSDMapInfo;
 

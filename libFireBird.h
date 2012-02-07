@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-02-03"
+  #define __FBLIB_RELEASEDATE__ "2012-02-07"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1597,15 +1597,17 @@
   //Info box
   void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout);
   void OSDMenuInfoBoxDestroy(void);
-  void OSDMenuInfoBoxNoOSDUpdate(void);
+  void OSDMenuInfoBoxDestroyNoOSDUpdate(void);
   bool OSDMenuInfoBoxIsVisible(void);
 
   //Message box
   void  OSDMenuMessageBoxInitialize(char *Title, char *Text);
   void  OSDMenuMessageBoxButtonAdd(char *Text);
   void  OSDMenuMessageBoxButtonSelect(dword SelectedButton);
+  void  OSDMenuMessageBoxDoNotEnterNormalMode(bool DoNotEnterNormalMode);
   void  OSDMenuMessageBoxShow(void);
   void  OSDMenuMessageBoxDestroy(void);
+  void  OSDMenuMessageBoxDestroyNoOSDUpdate(void);
   bool  OSDMenuMessageBoxIsVisible(void);
   dword OSDMenuMessageBoxLastButton(void);
 

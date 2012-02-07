@@ -8,6 +8,7 @@ void OSDMenuMessageBoxInitialize(char *Title, char *Text)
   if(MessageBoxOSDRgn) OSDMenuMessageBoxDestroy();
   MessageBox.NrButtons = 0;
   MessageBox.CurrentButton = 0;
+  MessageBoxNoNormalMode = FALSE;
 
   strncpy(MessageBox.Title, Title, STDSTRINGSIZE);
   MessageBox.Title[STDSTRINGSIZE - 1] = '\0';
