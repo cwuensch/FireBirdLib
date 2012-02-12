@@ -584,7 +584,7 @@
     byte                NameSet;
     byte                unused4;
     byte                EPGMarker;
-    byte                unused5[2];
+    word                unused5;
     dword               unknown1;
     dword               EventID1;
     dword               EventID2;

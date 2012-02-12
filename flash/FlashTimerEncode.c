@@ -141,7 +141,7 @@ bool FlashTimerEncode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo)
   Data->NameSet               = TimerInfo->NameSet;
   Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 2);
+  Data->unused5               = TimerInfo->unused5;
   Data->unknown1              = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
   Data->EventID2              = TimerInfo->EventID2;
@@ -190,8 +190,8 @@ bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo)
   Data->NameSet               = TimerInfo->NameSet;
   Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 2);
-  Data->unknown1               = TimerInfo->unknown1;
+  Data->unused5               = TimerInfo->unused5;
+  Data->unknown1              = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
   Data->EventID2              = TimerInfo->EventID2;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;
@@ -234,8 +234,8 @@ bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInf
   Data->NameSet               = TimerInfo->NameSet;
   Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 2);
-  Data->unknown1               = TimerInfo->unknown1;
+  Data->unused5               = TimerInfo->unused5;
+  Data->unknown1              = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
   Data->EventID2              = TimerInfo->EventID2;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;
@@ -253,6 +253,7 @@ bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInf
 
   return TRUE;
 }
+
 bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo)
 {
   memset(Data, 0, sizeof(TYPE_Timer_TMSC));
@@ -277,8 +278,8 @@ bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo)
   Data->NameSet               = TimerInfo->NameSet;
   Data->unused4               = TimerInfo->unused4;
   Data->EPGMarker             = TimerInfo->EPGMarker;
-  memcpy(Data->unused5, TimerInfo->unused5, 2);
-  Data->unknown1               = TimerInfo->unknown1;
+  Data->unused5               = TimerInfo->unused5;
+  Data->unknown1              = TimerInfo->unknown1;
   Data->EventID1              = TimerInfo->EventID1;
   Data->EventID2              = TimerInfo->EventID2;
   Data->ServiceIndex          = TimerInfo->ServiceIndex;

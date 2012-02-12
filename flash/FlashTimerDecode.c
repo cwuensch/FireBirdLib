@@ -141,7 +141,7 @@ bool FlashTimerDecode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo)
   TimerInfo->NameSet          = Data->NameSet;
   TimerInfo->unused4          = Data->unused4;
   TimerInfo->EPGMarker        = Data->EPGMarker;
-  memcpy(TimerInfo->unused5, Data->unused5, 2);
+  TimerInfo->unused5          = Data->unused5;
   TimerInfo->unknown1         = Data->unknown1;
   TimerInfo->EventID1         = Data->EventID1;
   TimerInfo->EventID2         = Data->EventID2;
@@ -191,7 +191,7 @@ bool FlashTimerDecode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo)
   TimerInfo->NameSet          = Data->NameSet;
   TimerInfo->unused4          = Data->unused4;
   TimerInfo->EPGMarker        = Data->EPGMarker;
-  memcpy(TimerInfo->unused5, Data->unused5, 2);
+  TimerInfo->unused5          = Data->unused5;
   TimerInfo->unknown1         = Data->unknown1;
   TimerInfo->EventID1         = Data->EventID1;
   TimerInfo->EventID2         = Data->EventID2;
@@ -236,7 +236,7 @@ bool FlashTimerDecode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInf
   TimerInfo->NameSet          = Data->NameSet;
   TimerInfo->unused4          = Data->unused4;
   TimerInfo->EPGMarker        = Data->EPGMarker;
-  memcpy(TimerInfo->unused5, Data->unused5, 2);
+  TimerInfo->unused5          = Data->unused5;
   TimerInfo->unknown1         = Data->unknown1;
   TimerInfo->EventID1         = Data->EventID1;
   TimerInfo->EventID2         = Data->EventID2;
@@ -281,8 +281,8 @@ bool FlashTimerDecode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo)
   TimerInfo->NameSet          = Data->NameSet;
   TimerInfo->unused4          = Data->unused4;
   TimerInfo->EPGMarker        = Data->EPGMarker;
-  memcpy(TimerInfo->unused5, Data->unused5, 2);
-  TimerInfo->unknown1          = Data->unknown1;
+  TimerInfo->unused5          = Data->unused5;
+  TimerInfo->unknown1         = Data->unknown1;
   TimerInfo->EventID1         = Data->EventID1;
   TimerInfo->EventID2         = Data->EventID2;
   TimerInfo->ServiceIndex     = Data->ServiceIndex;
