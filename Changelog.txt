@@ -705,3 +705,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-02-07  Added: OSDMenuMessageBoxDestroyNoOSDUpdate()
             Renamed OSDMenuInfoBoxNoOSDUpdate() to OSDMenuInfoBoxDestroyNoOSDUpdate()
             Added: OSDMenuMessageBoxDoNotEnterNormalMode()
+2012-02-18  Added the OSDMenuKeyboard API and demo TAP

@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-02-07"
+  #define __FBLIB_RELEASEDATE__ "2012-02-17"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1624,6 +1624,16 @@
 
   //Event handling
   bool OSDMenuEvent(word *event, dword *param1, dword *param2);
+
+
+  /*****************************************************************************************************************************/
+  /* TMS OSD Keyboard                                                                                                          */
+  /*****************************************************************************************************************************/
+
+  void OSDMenuKeyboard_Setup(char *Titel, char *Variable, dword MaxLength);
+  void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
+  bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
+  void OSDMenuKeyboard_Destroy(void);
 
 
   /*****************************************************************************************************************************/
