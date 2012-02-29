@@ -706,3 +706,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Renamed OSDMenuInfoBoxNoOSDUpdate() to OSDMenuInfoBoxDestroyNoOSDUpdate()
             Added: OSDMenuMessageBoxDoNotEnterNormalMode()
 2012-02-18  Added the OSDMenuKeyboard API and demo TAP
+2012-02-29  Fixed: FlashTimerSetInfo() zeroed 208 bytes on DVBt Toppies with 200 byte timer structs

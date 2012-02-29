@@ -212,7 +212,7 @@ bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo)
 
 bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo)
 {
-  memset(Data, 0, sizeof(TYPE_Timer_TMST));
+  memset(Data, 0, sizeof(TYPE_Timer_TMST200));
 
   Data->TunerIndex            = TimerInfo->TunerIndex;
   Data->RecMode               = TimerInfo->RecMode;
