@@ -19,10 +19,16 @@ void LogoManager_Initialize(void *Callback)
   LogoManager_CB = Callback;
 
   HDD_TAP_PushDir();
-  HDD_ChangeDir(LOGOROOT);
+  HDD_ChangeDir("/ProgramFiles");
+  TAP_Hdd_Create("Settings", ATTR_FOLDER);
+  HDD_ChangeDir("Settings");
+  TAP_Hdd_Create("Logos", ATTR_FOLDER);
+  HDD_ChangeDir("Logos");
 
   if(!LogoManager_LUTInitialized || !TAP_Hdd_Exist(LOGOCACHE))
   {
+    LogoManager_MoveExternalUpdates();
+
     //Check if there's a packed logo file, unpack and erase the tar
     if(TAP_Hdd_Exist(LOGOPACK))
     {

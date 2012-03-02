@@ -707,3 +707,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: OSDMenuMessageBoxDoNotEnterNormalMode()
 2012-02-18  Added the OSDMenuKeyboard API and demo TAP
 2012-02-29  Fixed: FlashTimerSetInfo() zeroed 208 bytes on DVBt Toppies with 200 byte timer structs
+2012-03-02  Added: The logo manager now moves the files LogoPack.tar, Logos.lil and lil.add from a thumb drive to the logo folder during the initialization

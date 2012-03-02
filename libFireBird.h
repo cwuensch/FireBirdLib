@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-02-29"
+  #define __FBLIB_RELEASEDATE__ "2012-03-02"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1006,6 +1006,7 @@
   } tLogoAspect;
 
   void          LogoManager_Initialize(void *Callback);
+  void          LogoManager_MoveExternalUpdates(void);
   char         *LogoManager_ChannelNameToLogoName(char *ChannelName);
   void          LogoManager_Cleanup(void);
   bool          LogoManager_LogoCacheLoad(void);
