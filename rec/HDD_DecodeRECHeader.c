@@ -100,7 +100,9 @@ void HDD_DecodeRECHeader_ST_S(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
+
 
   //Crypt Info
   p = 0x0570;
@@ -179,7 +181,8 @@ void HDD_DecodeRECHeader_ST_T(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info
   p = 0x0570;
@@ -255,7 +258,8 @@ void HDD_DecodeRECHeader_ST_C(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info
   p = 0x056c;
@@ -335,7 +339,8 @@ void HDD_DecodeRECHeader_ST_T5700(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info
   p = 0x0578;
@@ -414,7 +419,8 @@ void HDD_DecodeRECHeader_ST_T5800(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info
   p = 0x0574;
@@ -525,7 +531,8 @@ void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   }
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info: see header flags
 
@@ -604,7 +611,8 @@ void HDD_DecodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Transponder info
   p = 0x0570;
@@ -696,7 +704,8 @@ void HDD_DecodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Transponder info
   p = 0x0570;
@@ -789,7 +798,8 @@ void HDD_DecodeRECHeader_ST_TF7k7HDPVR(byte *Buffer, tRECHeaderInfo *RECHeaderIn
   RECHeaderInfo->ExtEventEventID     = getDword(&Buffer[p + 0x0004], WrongEndian);
   memcpy(RECHeaderInfo->ExtEventText, &Buffer[p + 0x0008], RECHeaderInfo->ExtEventTextLength);
   for(i = 0; i < RECHeaderInfo->ExtEventTextLength - 1; i++)
-    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = '\x8a';
+    if(RECHeaderInfo->ExtEventText[i] == '\0') RECHeaderInfo->ExtEventText[i] = ' ';
+  StrReplace(RECHeaderInfo->ExtEventText, "\\n", "\x8a");
 
   //Crypt Info
   p = 0x0a44;
