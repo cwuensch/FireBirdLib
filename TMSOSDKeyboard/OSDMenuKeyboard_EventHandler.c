@@ -169,6 +169,16 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
           break;
         }
 
+        case RKEY_Pause:      //Zwischen normalen und CAPS Zeichen wechseln
+        {
+          if(KeyPadMode == KPM_Standard)
+            KeyPadMode = KPM_CAPS;
+          else
+            KeyPadMode = KPM_Standard;
+          OSDMenuKeyboard_Draw();
+          break;
+        }
+
         case RKEY_Forward:    //Zeichen rechts löschen
         {
           OSDMenuKeyboard_DeleteRight();

@@ -710,3 +710,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-03-02  Added: The logo manager now moves the files LogoPack.tar, Logos.lil and lil.add from a thumb drive to the logo folder during the initialization
             Fixed: HDD_DecodeRECHeader() will convert NULL characters within the extended information text to CR/LFs
 2012-03-08  Added: the Australian IceTV flag to the timer structures
+            Added: button PAUSE switches between small and capitals letters in the TMSOSDKeyboard
