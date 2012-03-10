@@ -191,7 +191,9 @@
     dword               EventID1;
     dword               EventID2;
     word                ServiceIndex;
-    byte                unused8[14];
+    byte                unused8[8];
+    byte                IceTV;
+    byte                unused9[5];
 
     TYPE_TpInfo_TMSS    TpInfo;
   }__attribute__((packed)) TYPE_Timer_TMSS;
@@ -226,7 +228,9 @@
     dword               EventID1;
     dword               EventID2;
     word                ServiceIndex;
-    byte                unused8[22];
+    byte                unused8[8];
+    byte                IceTV;
+    byte                unused9[13];
 
     TYPE_TpInfo_TMST    TpInfo;
   }__attribute__((packed)) TYPE_Timer_TMST;
@@ -261,8 +265,9 @@
     dword               EventID1;
     dword               EventID2;
     word                ServiceIndex;
-    byte                unused8[14];
-
+    byte                unused8[8];
+    byte                IceTV;
+    byte                unused9[5];
     TYPE_TpInfo_TMST    TpInfo;
   }__attribute__((packed)) TYPE_Timer_TMST200;
 
@@ -296,7 +301,9 @@
     dword               EventID1;
     dword               EventID2;
     word                ServiceIndex;
-    byte                unused8[14];
+    byte                unused8[8];
+    byte                IceTV;
+    byte                unused9[5];
 
     TYPE_TpInfo_TMSC    TpInfo;
   }__attribute__((packed)) TYPE_Timer_TMSC;
