@@ -246,7 +246,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
         case 0x1B:    //ESC
         {
-          OSDMenuKeyboard_Finish();
+          OSDMenuKeyboard_SaveAndFinish();
           return TRUE;
           break;
         }
