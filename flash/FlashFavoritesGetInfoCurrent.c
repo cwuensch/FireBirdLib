@@ -3,26 +3,14 @@
 
 bool FlashFavoritesGetInfoCurrent(tFavorites *Favorites)
 {
-  tFavorites           *Favs;
-  char                 *CurrentGroup;
-  int                   i, NrGrps;
+  byte                 *EEPROM;  //Size = 128
+  byte                  NrGrps, CurrentGroup;
 
   NrGrps = FlashFavoritesGetTotal();
-  CurrentGroup = FlashFavoritesGetSelectedGroupName();
+  EEPROM = (byte*)FIS_vEEPROM();
+  CurrentGroup = EEPROM[0x0012];
 
-  if((NrGrps == 0) || !Favorites || !CurrentGroup || !CurrentGroup[0]) return FALSE;
+  if((NrGrps == 0) || !Favorites || (CurrentGroup == 0xFF)) return FALSE;
 
-  Favs = (tFavorites*)FIS_vFlashBlockFavoriteGroup();
-  for(i = 0; i < NrGrps; i++)
-  {
-    if(strcmp(Favs->GroupName, CurrentGroup) == 0)
-    {
-      memcpy(Favorites, Favs, sizeof(tFavorites));
-      return TRUE;
-    }
-
-    Favs++;
-  }
-
-  return FALSE;
+  return FlashFavoritesGetInfo(CurrentGroup, Favorites);
 }

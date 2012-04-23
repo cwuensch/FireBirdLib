@@ -2,10 +2,10 @@
 
 inline dword FIS_vfavName(void)
 {
-  static dword          vfavGrp = 0;
+  static dword          vfavName = 0;
 
-  if (!vfavGrp)
-    vfavGrp = TryResolve("_favGrp");
+  if (!vfavName)
+    vfavName = TryResolve("_favName");
 
-  return vfavGrp;
+  return vfavName;
 }
