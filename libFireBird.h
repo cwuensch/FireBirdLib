@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-04-23"
+  #define __FBLIB_RELEASEDATE__ "2012-04-28"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -177,6 +177,7 @@
   char       *GetToppyString(word SysID);
   dword       GetUptime(void);
   char       *iso639_1(int OSDLan);
+  char       *iso639_2(int OSDLan);
   bool        LoadFirmwareDat(tFWDATHeader **FWDatHeader, tToppyInfo **ToppyInfo, tFWInfo **FWInfo);
   bool        PutDevEvent(word Event, dword Param1);
 
@@ -650,6 +651,7 @@
   bool  FlashFavoritesGetInfoCurrent(tFavorites *Favorites);
   bool  FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites);
   int   FlashFavoritesFindService(int SvcType, int SvcNum);
+  void  FlashFavoritesGetParameters(int *NrGroups, int *NrSvcsPerGroup);
 
 
   dword FIS_vFlashBlockAutoDec(void);
