@@ -61,11 +61,14 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="FireBirdLib.null.684400065" name="FireBirdLib"/>
 	</storageModule>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/FireBirdLib"/>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cygwin.base.367878518;cdt.managedbuild.toolchain.gnu.cygwin.base.367878518.606494270;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.406500076;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1216105045">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

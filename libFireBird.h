@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-04-28"
+  #define __FBLIB_RELEASEDATE__ "2012-05-19"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1027,6 +1027,7 @@
   void          LogoManager_MoveExternalUpdates(void);
   char         *LogoManager_ChannelNameToLogoName(char *ChannelName);
   void          LogoManager_Cleanup(void);
+  void          LogoManager_CleanupMemory(void);
   bool          LogoManager_LogoCacheLoad(void);
   void          LogoManager_LogoCacheRebuild(void);
   TYPE_GrData  *LogoManager_GetLogoByChannelID(ulong64 ChannelID, tLogoStyle LogoStyle, tLogoSize LogoSize, tLogoAspect LogoAR);
@@ -1565,9 +1566,10 @@
   } tButtonIcon;
 
 
-  void OSDMenuButtonsClear(void);
-  void OSDMenuButtonColor(dword Color);
-  void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
+  void        OSDMenuButtonsClear(void);
+  void        OSDMenuButtonColor(dword Color);
+  void        OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
+  tButtonIcon OSDMenuGetButtonIcon(dword key);
 
   //Cursor Functions
   bool  OSDMenuSelectItem(int ItemIndex);
