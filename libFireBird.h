@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-05-19"
+  #define __FBLIB_RELEASEDATE__ "2012-07-24"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -400,6 +400,17 @@
   bool  ELFReadDWORD(dword SectionIndex, dword *Data);
   bool  ELFReadData(dword SectionIndex, byte *Data);
   void  ELFCleanup(void);
+
+
+  /*****************************************************************************************************************************/
+  /* Extended File Attributes                                                                                                  */
+  /*****************************************************************************************************************************/
+
+  int  ExtAttribExists(char *FileName, char *AttrName);
+  bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
+  bool ExtAttribRemove(char *FileName, char *AttrName);
+  bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen);
+
 
   /*****************************************************************************************************************************/
   /* Firmware functions                                                                                                        */
