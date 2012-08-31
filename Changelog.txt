@@ -725,3 +725,8 @@ License:  This library is freeware. You may use this code in your own projects f
             ExtAttribExists(): checks if a named attribute exists and returns the attribute's size in bytes.
             ExtAttribGet(): reads the attribute.
             ExtAttribRemove(): removes the attribute.
+            In addition, all 4 functions are available with a full path for the file name (ExtAttribSetAbsPath(), ExtAttribExistsAbsPath(), ExtAttribGetAbsPath(), ExtAttribRemoveAbsPath())
+2012-07-28  The return of FindInstructionSequence()
+2012-08-31  Some Toppy firmwares have a bug which prevents the display of the main menu on the TV if subtitles are turned on and a TAP creates a memory region. Modified the TMSMenu routines
+              so that the cursor, which is loaded into a mem rgn, gets destroyed with OSDMenuDestroy()
+

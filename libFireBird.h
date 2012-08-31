@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-07-24"
+  #define __FBLIB_RELEASEDATE__ "2012-08-31"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -407,9 +407,13 @@
   /*****************************************************************************************************************************/
 
   int  ExtAttribExists(char *FileName, char *AttrName);
+  int  ExtAttribExistsAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
+  bool ExtAttribGetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
   bool ExtAttribRemove(char *FileName, char *AttrName);
+  bool ExtAttribRemoveAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen);
+  bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int DataLen);
 
 
   /*****************************************************************************************************************************/
@@ -882,6 +886,7 @@
 
   dword TryResolve(char *Function);
 
+  dword        FindInstructionSequence(char *SearchPattern, char *SearchMask, dword StartAddress, dword EndAddress, int EntryPointOffset, bool SearchForPrevADDIUSP);
   inline dword FIS_fwAppl_AddSvcName(void);
   inline dword FIS_fwAppl_CheckRecording(void);
   inline dword FIS_fwAppl_CheckRecording_Tuner(void);

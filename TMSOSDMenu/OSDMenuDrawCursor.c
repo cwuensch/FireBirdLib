@@ -14,7 +14,6 @@ void OSDMenuDrawCursor(dword x, dword y, dword w)
 
   TYPE_GrData              *OSDMenuLightBlueCursorGd, *OSDMenuDarkBlueCursorGd;
   int                       pb=0, cx, h, hundret=0, hundretModulo=0;
-  static word               OSDMenuSelectionBarRgn = 0;
   static tOSDMenuLastCursorType    OSDMenuLastCursor = LCT_NRCURSORS;
   dword                     Color;
 

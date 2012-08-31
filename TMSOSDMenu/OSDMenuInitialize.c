@@ -69,7 +69,7 @@
 #include                "graphic/ColorPicker_CursorDeselected.gd"
 #include                "graphic/ColorPicker_ValueBackroundSelected.gd"
 
-word                    OSDRgn = 0, MyOSDRgn = 0;
+word                    OSDRgn = 0, MyOSDRgn = 0, OSDMenuSelectionBarRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
