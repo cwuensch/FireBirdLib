@@ -87,6 +87,13 @@ typedef enum
   CCS_Blue
 }tCurrentColorSelected;
 
+typedef enum
+{
+  LCT_Blue,
+  LCT_BlueDark,
+  LCT_NRCURSORS
+} tOSDMenuLastCursorType;
+
 extern tFontData        Calibri_10_FontData;
 extern tFontData        Calibri_12_FontData;
 extern tFontData        Calibri_14_FontData;
@@ -173,6 +180,7 @@ extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
 extern dword            ButtonColor;
 extern tCursorType      MenuCursorType;
+extern tOSDMenuLastCursorType    OSDMenuLastCursor;
 
 extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;

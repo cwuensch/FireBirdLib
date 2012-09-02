@@ -729,4 +729,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-07-28  The return of FindInstructionSequence()
 2012-08-31  Some Toppy firmwares have a bug which prevents the display of the main menu on the TV if subtitles are turned on and a TAP creates a memory region. Modified the TMSMenu routines
               so that the cursor, which is loaded into a mem rgn, gets destroyed with OSDMenuDestroy()
+            'Official release'
 
+2012-09-02  Fixed an issue with the TMS OSD Menu standard cursor

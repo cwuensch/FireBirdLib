@@ -8,6 +8,7 @@ void OSDMenuDestroyNoOSDUpdate(void)
     OSDRgn = 0;
     if(OSDMenuSelectionBarRgn) TAP_Osd_Delete(OSDMenuSelectionBarRgn);
     OSDMenuSelectionBarRgn = 0;
+    OSDMenuLastCursor = LCT_NRCURSORS;
   }
   if(Menu[CurrentMenuLevel].Item) TAP_MemFree(Menu[CurrentMenuLevel].Item);
 
