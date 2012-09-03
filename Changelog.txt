@@ -732,3 +732,5 @@ License:  This library is freeware. You may use this code in your own projects f
             'Official release'
 
 2012-09-02  Fixed an issue with the TMS OSD Menu standard cursor
+2012-09-03  Fixed LoadFirmwareDat(), which could destroy the working directory if the dir stack was not empty (HDD_TAP_PushDir() has been used before the calling LoadFirmwareDat())
+ 
