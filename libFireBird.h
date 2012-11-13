@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-11-04"
+  #define __FBLIB_RELEASEDATE__ "2012-11-13"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1302,9 +1302,10 @@
   {
     dword               TAPID;
     dword               Date;
-    char                TAPName[64];
-    char                Author[64];
-    char                Description[128];
+    char                TAPName[MAX_PROGRAM_NAME];
+    char                Author[MAX_AUTHOR_NAME];
+    char                Description[MAX_DESCRIPTION];
+    char                TAPVersion[MAX_PROGRAM_VERSION];       //This field will only be populated when the TAP has been compiled with a modified tap.h
   } tTAPInfo;
 
   dword HDD_TAP_Callback(dword TAPID, void *ProcedureAddress, dword param1, dword param2, dword param3, dword param4);

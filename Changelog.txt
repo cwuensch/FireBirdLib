@@ -741,3 +741,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-10-30  Added: GetStringEncoding(), which reports whether a string contains UTF or high byte ANSI characters
             Fixed: StrMkISO(), StrToISO(), StrToUTF8(), StrMkUTF8() to work in ANSI and UTF mixed environments
 2012-11-04  Added: OSDMenuMessageBoxModifyText()
+2012-11-13  Added TAPVersion to the tTAPInfo struct. It needs the TAP compiled against a modified tap.h (added TAP_PROGRAM_VERSION) otherwise it will be empty
