@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-11-13"
+  #define __FBLIB_RELEASEDATE__ "2012-11-26"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -475,9 +475,10 @@
     word                  AudioStreamType;
     char                  ServiceName[MAX_SvcName];
     char                  ProviderName[40];
+    byte                  NameLock;
+    word                  Flags2;
 
     //Unidentified fields
-    word                  unknown1;
     byte                  unknown2[6];
   } tFlashService;
 
