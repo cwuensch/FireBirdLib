@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-11-26"
+  #define __FBLIB_RELEASEDATE__ "2012-12-06"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -375,6 +375,8 @@
   void   CallTraceExportStats(char *FileName);
   void   CallTraceResetStats(void);
 
+  bool CrashCheck_Startup(char *TAPName);
+  void CrashCheck_Shutdown(char *TAPName);
 
   void* TAP_MemAlloc_Chk(char *Comment, dword size);
   int   TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);

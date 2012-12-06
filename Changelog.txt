@@ -744,3 +744,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2012-11-13  Added TAPVersion to the tTAPInfo struct. It needs the TAP compiled against a modified tap.h (added TAP_PROGRAM_VERSION) otherwise it will be empty
 2012-11-26  Added: NameLock flag to the tFlashService struct
             Renamed unknown1 to Flags2 in the tFlashService struct to make it obvious that the flag struct has changed (compiler error on unknown unknown1)
+2012-12-06  Added CrashCheck_Startup() and CrashCheck_Shutdown(), which may break an endless reboot loop. See the _Demo folder for more details
