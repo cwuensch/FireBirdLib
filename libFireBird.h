@@ -3,7 +3,7 @@
 
 //  #define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2012-12-06"
+  #define __FBLIB_RELEASEDATE__ "2012-12-25"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -803,6 +803,7 @@
   TYPE_File *HDD_FappendOpen(char *filename);
   bool       HDD_FappendWrite(TYPE_File *file, char *data);
   bool       HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
+  bool       HDD_GetAbsolutePathByTypeFileUTF8(TYPE_File *File, char *AbsFileName);
 
   #ifdef _TMSEMU_
     bool     HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, off_t *FileSize);
