@@ -69,13 +69,13 @@
 #include                "graphic/ColorPicker_CursorDeselected.gd"
 #include                "graphic/ColorPicker_ValueBackroundSelected.gd"
 
-#include                "fonts/Calibri_10.c"
-#include                "fonts/Calibri_12.c"
-#include                "fonts/Calibri_14.c"
-#include                "fonts/Calibri_16.c"
-#include                "fonts/Calibri_18.c"
-#include                "fonts/Calibri_20.c"
-#include                "fonts/Calibri_20B.c"
+//#include                "fonts/Calibri_10.c"
+//#include                "fonts/Calibri_12.c"
+//#include                "fonts/Calibri_14.c"
+//#include                "fonts/Calibri_16.c"
+//#include                "fonts/Calibri_18.c"
+//#include                "fonts/Calibri_20.c"
+//#include                "fonts/Calibri_20B.c"
 
 word                    OSDRgn = 0, MyOSDRgn = 0, OSDMenuSelectionBarRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
