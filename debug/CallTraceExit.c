@@ -2,15 +2,18 @@
 
 void CallTraceExit(dword *Magic)
 {
-  char                  Spaces [101];
+  char                  Spaces[101];
   int                   i, j;
   dword                 t;
+
+  if(CallTraceDoNotReenter) return;
+  CallTraceDoNotReenter = TRUE;
 
   t = TAP_GetTick();
 
   if(!CallTraceInitialized) CallTraceInit();
 
-  Spaces [0] = '\0';
+  Spaces[0] = '\0';
 
   if(CallLevel > 0)
   {
@@ -60,17 +63,19 @@ void CallTraceExit(dword *Magic)
     }
   }
   else
-    TAP_Print("\n\nCallLevel Underflow!\n\n");
+    TAP_PrintNet("CallLevel Underflow!\n");
 
   if(CallTraceEnabled || Magic)
   {
-    memset (Spaces, ' ', CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100);
-    Spaces [CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100] = '\0';
+    memset(Spaces, ' ', CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100);
+    Spaces[CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100] = '\0';
   }
 
   if(Magic && *Magic != DEFAULTMAGIC)
   {
-    TAP_Print("\n\n%sINVALID MAGIC!\n\n", Spaces);
+    TAP_PrintNet("%sINVALID MAGIC!\n", Spaces);
     *Magic = DEFAULTMAGIC;
   }
+
+  CallTraceDoNotReenter = FALSE;
 }

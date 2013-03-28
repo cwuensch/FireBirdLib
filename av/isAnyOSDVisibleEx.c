@@ -2,12 +2,23 @@
 
 bool isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, byte Plane)
 {
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceEnter("isAnyOSDVisibleEx");
+  #endif
+
   TYPE_OsdBaseInfo      OSDBaseInfo;
   dword                *pOSD;
   dword                 x, y;
 
   TAP_Osd_GetPlaneBaseInfo(&OSDBaseInfo, Plane);
-  if(OSDBaseInfo.frameBuffer == NULL) return FALSE;
+  if(OSDBaseInfo.frameBuffer == NULL)
+  {
+    #ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+    #endif
+
+    return FALSE;
+  }
 
   for(y = checkY; y < (checkY + checkH); y += 4)
   {
@@ -15,9 +26,21 @@ bool isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, b
     pOSD = (dword*)&pOSD[720*y + checkX];
     for(x = checkX; x < (checkX + checkW); x += 4)
     {
-      if(*pOSD != 0x00000000) return TRUE;
+      if(*pOSD != 0x00000000)
+      {
+        #ifdef DEBUG_FIREBIRDLIB
+          CallTraceExit(NULL);
+        #endif
+
+        return TRUE;
+      }
       pOSD += 4;
     }
   }
+
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+  #endif
+
   return FALSE;
 }

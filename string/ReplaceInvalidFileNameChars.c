@@ -3,6 +3,10 @@
 
 void ReplaceInvalidFileNameChars(char *strName)
 {
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceEnter("ReplaceInvalidFileNameChars");
+  #endif
+
   unsigned char         *s, *d;
 
   d = strName;
@@ -15,7 +19,7 @@ void ReplaceInvalidFileNameChars(char *strName)
     }
     else
     {
-      switch (*s)
+      switch(*s)
       {
         // These characters are not allowed in Windows.
         case '*': *d = 'x'; break;
@@ -30,4 +34,8 @@ void ReplaceInvalidFileNameChars(char *strName)
     s++;
   }
   *d = '\0';
+
+  #ifdef DEBUG_FIREBIRDLIB
+    CallTraceExit(NULL);
+  #endif
 }
