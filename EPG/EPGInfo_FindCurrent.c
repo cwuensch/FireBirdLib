@@ -24,8 +24,8 @@ bool EPGInfo_FindCurrent(byte SvcType, int SvcNum, TYPE_EPGInfo *EPGData)
     EvtInfo = Appl_GetCurrentEvent(chInfo.satIdx, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);
     if(EvtInfo)
     {
-      EventStartTime = UTC2LocalTime(EvtInfo->StartTime, DSTRule, &Offset);
-      EventEndTime = UTC2LocalTime(EvtInfo->EndTime, DSTRule, NULL);
+      EventStartTime = UTC2LocalTime(EvtInfo->StartTime, &Offset);
+      EventEndTime = UTC2LocalTime(EvtInfo->EndTime, NULL);
       EPGInfo_CopyData(EvtInfo, EPGData, EventStartTime, EventEndTime, Offset);
       ret = TRUE;
     }

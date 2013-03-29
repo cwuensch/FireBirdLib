@@ -28,5 +28,5 @@ bool HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName)
     CallTraceExit(NULL);
   #endif
 
-  return TRUE;
+  return ret;
 }

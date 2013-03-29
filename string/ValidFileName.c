@@ -6,23 +6,23 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters)
     CallTraceEnter("ValidFileName");
   #endif
 
-  char                  *s, *p, *l;
+  char                  *s, *d, *l;
   static char           validName[MAX_FILE_NAME_SIZE];
 
   s = strName;
-  p = validName;
-  l = p + MAX_FILE_NAME_SIZE - 1;
+  d = validName;
+  l = d + MAX_FILE_NAME_SIZE - 1;
 
   while(*s)
   {
-    if(isLegalChar(s, ControlCharacters)) *p++ = *s;
+    if(isLegalChar(s, ControlCharacters)) *d++ = *s;
 
-    if(p == l) break;
+    if(d == l) break;
 
     s++;
   }
 
-  *p = '\0';
+  *d = '\0';
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

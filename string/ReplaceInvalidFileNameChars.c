@@ -9,8 +9,9 @@ void ReplaceInvalidFileNameChars(char *strName)
 
   unsigned char         *s, *d;
 
-  d = strName;
-  s = strName;
+  s = SkipCharTableBytes(strName);
+  d = s;
+
   while(*s)
   {
     if(isLegalChar(s, InvalidFileNameChars))

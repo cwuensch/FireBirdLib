@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_EPG.h"
 
-void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tDSTRule DSTRule, tEPGFilter *EPGFilter)
+void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPGFilter)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("EPGInfo_CloneToCache");
@@ -42,8 +42,8 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tDSTRule DSTRul
       EvtInfo = (TYPE_EvtInfo*)(Entry - EvtInfoOffset);
 
       //Make the decisions, to add a pool record, here
-      EventStartTime = UTC2LocalTime(EvtInfo->StartTime, DSTRule, &Offset);
-      EventEndTime = UTC2LocalTime(EvtInfo->EndTime, DSTRule, NULL);
+      EventStartTime = UTC2LocalTime(EvtInfo->StartTime, &Offset);
+      EventEndTime = UTC2LocalTime(EvtInfo->EndTime, NULL);
       if(EPGFilter->TimeFilter)
         isWithinTimeFrame = ((EPGFilter->StartTime == 0) || (EventStartTime >= EPGFilter->StartTime)) && ((EPGFilter->EndTime == 0) || (EventEndTime <= EPGFilter->EndTime));
       else

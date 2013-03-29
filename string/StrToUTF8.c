@@ -163,7 +163,7 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
 
   GetStringEncoding(SourceString, &hasAnsiChars, &hasUTFChars);
 
-  if(hasAnsiChars && !hasUTFChars)
+  if(!hasUTFChars)
   {
     //Is there any encoding marker at the beginning of the text?
     CharSet = DefaultISO8859CharSet;
@@ -213,7 +213,7 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
     }
     else
     {
-      TAP_PrintNet("StrToUTF8: using default lookup table 8859-%d\n", CharSet);
+      //TAP_PrintNet("StrToUTF8: using default lookup table 8859-%d\n", CharSet);
     }
 
     switch(CharSet)
@@ -299,7 +299,9 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
     ret = TRUE;
   }
   else
+  {
     strcpy(DestString, SourceString);
+  }
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

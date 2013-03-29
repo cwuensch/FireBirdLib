@@ -23,7 +23,8 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
 
   //Open the font file
   HDD_TAP_PushDir();
-  HDD_ChangeDir(FONTDIR);
+  HDD_ChangeDir(FONTSDIR);
+
   if(!TAP_Hdd_Exist(FontFileName))
   {
     TAP_PrintNet("FontManager UC: font file '%s' does not exist\n", FontFileName);

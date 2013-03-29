@@ -98,6 +98,12 @@ int TAP_Main()
   CrashCheck_Startup(NULL);
   CRC16(0, NULL, 0);
   CRC32(0, NULL, 0);
+  curl_easy_cleanup(NULL);
+  curl_easy_init();
+  curl_easy_perform(NULL);
+  curl_easy_setopt(NULL, 0, NULL);
+  curl_global_cleanup();
+  curl_global_init(0);
   DayOfWeek(0);
   DeleteAt(NULL, 0, 0);
   DevFront_SetIlluminate(0, 0);
@@ -106,6 +112,7 @@ int TAP_Main()
   DevService_Mute(FALSE);
   DrawOSDLine(0, 0, 0, 0, 0, 0);
   DST_CalcTransition(0, 0, 0, 0, 0);
+  DST_FindNextTransition();
   DST_GetNextTransition(0, 0, 0, 0, 0, 0);
   DST_GetTransitions_Europe(NULL, NULL);
   DST_GetTransitions_Manual(NULL, NULL);
@@ -217,6 +224,12 @@ int TAP_Main()
   FIS_fwApplVfdSendData();
   FIS_fwApplVfdStart();
   FIS_fwApplVfdStop();
+  FIS_fwcurl_easy_cleanup();
+  FIS_fwcurl_easy_init();
+  FIS_fwcurl_easy_perform();
+  FIS_fwcurl_easy_setopt();
+  FIS_fwcurl_global_cleanup();
+  FIS_fwcurl_global_init();
   FIS_fwDevEeprom_GetMacAddr();
   FIS_fwDevEeprom_Info();
   FIS_fwDevFront_PowerOffCancel();

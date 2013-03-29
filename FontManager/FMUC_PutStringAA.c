@@ -54,7 +54,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
       return;
     }
 
-    StrToUTF8(str, newstr, 0);
+    StrToUTF8(str, newstr, 9);
   }
   else
   {

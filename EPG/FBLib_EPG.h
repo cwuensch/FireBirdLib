@@ -100,7 +100,7 @@
   extern int              EPGAbortLoad;
 
   bool  EPGInfo_CreateCache(int NrRecords);
-  void  EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tDSTRule DSTRule, tEPGFilter *EPGFilter);
+  void  EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPGFilter);
   void  EPGInfo_DestroyCache(void);
   dword EPGInfo_CountEvents(dword *TreePointer);
   dword EPGInfo_CalculateStructSize(void);

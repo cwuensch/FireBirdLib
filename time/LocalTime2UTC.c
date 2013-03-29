@@ -1,6 +1,6 @@
 #include                "FBLib_time.h"
 
-dword LocalTime2UTC(dword LocalTime, tDSTRule DSTRule, short *Offset)
+dword LocalTime2UTC(dword LocalTime, short *Offset)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("LocalTime2UTC");

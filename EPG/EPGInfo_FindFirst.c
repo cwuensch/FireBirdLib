@@ -48,7 +48,7 @@ int EPGInfo_FindFirst(TYPE_EPGInfo *EPGData)
     return 0;
   }
   EPGInfo_CreateCache(EPGInfoCacheEntries);
-  EPGInfo_CloneToCache(x, PointerOffset, DSTRule, &EPGFilter);
+  EPGInfo_CloneToCache(x, PointerOffset, &EPGFilter);
 
   EPGInfoCurrentEntry = 0;
 

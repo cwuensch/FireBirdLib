@@ -9,6 +9,7 @@ bool StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet)
 
   char                 *_utf8string;
   bool                  hasAnsiChars, hasUTFChars;
+  int                   l;
 
   if(!SourceString)
   {
@@ -21,9 +22,21 @@ bool StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet)
 
   GetStringEncoding(SourceString, &hasAnsiChars, &hasUTFChars);
 
-  if(hasAnsiChars && !hasUTFChars)
+  if(!hasUTFChars)
   {
-    _utf8string = TAP_MemAlloc(strlen(SourceString) << 2);
+    l = strlen(SkipCharTableBytes(SourceString)) << 2;
+    if(l == 0)
+    {
+      *SourceString = '\0';
+
+      #ifdef DEBUG_FIREBIRDLIB
+        CallTraceExit(NULL);
+      #endif
+
+      return TRUE;
+    }
+
+    _utf8string = TAP_MemAlloc(l);
     if(!_utf8string)
     {
       #ifdef DEBUG_FIREBIRDLIB
