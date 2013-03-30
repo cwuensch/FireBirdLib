@@ -6,9 +6,14 @@ bool isUTFToppy(void)
     CallTraceEnter("isUTFToppy");
   #endif
 
-  bool ret;
+  static bool ret = FALSE;
+  static bool FirstCall = TRUE;
 
-  ret = FIS_fwAppl_ConvertToValidUTF8Str() != 0;
+  if(FirstCall)
+  {
+    ret = FIS_fwAppl_ConvertToValidUTF8Str() != 0;
+    FirstCall= FALSE;
+  }
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

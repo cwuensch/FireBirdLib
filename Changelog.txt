@@ -793,3 +793,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-03-29  Added: curl functions, which are basically wrappers for the curl lib in the firmware. (thanks to JDA for hacking the firmware and providing the functions)
             Div. Unicode fixes
 2013-03-30  Added: ezXML functions, which are the same firmware wrappers as curl. (thanks to JDA again)
+            Fixed: endless loop in LogoManager_ChannelNameToLogoName() if the text contained a LF character

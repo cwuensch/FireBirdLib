@@ -33,10 +33,13 @@ void LowerCase(char *string)
         *p = AnsiLower[(dword)s - (dword)AnsiUpper];
       }
       else
+      {
         *p = tolower(*p);
+      }
     }
 
     p += BytesPerCharacter;
+
   }
 
   #ifdef DEBUG_FIREBIRDLIB

@@ -11,6 +11,8 @@ bool isUTF8Char(const byte *p, byte *BytesPerCharacter)
 
   if(!p || !isUTFToppy())
   {
+    if(BytesPerCharacter) *BytesPerCharacter = 1;
+
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
     #endif

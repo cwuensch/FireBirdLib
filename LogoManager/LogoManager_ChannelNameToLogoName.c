@@ -16,6 +16,7 @@ char *LogoManager_ChannelNameToLogoName(char *ChannelName)
   memset(LogoNameA, 0, sizeof(LogoNameA));
   strncpy(LogoNameA, SkipCharTableBytes(ChannelName), sizeof(LogoNameA) - 1);
   StrMkISO(LogoNameA);
+  MakeValidFileName(LogoNameA, ControlChars | LFChars);
   LowerCase(LogoNameA);
 
   pLogoName = LogoNameA;
