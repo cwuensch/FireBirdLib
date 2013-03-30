@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-03-29"
+  #define __FBLIB_RELEASEDATE__ "2013-03-30"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -351,8 +351,9 @@
   dword UncompressedTFDSize(byte *pSrc);
   dword TFDSize(byte *pTFD);
 
+
   /*****************************************************************************************************************************/
-  /* Curl                                                                                                                      */
+  /* curl                                                                                                                      */
   /*****************************************************************************************************************************/
 
   typedef enum
@@ -1162,6 +1163,13 @@
 
   typedef void CURL;
 
+  CURL    *curl_easy_init(void);
+  CURLcode curl_easy_perform(CURL *curl);
+  CURLcode curl_easy_setopt(CURL *curl, CURLoption option, void *arg);
+  CURLcode curl_global_init(long flags);
+  void     curl_easy_cleanup(CURL *curl);
+  void     curl_global_cleanup(void);
+
 
   /*****************************************************************************************************************************/
   /* Debugging                                                                                                                 */
@@ -1317,6 +1325,61 @@
 
 
   /*****************************************************************************************************************************/
+  /* ezXML                                                                                                                     */
+  /*****************************************************************************************************************************/
+
+  typedef struct ezxml *ezxml_t;
+
+  struct ezxml
+  {
+    char               *name;     // tag name
+    char              **attr;     // tag attributes { name, value, name, value, ... NULL }
+    char               *txt;      // tag character content, empty string if none
+    size_t              off;      // tag offset from start of parent tag character content
+    ezxml_t             next;     // next tag with same name in this section at this depth
+    ezxml_t             sibling;  // next tag with different name in same section and depth
+    ezxml_t             ordered;  // next tag, same section and depth, in original order
+    ezxml_t             child;    // head of sub tag list, NULL if none
+    ezxml_t             parent;   // parent tag, NULL if current tag is root tag
+    short               flags;    // additional information
+  };
+
+  // Given a string of xml data and its length, parses it and creates an ezxml
+  // structure. For efficiency, modifies the data by adding null terminators
+  // and decoding ampersand sequences. If you don't want this, copy the data and
+  // pass in the copy. Returns NULL on failure.
+  ezxml_t ezxml_parse_str(char *s, size_t len);
+
+  // a wrapper for ezxml_parse_fd() that accepts a file name
+  ezxml_t ezxml_parse_file(const char *file);
+
+  // returns the first child tag (one level deeper) with the given name or NULL if not found
+  ezxml_t ezxml_child(ezxml_t xml, const char *name);
+
+  // returns the next tag of the same name in the same section and depth or NULL  if not found
+  #define ezxml_next(xml) ((xml) ? xml->next : NULL)
+
+  // Returns the Nth tag with the same name in the same section at the same depth
+  // or NULL if not found. An index of 0 returns the tag given.
+  ezxml_t ezxml_idx(ezxml_t xml, int idx);
+
+  // returns the name of the given tag
+  #define ezxml_name(xml) ((xml) ? xml->name : NULL)
+
+  // returns the given tag's character content or empty string if none
+  #define ezxml_txt(xml) ((xml) ? xml->txt : "")
+
+  // returns the value of the requested tag attribute, or NULL if not found
+  const char *ezxml_attr(ezxml_t xml, const char *attr);
+
+  // frees the memory allocated for an ezxml structure
+  void ezxml_free(ezxml_t xml);
+
+  // returns parser error message or empty string if none
+  const char *ezxml_error(ezxml_t xml);
+
+
+  /*****************************************************************************************************************************/
   /* Firmware functions                                                                                                        */
   /*****************************************************************************************************************************/
 
@@ -1370,12 +1433,6 @@
   word   ApplSvc_GetTpIdx(byte SatIdx, word NetworkID, word TSID);
   int    ApplTap_GetEmptyTask(void);
   void   ApplTimer_OptimizeList(void);
-  CURL    *curl_easy_init(void);
-  CURLcode curl_easy_perform(CURL *curl);
-  CURLcode curl_easy_setopt(CURL *curl, CURLoption option, void *arg);
-  CURLcode curl_global_init(long flags);
-  void     curl_easy_cleanup(CURL *curl);
-  void     curl_global_cleanup(void);
   int    DevService_Mute(bool Mute);
 
 
@@ -1935,6 +1992,15 @@
   inline dword FIS_fwDevHdd_DeviceOpen(void);
   inline dword FIS_fwDevService_Mute(void);
   inline dword FIS_fwEeprom_DirectWrite(void);
+
+  inline dword FIS_fwezxml_attr(void);
+  inline dword FIS_fwezxml_child(void);
+  inline dword FIS_fwezxml_error(void);
+  inline dword FIS_fwezxml_free(void);
+  inline dword FIS_fwezxml_idx(void);
+  inline dword FIS_fwezxml_parse_file(void);
+  inline dword FIS_fwezxml_parse_str(void);
+
   inline dword FIS_fwPowerOff(void);
   inline dword FIS_fwPutDevEvt(void);
   inline dword FIS_fwSetIrCode(void);

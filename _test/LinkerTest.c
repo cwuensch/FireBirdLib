@@ -133,7 +133,7 @@ int TAP_Main()
   EndMessageWin();
   EPGInfo_AbortLoad();
   EPGInfo_CalculateStructSize();
-  EPGInfo_CloneToCache(NULL, 0, 0, NULL);
+  EPGInfo_CloneToCache(NULL, 0, NULL);
   EPGInfo_CountEvents(NULL);
   EPGInfo_CreateCache(0);
   EPGInfo_DestroyCache();
@@ -159,6 +159,13 @@ int TAP_Main()
   ExtAttribSet(NULL, NULL, NULL, 0);
   ExtAttribSetAbsPath(NULL, NULL, NULL, 0);
   ExtractLine(NULL, NULL);
+  ezxml_attr(NULL, NULL);
+  ezxml_child(NULL, NULL);
+  ezxml_error(NULL);
+  ezxml_free(NULL);
+  ezxml_idx(NULL, 0);
+  ezxml_parse_file(NULL);
+  ezxml_parse_str(NULL, 0);
   FindGotPointer(0);
   FindInstructionSequence(NULL, NULL, 0, 0, 0, FALSE);
   FirmwareDatMJD();
@@ -239,6 +246,13 @@ int TAP_Main()
   FIS_fwDevHdd_DeviceOpen();
   FIS_fwDevService_Mute();
   FIS_fwEeprom_DirectWrite();
+  FIS_fwezxml_attr();
+  FIS_fwezxml_child();
+  FIS_fwezxml_error();
+  FIS_fwezxml_free();
+  FIS_fwezxml_idx();
+  FIS_fwezxml_parse_file();
+  FIS_fwezxml_parse_str();
   FIS_fwPowerOff();
   FIS_fwPutDevEvt();
   FIS_fwSetIrCode();
@@ -520,7 +534,7 @@ int TAP_Main()
   LangLoadStrings(NULL, 0, 0, NULL);
   LangUnloadStrings();
   LoadFirmwareDat(NULL, NULL, NULL);
-  LocalTime2UTC(0, 0, NULL);
+  LocalTime2UTC(0, NULL);
   LogEntry(NULL, NULL, FALSE, 0, NULL);
   LogEntryGeneric(NULL, FALSE, NULL);
   LogEntryGenericPrintf(NULL, FALSE, NULL);
@@ -749,7 +763,7 @@ int TAP_Main()
   UnhookFirmware(NULL, NULL, NULL);
   Unix2TFTime(0);
   UpperCase(NULL);
-  UTC2LocalTime(0, 0, NULL);
+  UTC2LocalTime(0, NULL);
   UTF32ToUTF8(0, NULL, NULL);
   UTF8ToUTF32(NULL, NULL);
   ValidFileName(NULL, 0);
