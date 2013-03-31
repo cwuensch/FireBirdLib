@@ -43,7 +43,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
       GlyphCache->Width = FontDef->Width;
       GlyphCache->Height = FontDef->Height;
 
-      GlyphCache->GlyphData = TAP_MemAlloc(FontDef->Width * FontDef->Height);
+      GlyphCache->GlyphData = FMUC_ReserveMemory("FMUC_GetGlyphData GlyphData", FontDef->Width * FontDef->Height);
       if(GlyphCache->GlyphData == NULL)
       {
         TAP_PrintNet("FontManager UC: failed to reserve %d bytes for a glyph\n", FontDef->Width * FontDef->Height);

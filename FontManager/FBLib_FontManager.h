@@ -14,6 +14,9 @@
 
   extern tAlphaLUT  AlphaLUT[256];
 
+  void           *FMUC_ReserveMemory(char *Requester, dword size);
+  void            FMUC_FreeMemory(char *Requester, void *Pointer);
+
   bool            FM_isValidCharacter(byte Char);
   byte            FM_CharToIndex(byte Char);
   byte            FM_AlphaBlend(byte Alpha, byte FG, byte BG, float AntiAliasFactor);

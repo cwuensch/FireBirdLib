@@ -18,7 +18,7 @@ lib:
 	@for i in $(DIRS); \
 	do \
 	  cd $$i; \
-	  make all; \
+	  $(MAKE) all; \
 	  cd ..; \
 	done
 	-$(RM) $(PROJECT).a
@@ -32,7 +32,7 @@ lib:
 
 devutils:
 	cd $@; \
-	make all;
+	$(MAKE) all;
 
 clean:
 	@for i in $(DIRS); do cd $$i; make clean; cd ..; done

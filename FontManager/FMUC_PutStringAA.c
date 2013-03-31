@@ -27,7 +27,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
 
   //Remember the last position for diacritical marks
   bool                  isDiacriticalMark;
-  int                   LastCX, NextCX;
+  int                   LastCC, NextCX;
 
   if(!str || !str[0] || !FontData || (maxX <= x))
   {
@@ -205,7 +205,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
   if(PixelData)
   {
     CX = 0;
-    LastCX = 0;
+    LastCC = 0;
     NextCX = 0;
     p = newstr;
     pEnd = p + strlen(p);
@@ -219,9 +219,9 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
 
         if(isDiacriticalMark)
         {
-          //Jump back to the position of the last character
+          //Jump back to the position of the last character based in the width of both glyphs
           NextCX = CX;
-          CX = LastCX;
+          CX = LastCC - (GlyphData->Width >> 1);
         }
 
         FontBitmap = GlyphData->GlyphData;
@@ -272,7 +272,8 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
         }
         else
         {
-          LastCX = CX;
+          //Calculate the center of the character
+          LastCC = CX + (CW >> 1);
           CX += CW;
         }
       }

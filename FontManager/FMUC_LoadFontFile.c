@@ -68,7 +68,8 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
 
   //Read the size of the FontDef table and allocate the necessary memory
   TAP_Hdd_Fread(&FontData->FontDefEntries, sizeof(dword), 1, FontData->FileHandle);
-  FontData->FontDef = TAP_MemAlloc(FontData->FontDefEntries * sizeof(tFontDefUC));
+  FontData->FontDef = FMUC_ReserveMemory("FMUC_LoadFontFile FontDef", FontData->FontDefEntries * sizeof(tFontDefUC));
+
   if(FontData->FontDef == NULL)
   {
     TAP_Hdd_Fclose(FontData->FileHandle);
@@ -89,7 +90,8 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
 
   //Reserve memory for the font cache
   FontData->GlyphCacheEntries = 0;
-  FontData->GlyphCache = TAP_MemAlloc(FontData->FontDefEntries * sizeof(tGlyphCacheUC));
+
+  FontData->GlyphCache = FMUC_ReserveMemory("FMUC_LoadFontFile GlyphCache", FontData->FontDefEntries * sizeof(tGlyphCacheUC));
   if(FontData->GlyphCache == NULL)
   {
     TAP_PrintNet("FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'\n", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FontFileName);

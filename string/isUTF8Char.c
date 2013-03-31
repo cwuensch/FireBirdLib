@@ -9,7 +9,7 @@ bool isUTF8Char(const byte *p, byte *BytesPerCharacter)
   bool                  a, b, c;
   byte                  bpc;
 
-  if(!p || !isUTFToppy())
+  if(!p)
   {
     if(BytesPerCharacter) *BytesPerCharacter = 1;
 

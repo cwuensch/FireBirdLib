@@ -43,7 +43,7 @@ void StrToISO(const byte *SourceString, byte *DestString)
 
       if(UTF32 > 0xff)
       {
-        TAP_PrintNet("StrToISO: character 0x%4.4x ignored\n", UTF32);
+        //TAP_PrintNet("StrToISO: character 0x%4.4x ignored\n", UTF32);
       }
       else
       {
