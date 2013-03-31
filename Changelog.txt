@@ -796,3 +796,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Fixed: endless loop in LogoManager_ChannelNameToLogoName() if the text contained a LF character
             Fixed: different position calculation for diacritical marks
 2013-03-31  Added: FMUC_MemDebug.c contains some debugging code for memory allocation. This needs to be enabled in the source code
+            Fixed: GetStringEncoding() doesn't interpret characters between 0x80 and 0x8f as ANSI

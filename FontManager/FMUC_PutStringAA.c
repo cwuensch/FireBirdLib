@@ -72,6 +72,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
     strncpy(newstr, str, newstrlen);
     newstr[newstrlen - 1] = '\0';
   }
+  MakeValidFileName(newstr, ControlChars | LFChars);
 
   XEnd = x + FMUC_GetStringWidth(newstr, FontData);
   dotWidth = 0;

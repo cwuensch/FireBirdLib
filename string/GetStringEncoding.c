@@ -21,7 +21,7 @@ void GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars)
     while(p < pEnd)
     {
       UC |= isUTF8Char(p, &BytesPerChar);
-      if((*p >= 0x80) && (BytesPerChar == 1)) AC = TRUE;
+      if((*p >= 0xa0) && (BytesPerChar == 1)) AC = TRUE;
       p += BytesPerChar;
     }
   }

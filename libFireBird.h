@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  //#define DEBUG_FIREBIRDLIB
+  #define DEBUG_FIREBIRDLIB
 
   #define __FBLIB_RELEASEDATE__ "2013-03-31"
 
