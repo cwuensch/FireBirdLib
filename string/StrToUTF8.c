@@ -2,7 +2,7 @@
 #include                "../libFireBird.h"
 
 //Translates DVB character set table 00 (chars 0xa0 to 0xff) to Unicode
-word UTFLookupTable00[] =  {0x00A0, 0x00A1, 0x00A2, 0x00A3, 0x20AC, 0x00A5, 0x0000, 0x00A7, 0x00A4, 0x2018, 0x201c, 0x00AB, 0x2190, 0x2191, 0x2192, 0x2193,
+word UTFLookupISO6937[] =  {0x00A0, 0x00A1, 0x00A2, 0x00A3, 0x20AC, 0x00A5, 0x0000, 0x00A7, 0x00A4, 0x2018, 0x201c, 0x00AB, 0x2190, 0x2191, 0x2192, 0x2193,
                             0x00B0, 0x00B1, 0x00B2, 0x00B3, 0x00D7, 0x00B5, 0x00B6, 0x00B7, 0x00F7, 0x2019, 0x201D, 0x00BB, 0x00BC, 0x00BD, 0x00BE, 0x00BF,
                             0x0000, 0x0300, 0x0301, 0x0302, 0x0303, 0x0304, 0x0306, 0x0307, 0x0308, 0x0000, 0x030A, 0x0327, 0x0000, 0x030b, 0x0328, 0x030c,
                             0x2015, 0x00b9, 0x00ae, 0x00a9, 0x2122, 0x266a, 0x00ac, 0x00a6, 0x0000, 0x0000, 0x0000, 0x0000, 0x215b, 0x215c, 0x215d, 0x215e,
@@ -142,13 +142,11 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
     CallTraceEnter("StrToUTF8");
   #endif
 
-  bool                  hasAnsiChars, hasUTFChars;
   bool                  ret;
   byte                  BytesPerCharacter;
   dword                 UTF32;
   word                 *UTFLookup;
   byte                  CharSet, SourceChar;
-  int                   DiacriticalSwapState = 0;
 
   if(!SourceString || !DestString)
   {
@@ -161,147 +159,143 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
 
   ret = FALSE;
 
-  GetStringEncoding(SourceString, &hasAnsiChars, &hasUTFChars);
+  //Is there any encoding marker at the beginning of the text?
+  CharSet = DefaultISO8859CharSet;
 
-  if(!hasUTFChars)
+  if(SourceString[0] < ' ')
   {
-    //Is there any encoding marker at the beginning of the text?
-    CharSet = DefaultISO8859CharSet;
-
-    if(SourceString[0] < ' ')
+    switch(SourceString[0])
     {
-      switch(SourceString[0])
+      case 0x01: CharSet = 5; break;
+      case 0x02: CharSet = 6; break;
+      case 0x03: CharSet = 7; break;
+      case 0x04: CharSet = 8; break;
+      case 0x05: CharSet = 9; break;
+      case 0x06: CharSet = 10; break;
+      case 0x07: CharSet = 11; break;
+      case 0x08: CharSet = 12; break;
+      case 0x09: CharSet = 13; break;
+      case 0x0a: CharSet = 14; break;
+      case 0x0b: CharSet = 15; break;
+      case 0x10:
       {
-        case 0x01: CharSet = 5; break;
-        case 0x02: CharSet = 6; break;
-        case 0x03: CharSet = 7; break;
-        case 0x04: CharSet = 8; break;
-        case 0x05: CharSet = 9; break;
-        case 0x06: CharSet = 10; break;
-        case 0x07: CharSet = 11; break;
-        case 0x08: CharSet = 12; break;
-        case 0x09: CharSet = 13; break;
-        case 0x0a: CharSet = 14; break;
-        case 0x0b: CharSet = 15; break;
-        case 0x10:
-        {
-          //3 char Übersetzung
-          CharSet = SourceString[2];
-          SourceString += 2;
-          break;
-        }
-
-        case 0x15:
-        {
-          //According to EN300468, this is already in UTF8 encoding
-          strcpy(DestString, SourceString);
-
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
-          return FALSE;
-        }
-
-        case 0x1f:
-        {
-          SourceString++;
-          break;
-        }
+        //3 char Übersetzung
+        CharSet = SourceString[2];
+        SourceString += 2;
+        break;
       }
+
+      case 0x15:
+      {
+        //According to EN300468, this is already in UTF8 encoding
+        strcpy(DestString, SourceString);
+
+        #ifdef DEBUG_FIREBIRDLIB
+          CallTraceExit(NULL);
+        #endif
+
+        return FALSE;
+      }
+
+      case 0x1f:
+      {
+        SourceString++;
+        break;
+      }
+    }
+    SourceString++;
+  }
+  else
+  {
+    //TAP_PrintNet("StrToUTF8: using default lookup table 8859-%d\n", CharSet);
+  }
+
+  switch(CharSet)
+  {
+    case 1: UTFLookup = UTFLookupISO8859_1; break;
+    case 2: UTFLookup = UTFLookupISO8859_2; break;
+    case 3: UTFLookup = UTFLookupISO8859_3; break;
+    case 4: UTFLookup = UTFLookupISO8859_4; break;
+    case 5: UTFLookup = UTFLookupISO8859_5; break;
+    case 6: UTFLookup = UTFLookupISO8859_6; break;
+    case 7: UTFLookup = UTFLookupISO8859_7; break;
+    case 8: UTFLookup = UTFLookupISO8859_8; break;
+    case 9: UTFLookup = UTFLookupISO8859_9; break;
+    case 10: UTFLookup = UTFLookupISO8859_10; break;
+    case 11: UTFLookup = UTFLookupISO8859_11; break;
+    case 13: UTFLookup = UTFLookupISO8859_13; break;
+    case 14: UTFLookup = UTFLookupISO8859_14; break;
+    case 15: UTFLookup = UTFLookupISO8859_15; break;
+    case 16: UTFLookup = UTFLookupISO8859_16; break;
+
+    default: UTFLookup = UTFLookupISO6937; break;
+  }
+
+  while(*SourceString)
+  {
+    if(*SourceString < 0x80)
+    {
+      //ASCII: just copy
+      *DestString = *SourceString;
       SourceString++;
+      DestString++;
     }
     else
     {
-      //TAP_PrintNet("StrToUTF8: using default lookup table 8859-%d\n", CharSet);
-    }
-
-    switch(CharSet)
-    {
-      case 1: UTFLookup = UTFLookupISO8859_1; break;
-      case 2: UTFLookup = UTFLookupISO8859_2; break;
-      case 3: UTFLookup = UTFLookupISO8859_3; break;
-      case 4: UTFLookup = UTFLookupISO8859_4; break;
-      case 5: UTFLookup = UTFLookupISO8859_5; break;
-      case 6: UTFLookup = UTFLookupISO8859_6; break;
-      case 7: UTFLookup = UTFLookupISO8859_7; break;
-      case 8: UTFLookup = UTFLookupISO8859_8; break;
-      case 9: UTFLookup = UTFLookupISO8859_9; break;
-      case 10: UTFLookup = UTFLookupISO8859_10; break;
-      case 11: UTFLookup = UTFLookupISO8859_11; break;
-      case 13: UTFLookup = UTFLookupISO8859_13; break;
-      case 14: UTFLookup = UTFLookupISO8859_14; break;
-      case 15: UTFLookup = UTFLookupISO8859_15; break;
-      case 16: UTFLookup = UTFLookupISO8859_16; break;
-
-      default: UTFLookup = UTFLookupTable00; break;
-    }
-
-    while(*SourceString)
-    {
-      //ISO6937: opposed to Unicode and other standards, diacritical marks precede the base character
-      //Swap both characters and make sure that the diacritical character doesn't trigger a swap on the next iteration
-      if((CharSet == 0) && ((*SourceString & 0xf0) == 0xc0) && (DiacriticalSwapState == 0))
-        DiacriticalSwapState = 1;
-
-      switch(DiacriticalSwapState)
+      if(isUTF8Char(SourceString, &BytesPerCharacter))
       {
-        case 1:
-        {
-          //Swapping active, process the next character
-          SourceChar = SourceString[1];
-          DiacriticalSwapState++;
-          break;
-        }
-
-        case 2:
-        {
-          //Swapping active, process the previous character
-          SourceString--;
-          SourceChar = *SourceString;
-          SourceString++;
-          DiacriticalSwapState = 0;
-          break;
-        }
-
-        default:
-        {
-          //No swapping, process the current character
-          SourceChar = SourceString[0];
-          break;
-        }
-      }
-
-      if(SourceChar >= 0x80)
-      {
-        if(SourceChar >= 0xa0)
-        {
-          UTF32 = UTFLookup[SourceChar - 0xa0];
-        }
-        else
-        {
-          UTF32 = SourceChar;
-        }
-
-        UTF32ToUTF8(UTF32, DestString, &BytesPerCharacter);
+        //Already UTF8: just copy
+        memcpy(DestString, SourceString, BytesPerCharacter);
+        SourceString += BytesPerCharacter;
         DestString += BytesPerCharacter;
       }
       else
       {
-        *DestString = SourceChar;
-        DestString++;
+        //Seems to be an ANSI character: conversion is needed
+        if((CharSet == 0) && (*SourceString >= 0xc0)  && (*SourceString <= 0xcf))
+        {
+          //if ISO6937 is used, replace diactricital characters with their single entity counterparts
+
+                        //Char     à
+                        //Unicode  00e0
+          char         *ISO6937 = "\xc1\x61 ";
+          char         *UTF8    = "\xc3\xa0 ";
+          char          Dia[3], *p;
+          int           Index;
+
+          memcpy(Dia, SourceString, 2);
+          Dia[3] = '\0';
+          p = strstr(ISO6937, Dia);
+          if(p)
+          {
+            Index = (dword)p - (dword)ISO6937;
+            memcpy(DestString, &UTF8[Index], 2);
+            DestString += 2;
+          }
+          else
+          {
+            TAP_PrintNet("StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored\n", SourceString[0], SourceString[1]);
+          }
+          SourceString++;
+        }
+        else
+        {
+          SourceChar = * SourceString;
+          if(SourceChar >= 0xa0)
+            UTF32 = UTFLookup[SourceChar - 0xa0];
+          else
+            UTF32 = SourceChar;
+
+          UTF32ToUTF8(UTF32, DestString, &BytesPerCharacter);
+          DestString += BytesPerCharacter;
+        }
+
+        ret = TRUE;
+        SourceString++;
       }
-
-      SourceString++;
     }
-    *DestString = '\0';
-
-    ret = TRUE;
   }
-  else
-  {
-    strcpy(DestString, SourceString);
-  }
+  *DestString = '\0';
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

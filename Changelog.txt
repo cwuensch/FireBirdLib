@@ -797,3 +797,4 @@ License:  This library is freeware. You may use this code in your own projects f
             Fixed: different position calculation for diacritical marks
 2013-03-31  Added: FMUC_MemDebug.c contains some debugging code for memory allocation. This needs to be enabled in the source code
             Fixed: GetStringEncoding() doesn't interpret characters between 0x80 and 0x8f as ANSI
+2013-04-01  Fixed: modified the way StrToUTF8() is working so that mixed ANSI / UTF strings are converted correctly

@@ -44,115 +44,103 @@ void CreateTestFiles(void)
   CallTraceExit(NULL);
 }
 
+
+void RemoveNullCharacters(char *strName, int *TotalLength)
+{
+  unsigned char         *s;
+  int                   i, strLength;
+
+  CallTraceEnter("RemoveNullCharacters");
+
+  if(!strName || !*strName || !TotalLength)
+  {
+    #if STACKTRACE == TRUE
+      CallTraceExit(NULL);
+    #endif
+    return;
+  }
+
+  s = SkipCharTableBytes(strName);
+  i = (dword)s - (dword)strName;
+  strLength = *TotalLength;
+
+  while(i < strLength)
+  {
+    if(*s == '\0') *s = ' ';
+    s++;
+    i++;
+  }
+
+  CallTraceExit(NULL);
+}
+
+void RemoveInvalidCharacters(char *strName)
+{
+  unsigned char        *s, *d;
+  byte                  BytesPerChar;
+
+  CallTraceEnter("RemoveInvalidCharacters");
+
+  if(!strName || !*strName)
+  {
+    #if STACKTRACE == TRUE
+      CallTraceExit(NULL);
+    #endif
+    return;
+  }
+
+  s = SkipCharTableBytes(strName);
+  d = s;
+
+  while(*s)
+  {
+    if(isUTF8Char(s, &BytesPerChar))
+    {
+      memcpy(d, s, BytesPerChar);
+      d += BytesPerChar;
+      s += (BytesPerChar - 1);
+    }
+    else if(*s == (unsigned char)'\x8a')
+    {
+      *d = '\x0a';
+      d++;
+    }
+    else if(isLegalChar(s, ControlChars))
+    {
+      *d = *s;
+      d++;
+    }
+
+    s++;
+  }
+  *d = '\0';
+
+  CallTraceExit(NULL);
+}
+
 void Test(void)
 {
-  TYPE_File            *f;
-  int                   fl;
-  tRECHeaderInfo        RECHeaderInfo;
-
   CallTraceEnter("Test");
 
-  HDD_ChangeDir("/DataFiles/TestFiles");
-  if(!HDD_ChangeDir("\005Ansi_Ä"))
-  {
-    TAP_PrintNet("Failed to change to the subdir\n");
-  }
+  //char *a = "\005Sendezeit täglich von 18:00 bis 24:00 Uhr";
+  char *a = "Sendezeit täglich von 18:00 bis 24:00 Uhr";
+  char  s[512];
+  int   Len;
 
-  f = TAP_Hdd_Fopen("cz.rec.inf");
-  if(!f)
-  {
-    TAP_PrintNet("Failed to open test inf\n");
-  }
-  else
-  {
-    fl = TAP_Hdd_Flen(f);
-    TAP_Hdd_Fread(s, fl, 1, f);
-    TAP_Hdd_Fclose(f);
+  memset(s, 0, 512);
+  Len = strlen(a);
+  memcpy(s, a, Len);
 
-    HDD_DecodeRECHeader(s, &RECHeaderInfo, ST_UNKNOWN);
-    OSDMemoInitialize(TRUE, "\005ANSI äöü", "UTF Text", RECHeaderInfo.ExtEventText);
-    OSDMenuUpdate(FALSE);
+  RemoveNullCharacters(s, &Len);
+  RemoveInvalidCharacters(s);
 
-    //OSDMenuMessageBoxInitialize("\u3187\u3184\u3140", RECHeaderInfo.EventEventName);
-    //OSDMenuMessageBoxButtonAdd("\u3187\u3184\u3140  \u21af");
-    //OSDMenuMessageBoxShow();
-  }
+  DumpMemory(s, strlen(s) + 1, 16);
 
-  HDD_TAP_GetCurrentDir(s);
+  StrMkUTF8(s, 0);
+
   DumpMemory(s, strlen(s) + 1, 16);
 
   CallTraceExit(NULL);
-}
-
-void rmdirTest(void)
-{
-  CallTraceEnter("rmdirTest");
-
-  HDD_RemoveDir("/DataFiles/TestFiles/\005Ansi_Ä", TRUE);
-  HDD_RemoveDir("/DataFiles/TestFiles/UTF8_\u00c4", TRUE);
-
-  CallTraceExit(NULL);
-}
-
-void renameTest(void)
-{
-  char n1[256], n2[256];
-
-  CallTraceEnter("renameTest");
-
-  strcpy(n1, "\005Ansi_Ö.rec");
-  strcpy(n2, "Ansi-UTF8_\u00D6.rec");
-
-  HDD_ChangeDir("/DataFiles/TestFiles");
-  HDD_Rename(n1, n2);
-
-  CallTraceExit(NULL);
-}
-
-void LogoNameTest(void)
-{
-  char *LogoName;
-
-  CallTraceEnter("LogoNameTest");
-
-  LogoName = LogoManager_ChannelNameToLogoName("\005Ansi_Ö");
-  DumpMemory(LogoName, strlen(LogoName) + 1, 16);
-
-  LogoName = LogoManager_ChannelNameToLogoName("UTF8_\u00D6");
-  DumpMemory(LogoName, strlen(LogoName) + 1, 16);
-
-  CallTraceExit(NULL);
-}
-
-void FixInvalidTest(void)
-{
-  char n1[256], n2[256];
-
-  CallTraceEnter("FixInvalidTest");
-
-  strcpy(n1, "\005Ansi_Ö.rec");
-  strcpy(n2, "Ansi-UTF8_\u00D6.rec");
-
-  FixInvalidFileName(n1);
-  FixInvalidFileName(n2);
-
-  CallTraceExit(NULL);
-}
-
-void SvcFindTest(void)
-{
-  bool                  ret;
-  TYPE_ServiceType      SvcType;
-  int                   SvcNum;
-
-  ret = FlashServiceFindNum(1, 1, 1007, 4911, &SvcType, &SvcNum);
-  TAP_PrintNet("ORF1HD: %s, %d/%d\n", ret ? "T" : "F", SvcType, SvcNum);
-
-  ret = FlashServiceFindNum(1, 1, 1007 , 4912, &SvcType, &SvcNum);
-  TAP_PrintNet("ORF2HD: %s, %d/%d\n", ret ? "T" : "F", SvcType, SvcNum);
-
-  ret = FlashServiceFindNum(1, 1, 1115 , 13134, &SvcType, &SvcNum);
-  TAP_PrintNet("FN4: %s, %d/%d\n", ret ? "T" : "F", SvcType, SvcNum);
 }
 
 dword TAP_EventHandler(word event, dword param1, dword param2)
@@ -164,14 +152,13 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
 
   if(Init)
   {
-    CreateTestFiles();
-    //LogoNameTest();
-    FixInvalidTest();
+    //CreateTestFiles();
+    Test();
     Init = FALSE;
   }
 
-  if(!OSDMenuIsVisible())
-  //if(!OSDMenuMessageBoxIsVisible())
+  //if(!OSDMenuIsVisible())
+  if(!OSDMenuMessageBoxIsVisible())
   {
     TAP_Exit();
     return param1;
@@ -182,8 +169,8 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
   {
     if(param1 == RKEY_Exit)
     {
-      OSDMenuDestroy();
-      //OSDMenuMessageBoxDestroy();
+      //OSDMenuDestroy();
+      OSDMenuMessageBoxDestroy();
     }
     param1 = 0;
   }
@@ -196,8 +183,7 @@ int TAP_Main()
   CallTraceInit();
   CallTraceEnable(TRUE);
 
-  //rmdirTest();
-  SvcFindTest();
+  Test();
 
   return 0;
 }

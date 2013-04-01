@@ -1,9 +1,9 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define DEBUG_FIREBIRDLIB
+  //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-03-31"
+  #define __FBLIB_RELEASEDATE__ "2013-04-01"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
