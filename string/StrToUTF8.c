@@ -256,10 +256,10 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
         {
           //if ISO6937 is used, replace diactricital characters with their single entity counterparts
 
-                        //Char     à
-                        //Unicode  00e0
-          char         *ISO6937 = "\xc1\x61 ";
-          char         *UTF8    = "\xc3\xa0 ";
+                        //         À        Á        Â        Ã        Ä        Å        Ç        È        É        Ê        Ë        Ì        Í        Î        Ï        Ñ        Ò        Ó        Ô        Õ        Ö        Ù        Ú        Û        Ü        Ý        à        á        â        ã        ä        å        ç        è        é        ê        ë        ì        í        î        ï        ñ        ò        ó        ô        õ        ö        ù        ú        û        ü        ý        ÿ
+          char         *ISO6937 = "\xc1\x41 \xc2\x41 \xc3\x41 \xc4\x41 \xc8\x41 \xca\x41 \xcb\x43 \xc1\x45 \xc2\x45 \xc3\x45 \xc8\x45 \xc1\x49 \xc2\x49 \xc3\x49 \xc8\x49 \xc4\x4e \xc1\x4f \xc2\x4f \xc3\x4f \xc4\x4f \xc8\x4f \xc1\x55 \xc2\x55 \xc3\x55 \xc8\x55 \xc2\x59 \xc1\x41 \xc2\x41 \xc3\x41 \xc4\x41 \xc8\x41 \xca\x41 \xcb\x43 \xc1\x45 \xc2\x45 \xc3\x45 \xc8\x45 \xc1\x49 \xc2\x49 \xc3\x49 \xc8\x49 \xc4\x4e \xc1\x4f \xc2\x4f \xc3\x4f \xc4\x4f \xc8\x4f \xc1\x55 \xc2\x55 \xc3\x55 \xc8\x55 \xc2\x59 \xc8\x59";
+          char         *UTF8    = "\xc3\x80 \xc3\x81 \xc3\x82 \xc3\x83 \xc3\x84 \xc3\x85 \xc3\x87 \xc3\x88 \xc3\x89 \xc3\x8a \xc3\x8b \xc3\x8c \xc3\x8d \xc3\x8e \xc3\x8f \xc3\x91 \xc3\x92 \xc3\x93 \xc3\x94 \xc3\x95 \xc3\x96 \xc3\x99 \xc3\x9a \xc3\x9b \xc3\x9c \xc3\x9d \xc3\xa0 \xc3\xa1 \xc3\xa2 \xc3\xa3 \xc3\xa4 \xc3\xa5 \xc3\xa7 \xc3\xa8 \xc3\xa9 \xc3\xaa \xc3\xab \xc3\xac \xc3\xad \xc3\xae \xc3\xaf \xc3\xb1 \xc3\xb2 \xc3\xb3 \xc3\xb4 \xc3\xb5 \xc3\xb6 \xc3\xb9 \xc3\xba \xc3\xbb \xc3\xbc \xc3\xbd \xc3\xbf";
+
           char          Dia[3], *p;
           int           Index;
 
@@ -274,7 +274,7 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
           }
           else
           {
-            TAP_PrintNet("StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored\n", SourceString[0], SourceString[1]);
+            LogEntryFBLibPrintf(TRUE, "StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
           }
           SourceString++;
         }

@@ -28,7 +28,7 @@ bool EPGInfo_CreateCache(int NrRecords)
 
   if(EPGInfoCacheFile == -1)
   {
-    TAP_PrintNet("EPGInfo: failed to create the memory mapped EPG cache\n");
+    LogEntryFBLibPrintf(TRUE, "EPGInfo: failed to create the memory mapped EPG cache");
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -40,7 +40,7 @@ bool EPGInfo_CreateCache(int NrRecords)
   //Increase the size of the cache as needed
   if(lseek(EPGInfoCacheFile, EPGInfoCacheSize, SEEK_SET) == -1)
   {
-    TAP_PrintNet("EPGInfo: failed to stretch the memory mapped EPG cache\n");
+    LogEntryFBLibPrintf(TRUE, "EPGInfo: failed to stretch the memory mapped EPG cache");
     close(EPGInfoCacheFile);
     unlink(EPGCacheFile);
 
@@ -56,7 +56,7 @@ bool EPGInfo_CreateCache(int NrRecords)
   EPGInfoCacheMap = mmap(0, EPGInfoCacheSize, PROT_READ | PROT_WRITE, MAP_SHARED, EPGInfoCacheFile, 0);
   if(EPGInfoCacheMap == MAP_FAILED)
   {
-    TAP_PrintNet("EPGInfo: failed to memory map the EPG cache file\n");
+    LogEntryFBLibPrintf(TRUE, "EPGInfo: failed to memory map the EPG cache file");
     close(EPGInfoCacheFile);
     unlink(EPGCacheFile);
 

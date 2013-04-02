@@ -1,7 +1,7 @@
 #include                <stdio.h>
 #include                "FBLib_time.h"
 
-void DST_ProcessRule(char *dstRule, dword *dstDate)
+void DST_ProcessRule(char *dstRuleString, dword *dstDate)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("DST_ProcessRule");
@@ -15,9 +15,9 @@ void DST_ProcessRule(char *dstRule, dword *dstDate)
 
   dword       transitionDate = 0;
 
-  //TAP_PrintNet("Processing DST rule [%s].\r\n\r\n", dstRule);
+  //TAP_PrintNet("Processing DST rule [%s].\r\n\r\n", dstRuleString);
 
-  if(dstRule == NULL)
+  if(dstRuleString == NULL)
   {
     if(dstDate) *dstDate = 0;
 
@@ -28,9 +28,9 @@ void DST_ProcessRule(char *dstRule, dword *dstDate)
     return;
   }
 
-  sscanf(dstRule, "%hhu,%hhu,%hhu,%02hhu:%02hhu", &ruleOrdinal, &ruleDay, &ruleMonth, &ruleHour, &ruleMin);
+  sscanf(dstRuleString, "%hhu,%hhu,%hhu,%02hhu:%02hhu", &ruleOrdinal, &ruleDay, &ruleMonth, &ruleHour, &ruleMin);
 
-  //TAP_PrintNet("DST rule [%s] string parsed.\r\n\r\n", dstRule);
+  //TAP_PrintNet("DST rule [%s] string parsed.\r\n\r\n", dstRuleString);
 
   //Some basic error checking, but it could be more comprehensive if required.
   if(ruleOrdinal > 5){ruleOrdinal = 5;}

@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-04-01"
+  #define __FBLIB_RELEASEDATE__ "2013-04-02"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1182,7 +1182,7 @@
   void   LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, const char *format, ...);
   void   LogEntryGeneric(char *ProgramName, bool Console, char *Text);
   void   LogEntryGenericPrintf(char *ProgramName, bool Console, const char *format, ...);
-
+  void   LogEntryFBLibPrintf(bool Console, const char *format, ...);
   bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
   bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
 
@@ -1257,20 +1257,13 @@
 
     dword               citID;
 
-    byte                category_genre;         //if sourceFlag == 1 then the nibbles are reversed to ETSI and if sourceFlag == 0 then
+    byte                ContentIdentifier;      //if sourceFlag == 1 then the nibbles are reversed to ETSI and if sourceFlag == 0 then
     byte                sourceFlag;             //the nibble represent Australia-specific descriptions
     word                unknown14;
     word                iceChannel;
 
     byte                unknown15[6];
   } TYPE_EPGInfo;
-
-  typedef enum
-  {
-    DSTR_Firmware,
-    DSTR_Europe,
-    DSTR_Manual
-  } tDSTRule;
 
   void EPGInfo_FilterReset(void);
   void EPGInfo_FilterTime(dword StartTime, dword EndTime);
@@ -2467,6 +2460,14 @@
   /*****************************************************************************************************************************/
   /* Time Functions                                                                                                            */
   /*****************************************************************************************************************************/
+
+  typedef enum
+  {
+    DSTR_Undefined,
+    DSTR_Firmware,
+    DSTR_Europe,
+    DSTR_Manual
+  } tDSTRule;
 
   #define DATE(mjd, h, m) ((dword) (((mjd) << 16) | ((h) << 8) | (m)))
   #define MJD(d) ((word) (((d) >> 16) & 0xffff))

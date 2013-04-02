@@ -4,13 +4,14 @@ void CallTraceEnter(char *ProcName)
 {
   char                  Spaces[101];
   byte                 *ISOText;
+  extern dword          __tap_ud__;
 
   if(CallTraceDoNotReenter) return;
   CallTraceDoNotReenter = TRUE;
 
   if(!CallTraceInitialized) CallTraceInit();
 
-  if(CallLevel >= CTSTACKSIZE) TAP_Print("CallLevel Overflow!\n");
+  if(CallLevel >= CTSTACKSIZE) LogEntryFBLibPrintf(TRUE, "CallLevel Overflow! (TAPID 0x%8.8x)", __tap_ud__);
 
   if(CallTraceEnabled && ProcName)
   {

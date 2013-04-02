@@ -27,7 +27,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
 
   if(!TAP_Hdd_Exist(FontFileName))
   {
-    TAP_PrintNet("FontManager UC: font file '%s' does not exist\n", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: font file '%s' does not exist", FontFileName);
     HDD_TAP_PopDir();
 
     #ifdef DEBUG_FIREBIRDLIB
@@ -41,7 +41,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
   HDD_TAP_PopDir();
   if(FontData->FileHandle == NULL)
   {
-    TAP_PrintNet("FontManager UC: failed to open '%s'\n", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to open '%s'", FontFileName);
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -57,7 +57,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
   {
     TAP_Hdd_Fclose(FontData->FileHandle);
     FontData->FileHandle = NULL;
-    TAP_PrintNet("FontManager UC: '%s' has invalid header\n", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: '%s' has invalid header", FontFileName);
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -74,7 +74,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
   {
     TAP_Hdd_Fclose(FontData->FileHandle);
     FontData->FileHandle = NULL;
-    TAP_PrintNet("FontManager UC: failed to allocate %d bytes for the FontDef table of '%s'\n", FontData->FontDefEntries * sizeof(tFontDefUC), FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontDef table of '%s'", FontData->FontDefEntries * sizeof(tFontDefUC), FontFileName);
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -83,7 +83,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
     return FALSE;
   }
 
-  //TAP_PrintNet("FontManager UC: %d glyphs available in '%s'\n", FontData->FontDefEntries, FontFileName);
+  //LogEntryFBLibPrintf(TRUE, "FontManager UC: %d glyphs available in '%s'", FontData->FontDefEntries, FontFileName);
 
   //Read the FontDef table
   TAP_Hdd_Fread(FontData->FontDef, sizeof(tFontDefUC), FontData->FontDefEntries, FontData->FileHandle);
@@ -94,7 +94,7 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
   FontData->GlyphCache = FMUC_ReserveMemory("FMUC_LoadFontFile GlyphCache", FontData->FontDefEntries * sizeof(tGlyphCacheUC));
   if(FontData->GlyphCache == NULL)
   {
-    TAP_PrintNet("FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'\n", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FontFileName);
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);

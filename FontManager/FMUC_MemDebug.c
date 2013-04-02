@@ -75,7 +75,7 @@ void *FMUC_ReserveMemory(char *Requester, dword size)
   Mem = FMUC_MemoryFindFree();
   if(Mem == NULL)
   {
-    TAP_PrintNet("FMUC_ReserveMemory: no space in lookup table\n");
+    LogEntryFBLibPrintf(TRUE, "FMUC_ReserveMemory: no space in lookup table");
     return ret;
   }
 
@@ -85,7 +85,7 @@ void *FMUC_ReserveMemory(char *Requester, dword size)
 
 
   FMUC_MemoryDump(&NrReservations, &NrTotalSize);
-  TAP_PrintNet("FMUC: %s has requested %d bytes. Currently %d, %d bytes\n", Requester, size, NrReservations, NrTotalSize);
+  LogEntryFBLibPrintf(TRUE, "FMUC: %s has requested %d bytes. Currently %d, %d bytes", Requester, size, NrReservations, NrTotalSize);
 
   return ret;
 }
@@ -101,14 +101,14 @@ void FMUC_FreeMemory(char *Requester, void *Pointer)
   Mem = FMUC_MemoryFindPointer(Pointer);
   if(Mem == NULL)
   {
-    TAP_PrintNet("FMUC_FreeMemory: entry not found in lookup table\n");
+    LogEntryFBLibPrintf(TRUE, "FMUC_FreeMemory: entry not found in lookup table");
     return;
   }
 
   Mem->Alloc = NULL;
   FMUC_MemoryDump(&NrReservations, &NrTotalSize);
 
-  TAP_PrintNet("FMUC: '%s' has released %d bytes from '%s'. Currently %d, %d bytes\n", Requester, Mem->Size, Mem->Requester, NrReservations, NrTotalSize);
+  LogEntryFBLibPrintf(TRUE, "FMUC: '%s' has released %d bytes from '%s'. Currently %d, %d bytes", Requester, Mem->Size, Mem->Requester, NrReservations, NrTotalSize);
 
   Mem->Size = 0;
   Mem->Requester = NULL;

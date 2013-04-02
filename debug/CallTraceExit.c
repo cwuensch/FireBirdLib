@@ -5,6 +5,7 @@ void CallTraceExit(dword *Magic)
   char                  Spaces[101];
   int                   i, j;
   dword                 t;
+  extern dword          __tap_ud__;
 
   if(CallTraceDoNotReenter) return;
   CallTraceDoNotReenter = TRUE;
@@ -63,7 +64,7 @@ void CallTraceExit(dword *Magic)
     }
   }
   else
-    TAP_PrintNet("CallLevel Underflow!\n");
+    LogEntryFBLibPrintf(TRUE, "CallLevel Underflow! (TAPID 0x%8.8x)", __tap_ud__);
 
   if(CallTraceEnabled || Magic)
   {

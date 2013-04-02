@@ -11,11 +11,14 @@ dword UTC2LocalTime(dword UTCTime, short *Offset)
   bool                  DST;
   dword                 ret;
 
+  if(DSTRule == DSTR_Undefined) DST_GetDefaultDSTRule();
+
   //Read the timezone settings from the flash
   if(!GetCurrentTimeZone(&StdOffset, &DST)) StdOffset = 60;
 
   switch(DSTRule)
   {
+    case DSTR_Undefined:
     case DSTR_Firmware:
     {
       //This one uses the "cheap" solution from the firmware. A look-ahead is not possible.

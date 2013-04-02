@@ -113,6 +113,7 @@ int TAP_Main()
   DrawOSDLine(0, 0, 0, 0, 0, 0);
   DST_CalcTransition(0, 0, 0, 0, 0);
   DST_FindNextTransition();
+  DST_GetDefaultDSTRule();
   DST_GetNextTransition(0, 0, 0, 0, 0, 0);
   DST_GetTransitions_Europe(NULL, NULL);
   DST_GetTransitions_Manual(NULL, NULL);
@@ -536,6 +537,7 @@ int TAP_Main()
   LoadFirmwareDat(NULL, NULL, NULL);
   LocalTime2UTC(0, NULL);
   LogEntry(NULL, NULL, FALSE, 0, NULL);
+  LogEntryFBLibPrintf(FALSE, NULL);
   LogEntryGeneric(NULL, FALSE, NULL);
   LogEntryGenericPrintf(NULL, FALSE, NULL);
   LogEntryPrintf(NULL, NULL, FALSE, 0, NULL);

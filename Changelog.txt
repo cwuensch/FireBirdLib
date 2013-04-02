@@ -798,3 +798,8 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-03-31  Added: FMUC_MemDebug.c contains some debugging code for memory allocation. This needs to be enabled in the source code
             Fixed: GetStringEncoding() doesn't interpret characters between 0x80 and 0x8f as ANSI
 2013-04-01  Fixed: modified the way StrToUTF8() is working so that mixed ANSI / UTF strings are converted correctly
+            Added: LogEntryFBLibPrintf() which lets the lib report problems into /ProgramFiles/Settings/FBLib.log
+            Added: if a TAP calls one of the DST conversion routines without calling DST_SetDSTRule() first, the Lib will now check DST.ini if there is a key called "DefaultRule" and
+                   will use the appropriate rule is if the key contains one of the following values: "firmware", "europe" or "manual". If the check fails, the Lib will default to firmware.
+2013-04-02  Fixed: 2 string length bugs in EPGInfo_CopyData()
+            Added: StrToUTF8() support for a lot more ISO6937 diacritical characters

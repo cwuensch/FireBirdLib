@@ -9,9 +9,12 @@ dword DST_FindNextTransition(void)
   dword                 DSTStartUTC, DSTEndUTC;
   dword                 ret;
 
+  if(DSTRule == DSTR_Undefined) DST_GetDefaultDSTRule();
+
   ret = 0;
   switch(DSTRule)
   {
+    case DSTR_Undefined:
     case DSTR_Firmware:
     {
       break;

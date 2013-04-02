@@ -22,7 +22,7 @@ void FlashFavoritesGetParameters(int *NrGroups, int *NrSvcsPerGroup)
   }
   else
   {
-    TAP_PrintNet("FlashFavoritesGetParameters: unknown favorite structure variant (%d bytes)\n", i);
+    LogEntryFBLibPrintf(TRUE, "FlashFavoritesGetParameters: unknown favorite structure variant (%d bytes)", i);
     if(NrGroups) *NrGroups  = i;
     if(NrSvcsPerGroup) *NrSvcsPerGroup  = i;
   }

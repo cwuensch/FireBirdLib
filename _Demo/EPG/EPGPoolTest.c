@@ -29,10 +29,11 @@ void BruteForceTimeZoneCheck(void)
   EndTime = TAP_MakeMjd(2014, 1, 1) << 16;
 
   CurrentTime = StartTime;
+  DST_SetDSTRule(DSTR_Europe);
   while(CurrentTime < EndTime)
   {
-    CalcLocalTime = UTC2LocalTime(CurrentTime, DSTR_Europe, &Offset1);
-    CalcUTCTime = LocalTime2UTC(CalcLocalTime, DSTR_Europe, &Offset2);
+    CalcLocalTime = UTC2LocalTime(CurrentTime, &Offset1);
+    CalcUTCTime = LocalTime2UTC(CalcLocalTime, &Offset2);
 
     TAP_PrintNet("%s (UTC)", TimeFormat(CurrentTime, 0, TIMESTAMP_YMDHM));
     TAP_PrintNet(" -> %s (UTC+%d)", TimeFormat(CalcLocalTime, 0, TIMESTAMP_YMDHM), Offset1);

@@ -11,10 +11,13 @@ dword LocalTime2UTC(dword LocalTime, short *Offset)
   dword                 UTCTime, DSTStartUTC, DSTEndUTC;
   dword                 ret;
 
+  if(DSTRule == DSTR_Undefined) DST_GetDefaultDSTRule();
+
   if(!GetCurrentTimeZone(&StdOffset, &DST)) StdOffset = 60;
 
   switch(DSTRule)
   {
+    case DSTR_Undefined:
     case DSTR_Firmware:
     {
       UTCTime = AddTime(LocalTime, -StdOffset);

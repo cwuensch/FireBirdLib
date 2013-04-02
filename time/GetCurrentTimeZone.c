@@ -11,7 +11,9 @@ bool GetCurrentTimeZone(short *TZOffset, bool *DST)
 
   tFlashTimeInfo        FlashTimeInfo;
   bool                  bDST;
+  bool                  ret;
 
+  ret = FALSE;
   if(FlashTimeGetInfo(&FlashTimeInfo))
   {
     bDST = (FlashTimeInfo.DST == 3);
@@ -24,16 +26,12 @@ bool GetCurrentTimeZone(short *TZOffset, bool *DST)
 
     if(DST) *DST = bDST;
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
-    return TRUE;
+    ret = TRUE;
   }
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
   #endif
 
-  return FALSE;
+  return ret;
 }

@@ -40,8 +40,8 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     //Short event text
     memset(EPGInfo->ShortEventText, 0, sizeof(EPGInfo->ShortEventText));
     strcpyUC(EPGInfo->ShortEventText, &EvtInfo->ShortEventText[EvtInfo->NameLength]);
-    StrMkUTF8(EPGInfo->EventName, 9);
-    EPGInfo->ShortEventTextLenght = strlen(EPGInfo->EventName);
+    StrMkUTF8(EPGInfo->ShortEventText, 9);
+    EPGInfo->ShortEventTextLenght = strlen(EPGInfo->ShortEventText);
 
     //Long event text
     //As an ext description may contain multiple NULL characters, replace them with 0x0a, convert to UTF-8 and then replace back to 0x00
@@ -70,10 +70,10 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     //Copy, depending on the struct size
     if(EPGInfo_CalculateStructSize() > 68)
     {
-      EPGInfo->category_genre  = EvtInfo->ContentIdentifier;
-      EPGInfo->sourceFlag      = EvtInfo->sourceFlag;
-      EPGInfo->unknown14       = EvtInfo->unknown14;
-      EPGInfo->iceChannel      = EvtInfo->iceChannel;
+      EPGInfo->ContentIdentifier = EvtInfo->ContentIdentifier;
+      EPGInfo->sourceFlag        = EvtInfo->sourceFlag;
+      EPGInfo->unknown14         = EvtInfo->unknown14;
+      EPGInfo->iceChannel        = EvtInfo->iceChannel;
 
       if(EPGInfo_CalculateStructSize() > 72)
       {
@@ -86,10 +86,10 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     }
     else
     {
-      EPGInfo->category_genre  = 0;
-      EPGInfo->sourceFlag      = 0;
-      EPGInfo->unknown14       = 0;
-      EPGInfo->iceChannel      = 0;
+      EPGInfo->ContentIdentifier = 0;
+      EPGInfo->sourceFlag        = 0;
+      EPGInfo->unknown14         = 0;
+      EPGInfo->iceChannel        = 0;
       memset(EPGInfo->unknown15, 0, sizeof(EPGInfo->unknown15));
     }
   }

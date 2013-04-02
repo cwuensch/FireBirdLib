@@ -46,7 +46,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
       GlyphCache->GlyphData = FMUC_ReserveMemory("FMUC_GetGlyphData GlyphData", FontDef->Width * FontDef->Height);
       if(GlyphCache->GlyphData == NULL)
       {
-        TAP_PrintNet("FontManager UC: failed to reserve %d bytes for a glyph\n", FontDef->Width * FontDef->Height);
+        LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to reserve %d bytes for a glyph", FontDef->Width * FontDef->Height);
 
         #ifdef DEBUG_FIREBIRDLIB
           CallTraceExit(NULL);
@@ -67,7 +67,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
       return GlyphCache;
     }
 
-  //TAP_PrintNet("Glyph %x not found\n", UTF32);
+  LogEntryFBLibPrintf(TRUE, "Glyph %x not found", UTF32);
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
