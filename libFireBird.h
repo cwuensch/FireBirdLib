@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-04-02"
+  #define __FBLIB_RELEASEDATE__ "2013-04-05"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1390,6 +1390,7 @@
   int    Appl_CheckRecording(int SvcType, int SvcNum, bool Unknown);
   int    Appl_CheckRecording_Tuner(byte TunerIndex, int SvcType, int SvcNum, bool Unknown);
   void   Appl_ClrTimer(byte *TimerHandle);
+  bool   Appl_EvtProc_PincodeKey(dword p1, dword p2);
   bool   Appl_ExportChData(char *FileName);
   void  *Appl_GetCurrentEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
   dword  Appl_GetEvtCount(byte SatIdx, word NetID, word TSID, word ServiceID);
@@ -1422,6 +1423,8 @@
   dword  ApplHdd_SelectFolder(tDirEntry *FolderStruct, const char *FolderPath);
   void   ApplHdd_SetWorkFolder(tDirEntry *FolderStruct);
   void   ApplNewVfd_Stop(void);
+  void   ApplPin_Delete(void);
+  bool   ApplPin_IsLockPopup(void);
   word   ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIdx, word TPIdx, word SvcID, word Start, word End);
   word   ApplSvc_GetTpIdx(byte SatIdx, word NetworkID, word TSID);
   int    ApplTap_GetEmptyTask(void);
@@ -1916,6 +1919,7 @@
   inline dword FIS_fwAppl_DeleteRadioSvcName(void);
   inline dword FIS_fwAppl_DeleteTvSvcName(void);
   inline dword FIS_fwAppl_EnterNormal(void);
+  inline dword FIS_fwAppl_EvtProc_PincodeKey(void);
   inline dword FIS_fwAppl_ExecProgram(void);
   inline dword FIS_fwAppl_ExportChData(void);
   inline dword FIS_fwAppl_GetCurrentEvent(void);
@@ -1960,6 +1964,8 @@
   inline dword FIS_fwApplHdd_SetWorkFolder(void);
   inline dword FIS_fwApplIcelink_EitFromHdd(void);
   inline dword FIS_fwApplOsd_DrawJpeg(void);
+  inline dword FIS_fwApplPin_Delete(void);
+  inline dword FIS_fwApplPin_IsLockPopup(void);
   inline dword FIS_fwApplSvc_GetSvcIdx(void);
   inline dword FIS_fwApplSvc_GetTpIdx(void);
   inline dword FIS_fwApplTap_CallEventHandler(void);

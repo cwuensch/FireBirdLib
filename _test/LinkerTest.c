@@ -43,6 +43,7 @@ int TAP_Main()
   Appl_CheckRecording_Tuner(0, 0, 0, FALSE);
   Appl_ClrTimer(NULL);
   Appl_ExportChData(NULL);
+  Appl_EvtProc_PincodeKey(0, 0);
   Appl_GetCurrentEvent(0, 0, 0, 0);
   Appl_GetEvtCount(0, 0, 0, 0);
   Appl_GetEvtCountInFreePool();
@@ -74,6 +75,8 @@ int TAP_Main()
   ApplHdd_SelectFolder(NULL, NULL);
   ApplHdd_SetWorkFolder(NULL);
   ApplNewVfd_Stop();
+  ApplPin_Delete();
+  ApplPin_IsLockPopup();
   ApplSvc_GetSvcIdx(0, 0, 0, 0, 0, 0);
   ApplSvc_GetTpIdx(0, 0, 0);
   ApplTap_GetEmptyTask();
@@ -180,6 +183,7 @@ int TAP_Main()
   FIS_fwAppl_DeleteRadioSvcName();
   FIS_fwAppl_DeleteTvSvcName();
   FIS_fwAppl_EnterNormal();
+  FIS_fwAppl_EvtProc_PincodeKey();
   FIS_fwAppl_ExecProgram();
   FIS_fwAppl_ExportChData();
   FIS_fwAppl_GetCurrentEvent();
@@ -224,6 +228,8 @@ int TAP_Main()
   FIS_fwApplHdd_SetWorkFolder();
   FIS_fwApplIcelink_EitFromHdd();
   FIS_fwApplOsd_DrawJpeg();
+  FIS_fwApplPin_Delete();
+  FIS_fwApplPin_IsLockPopup();
   FIS_fwApplSvc_GetSvcIdx();
   FIS_fwApplSvc_GetTpIdx();
   FIS_fwApplTap_CallEventHandler();

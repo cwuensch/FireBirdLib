@@ -803,3 +803,4 @@ License:  This library is freeware. You may use this code in your own projects f
                    will use the appropriate rule is if the key contains one of the following values: "firmware", "europe" or "manual". If the check fails, the Lib will default to firmware.
 2013-04-02  Fixed: 2 string length bugs in EPGInfo_CopyData()
             Added: StrToUTF8() support for a lot more ISO6937 diacritical characters
+2013-04-05  Added: FIS_fwApplPin_IsLockPopup(), ApplPin_IsLockPopup(), FIS_fwAppl_EvtProc_PincodeKey(), Appl_EvtProc_PincodeKey(), FIS_fwApplPin_Delete() and ApplPin_Delete()
