@@ -17,6 +17,7 @@
     word                  TSID;
     word                  ServiceID;
     byte                  SatIndex;
+    bool                  StartCurrent;
 
     bool                  DurationFilter;
     word                  MinDuration;

@@ -18,6 +18,18 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
     return NULL;
   }
 
+  //Code Points 0x00-0x1f and 0x80-0x9f do not contain glyphs
+  if((*UTF8Character <= 0x1f) || ((*UTF8Character >= 0x80) && (*UTF8Character <= 0x9f)))
+  {
+    if(BytesPerChar) *BytesPerChar = 1;
+
+    #ifdef DEBUG_FIREBIRDLIB
+      CallTraceExit(NULL);
+    #endif
+
+    return NULL;
+  }
+
   UTF32 = UTF8ToUTF32(UTF8Character, BytesPerChar);
 
   //Check if the character is already in the cache

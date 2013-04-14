@@ -1,6 +1,6 @@
 #include                "FBLib_EPG.h"
 
-void EPGInfo_FilterChannelByIndex(TYPE_ServiceType SvcType, int SvcNum)
+void EPGInfo_FilterChannelByIndex(TYPE_ServiceType SvcType, int SvcNum, bool StartCurrent)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("EPGInfo_FilterChannelByIndex");
@@ -14,6 +14,7 @@ void EPGInfo_FilterChannelByIndex(TYPE_ServiceType SvcType, int SvcNum)
   EPGFilter.NetworkID = chInfo.orgNetId;
   EPGFilter.TSID = chInfo.tsId;
   EPGFilter.ServiceID = chInfo.svcId;
+  EPGFilter.StartCurrent = StartCurrent;
 
   EPGFilter.ChannelFilter = TRUE;
 

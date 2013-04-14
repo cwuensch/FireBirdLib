@@ -3,7 +3,7 @@
 void *Appl_GetCurrentEvent(byte SatIndex, word NetID, word TSID, word ServiceID)
 {
   #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("Appl_GetEvtCount");
+    CallTraceEnter("Appl_GetCurrentEvent");
   #endif
 
   void *(*__Appl_GetCurrentEvent)(byte SatIndex, word NetID, word TSID, word ServiceID);

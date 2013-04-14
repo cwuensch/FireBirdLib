@@ -21,13 +21,24 @@ int EPGInfo_FindFirst(TYPE_EPGInfo *EPGData)
 
   dword                *x;
   byte                  PointerOffset;
+  TYPE_EvtInfo         *Evt;
 
   if(EPGFilter.ChannelFilter)
   {
-    //For whatever reason, the hashed pointer list runs into the wrong direction (from younger to older events)
-    x = Appl_GetEvtListHeadInHash(EPGFilter.NetworkID, EPGFilter.TSID, EPGFilter.ServiceID);
-    PointerOffset = 0x20;
-    EPGInfoReverseOrder = TRUE;
+    if(!EPGFilter.StartCurrent)
+    {
+      //For whatever reason, the hashed pointer list runs into the wrong direction (from younger to older events)
+      x = Appl_GetEvtListHeadInHash(EPGFilter.NetworkID, EPGFilter.TSID, EPGFilter.ServiceID);
+      PointerOffset = 0x20;
+      EPGInfoReverseOrder = TRUE;
+    }
+    else
+    {
+      Evt = Appl_GetCurrentEvent(EPGFilter.SatIndex, EPGFilter.NetworkID, EPGFilter.TSID, EPGFilter.ServiceID);
+      x = (dword*)&Evt->TreeByHash;
+      PointerOffset = 0x20;
+      EPGInfoReverseOrder = TRUE;
+    }
   }
   else
   {

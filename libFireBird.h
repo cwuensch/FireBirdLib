@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-04-05"
+  #define __FBLIB_RELEASEDATE__ "2013-04-14"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1267,7 +1267,7 @@
 
   void EPGInfo_FilterReset(void);
   void EPGInfo_FilterTime(dword StartTime, dword EndTime);
-  void EPGInfo_FilterChannelByIndex(TYPE_ServiceType SvcType, int SvcNum);
+  void EPGInfo_FilterChannelByIndex(TYPE_ServiceType SvcType, int SvcNum, bool StartCurrent);
   void EPGInfo_FilterDuration(word MinDuration, word MaxDuration);
   void EPGInfo_FilterGenre(byte *GenreArray, byte GenreArraySize);
 
