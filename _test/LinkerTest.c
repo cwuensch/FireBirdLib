@@ -142,7 +142,7 @@ int TAP_Main()
   EPGInfo_CreateCache(0);
   EPGInfo_DestroyCache();
   EPGInfo_FilterCallback(NULL);
-  EPGInfo_FilterChannelByIndex(0, 0);
+  EPGInfo_FilterChannelByIndex(0, 0, FALSE);
   EPGInfo_FilterDuration(0, 0);
   EPGInfo_FilterGenre(NULL, 0);
   EPGInfo_FilterReset();

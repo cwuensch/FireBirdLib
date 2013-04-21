@@ -804,3 +804,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-04-02  Fixed: 2 string length bugs in EPGInfo_CopyData()
             Added: StrToUTF8() support for a lot more ISO6937 diacritical characters
 2013-04-05  Added: FIS_fwApplPin_IsLockPopup(), ApplPin_IsLockPopup(), FIS_fwAppl_EvtProc_PincodeKey(), Appl_EvtProc_PincodeKey(), FIS_fwApplPin_Delete() and ApplPin_Delete()
+2013-04-14  Added: parameter StartCurrent at EPGInfo_FilterChannelByIndex()
+2013-04-21  Fixed: FMUC_LoadFontFile() dislpays an informational window if the specified font file does not exist
+            Fixed: EPGInfo_CopyData() inadvertently replaced LF with NULL characters

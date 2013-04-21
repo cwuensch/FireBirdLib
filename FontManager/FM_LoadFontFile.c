@@ -23,6 +23,13 @@ bool FM_LoadFontFile(const char *FontFileName, tFontData *FontData)
 
   if(!TAP_Hdd_Exist(FontFileName))
   {
+    char                s[120];
+    extern char         __tap_program_name__[MAX_PROGRAM_NAME];
+
+    TAP_SPrint(s, "failed to load %s", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager: %s", s);
+    ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
+
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
     #endif

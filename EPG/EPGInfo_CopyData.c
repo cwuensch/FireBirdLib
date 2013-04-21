@@ -53,7 +53,7 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
 
     for(i = 0; i < EvtInfo->ExtEventTextLength; i++)
     {
-      if(*p == '\x00') *p = '\x0a';
+      if(*p == '\x00') *p = '\x01';
       p++;
     }
     StrMkUTF8(EPGInfo->EventName, 9);
@@ -61,7 +61,7 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     p = EPGInfo->ExtEventText;
     while(*p)
     {
-      if(*p == '\x0a') *p = '\x00';
+      if(*p == '\x01') *p = '\x00';
       p++;
     }
 

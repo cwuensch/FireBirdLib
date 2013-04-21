@@ -27,7 +27,12 @@ bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
 
   if(!TAP_Hdd_Exist(FontFileName))
   {
-    LogEntryFBLibPrintf(TRUE, "FontManager UC: font file '%s' does not exist", FontFileName);
+    char                s[120];
+    extern char         __tap_program_name__[MAX_PROGRAM_NAME];
+
+    TAP_SPrint(s, "failed to load %s", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: %s", s);
+    ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
     HDD_TAP_PopDir();
 
     #ifdef DEBUG_FIREBIRDLIB
