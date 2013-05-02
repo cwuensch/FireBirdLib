@@ -807,3 +807,9 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-04-14  Added: parameter StartCurrent at EPGInfo_FilterChannelByIndex()
 2013-04-21  Fixed: FMUC_LoadFontFile() dislpays an informational window if the specified font file does not exist
             Fixed: EPGInfo_CopyData() inadvertently replaced LF with NULL characters
+2013-04-28  Added: isOnMainTuner(), FIS_fwAppl_GetSameTimeEvent() and Appl_GetSameTimeEvent()
+            Modified EPGInfo_FindCurrent(): if a channel is selected, which is currently not on the main tuner, the running status flag won't advance because
+                     the firmware doesn't download the EIT data from the background tuner. Therefore this function now checks if the selected is on the main tuner
+                     and search for the event with the correct start time if it is not the case.
+2013-05-02  Fixed: FMUC_PutStringAA() could crash the Toppy if a string needed to be cut to zero characters due to maxX constraints and the string contained UTF-8 characters
+            Added: the DSTConfig.c to the _Demo folder (thanks to DMC)

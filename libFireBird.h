@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-04-21"
+  #define __FBLIB_RELEASEDATE__ "2013-05-02"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -299,8 +299,8 @@
   word  GetOSDRegionWidth(word Region);
   bool  GetPIPPosition(int *North, int *South, int *East, int *West);
   byte  GetStreamFormat(byte Index);
-  bool  isAnyOSDVisible(dword checkX, dword checkY, dword checkW, dword checkH);
-  bool  isAnyOSDVisibleEx(dword checkX, dword checkY, dword checkW, dword checkH, byte Plane);
+  bool  isAnyOSDVisible(dword CheckX, dword CheckY, dword CheckW, dword CheckH);
+  bool  isAnyOSDVisibleEx(dword CheckX, dword CheckY, dword CheckW, dword CheckH, byte Plane);
   bool  isInfoBoxVisible(void);
   bool  isDirectSvcNumVisible(void);
   bool  isOSDRegionAlive(word Region);
@@ -342,7 +342,7 @@
   bool  MD5File(char *FileName, byte *Digest);
   dword OATH(register byte *data, int len, dword hash);
   dword SuperFastHash(register byte *data, int len, dword hash);
-  word  UncompressBlock(byte *pInput, word compCount, byte *pOutput, word bufSize);
+  word  UncompressBlock(byte *pInput, word compCount, byte *pOutput, word BufferSize);
   dword UncompressLoader(byte *pSrc, byte *pDest, void *pPercentFinishedCallback);
   dword UncompressedLoaderSize(byte *pSrc);
   dword UncompressFirmware(byte *pSrc, byte *pDest, void *pPercentFinishedCallback);
@@ -1285,6 +1285,7 @@
   dword EPGInfo_GetNrFreeEntries(void);
 
   TYPE_TapEvent *GetCurrentEvent(int *curEvent);
+  bool isOnMainTuner(int SvcType, int SvcNum);
 
 
   /*****************************************************************************************************************************/
@@ -1393,13 +1394,14 @@
   bool   Appl_EvtProc_PincodeKey(dword p1, dword p2);
   bool   Appl_ExportChData(char *FileName);
   void  *Appl_GetCurrentEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
-  dword  Appl_GetEvtCount(byte SatIdx, word NetID, word TSID, word ServiceID);
+  dword  Appl_GetEvtCount(byte SatIndex, word NetID, word TSID, word ServiceID);
   dword  Appl_GetEvtCountInFreePool(void);
   dword *Appl_GetEvtListHeadInHash(word NetID, word TSID, word ServiceID);
   dword *Appl_GetEvtListHeadInHashByChannelID(ulong64 ChannelID);
   dword *Appl_GetEvtListHeadInUsePool(void);
   bool   Appl_GetIsExternal(void);
   dword  Appl_GetFreeExtRecordSpace(char *MountPath);
+  void  *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
   bool   Appl_ImportChData(char *FileName);
   void   Appl_PvrPause(bool p1);
   void   Appl_RestartTimeShiftSvc(bool p1, dword Block);
@@ -1425,8 +1427,8 @@
   void   ApplNewVfd_Stop(void);
   void   ApplPin_Delete(void);
   bool   ApplPin_IsLockPopup(void);
-  word   ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIdx, word TPIdx, word SvcID, word Start, word End);
-  word   ApplSvc_GetTpIdx(byte SatIdx, word NetworkID, word TSID);
+  word   ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIndex, word TPIndex, word ServiceID, word Start, word NrOfServicesToSearch);
+  word   ApplSvc_GetTpIdx(byte SatIndex, word NetworkID, word TSID);
   int    ApplTap_GetEmptyTask(void);
   void   ApplTimer_OptimizeList(void);
   int    DevService_Mute(bool Mute);
@@ -1929,6 +1931,7 @@
   inline dword FIS_fwAppl_GetEvtListHeadInUsePool(void);
   inline dword FIS_fwAppl_GetFreeExtRecordSpace(void);
   inline dword FIS_fwAppl_GetIsExternal(void);
+  inline dword FIS_fwAppl_GetSameTimeEvent(void);
   inline dword FIS_fwAppl_GetStreamFormat(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_InitTempRec(void);
@@ -2099,7 +2102,7 @@
     LGAR_NRITEMS
   } tLogoAspect;
 
-  void          LogoManager_Initialize(void *Callback);
+  void          LogoManager_Initialize(void *CallbackRoutine);
   void          LogoManager_MoveExternalUpdates(void);
   char         *LogoManager_ChannelNameToLogoName(char *ChannelName);
   void          LogoManager_Cleanup(void);
@@ -2290,7 +2293,7 @@
   void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, char *NewString);
-  bool        isUTF8Char(const byte *p, byte *BytesPerCharacter);
+  bool        isUTF8Char(const byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
   void        MakeValidFileName(char *strName, eRemoveChars ControlCharacters);
@@ -2310,8 +2313,8 @@
   void        StrToISOAlloc(const byte *SourceString, byte **DestString);
   bool        StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
   void        UpperCase(char *string);
-  dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerCharacter);
-  void        UTF32ToUTF8(const dword UTF32Character, byte *UTF8Character, byte *BytesPerCharacter);
+  dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
+  void        UTF32ToUTF8(const dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
   char       *ValidFileName(char *strName, eRemoveChars ControlCharacters);
 
 
@@ -2528,7 +2531,7 @@
   bool OSDMenuIsVisible(void);
 
   //Callback function for custom menu drawings
-  void OSDMenuSetCallback(void *OSDCallbackProcedure);
+  void OSDMenuSetCallback(void *OSDCallbackRoutine);
 
   //void OSDCallbackProcedure(tOSDCB OSDCBType, word OSDRgn);
 
@@ -2694,7 +2697,7 @@
   /* TMS OSD Keyboard                                                                                                          */
   /*****************************************************************************************************************************/
 
-  void OSDMenuKeyboard_Setup(char *Titel, char *Variable, dword MaxLength);
+  void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
   void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
   bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
   void OSDMenuKeyboard_Destroy(void);

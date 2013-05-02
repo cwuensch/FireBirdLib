@@ -99,7 +99,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
           }
           p = FMUC_FindUTF8Start(p - 1);
           newstrlen--;
-        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0) && (p > newstr));
       }
       break;
     }
@@ -115,7 +115,6 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
 
         newstrlen = strlen(newstr);
         p = FMUC_FindUTF8Start(&newstr[newstrlen - 1]);
-
         do
         {
           GlyphData = FMUC_GetGlyphData(FontData, p, NULL);
@@ -124,7 +123,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, d
           *p = '\0';
           p = FMUC_FindUTF8Start(p - 1);
           newstrlen--;
-        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
+        } while((XEnd > maxX) && (width != 0) && (newstrlen > 0) && (p > newstr));
         strcat(newstr, "...");
       }
       break;

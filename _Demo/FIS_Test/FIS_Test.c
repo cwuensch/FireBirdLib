@@ -253,7 +253,6 @@ void DumpInfo(void)
   DEBUG("ApplTap_CallEventHandler           = %8.8x", FIS_fwApplTap_CallEventHandler());
   DEBUG("ApplTap_GetEmptyTask               = %8.8x", FIS_fwApplTap_GetEmptyTask());
   DEBUG("ApplTimer_OptimizeList             = %8.8x", FIS_fwApplTimer_OptimizeList());
-  DEBUG("ApplTimeToLocal                    = %8.8x", FIS_fwApplTimeToLocal());
   DEBUG("ApplVfdSendData                    = %8.8x", FIS_fwApplVfdSendData());
   DEBUG("ApplVfdStart                       = %8.8x", FIS_fwApplVfdStart());
   DEBUG("ApplVfdStop                        = %8.8x", FIS_fwApplVfdStop());

@@ -1347,7 +1347,7 @@ word CompressBlock(byte *inputbuffer, word inputsize, byte *outputbuffer)
   return compsize;
 }
 
-word UncompressBlock(byte *inputbuffer, word inputsize, byte *outputbuffer, word outputsize)
+word UncompressBlock(byte *inputbuffer, word inputsize, byte *outputbuffer, word BufferSize)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("UncompressBlock");
@@ -1379,7 +1379,7 @@ word UncompressBlock(byte *inputbuffer, word inputsize, byte *outputbuffer, word
   ar->FileOutPtr = outputbuffer;
   ar->CompSize = inputsize;
   ar->InBufferBytes = inputsize;
-  ar->OrigSize = outputsize;
+  ar->OrigSize = BufferSize;
   Decode(ar);
   failed = ar->Failed;
   free(ar);

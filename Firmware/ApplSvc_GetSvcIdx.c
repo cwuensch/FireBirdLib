@@ -1,6 +1,6 @@
 #include                "../libFireBird.h"
 
-word ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIdx, word TPIdx, word SvcID, word Start, word End)
+word ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIndex, word TPIndex, word ServiceID, word Start, word NrOfServicesToSearch)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("ApplSvc_GetSvcIdx");
@@ -10,7 +10,7 @@ word ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIdx, word TPIdx, word SvcI
   word ret = 0xffff;
 
   __ApplSvc_GetSvcIdx = (void*)FIS_fwApplSvc_GetSvcIdx();
-  if(__ApplSvc_GetSvcIdx) ret = __ApplSvc_GetSvcIdx(TYPE_ServiceType, SatIdx, TPIdx, SvcID, Start, End);
+  if(__ApplSvc_GetSvcIdx) ret = __ApplSvc_GetSvcIdx(TYPE_ServiceType, SatIndex, TPIndex, ServiceID, Start, NrOfServicesToSearch);
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

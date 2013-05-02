@@ -32,14 +32,14 @@ word                    OSDMenuKeyboard_rgn = 0;
 bool                    OSDMenuKeyboard_ReturnToNormal;
 tFontDataUC             KeyboardFont_12, KeyboardFont_14;
 
-void OSDMenuKeyboard_Setup(char *Titel, char *Variable, dword MaxLength)
+void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("OSDMenuKeyboard_Setup");
   #endif
 
-  OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Titel) + 1);
-  strcpy(OSDMenuKeyboard_Title, Titel);
+  OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Title) + 1);
+  strcpy(OSDMenuKeyboard_Title, Title);
   OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxLength + 4);
   memset(OSDMenuKeyboard_StringVar, 0, MaxLength + 4);
 

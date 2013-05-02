@@ -1,6 +1,6 @@
 #include "../libFireBird.h"
 
-void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerCharacter)
+void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("UTF32ToUTF8");
@@ -11,7 +11,7 @@ void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerCharac
   {
     if(UTF8Character) *UTF8Character = UTF32Character;
 
-    if(BytesPerCharacter) *BytesPerCharacter = 1;
+    if(BytesPerChar) *BytesPerChar = 1;
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -30,7 +30,7 @@ void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerCharac
       UTF8Character[1] = 0x80 | (UTF32Character & 0x3f);
     }
 
-    if(BytesPerCharacter) *BytesPerCharacter = 2;
+    if(BytesPerChar) *BytesPerChar = 2;
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -50,7 +50,7 @@ void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerCharac
       UTF8Character[2] = 0x80 | (UTF32Character & 0x3f);
     }
 
-    if(BytesPerCharacter) *BytesPerCharacter = 3;
+    if(BytesPerChar) *BytesPerChar = 3;
 
     #ifdef DEBUG_FIREBIRDLIB
       CallTraceExit(NULL);
@@ -68,7 +68,7 @@ void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerCharac
     UTF8Character[2] = 0x80 | (UTF32Character & 0x3f);
   }
 
-  if(BytesPerCharacter) *BytesPerCharacter = 4;
+  if(BytesPerChar) *BytesPerChar = 4;
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
