@@ -21,11 +21,7 @@ bool EPGInfo_FindCurrent(byte SvcType, int SvcNum, TYPE_EPGInfo *EPGData)
 
     //TAP_Print("Getting current event for svctype = %d, svcnum = %d.\r\n", SvcType, SvcNum);
 
-    if(isOnMainTuner(SvcType, SvcNum))
-      EvtInfo = Appl_GetCurrentEvent(chInfo.satIdx, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);
-    else
-      EvtInfo = Appl_GetSameTimeEvent(chInfo.satIdx, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);
-
+    EvtInfo = Appl_GetSameTimeEvent(chInfo.satIdx, chInfo.orgNetId, chInfo.tsId, chInfo.svcId);
     if(EvtInfo)
     {
       EventStartTime = UTC2LocalTime(EvtInfo->StartTime, &Offset);

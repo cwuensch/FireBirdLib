@@ -34,7 +34,7 @@ int EPGInfo_FindFirst(TYPE_EPGInfo *EPGData)
     }
     else
     {
-      Evt = Appl_GetCurrentEvent(EPGFilter.SatIndex, EPGFilter.NetworkID, EPGFilter.TSID, EPGFilter.ServiceID);
+      Evt = Appl_GetSameTimeEvent(EPGFilter.SatIndex, EPGFilter.NetworkID, EPGFilter.TSID, EPGFilter.ServiceID);
       x = (dword*)&Evt->TreeByHash;
       PointerOffset = 0x20;
       EPGInfoReverseOrder = TRUE;
