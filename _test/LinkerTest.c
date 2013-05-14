@@ -493,6 +493,15 @@ int TAP_Main()
   HDD_UnrecycleSF(NULL);
   HDD_Write(NULL, 0, NULL);
   HookFirmware(NULL, NULL, NULL);
+  infData_CloseFile();
+  infData_Delete(NULL, NULL);
+  infData_Get(NULL, NULL, NULL, NULL);
+  infData_GetNameByIndex(NULL, 0, NULL);
+  infData_isAvail(NULL, NULL, NULL);
+  infData_LocateSig(NULL, NULL);
+  infData_OpenFile(NULL);
+  infData_Set(NULL, NULL, 0, NULL);
+  infData_Truncate(NULL, 0);
   INICloseFile();
   INIFindStartEnd(NULL, NULL, NULL, 0);
   INIGetARGB(NULL, NULL, NULL, NULL, NULL, 0);

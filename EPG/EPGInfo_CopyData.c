@@ -41,7 +41,7 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     memset(EPGInfo->ShortEventText, 0, sizeof(EPGInfo->ShortEventText));
     strcpyUC(EPGInfo->ShortEventText, &EvtInfo->ShortEventText[EvtInfo->NameLength]);
     StrMkUTF8(EPGInfo->ShortEventText, 9);
-    EPGInfo->ShortEventTextLenght = strlen(EPGInfo->ShortEventText);
+    EPGInfo->ShortEventTextLength = strlen(EPGInfo->ShortEventText);
 
     //Long event text
     //As an ext description may contain multiple NULL characters, replace them with 0x0a, convert to UTF-8 and then replace back to 0x00

@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-05-04"
+  #define __FBLIB_RELEASEDATE__ "2013-05-14"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1195,8 +1195,9 @@
   void   CallTraceExportStats(char *FileName);
   void   CallTraceResetStats(void);
 
-  bool CrashCheck_Startup(char *TAPName);
-  void CrashCheck_Shutdown(char *TAPName);
+  bool   CrashCheck_Startup(char *TAPName);
+  void   CrashCheck_Shutdown(char *TAPName);
+  bool   CrashCheck_isOK(char *TAPName);
 
   void *TAP_MemAlloc_Chk(char *Comment, dword size);
   int   TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);
@@ -1248,7 +1249,7 @@
 
     byte                ParentalRate;
     byte                NameLength;
-    byte                ShortEventTextLenght;
+    byte                ShortEventTextLength;
     word                ExtEventTextLength;
 
     char                EventName[256];
@@ -2256,6 +2257,13 @@
   bool   HDD_RecSlotEncode(byte Slot, tFlashTimer *RecSlot);    //The buffer needs to be at least 8kB in size
   bool   HDD_RECSlotSetDuration(byte Slot, word Duration);
   word   HDD_SetExtRecording(bool ExtDisk);
+
+  bool   infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize);
+  bool   infData_Get(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
+  bool   infData_GetNameByIndex(char *infFileName, dword NameIndex, char *NameTag);
+  bool   infData_Set(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
+  bool   infData_Delete(char *infFileName, char *NameTag);
+
 
   /*****************************************************************************************************************************/
   /* Shutdown                                                                                                                  */
