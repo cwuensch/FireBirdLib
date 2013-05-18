@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-05-14"
+  #define __FBLIB_RELEASEDATE__ "2013-05-18"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -2258,11 +2258,19 @@
   bool   HDD_RECSlotSetDuration(byte Slot, word Duration);
   word   HDD_SetExtRecording(bool ExtDisk);
 
+  //These functions use the current directory
   bool   infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize);
   bool   infData_Get(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
   bool   infData_GetNameByIndex(char *infFileName, dword NameIndex, char *NameTag);
   bool   infData_Set(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
   bool   infData_Delete(char *infFileName, char *NameTag);
+
+  //And these accept an absolute path to any device/directory
+  bool   infData_isAvailAbs(char *infFileName, char *NameTag, dword *PayloadSize);
+  bool   infData_GetAbs(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
+  bool   infData_GetNameByIndexAbs(char *infFileName, dword NameIndex, char *NameTag);
+  bool   infData_SetAbs(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
+  bool   infData_DeleteAbs(char *infFileName, char *NameTag);
 
 
   /*****************************************************************************************************************************/

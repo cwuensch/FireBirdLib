@@ -9,12 +9,7 @@ bool infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize)
     CallTraceEnter("infData_isAvail");
   #endif
 
-  ret = FALSE;
-
-  if(infData_OpenFile(infFileName))
-    ret = infData_LocateSig(NameTag, PayloadSize);
-
-  infData_CloseFile();
+  ret = infData_isAvailAbs(infData_LocToAbs(infFileName), NameTag, PayloadSize);
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

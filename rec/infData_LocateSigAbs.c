@@ -1,8 +1,11 @@
+#include <stdio.h>
 #include <string.h>
 #include <tap.h>
 #include "FBLib_rec.h"
 
-bool infData_LocateSig(char *NameTag, dword *PayloadSize)
+extern FILE            *infDatainfFileAbs;
+
+bool infData_LocateSigAbs(char *NameTag, dword *PayloadSize)
 {
   bool                  ret;
   tTFRPlusHdr           TFRPlusHdr;
@@ -17,33 +20,33 @@ bool infData_LocateSig(char *NameTag, dword *PayloadSize)
   //  byte Payload[PayloadSize]
 
   #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_LocateSig");
+    CallTraceEnter("infData_LocateSigAbs");
   #endif
 
   ret = FALSE;
   if(PayloadSize) *PayloadSize = 0;
 
-  if(NameTag && *NameTag && infDatainfFile && (TAP_Hdd_Flen(infDatainfFile) > INFDATASTART))
+  if(NameTag && *NameTag && infDatainfFileAbs && (infData_FlenAbs() > INFDATASTART))
   {
-    TAP_Hdd_Fseek(infDatainfFile, INFDATASTART, SEEK_SET);
+    fseek(infDatainfFileAbs, INFDATASTART, SEEK_SET);
 
-    while((CurrentPos = TAP_Hdd_Ftell(infDatainfFile)) < TAP_Hdd_Flen(infDatainfFile))
+    while((CurrentPos = ftell(infDatainfFileAbs)) < infData_FlenAbs())
     {
-      TAP_Hdd_Fread(&TFRPlusHdr, sizeof(tTFRPlusHdr), 1, infDatainfFile);
+      fread(&TFRPlusHdr, sizeof(tTFRPlusHdr), 1, infDatainfFileAbs);
 
       //Stop parsing if the magic is invalid
       if(memcmp(TFRPlusHdr.Magic, INFDATMAGIC, 4) != 0) break;
 
-      TAP_Hdd_Fread(NameTagHdr, TFRPlusHdr.NameTagLen, 1, infDatainfFile);
+      fread(NameTagHdr, TFRPlusHdr.NameTagLen, 1, infDatainfFileAbs);
 
       if(strcmp(NameTag, NameTagHdr) == 0)
       {
         ret = TRUE;
         if(PayloadSize) *PayloadSize = TFRPlusHdr.PayloadSize;
-        TAP_Hdd_Fseek(infDatainfFile, CurrentPos, SEEK_SET);
+        fseek(infDatainfFileAbs, CurrentPos, SEEK_SET);
         break;
       }
-      TAP_Hdd_Fseek(infDatainfFile, TFRPlusHdr.PayloadSize, SEEK_CUR);
+      fseek(infDatainfFileAbs, TFRPlusHdr.PayloadSize, SEEK_CUR);
     }
   }
 

@@ -24,8 +24,6 @@ typedef struct
   dword                 PayloadSize;
 } tTFRPlusHdr;
 
-extern TYPE_File       *infDatainfFile;
-
 extern bool             LibInitialized;
 
 word getWord(void *buffer, bool NeedsByteSwapping);
@@ -51,9 +49,11 @@ void HDD_EncodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
 void HDD_EncodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
 void HDD_EncodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo);
 
-bool infData_OpenFile(char *infFileName);
-bool infData_LocateSig(char *NameTag, dword *PayloadSize);
-void infData_Truncate(char *infFileName, dword Position);
-void infData_CloseFile(void);
+bool   infData_OpenFileAbs(char *infFileName);
+dword  infData_FlenAbs(void);
+bool   infData_LocateSigAbs(char *NameTag, dword *PayloadSize);
+void   infData_TruncateAbs(char *infFileName, dword Position);
+void   infData_CloseFileAbs(void);
+char  *infData_LocToAbs(char *LocalInfName);
 
 #endif

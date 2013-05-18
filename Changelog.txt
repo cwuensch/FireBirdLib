@@ -818,3 +818,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-05-09: Fixed: a typo TYPE_EPGInfo.ShortEventTextLenght -> TYPE_EPGInfo.ShortEventTextLength
 2013-05-11: Added: CrashCheck_isOK()
 2013-05-14: Added: the infData functions infData_isAvail(), infData_Get(), infData_GetNameByIndex(), infData_Set() and infData_Delete()
+2013-05-18: Added: infData_isAvailAbs(), infData_GetAbs(), infData_GetNameByIndexAbs(), infData_SetAbs() and infData_DeleteAbs(), which accept
+                   an absolute path to the target inf. (thanks to DMC)
+                   

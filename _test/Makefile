@@ -1,6 +1,4 @@
 APP1 = LinkerTest
-APP2 = LibTest
-APP3 = LibTest2
 BASE = $(shell cd /tapapi/TMS; pwd)
 CUR_DIR = $(shell pwd)
 
@@ -26,7 +24,7 @@ TAP_INCLUDE_DIRS = $(addprefix -I, $(INCLUDE_DIRS))
 TAP_FLAGS += $(TAP_INCLUDE_DIRS)
 TAP_LIBS = ${BASE}/tapinit.o ${BASE}/libtap.so -lFireBird -ldl -lc
 
-all: $(BIN_DIR) $(APP1).tap $(APP2).tap $(APP3).tap clean
+all: $(BIN_DIR) $(APP1).tap clean
 
 $(BIN_DIR):
 	@echo "[Making directory... $@]"
@@ -42,28 +40,6 @@ $(APP1).tap: $(APP1).o
 $(APP1).o: $(APP1).c ${BASE}/include/libFireBird.h
 	@echo "[Compiling... $@]"
 	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
-
-$(APP2).tap: $(APP2).o
-	@echo "[Linking... $@]"
-	@$(LD) -shared --no-undefined --allow-shlib-undefined  -o $(BIN_DIR)/$@ $< $(TAP_LIBS)
-	@$(JB) $(BIN_DIR)/$@
-	@-${RM} $(subst .tap,_TMS.tap,$@)
-	@$(MV) $(BIN_DIR)/$@ $(subst .tap,_TMS.tap,$@)
-
-$(APP2).o: $(APP2).c ${BASE}/include/libFireBird.h
-	@echo "[Compiling... $@]"
-	@$(CC) $(CFLAGS) -std=c99 $(TAP_FLAGS) -c $< -o $@
-
-$(APP3).tap: $(APP3).o
-	@echo "[Linking... $@]"
-	@$(LD) -shared --no-undefined --allow-shlib-undefined  -o $(BIN_DIR)/$@ $< $(TAP_LIBS)
-	@$(JB) $(BIN_DIR)/$@
-	@-${RM} $(subst .tap,_TMS.tap,$@)
-	@$(MV) $(BIN_DIR)/$@ $(subst .tap,_TMS.tap,$@)
-
-$(APP3).o: $(APP3).c ${BASE}/include/libFireBird.h
-	@echo "[Compiling... $@]"
-	@$(CC) $(CFLAGS) -std=c99 $(TAP_FLAGS) -c $< -o $@
 
 clean:
 	@echo "[Cleaning up...]"
