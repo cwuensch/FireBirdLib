@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-05-18"
+  #define __FBLIB_RELEASEDATE__ "2013-06-17"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1409,6 +1409,7 @@
   void   Appl_SetIsExternal(bool External);
   void   Appl_SetPlaybackSpeed(byte Mode, int Speed, bool p3);
   void   Appl_ShoutCast(void);
+  byte   Appl_StartPlayback(const char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   byte   Appl_StartPlaybackMedia(const char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   dword  Appl_StopPlaying(void);
   void   Appl_StopRecPlaying(bool p1);
@@ -1947,6 +1948,7 @@
   inline dword FIS_fwAppl_SetProviderName(void);
   inline dword FIS_fwAppl_SetTimeShift(void);
   inline dword FIS_fwAppl_ShoutCast(void);
+  inline dword FIS_fwAppl_StartPlayback(void);
   inline dword FIS_fwAppl_StartPlaybackMedia(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);

@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "../EPG/FBLib_EPG.h"
 
 void *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID)
 {
@@ -6,15 +6,42 @@ void *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID
     CallTraceEnter("Appl_GetSameTimeEvent");
   #endif
 
-  void *(*__Appl_GetSameTimeEvent)(byte SatIndex, word NetID, word TSID, word ServiceID);
-  void *ret = NULL;
+  dword                   CurrentGMT;
+  dword                  *TreeByHashStart, *TreeByHashCurrent;
+  TYPE_EvtInfo           *EventInfoCurrent;
 
-  __Appl_GetSameTimeEvent = (void*)FIS_fwAppl_GetSameTimeEvent();
-  if(__Appl_GetSameTimeEvent) ret = __Appl_GetSameTimeEvent(SatIndex, NetID, TSID, ServiceID);
+  TreeByHashStart = Appl_GetEvtListHeadInHash(NetID, TSID, ServiceID);
+  CurrentGMT = LocalTime2UTC(Now(NULL), NULL);
+  TreeByHashCurrent = (dword*)*TreeByHashStart;
+
+  if(TreeByHashCurrent != TreeByHashStart)
+  {
+    do
+    {
+      EventInfoCurrent = (TYPE_EvtInfo*)(TreeByHashCurrent - 8); //8 dwords == 0x20 bytes
+
+      if((EventInfoCurrent->ServiceID == ServiceID) &&
+         (EventInfoCurrent->TSID == TSID) &&
+         (EventInfoCurrent->NetworkID == NetID) &&
+         (EventInfoCurrent->SatIndex == SatIndex) &&
+         ((EventInfoCurrent->DataStatus & 3) != 0) &&
+         (EventInfoCurrent->StartTime <= CurrentGMT) &&
+         (EventInfoCurrent->EndTime > CurrentGMT))
+         {
+           //Success
+           #ifdef DEBUG_FIREBIRDLIB
+             CallTraceExit(NULL);
+           #endif
+
+           return EventInfoCurrent;
+         }
+      TreeByHashCurrent = (dword*)*TreeByHashCurrent;
+    }while(TreeByHashCurrent != TreeByHashStart);
+  }
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);
   #endif
 
-  return ret;
+  return NULL;
 }

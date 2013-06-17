@@ -815,9 +815,12 @@ License:  This library is freeware. You may use this code in your own projects f
             Added: the DSTConfig.c to the _Demo folder (thanks to DMC)
 2013-05-04  Fixed: As the EPG's running status flag has proved to be unreliable, EPGInfo_FindCurrent() and EPGInfo_FindFirst() won't use that flag
                    anymore and are now checking for start and end time only.
-2013-05-09: Fixed: a typo TYPE_EPGInfo.ShortEventTextLenght -> TYPE_EPGInfo.ShortEventTextLength
-2013-05-11: Added: CrashCheck_isOK()
-2013-05-14: Added: the infData functions infData_isAvail(), infData_Get(), infData_GetNameByIndex(), infData_Set() and infData_Delete()
-2013-05-18: Added: infData_isAvailAbs(), infData_GetAbs(), infData_GetNameByIndexAbs(), infData_SetAbs() and infData_DeleteAbs(), which accept
+2013-05-09  Fixed: a typo TYPE_EPGInfo.ShortEventTextLenght -> TYPE_EPGInfo.ShortEventTextLength
+2013-05-11  Added: CrashCheck_isOK()
+2013-05-14  Added: the infData functions infData_isAvail(), infData_Get(), infData_GetNameByIndex(), infData_Set() and infData_Delete()
+2013-05-18  Added: infData_isAvailAbs(), infData_GetAbs(), infData_GetNameByIndexAbs(), infData_SetAbs() and infData_DeleteAbs(), which accept
                    an absolute path to the target inf. (thanks to DMC)
-                   
+2013-05-24  Added: FIS_fwAppl_StartPlayback() and Appl_StartPlayback()
+2013-06-17  Fixed: The firmware's version of Appl_GetSameTimeEvent() has a flaw. If the firmware can't receive any TDT time stamps (e.g. due to a currently running playback), it doesn't
+                   update the internal GMT clock and therefore the current event doesn't update. This lib's Appl_GetSameTimeEvent() version is a clone of the firmware's Appl_GetSameTimeEvent(),
+                   except that it uses a GMT time derived from the user clock.
