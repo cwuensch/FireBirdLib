@@ -9,7 +9,7 @@ void ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, b
   #endif
 
   dword                 extra_x, h_y, w = 0, h = 0, w1, i, j, extra, rahmen, y;
-  const dword           extra_y = 10;
+  dword                 extra_y = 10;
   word                  fbl_memrgn;
 
   if(content[0] == NULL && content[1] == NULL) content[0] = "";

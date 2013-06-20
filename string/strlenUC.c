@@ -1,13 +1,13 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-int strlenUC(const byte *s)
+int strlenUC(byte *s)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("strlenUC");
   #endif
 
-  const byte           *p, *pEnd;
+  byte                 *p, *pEnd;
   int                   Count;
   byte                  BPC;
 

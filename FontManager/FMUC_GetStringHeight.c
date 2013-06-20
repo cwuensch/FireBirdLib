@@ -1,14 +1,14 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData)
+dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("FMUC_GetStringHeight");
   #endif
 
   tGlyphCacheUC        *GlyphData;
-  const byte           *p, *pEnd;
+  byte                 *p, *pEnd;
   byte                  BytesPerChar;
   dword                 Height = 0;
 

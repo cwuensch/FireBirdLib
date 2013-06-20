@@ -6,7 +6,7 @@ byte *SkipCharTableBytes(byte *p)
     CallTraceEnter("SkipCharTableBytes");
   #endif
 
-  const byte           *ret;
+  byte                 *ret;
 
   if((p == NULL) || (*p == '\0'))
   {

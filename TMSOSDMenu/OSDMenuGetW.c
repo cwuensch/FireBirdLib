@@ -1,6 +1,6 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-int OSDMenuGetW(const char * str, byte fntSize)
+int OSDMenuGetW(char * str, byte fntSize)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("OSDMenuGetW");

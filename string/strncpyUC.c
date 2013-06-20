@@ -1,14 +1,14 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-byte *strncpyUC(byte *dest, const byte *src, size_t n)
+byte *strncpyUC(byte *dest, byte *src, size_t n)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("strncpyUC");
   #endif
 
-  const byte           *p;
-  int                   CharTableBytes;
+  byte                 *p;
+  size_t                CharTableBytes;
 
   if(!src || !dest)
   {

@@ -1,12 +1,12 @@
 #include                "../libFireBird.h"
 
-dword ApplHdd_GetInfoFromExternalDevice(dword *TotalSpaceMB, dword *FreeSpaceMB, const char *MountPath)
+dword ApplHdd_GetInfoFromExternalDevice(dword *TotalSpaceMB, dword *FreeSpaceMB, char *MountPath)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("ApplHdd_GetInfoFromExternalDevice");
   #endif
 
-  dword                 (*__ApplHdd_GetInfoFromExternalDevice)(dword *, dword *, const char *);
+  dword                 (*__ApplHdd_GetInfoFromExternalDevice)(dword *, dword *, char *);
   dword                 ret = 0;
 
   __ApplHdd_GetInfoFromExternalDevice = (void*)FIS_fwApplHdd_GetInfoFromExternalDevice();

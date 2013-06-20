@@ -1,6 +1,6 @@
 #include                "../libFireBird.h"
 
-byte Appl_StartPlayback(const char *FileName, unsigned int p2, bool p3, bool ScaleInPip)
+byte Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("Appl_StartPlayback");

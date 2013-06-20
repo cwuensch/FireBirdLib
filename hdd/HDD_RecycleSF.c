@@ -1,6 +1,6 @@
-#include                <stdio.h>
 #include                <string.h>
 #include                "../libFireBird.h"
+#include                "FBLib_hdd.h"
 
 void HDD_RecycleSF(char *FileName)
 {
@@ -9,9 +9,8 @@ void HDD_RecycleSF(char *FileName)
   #endif
 
   tFileInUse            FileInUse;
-  char                  CurrentPath[512];
-  char                  AttribFileName[TS_FILE_NAME_SIZE];
-  dword                 CurrentTime;
+  char                  CurrentPath[512], AbsPath[512];
+  tinfBlock             infBlock;
 
   if(FileName && TAP_Hdd_Exist(FileName))
   {
@@ -42,15 +41,16 @@ void HDD_RecycleSF(char *FileName)
 
     HDD_TAP_GetCurrentDir(CurrentPath);
 
-    strcpy(AttribFileName, FileName);
-    if(HDD_isRecFileName(AttribFileName)) strcat(AttribFileName, ".inf");
+    //--------new--------------
+    TAP_SPrint(AbsPath, "%s%s/%s", TAPFSROOT, CurrentPath, FileName);
 
-    ExtAttribSet(AttribFileName, "SF_Rec_OrgPath", CurrentPath, sizeof(CurrentPath));
+    //Löschzeit in den infBlock eintragen
+    HDD_InfBlockGet(AbsPath, &infBlock);
+    TAP_SPrint(infBlock.RecoverPath, "%s%s", TAPFSROOT, CurrentPath);
+    infBlock.RecycleDate = Now(NULL);
+    HDD_InfBlockSet(AbsPath, &infBlock);
 
-    CurrentTime = Now(NULL);
-    ExtAttribSet(AttribFileName, "SF_Rec_DelTime", (byte*)&CurrentTime, sizeof(dword));
-
-    HDD_Move(FileName, CurrentPath, "/DataFiles/RecycleBin-/");
+    HDD_Move(FileName, CurrentPath, RECYCLEPATH);
   }
 
   #ifdef DEBUG_FIREBIRDLIB

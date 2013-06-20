@@ -1,6 +1,6 @@
 #include                "../libFireBird.h"
 
-bool isUTF8Char(const byte *p, byte *BytesPerChar)
+bool isUTF8Char(byte *p, byte *BytesPerChar)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("isUTF8Char");

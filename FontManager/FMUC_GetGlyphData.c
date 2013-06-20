@@ -1,6 +1,6 @@
 #include "FBLib_FontManager.h"
 
-tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Character, byte *BytesPerChar)
+tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byte *BytesPerChar)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("FMUC_GetGlyphData");

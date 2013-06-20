@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-void StrToISOAlloc(const byte *SourceString, byte **DestString)
+void StrToISOAlloc(byte *SourceString, byte **DestString)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("StrToISOAlloc");

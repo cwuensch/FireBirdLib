@@ -5,7 +5,7 @@
 #include "FBLib_string.h"
 
 // case-insensitive version of strstr()
-char *stricstr(const char *s1, const char *s2)
+char *stricstr(char *s1, char *s2)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("stricstr");

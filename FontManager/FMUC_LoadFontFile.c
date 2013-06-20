@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-bool FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData)
+bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("FMUC_LoadFontFile");

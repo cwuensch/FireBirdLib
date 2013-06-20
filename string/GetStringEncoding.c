@@ -1,13 +1,13 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-void GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars)
+void GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("GetStringEncoding");
   #endif
 
-  const byte     *p, *pEnd;
+  byte           *p, *pEnd;
   byte            BytesPerChar;
   bool            AC, UC;
 

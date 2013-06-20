@@ -10,6 +10,6 @@ extern char             UTF8Upper[64];
 extern char             UTF8Lower[64];
 
 bool isLegalChar(byte*, eRemoveChars);
-char *stricstr(const char *, const char *);
+char *stricstr(char *, char *);
 
 #endif

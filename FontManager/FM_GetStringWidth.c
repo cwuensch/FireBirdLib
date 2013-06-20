@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-dword FM_GetStringWidth(const char *Text, tFontData *FontData)
+dword FM_GetStringWidth(char *Text, tFontData *FontData)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("FM_GetStringWidth");

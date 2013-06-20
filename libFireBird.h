@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-06-17"
+  #define __FBLIB_RELEASEDATE__ "2013-06-20"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -1179,10 +1179,10 @@
   void   DumpMemoryDword(dword *p, dword size);
   dword *FindGotPointer(dword FunctionAddress);
   void   LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text);
-  void   LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, const char *format, ...);
+  void   LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *format, ...);
   void   LogEntryGeneric(char *ProgramName, bool Console, char *Text);
-  void   LogEntryGenericPrintf(char *ProgramName, bool Console, const char *format, ...);
-  void   LogEntryFBLibPrintf(bool Console, const char *format, ...);
+  void   LogEntryGenericPrintf(char *ProgramName, bool Console, char *format, ...);
+  void   LogEntryFBLibPrintf(bool Console, char *format, ...);
   bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
   bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
 
@@ -1409,8 +1409,8 @@
   void   Appl_SetIsExternal(bool External);
   void   Appl_SetPlaybackSpeed(byte Mode, int Speed, bool p3);
   void   Appl_ShoutCast(void);
-  byte   Appl_StartPlayback(const char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
-  byte   Appl_StartPlaybackMedia(const char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  byte   Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  byte   Appl_StartPlaybackMedia(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   dword  Appl_StopPlaying(void);
   void   Appl_StopRecPlaying(bool p1);
   dword  Appl_TimeToLocal(dword UTCTime);
@@ -1418,13 +1418,13 @@
   void   Appl_WriteRecInfo(dword Slot);
   byte   ApplChannel_GetAgc(byte TunerIndex, byte *AGC);
   byte   ApplChannel_GetBer(byte TunerIndex, byte *BER);
-  dword  ApplHdd_FileCutPaste(char const* SourceFileName, unsigned int StartBlock, unsigned int NrBlocks, char const* CutFileName);
+  dword  ApplHdd_FileCutPaste(char *SourceFileName, unsigned int StartBlock, unsigned int NrBlocks, char *CutFileName);
   dword  ApplHdd_FreeSize(char *MountPath, bool a1);
   word   ApplHdd_GetFileInfo(word p1, int *TotalBlocks, int *CurrentBlock, byte p4, byte p5);
-  dword  ApplHdd_GetInfoFromExternalDevice(dword *TotalSpaceMB, dword *FreeSpaceMB, const char *MountPath);
+  dword  ApplHdd_GetInfoFromExternalDevice(dword *TotalSpaceMB, dword *FreeSpaceMB, char *MountPath);
   void   ApplHdd_RestoreWorkFolder(void);
   void   ApplHdd_SaveWorkFolder(void);
-  dword  ApplHdd_SelectFolder(tDirEntry *FolderStruct, const char *FolderPath);
+  dword  ApplHdd_SelectFolder(tDirEntry *FolderStruct, char *FolderPath);
   void   ApplHdd_SetWorkFolder(tDirEntry *FolderStruct);
   void   ApplNewVfd_Stop(void);
   void   ApplPin_Delete(void);
@@ -1557,20 +1557,18 @@
 
   typedef struct
   {
-    short               UTCOffset;
-    word                SleepTimer;
+      short               UTCOffset;
+      word                SleepTimer;
 
-    byte                unknown1:3;
-    byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-    byte                Mode:1;                 //0=Auto, 1=Manual
-    byte                unknown2:1;
+      byte                unknown1:3;
+      byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+      byte                Mode:1;                 //0=Auto, 1=Manual
+      byte                unknown2:1;
 
-    byte                unknown3;
+      byte                unknown3;
 
-    byte                DST:2;                  //0=off, 3=on
-    byte                unknown4:6;
-
-    char                unknown5;
+      word                DST:2;                  //0=off, 3=on
+      word                unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
@@ -1730,11 +1728,11 @@
     tFontDef              FontDef[191];
   } tFontData;
 
-  dword FM_GetStringWidth(const char *Text, tFontData *FontData);
-  dword FM_GetStringHeight(const char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
-  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
-  bool  FM_LoadFontFile(const char *FontFileName, tFontData *FontData);
+  dword FM_GetStringWidth(char *Text, tFontData *FontData);
+  dword FM_GetStringHeight(char *Text, tFontData *FontData);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
+  bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
   //Unicode (UTF-8 encoded) version
@@ -1764,11 +1762,11 @@
   } tFontDataUC;
 
   void  FM_MakeFontDir(void);
-  bool  FMUC_LoadFontFile(const char *FontFileName, tFontDataUC *FontData);
-  dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
-  dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData);
-  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
-  void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
+  bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
+  dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData);
+  dword FMUC_GetStringWidth(char *Text, tFontDataUC *FontData);
+  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
+  void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
 
 
@@ -2308,10 +2306,10 @@
   void        DeleteAt(char *SourceString, int Pos, int Len);
   void        ExtractLine(char *Text, char *Line);
   size_t      GetLine(char *data, bool strip);
-  void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
+  void        GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, char *NewString);
-  bool        isUTF8Char(const byte *p, byte *BytesPerChar);
+  bool        isUTF8Char(byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
   void        MakeValidFileName(char *strName, eRemoveChars ControlCharacters);
@@ -2320,19 +2318,19 @@
   char       *RTrim(char *s);
   void        SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt);
   byte       *SkipCharTableBytes(byte *p);
-  byte       *strcpyUC(byte *dest, const byte *src);
+  byte       *strcpyUC(byte *dest, byte *src);
   bool        StringEndsWith(char *text, char *postfix);
-  int         strlenUC(const byte *s);
+  int         strlenUC(byte *s);
   bool        StrMkISO(byte *SourceString);
   bool        StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet);
-  byte       *strncpyUC(byte *dest, const byte *src, size_t n);
+  byte       *strncpyUC(byte *dest, byte *src, size_t n);
   bool        StrReplace(char *String, char *Find, char *Replace);
-  void        StrToISO(const byte *SourceString, byte *DestString);
-  void        StrToISOAlloc(const byte *SourceString, byte **DestString);
-  bool        StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
+  void        StrToISO(byte *SourceString, byte *DestString);
+  void        StrToISOAlloc(byte *SourceString, byte **DestString);
+  bool        StrToUTF8(byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
   void        UpperCase(char *string);
-  dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
-  void        UTF32ToUTF8(const dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
+  dword       UTF8ToUTF32(byte *UTF8Character, byte *BytesPerChar);
+  void        UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
   char       *ValidFileName(char *strName, eRemoveChars ControlCharacters);
 
 

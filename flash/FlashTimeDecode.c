@@ -132,7 +132,6 @@ bool FlashTimeDecode_ST_TMSS(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
   TimeInfo->unknown3      = Data->unknown3;
   TimeInfo->DST           = Data->DST;
   TimeInfo->unknown4      = Data->unknown4;
-  TimeInfo->unknown5      = Data->unknown5;
 
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceExit(NULL);

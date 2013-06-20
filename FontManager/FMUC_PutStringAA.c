@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor)
+void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("FMUC_PutStringAA");

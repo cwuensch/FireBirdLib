@@ -37,6 +37,9 @@ void HDD_Delete(char *FileName)
       case FIU_RecSlot4: TAP_Hdd_StopRecord(3); break;
     }
 
+    if(StringEndsWith(FileName, ".inf")) Name[strlen(Name) - 4] = '\0';
+    if(StringEndsWith(FileName, ".nav")) Name[strlen(Name) - 4] = '\0';
+
     TAP_Hdd_Rename(FileName, "FBLibDelete.tmp");
     TAP_Hdd_Delete("FBLibDelete.tmp");
 

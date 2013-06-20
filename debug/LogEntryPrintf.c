@@ -5,7 +5,7 @@
 
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);   //define missing prototype
 
-void LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, const char *format, ...)
+void LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *format, ...)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("LogEntryPrintf");

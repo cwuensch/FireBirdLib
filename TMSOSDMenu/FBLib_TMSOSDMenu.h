@@ -208,11 +208,11 @@ extern int              WaitSpinnerIndex;
 extern dword            WaitSpinnerTimeout;
 
 
-int  OSDMenuGetW(const char * str, byte fntSize);
+int  OSDMenuGetW(char * str, byte fntSize);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
 int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
+void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDDrawBackground(void);
 void OSDMenuDrawCursor(dword x, dword y, dword w);
 void OSDDrawTitle(void);
