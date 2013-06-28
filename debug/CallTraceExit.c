@@ -20,7 +20,7 @@ void CallTraceExit(dword *Magic)
   {
     CallLevel--;
 
-    if(CallTraceEnabled && CallTraceStats && CallLevel < CTSTACKSIZE)
+    if(CallTraceStats && CallLevel < CTSTACKSIZE)
     {
       //Check if the proc name is already known by the stats array
       j = -1;

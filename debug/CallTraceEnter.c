@@ -13,12 +13,16 @@ void CallTraceEnter(char *ProcName)
 
   if(CallLevel >= CTSTACKSIZE) LogEntryFBLibPrintf(TRUE, "CallLevel Overflow! (TAPID 0x%8.8x)", __tap_ud__);
 
-  if(CallTraceEnabled && ProcName)
+  if(ProcName)
   {
-    StrToISOAlloc(ProcName, &ISOText);
-    memset(Spaces, ' ', CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100);
-    Spaces[CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100] = '\0';
-    TAP_PrintNet("%s%s\n", Spaces, ISOText);
+    if(CallTraceEnabled)
+    {
+      StrToISOAlloc(ProcName, &ISOText);
+      memset(Spaces, ' ', CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100);
+      Spaces[CallLevel < CTSTACKSIZE ? CallLevel << 1 : 100] = '\0';
+      TAP_PrintNet("%s%s\n", Spaces, ISOText);
+      TAP_MemFree(ISOText);
+    }
 
     //Add the current routine to the stack
     if(CallLevel < CTSTACKSIZE)
@@ -26,8 +30,6 @@ void CallTraceEnter(char *ProcName)
       CallTraceStack[CallLevel].ProcName = ProcName;
       CallTraceStack[CallLevel].EntryTime = TAP_GetTick();
     }
-
-    TAP_MemFree(ISOText);
   }
 
   CallLevel++;

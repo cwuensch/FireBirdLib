@@ -118,9 +118,12 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
         do
         {
           GlyphData = FMUC_GetGlyphData(FontData, p, NULL);
-          width = GlyphData->Width;
-          XEnd -= width;
-          *p = '\0';
+          if(GlyphData)
+          {
+            width = GlyphData->Width;
+            XEnd -= width;
+            *p = '\0';
+          }
           p = FMUC_FindUTF8Start(p - 1);
           newstrlen--;
         } while((XEnd > maxX) && (width != 0) && (newstrlen > 0) && (p > newstr));
@@ -142,8 +145,11 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
         do
         {
           GlyphData = FMUC_GetGlyphData(FontData, p, NULL);
-          width = GlyphData->Width;
-          XEnd -= width;
+          if(GlyphData)
+          {
+            width = GlyphData->Width;
+            XEnd -= width;
+          }
           p = FMUC_FindNextUTF8(p);
           newstrlen--;
         } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));

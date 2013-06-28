@@ -444,6 +444,8 @@ int TAP_Main()
   HDD_GetPvrRecTsInfoPointer(0);
   HDD_GetRecSlotFiles(0, NULL, NULL, NULL);
   HDD_IdentifyDevice(NULL);
+  HDD_InfBlockGet(NULL, NULL);
+  HDD_InfBlockSet(NULL, NULL);
   HDD_isAnyRecording();
   HDD_isCryptedStream(NULL, 0);
   HDD_isExtRecording();

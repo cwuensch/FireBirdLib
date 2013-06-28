@@ -43,16 +43,6 @@ bool isLegalChar(byte *c, eRemoveChars ControlCharacters)
 
         return FALSE;
       }
-
-      //Control codes used by some channels
-      if((s == 0x86) || (s == 0x87))
-      {
-        #ifdef DEBUG_FIREBIRDLIB
-          CallTraceExit(NULL);
-        #endif
-
-        return FALSE;
-      }
     }
   }
 
