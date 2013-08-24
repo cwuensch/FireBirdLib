@@ -181,6 +181,7 @@ extern bool             OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty
 extern tMenu            Menu[NRMENULEVELS];
 extern dword            CurrentMenuLevel;
 extern dword            ButtonColor;
+extern dword            LastUnprocessedOSDMenuKey;
 extern tCursorType      MenuCursorType;
 extern tOSDMenuLastCursorType    OSDMenuLastCursor;
 

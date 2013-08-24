@@ -14,8 +14,13 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
 
     if(event && param1 && (*event == EVT_KEY))
     {
-      if(*param1 == RKEY_Exit) OSDMenuInfoBoxDestroy();
-      *param1 = 0;
+      if(*param1 == RKEY_Exit)
+      {
+        OSDMenuInfoBoxDestroy();
+        *param1 = 0;
+      }
+
+      LastUnprocessedOSDMenuKey = *param1;
 
       #ifdef DEBUG_FIREBIRDLIB
         CallTraceExit(NULL);
@@ -48,6 +53,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             OSDMenuMessageBoxDestroyNoOSDUpdate();
           else
             OSDMenuMessageBoxDestroy();
+
+          *param1 = 0;
           break;
         }
 
@@ -58,6 +65,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           else
             OSDMenuMessageBoxDestroy();
           MessageBox.CurrentButton = (dword) -1;
+
+          *param1 = 0;
           break;
         }
 
@@ -68,6 +77,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             MessageBox.CurrentButton++;
             OSDMenuMessageBoxShow();
           }
+
+          *param1 = 0;
           break;
         }
 
@@ -78,10 +89,13 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             MessageBox.CurrentButton--;
             OSDMenuMessageBoxShow();
           }
+
+          *param1 = 0;
           break;
         }
       }
-      *param1 = 0;
+
+      LastUnprocessedOSDMenuKey = *param1;
 
       #ifdef DEBUG_FIREBIRDLIB
         CallTraceExit(NULL);
@@ -112,6 +126,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             CurrentColorSelected = CCS_Red;
             TAP_Osd_Sync();
           }
+
+          *param1 = 0;
           break;
         }
 
@@ -124,6 +140,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             CurrentColorSelected = CCS_Green;
             TAP_Osd_Sync();
           }
+
+          *param1 = 0;
           break;
         }
 
@@ -136,6 +154,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             CurrentColorSelected = CCS_Blue;
             TAP_Osd_Sync();
           }
+
+          *param1 = 0;
           break;
         }
 
@@ -161,6 +181,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
           TAP_Osd_Sync();
 
+          *param1 = 0;
           break;
         }
 
@@ -186,6 +207,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
           TAP_Osd_Sync();
 
+          *param1 = 0;
           break;
         }
 
@@ -213,6 +235,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             TAP_Osd_Sync();
           }
 
+          *param1 = 0;
           break;
         }
 
@@ -239,12 +262,15 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             OSDMenuColorPickerDrawCursor(CurrentColorSelected, TRUE);
             TAP_Osd_Sync();
           }
+
+          *param1 = 0;
           break;
         }
 
         case RKEY_Ok:
         {
           OSDMenuColorPickerDestroy();
+          *param1 = 0;
           break;
         }
 
@@ -252,10 +278,12 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
         {
           ColorPickerColor = ColorPickerDefaultColor;
           OSDMenuColorPickerDestroy();
+          *param1 = 0;
           break;
         }
       }
-      *param1 = 0;
+
+      LastUnprocessedOSDMenuKey = *param1;
 
       #ifdef DEBUG_FIREBIRDLIB
         CallTraceExit(NULL);
@@ -275,6 +303,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
   {
     if(event && param1 && (*event == EVT_KEY))
     {
+      LastUnprocessedOSDMenuKey = 0;
+
       switch(*param1)
       {
         case RKEY_Up:
@@ -367,6 +397,8 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           break;
         }
       }
+
+      LastUnprocessedOSDMenuKey = *param1;
     }
 
     #ifdef DEBUG_FIREBIRDLIB

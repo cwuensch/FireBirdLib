@@ -103,6 +103,7 @@ int                     WaitSpinnerIndex = 0;
 dword                   WaitSpinnerTimeout = 0;
 
 dword                   ButtonColor;
+dword                   LastUnprocessedOSDMenuKey = 0;
 
 tFontDataUC             OSDMenuFont_10;
 tFontDataUC             OSDMenuFont_12;

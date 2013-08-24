@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-06-27"
+  #define __FBLIB_RELEASEDATE__ "2013-08-24"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -2706,7 +2706,8 @@
   bool OSDMenuProgressBarIsVisible(void);
 
   //Event handling
-  bool OSDMenuEvent(word *event, dword *param1, dword *param2);
+  bool  OSDMenuEvent(word *event, dword *param1, dword *param2);
+  dword OSDMenuGetLastUnprocessedKey(void);
 
 
   /*****************************************************************************************************************************/
