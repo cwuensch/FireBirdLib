@@ -77,6 +77,11 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
             MessageBox.CurrentButton++;
             OSDMenuMessageBoxShow();
           }
+          else if(MessageBoxAllowScrollOver)
+          {
+            MessageBox.CurrentButton = 0;
+            OSDMenuMessageBoxShow();
+          }
 
           *param1 = 0;
           break;
@@ -87,6 +92,11 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
           if(MessageBox.CurrentButton > 0)
           {
             MessageBox.CurrentButton--;
+            OSDMenuMessageBoxShow();
+          }
+          else if(MessageBoxAllowScrollOver)
+          {
+            MessageBox.CurrentButton = MessageBox.NrButtons - 1;
             OSDMenuMessageBoxShow();
           }
 

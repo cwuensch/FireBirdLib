@@ -620,6 +620,7 @@ int TAP_Main()
   OSDMenuGetButtonIcon(0);
   OSDMenuGetCurrentItem();
   OSDMenuGetIconPointer(0, NULL);
+  OSDMenuGetLastUnprocessedKey();
   OSDMenuGetW(NULL, 0);
   OSDMenuInfoBoxDestroy();
   OSDMenuInfoBoxDestroyNoOSDUpdate();
@@ -667,6 +668,7 @@ int TAP_Main()
   OSDMenuKeyboard_TMSRemoteDirectMode(FALSE);
   OSDMenuLoadStdFonts();
   OSDMenuLogo(0, 0, NULL);
+  OSDMenuMessageBoxAllowScrollOver();
   OSDMenuMessageBoxButtonAdd(NULL);
   OSDMenuMessageBoxButtonSelect(0);
   OSDMenuMessageBoxDestroy();

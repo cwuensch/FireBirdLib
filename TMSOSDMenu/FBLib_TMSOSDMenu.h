@@ -193,6 +193,7 @@ extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
 extern bool             MessageBoxNoNormalMode;
+extern bool             MessageBoxAllowScrollOver;
 
 extern word             ProgressBarOSDRgn;
 extern word             ProgressBarFullRgn;
@@ -207,7 +208,6 @@ extern int              ColorPickerLastCursorRed, ColorPickerLastCursorGreen, Co
 extern word             WaitSpinnerRgn;
 extern int              WaitSpinnerIndex;
 extern dword            WaitSpinnerTimeout;
-
 
 int  OSDMenuGetW(char * str, byte fntSize);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
