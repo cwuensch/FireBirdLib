@@ -640,6 +640,7 @@ int TAP_Main()
   OSDMenuItemGetTopIndex();
   OSDMenuItemGetValue(0);
   OSDMenuItemModifyColorPatch(0, 0);
+  OSDMenuItemModifyCustomIndex(0, 0);
   OSDMenuItemModifyID(0, 0);
   OSDMenuItemModifyName(0, NULL);
   OSDMenuItemModifyNameIcon(0, NULL);

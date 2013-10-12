@@ -21,6 +21,7 @@ typedef struct
   bool                  Selectable;
   bool                  ValueArrows;
   dword                 ID;
+  int                   CustomIndex;
 }tItem;
 
 typedef struct

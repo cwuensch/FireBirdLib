@@ -830,3 +830,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-08-24  Added: OSDMenuGetLastUnprocessedKey(). This function allows a TAP to react on non-standard keys. If the user clicks on a key which is not handled by the OSDMenu library, a call to this
                    function will return the RKEY code of that key.
 2013-09-13  Added: OSDMenuMessageBoxAllowScrollOver()
+2013-10-12  Added: OSDMenuItemModifyCustomIndex(), which allows to display custom specific indices in a list

@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-09-13"
+  #define __FBLIB_RELEASEDATE__ "2013-10-12"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -2654,6 +2654,7 @@
   bool  OSDMenuItemModifyColorPatch(int ItemIndex, dword Color); //set to 0 to disable
   bool  OSDMenuItemModifyTextColor(int ItemIndex, dword Color);
   bool  OSDMenuItemModifyID(int ItemIndex, dword ID);
+  bool  OSDMenuItemModifyCustomIndex(int ItemIndex, int CustomIndex);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
   dword OSDMenuItemGetID(int ItemIndex);
