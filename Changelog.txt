@@ -831,3 +831,5 @@ License:  This library is freeware. You may use this code in your own projects f
                    function will return the RKEY code of that key.
 2013-09-13  Added: OSDMenuMessageBoxAllowScrollOver()
 2013-10-12  Added: OSDMenuItemModifyCustomIndex(), which allows to display custom specific indices in a list
+2013-10-19  Added: FIS_vPvrPlayInfo()
+2013-10-20  Added: FIS_vPvrRecTempInfo(), HDD_GetPvrRecTsPlayInfoPointer(), FIS_vTempRecSlot()

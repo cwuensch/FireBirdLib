@@ -323,6 +323,8 @@ int TAP_Main()
   FIS_vPipW();
   FIS_vPipX();
   FIS_vPipY();
+  FIS_vPvrPlayInfo();
+  FIS_vPvrRecTempInfo();
   FIS_vPvrRecTsInfo();
   FIS_vPvrRecTsPlayInfo();
   FIS_vRECSlotAddress(0);
@@ -331,6 +333,7 @@ int TAP_Main()
   FIS_vShoutCastState();
   FIS_vTapSysOsdCtrl();
   FIS_vTAPTable();
+  FIS_vTempRecSlot();
   FIS_vTimerEditInfo();
   FIS_vTimerTempInfo();
   FIS_vTopEvent();
@@ -442,6 +445,7 @@ int TAP_Main()
   HDD_GetInodeByRelFileName(NULL);
   HDD_GetInodeByTypeFile(NULL);
   HDD_GetPvrRecTsInfoPointer(0);
+  HDD_GetPvrRecTsPlayInfoPointer(0);
   HDD_GetRecSlotFiles(0, NULL, NULL, NULL);
   HDD_IdentifyDevice(NULL);
   HDD_InfBlockGet(NULL, NULL);

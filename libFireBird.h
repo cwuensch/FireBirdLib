@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-10-12"
+  #define __FBLIB_RELEASEDATE__ "2013-10-19"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -193,6 +193,9 @@
   #define RKEY_Blue     RKEY_F4
   #define RKEY_Option   0x10049
   #define RKEY_White    RKEY_Option
+
+  //In addition to the Service Status Mask defined in tap.h
+  #define SVCSTATUS_MASK_Audio    0x00010000
 
   #ifndef TAP_ALPHA
     #define TAP_ALPHA     255
@@ -2049,6 +2052,8 @@
   inline dword FIS_vPipW(void);
   inline dword FIS_vPipX(void);
   inline dword FIS_vPipY(void);
+  inline dword FIS_vPvrPlayInfo(void);
+  inline dword FIS_vPvrRecTempInfo(void);
   inline dword FIS_vPvrRecTsInfo(void);
   inline dword FIS_vPvrRecTsPlayInfo(void);
   inline dword FIS_vRECSlotAddress(byte Slot);
@@ -2057,6 +2062,7 @@
   inline dword FIS_vShoutCastState(void);
   inline dword FIS_vTAPTable(void);
   inline dword FIS_vTapSysOsdCtrl(void);
+  inline dword FIS_vTempRecSlot(void);
   inline dword FIS_vTimerEditInfo(void);
   inline dword FIS_vTimerTempInfo(void);
   inline dword FIS_vTopEvent(void);
@@ -2244,6 +2250,7 @@
   bool   HDD_EncodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   int    HDD_FindPCR(byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
   byte  *HDD_GetPvrRecTsInfoPointer(byte Slot);
+  byte  *HDD_GetPvrRecTsPlayInfoPointer(byte Slot);
   bool   HDD_GetRecSlotFiles(byte Slot, TYPE_File **RecFile, TYPE_File **InfFile, TYPE_File **NavFile);
   bool   HDD_isAnyRecording(void);
   bool   HDD_isCryptedStream(char *Buffer, dword BufferSize);
