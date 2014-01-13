@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2013-11-16"
+  #define __FBLIB_RELEASEDATE__ "2014-01-13"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -343,6 +343,7 @@
   dword CRC32(dword StartValue, void *StartAddress, dword Length);
   bool  MD5String(char *inString, byte *Digest);
   bool  MD5File(char *FileName, byte *Digest);
+  bool  MD5AbsFile(char *AbsFileName, byte *Digest);
   dword OATH(register byte *data, int len, dword hash);
   dword SuperFastHash(register byte *data, int len, dword hash);
   word  UncompressBlock(byte *pInput, word compCount, byte *pOutput, word BufferSize);
@@ -1842,6 +1843,7 @@
   __ino64_t  HDD_GetInodeByTypeFile(TYPE_File *File);
   bool       HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
   bool       HDD_Move(char *FileName, char *FromDir, char *ToDir);
+  bool       HDD_MoveAbs(char *FileName, char *FromDir, char *ToDir);
   void       HDD_Recycle(char *FileName);
   void       HDD_RecycleSF(char *FileName);
   void       HDD_RemoveDir(char *DirPath, bool Recursive);
@@ -1858,6 +1860,7 @@
   bool       HDD_Write(void *data, dword length, TYPE_File *f);
   tFileInUse HDD_isFileInUse(char *FileName);
   void       MakeUniqueFileName(char *FileName);
+  void       MakeUniqueFileNameAbs(char *FileName);
   void       SeparateFileNameComponents(char *FileName, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
 
 

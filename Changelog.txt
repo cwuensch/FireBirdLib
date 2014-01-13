@@ -836,3 +836,4 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-10-26  Fixed: DST_GetTransitions_Europe() reported the transition from DST to standard time one hour too early
 2013-11-16  Fixed: Had to add the parameter StartDate to the functions DST_CalcTransition(), DST_GetTransitions_Europe() and DST_ProcessRule(), otherwise it wouldn't have been possible to calculate
                    offsets in the past. Pass 0 to get the old behaviour.
+2014-01-13  Added: HDD_MoveAbs() and MakeUniqueFileNameAbs(), which accepts absolute paths
