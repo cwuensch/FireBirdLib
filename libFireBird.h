@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2014-01-13"
+  #define __FBLIB_RELEASEDATE__ "2014-01-17"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -2513,19 +2513,21 @@
   dword  AddSec(dword date, byte dateSec, int add);
   dword  AddTime(dword date, int add);
   char  *DayOfWeek(byte WeekDay);
+  dword  DST_FindNextTransition(void);
+  dword  DST_CalcTransition(byte ruleOrdinal, byte ruleDay, byte ruleMonth, byte ruleHour, byte ruleMin, dword StartDate);
+  void   DST_SetDSTRule(tDSTRule NewDSTRule);
   bool   GetCurrentTimeZone(short *TZOffset, bool *DST);
   bool   isMJD(dword MJD);
+  dword  LocalTime2UTC(dword LocalTime, short *Offset); //Uses DST_SetDSTRule()
   dword  Now(byte *Sec);
   dword  TF2UnixTime(dword TFTimeStamp);
   long   TimeDiff(dword FromTime, dword ToTime);
   char  *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat);
+  bool   TimerPaddingAPICheck(void);
+  bool   TimerPaddingGet(short *PrePaddingMin, short *PostPaddingMin);
+  bool   TimerPaddingSet(short *PrePaddingMin, short *PostPaddingMin);
   dword  Unix2TFTime(dword UnixTimeStamp);
   dword  UTC2LocalTime(dword UTCTime, short *Offset);   //Uses DST_SetDSTRule()
-  dword  LocalTime2UTC(dword LocalTime, short *Offset); //Uses DST_SetDSTRule()
-  void   DST_SetDSTRule(tDSTRule NewDSTRule);
-  dword  DST_FindNextTransition(void);
-  dword  DST_CalcTransition(byte ruleOrdinal, byte ruleDay, byte ruleMonth, byte ruleHour, byte ruleMin, dword StartDate);
-
 
   /*****************************************************************************************************************************/
   /* TMS OSD Menu                                                                                                              */

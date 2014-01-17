@@ -837,3 +837,6 @@ License:  This library is freeware. You may use this code in your own projects f
 2013-11-16  Fixed: Had to add the parameter StartDate to the functions DST_CalcTransition(), DST_GetTransitions_Europe() and DST_ProcessRule(), otherwise it wouldn't have been possible to calculate
                    offsets in the past. Pass 0 to get the old behaviour.
 2014-01-13  Added: HDD_MoveAbs() and MakeUniqueFileNameAbs(), which accepts absolute paths
+2014-01-17  Added: TimerPaddingAPICheck(), TimerPaddingGet(), TimerPaddingSet(). These functions allow to query or set the padding of a recording timer. In addition, newer firmware releases
+                   know the new enums SYSVAR_RecPaddingFore and SYSVAR_RecPaddingRear. As there is no easy way to find out if these two exist, TimerPaddingAPICheck() will do the job. These
+                   two SYSVARs also mean that tap.h has to be modified. See the _Demo folder for a version with all patches.
