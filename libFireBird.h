@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2014-01-17"
+  #define __FBLIB_RELEASEDATE__ "2014-02-01"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -310,6 +310,7 @@
   bool  isPIPActive(void);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   dword PlayMediaFile(char *MediaFileName);
+  dword PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName);
   bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer);
   void  SetRemoteMode(byte Mode, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
@@ -1779,7 +1780,7 @@
   /*****************************************************************************************************************************/
 
   #define TAPFSROOT     "/mnt/hd"
-  #define FBLIB_DIR_SIZE 256
+  #define FBLIB_DIR_SIZE 512
 
   //Some of them are missing in the TF5k hdd.h and alle are missing in the TMS hdd.h
   #ifndef SEEK_SET
