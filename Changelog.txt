@@ -842,3 +842,21 @@ License:  This library is freeware. You may use this code in your own projects f
                    two SYSVARs also mean that tap.h has to be modified. See the _Demo folder for a version with all patches.
 2014-02-01  Added: PlayMediaFileAbs() can start the playback of any media file (.rec, .mpg, .divx,...) from any location, even external drives.
             Modified PlayMediaFile() so that it calls PlayMediaFileAbs() and therefore can playback any media file from the current TAP directory instead of rec files only.
+2014-02-12  Added: The cron functions cronRegisterEvent(), cronEventHandler(), cronUnregisterEvent() and cronUnregisterAllEvents(). Thanks to DMC for the code.
+
+                   int  cronRegisterEvent(long frequency, long firstExecution, void *callback): Registers a new event.
+
+                     frequency:       the frequency in ticks, how often "callback" should be called. If < 0, the event triggers only once and will then be removed. May not be 0.
+                     firstExecution:  when (in ticks) the "callback" should be called for the first time. If 0, the first call will happen in "frequency" ticks.
+                     callback:        the routine that should be called when the event triggers.
+                     return value:    an index >= 0 if the function succeeds or -1 if it fails
+
+                   void cronEventHandler(void): processes all events. If the "callback" routine takes longer than "frequency" to process, all past due events will be discarded.
+
+                   bool cronUnregisterEvent(int Index): removes a single event from the list of cron jobs
+
+                    Index:            the index returned by cronRegisterEvent()
+                    return value:     TRUE if an event has been successfully deactivated
+
+                   void cronUnregisterAllEvents(void): removes all events from the list of cron jobs
+

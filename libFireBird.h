@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2014-02-01"
+  #define __FBLIB_RELEASEDATE__ "2014-02-12"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -2513,6 +2513,10 @@
 
   dword  AddSec(dword date, byte dateSec, int add);
   dword  AddTime(dword date, int add);
+  int    cronRegisterEvent(long frequency, dword firstExecution, void *callback);
+  void   cronEventHandler(void);
+  bool   cronUnregisterEvent(int Index);
+  void   cronUnregisterAllEvents(void);
   char  *DayOfWeek(byte WeekDay);
   dword  DST_FindNextTransition(void);
   dword  DST_CalcTransition(byte ruleOrdinal, byte ruleDay, byte ruleMonth, byte ruleHour, byte ruleMin, dword StartDate);

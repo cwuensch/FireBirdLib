@@ -102,6 +102,10 @@ int TAP_Main()
   CrashCheck_Startup(NULL);
   CRC16(0, NULL, 0);
   CRC32(0, NULL, 0);
+  cronRegisterEvent(0, 0, NULL);
+  cronEventHandler();
+  cronUnregisterEvent(0);
+  cronUnregisterAllEvents();
   curl_easy_cleanup(NULL);
   curl_easy_init();
   curl_easy_perform(NULL);
@@ -458,6 +462,7 @@ int TAP_Main()
   HDD_isRecording(0);
   HDD_MakeNewRecName(NULL, 0);
   HDD_Move(NULL, NULL, NULL);
+  HDD_MoveAbs(NULL, NULL, NULL);
   HDD_NumberOfRECSlots();
   HDD_RecSlotDecode(0, NULL);
   HDD_RecSlotEncode(0, NULL);
@@ -713,6 +718,7 @@ int TAP_Main()
   OSDToBMP(NULL , 0, 0, NULL, 0);
   ParseLine(NULL, NULL, '\0');
   PlayMediaFile(NULL);
+  PlayMediaFileAbs(NULL, NULL);
   PrintNet(NULL);
   PutDevEvent(0, 0);
   Reboot(FALSE);
@@ -786,6 +792,9 @@ int TAP_Main()
   TFDSize(NULL);
   TimeDiff(0, 0);
   TimeFormat(0, 0, 0);
+  TimerPaddingAPICheck();
+  TimerPaddingGet(NULL, NULL);
+  TimerPaddingSet(NULL, NULL);
   TryResolve(NULL);
   TunerGet(0);
   TunerSet(0);
