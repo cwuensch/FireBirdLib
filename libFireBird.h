@@ -3,7 +3,7 @@
 
   //#define DEBUG_FIREBIRDLIB
 
-  #define __FBLIB_RELEASEDATE__ "2014-02-12"
+  #define __FBLIB_RELEASEDATE__ "2014-02-20"
 
   #ifdef _TMSEMU_
     #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
@@ -309,8 +309,8 @@
   bool  isOSDRegionAlive(word Region);
   bool  isPIPActive(void);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
-  dword PlayMediaFile(char *MediaFileName);
-  dword PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName);
+  bool  PlayMediaFile(char *MediaFileName);
+  bool  PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName);
   bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer);
   void  SetRemoteMode(byte Mode, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
@@ -1414,8 +1414,8 @@
   void   Appl_SetIsExternal(bool External);
   void   Appl_SetPlaybackSpeed(byte Mode, int Speed, bool p3);
   void   Appl_ShoutCast(void);
-  byte   Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
-  byte   Appl_StartPlaybackMedia(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  int    Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  int    Appl_StartPlaybackMedia(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   dword  Appl_StopPlaying(void);
   void   Appl_StopRecPlaying(bool p1);
   dword  Appl_TimeToLocal(dword UTCTime);

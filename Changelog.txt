@@ -860,3 +860,6 @@ License:  This library is freeware. You may use this code in your own projects f
 
                    void cronUnregisterAllEvents(void): removes all events from the list of cron jobs
 
+2014-02-16  Modified GetApplVer(), which now tries to locate the firmware compile date and includes it to the returned string
+2014-02-20  Fixed: PlayMediaFile() and PlayMediaFileAbs() returned different results, depending on the type of file being started. In addition the result has been changed to bool and now
+            returns TRUE if the playback could be started.

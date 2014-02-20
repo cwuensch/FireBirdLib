@@ -1,7 +1,7 @@
 #include <string.h>
 #include "../libFireBird.h"
 
-dword PlayMediaFile(char *MediaFileName)
+bool PlayMediaFile(char *MediaFileName)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("PlayMediaFile");

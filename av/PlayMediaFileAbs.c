@@ -2,13 +2,13 @@
 #include <string.h>
 #include "../libFireBird.h"
 
-dword PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName)
+bool PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName)
 {
   #ifdef DEBUG_FIREBIRDLIB
     CallTraceEnter("PlayMediaFileAbs");
   #endif
 
-  dword                 ret;
+  bool                 ret;
   tDirEntry             _TempWorkFolder;
   char                  tempINF[FBLIB_DIR_SIZE];
 
@@ -25,7 +25,7 @@ dword PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName)
     if(access(tempINF, F_OK) != -1)
       ret = Appl_StartPlayback(MediaFileName, 0, TRUE, FALSE) == 0;
     else
-      ret = Appl_StartPlaybackMedia(MediaFileName, 0, TRUE, FALSE);
+      ret = Appl_StartPlaybackMedia(MediaFileName, 0, TRUE, FALSE) == 0;
   }
   ApplHdd_RestoreWorkFolder();
 
