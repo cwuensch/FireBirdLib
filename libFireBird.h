@@ -2722,6 +2722,7 @@
   //Progress bar
   void OSDMenuProgressBarShow(char *Title, char *Text, dword Value, dword MaxValue, TYPE_GrData *DifferentProgressBar);
   void OSDMenuProgressBarDestroy(void);
+  void OSDMenuProgressBarDestroyNoOSDUpdate(void);
   bool OSDMenuProgressBarIsVisible(void);
 
   //Event handling
