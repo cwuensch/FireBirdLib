@@ -21,7 +21,7 @@ bool FrontPanelEEPROMRead(word Address, byte *Data)
 
   __frontfd = (int*)FIS_vfrontfd();
 
-  if(GetFrontPanelPatch(NULL, NULL) && __frontfd && (Address < 512) && Data)
+  if(FrontPanelGetPatch(NULL, NULL) && __frontfd && (Address < 512) && Data)
   {
     //Take over the handle from _frontfd
     localfd = *__frontfd;

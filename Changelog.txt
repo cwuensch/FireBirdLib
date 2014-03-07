@@ -864,3 +864,7 @@ License:  This library is freeware. You may use this code in your own projects f
 2014-02-20  Fixed: PlayMediaFile() and PlayMediaFileAbs() returned different results, depending on the type of file being started. In addition the result has been changed to bool and now
                    returns TRUE if the playback could be started.
             Added: OSDMenuProgressBarDestroyNoOSDUpdate()
+
+2014-03-07: Added: FrontPanelGetPatch(), FrontPanelEEPROMRead(), FrontPanelEEPROMWrite() and FIS_vfrontfd(). These function only make sense with a patched front panel.
+            Added: HDD_TAP_CheckCollision(): checks if the same TAP is already running. This may happen due to a bug in the Topfield's file list. Call it as one of the first functions
+                   in TAP_Main() and exit with return 0 if HDD_TAP_CheckCollision() returns TRUE.

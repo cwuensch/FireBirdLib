@@ -1,7 +1,7 @@
 #include                <unistd.h>
 #include                "../libFireBird.h"
 
-bool GetFrontPanelPatch(byte *Version, byte *Type)
+bool FrontPanelGetPatch(byte *Version, byte *Type)
 {
   TRACEENTER();
 

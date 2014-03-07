@@ -13,7 +13,7 @@ bool FrontPanelEEPROMWrite(word Address, byte Data)
 
   __frontfd = (int*)FIS_vfrontfd();
 
-  if(GetFrontPanelPatch(NULL, NULL) && __frontfd && (Address < 512))
+  if(FrontPanelGetPatch(NULL, NULL) && __frontfd && (Address < 512))
   {
     //Query: 02 D3 EAH EAL DTA 03
 

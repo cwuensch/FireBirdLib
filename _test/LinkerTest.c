@@ -412,12 +412,12 @@ int TAP_Main()
   FreeOSDRegion(0);
   FrontPanelEEPROMRead(0, NULL);
   FrontPanelEEPROMWrite(0, 0);
+  FrontPanelGetPatch(NULL, NULL);
   GetApplVer();
   GetCurrentEvent(NULL);
   GetCurrentTimeZone(NULL, NULL);
   GetEEPROMAddress();
   GetEEPROMPin();
-  GetFrontPanelPatch(NULL, NULL);
   GetLine(NULL, FALSE);
   GetMacAddress();
   GetOSDMapAddress();
@@ -484,6 +484,7 @@ int TAP_Main()
   HDD_Smart_ReadThresholdData(NULL);
   HDD_Smart_ReturnStatus();
   HDD_TAP_Callback(0, NULL, 0, 0, 0, 0);
+  HDD_TAP_CheckCollision();
   HDD_TAP_Disable(0, FALSE);
   HDD_TAP_DisableAll(FALSE);
   HDD_TAP_DisabledEventHandler(0, 0, 0);
