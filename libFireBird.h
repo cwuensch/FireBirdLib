@@ -1,15 +1,11 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  //#define DEBUG_FIREBIRDLIB
+  //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-02-20"
+  #define __FBLIB_RELEASEDATE__ "2014-03-07"
 
-  #ifdef _TMSEMU_
-    #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__" TMSEmulator"
-  #else
-    #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
-  #endif
+  #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
   #define isTMS         1
 
@@ -17,11 +13,7 @@
     #define inline
     #define __attribute__(a)
   #else
-    #ifdef _TMSEMU_
-      #include "tap_tmsemu.h"
-    #else
-      #include "tap.h"
-    #endif
+    #include "tap.h"
   #endif
 
   #undef __USE_LARGEFILE64
@@ -63,11 +55,14 @@
   } SYSTEM_TYPE;
 
   typedef enum
-  {
-    BOOT_FRONT_PANEL,
-    BOOT_REMOTE_CONTROL,
-    BOOT_TIMER,
-    BOOT_CRASH_REBOOT                  //applied by the AutoReboot TAP only (TF5000)
+  {                         //Toppy has been bootet by...
+    BOOT_FRONT_PANEL,       //... pressing a front panel key
+    BOOT_REMOTE_CONTROL,    //... a remote key
+    BOOT_TIMER,             //... a timer
+    BOOT_CRASH_REBOOT,      //... the AutoReboot TAP (TF5000 only)
+    BOOT_RESERVED_4,        //... unknown. Possibly used by the front panel, but never seen
+    BOOT_POWER,             //... an mains power failure.
+    BOOT_ANTIFREEZE         //... an AntiFreeze reboot. Patched front panels only
   } tBootReason;
 
   typedef enum
@@ -148,19 +143,15 @@
 
   #ifndef PC_BASED
     extern char puffer[];
-    #ifndef _TMSEMU_
-      void PrintNet(char *puffer);
-      #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
-      // Define the following override if you want to stop FBLIB
-      // intercepting TAP_Print() [i.e. printf() from TAPs]. Normally,
-      // FBLIB intercepts these messages to a local pseudo terminal.
-      // Without the interception, TMS directs these to an FTP debug
-      // socket.
-      #ifndef FB_NO_TAP_PRINT_OVERRIDE
-        #define TAP_Print   TAP_PrintNet
-      #endif
-    #else
-      #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); TAP_Output(puffer);}
+    void PrintNet(char *puffer);
+    #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
+    // Define the following override if you want to stop FBLIB
+    // intercepting TAP_Print() [i.e. printf() from TAPs]. Normally,
+    // FBLIB intercepts these messages to a local pseudo terminal.
+    // Without the interception, TMS directs these to an FTP debug
+    // socket.
+    #ifndef FB_NO_TAP_PRINT_OVERRIDE
+      #define TAP_Print   TAP_PrintNet
     #endif
   #endif
 
@@ -169,7 +160,10 @@
   tBootReason BootReason(void);
   dword       FirmwareDatMJD(void);
   void        FlushCache(dword *pAddr, int Size);
+  bool        FrontPanelEEPROMRead(word Address, byte *Data);   //Only supported with a patched front panel
+  bool        FrontPanelEEPROMWrite(word Address, byte Data);   //Only supported with a patched front panel
   char       *GetApplVer(void);
+  bool        GetFrontPanelPatch(byte *Version, byte *Type);
   byte       *GetMacAddress(void);
   word        GetSysID(void);
   SYSTEM_TYPE GetSystemType(void);
@@ -1200,6 +1194,14 @@
   void   CallTraceExportStats(char *FileName);
   void   CallTraceResetStats(void);
 
+  #ifdef STACKTRACE
+    #define TRACEENTER()    CallTraceEnter((char*)__FUNCTION__)
+    #define TRACEEXIT()     CallTraceExit(NULL)
+  #else
+    #define TRACEENTER()
+    #define TRACEEXIT()
+  #endif
+
   bool   CrashCheck_Startup(char *TAPName);
   void   CrashCheck_Shutdown(char *TAPName);
   bool   CrashCheck_isOK(char *TAPName);
@@ -1829,12 +1831,7 @@
   //The following define will be removed in the near future
   #define HDD_GetAbsolutePathByTypeFileUTF8   HDD_GetAbsolutePathByTypeFile
 
-  #ifdef _TMSEMU_
-    bool     HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, off_t *FileSize);
-  #else
-    bool     HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize);
-  #endif
-
+  bool       HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize);
   dword      HDD_GetFileTimeByAbsFileName(char *FileName);
   dword      HDD_GetFileTimeByRelFileName(char *FileName);
   dword      HDD_GetFileTimeByTypeFile(TYPE_File *File);
@@ -2032,6 +2029,7 @@
   inline dword FIS_vExtTsFolder(void);
   inline dword FIS_vfavName(void);
   inline dword FIS_vFlash(void);
+  inline dword FIS_vfrontfd(void);
   inline dword FIS_vGrid(void);
   inline dword FIS_vHddDivxFolder(void);
   inline dword FIS_vhddRecordFile(void);

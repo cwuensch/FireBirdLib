@@ -12,9 +12,7 @@ bool infData_GetNameByIndexAbs(char *infFileName, dword NameIndex, char *NameTag
   char                  NameTagHdr[256];
   dword                 CurrentIndex;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_GetNameByIndexAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
 
@@ -46,9 +44,6 @@ bool infData_GetNameByIndexAbs(char *infFileName, dword NameIndex, char *NameTag
 
   infData_CloseFileAbs();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

@@ -19,9 +19,7 @@ bool infData_LocateSigAbs(char *NameTag, dword *PayloadSize)
   //  char NameTag[SigLength]
   //  byte Payload[PayloadSize]
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_LocateSigAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
   if(PayloadSize) *PayloadSize = 0;
@@ -50,9 +48,6 @@ bool infData_LocateSigAbs(char *NameTag, dword *PayloadSize)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

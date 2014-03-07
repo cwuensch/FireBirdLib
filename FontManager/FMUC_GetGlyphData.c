@@ -2,19 +2,14 @@
 
 tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byte *BytesPerChar)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("FMUC_GetGlyphData");
-  #endif
+  TRACEENTER();
 
   int                   i;
   dword                 UTF32;
 
   if(!FontData || !UTF8Character || !*UTF8Character)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return NULL;
   }
 
@@ -23,10 +18,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
   {
     if(BytesPerChar) *BytesPerChar = 1;
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return NULL;
   }
 
@@ -36,10 +28,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
   for(i = 0; i < (int)FontData->GlyphCacheEntries; i++)
     if(FontData->GlyphCache[i].Unicode == UTF32)
     {
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
-
+      TRACEEXIT();
       return &FontData->GlyphCache[i];
     }
 
@@ -60,10 +49,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
       {
         LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to reserve %d bytes for a glyph", FontDef->Width * FontDef->Height);
 
-        #ifdef DEBUG_FIREBIRDLIB
-          CallTraceExit(NULL);
-        #endif
-
+        TRACEEXIT();
         return NULL;
       }
 
@@ -72,18 +58,12 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
 
       FontData->GlyphCacheEntries++;
 
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
-
+      TRACEEXIT();
       return GlyphCache;
     }
 
   LogEntryFBLibPrintf(TRUE, "Glyph %x not found", UTF32);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return NULL;
 }

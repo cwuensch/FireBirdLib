@@ -4,9 +4,7 @@
 
 bool PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("PlayMediaFileAbs");
-  #endif
+  TRACEENTER();
 
   bool                 ret;
   tDirEntry             _TempWorkFolder;
@@ -29,9 +27,6 @@ bool PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName)
   }
   ApplHdd_RestoreWorkFolder();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

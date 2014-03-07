@@ -3,19 +3,14 @@
 
 bool StringDBSave(tStringDB *StringDB, char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("StringDBSave");
-  #endif
+  TRACEENTER();
 
   TYPE_File            *f;
   bool                  ret;
 
   if(!StringDB || !FileName || !StringDB->DB)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -24,10 +19,7 @@ bool StringDBSave(tStringDB *StringDB, char *FileName)
   f = TAP_Hdd_Fopen(FileName);
   if(!f)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -35,9 +27,6 @@ bool StringDBSave(tStringDB *StringDB, char *FileName)
 
   TAP_Hdd_Fclose(f);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

@@ -5,9 +5,7 @@ bool infData_isAvailAbs(char *infFileName, char *NameTag, dword *PayloadSize)
 {
   bool                  ret;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_isAvailAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
 
@@ -16,9 +14,6 @@ bool infData_isAvailAbs(char *infFileName, char *NameTag, dword *PayloadSize)
 
   infData_CloseFileAbs();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

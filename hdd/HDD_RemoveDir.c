@@ -4,9 +4,7 @@
 
 void HDD_RemoveDir(char *DirPath, bool Recursive)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_RemoveDir");
-  #endif
+  TRACEENTER();
 
   char                  cmd[512];
 
@@ -20,7 +18,5 @@ void HDD_RemoveDir(char *DirPath, bool Recursive)
     system(cmd);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

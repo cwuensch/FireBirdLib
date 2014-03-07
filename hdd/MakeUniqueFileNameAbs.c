@@ -4,9 +4,7 @@
 
 void MakeUniqueFileNameAbs(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("MakeUniqueFileNameAbs");
-  #endif
+  TRACEENTER();
 
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   bool                  isRec, isDel;
@@ -23,7 +21,5 @@ void MakeUniqueFileNameAbs(char *FileName)
     TAP_SPrint(FileName, "%s-%d%s%s", Name, fNumber++, Ext, isDel ? ".del" : "");
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

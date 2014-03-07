@@ -6,15 +6,11 @@ extern bool                 cronInit;
 
 void cronUnregisterAllEvents(void)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("cronUnregisterAllEvents");
-  #endif
+  TRACEENTER();
 
   memset(cronTable, 0, MAX_CRON_EVENTS * sizeof(TYPE_CRONTAB));
   cronItemCount = 0;
   cronInit = TRUE;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

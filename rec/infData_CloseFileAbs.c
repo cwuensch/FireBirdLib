@@ -6,9 +6,7 @@ extern FILE            *infDatainfFileAbs;
 
 void infData_CloseFileAbs(void)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_CloseFileAbs");
-  #endif
+  TRACEENTER();
 
   if(infDatainfFileAbs)
   {
@@ -16,7 +14,5 @@ void infData_CloseFileAbs(void)
     infDatainfFileAbs = NULL;
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

@@ -4,9 +4,7 @@
 
 void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("LogEntry");
-  #endif
+  TRACEENTER();
 
   TYPE_File             *File;
   char                  *TS;
@@ -16,10 +14,7 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
 
   if(!Text)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return;
   }
 
@@ -77,7 +72,5 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
     TAP_MemFree(ISOText);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

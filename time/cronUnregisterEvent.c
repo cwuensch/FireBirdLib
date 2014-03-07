@@ -6,9 +6,7 @@ extern bool                 cronInit;
 
 bool cronUnregisterEvent(int Index)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("cronUnregisterEvent");
-  #endif
+  TRACEENTER();
 
   bool                  ret = FALSE;
 
@@ -24,9 +22,6 @@ bool cronUnregisterEvent(int Index)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

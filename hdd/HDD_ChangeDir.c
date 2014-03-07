@@ -4,9 +4,7 @@
 
 bool HDD_ChangeDir(char *Dir)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_ChangeDir");
-  #endif
+  TRACEENTER();
 
   char                  DirUTF8[256];
   static bool           ReturnTypeToBeChecked = TRUE;
@@ -29,10 +27,7 @@ bool HDD_ChangeDir(char *Dir)
   {
     if(TAP_Hdd_ChangeDir(Dir) == ChDirSuccessful)
     {
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
-
+      TRACEEXIT();
       return TRUE;
     }
 
@@ -42,18 +37,12 @@ bool HDD_ChangeDir(char *Dir)
       StrToUTF8(Dir, DirUTF8, 9);
       if(TAP_Hdd_ChangeDir(DirUTF8) == ChDirSuccessful)
       {
-        #ifdef DEBUG_FIREBIRDLIB
-          CallTraceExit(NULL);
-        #endif
-
+        TRACEEXIT();
         return TRUE;
       }
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return FALSE;
 }

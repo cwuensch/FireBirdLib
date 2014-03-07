@@ -7,19 +7,14 @@
 
 bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ExtAttribSet");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[512];
   bool                  ret;
 
   if(!FileName || !*FileName || !TAP_Hdd_Exist(FileName) || !AttrName || !*AttrName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -30,9 +25,6 @@ bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen)
   strcat(AbsFileName, FileName);
   ret = ExtAttribSetAbsPath(AbsFileName, AttrName, Data, DataLen);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

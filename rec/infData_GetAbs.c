@@ -11,9 +11,7 @@ bool infData_GetAbs(char *infFileName, char *NameTag, dword *PayloadSize, byte *
   tTFRPlusHdr           TFRPlusHdr;
   char                  NameTagHdr[256], s[256];
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_GetAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
   if(PayloadSize) *PayloadSize = 0;
@@ -44,9 +42,6 @@ bool infData_GetAbs(char *infFileName, char *NameTag, dword *PayloadSize, byte *
 
   infData_CloseFileAbs();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

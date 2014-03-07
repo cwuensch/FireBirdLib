@@ -4,9 +4,7 @@
 
 void HDD_Delete(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_Delete");
-  #endif
+  TRACEENTER();
 
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   char                  TempName[TS_FILE_NAME_SIZE];
@@ -64,7 +62,5 @@ void HDD_Delete(char *FileName)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

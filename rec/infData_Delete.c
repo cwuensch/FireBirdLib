@@ -5,15 +5,10 @@ bool infData_Delete(char *infFileName, char *NameTag)
 {
   bool                  ret;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_Delete");
-  #endif
+  TRACEENTER();
 
   ret = infData_DeleteAbs(infData_LocToAbs(infFileName), NameTag);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

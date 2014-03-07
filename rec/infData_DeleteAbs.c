@@ -9,12 +9,10 @@ bool infData_DeleteAbs(char *infFileName, char *NameTag)
   bool                  ret;
   dword                 SourcePos, DestPos, Len;
   tTFRPlusHdr           TFRPlusHdr;
-  char                  NameTagHdr[512], s[256];
+  char                  NameTagHdr[512];
   byte                  *Data;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_DeleteAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
 
@@ -51,8 +49,7 @@ bool infData_DeleteAbs(char *infFileName, char *NameTag)
         }
         else
         {
-          TAP_SPrint(s, "failed to reserve %d bytes for deletion of %s:%s\n", TFRPlusHdr.PayloadSize, infFileName, NameTagHdr);
-          LogEntryFBLibPrintf(TRUE, "infData: %s", s);
+          LogEntryFBLibPrintf(TRUE, "infData: failed to reserve %d bytes for deletion of %s:%s", TFRPlusHdr.PayloadSize, infFileName, NameTagHdr);
           TFRPlusHdr.PayloadSize = 0;
         }
       }
@@ -79,9 +76,6 @@ bool infData_DeleteAbs(char *infFileName, char *NameTag)
 
   infData_CloseFileAbs();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

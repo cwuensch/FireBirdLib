@@ -5,9 +5,7 @@
 
 bool NoAutoStartTAP(void)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("NoAutoStartTAP");
-  #endif
+  TRACEENTER();
 
   char                  CurrentDir[512];
   char                  *FileName;
@@ -27,9 +25,6 @@ bool NoAutoStartTAP(void)
     ret = system(cmd);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return (ret == 0);
 }

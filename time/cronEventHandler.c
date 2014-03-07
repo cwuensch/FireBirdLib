@@ -6,9 +6,7 @@ bool                    cronInit = FALSE;
 
 void cronEventHandler(void)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("cronEventHandler");
-  #endif
+  TRACEENTER();
 
   int                   i;
   long                  next;
@@ -54,7 +52,5 @@ void cronEventHandler(void)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

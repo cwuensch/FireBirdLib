@@ -7,9 +7,7 @@ TYPE_Parametered_Tap   *fbl_parametered_tap = NULL;
 
 dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_TAP_Start");
-  #endif
+  TRACEENTER();
 
   dword                 ret;
   dword                 _TempWorkFolder[4];
@@ -27,10 +25,7 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   //Set the TAPID and batch flag
   if(!HDD_TAP_GetInfo(TAPFileName, &TAPInfo))
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return 0;
   }
 
@@ -98,9 +93,6 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   ApplHdd_SelectFolder(&_hddTapFolder, "mnt/hd/ProgramFiles");
   ApplHdd_SetWorkFolder((void*)*_hddTsFolder);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return 1;
 }

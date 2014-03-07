@@ -5,9 +5,7 @@
 
 void HDD_UnrecycleSF(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_UnrecycleSF");
-  #endif
+  TRACEENTER();
 
   char                  OrigPath[512];
   char                  CreateOrigPath[512];
@@ -68,7 +66,5 @@ void HDD_UnrecycleSF(char *FileName)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

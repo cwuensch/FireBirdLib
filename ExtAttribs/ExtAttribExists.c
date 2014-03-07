@@ -7,19 +7,14 @@
 
 int ExtAttribExists(char *FileName, char *AttrName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ExtAttribExists");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[512];
   int                   ret;
 
   if(!FileName || !*FileName || !TAP_Hdd_Exist(FileName) || !AttrName || !*AttrName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return 0;
   }
 
@@ -30,9 +25,6 @@ int ExtAttribExists(char *FileName, char *AttrName)
   strcat(AbsFileName, FileName);
   ret = ExtAttribExistsAbsPath(AbsFileName, AttrName);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

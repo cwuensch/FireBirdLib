@@ -3,9 +3,7 @@
 
 bool HDD_InfBlockSet(char *AbsRecPath, tinfBlock *infBlock)
 {
-  #if STACKTRACE == TRUE
-    CallTraceEnter("HDD_InfBlockSet");
-  #endif
+  TRACEENTER();
 
   bool                  ret;
   FILE                 *FileHandle;
@@ -40,8 +38,6 @@ bool HDD_InfBlockSet(char *AbsRecPath, tinfBlock *infBlock)
     }
   }
 
-  #if STACKTRACE == TRUE
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
   return ret;
 }

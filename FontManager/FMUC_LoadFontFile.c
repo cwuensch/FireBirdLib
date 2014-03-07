@@ -3,18 +3,13 @@
 
 bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("FMUC_LoadFontFile");
-  #endif
+  TRACEENTER();
 
   char                  Hdr[5];
 
   if(!FontFileName || !FontFileName[0] || !FontData)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -35,10 +30,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
     ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
     HDD_TAP_PopDir();
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -48,10 +40,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   {
     LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to open '%s'", FontFileName);
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -64,10 +53,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
     FontData->FileHandle = NULL;
     LogEntryFBLibPrintf(TRUE, "FontManager UC: '%s' has invalid header", FontFileName);
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -81,10 +67,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
     FontData->FileHandle = NULL;
     LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontDef table of '%s'", FontData->FontDefEntries * sizeof(tFontDefUC), FontFileName);
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -101,16 +84,10 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   {
     LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FontFileName);
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

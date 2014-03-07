@@ -3,9 +3,7 @@
 
 TYPE_File *HDD_FappendOpen(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_FappendOpen");
-  #endif
+  TRACEENTER();
 
   TYPE_File *file;
   char buffer[512];
@@ -52,9 +50,6 @@ TYPE_File *HDD_FappendOpen(char *FileName)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return file;
 }

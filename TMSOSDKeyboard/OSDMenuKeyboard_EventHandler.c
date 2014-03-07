@@ -3,18 +3,13 @@
 
 bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("OSDMenuKeyboard_EventHandler");
-  #endif
+  TRACEENTER();
 
   (void) param2;
 
   if(OSDMenuKeyboard_StringVarOrig == NULL)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -155,10 +150,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
             {
               OSDMenuKeyboard_SaveAndFinish();
 
-              #ifdef DEBUG_FIREBIRDLIB
-                CallTraceExit(NULL);
-              #endif
-
+              TRACEEXIT();
               return TRUE;
             }
 
@@ -236,10 +228,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
         {
           OSDMenuKeyboard_SaveAndFinish();
 
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
+          TRACEEXIT();
           return TRUE;
         }
       }
@@ -261,10 +250,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
         {
           OSDMenuKeyboard_SaveAndFinish();
 
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
+          TRACEEXIT();
           return TRUE;
         }
 
@@ -272,10 +258,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
         {
           OSDMenuKeyboard_SaveAndFinish();
 
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
+          TRACEEXIT();
           return TRUE;
         }
 
@@ -315,10 +298,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
         {
           OSDMenuKeyboard_Finish();
 
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
+          TRACEEXIT();
           return TRUE;
         }
 
@@ -326,10 +306,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
         {
           OSDMenuKeyboard_SaveAndFinish();
 
-          #ifdef DEBUG_FIREBIRDLIB
-            CallTraceExit(NULL);
-          #endif
-
+          TRACEEXIT();
           return TRUE;
         }
 
@@ -364,9 +341,6 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return FALSE;
 }

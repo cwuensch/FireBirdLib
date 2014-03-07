@@ -3,9 +3,7 @@
 
 void MakeValidFileName(char *strName, eRemoveChars ControlCharacters)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("MakeValidFileName");
-  #endif
+  TRACEENTER();
 
   byte                  *s, *d;
   byte                  BytesPerCharacter;
@@ -35,7 +33,5 @@ void MakeValidFileName(char *strName, eRemoveChars ControlCharacters)
   }
   *d = '\0';
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

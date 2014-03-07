@@ -3,9 +3,7 @@
 
 dword HDD_GetFileTimeByRelFileName(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_GetFileTimeByRelFileName");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[256];
   dword                 ret;
@@ -17,9 +15,6 @@ dword HDD_GetFileTimeByRelFileName(char *FileName)
   }
   else ret = 0;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

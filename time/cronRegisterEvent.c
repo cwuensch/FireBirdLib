@@ -7,9 +7,7 @@ extern bool                 cronInit;
 
 int cronRegisterEvent(long frequency, dword firstExecution, void *callback)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("cronRegisterEvent");
-  #endif
+  TRACEENTER();
 
   bool                  ret;
   int                   i;
@@ -38,9 +36,6 @@ int cronRegisterEvent(long frequency, dword firstExecution, void *callback)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

@@ -34,9 +34,7 @@ tFontDataUC             KeyboardFont_12, KeyboardFont_14;
 
 void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("OSDMenuKeyboard_Setup");
-  #endif
+  TRACEENTER();
 
   OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Title) + 1);
   strcpy(OSDMenuKeyboard_Title, Title);
@@ -59,7 +57,5 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength)
   FMUC_LoadFontFile("Calibri_12.ufnt", &KeyboardFont_12);
   FMUC_LoadFontFile("Calibri_14.ufnt", &KeyboardFont_14);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

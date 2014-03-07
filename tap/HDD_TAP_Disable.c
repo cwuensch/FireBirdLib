@@ -2,9 +2,7 @@
 
 bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_TAP_Disable");
-  #endif
+  TRACEENTER();
 
   int                   TAPIndex;
   dword                 isDisabled;
@@ -14,10 +12,7 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
   TAPIndex = HDD_TAP_GetIndexByID(TAPID);
   if(TAPIndex == -1)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -25,10 +20,7 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
   curTAPTask = (dword*)FIS_vCurTapTask();
   if(!curTAPTask || ((dword)TAPIndex == *curTAPTask))
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -36,30 +28,21 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
   isDisabled = HDD_TAP_isDisabled(TAPID);
   if((isDisabled == 1) == DisableEvents)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
   if(!TMSTAPTaskTable)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   //The TAP will terminate soon
   if(TMSTAPTaskTable[TAPIndex].Status != 1)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -75,9 +58,6 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
     TMSTAPTaskTable[TAPIndex].unknown9 = 0;
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

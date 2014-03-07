@@ -4,9 +4,7 @@
 
 char *HDD_MakeNewRecName(char *fname, word sequence)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_MakeNewRecName");
-  #endif
+  TRACEENTER();
 
   static char           try[MAX_FILE_NAME_SIZE + 1];
   size_t                len;
@@ -45,9 +43,6 @@ char *HDD_MakeNewRecName(char *fname, word sequence)
   p[1] = c1;
   p[2] = c2;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return try;
 }

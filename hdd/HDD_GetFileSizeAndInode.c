@@ -3,15 +3,9 @@
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
-#ifdef _TMSEMU_
-  bool HDD_GetFileSizeAndInode(char *Directory, char *FileName, dword *CInode, off_t *FileSize)
-#else
-  bool HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize)
-#endif
+bool HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_GetFileSizeAndInode");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[512];
   tstat64               statbuf;
@@ -29,9 +23,6 @@
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

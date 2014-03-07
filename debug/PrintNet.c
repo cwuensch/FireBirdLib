@@ -4,12 +4,7 @@
 #include                <fcntl.h>
 #include                <unistd.h>
 #include                <string.h>
-
-#ifdef _TMSEMU_
-  #include              "tap_tmsemu.h"
-#else
-  #include              "tap.h"
-#endif
+#include                "tap.h"
 
 char puffer[1024];
 

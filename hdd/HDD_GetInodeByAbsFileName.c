@@ -4,9 +4,7 @@
 
 __ino64_t HDD_GetInodeByAbsFileName(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_GetInodeByAbsFileName");
-  #endif
+  TRACEENTER();
 
   tstat64               statbuf;
   __ino64_t             ret;
@@ -21,9 +19,6 @@ __ino64_t HDD_GetInodeByAbsFileName(char *FileName)
   else
     ret = 0;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

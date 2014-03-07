@@ -3,9 +3,7 @@
 
 void BMP_WriteHeader(TYPE_File *pFile, int width, int height)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("BMP_WriteHeader");
-  #endif
+  TRACEENTER();
 
   static struct BMP_HEAD head;
   static struct BMP_INFO info;
@@ -13,10 +11,7 @@ void BMP_WriteHeader(TYPE_File *pFile, int width, int height)
 
   if(!pFile)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return;
   }
 
@@ -48,7 +43,5 @@ void BMP_WriteHeader(TYPE_File *pFile, int width, int height)
   TAP_Hdd_Fwrite(&head, sizeof( head ), 1, pFile);
   TAP_Hdd_Fwrite(&info, sizeof( info ), 1, pFile);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

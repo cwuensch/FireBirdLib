@@ -4,9 +4,7 @@
 
 void HDD_Rename(char *FileName, char *NewFileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_Rename");
-  #endif
+  TRACEENTER();
 
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   char                  OldInfName[TS_FILE_NAME_SIZE], NewInfName[TS_FILE_NAME_SIZE];
@@ -50,7 +48,5 @@ void HDD_Rename(char *FileName, char *NewFileName)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

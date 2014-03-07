@@ -4,9 +4,7 @@
 
 void FixInvalidFileName(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("FixInvalidFileName");
-  #endif
+  TRACEENTER();
 
   char                  NewRecName[TS_FILE_NAME_SIZE+1];
 
@@ -15,9 +13,7 @@ void FixInvalidFileName(char *FileName)
     //Check if the file is busy
     if(HDD_isFileInUse(FileName) != FIU_No)
     {
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
+      TRACEEXIT();
 
       return;
     }
@@ -38,10 +34,7 @@ void FixInvalidFileName(char *FileName)
     if(!strcmp(FileName, NewRecName))
     {
       //No need to rename
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
-
+      TRACEEXIT();
       return;
     }
 
@@ -51,7 +44,5 @@ void FixInvalidFileName(char *FileName)
     FileName[strlen(NewRecName)] = '\0';
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

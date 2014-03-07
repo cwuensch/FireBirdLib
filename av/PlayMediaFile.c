@@ -3,9 +3,7 @@
 
 bool PlayMediaFile(char *MediaFileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("PlayMediaFile");
-  #endif
+  TRACEENTER();
 
   dword                 ret;
   char                  CurrentDir[FBLIB_DIR_SIZE];
@@ -14,9 +12,6 @@ bool PlayMediaFile(char *MediaFileName)
   HDD_TAP_GetCurrentDir(&CurrentDir[strlen(CurrentDir)]);
   ret = PlayMediaFileAbs(MediaFileName, CurrentDir);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

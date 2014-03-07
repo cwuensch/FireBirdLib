@@ -6,9 +6,7 @@
 
 bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_Move");
-  #endif
+  TRACEENTER();
 
   char                  OldFileName[TS_FILE_NAME_SIZE], NewFileName[TS_FILE_NAME_SIZE];
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
@@ -22,10 +20,7 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
   {
     HDD_TAP_PopDir();
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -86,17 +81,11 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
   {
     HDD_TAP_PopDir();
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
   HDD_TAP_PopDir();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

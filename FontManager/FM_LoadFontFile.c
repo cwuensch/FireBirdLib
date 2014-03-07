@@ -2,9 +2,7 @@
 
 bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("FM_LoadFontFile");
-  #endif
+  TRACEENTER();
 
   TYPE_File            *f;
   dword                 GreyScaleSize;
@@ -12,10 +10,7 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
 
   if(!FontFileName || !FontFileName[0] || !FontData)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -30,20 +25,14 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
     LogEntryFBLibPrintf(TRUE, "FontManager: %s", s);
     ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   f = TAP_Hdd_Fopen(FontFileName);
   if(f == NULL)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -80,9 +69,6 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
 
   TAP_Hdd_Fclose(f);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

@@ -7,9 +7,7 @@
 
 bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ExtAttribGet");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[512];
   bool                  ret;
@@ -18,10 +16,7 @@ bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, in
   {
     if(DataLen) *DataLen = 0;
 
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -32,9 +27,6 @@ bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, in
   strcat(AbsFileName, FileName);
   ret = ExtAttribGetAbsPath(AbsFileName, AttrName, Data, MaxDataLen, DataLen);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

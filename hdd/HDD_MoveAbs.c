@@ -6,9 +6,7 @@
 
 bool HDD_MoveAbs(char *FileName, char *FromDir, char *ToDir)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_MoveAbs");
-  #endif
+  TRACEENTER();
 
   char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   char                  OldInfName[512], NewInfName[512];
@@ -59,9 +57,6 @@ bool HDD_MoveAbs(char *FileName, char *FromDir, char *ToDir)
     }
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

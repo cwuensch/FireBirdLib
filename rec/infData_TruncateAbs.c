@@ -7,13 +7,9 @@ extern int truncate (__const char *__file, __off_t __length);
 
 void infData_TruncateAbs(char *infFileName, dword Position)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_TruncateAbs");
-  #endif
+  TRACEENTER();
 
   truncate(infFileName, Position);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

@@ -360,12 +360,7 @@ UINT4 *in;
 #include <sys/types.h>
 #include <time.h>
 #include <string.h>
-
-#ifdef _TMSEMU_
-  #include              <tap_tmsemu.h>
-#else
-  #include              <tap.h>
-#endif
+#include <tap.h>
 
 #include "../libFireBird.h"
 /* -- include the following file if the file md5.h is separate -- */
@@ -373,16 +368,11 @@ UINT4 *in;
 
 bool MD5String(char *inString, byte *Digest)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("MD5String");
-  #endif
+  TRACEENTER();
 
   if(!inString)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -395,18 +385,13 @@ bool MD5String(char *inString, byte *Digest)
 
   if(Digest) memcpy(Digest, mdContext.digest, 16);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }
 
 bool MD5File(char *FileName, byte *Digest)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("MD5File");
-  #endif
+  TRACEENTER();
 
   TYPE_File            *inFile;
   MD5_CTX               mdContext;
@@ -415,20 +400,14 @@ bool MD5File(char *FileName, byte *Digest)
 
   if(!FileName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   inFile = TAP_Hdd_Fopen(FileName);
   if(inFile == NULL)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -440,18 +419,13 @@ bool MD5File(char *FileName, byte *Digest)
 
   if(Digest) memcpy(Digest, mdContext.digest, 16);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }
 
 bool MD5AbsFile(char *AbsFileName, byte *Digest)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("MD5AbsFile");
-  #endif
+  TRACEENTER();
 
   int                   inFile;
   MD5_CTX               mdContext;
@@ -460,20 +434,14 @@ bool MD5AbsFile(char *AbsFileName, byte *Digest)
 
   if(!AbsFileName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   inFile = open(AbsFileName, O_RDONLY, 0600);
   if(inFile < 0)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -485,9 +453,6 @@ bool MD5AbsFile(char *AbsFileName, byte *Digest)
 
   if(Digest) memcpy(Digest, mdContext.digest, 16);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

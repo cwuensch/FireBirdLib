@@ -4,9 +4,7 @@
 
 void HDD_RecycleSF(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_RecycleSF");
-  #endif
+  TRACEENTER();
 
   tFileInUse            FileInUse;
   char                  CurrentPath[512], AbsPath[512];
@@ -53,7 +51,5 @@ void HDD_RecycleSF(char *FileName)
     HDD_Move(FileName, CurrentPath, RECYCLEPATH);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

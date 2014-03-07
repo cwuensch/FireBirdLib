@@ -2,9 +2,7 @@
 
 __ino64_t HDD_GetInodeByTypeFile(TYPE_File *File)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("HDD_GetInodeByTypeFile");
-  #endif
+  TRACEENTER();
 
   char                  AbsFileName[512];
   __ino64_t             ret;
@@ -14,9 +12,6 @@ __ino64_t HDD_GetInodeByTypeFile(TYPE_File *File)
   else
     ret = 0;
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

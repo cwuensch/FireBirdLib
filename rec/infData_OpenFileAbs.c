@@ -6,15 +6,10 @@ FILE                   *infDatainfFileAbs = NULL;
 
 bool infData_OpenFileAbs(char *infFileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_OpenFileAbs");
-  #endif
+  TRACEENTER();
 
   infDatainfFileAbs = fopen(infFileName, "r+");
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return (infDatainfFileAbs != NULL);
 }

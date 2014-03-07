@@ -3,9 +3,7 @@
 
 dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("FMUC_GetStringHeight");
-  #endif
+  TRACEENTER();
 
   tGlyphCacheUC        *GlyphData;
   byte                 *p, *pEnd;
@@ -14,10 +12,7 @@ dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData)
 
   if(!Text || !Text[0] || !FontData)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return 0;
   }
 
@@ -34,9 +29,6 @@ dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData)
     p += BytesPerChar;
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return Height;
 }

@@ -303,6 +303,7 @@ int TAP_Main()
   FIS_vFlashBlockTimer();
   FIS_vFlashBlockTransponderInfo();
   FIS_vFlashBlockTVServices();
+  FIS_vfrontfd();
   FIS_vGrid();
   FIS_vHddDivxFolder();
   FIS_vhddRecordFile();
@@ -409,11 +410,14 @@ int TAP_Main()
   FMUC_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);
   FMUC_PutStringAA(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0, 0);
   FreeOSDRegion(0);
+  FrontPanelEEPROMRead(0, NULL);
+  FrontPanelEEPROMWrite(0, 0);
   GetApplVer();
   GetCurrentEvent(NULL);
   GetCurrentTimeZone(NULL, NULL);
   GetEEPROMAddress();
   GetEEPROMPin();
+  GetFrontPanelPatch(NULL, NULL);
   GetLine(NULL, FALSE);
   GetMacAddress();
   GetOSDMapAddress();
@@ -698,6 +702,7 @@ int TAP_Main()
   OSDMenuModifyTitleRight(NULL);
   OSDMenuPop();
   OSDMenuProgressBarDestroy();
+  OSDMenuProgressBarDestroyNoOSDUpdate();
   OSDMenuProgressBarIsVisible();
   OSDMenuProgressBarShow(NULL, NULL, 0, 0, NULL);
   OSDMenuPush();

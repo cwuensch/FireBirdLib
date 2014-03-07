@@ -2,11 +2,8 @@
 #define FBLIB_HDD_H
 
 #include                <sys/types.h>
-#ifdef _TMSEMU_
-  #include              "tap_tmsemu.h"
-#else
-  #include              "tap.h"
-#endif
+#include                "tap.h"
+#include                "../libFireBird.h"
 
 //HDD Functions
 //               CCD DD

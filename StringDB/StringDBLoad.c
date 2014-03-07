@@ -3,29 +3,21 @@
 
 bool StringDBLoad(tStringDB *StringDB, char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("StringDBLoad");
-  #endif
+  TRACEENTER();
 
   TYPE_File            *f;
   bool                  ret;
 
   if(!StringDB || !FileName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
   f = TAP_Hdd_Fopen(FileName);
   if(!f)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -33,9 +25,6 @@ bool StringDBLoad(tStringDB *StringDB, char *FileName)
 
   TAP_Hdd_Fclose(f);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

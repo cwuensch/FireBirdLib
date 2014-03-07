@@ -3,9 +3,7 @@
 
 char *GetApplVer(void)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("GetApplVer");
-  #endif
+  TRACEENTER();
 
   void (*Appl_SetApplVer)(char *);
 
@@ -17,9 +15,7 @@ char *GetApplVer(void)
 
   if(FWVersion[0])
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
+    TRACEEXIT();
     return FWVersion;
   }
 
@@ -28,10 +24,7 @@ char *GetApplVer(void)
 
   if(!osdOutBuf || !Appl_SetApplVer)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return NULL;
   }
 
@@ -66,9 +59,6 @@ char *GetApplVer(void)
   }
   ELFCleanup();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return FWVersion;
 }

@@ -7,19 +7,14 @@
 
 bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int DataLen)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ExtAttribSetAbsPath");
-  #endif
+  TRACEENTER();
 
   char                  FullAttrName[128];
   int                   f;
 
   if(!AbsFileName || !*AbsFileName || !AttrName || !*AttrName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -32,9 +27,7 @@ bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int Data
     {
       close(f);
 
-      #ifdef DEBUG_FIREBIRDLIB
-        CallTraceExit(NULL);
-      #endif
+      TRACEEXIT();
 
       return TRUE;
     }
@@ -45,19 +38,13 @@ bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int Data
       {
         close(f);
 
-        #ifdef DEBUG_FIREBIRDLIB
-          CallTraceExit(NULL);
-        #endif
-
+        TRACEEXIT();
         return TRUE;
       }
     }
     close(f);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return FALSE;
 }

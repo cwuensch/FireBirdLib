@@ -2,9 +2,7 @@
 
 char *ValidFileName(char *strName, eRemoveChars ControlCharacters)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ValidFileName");
-  #endif
+  TRACEENTER();
 
   char                  *s, *d, *l;
   static char           validName[MAX_FILE_NAME_SIZE];
@@ -24,9 +22,6 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters)
 
   *d = '\0';
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return validName;
 }

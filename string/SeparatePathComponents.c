@@ -3,19 +3,14 @@
 
 void SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("SeparatePathComponents");
-  #endif
+  TRACEENTER();
 
   char                  *Slash, *Dot;
   char                  *p;
 
   if(FullName == NULL)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return;
   }
 
@@ -52,7 +47,5 @@ void SeparatePathComponents(char *FullName, char *Path, char *FileName, char *Fi
     FileName[Dot - Slash - 1] = '\0';
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
+  TRACEEXIT();
 }

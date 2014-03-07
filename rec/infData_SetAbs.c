@@ -9,11 +9,8 @@ bool infData_SetAbs(char *infFileName, char *NameTag, dword PayloadSize, byte *P
 {
   bool                  ret;
   tTFRPlusHdr           TFRPlusHdr;
-  char                  s[256];
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("infData_SetAbs");
-  #endif
+  TRACEENTER();
 
   ret = FALSE;
 
@@ -39,8 +36,7 @@ bool infData_SetAbs(char *infFileName, char *NameTag, dword PayloadSize, byte *P
 
     if(PayloadSize && (Payload == NULL))
     {
-      TAP_SPrint(s, "PayloadSize of %s:%s is not 0, but data pointer is NULL!\n", infFileName, NameTag);
-      LogEntryFBLibPrintf(TRUE, "infData: %s", s);
+      LogEntryFBLibPrintf(TRUE, "infData: PayloadSize of %s:%s is not 0, but data pointer is NULL!", infFileName, NameTag);
       TFRPlusHdr.PayloadSize = 0;
       ret = FALSE;
     }
@@ -53,9 +49,6 @@ bool infData_SetAbs(char *infFileName, char *NameTag, dword PayloadSize, byte *P
   }
   infData_CloseFileAbs();
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }

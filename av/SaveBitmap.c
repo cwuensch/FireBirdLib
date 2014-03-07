@@ -3,19 +3,14 @@
 
 bool SaveBitmap(char *strName, int width, int height, byte* pBuffer)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("SaveBitmap");
-  #endif
+  TRACEENTER();
 
   TYPE_File             *pFile;
   dword									rowlength;
 
   if(!pBuffer ||!strName)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -23,10 +18,7 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer)
   pFile = TAP_Hdd_Fopen(strName);
   if(!pFile)
   {
-    #ifdef DEBUG_FIREBIRDLIB
-      CallTraceExit(NULL);
-    #endif
-
+    TRACEEXIT();
     return FALSE;
   }
 
@@ -39,9 +31,6 @@ bool SaveBitmap(char *strName, int width, int height, byte* pBuffer)
   TAP_Hdd_Fwrite(pBuffer, rowlength, height, pFile);
   TAP_Hdd_Fclose(pFile);
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return TRUE;
 }

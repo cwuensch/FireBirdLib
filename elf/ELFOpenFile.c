@@ -11,9 +11,7 @@ Elf32_Sym               *symtab = NULL;
 
 bool ELFOpenFile(char *FileName)
 {
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceEnter("ELFOpenFile");
-  #endif
+  TRACEENTER();
 
   char                  CurrentFile[512];
   bool                  ret = FALSE;
@@ -28,9 +26,6 @@ bool ELFOpenFile(char *FileName)
     ret = ELFOpenAbsFile(CurrentFile);
   }
 
-  #ifdef DEBUG_FIREBIRDLIB
-    CallTraceExit(NULL);
-  #endif
-
+  TRACEEXIT();
   return ret;
 }
