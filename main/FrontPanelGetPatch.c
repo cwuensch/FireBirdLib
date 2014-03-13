@@ -34,39 +34,46 @@ bool FrontPanelGetPatch(byte *Version, byte *Type)
     //Take over the handle from _frontfd
     localfd = *__frontfd;
     *__frontfd = 0;
+    TAP_Delay(20);
+
+    //Flush any bytes which are still in the buffer
+    read(localfd, &Buffer[0], 64);
 
     Retry = 3;
     do
     {
-      //Send the F0 command
-      Buffer[0] = 0x02;
-      Buffer[1] = 0xf0;
-      Buffer[2] = 0x03;
+      InBufferPtr = 0;
 
-      write(localfd, Buffer, 3);
-      fsync(localfd);
+      //Send the F0 command
+      Buffer[0] = 0x00;
+      Buffer[1] = 0x02;
+      Buffer[2] = 0xf0;
+      Buffer[3] = 0x03;
+
+      write(localfd, Buffer, 4);
 
       //Wait for the F2 response
-      InBufferPtr = 0;
-      WaitTimeout = TAP_GetTick() + 50;
-
+      WaitTimeout = TAP_GetTick() + 10;
       do
       {
         ret = read(localfd, &Buffer[InBufferPtr], 64);
-        if(ret > 0) InBufferPtr += ret;
+        if(ret > 0)
+        {
+          InBufferPtr += ret;
+          WaitTimeout = TAP_GetTick() + 5;
+        }
         Timeout = (TAP_GetTick() > WaitTimeout);
-      }while(!Timeout && (InBufferPtr != ExpectedResponseLen));
+      }while(!Timeout);
 
+      if((InBufferPtr == ExpectedResponseLen) && (Buffer[2] == ExpectedResponseCode))
+      {
+        FPVersion = Buffer[3];
+        FPType = Buffer[4];
+        Result = TRUE;
+        break;
+      }
       Retry--;
-
-    }while((Buffer[2] != ExpectedResponseCode) && !Timeout && (Retry > 0));
-
-    if((InBufferPtr == ExpectedResponseLen) && (Buffer[2] == ExpectedResponseCode))
-    {
-      FPVersion = Buffer[3];
-      FPType = Buffer[4];
-      Result = TRUE;
-    }
+    }while((InBufferPtr == 0) && (Retry > 0));
 
     //Restore the communication
     *__frontfd = localfd;

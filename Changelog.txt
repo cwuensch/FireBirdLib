@@ -868,3 +868,5 @@ License:  This library is freeware. You may use this code in your own projects f
 2014-03-07: Added: FrontPanelGetPatch(), FrontPanelEEPROMRead(), FrontPanelEEPROMWrite() and FIS_vfrontfd(). These function only make sense with a patched front panel.
             Added: HDD_TAP_CheckCollision(): checks if the same TAP is already running. This may happen due to a bug in the Topfield's file list. Call it as one of the first functions
                    in TAP_Main() and exit with return 0 if HDD_TAP_CheckCollision() returns TRUE.
+2014-03-09: Modified tTMSTAPTaskTable.unknown1 to tTMSTAPTaskTable.dlopen . This variable contains the void* returned by dlopen() when loading a TAP. All other unknowns have been renamed to unused*
+2014-03-13: Added: OSDMenuKeyboard_Show() and OSDMenuKeyboard_isVisible()

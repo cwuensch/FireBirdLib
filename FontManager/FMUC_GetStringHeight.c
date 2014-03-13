@@ -22,10 +22,7 @@ dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData)
   while(p < pEnd)
   {
     GlyphData = FMUC_GetGlyphData(FontData, p, &BytesPerChar);
-    if(GlyphData)
-    {
-      if(GlyphData->Height > Height) Height = GlyphData->Height;
-    }
+    if(GlyphData && (GlyphData->Height > Height)) Height = GlyphData->Height;
     p += BytesPerChar;
   }
 

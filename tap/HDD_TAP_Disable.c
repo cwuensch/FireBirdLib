@@ -46,16 +46,16 @@ bool HDD_TAP_Disable(dword TAPID, bool DisableEvents)
     return FALSE;
   }
 
-  //Abuse tTMSTAPTaskTable.unknown9 as temporary storage for the event handler address
+  //Abuse tTMSTAPTaskTable.unused5 as temporary storage for the event handler address
   if(DisableEvents)
   {
-    TMSTAPTaskTable[TAPIndex].unknown9 = TMSTAPTaskTable[TAPIndex].TAP_EventHandler;
+    TMSTAPTaskTable[TAPIndex].unused5 = TMSTAPTaskTable[TAPIndex].TAP_EventHandler;
     TMSTAPTaskTable[TAPIndex].TAP_EventHandler = (dword)&HDD_TAP_DisabledEventHandler;
   }
   else
   {
-    TMSTAPTaskTable[TAPIndex].TAP_EventHandler = TMSTAPTaskTable[TAPIndex].unknown9;
-    TMSTAPTaskTable[TAPIndex].unknown9 = 0;
+    TMSTAPTaskTable[TAPIndex].TAP_EventHandler = TMSTAPTaskTable[TAPIndex].unused5;
+    TMSTAPTaskTable[TAPIndex].unused5 = 0;
   }
 
   TRACEEXIT();

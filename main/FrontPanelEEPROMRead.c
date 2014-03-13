@@ -26,41 +26,48 @@ bool FrontPanelEEPROMRead(word Address, byte *Data)
     //Take over the handle from _frontfd
     localfd = *__frontfd;
     *__frontfd = 0;
+    TAP_Delay(20);
+
+    //Flush any bytes which are still in the buffer
+    read(localfd, &Buffer[0], 64);
 
     Retry = 3;
     do
     {
-      //Query: 02 D2 EAH EAL 03
-      Buffer[0] = 0x02;
-      Buffer[1] = 0xD2;
-      Buffer[2] = Address >> 8;
-      Buffer[3] = Address & 0xff;
-      Buffer[4] = 0x03;
-
-      write(localfd, Buffer, 5);
-      fsync(localfd);
-
-      //Wait for the D1 response
       InBufferPtr = 0;
-      WaitTimeout = TAP_GetTick() + 50;
 
+      //Query: 02 D2 EAH EAL 03
+      Buffer[0] = 0x00;
+      Buffer[1] = 0x02;
+      Buffer[2] = 0xD2;
+      Buffer[3] = Address >> 8;
+      Buffer[4] = Address & 0xff;
+      Buffer[5] = 0x03;
+
+      write(localfd, Buffer, 6);
+
+      //Wait for the F2 response
+      WaitTimeout = TAP_GetTick() + 10;
       do
       {
         ret = read(localfd, &Buffer[InBufferPtr], 64);
-        if(ret > 0) InBufferPtr += ret;
+        if(ret > 0)
+        {
+          InBufferPtr += ret;
+          WaitTimeout = TAP_GetTick() + 5;
+        }
         Timeout = (TAP_GetTick() > WaitTimeout);
-      }while(!Timeout && (InBufferPtr != ExpectedResponseLen));
+      }while(!Timeout);
+
+      if((InBufferPtr == ExpectedResponseLen) && (Buffer[2] == ExpectedResponseCode))
+      {
+        //Response: 00 02 D1 DTA 03
+        if(Data) *Data = Buffer[3];
+        Result = TRUE;
+      }
 
       Retry--;
-
-    }while((Buffer[2] != ExpectedResponseCode) && !Timeout && (Retry > 0));
-
-    if((InBufferPtr == ExpectedResponseLen) && (Buffer[2] == ExpectedResponseCode))
-    {
-      //Response: 00 02 D1 DTA 03
-      if(Data) *Data = Buffer[3];
-      Result = TRUE;
-    }
+    }while((InBufferPtr == 0) && (Retry > 0));
 
     //Restore the communication
     *__frontfd = localfd;

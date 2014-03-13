@@ -678,9 +678,11 @@ int TAP_Main()
   OSDMenuKeyboard_DrawLegendButton(0, 0, NULL);
   OSDMenuKeyboard_EventHandler(NULL, NULL, NULL);
   OSDMenuKeyboard_Finish();
+  OSDMenuKeyboard_isVisible();
   OSDMenuKeyboard_LegendButton(0, 0, NULL);
   OSDMenuKeyboard_SaveAndFinish();
   OSDMenuKeyboard_Setup(NULL, NULL, 0);
+  OSDMenuKeyboard_Show();
   OSDMenuKeyboard_TMSRemoteDirectMode(FALSE);
   OSDMenuLoadStdFonts();
   OSDMenuLogo(0, 0, NULL);

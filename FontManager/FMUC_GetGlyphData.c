@@ -6,6 +6,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
 
   int                   i;
   dword                 UTF32;
+  tGlyphCacheUC        *GC;
 
   if(!FontData || !UTF8Character || !*UTF8Character)
   {
@@ -25,12 +26,16 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, byte *UTF8Character, byt
   UTF32 = UTF8ToUTF32(UTF8Character, BytesPerChar);
 
   //Check if the character is already in the cache
+  GC = &FontData->GlyphCache[0];
   for(i = 0; i < (int)FontData->GlyphCacheEntries; i++)
-    if(FontData->GlyphCache[i].Unicode == UTF32)
+  {
+    if(GC->Unicode == UTF32)
     {
       TRACEEXIT();
-      return &FontData->GlyphCache[i];
+      return GC;
     }
+    GC++;
+  }
 
   //Locate it in the file
   for(i = 0; i < (int)FontData->FontDefEntries; i++)

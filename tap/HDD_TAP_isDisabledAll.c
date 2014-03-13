@@ -18,7 +18,7 @@ bool HDD_TAP_isDisabledAll(void)
 
   for(i = 0; i < TAP_MAX; i++)
   {
-    if((i != *curTAPTask) && (TMSTAPTaskTable[i].Status == 1) && (TMSTAPTaskTable[i].unknown9 == 0))
+    if((i != *curTAPTask) && (TMSTAPTaskTable[i].Status == 1) && (TMSTAPTaskTable[i].unused5 == 0))
     {
       TRACEEXIT();
       return FALSE;

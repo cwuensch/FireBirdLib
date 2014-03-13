@@ -21,7 +21,7 @@ dword HDD_TAP_isDisabled(dword TAPID)
   }
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  ret = (TMSTAPTaskTable[TAPIndex].unknown9 ? 1 : 0);
+  ret = (TMSTAPTaskTable[TAPIndex].unused5 ? 1 : 0);
 
   TRACEEXIT();
   return ret;

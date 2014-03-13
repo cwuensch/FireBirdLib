@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-03-07"
+  #define __FBLIB_RELEASEDATE__ "2014-03-13"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2378,18 +2378,18 @@
 
   typedef struct
   {
-    dword                 Status; //1 = Running, 2 = TAP_Exit(); ???
-    dword                 unknown1;
-    TYPE_File             *file;
-    dword                 unknown3;
-    dword                 TAP_Main;
-    dword                 TAP_EventHandler;
-    dword                 unknown6;
-    dword                 unknown7;
-    dword                 unknown8;
-    dword                 unknown9;
-    tDirEntry            *CurrentDir;
-  } tTMSTAPTaskTable; //44 Bytes * 16 TAPs = 704 bytes
+    dword                 Status;             //0x00: 1 = Running, 2 = TAP_Exit(); ???
+    dword                 dlopen;             //0x04
+    TYPE_File            *file;               //0x08
+    dword                 unused1;            //0x0c
+    dword                 TAP_Main;           //0x10
+    dword                 TAP_EventHandler;   //0x14
+    dword                 unused2;            //0x18
+    dword                 unused3;            //0x1c
+    dword                 unused4;            //0x20
+    dword                 unused5;            //0x24
+    tDirEntry            *CurrentDir;         //0x28
+  } tTMSTAPTaskTable; //44 (0x2c) Bytes * 16 TAPs = 704 bytes
 
   typedef struct
   {
@@ -2735,7 +2735,9 @@
 
   void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
   void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
+  void OSDMenuKeyboard_Show(void);
   bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
+  bool OSDMenuKeyboard_isVisible(void);
   void OSDMenuKeyboard_Destroy(void);
 
 
