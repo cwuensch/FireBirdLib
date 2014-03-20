@@ -20,7 +20,7 @@ void PrintNet(char *puffer)
   {
     TAP_SPrint(fn, "/dev/pts/%d", i);
     fd = open(fn, O_RDWR);
-    if(fd)
+    if(fd >= 0)
     {
       write(fd, puffer, len);
       close(fd);

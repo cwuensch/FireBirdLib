@@ -23,7 +23,7 @@ bool StringDBInit(tStringDB *StringDB, dword InitialSize)
 
   StringDB->DBPtr = StringDB->DB;
   StringDB->DBEnd = StringDB->DB;
-  ret  =(StringDB->DB != NULL) || (InitialSize == 0);
+  ret = (StringDB->DB != NULL) || (InitialSize == 0);
 
   TRACEEXIT();
   return ret;

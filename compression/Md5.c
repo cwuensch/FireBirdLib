@@ -393,50 +393,19 @@ bool MD5File(char *FileName, byte *Digest)
 {
   TRACEENTER();
 
-  TYPE_File            *inFile;
-  MD5_CTX               mdContext;
-  int                   bytes;
-  unsigned char         data[1024];
-
-  if(!FileName)
-  {
-    TRACEEXIT();
-    return FALSE;
-  }
-
-  inFile = TAP_Hdd_Fopen(FileName);
-  if(inFile == NULL)
-  {
-    TRACEEXIT();
-    return FALSE;
-  }
-
-  MD5Init(&mdContext);
-  while((bytes = TAP_Hdd_Fread(data, 1, 1024, inFile)) != 0)
-    MD5Update(&mdContext, data, bytes);
-  MD5Final(&mdContext);
-  TAP_Hdd_Fclose(inFile);
-
-  if(Digest) memcpy(Digest, mdContext.digest, 16);
-
-  TRACEEXIT();
-  return TRUE;
-}
-
-bool MD5AbsFile(char *AbsFileName, byte *Digest)
-{
-  TRACEENTER();
-
   int                   inFile;
   MD5_CTX               mdContext;
   int                   bytes;
-  unsigned char         data[1024];
+  byte                  data[1024];
+  char                  AbsFileName[FBLIB_DIR_SIZE];
 
-  if(!AbsFileName)
+  if(!FileName || !*FileName)
   {
     TRACEEXIT();
     return FALSE;
   }
+
+  ConvertPathType(FileName, AbsFileName, PF_FullLinuxPath);
 
   inFile = open(AbsFileName, O_RDONLY, 0600);
   if(inFile < 0)

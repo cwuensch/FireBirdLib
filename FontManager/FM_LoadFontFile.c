@@ -7,6 +7,10 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
   TYPE_File            *f;
   dword                 GreyScaleSize;
   dword                 i, j, k;
+  char                  TAPPath[FBLIB_DIR_SIZE], FileName[MAX_FILE_NAME_SIZE+1];
+
+  //Initialize the struct
+  if(FontData) memset(FontData, 0, sizeof(tFontData));
 
   if(!FontFileName || !FontFileName[0] || !FontData)
   {
@@ -14,24 +18,31 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
     return FALSE;
   }
 
-  memset(FontData, 0, sizeof(tFontData));
+  ConvertPathType(FontFileName, TAPPath, PF_TAPPathOnly);
+  ConvertPathType(FontFileName, FileName, PF_FileNameOnly);
 
-  if(!TAP_Hdd_Exist(FontFileName))
+  HDD_TAP_PushDir();
+  if(*TAPPath) HDD_ChangeDir(TAPPath);
+  if(!TAP_Hdd_Exist(FileName))
   {
     char                s[120];
     extern char         __tap_program_name__[MAX_PROGRAM_NAME];
 
-    TAP_SPrint(s, "failed to load %s", FontFileName);
+    TAP_SPrint(s, "failed to load %s", FileName);
     LogEntryFBLibPrintf(TRUE, "FontManager: %s", s);
     ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
+
+    HDD_TAP_PopDir();
 
     TRACEEXIT();
     return FALSE;
   }
 
-  f = TAP_Hdd_Fopen(FontFileName);
+  f = TAP_Hdd_Fopen(FileName);
   if(f == NULL)
   {
+    HDD_TAP_PopDir();
+
     TRACEEXIT();
     return FALSE;
   }
@@ -68,6 +79,8 @@ bool FM_LoadFontFile(char *FontFileName, tFontData *FontData)
   }while(j > 0);
 
   TAP_Hdd_Fclose(f);
+
+  HDD_TAP_PopDir();
 
   TRACEEXIT();
   return TRUE;

@@ -10,7 +10,7 @@ dword *FindGotPointer(dword FunctionAddress)
 
   if(!gotStart)
   {
-    if(ELFOpenAbsFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
+    if(ELFOpenFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
     {
       SectionIndex = ELFGetSectionIndex(".got");
       if(SectionIndex)

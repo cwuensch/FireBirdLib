@@ -2,22 +2,21 @@
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
-dword HDD_GetFileTimeByAbsFileName(char *FileName)
+dword HDD_GetFileTimeByFileName(char *FileName)
 {
   TRACEENTER();
 
   tstat64               statbuf;
   dword                 ret;
+  char                  AbsFileName[FBLIB_DIR_SIZE];
 
-  if(FileName)
+  ret = 0;
+  if(FileName && *FileName)
   {
-    if(lstat64(FileName, &statbuf))
-      ret = 0;
-    else
+    ConvertPathType(FileName, AbsFileName, PF_FullLinuxPath);
+    if(*AbsFileName && !lstat64(AbsFileName, &statbuf))
       ret = statbuf.st_mtime;
   }
-  else
-    ret = 0;
 
   TRACEEXIT();
   return ret;

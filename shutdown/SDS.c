@@ -228,7 +228,7 @@ bool SDS(void)
       Slot = *curTapTask;
       if(HDD_TAP_GetFileNameByIndex(Slot, &TAPFileName))
       {
-        if(!HDD_TAP_GetInfoByAbsPath(TAPFileName, &TAPInfo)) strcpy(TAPInfo.TAPName, "???");
+        if(!HDD_TAP_GetInfo(TAPFileName, &TAPInfo)) strcpy(TAPInfo.TAPName, "???");
       }
       else
         strcpy(TAPInfo.TAPName, "???");

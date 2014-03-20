@@ -34,7 +34,7 @@ char *GetApplVer(void)
   Appl_SetApplVer(NULL);
   strcpy(FWVersion, osdOutBuf);
 
-  if(ELFOpenAbsFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
+  if(ELFOpenFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
   {
     SectionIndex = ELFGetSectionIndex(".rodata");
     if(SectionIndex)

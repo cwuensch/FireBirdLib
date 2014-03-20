@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-03-13"
+  #define __FBLIB_RELEASEDATE__ "2014-03-20"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -59,7 +59,7 @@
     BOOT_FRONT_PANEL,       //... pressing a front panel key
     BOOT_REMOTE_CONTROL,    //... a remote key
     BOOT_TIMER,             //... a timer
-    BOOT_CRASH_REBOOT,      //... the AutoReboot TAP (TF5000 only)
+    BOOT_FW_REBOOT,         //... Firmware controlled reboot
     BOOT_RESERVED_4,        //... unknown. Possibly used by the front panel, but never seen
     BOOT_POWER,             //... an mains power failure.
     BOOT_ANTIFREEZE         //... an AntiFreeze reboot. Patched front panels only
@@ -304,8 +304,7 @@
   bool  isPIPActive(void);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  PlayMediaFile(char *MediaFileName);
-  bool  PlayMediaFileAbs(char *MediaFileName, char *AbsMediaPathName);
-  bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer);
+  bool  SaveBitmap(char *FileName, int width, int height, byte* pBuffer);
   void  SetRemoteMode(byte Mode, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
   void  ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay);
@@ -338,7 +337,6 @@
   dword CRC32(dword StartValue, void *StartAddress, dword Length);
   bool  MD5String(char *inString, byte *Digest);
   bool  MD5File(char *FileName, byte *Digest);
-  bool  MD5AbsFile(char *AbsFileName, byte *Digest);
   dword OATH(register byte *data, int len, dword hash);
   dword SuperFastHash(register byte *data, int len, dword hash);
   word  UncompressBlock(byte *pInput, word compCount, byte *pOutput, word BufferSize);
@@ -1317,13 +1315,9 @@
   /*****************************************************************************************************************************/
 
   int  ExtAttribExists(char *FileName, char *AttrName);
-  int  ExtAttribExistsAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
-  bool ExtAttribGetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
   bool ExtAttribRemove(char *FileName, char *AttrName);
-  bool ExtAttribRemoveAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen);
-  bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int DataLen);
 
 
   /*****************************************************************************************************************************/
@@ -1400,6 +1394,7 @@
   int    Appl_CheckRecording_Tuner(byte TunerIndex, int SvcType, int SvcNum, bool Unknown);
   void   Appl_ClrTimer(byte *TimerHandle);
   bool   Appl_EvtProc_PincodeKey(dword p1, dword p2);
+  void   Appl_ExecProgram(char *FileName);
   bool   Appl_ExportChData(char *FileName);
   void  *Appl_GetCurrentEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
   dword  Appl_GetEvtCount(byte SatIndex, word NetID, word TSID, word ServiceID);
@@ -1817,49 +1812,54 @@
     dword               PartType; //1 = jfs, 4 = FAT32, 5 = NTFS
   }textPartitionInfo;   //used by the _extPartitionInfo struct
 
-  void       FixInvalidFileName(char *FileName);
-  int        HDD_AAM_Disable(void);
-  int        HDD_AAM_Enable(byte AAMLevel);
-  int        HDD_APM_Disable(void);
-  int        HDD_APM_Enable(byte APMLevel);
-  bool       HDD_ChangeDir(char *Dir);
-  void       HDD_Delete(char *FileName);
-  TYPE_File *HDD_FappendOpen(char *FileName);
-  bool       HDD_FappendWrite(TYPE_File *file, char *data);
-  bool       HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
+  typedef enum
+  {
+    PF_FileNameOnly,      //Get the file name
+    PF_TAPPathOnly,       //Get the TAP path w/o file name. The string willend in a "/"
+    PF_LinuxPathOnly,     //Get the Linux absolute path w/o file name. The string willend in a "/"
+    PF_FullTAPPath,       //Get the full TAP path including file name
+    PF_FullLinuxPath      //Get the full absolute Linux path including file name
+  }tPathFormat;
 
-  //The following define will be removed in the near future
-  #define HDD_GetAbsolutePathByTypeFileUTF8   HDD_GetAbsolutePathByTypeFile
-
-  bool       HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize);
-  dword      HDD_GetFileTimeByAbsFileName(char *FileName);
-  dword      HDD_GetFileTimeByRelFileName(char *FileName);
-  dword      HDD_GetFileTimeByTypeFile(TYPE_File *File);
-  bool       HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo);
-  __ino64_t  HDD_GetInodeByAbsFileName(char *Filename);
-  __ino64_t  HDD_GetInodeByRelFileName(char *Filename);
-  __ino64_t  HDD_GetInodeByTypeFile(TYPE_File *File);
-  bool       HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
-  bool       HDD_Move(char *FileName, char *FromDir, char *ToDir);
-  bool       HDD_MoveAbs(char *FileName, char *FromDir, char *ToDir);
-  void       HDD_Recycle(char *FileName);
-  void       HDD_RecycleSF(char *FileName);
-  void       HDD_RemoveDir(char *DirPath, bool Recursive);
-  void       HDD_Rename(char *FileName, char *NewFileName);
-  int        HDD_Smart_DisableAttributeAutoSave(void);
-  int        HDD_Smart_DisableOperations(void);
-  int        HDD_Smart_EnableAttributeAutoSave(void);
-  int        HDD_Smart_EnableOperations(void);
-  int        HDD_Smart_ReadData(word *DataBuf);
-  int        HDD_Smart_ReadThresholdData(word *DataBuf);
-  int        HDD_Smart_ReturnStatus(void);                  ////if 20 is returned then one or more thresholds have been exceeded; -1 upon error
-  void       HDD_Unrecycle(char *FileName);
-  void       HDD_UnrecycleSF(char *FileName);
-  bool       HDD_Write(void *data, dword length, TYPE_File *f);
-  tFileInUse HDD_isFileInUse(char *FileName);
-  void       MakeUniqueFileName(char *FileName);
-  void       MakeUniqueFileNameAbs(char *FileName);
-  void       SeparateFileNameComponents(char *FileName, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
+  bool        FixInvalidFileName(char *FileName);
+  void        ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat);
+  tPathFormat GetPathType(char *Source);
+  int         HDD_AAM_Disable(void);
+  int         HDD_AAM_Enable(byte AAMLevel);
+  int         HDD_APM_Disable(void);
+  int         HDD_APM_Enable(byte APMLevel);
+  bool        HDD_ChangeDir(char *Dir);
+  void        HDD_Delete(char *FileName);
+  bool        HDD_Exist(char *FileName);
+  TYPE_File  *HDD_FappendOpen(char *FileName);
+  bool        HDD_FappendWrite(TYPE_File *file, char *data);
+  bool        HDD_FindMountPoint(char *File, char *MountPoint);
+  bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
+  bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
+  dword       HDD_GetFileTimeByFileName(char *FileName);
+  dword       HDD_GetFileTimeByTypeFile(TYPE_File *File);
+  bool        HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo);
+  __ino64_t   HDD_GetInodeByFileName(char *Filename);
+  __ino64_t   HDD_GetInodeByTypeFile(TYPE_File *File);
+  bool        HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
+  bool        HDD_Move(char *FileName, char *FromDir, char *ToDir);
+  bool        HDD_Recycle(char *FileName);
+  bool        HDD_RecycleSF(char *FileName);
+  void        HDD_RemoveDir(char *DirPath, bool Recursive);
+  bool        HDD_Rename(char *FileName, char *NewFileName);
+  int         HDD_Smart_DisableAttributeAutoSave(void);
+  int         HDD_Smart_DisableOperations(void);
+  int         HDD_Smart_EnableAttributeAutoSave(void);
+  int         HDD_Smart_EnableOperations(void);
+  int         HDD_Smart_ReadData(word *DataBuf);
+  int         HDD_Smart_ReadThresholdData(word *DataBuf);
+  int         HDD_Smart_ReturnStatus(void);                  ////if 20 is returned then one or more thresholds have been exceeded; -1 upon error
+  bool        HDD_Unrecycle(char *FileName);
+  bool        HDD_UnrecycleSF(char *FileName);
+  bool        HDD_Write(void *data, dword length, TYPE_File *f);
+  tFileInUse  HDD_isFileInUse(char *FileName);
+  void        MakeUniqueFileName(char *FileName);
+  void        SeparateFileNameComponents(char *FileName, char *Path, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
 
 
   /*****************************************************************************************************************************/
@@ -2267,19 +2267,11 @@
   bool   HDD_RECSlotSetDuration(byte Slot, word Duration);
   word   HDD_SetExtRecording(bool ExtDisk);
 
-  //These functions use the current directory
   bool   infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize);
   bool   infData_Get(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
   bool   infData_GetNameByIndex(char *infFileName, dword NameIndex, char *NameTag);
   bool   infData_Set(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
   bool   infData_Delete(char *infFileName, char *NameTag);
-
-  //And these accept an absolute path to any device/directory
-  bool   infData_isAvailAbs(char *infFileName, char *NameTag, dword *PayloadSize);
-  bool   infData_GetAbs(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
-  bool   infData_GetNameByIndexAbs(char *infFileName, dword NameIndex, char *NameTag);
-  bool   infData_SetAbs(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
-  bool   infData_DeleteAbs(char *infFileName, char *NameTag);
 
 
   /*****************************************************************************************************************************/
@@ -2415,7 +2407,6 @@
   dword HDD_TAP_GetIDByIndex(int TAPIndex);
   int   HDD_TAP_GetIndexByID(dword TAPID);
   bool  HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
-  bool  HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo);
   void *HDD_TAP_GetStartParameter(void);
   bool  HDD_TAP_PopDir(void);
   bool  HDD_TAP_PushDir(void);

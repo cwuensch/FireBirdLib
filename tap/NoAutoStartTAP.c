@@ -7,7 +7,7 @@ bool NoAutoStartTAP(void)
 {
   TRACEENTER();
 
-  char                  CurrentDir[512];
+  char                  CurrentDir[FBLIB_DIR_SIZE];
   char                  *FileName;
   char                  cmd[200];
   dword                *curTapTask;

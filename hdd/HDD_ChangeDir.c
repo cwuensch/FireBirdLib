@@ -6,7 +6,7 @@ bool HDD_ChangeDir(char *Dir)
 {
   TRACEENTER();
 
-  char                  DirUTF8[256];
+  char                  s[FBLIB_DIR_SIZE], TAPDir[FBLIB_DIR_SIZE], DirUTF8[FBLIB_DIR_SIZE];
   static bool           ReturnTypeToBeChecked = TRUE;
   static int            ChDirSuccessful = 0;
 
@@ -23,9 +23,18 @@ bool HDD_ChangeDir(char *Dir)
     HDD_TAP_PopDir();
   }
 
-  if(Dir)
+  if(Dir && *Dir)
   {
-    if(TAP_Hdd_ChangeDir(Dir) == ChDirSuccessful)
+    strcpy(s, Dir);
+    if(s[strlen(s) - 1] != '/') strcat(s, "/");
+    ConvertPathType(s, TAPDir, PF_TAPPathOnly);
+    if(!*TAPDir)
+    {
+      TRACEEXIT();
+      return FALSE;
+    }
+
+    if(TAP_Hdd_ChangeDir(TAPDir) == ChDirSuccessful)
     {
       TRACEEXIT();
       return TRUE;
@@ -34,7 +43,7 @@ bool HDD_ChangeDir(char *Dir)
     //On some versions, TAP_Hdd_ChangeDir() fails to change into directories with German Umlaute. Try it in UTF-8 format instead.
     if(isUTFToppy())
     {
-      StrToUTF8(Dir, DirUTF8, 9);
+      StrToUTF8(TAPDir, DirUTF8, 9);
       if(TAP_Hdd_ChangeDir(DirUTF8) == ChDirSuccessful)
       {
         TRACEEXIT();

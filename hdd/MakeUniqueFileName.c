@@ -5,17 +5,17 @@ void MakeUniqueFileName(char *FileName)
 {
   TRACEENTER();
 
-  char                  Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
+  char                  Path[FBLIB_DIR_SIZE], Name[TS_FILE_NAME_SIZE], Ext[TS_FILE_NAME_SIZE];
   bool                  isRec, isDel;
   int                   fNumber;
 
-  SeparateFileNameComponents(FileName, Name, Ext, &fNumber, &isRec, &isDel);
+  SeparateFileNameComponents(FileName, Path, Name, Ext, &fNumber, &isRec, &isDel);
 
   if(!fNumber) fNumber = 2;
-  TAP_SPrint(FileName, "%s%s%s", Name, Ext, isDel ? ".del" : "");
-  while(TAP_Hdd_Exist(FileName))
+  TAP_SPrint(FileName, "%s%s%s%s", Path, Name, Ext, isDel ? ".del" : "");
+  while(HDD_Exist(FileName))
   {
-    TAP_SPrint(FileName, "%s-%d%s%s", Name, fNumber++, Ext, isDel ? ".del" : "");
+    TAP_SPrint(FileName, "%s%s-%d%s%s", Path, Name, fNumber++, Ext, isDel ? ".del" : "");
   }
 
   TRACEEXIT();

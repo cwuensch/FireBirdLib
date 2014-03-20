@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <string.h>
 #include "../libFireBird.h"
 
@@ -5,12 +6,32 @@ bool PlayMediaFile(char *MediaFileName)
 {
   TRACEENTER();
 
-  dword                 ret;
-  char                  CurrentDir[FBLIB_DIR_SIZE];
+  bool                  ret;
+  tDirEntry             _TempWorkFolder;
+  char                  tempINF[FBLIB_DIR_SIZE];
+  char                  TempFileName[FBLIB_DIR_SIZE];
 
-  strcpy(CurrentDir, "/mnt/hd");
-  HDD_TAP_GetCurrentDir(&CurrentDir[strlen(CurrentDir)]);
-  ret = PlayMediaFileAbs(MediaFileName, CurrentDir);
+  ApplHdd_SaveWorkFolder();
+  memset(&_TempWorkFolder, 0, sizeof(_TempWorkFolder));
+  _TempWorkFolder.Magic = 0xbacaed31;
+
+  ConvertPathType(MediaFileName, TempFileName, PF_LinuxPathOnly);
+  ret = ApplHdd_SelectFolder(&_TempWorkFolder, &TempFileName[1]);
+
+  if(!ret)
+  {
+    ApplHdd_SetWorkFolder(&_TempWorkFolder);
+
+    ConvertPathType(MediaFileName, tempINF, PF_FullLinuxPath);
+    strcat(tempINF, ".inf");
+    ConvertPathType(MediaFileName, TempFileName, PF_FileNameOnly);
+
+    if(access(tempINF, F_OK) != -1)
+      ret = Appl_StartPlayback(TempFileName, 0, TRUE, FALSE) == 0;
+    else
+      ret = Appl_StartPlaybackMedia(TempFileName, 0, TRUE, FALSE) == 0;
+  }
+  ApplHdd_RestoreWorkFolder();
 
   TRACEEXIT();
   return ret;

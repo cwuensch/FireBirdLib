@@ -7,7 +7,7 @@ char *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR)
 {
   TRACEENTER();
 
-  static char           Path[512];
+  static char           Path[FBLIB_DIR_SIZE];
 
   strcpy(Path, LOGOROOT);
   switch(LogoStyle)

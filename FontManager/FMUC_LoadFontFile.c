@@ -6,6 +6,10 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   TRACEENTER();
 
   char                  Hdr[5];
+  char                  FileName[MAX_FILE_NAME_SIZE+1];
+
+  //Initialize the struct
+  if(FontData) memset(FontData, 0, sizeof(tFontDataUC));
 
   if(!FontFileName || !FontFileName[0] || !FontData)
   {
@@ -13,19 +17,18 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
     return FALSE;
   }
 
-  //Initialize the struct
-  memset(FontData, 0, sizeof(tFontDataUC));
+  ConvertPathType(FontFileName, FileName, PF_FileNameOnly);
 
   //Open the font file
   HDD_TAP_PushDir();
   HDD_ChangeDir(FONTSDIR);
 
-  if(!TAP_Hdd_Exist(FontFileName))
+  if(!TAP_Hdd_Exist(FileName))
   {
     char                s[120];
     extern char         __tap_program_name__[MAX_PROGRAM_NAME];
 
-    TAP_SPrint(s, "failed to load %s", FontFileName);
+    TAP_SPrint(s, "failed to load %s", FileName);
     LogEntryFBLibPrintf(TRUE, "FontManager UC: %s", s);
     ShowMessageWin(__tap_program_name__, s, "Please install the font", 300);
     HDD_TAP_PopDir();
@@ -34,11 +37,11 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
     return FALSE;
   }
 
-  FontData->FileHandle = TAP_Hdd_Fopen(FontFileName);
+  FontData->FileHandle = TAP_Hdd_Fopen(FileName);
   HDD_TAP_PopDir();
   if(FontData->FileHandle == NULL)
   {
-    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to open '%s'", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to open '%s'", FileName);
 
     TRACEEXIT();
     return FALSE;
@@ -51,7 +54,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   {
     TAP_Hdd_Fclose(FontData->FileHandle);
     FontData->FileHandle = NULL;
-    LogEntryFBLibPrintf(TRUE, "FontManager UC: '%s' has invalid header", FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: '%s' has invalid header", FileName);
 
     TRACEEXIT();
     return FALSE;
@@ -65,7 +68,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   {
     TAP_Hdd_Fclose(FontData->FileHandle);
     FontData->FileHandle = NULL;
-    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontDef table of '%s'", FontData->FontDefEntries * sizeof(tFontDefUC), FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontDef table of '%s'", FontData->FontDefEntries * sizeof(tFontDefUC), FileName);
 
     TRACEEXIT();
     return FALSE;
@@ -82,7 +85,7 @@ bool FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData)
   FontData->GlyphCache = FMUC_ReserveMemory("FMUC_LoadFontFile GlyphCache", FontData->FontDefEntries * sizeof(tGlyphCacheUC));
   if(FontData->GlyphCache == NULL)
   {
-    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FontFileName);
+    LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to allocate %d bytes for the FontCache table of '%s'", FontData->FontDefEntries * sizeof(tGlyphCacheUC), FileName);
 
     TRACEEXIT();
     return FALSE;

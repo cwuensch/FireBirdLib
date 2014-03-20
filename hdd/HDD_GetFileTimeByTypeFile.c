@@ -4,11 +4,11 @@ dword HDD_GetFileTimeByTypeFile(TYPE_File *File)
 {
   TRACEENTER();
 
-  char                  AbsFileName[512];
+  char                  AbsFileName[FBLIB_DIR_SIZE];
   dword                 ret;
 
   if(HDD_GetAbsolutePathByTypeFile(File, AbsFileName))
-    ret = HDD_GetFileTimeByAbsFileName(AbsFileName);
+    ret = HDD_GetFileTimeByFileName(AbsFileName);
   else
     ret = 0;
 

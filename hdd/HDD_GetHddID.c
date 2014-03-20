@@ -6,7 +6,7 @@ bool HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo)
 {
   TRACEENTER();
 
-  char                  Buffer[512];
+  char                  Buffer[FBLIB_DIR_SIZE];
 
   if(!HDD_IdentifyDevice(Buffer))
   {
