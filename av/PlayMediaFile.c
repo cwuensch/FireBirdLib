@@ -16,6 +16,7 @@ bool PlayMediaFile(char *MediaFileName)
   _TempWorkFolder.Magic = 0xbacaed31;
 
   ConvertPathType(MediaFileName, TempFileName, PF_LinuxPathOnly);
+  if(StringEndsWith(TempFileName, "/")) TempFileName[strlen(TempFileName) - 1] = '\0';
   ret = ApplHdd_SelectFolder(&_TempWorkFolder, &TempFileName[1]);
 
   if(!ret)

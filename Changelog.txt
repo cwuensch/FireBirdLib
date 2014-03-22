@@ -938,3 +938,6 @@ The following functions accept any form a path. The INI and language INI functio
   HDD_TAP_GetInfo, HDD_TAP_Start, HDD_Unrecycle, HDD_UnrecycleSF, infData_Delete, infData_Get, infData_GetNameByIndex, infData_isAvail, infData_OpenFileAbs, infData_Set,
   infData_TruncateAbs, LogEntry, LogEntryPrintf, MakeUniqueFileName, MD5File, PlayMediaFile, SaveBitmap, SeparateFileNameComponents, SeparatePathComponents, StringDBLoad,
   StringDBSave, ValidFileName
+
+
+2014-03-22: Fixed: PlayMediaFile() created a path with a double // after the last folder name
