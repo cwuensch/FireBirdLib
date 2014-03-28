@@ -14,11 +14,7 @@ void infData_Truncate(char *infFileName, dword Position)
   if(infFileName && *infFileName)
   {
     ConvertPathType(infFileName, AbsFileName, PF_FullLinuxPath);
-    if(*AbsFileName)
-    {
-      if(!StringEndsWith(AbsFileName, ".inf")) strcat(AbsFileName, ".inf");
-      truncate(AbsFileName, Position);
-    }
+    if(*AbsFileName) truncate(AbsFileName, Position);
   }
 
   TRACEEXIT();
