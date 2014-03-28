@@ -2505,6 +2505,8 @@
   dword  AddTime(dword date, int add);
   int    cronRegisterEvent(long frequency, dword firstExecution, void *callback);
   void   cronEventHandler(void);
+  bool   cronGetEvent(int Index, int *frequency, dword *nextExecution);
+  bool   cronModifyEvent(int Index, int frequency, dword nextExecution);
   bool   cronUnregisterEvent(int Index);
   void   cronUnregisterAllEvents(void);
   char  *DayOfWeek(byte WeekDay);

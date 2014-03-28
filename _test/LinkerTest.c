@@ -104,10 +104,12 @@ int TAP_Main()
   CrashCheck_Startup(NULL);
   CRC16(0, NULL, 0);
   CRC32(0, NULL, 0);
-  cronRegisterEvent(0, 0, NULL);
   cronEventHandler();
-  cronUnregisterEvent(0);
+  cronGetEvent(0, NULL, NULL);
+  cronModifyEvent(0, 0, 0);
+  cronRegisterEvent(0, 0, NULL);
   cronUnregisterAllEvents();
+  cronUnregisterEvent(0);
   curl_easy_cleanup(NULL);
   curl_easy_init();
   curl_easy_perform(NULL);
