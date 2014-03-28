@@ -15,11 +15,7 @@ bool infData_OpenFile(char *infFileName)
   if(infFileName && *infFileName)
   {
     ConvertPathType(infFileName, AbsFileName, PF_FullLinuxPath);
-    if(*AbsFileName)
-    {
-      if(!StringEndsWith(AbsFileName, ".inf")) strcat(AbsFileName, ".inf");
-      infDatainfFile = fopen(AbsFileName, "r+");
-    }
+    if(*AbsFileName) infDatainfFile = fopen(AbsFileName, "r+");
   }
 
   TRACEEXIT();
