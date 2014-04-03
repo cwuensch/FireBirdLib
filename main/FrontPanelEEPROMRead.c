@@ -59,6 +59,8 @@ bool FrontPanelEEPROMRead(word Address, byte *Data)
         Timeout = (TAP_GetTick() > WaitTimeout);
       }while(!Timeout);
 
+      //DumpMemory(Buffer, InBufferPtr, 16);
+
       if((InBufferPtr == ExpectedResponseLen) && (Buffer[2] == ExpectedResponseCode))
       {
         //Response: 00 02 D1 DTA 03

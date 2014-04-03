@@ -943,3 +943,5 @@ The following functions accept any form a path. The INI and language INI functio
 2014-03-22: Fixed: PlayMediaFile() created a path with a double // after the last folder name
 2014-03-28: Fixed: infData*() doesn't enforce a file name with .inf at the end anymore
             Added: cronGetEvent() and cronModifyEvent()
+2014-04-03: Modified: Added a @ to the TMSOSDKeyboard and rearranged the pages
+
