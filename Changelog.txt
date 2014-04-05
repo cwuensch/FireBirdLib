@@ -945,3 +945,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: cronGetEvent() and cronModifyEvent()
 2014-04-03: Modified: Added a @ to the TMSOSDKeyboard and rearranged the pages
 
+2014-05-04: Fixed: ConvertPathType() didn't return the trailing / when source was PF_TAPPathOnly and the destination was PF_LinuxPathOnly. This made HDD_Move() fail.

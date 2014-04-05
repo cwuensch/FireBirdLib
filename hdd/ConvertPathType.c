@@ -108,6 +108,7 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
             if(!StringEndsWith(CurrentPath, "/")) strcat(CurrentPath, "/");
             TAP_SPrint(Dest, "/mnt/hd%s", CurrentPath);
           }
+          if(!StringEndsWith(Dest, "/")) strcat(Dest, "/");
           break;
         }
 
@@ -149,6 +150,7 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
           }
           else
             Dest[0] = '\0';
+
           break;
         }
 
@@ -213,7 +215,6 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
             i = (dword)LastSlash - (dword)Source;
             strncpy(&Dest[7], Source, i);
             Dest[i+7] = '\0';
-            if(!StringEndsWith(Dest, "/")) strcat(Dest, "/");
           }
           else
           {
@@ -229,8 +230,9 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
             i = (dword)LastSlash - (dword)CurrentPath;
             strncpy(&Dest[7], CurrentPath, i);
             Dest[i+7] = '\0';
-            if(!StringEndsWith(Dest, "/")) strcat(Dest, "/");
           }
+          if(!StringEndsWith(Dest, "/")) strcat(Dest, "/");
+
           break;
         }
 
@@ -291,6 +293,7 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
           }
           else
             Dest[0] = '\0';
+
           break;
         }
 
@@ -305,6 +308,7 @@ void ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat)
           strncpy(Dest, Source, i);
           Dest[i] = '\0';
           if(!StringEndsWith(Dest, "/")) strcat(Dest, "/");
+
           break;
         }
 

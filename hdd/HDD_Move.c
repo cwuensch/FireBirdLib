@@ -20,7 +20,6 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
   {
     ConvertPathType(FromDir, OldPath, PF_LinuxPathOnly);
     strcat(OldPath, FileName);
-
     if(HDD_Exist(OldPath))
     {
       ConvertPathType(ToDir, NewPath, PF_LinuxPathOnly);
