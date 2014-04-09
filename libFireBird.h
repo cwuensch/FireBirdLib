@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-04-05"
+  #define __FBLIB_RELEASEDATE__ "2014-04-09"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1388,7 +1388,7 @@
   }tDirEntry;
 
   byte   DevFront_SetIlluminate(byte a0, byte Brightness);
-  dword  DevHdd_DeviceClose(tDirEntry **hddPlaybackFolder);
+  dword  DevHdd_DeviceClose(tDirEntry *hddPlaybackFolder);
   dword  DevHdd_DeviceOpen(tDirEntry **hddPlaybackFolder, tDirEntry *DirEntry);
   int    Appl_CheckRecording(int SvcType, int SvcNum, bool Unknown);
   int    Appl_CheckRecording_Tuner(byte TunerIndex, int SvcType, int SvcNum, bool Unknown);

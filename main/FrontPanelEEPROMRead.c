@@ -44,6 +44,7 @@ bool FrontPanelEEPROMRead(word Address, byte *Data)
       Buffer[4] = Address & 0xff;
       Buffer[5] = 0x03;
 
+      //DumpMemory(Buffer, 6, 16);
       write(localfd, Buffer, 6);
 
       //Wait for the F2 response
