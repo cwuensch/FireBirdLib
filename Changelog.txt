@@ -947,3 +947,6 @@ The following functions accept any form a path. The INI and language INI functio
 
 2014-05-04: Fixed: ConvertPathType() didn't return the trailing / when source was PF_TAPPathOnly and the destination was PF_LinuxPathOnly. This made HDD_Move() fail.
 2014-04-09: Fixed: DevHdd_DeviceClose() didn't expect a pointer to a pointer
+2014-04-15: Added: new remote type RT_7260PLUS, which should be identical to RT_2100 except for the red key.
+            Modified KeyTranslateHook() to translate RKEY_F1 to RKEY_NewF1
+            This change needs FirmwareTMS.dat >= 2014-04-15, which contains the TRF-7260+ (SysID 32501) with the new remote type

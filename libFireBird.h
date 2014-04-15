@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-04-09"
+  #define __FBLIB_RELEASEDATE__ "2014-04-15"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -98,7 +98,8 @@
   {
     RT_5000,
     RT_2100,
-    RT_7100PLUS
+    RT_7100PLUS,
+    RT_7260PLUS       //Identical to RT_2100, except that the code for the red key is RKEY_F1
   } REMOTE_TYPE;
 
   typedef struct
