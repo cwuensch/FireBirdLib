@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-04-15"
+  #define __FBLIB_RELEASEDATE__ "2014-04-17"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1181,8 +1181,8 @@
   void   LogEntryGeneric(char *ProgramName, bool Console, char *Text);
   void   LogEntryGenericPrintf(char *ProgramName, bool Console, char *format, ...);
   void   LogEntryFBLibPrintf(bool Console, char *format, ...);
-  bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
-  bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, dword *PointerToOriginal);
+  bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
+  bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
 
   void   CallTraceInit(void);
   void   CallTraceEnable(bool Enable);

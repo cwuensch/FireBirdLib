@@ -410,9 +410,6 @@ int TAP_Main()
   FMUC_LoadFontFile(NULL, NULL);
   FMUC_PutString(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0);
   FMUC_PutStringAA(0, 0, 0, 0, NULL, 0, 0, NULL, 0, 0, 0);
-  FMUC_MemoryDump(NULL, NULL);
-  FMUC_MemoryFindFree();
-  FMUC_MemoryFindPointer(NULL);
   FMUC_ReserveMemory(NULL, 0);
   FMUC_FreeMemory(NULL, NULL);
   FreeOSDRegion(0);
