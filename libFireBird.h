@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-04-17"
+  #define __FBLIB_RELEASEDATE__ "2014-04-27"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1835,6 +1835,7 @@
   TYPE_File  *HDD_FappendOpen(char *FileName);
   bool        HDD_FappendWrite(TYPE_File *file, char *data);
   bool        HDD_FindMountPoint(char *File, char *MountPoint);
+  bool        HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice);
   bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
   bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
   dword       HDD_GetFileTimeByFileName(char *FileName);

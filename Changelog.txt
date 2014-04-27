@@ -952,3 +952,4 @@ The following functions accept any form a path. The INI and language INI functio
             This change needs FirmwareTMS.dat >= 2014-04-15, which contains the TRF-7260+ (SysID 32501) with the new remote type
 
 2014-04-17: Modified the communication with the front panel to make it a bit more stable
+2014-04-27: Added: HDD_FindMountPointDevice(). Thanks to DeltaMikeCharly for the code
