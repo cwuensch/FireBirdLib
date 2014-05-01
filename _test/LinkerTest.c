@@ -446,6 +446,7 @@ int TAP_Main()
   HDD_FappendOpen(NULL);
   HDD_FappendWrite(NULL, NULL);
   HDD_FindMountPoint(NULL, NULL);
+  HDD_FindMountPointDevice(NULL, NULL, NULL);
   HDD_FindPCR(NULL, 0, 0);
   HDD_GetAbsolutePathByTypeFile(NULL, NULL);
   HDD_GetFileSizeAndInode(NULL, NULL, NULL);
@@ -733,7 +734,7 @@ int TAP_Main()
   SeparateFileNameComponents(NULL, NULL, NULL, NULL, NULL, NULL, NULL);
   SeparatePathComponents(NULL, NULL, NULL, NULL);
   SetEEPROMPin(0);
-  SetRemoteMode(0, FALSE);
+  SetRemoteMode(0, 0, FALSE);
   ShowMessageWin(NULL, NULL, NULL, 0);
   ShowMessageWindow(NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   ShowPvrList(0);

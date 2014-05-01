@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-04-27"
+  #define __FBLIB_RELEASEDATE__ "2014-05-01"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -306,7 +306,7 @@
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  PlayMediaFile(char *MediaFileName);
   bool  SaveBitmap(char *FileName, int width, int height, byte* pBuffer);
-  void  SetRemoteMode(byte Mode, bool Active);
+  void  SetRemoteMode(byte Mode, byte Index, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
   void  ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay);
   bool  ShowPvrList(tPvrListType PvrListType);

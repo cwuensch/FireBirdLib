@@ -953,3 +953,4 @@ The following functions accept any form a path. The INI and language INI functio
 
 2014-04-17: Modified the communication with the front panel to make it a bit more stable
 2014-04-27: Added: HDD_FindMountPointDevice(). Thanks to DeltaMikeCharly for the code
+2015-05-01: Modified: with the discovery of remote mode 6, SetRemoteMode() had to be modified because an automated index assingment wasn't possible any more
