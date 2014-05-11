@@ -17,7 +17,7 @@ void SetRemoteMode(byte Mode, byte Index, bool Active)
   if(DevFront_SetIrCode)
   {
     Mode--;
-    if((Mode < 5) && (Index < 4))
+    if((Mode < 6) && (Index < 4))
     {
       DevFront_SetIrCode(Index,
                         (Active ? 1 : 0),
