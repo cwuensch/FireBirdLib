@@ -123,6 +123,7 @@ int TAP_Main()
   DevHdd_DeviceOpen(NULL, NULL);
   DevService_Mute(FALSE);
   DrawOSDLine(0, 0, 0, 0, 0, 0);
+  DrawScrollbar(0, 0, 0, 0, 0, 0, 0);
   DST_CalcTransition(0, 0, 0, 0, 0, 0);
   DST_FindNextTransition();
   DST_GetDefaultDSTRule();
@@ -447,6 +448,7 @@ int TAP_Main()
   HDD_FappendWrite(NULL, NULL);
   HDD_FindMountPoint(NULL, NULL);
   HDD_FindMountPointDevice(NULL, NULL, NULL);
+  HDD_FindSymbolicLink(NULL, NULL, NULL);
   HDD_FindPCR(NULL, 0, 0);
   HDD_GetAbsolutePathByTypeFile(NULL, NULL);
   HDD_GetFileSizeAndInode(NULL, NULL, NULL);

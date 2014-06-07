@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-06-05"
+  #define __FBLIB_RELEASEDATE__ "2014-06-07"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -290,6 +290,7 @@
   tAudioTrk *AudioTrackInfo(void);
   bool  CaptureScreen(int BMPwidth, int BMPheight, byte *BMPPixelBuffer, bool bOSD, int Alpha);
   void  DrawOSDLine(word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color);
+  void  DrawScrollbar(word sbRegion, int sbX, int sbY, int sbHeight, int sbCurrent, int sbWindow, int sbMax);
   void  EndMessageWin(void);
   void  FreeOSDRegion(word Region);
   dword GetOSDMapAddress(void);
@@ -1836,6 +1837,7 @@
   bool        HDD_FappendWrite(TYPE_File *file, char *data);
   bool        HDD_FindMountPoint(char *File, char *MountPoint);
   bool        HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice);
+  int         HDD_FindSymbolicLink(char *pathName, char *returnedPath, char *fullPathName);
   bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
   bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
   dword       HDD_GetFileTimeByFileName(char *FileName);
