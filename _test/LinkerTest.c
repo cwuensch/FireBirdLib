@@ -589,6 +589,7 @@ int TAP_Main()
   LogoManager_GetLogoByChannelName(NULL, 0, 0, 0);
   LogoManager_GetLogoByLogoName(NULL, 0, 0, 0);
   LogoManager_GetPathToLogoByChannelID(0, 0, 0, 0);
+  LogoManager_GetServiceNumByChannelID(0, NULL, NULL);
   LogoManager_Initialize(NULL);
   LogoManager_LogoCacheLoad();
   LogoManager_LogoCacheRebuild();

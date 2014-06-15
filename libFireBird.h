@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-06-07"
+  #define __FBLIB_RELEASEDATE__ "2014-06-15"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2133,6 +2133,7 @@
   void          LogoManager_ProcessLILAdd(char *AddFileName);
   ulong64       LogoManager_CalculateChannelID(word SatLongitude, word NetworkID, word TSID, word ServiceID);
   ulong64       LogoManager_GetChannelID(int SvcType, int SvcNum);
+  bool          LogoManager_GetServiceNumByChannelID(ulong64 ChannelID, int *SvcType, int *SvcNum);
 
   //The callback parameter may point to the following prototype
   // void Callback(int CallbackType, int Param);
