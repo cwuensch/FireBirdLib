@@ -959,3 +959,4 @@ The following functions accept any form a path. The INI and language INI functio
 2014-06-07: Fixed: unselectable items where not visible in the OSDMenu if they were at the top or bottom of the list and the list was longer than one page (10 items).
             Added: HDD_FindSymbolicLink(), which detects a symbolic link inside of a path and returns the "true" path. Thanks to DeltaMikeCharly for the code
 2014-06-15: Added: LogoManager_GetServiceNumByChannelID(), which does the reverse lookup of LogoManager_GetChannelID()
+2014-06-18: Fixed: FlashServiceGetInfo() didn't check the plausibility of the ProviderIdx field and returned random junk if that field was set to ‘no info available’ (0xffff).
