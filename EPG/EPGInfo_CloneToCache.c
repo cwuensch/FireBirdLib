@@ -37,7 +37,7 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPG
     {
       EvtInfo = (TYPE_EvtInfo*)(Entry - EvtInfoOffset);
 
-      if((dword)EvtInfo->TreeFull.Next != 0xFFFFFFD8 && (dword)EvtInfo->TreeFull.Prev != 0xFFFFFFD8)  //Only take events that are not scheduled for garbage collection
+      if((dword)EvtInfo->TreeFull.Next != 0 && (dword)EvtInfo->TreeFull.Prev != 0)  //Only take events that are not scheduled for garbage collection
       {
           //Make the decisions, to add a pool record, here
           EventStartTime = UTC2LocalTime(EvtInfo->StartTime, &Offset);

@@ -963,3 +963,7 @@ The following functions accept any form a path. The INI and language INI functio
 2014-06-29: Fixed: EPGInfo_CloneToCache() doesn't copy EPG entries, that are marked for garbage collection
 2014-07-13: Fixed: HDD_FindMountPointDevice(), which occasionally reported the wrong device
             Fixed: modified the Unicode FontManager so that all Font files are opened in read-only mode
+2014-08-22: Fixed: HDD_Delete() didn't delete the .rec/.mpg if the .inf or .nav has been passed as file name
+            Fixed: the internal function EPGInfo_CloneToCache() didn't ignore EPG events, that were already marked for deletion
+            Added: HDD_BuildExtDriveList()
+2014-08-23: Fixed: HDD_Recycle() and HDD_Unrecycle() failed if no path has been provided with FileName
