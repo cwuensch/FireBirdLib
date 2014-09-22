@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-08-23"
+  #define __FBLIB_RELEASEDATE__ "2014-09-22"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 

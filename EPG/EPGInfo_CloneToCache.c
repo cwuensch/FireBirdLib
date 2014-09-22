@@ -27,7 +27,6 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPG
     if(ListStart == (tTreeEntry*)ListStart->Next)
     {
       TRACEEXIT();
-
       return;
     }
 
@@ -37,8 +36,10 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPG
     {
       EvtInfo = (TYPE_EvtInfo*)(Entry - EvtInfoOffset);
 
-      if((dword)EvtInfo->TreeFull.Next != 0 && (dword)EvtInfo->TreeFull.Prev != 0)  //Only take events that are not scheduled for garbage collection
+      if(FlashServiceFindNum(EvtInfo->SatIndex, EvtInfo->NetworkID, EvtInfo->TSID, EvtInfo->ServiceID, NULL, NULL))
       {
+        if((dword)EvtInfo->TreeFull.Next != 0 && (dword)EvtInfo->TreeFull.Prev != 0)  //Only take events that are not scheduled for garbage collection
+        {
           //Make the decisions, to add a pool record, here
           EventStartTime = UTC2LocalTime(EvtInfo->StartTime, &Offset);
           EventEndTime = UTC2LocalTime(EvtInfo->EndTime, NULL);
@@ -57,7 +58,7 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPG
           if(EPGFilter->DurationFilter)
           {
             isWithinDuration = ((EPGFilter->MinDuration == 0) || (EvtInfo->durationHour * 60 + EvtInfo->durationMin >= EPGFilter->MinDuration)) &&
-                               ((EPGFilter->MaxDuration == 0) || (EvtInfo->durationHour * 60 + EvtInfo->durationMin <= EPGFilter->MaxDuration));
+                ((EPGFilter->MaxDuration == 0) || (EvtInfo->durationHour * 60 + EvtInfo->durationMin <= EPGFilter->MaxDuration));
           }
           else
             isWithinDuration = TRUE;
@@ -104,7 +105,8 @@ void EPGInfo_CloneToCache(dword *TreePointer, byte StructOffset, tEPGFilter *EPG
               EPGInfoNrEntries++;
             }
           }
-      }//END test for garbage collection value
+        }//END test for garbage collection value
+      }
 
       Entry = (tTreeEntry*)Entry->Next;
     } while(Entry && (Entry->Next != ListStart->Prev));
