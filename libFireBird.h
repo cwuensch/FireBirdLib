@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2014-11-09"
+  #define __FBLIB_RELEASEDATE__ "2015-01-30"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1913,7 +1913,7 @@
 
 
   /*****************************************************************************************************************************/
-  /* InstuctionSequences                                                                                                       */
+  /* InstructionSequences                                                                                                      */
   /*****************************************************************************************************************************/
 
   dword TryResolve(char *Function);
