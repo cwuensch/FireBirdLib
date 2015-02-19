@@ -3,6 +3,8 @@
 #include                <unistd.h>
 #include                <stdio.h>
 #include                <string.h>
+#include                <sys/types.h>
+#include                <utime.h>
 #include                "../libFireBird.h"
 
 #undef malloc
@@ -18,6 +20,7 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
   byte                  Sec;
   byte                 *ISOText;
   char                  AbsFileName[FBLIB_DIR_SIZE];
+  struct utimbuf        times;
 
   if(!Text)
   {
@@ -38,6 +41,11 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
       if(Text && Text[0]) write(f, Text, strlen(Text));
       write(f, CRLF, 2);
       close(f);
+
+      //As the log would receive the Linux time stamp (01.01.2000), adjust to the PVR's time
+      times.actime = PvrTimeToLinux(Now(NULL));
+      times.modtime = times.actime;
+      utime(AbsFileName, &times);
     }
   }
 

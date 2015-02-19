@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2015-02-06"
+  #define __FBLIB_RELEASEDATE__ "2015-02-19"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2015,6 +2015,7 @@
   inline dword FIS_fwPowerOff(void);
   inline dword FIS_fwPutDevEvt(void);
   inline dword FIS_fwSetIrCode(void);
+  inline dword FIS_fwTimeToLinux(void);
 
   inline dword FIS_vApplState(void);
   inline dword FIS_vAudioTrack(void);
@@ -2522,6 +2523,7 @@
   bool   isMJD(dword MJD);
   dword  LocalTime2UTC(dword LocalTime, short *Offset); //Uses DST_SetDSTRule()
   dword  Now(byte *Sec);
+  dword  PvrTimeToLinux(dword PVRTime);
   dword  TF2UnixTime(dword TFTimeStamp);
   long   TimeDiff(dword FromTime, dword ToTime);
   char  *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat, char *Result);

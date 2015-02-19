@@ -973,3 +973,5 @@ The following functions accept any form a path. The INI and language INI functio
 2015-01-30: Fixed: TAP_Osd_Create_Chk(), TAP_Osd_FillBox_Chk(), TAP_Osd_PutPixel_Chk(), TAP_Osd_RestoreBox_Chk(), TAP_Osd_SaveBox_Chk() didn't check against their regions or agains wrong coordinates (719/575 instead of 720/576)
 2015-02-06: Changed: several code changes to make as many functions as possible thread safe. In addition the parameters of the following function had to be changed:
               FlashFavoritesGetSelectedGroupName(), LogoManager_ChannelNameToLogoName(), LogoManager_GetDirectory(), LogoManager_GetPathToLogoByChannelID(), HDD_MakeNewRecName(), ValidFileName(), TimeFormat()
+2015-02-19: Added: FIS_fwTimeToLinux() and PvrTimeToLinux()
+            Fixed: LogEntry() and LogEntryFBLibPrintf(): the log files will get the correct time stamp
