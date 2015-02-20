@@ -10,7 +10,7 @@ bool FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites)
   int                   NrGroups, NrSvcsPerGroup;
 
   //FavNum out of range
-  if((FavNum < 0) || (FavNum >= FlashFavoritesGetTotal()))
+  if((FavNum < 0) || (FavNum > FlashFavoritesGetTotal()))
   {
     TRACEEXIT();
     return FALSE;
@@ -33,6 +33,13 @@ bool FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites)
   Favs1050 = (tFavorites1050*)Favs30100;
 
   FlashFavoritesGetParameters(&NrGroups, &NrSvcsPerGroup);
+
+  if(FavNum >= NrGroups)
+  {
+    TRACEEXIT();
+    return FALSE;
+  }
+
   switch(NrSvcsPerGroup)
   {
     case 100:

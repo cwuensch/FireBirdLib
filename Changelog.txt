@@ -975,3 +975,5 @@ The following functions accept any form a path. The INI and language INI functio
               FlashFavoritesGetSelectedGroupName(), LogoManager_ChannelNameToLogoName(), LogoManager_GetDirectory(), LogoManager_GetPathToLogoByChannelID(), HDD_MakeNewRecName(), ValidFileName(), TimeFormat()
 2015-02-19: Added: FIS_fwTimeToLinux() and PvrTimeToLinux()
             Fixed: LogEntry() and LogEntryFBLibPrintf(): the log files will get the correct time stamp
+2015-02-20: Fixed: FlashFavoritesGetTotal() used the wrong parameter to prevent an overflow if all favorite groups were in use
+            Fixed: FlashFavoritesSetInfo's() sanity check didn't allow to add new groups
