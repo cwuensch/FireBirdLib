@@ -8,6 +8,8 @@ bool FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites)
   tFavorites           *Favs30100;
   tFavorites1050       *Favs1050;
   int                   NrGroups, NrSvcsPerGroup;
+  int                   NrTVServices, NrRadioServices;
+  int                   i;
 
   //FavNum out of range
   if((FavNum < 0) || (FavNum > FlashFavoritesGetTotal()))
@@ -38,6 +40,17 @@ bool FlashFavoritesSetInfo(int FavNum, tFavorites *Favorites)
   {
     TRACEEXIT();
     return FALSE;
+  }
+
+  //Check if any channel is out of range
+  TAP_Channel_GetTotalNum(&NrTVServices, &NrRadioServices);
+  for(i = 0; i < NrSvcsPerGroup; i++)
+  {
+    if(((Favorites->SvcType[i] == SVC_TYPE_Tv) && (Favorites->SvcNum[i] >= NrTVServices)) || ((Favorites->SvcType[i] == SVC_TYPE_Radio) && (Favorites->SvcNum[i] >= NrRadioServices)))
+    {
+      TRACEEXIT();
+      return FALSE;
+    }
   }
 
   switch(NrSvcsPerGroup)

@@ -977,3 +977,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: LogEntry() and LogEntryFBLibPrintf(): the log files will get the correct time stamp
 2015-02-20: Fixed: FlashFavoritesGetTotal() used the wrong parameter to prevent an overflow if all favorite groups were in use
             Fixed: FlashFavoritesSetInfo's() sanity check didn't allow to add new groups
+2015-02-22: Fixed: Additional sanity check for FlashFavoritesSetInfo()
