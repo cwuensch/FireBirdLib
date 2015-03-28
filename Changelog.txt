@@ -978,3 +978,5 @@ The following functions accept any form a path. The INI and language INI functio
 2015-02-20: Fixed: FlashFavoritesGetTotal() used the wrong parameter to prevent an overflow if all favorite groups were in use
             Fixed: FlashFavoritesSetInfo's() sanity check didn't allow to add new groups
 2015-02-22: Fixed: Additional sanity check for FlashFavoritesSetInfo()
+2015-02-28: Fixed  StrToUTF8(): a string has been terminated outside of its reserved memory
+2015-03-27: Fixed: Several small fixes in FlashSatTablesDecode(), FlashFavoritesSetInfo() and FlashServiceDecode(). (thanks to chris86)
