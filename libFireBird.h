@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2015-03-27"
+  #define __FBLIB_RELEASEDATE__ "2015-04-05"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2310,6 +2310,7 @@
     NonPrintableChars    = 8
   } eRemoveChars;
 
+  char       *ansicstr(char *string, int len, int flags, int *sawc, int *rlen);
   void        DeleteAt(char *SourceString, int Pos, int Len);
   void        ExtractLine(char *Text, char *Line);
   size_t      GetLine(char *data, bool strip);

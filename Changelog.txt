@@ -980,3 +980,5 @@ The following functions accept any form a path. The INI and language INI functio
 2015-02-22: Fixed: Additional sanity check for FlashFavoritesSetInfo()
 2015-02-28: Fixed  StrToUTF8(): a string has been terminated outside of its reserved memory
 2015-03-27: Fixed: Several small fixes in FlashSatTablesDecode(), FlashFavoritesSetInfo() and FlashServiceDecode(). (thanks to chris86)
+2015-04-05: Added: ansicstr() taken from the GNU bash project. It is the function that is used for echo to interpret escape sequences
+            Fixed: HDD_FindMountPoint() and HDD_FindMountPointDevice() now work with mounted file systems where the path contains spaces
