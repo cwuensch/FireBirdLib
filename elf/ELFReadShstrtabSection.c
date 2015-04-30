@@ -2,9 +2,6 @@
 #include                "ELF.h"
 #include                "FBLib_elf.h"
 
-#undef malloc
-#undef free
-
 bool ELFReadShstrtabSection(void)
 {
   TRACEENTER();
@@ -25,7 +22,7 @@ bool ELFReadShstrtabSection(void)
     return FALSE;
   }
 
-  if(!(shstrtab = malloc(pshstrtabSH->sh_size)))
+  if(!(shstrtab = TAP_MemAlloc(pshstrtabSH->sh_size)))
   {
     TRACEEXIT();
     return FALSE;
