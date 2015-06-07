@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2015-04-28"
+  #define __FBLIB_RELEASEDATE__ "2015-06-07"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2518,7 +2518,7 @@
   #define MINUTE(d) ((byte) ((d) & 0xff))
 
   dword  AddSec(dword date, byte dateSec, int add);
-  dword  AddTime(dword date, int add);
+  dword  AddTime(dword pvrDate, int addMinutes);
   int    cronRegisterEvent(long frequency, dword firstExecution, void *callback);
   void   cronEventHandler(void);
   bool   cronGetEvent(int Index, int *frequency, dword *nextExecution);
