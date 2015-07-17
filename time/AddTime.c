@@ -1,18 +1,44 @@
 #include "../libFireBird.h"
 
-dword AddTime(dword pvrDate, int addMinutes)
+dword AddTime(dword date, int add) //add minutes to the day
 {
   TRACEENTER();
 
-  //Calculate the total number of minutes in the target
-  dword tempMinutes = (((pvrDate >> 16) & 0xffff) * 1440) + (((pvrDate >> 8) & 0xff) * 60) + (pvrDate & 0xff) + addMinutes;
+  word                  day;
+  short                 hour, min;
 
-  //Extract the whole days
-  word mjd = tempMinutes / 1440;
+  day = (date >> 16) & 0xffff;
+  hour= (date >> 8) & 0xff;
+  min = (date) & 0xff;
 
-  //Remove the whole days and retain only the minutes
-  tempMinutes = (tempMinutes % 1440);
+  min += add % 60;
+  if(min < 0)
+  {
+    hour-=1;
+    min+=60;
+  }
+  else if(min > 59)
+  {
+    hour+=1;
+    min-=60;
+  }
+
+  hour += add / 60;
+
+  if(hour < 0)
+  {
+    day-=1;
+    hour+=24;
+  }
+  else
+  {
+    while(hour > 23)
+    {
+      day+=1;
+      hour-=24;
+    }
+  }
 
   TRACEEXIT();
-  return ((mjd << 16) | ((tempMinutes / 60) << 8) | (tempMinutes % 60));
+  return ((day<<16)|(hour<<8)|min);
 }
