@@ -62,6 +62,7 @@ int TAP_Main()
   Appl_SetPlaybackSpeed(0, 0, FALSE);
   Appl_ShoutCast();
   Appl_StartPlayback(NULL, 0, FALSE, FALSE);
+  Appl_StartPlaybackDivx(NULL, 0, FALSE);
   Appl_StartPlaybackMedia(NULL, 0, FALSE, FALSE);
   Appl_StopPlaying();
   Appl_StopRecPlaying(FALSE);
@@ -220,6 +221,7 @@ int TAP_Main()
   FIS_fwAppl_SetTimeShift();
   FIS_fwAppl_ShoutCast();
   FIS_fwAppl_StartPlayback();
+  FIS_fwAppl_StartPlaybackDivx();
   FIS_fwAppl_StartPlaybackMedia();
   FIS_fwAppl_StartTempRec();
   FIS_fwAppl_StopPlaying();

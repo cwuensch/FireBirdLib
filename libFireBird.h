@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2016-11-01"
+  #define __FBLIB_RELEASEDATE__ "2016-11-11"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1841,6 +1841,24 @@
     PF_FullLinuxPath      //Get the full absolute Linux path including file name
   }tPathFormat;
 
+  #define INFBLOCKMAGIC     "SFIB"
+  #define INFBLOCKVERSION   1
+
+  typedef struct
+  {
+      char              Magic[4];                     //0
+      byte              Version;                      //4
+      byte              Recognized;                   //5
+      word              Duration;                     //6
+      dword             LastBlock;                    //8
+      bool              Seen;                         //12
+      dword             RecycleDate;                  //16
+      char              RecoverPath[FBLIB_DIR_SIZE];  //20
+      byte              Filler2[1516];                //532
+                                                      //2048
+  }tinfBlock;
+
+
   bool        FixInvalidFileName(char *FileName);
   void        ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat);
   tPathFormat GetPathType(char *Source);
@@ -1864,6 +1882,8 @@
   __ino64_t   HDD_GetInodeByFileName(char *Filename);
   __ino64_t   HDD_GetInodeByTypeFile(TYPE_File *File);
   bool        HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
+  bool        HDD_InfBlockGet(char *RecPath, tinfBlock *infBlock);
+  bool        HDD_InfBlockSet(char *RecPath, tinfBlock *infBlock);
   bool        HDD_Move(char *FileName, char *FromDir, char *ToDir);
   bool        HDD_Recycle(char *FileName);
   bool        HDD_RecycleSF(char *FileName);

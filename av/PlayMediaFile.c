@@ -30,7 +30,17 @@ bool PlayMediaFile(char *MediaFileName)
     if(access(tempINF, F_OK) != -1)
       ret = Appl_StartPlayback(TempFileName, 0, TRUE, FALSE) == 0;
     else
-      ret = Appl_StartPlaybackMedia(TempFileName, 0, TRUE, FALSE) == 0;
+    {
+      if(StringEndsWith(TempFileName, ".avi") || StringEndsWith(TempFileName, ".divx"))
+      {
+        ret = Appl_StartPlaybackDivx(TempFileName, 0, FALSE) == 0;
+      }
+      else
+      {
+        ret = Appl_StartPlaybackMedia(TempFileName, 0, TRUE, FALSE) == 0;
+      }
+    }
+
   }
   ApplHdd_RestoreWorkFolder();
 
