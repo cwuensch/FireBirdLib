@@ -1003,3 +1003,4 @@ The following functions accept any form a path. The INI and language INI functio
 2016-11-01: Fixed: Fixed ConvertPathType(). In cases where the source path was a PF_LinuxPathOnly and a PF_FullLinuxPath was requested,  ConvertPathType() returned an empty string
                    because it assumed that it can’t extract the file name from a PF_LinuxPathOnly style path. Now source is copied into destination as a folder path is valid for both path formats.
 2016-11-11: Added: Added support for .avi and .divx files in PlayMediaFile()
+2016-11-12: Added NrBlocks to the tinfBlock struct

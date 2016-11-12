@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2016-11-11"
+  #define __FBLIB_RELEASEDATE__ "2016-11-12"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1854,7 +1854,8 @@
       bool              Seen;                         //12
       dword             RecycleDate;                  //16
       char              RecoverPath[FBLIB_DIR_SIZE];  //20
-      byte              Filler2[1516];                //532
+      dword             NrBlocks;                     //532
+      byte              Filler2[1512];                //536
                                                       //2048
   }tinfBlock;
 
