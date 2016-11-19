@@ -35,6 +35,10 @@ bool PlayMediaFile(char *MediaFileName)
       {
         ret = Appl_StartPlaybackDivx(TempFileName, 0, FALSE) == 0;
       }
+      if(StringEndsWith(TempFileName, ".mp3"))
+      {
+        ret = Appl_StartPlaybackMp3(TempFileName) == 0;
+      }
       else
       {
         ret = Appl_StartPlaybackMedia(TempFileName, 0, TRUE, FALSE) == 0;

@@ -64,6 +64,7 @@ int TAP_Main()
   Appl_StartPlayback(NULL, 0, FALSE, FALSE);
   Appl_StartPlaybackDivx(NULL, 0, FALSE);
   Appl_StartPlaybackMedia(NULL, 0, FALSE, FALSE);
+  Appl_StartPlaybackMp3(NULL);
   Appl_StopPlaying();
   Appl_StopRecPlaying(FALSE);
   Appl_TimeToLocal(0);
@@ -223,6 +224,7 @@ int TAP_Main()
   FIS_fwAppl_StartPlayback();
   FIS_fwAppl_StartPlaybackDivx();
   FIS_fwAppl_StartPlaybackMedia();
+  FIS_fwAppl_StartPlaybackMp3();
   FIS_fwAppl_StartTempRec();
   FIS_fwAppl_StopPlaying();
   FIS_fwAppl_StopRecPlaying();

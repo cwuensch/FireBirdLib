@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2016-11-12"
+  #define __FBLIB_RELEASEDATE__ "2016-11-19"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1420,6 +1420,7 @@
   void   Appl_ShoutCast(void);
   int    Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   int    Appl_StartPlaybackMedia(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  int    Appl_StartPlaybackMp3(char *FileName);
   dword  Appl_StopPlaying(void);
   void   Appl_StopRecPlaying(bool p1);
   dword  Appl_TimeToLocal(dword UTCTime);
@@ -1996,6 +1997,7 @@
   inline dword FIS_fwAppl_ShoutCast(void);
   inline dword FIS_fwAppl_StartPlayback(void);
   inline dword FIS_fwAppl_StartPlaybackMedia(void);
+  inline dword FIS_fwAppl_StartPlaybackMp3(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);
   inline dword FIS_fwAppl_StopRecPlaying(void);
