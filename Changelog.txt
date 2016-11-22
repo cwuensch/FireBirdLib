@@ -1007,3 +1007,4 @@ The following functions accept any form a path. The INI and language INI functio
 2016-11-19: Added: FIS_fwAppl_StartPlaybackMp3()
             Added: Appl_StartPlaybackMp3()
             Fixed: Updated PlayMediaFile() to correctly support mp3s
+2016-11-22: Fixed: Another small change to PlayMediaFile()

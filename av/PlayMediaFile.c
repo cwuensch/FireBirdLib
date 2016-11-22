@@ -27,7 +27,7 @@ bool PlayMediaFile(char *MediaFileName)
     strcat(tempINF, ".inf");
     ConvertPathType(MediaFileName, TempFileName, PF_FileNameOnly);
 
-    if(access(tempINF, F_OK) != -1)
+    if((access(tempINF, F_OK) != -1) && HDD_isRecFileName(MediaFileName))
       ret = Appl_StartPlayback(TempFileName, 0, TRUE, FALSE) == 0;
     else
     {
