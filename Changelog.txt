@@ -1009,3 +1009,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Updated PlayMediaFile() to correctly support mp3s
 2016-11-22: Fixed: Another small change to PlayMediaFile()
 2016-11-30: Fixed: PlayMediaFile() crashed with .avi and .divx files
+2017-01-09: Added: .ts is now fully handled like .rec and .mpg
