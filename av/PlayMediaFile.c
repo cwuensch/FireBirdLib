@@ -27,7 +27,7 @@ bool PlayMediaFile(char *MediaFileName)
     strcat(tempINF, ".inf");
     ConvertPathType(MediaFileName, TempFileName, PF_FileNameOnly);
 
-    if((access(tempINF, F_OK) != -1) && HDD_isRecFileName(MediaFileName))
+    if((access(tempINF, F_OK) != -1) && HDD_isRecFileName(MediaFileName) && !StringEndsWith(TempFileName, ".ts"))
       ret = Appl_StartPlayback(TempFileName, 0, TRUE, FALSE) == 0;
     else if(StringEndsWith(TempFileName, ".avi") || StringEndsWith(TempFileName, ".divx"))
     {
