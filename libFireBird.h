@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2017-12-24"
+  #define __FBLIB_RELEASEDATE__ "2018-01-28"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1512,7 +1512,14 @@
     byte                  unused4:1;
 
     byte                  DiSEqC11;
-    byte                  unused5[5];
+
+    byte                  UniCableSatPosition:1;
+    byte                  UniCableunused:7;
+
+    word                  UniCableUserBand:4;
+    word                  UniCableFrq:12;
+
+    byte                  unused5[2];
   } tFlashLNB;
 
   typedef struct
