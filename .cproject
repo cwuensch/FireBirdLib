@@ -25,11 +25,11 @@
 							<tool id="cdt.managedbuild.tool.gnu.archiver.cygwin.base.124717984" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.cygwin.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.583863211" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.406500076" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.base">
-								<option id="gnu.c.compiler.option.include.paths.1219873471" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\sw\prgm\Topfield\API\TMS\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\sw\prgm\Topfield\gccForTMS\crosstool\include&quot;"/>
+								<option id="gnu.c.compiler.option.include.paths.1219873471" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\sw\prgm\Topfield\TMS\crosstool\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\sw\prgm\Topfield\TMS\include&quot;"/>
 								</option>
-								<option id="gnu.c.compiler.option.preprocessor.def.symbols.379123682" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.379123682" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="_TMSEMU_"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1216105045" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
@@ -41,7 +41,7 @@
 								</option>
 								<option id="gnu.c.link.option.paths.1614874149" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/usr/lib"/>
-									<listOptionValue builtIn="false" value="/cygdrive/c/sw/prgm/Topfield/gccForTMS/crosstool/lib"/>
+									<listOptionValue builtIn="false" value="/cygdrive/c/sw/prgm/Topfield/TMS/crosstool/lib"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1418372908" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
