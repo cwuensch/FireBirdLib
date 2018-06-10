@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2018-03-25"
+  #define __FBLIB_RELEASEDATE__ "2018-06-10"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1427,6 +1427,8 @@
   void   Appl_WriteRecInfo(dword Slot);
   byte   ApplChannel_GetAgc(byte TunerIndex, byte *AGC);
   byte   ApplChannel_GetBer(byte TunerIndex, byte *BER);
+  void   ApplCiplus_CamSelect(byte CamIndex);
+  byte   ApplCiplus_GetSelectedCam(void);
   dword  ApplHdd_FileCutPaste(char *SourceFileName, unsigned int StartBlock, unsigned int NrBlocks, char *CutFileName);
   dword  ApplHdd_FreeSize(char *MountPath, bool a1);
   word   ApplHdd_GetFileInfo(word p1, int *TotalBlocks, int *CurrentBlock, byte p4, byte p5);
@@ -2016,6 +2018,8 @@
   inline dword FIS_fwAppl_WriteRecInfo(void);
   inline dword FIS_fwApplChannel_GetAgc(void);
   inline dword FIS_fwApplChannel_GetBer(void);
+  inline dword FIS_fwApplCiplus_CamSelect(void);
+  inline dword FIS_fwApplCiplus_GetSelectedCam(void);
   inline dword FIS_fwApplHdd_FileCutPaste(void);
   inline dword FIS_fwApplHdd_FreeSize(void);
   inline dword FIS_fwApplHdd_GetFileInfo(void);
