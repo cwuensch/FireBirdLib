@@ -1024,3 +1024,4 @@ The following functions accept any form a path. The INI and language INI functio
 
 2018-03-25: Fixed: forgot to adapt a memcopy to the above UniCable modification. Thanks to chris86.
 2018-06-10: Added: ApplCiplus_CamSelect(), ApplCiplus_GetSelectedCam(), FIS_fwApplCiplus_CamSelect() and FIS_fwApplCiplus_GetSelectedCam()
+2018-06-20: Fixed: Potential out-of-bounds read in INIOpenFile()
