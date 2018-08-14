@@ -1026,3 +1026,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-06-10: Added: ApplCiplus_CamSelect(), ApplCiplus_GetSelectedCam(), FIS_fwApplCiplus_CamSelect() and FIS_fwApplCiplus_GetSelectedCam()
 2018-06-20: Fixed: Potential out-of-bounds read in INIOpenFile()
 2018-06-21: Fixed: Removed unnecessary memset() in StrReplace() and adjusted TempBuffer size
+2018-08-14: Fixed: Made TAP_PrintNet() usable for "if (...) TAP_PrintNet(...); else ...;"

@@ -145,7 +145,7 @@
   #ifndef PC_BASED
     extern char puffer[];
     void PrintNet(char *puffer);
-    #define TAP_PrintNet(...) {sprintf(puffer, __VA_ARGS__); PrintNet(puffer);}
+    #define TAP_PrintNet(...) do { sprintf(puffer, __VA_ARGS__); PrintNet(puffer); } while (0)
     // Define the following override if you want to stop FBLIB
     // intercepting TAP_Print() [i.e. printf() from TAPs]. Normally,
     // FBLIB intercepts these messages to a local pseudo terminal.
