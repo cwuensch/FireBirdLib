@@ -1027,3 +1027,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-06-20: Fixed: Potential out-of-bounds read in INIOpenFile()
 2018-06-21: Fixed: Removed unnecessary memset() in StrReplace() and adjusted TempBuffer size
 2018-08-14: Fixed: Made TAP_PrintNet() usable for "if (...) TAP_PrintNet(...); else ...;"
+2018-08-16: Fixed: Cast pointer in TAP_MemRealloc() to avoid using pointer of type 'void *' in arithmetic
