@@ -51,7 +51,7 @@ INILOCATION INIOpenFile(char *FileName, char *AppName)
     memset(INIBuffer, 0, BufferSize);
     ret = TAP_Hdd_Fread(INIBuffer, flen, 1, f);
     flen = strlen(INIBuffer);
-    if (flen && ([INIBuffer[flen - 1] != '\x0d' && INIBuffer[flen - 1] != '\x0a'))
+    if (flen && (INIBuffer[flen - 1] != '\x0d' && INIBuffer[flen - 1] != '\x0a'))
       strcat(INIBuffer, "\x0d\x0a");
   }
   TAP_Hdd_Fclose(f);
