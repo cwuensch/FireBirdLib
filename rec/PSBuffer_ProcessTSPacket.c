@@ -15,7 +15,7 @@ bool PSBuffer_ProcessTSPacket(tPSBuffer *PSBuffer, byte *TSBuffer, ulong64 FileO
 
   //Removed all memset() because they are really slow
 
-  void CopyPayload(int PayloadOffset, int PayloadLen)
+  static void CopyPayload(int PayloadOffset, int PayloadLen)
   {
     int                   i;
     ulong64              *pi64;
