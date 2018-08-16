@@ -51,9 +51,9 @@ typedef struct {
   unsigned char digest[16];     /* actual digest after MD5Final call */
 } MD5_CTX;
 
-void MD5Init();
-void MD5Update();
-void MD5Final();
+void MD5Init(MD5_CTX *);
+void MD5Update(MD5_CTX *, unsigned char *, unsigned int);
+void MD5Final(MD5_CTX *);
 
 /*
  **********************************************************************
@@ -98,7 +98,7 @@ void MD5Final();
 /* #include "md5.h" */
 
 /* forward declaration */
-static void Transform();
+static void Transform(UINT4 *, UINT4 *);
 
 static unsigned char PADDING[64] = {
   0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -360,7 +360,6 @@ UINT4 *in;
 #include <sys/types.h>
 #include <time.h>
 #include <string.h>
-#include <tap.h>
 
 #include "../libFireBird.h"
 /* -- include the following file if the file md5.h is separate -- */
