@@ -1021,10 +1021,11 @@ The following functions accept any form a path. The INI and language INI functio
 2017-12-24: Added: the following commands will also use these files together with recordings: .cut, .cut.bak (both from MovieCutter) and .srt
                    HDD_Delete(), HDD_Move(), HDD_Recycle(), HDD_RecycleSF(), HDD_Rename(), HDD_Unrecycle(), HDD_UnrecycleSF(), HDD_MoveAbs()
 2018-01-28: Added: Decoded the UniCable fields in tFlashLNB
-
 2018-03-25: Fixed: forgot to adapt a memcopy to the above UniCable modification. Thanks to chris86.
 2018-06-10: Added: ApplCiplus_CamSelect(), ApplCiplus_GetSelectedCam(), FIS_fwApplCiplus_CamSelect() and FIS_fwApplCiplus_GetSelectedCam()
 2018-06-20: Fixed: Potential out-of-bounds read in INIOpenFile()
 2018-06-21: Fixed: Removed unnecessary memset() in StrReplace() and adjusted TempBuffer size
 2018-08-14: Fixed: Made TAP_PrintNet() usable for "if (...) TAP_PrintNet(...); else ...;"
 2018-08-16: Fixed: Cast pointer in TAP_MemRealloc() to avoid using pointer of type 'void *' in arithmetic
+2018-08-19: Fixed: Replaced several TAP_PrintNet() with TAP_Print()
+            Fixed: Added SDSTerminate() back to libFireBird.h

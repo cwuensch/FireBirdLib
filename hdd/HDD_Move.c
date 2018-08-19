@@ -107,8 +107,6 @@ bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
         else
           TAP_SPrint(NewInfName, "%s%s.srt%s", Path, Name, isDel ? ".del" : "");
 
-        TAP_PrintNet("OldInfName='%s'\nNewInfName='%s'\n\n", OldInfName, NewInfName);
-
         rename(OldInfName, NewInfName);
 
         ret = TRUE;

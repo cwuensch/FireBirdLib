@@ -54,7 +54,7 @@ void LogEntryFBLibPrintf(bool Console, char *format, ...)
 
   if(Console)
   {
-    TAP_PrintNet("%s FBLIB - %s\n", TimeResult, Text);
+    TAP_Print("%s FBLIB - %s\n", TimeResult, Text);
   }
 
   TRACEEXIT();

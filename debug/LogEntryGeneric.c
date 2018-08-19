@@ -60,11 +60,11 @@ void LogEntryGeneric(char *ProgramName, bool Console, char *Text)
       {
         if(isUTFToppy())
         {
-          TAP_PrintNet("%s%s\n", TimeResult, s);
+          TAP_Print("%s%s\n", TimeResult, s);
         }
         else
         {
-          TAP_PrintNet("%s%s\n", TimeResult, ISOText);
+          TAP_Print("%s%s\n", TimeResult, ISOText);
         }
       }
 

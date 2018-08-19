@@ -31,7 +31,7 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
       {
         //The standard exit path
         //Don't forget to add a CrashCheck_Shutdown() to every termination path of the TAP
-        TAP_PrintNet("CrashCheck TAP has been stopped by the user\n");
+        TAP_Print("CrashCheck TAP has been stopped by the user\n");
         CrashCheck_Shutdown(PROGRAM_NAME);
         TAP_Exit();
         param1 = 0;
@@ -41,7 +41,7 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
       case RKEY_Record:
       {
         //For demo purposes, this will stop the TAP but won't reset the crash counter (like at a crash)
-        TAP_PrintNet("CrashCheck TAP has crashed\n");
+        TAP_Print("CrashCheck TAP has crashed\n");
         TAP_Exit();
         param1 = 0;
         break;
@@ -52,7 +52,7 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
   //Check for stop events otherwise the crash counter will increase with every shutdown of the Toppy
   if(event == EVT_STOP)
   {
-    TAP_PrintNet("CrashCheck TAP has been stopped via the file list or Toppy shutdown\n");
+    TAP_Print("CrashCheck TAP has been stopped via the file list or Toppy shutdown\n");
     CrashCheck_Shutdown(PROGRAM_NAME);
   }
 

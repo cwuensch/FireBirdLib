@@ -50,7 +50,7 @@ bool PSBuffer_ProcessTSPacket(tPSBuffer *PSBuffer, byte *TSBuffer, ulong64 FileO
     {
       if((PSBuffer->ErrorFlag & 0x01) == 0)
       {
-        TAP_PrintNet("  PS buffer overflow while parsing PID 0x%4.4x", PSBuffer->PID);
+        TAP_Print("  PS buffer overflow while parsing PID 0x%4.4x", PSBuffer->PID);
         PSBuffer->ErrorFlag = PSBuffer->ErrorFlag | 1;
       }
     }

@@ -14,15 +14,13 @@ void PrintNet(char *puffer)
   int                   fd;
   char                  fn[12];
 
-  int len = strlen(puffer) + 1;
-
   do
   {
     TAP_SPrint(fn, "/dev/pts/%d", i);
     fd = open(fn, O_RDWR);
     if(fd >= 0)
     {
-      write(fd, puffer, len);
+      write(fd, puffer, strlen(puffer) + 1);
       close(fd);
 
       return;

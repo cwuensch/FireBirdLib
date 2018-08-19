@@ -3,7 +3,7 @@
 
   //#define STACKTRACE
 
-  #define __FBLIB_RELEASEDATE__ "2018-06-10"
+  #define __FBLIB_RELEASEDATE__ "2018-08-19"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -2412,6 +2412,7 @@
   bool Shutdown(TaskEnum Task);
   bool Reboot(bool StopRecordings);
   bool SDS(void);
+  void SDSTerminate(void);
 
 
   /*****************************************************************************************************************************/
