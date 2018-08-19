@@ -1030,3 +1030,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-08-19: Fixed: Replaced several TAP_PrintNet() with TAP_Print()
             Fixed: Added SDSTerminate() back to libFireBird.h
             Fixed: Moved Appl_StartPlaybackDivx() from FBLib_av.h to libFireBird.h for consistent declarations of firmware functions
+            Fixed: Corrected output for TAP_Print() in FIS_Test.c
