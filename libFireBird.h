@@ -1419,6 +1419,7 @@
   void   Appl_ShoutCast(void);
   int    Appl_StartPlayback(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
   int    Appl_StartPlaybackMedia(char *FileName, unsigned int p2, bool p3, bool ScaleInPip);
+  int    Appl_StartPlaybackDivx(char *FileName, unsigned int p2, bool p3);
   int    Appl_StartPlaybackMp3(char *FileName);
   dword  Appl_StopPlaying(void);
   void   Appl_StopRecPlaying(bool p1);
