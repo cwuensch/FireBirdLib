@@ -657,7 +657,7 @@ void SearchForFlashPointer(void)
   }
   else
   {
-    TAP_PrintNet("ELFOpenFile() failed on /root/pvr\n");
+    TAP_Print("ELFOpenFile() failed on /root/pvr\n");
   }
 
   ELFCleanup();
