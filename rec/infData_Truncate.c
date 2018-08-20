@@ -1,8 +1,5 @@
-#include <string.h>
 #include <unistd.h>
 #include "FBLib_rec.h"
-
-extern int truncate (__const char *__file, __off_t __length);
 
 void infData_Truncate(char *infFileName, dword Position)
 {
