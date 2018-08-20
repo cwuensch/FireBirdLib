@@ -23,5 +23,6 @@ typedef struct
 extern TYPE_Parametered_Tap *fbl_parametered_tap;
 
 dword HDD_TAP_DisabledEventHandler(word, dword, dword);
+dword KeyTranslateHook(word, dword, dword);
 
 #endif

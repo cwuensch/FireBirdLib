@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "FBLib_tap.h"
 
 dword (*Original_TAP_EventHandler)(word event, dword param1, dword param2) = NULL;
 
