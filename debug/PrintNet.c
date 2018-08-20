@@ -17,7 +17,7 @@ void PrintNet(char *puffer)
     fd = open(fn, O_RDWR);
     if(fd >= 0)
     {
-      write(fd, puffer, strlen(puffer) + 1);
+      write(fd, puffer, strlen(puffer));
       close(fd);
 
       return;
