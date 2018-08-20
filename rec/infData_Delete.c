@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <tap.h>
 #include "FBLib_rec.h"
 
 extern FILE            *infDatainfFile;

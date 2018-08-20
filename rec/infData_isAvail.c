@@ -1,4 +1,3 @@
-#include <tap.h>
 #include "FBLib_rec.h"
 
 bool infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize)
