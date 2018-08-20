@@ -62,10 +62,13 @@ dword TAP_EventHandler(word event, dword param1, dword param2)
 
 int TAP_Main(void)
 {
+  tCrashCheckStatus     CCStatus;
+
   //This should be one of the first functions called
   //It will increase the crash counter in the file /ProgramFiles/Settings/CrashCheck.ini and...
   //...return TRUE if the counter is less than 3
-  if(!CrashCheck_Startup(PROGRAM_NAME))
+  CrashCheck_Startup(PROGRAM_NAME, &CCStatus);
+  if(CCStatus == CCS_ExcessiveRebootsDetected)
   {
     //Something made the Toppy crash more than two times. Inform the user that this TAP will terminate to prevent another crash.
     //Of course, it is not possible to determine which TAP has produced the crash and it is possible that the culprit doesn’t even use the crash check functions.

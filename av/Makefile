@@ -10,7 +10,7 @@ SRC_DIR = ${CUR_DIR}
 INCLUDE_DIRS = ${BASE}/include
 
 #compile options
-CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -std=c99
+CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -fPIC
 CFLAGS += $(addprefix -I, $(INCLUDE_DIRS))
 CFLAGS += $(addprefix -I, /opt/crosstool/include)
 
