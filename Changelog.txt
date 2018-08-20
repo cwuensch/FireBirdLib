@@ -1032,3 +1032,6 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Moved Appl_StartPlaybackDivx() from FBLib_av.h to libFireBird.h for consistent declarations of firmware functions
             Fixed: Corrected output for TAP_Print() in FIS_Test.c
 2018-08-20: Fixed: Wrote terminating null byte in PrintNet()
+            Fixed: Added -fPIC compiler flag to all makefiles
+            Fixed: Removed -std=c99 compiler flag from all makefiles except for the string and TMSOSDKeyboard blocks
+            Fixed: the CrashCheck demo
