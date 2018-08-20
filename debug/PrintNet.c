@@ -1,10 +1,7 @@
-#include                <sys/ioctl.h>
-#include                <linux/hdreg.h>
-#include                <linux/fs.h>
 #include                <fcntl.h>
 #include                <unistd.h>
 #include                <string.h>
-#include                "tap.h"
+#include                "../libFireBird.h"
 
 char puffer[1024];
 
