@@ -143,15 +143,16 @@
   #define ATTR_PARENT         0xf0                    //FindFirst/FindNext doesn't know about ..
 
   #ifndef PC_BASED
-    extern char puffer[];
+    extern char puffer[1024];
     void PrintNet(char *puffer);
-    #define TAP_PrintNet(...) do { sprintf(puffer, __VA_ARGS__); PrintNet(puffer); } while (0)
     // Define the following override if you want to stop FBLIB
     // intercepting TAP_Print() [i.e. printf() from TAPs]. Normally,
     // FBLIB intercepts these messages to a local pseudo terminal.
     // Without the interception, TMS directs these to an FTP debug
     // socket.
     #ifndef FB_NO_TAP_PRINT_OVERRIDE
+      extern int snprintf(char *, size_t, const char *, ...);
+      #define TAP_PrintNet(...) do { snprintf(puffer, sizeof(puffer), __VA_ARGS__); PrintNet(puffer); } while (0)
       #define TAP_Print   TAP_PrintNet
     #endif
   #endif

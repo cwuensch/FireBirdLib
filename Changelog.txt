@@ -1036,3 +1036,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Removed -std=c99 compiler flag from all makefiles except for the string and TMSOSDKeyboard blocks
             Fixed: the CrashCheck demo
             Fixed: Added -std=c99 compiler flag only where necessary
+            Fixed: Potential buffer overflow in TAP_PrintNet() (replacing TAP_Print())
