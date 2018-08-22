@@ -3,7 +3,7 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-char puffer[1024];
+char PrintNetBuffer[1024];
 
 void PrintNet(char *puffer)
 {

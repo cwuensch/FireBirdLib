@@ -143,7 +143,7 @@
   #define ATTR_PARENT         0xf0                    //FindFirst/FindNext doesn't know about ..
 
   #ifndef PC_BASED
-    extern char puffer[1024];
+    extern char PrintNetBuffer[1024];
     void PrintNet(char *puffer);
     // Define the following override if you want to stop FBLIB
     // intercepting TAP_Print() [i.e. printf() from TAPs]. Normally,
@@ -152,7 +152,7 @@
     // socket.
     #ifndef FB_NO_TAP_PRINT_OVERRIDE
       extern int snprintf(char *, size_t, const char *, ...);
-      #define TAP_PrintNet(...) do { snprintf(puffer, sizeof(puffer), __VA_ARGS__); PrintNet(puffer); } while (0)
+      #define TAP_PrintNet(...) do { snprintf(PrintNetBuffer, sizeof(PrintNetBuffer), __VA_ARGS__); PrintNet(PrintNetBuffer); } while (0)
       #define TAP_Print   TAP_PrintNet
     #endif
   #endif
