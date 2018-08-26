@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                <stdlib.h>
 #include                "FBLib_TMSOSDKeyboard.h"
-#include                "TMSOSDMenu/graphic/TextCursor14.gd"
+#include                "../TMSOSDMenu/graphic/TextCursor14.gd"
 
 bool                    OSDMenuKeyboard_GUIInitialized = FALSE;
 
