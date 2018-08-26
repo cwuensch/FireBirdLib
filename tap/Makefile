@@ -25,7 +25,7 @@ TAP_HEAD = ${BASE}/include/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
 all: ${TAP_OBJS}
 	@$(Q_)-${RM} *.d
 
-%o: %c ${TAP_HEAD}
+%.o: %.c ${TAP_HEAD}
 	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
 
 clean:

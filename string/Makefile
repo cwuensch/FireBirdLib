@@ -28,7 +28,7 @@ $(C99_OBJS): CFLAGS += -std=c99
 all: ${TAP_OBJS} ${C99_OBJS}
 	@$(Q_)-${RM} *.d
 
-%o: %c ${TAP_HEAD}
+%.o: %.c ${TAP_HEAD}
 	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
 
 clean:

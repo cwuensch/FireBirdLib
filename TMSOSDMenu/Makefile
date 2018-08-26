@@ -28,7 +28,7 @@ vpath %.c ./fonts
 all: ${TAP_OBJS}
 	@$(Q_)-${RM} *.d
 
-%o: %c ${TAP_HEAD}
+%.o: %.c ${TAP_HEAD}
 	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
 
 clean:
