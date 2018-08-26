@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 char *StringDBGet(tStringDB *StringDB, dword Index)
 {

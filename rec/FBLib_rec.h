@@ -1,7 +1,7 @@
 #ifndef FBLIB_REC_H
 #define FBLIB_REC_H
 
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 #define PCRSECTORS      900
 

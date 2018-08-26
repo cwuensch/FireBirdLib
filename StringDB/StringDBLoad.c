@@ -2,7 +2,7 @@
 #include                <fcntl.h>
 #include                <unistd.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool StringDBLoad(tStringDB *StringDB, char *FileName)
 {

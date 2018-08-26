@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 //Expects 5 bit RGB values
 

@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 // take off spaces from a string's end
 char *RTrim(char *s)

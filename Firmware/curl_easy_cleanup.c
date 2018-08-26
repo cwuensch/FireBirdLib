@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void curl_easy_cleanup(CURL *curl)
 {

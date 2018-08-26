@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 #undef get16bits
 #if(defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__) \

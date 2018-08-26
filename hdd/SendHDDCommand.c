@@ -1,5 +1,5 @@
 #include "FBLib_hdd.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 int SendHDDCommand(dword Command, byte *CommandBlock, int BufferSize)
 {

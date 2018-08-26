@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars)
 {

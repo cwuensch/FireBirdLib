@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool isAnyOSDVisibleEx(dword CheckX, dword CheckY, dword CheckW, dword CheckH, byte Plane)
 {

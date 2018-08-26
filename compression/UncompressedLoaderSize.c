@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_compression.h"
 
 dword UncompressedLoaderSize(byte *pSrc)

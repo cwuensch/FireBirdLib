@@ -1,7 +1,7 @@
 #include                <stdio.h>
 #include                <stdlib.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void LogEntryGeneric(char *ProgramName, bool Console, char *Text)
 {

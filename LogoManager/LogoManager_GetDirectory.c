@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_LogoManager.h"
 
 char *LogoManager_GetDirectory(tLogoStyle LogoStyle, tLogoAspect LogoAR, char *LogoPath)

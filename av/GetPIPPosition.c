@@ -1,5 +1,5 @@
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool GetPIPPosition(int *North, int *South, int *East, int *West)
 {

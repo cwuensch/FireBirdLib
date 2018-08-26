@@ -1,6 +1,6 @@
 #include                <stdio.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void DumpMemoryDword(dword *p, dword size)
 {

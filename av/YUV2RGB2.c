@@ -1,5 +1,5 @@
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void YUV2RGB2(word yy, word uu, word vv, int *r, int *g, int *b)
 {

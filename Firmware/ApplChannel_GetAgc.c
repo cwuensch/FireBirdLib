@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 byte ApplChannel_GetAgc(byte TunerIndex, byte *AGC)
 {

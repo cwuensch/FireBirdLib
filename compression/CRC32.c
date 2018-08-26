@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword                   CRC32Table[256];
 bool                    CRCTableOK = FALSE;

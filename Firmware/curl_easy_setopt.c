@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 CURLcode curl_easy_setopt(CURL *curl, CURLoption option, void *arg)
 {

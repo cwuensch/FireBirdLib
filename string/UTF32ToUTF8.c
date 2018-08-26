@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar)
 {

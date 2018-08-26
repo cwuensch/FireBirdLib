@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_LogoManager.h"
 
 bool LogoManager_GetServiceNumByChannelID(ulong64 ChannelID, int *SvcType, int *SvcNum)

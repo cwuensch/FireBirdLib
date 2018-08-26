@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void StrToISOAlloc(byte *SourceString, byte **DestString)
 {

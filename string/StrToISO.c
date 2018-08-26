@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void StrToISO(byte *SourceString, byte *DestString)
 {

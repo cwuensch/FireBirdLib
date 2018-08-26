@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 tFileInUse HDD_isFileInUse(char *FileName)
 {

@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet)
 {

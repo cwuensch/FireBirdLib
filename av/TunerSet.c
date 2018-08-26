@@ -1,5 +1,5 @@
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 //It is not possible to set the tuner for the PIP
 bool TunerSet(byte Tuner)

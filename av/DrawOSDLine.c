@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void DrawOSDLine(word OSDRgn, dword Ax, dword Ay, dword Bx, dword By, dword Color)
 {

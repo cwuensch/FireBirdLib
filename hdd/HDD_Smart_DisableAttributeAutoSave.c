@@ -1,5 +1,5 @@
 #include "FBLib_hdd.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 int HDD_Smart_DisableAttributeAutoSave(void)
 {

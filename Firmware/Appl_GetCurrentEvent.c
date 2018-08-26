@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void *Appl_GetCurrentEvent(byte SatIndex, word NetID, word TSID, word ServiceID)
 {

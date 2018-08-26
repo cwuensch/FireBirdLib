@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 byte *strncpyUC(byte *dest, byte *src, size_t n)
 {

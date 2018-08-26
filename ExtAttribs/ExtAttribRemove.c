@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <sys/xattr.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool ExtAttribRemove(char *FileName, char *AttrName)
 {

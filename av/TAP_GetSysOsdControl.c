@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool TAP_GetSysOsdControl(TYPE_TapSysOsdId osdId)
 {

@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_LogoManager.h"
 
 char *LogoManager_ChannelNameToLogoName(char *ChannelName, char *LogoName, int LogoNameSize)

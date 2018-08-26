@@ -1,5 +1,5 @@
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 byte TunerGet(int MainSub)
 {

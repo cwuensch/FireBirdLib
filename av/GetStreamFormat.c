@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 // 6: HD[1080i]
 // 7: HD[720p]

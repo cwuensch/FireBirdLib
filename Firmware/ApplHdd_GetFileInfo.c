@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 word ApplHdd_GetFileInfo(word p1, int *TotalBlocks, int *CurrentBlock, byte p4, byte p5)
 {

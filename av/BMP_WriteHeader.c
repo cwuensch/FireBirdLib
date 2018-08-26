@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void BMP_WriteHeader(int FileHandle, int width, int height)
 {

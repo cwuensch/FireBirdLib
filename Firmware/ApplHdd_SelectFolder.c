@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword ApplHdd_SelectFolder(tDirEntry *FolderStruct, char *FolderPath)
 {

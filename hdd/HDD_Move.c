@@ -2,7 +2,7 @@
 #include                <string.h>
 #include                <stdlib.h>
 #include                "FBLib_hdd.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool HDD_Move(char *FileName, char *FromDir, char *ToDir)
 {

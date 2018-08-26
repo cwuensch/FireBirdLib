@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword AddTime(dword date, int add) //add minutes to the day
 {

@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void DevFront_SetIrCode(byte Index, byte Active, byte MfgID1, byte MfgID2, byte Code0a)
 {

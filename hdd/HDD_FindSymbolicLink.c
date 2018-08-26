@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                <unistd.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 int HDD_FindSymbolicLink(char *pathName, char *returnedPath, char *fullPathName)
 {

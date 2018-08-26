@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                "FBLib_hdd.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo)
 {

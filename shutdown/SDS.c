@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                "FBLib_shutdown.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 #define ROOTDIR         "/ProgramFiles/Settings/SDS"
 #define LOGFILE         "SDS.log"

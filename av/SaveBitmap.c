@@ -1,7 +1,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "FBLib_av.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool SaveBitmap(char *FileName, int width, int height, byte* pBuffer)
 {

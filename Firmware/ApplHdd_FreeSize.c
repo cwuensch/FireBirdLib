@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword ApplHdd_FreeSize(char *MountPath, bool a1)
 {

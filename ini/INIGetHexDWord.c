@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword INIGetHexDWord(char *Key, dword DefaultValue, dword MinValue, dword MaxValue)
 {

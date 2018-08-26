@@ -1,6 +1,6 @@
 #include                <stdlib.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //This function returns 0x0000 on success
 //                      0xe00* for warnings

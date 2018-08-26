@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 int HDD_FindPCR(byte *pBuffer, dword BufferSize, word PID)
 {

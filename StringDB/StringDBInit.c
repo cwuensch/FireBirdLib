@@ -1,5 +1,5 @@
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool StringDBInit(tStringDB *StringDB, dword InitialSize)
 {

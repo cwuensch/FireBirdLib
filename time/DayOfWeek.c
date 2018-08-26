@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 char                    WDString[8][4] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "???"};
 

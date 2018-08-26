@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 #undef malloc
 

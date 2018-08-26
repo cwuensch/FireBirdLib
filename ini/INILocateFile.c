@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //Attention: this function will stay in the directory where it has found the file
 //It is up to the caller to use HDD_TAP_PushDir() and HDD_TAP_PopDir()

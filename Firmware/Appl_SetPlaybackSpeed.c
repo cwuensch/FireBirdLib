@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void Appl_SetPlaybackSpeed(byte Mode, int Speed, bool p3)
 {

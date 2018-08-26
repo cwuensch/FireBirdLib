@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_compression.h"
 
 // UncompressLoader() is a function wrapper that decodes data blocks

@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void ExtractLine(char *Text, char *Line)
 {

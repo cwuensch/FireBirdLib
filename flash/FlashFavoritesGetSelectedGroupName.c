@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //Minimum size of FavName should be 12
 char *FlashFavoritesGetSelectedGroupName(char *FavName, byte FavNameSize)

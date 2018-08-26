@@ -4,7 +4,7 @@
 #include                <linux/fs.h>
 #include                <unistd.h>
 #include                "FBLib_hdd.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool HDD_IdentifyDevice(char *IdentifyDeviceBuffer)
 {

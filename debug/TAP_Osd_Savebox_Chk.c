@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 byte* TAP_Osd_SaveBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h)
 {

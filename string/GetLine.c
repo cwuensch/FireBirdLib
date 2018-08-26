@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 size_t GetLine(char *data, bool strip)
 {

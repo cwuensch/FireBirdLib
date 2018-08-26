@@ -1,5 +1,5 @@
 #include                <stdio.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 char *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat, char *Result)
 {

@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool isUTF8Char(byte *p, byte *BytesPerChar)
 {

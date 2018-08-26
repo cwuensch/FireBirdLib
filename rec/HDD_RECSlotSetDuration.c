@@ -1,5 +1,5 @@
 #include "FBLib_rec.h"
-#include "../flash/FBLib_flash.h"
+#include "flash/FBLib_flash.h"
 
 bool HDD_RECSlotSetDuration(byte Slot, word Duration)
 {

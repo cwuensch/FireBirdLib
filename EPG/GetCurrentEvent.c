@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 TYPE_TapEvent *GetCurrentEvent(int *nCurEvent)
 {

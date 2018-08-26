@@ -1,5 +1,5 @@
 #include                <ctype.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //Taken from GNU bash-4.3, strtrans.c
 

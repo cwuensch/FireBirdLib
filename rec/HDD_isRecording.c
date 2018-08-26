@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool HDD_isRecording(byte RecSlot)
 {

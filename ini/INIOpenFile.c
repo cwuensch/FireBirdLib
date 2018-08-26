@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                <stdlib.h>
 #include                "FBLib_ini.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 char                    *INIBuffer = NULL, *INICommentBuffer = NULL;
 dword                   BufferSize = 0;

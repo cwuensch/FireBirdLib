@@ -1,7 +1,7 @@
 #ifndef FBLIB_TAP_H
 #define FBLIB_TAP_H
 
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 #define MAGIC             0xf1eb1d1b
 #define TAPDIR_MAX_STACK  16

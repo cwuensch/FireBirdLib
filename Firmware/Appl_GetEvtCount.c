@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword Appl_GetEvtCount(byte SatIdx, word NetID, word TSID, word ServiceID)
 {

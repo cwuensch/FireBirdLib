@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction)
 {

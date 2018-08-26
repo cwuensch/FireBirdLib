@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //Greyscale for background
 int sbBackground[15][3] =

@@ -1,4 +1,4 @@
-#include  "../libFireBird.h"
+#include  "libFireBird.h"
 
 ezxml_t ezxml_parse_file(const char *file)
 {

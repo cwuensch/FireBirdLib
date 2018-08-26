@@ -5,7 +5,7 @@
 #include                <string.h>
 #include                <sys/types.h>
 #include                <utime.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
 {

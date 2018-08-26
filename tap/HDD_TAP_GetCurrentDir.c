@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 //Return codes:     0: OK
 //                 -1: not enough memory (from HDD_TAP_GetCurrentDirCluster)

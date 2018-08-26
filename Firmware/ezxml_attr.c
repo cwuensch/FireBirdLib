@@ -1,4 +1,4 @@
-#include  "../libFireBird.h"
+#include  "libFireBird.h"
 
 const char *ezxml_attr(ezxml_t xml, const char *attr)
 {

@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void ShowMessageWin(char *title, char *lpMessage1, char *lpMessage2, dword dwDelay)
 {

@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt)
 {

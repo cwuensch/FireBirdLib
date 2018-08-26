@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 word ApplSvc_GetSvcIdx(byte TYPE_ServiceType, byte SatIndex, word TPIndex, word ServiceID, word Start, word NrOfServicesToSearch)
 {

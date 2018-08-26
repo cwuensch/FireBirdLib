@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 #include "FBLib_rec.h"
 
 bool HDD_RecSlotDecode(byte Slot, tFlashTimer *RecSlot)

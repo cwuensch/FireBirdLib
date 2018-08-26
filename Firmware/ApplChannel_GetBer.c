@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 byte ApplChannel_GetBer(byte TunerIndex, byte *BER)
 {

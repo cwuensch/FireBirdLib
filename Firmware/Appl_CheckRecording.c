@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 int Appl_CheckRecording(int SvcType, int SvcNum, bool Unknown)
 {

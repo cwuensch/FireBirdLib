@@ -1,4 +1,4 @@
-#include		"../libFireBird.h"
+#include		"libFireBird.h"
 
 bool PutDevEvent(word Event, dword Param1)
 {

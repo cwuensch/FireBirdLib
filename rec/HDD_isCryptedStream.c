@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool HDD_isCryptedStream(byte *Buffer, dword BufferSize)
 {

@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 bool HDD_Write(void *data, dword length, TYPE_File *f)
 {

@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 char *HDD_MakeNewRecName(char *fname, word sequence, char *NewRecName, int NewRecNameSize)
 {

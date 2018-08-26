@@ -1,5 +1,5 @@
 #include                <stdio.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //TAP_Osd_Copy(word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);
 

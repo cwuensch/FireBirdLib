@@ -1,5 +1,5 @@
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void INISetInt(char *Key, long int Value)
 {

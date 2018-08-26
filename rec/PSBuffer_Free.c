@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 #undef free
 

@@ -1,6 +1,6 @@
 #include                <sys/stat.h>
 #include                "FBLib_hdd.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 __ino64_t HDD_GetInodeByFileName(char *FileName)
 {

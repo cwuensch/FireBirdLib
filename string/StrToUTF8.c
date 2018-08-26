@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 //Translates DVB character set table 00 (chars 0xa0 to 0xff) to Unicode
 word UTFLookupISO6937[] =  {0x00A0, 0x00A1, 0x00A2, 0x00A3, 0x20AC, 0x00A5, 0x0000, 0x00A7, 0x00A4, 0x2018, 0x201c, 0x00AB, 0x2190, 0x2191, 0x2192, 0x2193,

@@ -1,6 +1,6 @@
 #include                <sys/stat.h>
 #include                "FBLib_hdd.h"
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword HDD_GetFileTimeByFileName(char *FileName)
 {

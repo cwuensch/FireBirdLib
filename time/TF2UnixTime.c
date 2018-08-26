@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword TF2UnixTime(dword TFTimeStamp)
 {

@@ -361,7 +361,7 @@ UINT4 *in;
 #include <time.h>
 #include <string.h>
 
-#include "../libFireBird.h"
+#include "libFireBird.h"
 /* -- include the following file if the file md5.h is separate -- */
 /* #include "md5.h" */
 

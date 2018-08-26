@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 word ApplSvc_GetTpIdx(byte SatIndex, word NetworkID, word TSID)
 {

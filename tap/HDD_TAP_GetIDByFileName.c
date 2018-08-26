@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword HDD_TAP_GetIDByFileName(char *TAPFileName)
 {

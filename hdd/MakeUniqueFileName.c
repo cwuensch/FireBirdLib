@@ -1,5 +1,5 @@
 #include                <stdio.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 void MakeUniqueFileName(char *FileName)
 {

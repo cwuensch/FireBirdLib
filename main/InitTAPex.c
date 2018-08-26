@@ -1,5 +1,5 @@
 #include "FBLib_main.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 const char              *__fblib_version__ = "__FBLIB_VERSION_TMS__ " __FBLIB_VERSION__;
 

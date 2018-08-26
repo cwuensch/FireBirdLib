@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool HookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal)
 {

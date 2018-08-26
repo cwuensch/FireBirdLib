@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword Appl_WaitEvt(dword Event, dword *a1, dword a2, dword a3, dword Timeout)
 {

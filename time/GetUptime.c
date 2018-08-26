@@ -1,6 +1,6 @@
 #include                <stdio.h>
 #include                <locale.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword GetUptime(void)
 {

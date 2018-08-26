@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword AddSec(dword date, byte dateSec, int add)
 {

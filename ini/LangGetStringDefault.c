@@ -1,5 +1,5 @@
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 char *LangGetStringDefault(dword StringID, char *DefaultString)
 {

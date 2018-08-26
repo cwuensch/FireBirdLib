@@ -1,7 +1,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void SeparateFileNameComponents(char *FileName, char *Path, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel)
 {

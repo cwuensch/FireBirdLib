@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void *TAP_MemRealloc(void *ptr, size_t OldSize, size_t NewSize, bool InitMemory)
 {

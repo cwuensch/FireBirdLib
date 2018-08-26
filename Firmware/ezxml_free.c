@@ -1,4 +1,4 @@
-#include  "../libFireBird.h"
+#include  "libFireBird.h"
 
 void ezxml_free(ezxml_t xml)
 {

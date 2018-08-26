@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 word GetOSDRegionHeight(word Region)
 {

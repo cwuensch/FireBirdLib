@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 long int INIGetInt(char *Key, long int DefaultValue, long int MinValue, long int MaxValue)
 {

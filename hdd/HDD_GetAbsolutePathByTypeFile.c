@@ -1,5 +1,5 @@
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName)
 {

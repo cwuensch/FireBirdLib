@@ -1,5 +1,5 @@
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 void INISetARGB(char *Key, byte Alpha, byte Red, byte Green, byte Blue)
 {

@@ -1,6 +1,6 @@
 #include                <unistd.h>
 #include                <stdlib.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 #include                "FBLib_LogoManager.h"
 
 void LogoManager_MoveExternalUpdates(void)

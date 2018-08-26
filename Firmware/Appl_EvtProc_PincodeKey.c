@@ -1,4 +1,4 @@
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 bool Appl_EvtProc_PincodeKey(dword p1, dword p2)
 {

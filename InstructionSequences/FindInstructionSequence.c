@@ -1,6 +1,6 @@
 #include                <stdlib.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 dword FindInstructionSequence(char *SearchPattern, char *SearchMask, dword StartAddress, dword EndAddress, int EntryPointOffset, bool SearchForPrevADDIUSP)
 {

@@ -1,7 +1,7 @@
 #include                <fcntl.h>
 #include                <unistd.h>
 #include                <string.h>
-#include                "../libFireBird.h"
+#include                "libFireBird.h"
 
 char PrintNetBuffer[1024];
 

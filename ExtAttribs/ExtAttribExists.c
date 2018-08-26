@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <sys/xattr.h>
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 int ExtAttribExists(char *FileName, char *AttrName)
 {

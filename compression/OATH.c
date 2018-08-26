@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword OATH(register unsigned char *data, int len, dword hash)
 {

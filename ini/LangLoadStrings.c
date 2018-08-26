@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "FBLib_ini.h"
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 dword                   LangNrStrings = 0;
 dword                   *LangStringPtr = NULL;

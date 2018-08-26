@@ -1,4 +1,4 @@
-#include "../libFireBird.h"
+#include "libFireBird.h"
 
 inline dword FIS_fwApplOsd_DrawJpeg(void)
 {
