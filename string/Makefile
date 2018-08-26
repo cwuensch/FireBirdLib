@@ -20,7 +20,7 @@ endif
 #TAP_LIBS =  ${BASE}/tapinit.o ${BASE}/libtap.so -lc
 C99_OBJS = StrToUTF8.o
 TAP_OBJS := $(filter-out $(C99_OBJS),$(patsubst %.c,%.o,$(wildcard *.c)))
-TAP_HEAD = ${BASE}/include/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
+TAP_HEAD = ${SRC_DIR}/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
 
 $(C99_OBJS): CFLAGS += -std=c99
 
