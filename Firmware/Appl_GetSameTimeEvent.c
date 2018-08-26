@@ -1,4 +1,4 @@
-#include                "../EPG/FBLib_EPG.h"
+#include                "EPG/FBLib_EPG.h"
 
 void *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID)
 {
