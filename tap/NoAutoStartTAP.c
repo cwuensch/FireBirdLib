@@ -5,7 +5,7 @@
 
 bool NoAutoStartTAP(void)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   char                  CurrentDir[FBLIB_DIR_SIZE];
   char                  *FileName;
@@ -25,7 +25,7 @@ bool NoAutoStartTAP(void)
       curTapTask = (dword*)FIS_vCurTapTask();
       if(!curTapTask)
       {
-        TRACEEXIT();
+        TRACEEXIT;
         return -3;
       }
       TAP_TableIndex = *curTapTask;
@@ -37,6 +37,6 @@ bool NoAutoStartTAP(void)
     ret = system(cmd);
   }
 
-  TRACEEXIT();
+  TRACEEXIT;
   return (ret == 0);
 }

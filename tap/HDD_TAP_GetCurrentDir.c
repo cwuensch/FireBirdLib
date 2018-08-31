@@ -8,7 +8,7 @@
 
 int HDD_TAP_GetCurrentDir(char *CurrentDir)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   tTMSTAPTaskTable     *TAPTaskTable;
   dword                *dw;
@@ -24,7 +24,7 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
     curTapTask = (dword*)FIS_vCurTapTask();
     if(!curTapTask)
     {
-      TRACEEXIT();
+      TRACEEXIT;
       return -3;
     }
     TAP_TableIndex = *curTapTask;
@@ -34,7 +34,7 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
   {
     if(CurrentDir) CurrentDir[0] = '\0';
 
-    TRACEEXIT();
+    TRACEEXIT;
     return -3;
   }
 
@@ -45,6 +45,6 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
   if(CurrentDir && dw && dw[1])
     strcpy(CurrentDir, (char*)(dw[1] + 7));
 
-  TRACEEXIT();
+  TRACEEXIT;
   return 0;
 }

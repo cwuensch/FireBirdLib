@@ -2,7 +2,7 @@
 
 bool HDD_TAP_isDisabledAll(void)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   dword                 i;
   tTMSTAPTaskTable     *TMSTAPTaskTable;
@@ -17,7 +17,7 @@ bool HDD_TAP_isDisabledAll(void)
     curTapTask = (dword*)FIS_vCurTapTask();
     if(!curTapTask)
     {
-      TRACEEXIT();
+      TRACEEXIT;
       return FALSE;
     }
     TAP_TableIndex = *curTapTask;
@@ -27,11 +27,11 @@ bool HDD_TAP_isDisabledAll(void)
   {
     if((i != TAP_TableIndex) && (TMSTAPTaskTable[i].Status == 1) && (TMSTAPTaskTable[i].unused5 == 0))
     {
-      TRACEEXIT();
+      TRACEEXIT;
       return FALSE;
     }
   }
 
-  TRACEEXIT();
+  TRACEEXIT;
   return TRUE;
 }

@@ -3,7 +3,7 @@
 
 bool HDD_TAP_CheckCollision(void)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   char                 *myTAPFileName, *TAPFileName;
   dword                 i;
@@ -19,7 +19,7 @@ bool HDD_TAP_CheckCollision(void)
     curTapTask = (dword*)FIS_vCurTapTask();
     if(!curTapTask)
     {
-      TRACEEXIT();
+      TRACEEXIT;
       return FALSE;
     }
     TAP_TableIndex = *curTapTask;
@@ -37,6 +37,6 @@ bool HDD_TAP_CheckCollision(void)
       }
   }
 
-  TRACEEXIT();
+  TRACEEXIT;
   return TAPCollision;
 }

@@ -14,7 +14,7 @@
 
 int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, bool sprite)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   int                   RgnH, RgnW;
   int                   ret;
@@ -40,6 +40,6 @@ int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, b
 
   if(Comment && ret) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: TAP_Osd_PutGd() returned %d @ %s", ret, Comment);
 
-  TRACEEXIT();
+  TRACEEXIT;
   return ret;
 }

@@ -3,14 +3,14 @@
 
 TAPCOM_Channel TAPCOM_OpenChannel(dword TargetID, dword ServiceID, dword ParamBlockVersion, void *ParamBlock)
 {
-  TRACEENTER();
+  TRACEENTER;
 
   TAPCOM_InternalMesBuf *mesBuf = NULL;
 
   if(!LibInitialized) InitTAPex();
   if(!LibInitialized)
   {
-    TRACEEXIT();
+    TRACEEXIT;
     return NULL;
   }
 
@@ -43,6 +43,6 @@ TAPCOM_Channel TAPCOM_OpenChannel(dword TargetID, dword ServiceID, dword ParamBl
     }
   }
 
-  TRACEEXIT();
+  TRACEEXIT;
   return (TAPCOM_Channel) mesBuf;
 }
