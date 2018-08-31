@@ -7,8 +7,7 @@ TAPCOM_Channel TAPCOM_OpenChannel(dword TargetID, dword ServiceID, dword ParamBl
 
   TAPCOM_InternalMesBuf *mesBuf = NULL;
 
-  if(!LibInitialized) InitTAPex();
-  if(!LibInitialized)
+  if(!LibInitialized && !InitTAPex())
   {
     TRACEEXIT;
     return NULL;

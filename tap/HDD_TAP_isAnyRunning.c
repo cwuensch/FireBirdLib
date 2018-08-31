@@ -7,15 +7,9 @@ bool HDD_TAP_isAnyRunning(void)
   dword                 i;
   tTMSTAPTaskTable     *TMSTAPTaskTable;
 
-  if(!LibInitialized) InitTAPex();
-  if(!LibInitialized)
-  {
-    TRACEEXIT;
-    return FALSE;
-  }
-
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  if(!TMSTAPTaskTable)
+
+  if(!TMSTAPTaskTable || (!LibInitialized && !InitTAPex()))
   {
     TRACEEXIT;
     return FALSE;

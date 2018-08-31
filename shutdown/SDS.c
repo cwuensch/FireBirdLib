@@ -222,18 +222,10 @@ bool SDS(void)
         return FALSE;
       }
 
-      //The curTapTask variable is not thread safe. Call InitTAPex() if this function will be called from a sub thread
-      if(TAP_TableIndex == 0xffffffff)
+      if(!LibInitialized && !InitTAPex())
       {
-        dword            *curTapTask;
-
-        curTapTask = (dword*)FIS_vCurTapTask();
-        if(!curTapTask)
-        {
-          TRACEEXIT;
-          return FALSE;
-        }
-        TAP_TableIndex = *curTapTask;
+        TRACEEXIT;
+        return FALSE;
       }
 
       if(HDD_TAP_GetFileNameByIndex(TAP_TableIndex, &TAPFileName))

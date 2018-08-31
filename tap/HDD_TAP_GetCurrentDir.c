@@ -1,5 +1,5 @@
 #include <string.h>
-#include "libFireBird.h"
+#include "FBLib_tap.h"
 
 //Return codes:     0: OK
 //                 -1: not enough memory (from HDD_TAP_GetCurrentDirCluster)
@@ -16,21 +16,7 @@ int HDD_TAP_GetCurrentDir(char *CurrentDir)
   //Get all needed variables
   TAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
 
-  //The curTapTask variable is not thread safe. Call InitTAPex() if this function will be called from a sub thread
-  if(TAP_TableIndex == 0xffffffff)
-  {
-    dword                *curTapTask;
-
-    curTapTask = (dword*)FIS_vCurTapTask();
-    if(!curTapTask)
-    {
-      TRACEEXIT;
-      return -3;
-    }
-    TAP_TableIndex = *curTapTask;
-  }
-
-  if(!TAPTaskTable)
+  if(!TAPTaskTable || (!LibInitialized && !InitTAPex()))
   {
     if(CurrentDir) CurrentDir[0] = '\0';
 

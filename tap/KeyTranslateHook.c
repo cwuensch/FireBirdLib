@@ -81,24 +81,10 @@ bool KeyTranslate(bool Enable, void *EventHandler)
 
   //Get the address to the TAP table
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  if(!TMSTAPTaskTable)
+  if(!TMSTAPTaskTable || (!LibInitialized && !InitTAPex()))
   {
     TRACEEXIT;
     return FALSE;
-  }
-
-  //The curTapTask variable is not thread safe. Call InitTAPex() if this function will be called from a sub thread
-  if(TAP_TableIndex == 0xffffffff)
-  {
-    dword                *curTapTask;
-
-    curTapTask = (dword*)FIS_vCurTapTask();
-    if(!curTapTask)
-    {
-      TRACEEXIT;
-      return -3;
-    }
-    TAP_TableIndex = *curTapTask;
   }
 
   if(Enable && (TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler == (dword)EventHandler))

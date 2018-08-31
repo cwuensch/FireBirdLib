@@ -9,18 +9,10 @@ bool HDD_TAP_isDisabledAll(void)
 
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
 
-  //The curTapTask variable is not thread safe. Call InitTAPex() if this function will be called from a sub thread
-  if(TAP_TableIndex == 0xffffffff)
+  if(!TMSTAPTaskTable || (!LibInitialized && !InitTAPex()))
   {
-    dword                *curTapTask;
-
-    curTapTask = (dword*)FIS_vCurTapTask();
-    if(!curTapTask)
-    {
-      TRACEEXIT;
-      return FALSE;
-    }
-    TAP_TableIndex = *curTapTask;
+    TRACEEXIT;
+    return FALSE;
   }
 
   for(i = 0; i < TAP_MAX; i++)
