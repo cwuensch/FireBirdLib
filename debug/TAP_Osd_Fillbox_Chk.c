@@ -1,4 +1,3 @@
-#include                <stdio.h>
 #include                "libFireBird.h"
 
 int TAP_Osd_FillBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h, dword color)

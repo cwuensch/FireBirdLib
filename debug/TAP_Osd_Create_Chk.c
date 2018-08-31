@@ -1,4 +1,3 @@
-#include                <stdio.h>
 #include                "libFireBird.h"
 
 int TAP_Osd_Create_Chk(char *Comment, dword x, dword y, dword w, dword h, byte lutIdx, int flag)
