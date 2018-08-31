@@ -17,7 +17,7 @@ dword TryResolve(char *Function)
   }
 
   ret = dlsym(pvr, Function);
-  if(dlerror() != NULL)
+  if(dlerror())
   {
     dlclose(pvr);
 
