@@ -20,9 +20,12 @@ bool InitTAPex()
   ApplID = TAP_GetVersion();
 
   dword *pcurTapTask = (dword*)FIS_vCurTapTask();
-  if(pcurTapTask) TAP_TableIndex = *pcurTapTask;
 
-  LibInitialized = TRUE;
+  if (pcurTapTask)
+  {
+    TAP_TableIndex = *pcurTapTask;
+    LibInitialized = TRUE;
+  }
 
   TRACEEXIT;
   return LibInitialized;

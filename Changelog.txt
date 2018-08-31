@@ -1038,3 +1038,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Added -std=c99 compiler flag only where necessary
             Fixed: Potential buffer overflow in TAP_PrintNet() (replacing TAP_Print())
 2018-08-31: Fixed: Made empty macro a statement to avoid empty statements
+            Fixed: Handle a possible initialization error in InitTAPex()
