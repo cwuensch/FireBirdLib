@@ -1199,8 +1199,8 @@
     #define TRACEENTER()    CallTraceEnter((char*)__FUNCTION__)
     #define TRACEEXIT()     CallTraceExit(NULL)
   #else
-    #define TRACEENTER()
-    #define TRACEEXIT()
+    #define TRACEENTER()    (void) 0
+    #define TRACEEXIT()     (void) 0
   #endif
 
   typedef enum
