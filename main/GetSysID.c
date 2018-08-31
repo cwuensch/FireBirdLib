@@ -1,4 +1,4 @@
-#include "FBLib_main.h"
+#include "libFireBird.h"
 
 word GetSysID(void)
 {
