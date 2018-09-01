@@ -13,7 +13,7 @@ dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dw
   TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
   curTapTask = (dword*)FIS_vCurTapTask();
 
-  if(!!TMSTAPTaskTable || !curTapTask || (!LibInitialized && !InitTAPex()))
+  if(!TMSTAPTaskTable || !curTapTask || (!LibInitialized && !InitTAPex()))
   {
     TRACEEXIT;
     return 0;
