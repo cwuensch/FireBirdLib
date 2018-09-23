@@ -9,6 +9,15 @@
 
   #define isTMS         1
 
+  // Call FBLIB's special check-and-log API wrapper functions.
+  #define FB_DEBUG_CHK
+
+  // Define the following if you want to suppress all debug-like functions,
+  // thus not getting any debug information at runtime.
+  #ifdef FB_NO_DEBUG
+    #undef FB_DEBUG_CHK
+  #endif
+
   #ifdef PC_BASED
     #define inline
     #define __attribute__(a)
@@ -1213,6 +1222,7 @@
   void   CrashCheck_Startup(char *TAPName, tCrashCheckStatus *CCStatus);
   void   CrashCheck_Shutdown(char *TAPName);
 
+#ifdef FB_DEBUG_CHK
   void *TAP_MemAlloc_Chk(char *Comment, dword size);
   int   TAP_Osd_Copy_Chk(char *Comment, word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);
   int   TAP_Osd_Create_Chk(char *Comment, dword x, dword y, dword w, dword h, byte lutIdx, int flag);
@@ -1222,6 +1232,17 @@
   int   TAP_Osd_PutPixel_Chk(char *Comment, word rgn, dword x, dword y, dword pix);
   void  TAP_Osd_RestoreBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h, void *data);
   byte *TAP_Osd_SaveBox_Chk(char *Comment, word rgn, dword x, dword y, dword w, dword h);
+#else
+  #define TAP_MemAlloc_Chk(Comment, ...) TAP_MemAlloc(__VA_ARGS__)
+  #define TAP_Osd_Copy_Chk(Comment, ...) TAP_Osd_Copy(__VA_ARGS__)
+  #define TAP_Osd_Create_Chk(Comment, ...) TAP_Osd_Create(__VA_ARGS__)
+  #define TAP_Osd_FillBox_Chk(Comment, ...) TAP_Osd_FillBox(__VA_ARGS__)
+  #define TAP_Osd_PutFreeColorGd_Chk(Comment, ...) TAP_Osd_PutFreeColorGd(__VA_ARGS__)
+  #define TAP_Osd_PutGd_Chk(Comment, ...) TAP_Osd_PutGd(__VA_ARGS__)
+  #define TAP_Osd_PutPixel_Chk(Comment, ...) TAP_Osd_PutPixel(__VA_ARGS__)
+  #define TAP_Osd_RestoreBox_Chk(Comment, ...) TAP_Osd_RestoreBox(__VA_ARGS__)
+  #define TAP_Osd_SaveBox_Chk(Comment, ...) TAP_Osd_SaveBox(__VA_ARGS__)
+#endif
 
 
   /*****************************************************************************************************************************/
