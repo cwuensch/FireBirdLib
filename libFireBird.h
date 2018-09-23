@@ -12,11 +12,15 @@
   // Call FBLIB's special check-and-log API wrapper functions.
   #define FB_DEBUG_CHK
 
+  // Call LogEntryFBLibPrintf().
+  #define FB_LOG_ENTRY_LIB_PRINTF
+
   // Define the following if you want to suppress all debug-like functions,
   // thus not getting any debug information at runtime.
   #ifdef FB_NO_DEBUG
     #undef STACKTRACE
     #undef FB_DEBUG_CHK
+    #undef FB_LOG_ENTRY_LIB_PRINTF
   #endif
 
   #ifdef PC_BASED
@@ -1192,7 +1196,11 @@
   void   LogEntryPrintf(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *format, ...);
   void   LogEntryGeneric(char *ProgramName, bool Console, char *Text);
   void   LogEntryGenericPrintf(char *ProgramName, bool Console, char *format, ...);
+#ifdef FB_LOG_ENTRY_LIB_PRINTF
   void   LogEntryFBLibPrintf(bool Console, char *format, ...);
+#else
+  #define LogEntryFBLibPrintf(Console, ...) do { if (0) TAP_Print(__VA_ARGS__); } while (0)
+#endif
   bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
   bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
 

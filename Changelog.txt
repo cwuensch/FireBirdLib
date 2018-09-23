@@ -1043,3 +1043,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-09-08: Fixed: added parentheses back to TRACEENTER/TRACEEXIT to keep backward compatibility with TAPs that use these macros
 2018-09-23: Added: FB_DEBUG_CHK and FB_NO_DEBUG to suppress all debug-like check-and-log functions
             Added: FB_NO_DEBUG undefines STACKTRACE
+            Added: FB_LOG_ENTRY_LIB_PRINTF to let FB_NO_DEBUG suppress a debug-like internal logging function
