@@ -15,6 +15,7 @@
   // Define the following if you want to suppress all debug-like functions,
   // thus not getting any debug information at runtime.
   #ifdef FB_NO_DEBUG
+    #undef STACKTRACE
     #undef FB_DEBUG_CHK
   #endif
 
