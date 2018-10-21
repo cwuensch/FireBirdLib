@@ -24,7 +24,11 @@
     #undef STACKTRACE
     #undef FB_DEBUG_CHK
     #undef FB_LOG_ENTRY_LIB_PRINTF
-    #undef FB_CALL_TRACE
+    // Define the following at library compile time
+    // if you are using FB_NO_DEBUG.
+    #ifndef FB_LIBRARY_COMPILATION
+      #undef FB_CALL_TRACE
+    #endif
   #endif
 
   #ifdef PC_BASED

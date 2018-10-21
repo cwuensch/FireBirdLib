@@ -1047,3 +1047,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Return value should formally match return type of HDD_TAP_Callback()
             Modified: Release date
 2018-10-21: Added: FB_CALL_TRACE to let FB_NO_DEBUG suppress all CallTrace function calls
+            Added: FB_LIBRARY_COMPILATION to enable the CallTrace functions to remain part of the library (and control their usage at TAP compile time)
