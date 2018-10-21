@@ -1046,3 +1046,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: FB_LOG_ENTRY_LIB_PRINTF to let FB_NO_DEBUG suppress a debug-like internal logging function
             Fixed: Return value should formally match return type of HDD_TAP_Callback()
             Modified: Release date
+2018-10-21: Added: FB_CALL_TRACE to let FB_NO_DEBUG suppress all CallTrace function calls

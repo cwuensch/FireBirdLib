@@ -15,12 +15,16 @@
   // Call LogEntryFBLibPrintf().
   #define FB_LOG_ENTRY_LIB_PRINTF
 
+  // Make use of tracing functions.
+  #define FB_CALL_TRACE
+
   // Define the following if you want to suppress all debug-like functions,
   // thus not getting any debug information at runtime.
   #ifdef FB_NO_DEBUG
     #undef STACKTRACE
     #undef FB_DEBUG_CHK
     #undef FB_LOG_ENTRY_LIB_PRINTF
+    #undef FB_CALL_TRACE
   #endif
 
   #ifdef PC_BASED
@@ -1204,6 +1208,7 @@
   bool   HookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
   bool   UnhookFirmware(char *FirmwareFunctionName, void *RedirectTo, void *PointerToOriginal);
 
+#ifdef FB_CALL_TRACE
   void   CallTraceInit(void);
   void   CallTraceEnable(bool Enable);
   void   CallTraceEnter(char *ProcName);
@@ -1212,6 +1217,16 @@
   void   CallTraceComment(char *Comment);
   void   CallTraceExportStats(char *FileName);
   void   CallTraceResetStats(void);
+#else
+  #define CallTraceInit(...) (void) 0
+  #define CallTraceEnable(...) (void) 0
+  #define CallTraceEnter(...) (void) 0
+  #define CallTraceExit(...) (void) 0
+  #define CallTraceExitResult(...) (void) 0
+  #define CallTraceComment(...) (void) 0
+  #define CallTraceExportStats(...) (void) 0
+  #define CallTraceResetStats(...) (void) 0
+#endif
 
   #ifdef STACKTRACE
     #define TRACEENTER()    CallTraceEnter((char*)__FUNCTION__)
