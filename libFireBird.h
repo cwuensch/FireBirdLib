@@ -239,6 +239,7 @@
   #define G8888(x)      (((x)>> 8)&0xff)
   #define B8888(x)      (((x)>> 0)&0xff)
 
+  #define ARGB2TMS(a,r,g,b)   ((dword) (((a) ? TAP_ALPHA : 0) << 24 | (byte) ((r) * 8.2258) << 16 | (byte) ((g) * 8.2258) << 8 | (byte) ((b) * 8.2258)))
   #define ARGBtoTMS(a,r,g,b)  a*=0xff;r*=8.2258;g*=8.2258;b*=8.2258
   #define TMStoARGB(a,r,g,b)  a/=0xff;r/=8.2258;g/=8.2258;b/=8.2258
 
