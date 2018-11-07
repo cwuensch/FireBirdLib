@@ -2190,7 +2190,8 @@
   /* LogoManager                                                                                                               */
   /*****************************************************************************************************************************/
 
-  #define LOGOROOT        "/ProgramFiles/Settings/Logos"
+  #define DIR_LOGOS       "Logos"
+  #define LOGOROOT        DIR_PROGRAMFILES "/" DIR_SETTINGS "/" DIR_LOGOS
   #define LOGOPACK        "LogoPack.tar"
   #define LOGOCACHE       "Logo.cache"
   #define LOGOCACHEID     "LGC"
