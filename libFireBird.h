@@ -59,6 +59,9 @@
   /*****************************************************************************************************************************/
   #define TAP_MAX       16
 
+  #define DIR_PROGRAMFILES "/ProgramFiles"
+  #define DIR_SETTINGS     "Settings"
+
   typedef enum
   {
     ST_UNKNOWN,
@@ -1796,7 +1799,8 @@
   /* FontManager                                                                                                               */
   /*****************************************************************************************************************************/
 
-  #define FONTSDIR      "/ProgramFiles/Settings/Fonts"
+  #define DIR_FONTS     "Fonts"
+  #define FONTSDIR      DIR_PROGRAMFILES "/" DIR_SETTINGS "/" DIR_FONTS
 
   typedef struct
   {
