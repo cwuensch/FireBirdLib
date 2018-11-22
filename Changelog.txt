@@ -1051,3 +1051,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-11-02: Added: ARGB2TMS to convert a TF5k ARGB quadruple directly to the TMS color
 2018-11-04: Fixed: OSDToBMP() didn't do anything because a condition was incorrect
 2018-11-20: Fixed: FlashTransponderTablesDel() deletes all services on the selected transponder or renumbers the transponder indices where necessary
+2018-11-22: Fixed: a redraw after OSDMenuItemsClear() still did show all items
