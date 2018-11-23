@@ -1052,3 +1052,5 @@ The following functions accept any form a path. The INI and language INI functio
 2018-11-04: Fixed: OSDToBMP() didn't do anything because a condition was incorrect
 2018-11-20: Fixed: FlashTransponderTablesDel() deletes all services on the selected transponder or renumbers the transponder indices where necessary
 2018-11-22: Fixed: a redraw after OSDMenuItemsClear() still did show all items
+2018-11-23: Fixed: OSDDrawList() doesn't draw a cursor if the item list is empty
+            Fixed: OSDMenuItemsClear() also resets CurrentTopIndex to 0
