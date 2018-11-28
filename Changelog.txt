@@ -1057,3 +1057,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-11-28: Fixed: Wrong usage of FONTYOFFSET in OSDDrawMemo()
             Fixed: OSDMemoInitialize() didn't utilize struct member FontMemo
             Fixed: HORSPACE in OSDMemoInitialize() was too small (Memo width of 600 px minus 16 px left indent equals 584 px, so with a 16 px right margin the available space is 568 px)
+            Fixed: OSDMemoInitialize() omitted lines and created additional blank lines

@@ -6,7 +6,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
 {
   TRACEENTER();
 
-  char                 *from, *to, *p, c;
+  char                 *from, *upto, *p, c;
   int                   Width;
   char                 *Buffer;
   tMenu                *pMenu;
@@ -32,47 +32,35 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   if(Buffer[strlen(Buffer)] != '\n') strcat(Buffer, "\n");
 
   from = Buffer;
-  to = Buffer;
-  while(*from)
-  {
-    p = strpbrk(to + 1, " \n");
+  upto = from - 1;
 
-    if(p == NULL)
+  while ((p = strpbrk(upto + 1, " \n")))
+  {
+    c = *p;
+    *p = 0;
+
+    Width = FMUC_GetStringWidth(from, pMenu->FontMemo);
+
+    if (Width > HORSPACE)
     {
-      //Nothing has been found, terminate
-      break;
+      if (upto < from) upto = p;
+
+      *upto = 0;
+      OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
+      from = upto + 1;
     }
     else
     {
-      if(from > to) to = p;
-
-      c = *p;
-      *p = '\0';
-      Width = FMUC_GetStringWidth(from, pMenu->FontMemo);
-      if(Width > HORSPACE)
+      if (c == '\n')
       {
-        *to = '\0';
-        OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-        from = to + 1;
-        to = p;
-      }
-      *p = c;
-
-      if(c == '\n')
-      {
-        if(from >= to)
-        {
-          OSDMenuItemAdd(" ", NULL, NULL, NULL, TRUE, FALSE, 0);
-        }
-        else
-        {
-          *p = '\0';
-          OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
-        }
+        OSDMenuItemAdd(*from ? from : " ", NULL, NULL, NULL, TRUE, FALSE, 0);
         from = p + 1;
       }
-      to = p;
+
+      upto = p;
     }
+
+    *p = c;
   }
 
   TAP_MemFree(Buffer);
