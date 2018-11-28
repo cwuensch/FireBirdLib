@@ -48,7 +48,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
 
       c = *p;
       *p = '\0';
-      Width = FMUC_GetStringWidth(from, &OSDMenuFont_14);
+      Width = FMUC_GetStringWidth(from, pMenu->FontMemo);
       if(Width > HORSPACE)
       {
         *to = '\0';
