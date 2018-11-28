@@ -11,7 +11,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   char                 *Buffer;
   tMenu                *pMenu;
 
-  #define HORSPACE      550
+  #define HORSPACE      568
 
   OSDMenuInitialize(FALSE, FALSE, FALSE, ScrollLoop, TitleLeft, TitleRight);
   pMenu = &Menu[CurrentMenuLevel];
