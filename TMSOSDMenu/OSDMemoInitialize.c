@@ -7,7 +7,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   TRACEENTER();
 
   char                 *from, *upto, *p, c;
-  int                   Width;
+  dword                 spW, Width = 0;
   char                 *Buffer;
   tMenu                *pMenu;
 
@@ -31,6 +31,8 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   StrReplace(Buffer, "\r\n", "\n");
   if(Buffer[strlen(Buffer)] != '\n') strcat(Buffer, "\n");
 
+  spW = FMUC_GetStringWidth(" ", pMenu->FontMemo);
+
   from = Buffer;
   upto = from - 1;
 
@@ -39,7 +41,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
     c = *p;
     *p = 0;
 
-    Width = FMUC_GetStringWidth(from, pMenu->FontMemo);
+    Width += FMUC_GetStringWidth(upto + 1, pMenu->FontMemo) + (c == ' ' ? spW : 0);
 
     if (Width > HORSPACE)
     {
@@ -48,6 +50,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
       *upto = 0;
       OSDMenuItemAdd(from, NULL, NULL, NULL, TRUE, FALSE, 0);
       from = upto + 1;
+      Width = 0;
     }
     else
     {
@@ -55,6 +58,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
       {
         OSDMenuItemAdd(*from ? from : " ", NULL, NULL, NULL, TRUE, FALSE, 0);
         from = p + 1;
+        Width = 0;
       }
 
       upto = p;
