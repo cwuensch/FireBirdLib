@@ -1054,3 +1054,4 @@ The following functions accept any form a path. The INI and language INI functio
 2018-11-22: Fixed: a redraw after OSDMenuItemsClear() still did show all items
 2018-11-23: Fixed: OSDDrawList() doesn't draw a cursor if the item list is empty
             Fixed: OSDMenuItemsClear() also resets CurrentTopIndex to 0
+2018-11-28: Fixed: Wrong usage of FONTYOFFSET in OSDDrawMemo()
