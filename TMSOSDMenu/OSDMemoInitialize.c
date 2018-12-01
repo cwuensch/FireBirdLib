@@ -29,7 +29,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   StrReplace(Buffer, "\x8d", "\r");
   StrReplace(Buffer, "\x8a", "\n");
   StrReplace(Buffer, "\r\n", "\n");
-  if(Buffer[strlen(Buffer)] != '\n') strcat(Buffer, "\n");
+  if (Buffer[strlen(Buffer) - 1] != '\n') strcat(Buffer, "\n");
 
   spW = FMUC_GetStringWidth(" ", pMenu->FontMemo);
 
