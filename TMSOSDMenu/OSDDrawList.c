@@ -33,7 +33,7 @@ void OSDDrawList(void)
   if(MaxValueIconWidth) MaxValueIconWidth += 8;
 
   //The background
-  TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 367, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
+  TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 368, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
 
   for(i = 0; i < 10; i++)
   {
