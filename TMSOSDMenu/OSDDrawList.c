@@ -52,7 +52,7 @@ void OSDDrawList(void)
     }
     else
     {
-      TAP_Osd_DrawRectangle(OSDRgn, 60, 130 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
+      TAP_Osd_DrawRectangle(OSDRgn, 60, 131 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
     }
 
     if((i + pMenu->CurrentTopIndex) < pMenu->NrItems)
