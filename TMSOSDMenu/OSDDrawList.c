@@ -39,24 +39,24 @@ void OSDDrawList(void)
   {
     pItem = &pMenu->Item[i + pMenu->CurrentTopIndex];
 
-    //Draw the background or selection bar and the optional value arrows
-    if((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection && ((i + pMenu->CurrentTopIndex) < pMenu->NrItems))
+    if ((i + pMenu->CurrentTopIndex) < pMenu->NrItems)
     {
-      OSDMenuDrawCursor(60, 96 + (i * 37), 600);
-
-      if(pMenu->HasValueColumn && pItem->ValueArrows)
+      //Draw the background or selection bar and the optional value arrows
+      if ((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection)
       {
-        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 96 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_l_Gd : &_pfeil_l_bright_Gd), TRUE);
-        TAP_Osd_PutGd(OSDRgn, 640 , 96 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
-      }
-    }
-    else
-    {
-      TAP_Osd_DrawRectangle(OSDRgn, 60, 131 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
-    }
+        OSDMenuDrawCursor(60, 96 + (i * 37), 600);
 
-    if((i + pMenu->CurrentTopIndex) < pMenu->NrItems)
-    {
+        if (pMenu->HasValueColumn && pItem->ValueArrows)
+        {
+          TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 96 + 10 + (i * 37), (MenuCursorType == CT_Standard ? &_pfeil_l_Gd : &_pfeil_l_bright_Gd), TRUE);
+          TAP_Osd_PutGd(OSDRgn, 640 , 96 + 10 + (i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
+        }
+      }
+
+      TAP_Osd_DrawRectangle(OSDRgn, 60, 131 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
+
+      //Draw line content
+
       XEnd = (pMenu->HasValueColumn ? pMenu->ValueXPos : 645);
       Y = 99 + (i * 37);
 
