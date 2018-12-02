@@ -42,12 +42,12 @@ void OSDDrawList(void)
     //Draw the background or selection bar and the optional value arrows
     if((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection && ((i + pMenu->CurrentTopIndex) < pMenu->NrItems))
     {
-      OSDMenuDrawCursor(60, 95 + (i * 37), 600);
+      OSDMenuDrawCursor(60, 96 + (i * 37), 600);
 
       if(pMenu->HasValueColumn && pItem->ValueArrows)
       {
-        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 95 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_l_Gd : &_pfeil_l_bright_Gd), TRUE);
-        TAP_Osd_PutGd(OSDRgn, 640 , 95 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
+        TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 20 , 96 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_l_Gd : &_pfeil_l_bright_Gd), TRUE);
+        TAP_Osd_PutGd(OSDRgn, 640 , 96 + 10 +(i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
       }
     }
     else

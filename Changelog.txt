@@ -1060,3 +1060,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMemoInitialize() omitted lines and created additional blank lines
 2018-12-01: Fixed: OSDMemoInitialize() produced a blank line at the end by always adding \n to Text, even if already properly terminated by \n
 2018-12-02: Fixed: OSDMenu's background height was 1 px too small (10 * 35 px + 9 * 2 px = 368 px)
+            Fixed: OSDMenu drawing didn't always start at y = 96 (which is the top of the background)
