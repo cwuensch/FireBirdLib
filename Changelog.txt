@@ -1064,3 +1064,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenu's first list item's height was 1 px too small (130 - 96 = 34 but should be 35 like all other list items)
             Fixed: OSDMenu's scrollbar bottom position was 3 px too high (368 - 2 * 12 - 20 = 324)
             Fixed: OSDMenu's selected list item lacked the 2 px separation line at its bottom
+            Fixed: OSDMenu's scrollbar was 1 px too far to the right (659 is end of the background, 660 the necessary gap)
