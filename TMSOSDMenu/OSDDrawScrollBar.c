@@ -13,7 +13,7 @@ void OSDDrawScrollBar(void)
   else
   {
     TAP_Osd_PutGd(OSDRgn, 662, 96, &_ScrollBarVisible_Gd, FALSE);
-    Y = 108 + (Menu[CurrentMenuLevel].CurrentSelection * 321) / (Menu[CurrentMenuLevel].NrItems - 1);
+    Y = 108 + (Menu[CurrentMenuLevel].CurrentSelection * 324) / (Menu[CurrentMenuLevel].NrItems - 1);
     TAP_Osd_PutGd(OSDRgn, 663, Y, &_ScrollBarKnob_Gd, FALSE);
   }
 
