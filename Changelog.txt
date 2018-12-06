@@ -1069,3 +1069,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Limit button drawing to the end of the separation line (minus margin)
             Fixed: OSDMenu's left title was 3 px too far to the right and 1 px too low (right title was 3 px too low)
             Fixed: OSDMenu's progress bar was 1 px too close to the left ((720 - 252) / 2 = 234)
+            Fixed: OSDMenu's color picker was 2 px too high up, buttons and color box were 3 px too far from the bottom and color box was 1 px too close to the left
