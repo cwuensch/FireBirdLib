@@ -122,14 +122,11 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   TRACEENTER();
 
   tMenu                *pMenu;
-  int                   i;
 
   //Clear everything
   pMenu = &Menu[CurrentMenuLevel];
 
   memset(pMenu, 0, sizeof(tMenu));
-  for(i = 0; i < 4; i++)
-    pMenu->ButtonXStart[i] = 55;
 
   if(OSDRgn) TAP_Osd_Delete(OSDRgn);
   OSDRgn = 0;
@@ -146,6 +143,8 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->MaxItems = 30;
   pMenu->Item = TAP_MemAlloc(pMenu->MaxItems * sizeof(tItem));
   memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
+
+  OSDMenuButtonsClear();
 
   pMenu->FontLeftTitle          = &OSDMenuFont_20;
   pMenu->FontRightTitle         = &OSDMenuFont_16;
@@ -168,7 +167,6 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 
   pMenu->OSDMenuDisplayMode = OMDM_Standard;
-  ButtonColor = RGB(230, 230, 250);
 
   MenuCursorType = CT_Standard;
 
