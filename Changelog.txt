@@ -1065,3 +1065,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenu's scrollbar bottom position was 3 px too high (368 - 2 * 12 - 20 = 324)
             Fixed: OSDMenu's selected list item lacked the 2 px separation line at its bottom
             Fixed: OSDMenu's scrollbar was 1 px too far to the right (659 is end of the background, 660 the necessary gap)
+2018-12-06: Fixed: OSDMenuButtonAdd() didn't utilize struct member FontButtons
