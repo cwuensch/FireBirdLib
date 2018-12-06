@@ -143,7 +143,9 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->ScrollLoop = ScrollLoop;
   pMenu->ValueXPos = 350;
   pMenu->hasValueArrows = FALSE;
-  pMenu->Item = TAP_MemAlloc(30 * sizeof(tItem));
+  pMenu->MaxItems = 30;
+  pMenu->Item = TAP_MemAlloc(pMenu->MaxItems * sizeof(tItem));
+  memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
 
   pMenu->FontLeftTitle          = &OSDMenuFont_20;
   pMenu->FontRightTitle         = &OSDMenuFont_16;
@@ -152,9 +154,6 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->FontListValueColumn    = &OSDMenuFont_14;
   pMenu->FontButtons            = &OSDMenuFont_12;
   pMenu->FontMemo               = &OSDMenuFont_14;
-
-  pMenu->MaxItems = 30;
-  memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
 
   if(TitleLeft)
     strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
