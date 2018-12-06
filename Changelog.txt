@@ -1067,3 +1067,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenu's scrollbar was 1 px too far to the right (659 is end of the background, 660 the necessary gap)
 2018-12-06: Fixed: OSDMenuButtonAdd() didn't utilize struct member FontButtons
             Fixed: Limit button drawing to the end of the separation line (minus margin)
+            Fixed: OSDMenu's left title was 3 px too far to the right and 1 px too low (right title was 3 px too low)
