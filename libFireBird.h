@@ -1524,10 +1524,18 @@
     word                  PMTPID;
     word                  PCRPID;
     word                  VideoPID;
-    word                  AudioPID;
+    union {
+      word                AudioPID;
+      struct
+      {
+        word              AudioPID2:13;
+        word              AudioTypeFlag:2;
+        word              AudAutoSelect:1;
+      };
+    };
     word                  LCN;
     word                  AudioStreamType;
-    char                  ServiceName[MAX_SvcName+1];
+    char                  ServiceName[MAX_SvcName + 1];
     char                  ProviderName[40];
     byte                  NameLock;
     word                  Flags2;
@@ -1569,15 +1577,21 @@
     byte                  unused4:1;
 
     byte                  DiSEqC11;
+    union
+    {
+      byte                unused5[5];
+      struct
+      {
+        byte              UniCableSatPosition:1;
+        byte              UniCableunused:7;
 
-    byte                  UniCableSatPosition:1;
-    byte                  UniCableunused:7;
+        word              UniCableUserBand:4;
+        word              UniCableFrq:12;
 
-    word                  UniCableUserBand:4;
-    word                  UniCableFrq:12;
-
-    byte                  unused5[2];
-  } tFlashLNB;
+        byte              unused6[2];
+      } __attribute__((packed));
+    };
+  } tFlashLNB;  // identisch mit TYPE_LNB_TMSS
 
   typedef struct
   {
@@ -1588,7 +1602,7 @@
     byte                  unknown1[22];
     word                  SatPosition;
     byte                  unused2[8];
-  } tFlashSatTable;
+  } tFlashSatTable;  // identisch mit TYPE_SatInfo_TMSS
 
   int   FlashSatTablesGetTotal(void);
   bool  FlashSatTablesGetInfo(int SatNum, tFlashSatTable *SatTable);
@@ -1634,18 +1648,18 @@
 
   typedef struct
   {
-      short               UTCOffset;
-      word                SleepTimer;
+    short               UTCOffset;
+    word                SleepTimer;
 
-      byte                unknown1:3;
-      byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-      byte                Mode:1;                 //0=Auto, 1=Manual
-      byte                unknown2:1;
+    byte                unknown1:3;
+    byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+    byte                Mode:1;                 //0=Auto, 1=Manual
+    byte                unknown2:1;
 
-      byte                unknown3;
+    byte                unknown3;
 
-      word                DST:2;                  //0=off, 3=on
-      word                unknown4:14;
+    word                DST:2;                  //0=off, 3=on
+    word                unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
@@ -1681,7 +1695,8 @@
     byte                unused8[8];
     byte                IceTV;
     byte                unused9[13];
-    dword               rs_timestamp1;			//RS timers are OT timers where (rs_timestamp1 != 0)
+    byte                unused10[8];
+    dword               rs_timestamp1;              //RS timers are OT timers where (rs_timestamp1 != 0)
     char                rs_episodeCRID[64];
     char                rs_seriesCRID[64];
     dword               rs_unknown1;
