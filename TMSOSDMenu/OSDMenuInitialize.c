@@ -3,24 +3,6 @@
 
 //#include                "graphic/InfoBox.gd"
 
-#ifndef FB_USE_UNICODE_OSD
-//  #include                "fonts/Calibri_10.c"
-//  #include                "fonts/Calibri_12.c"
-//  #include                "fonts/Calibri_14.c"
-//  #include                "fonts/Calibri_16.c"
-//  #include                "fonts/Calibri_18.c"
-//  #include                "fonts/Calibri_20.c"
-//  #include                "fonts/Calibri_20B.c"
-#else
-  tFontDataUC           OSDMenuFont_10;
-  tFontDataUC           OSDMenuFont_12;
-  tFontDataUC           OSDMenuFont_14;
-  tFontDataUC           OSDMenuFont_16;
-  tFontDataUC           OSDMenuFont_18;
-  tFontDataUC           OSDMenuFont_20;
-  tFontDataUC           OSDMenuFont_20B;
-#endif
-
 word                    OSDMenuSelectionBarRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 tMenu                   Menu[NRMENULEVELS];
@@ -30,6 +12,15 @@ dword                   LastUnprocessedOSDMenuKey = 0;
 tCursorType             MenuCursorType;
 tOSDMenuLastCursorType  OSDMenuLastCursor = LCT_NRCURSORS;
 
+#ifdef FB_USE_UNICODE_OSD
+  tFontDataUC           OSDMenuFont_10;
+  tFontDataUC           OSDMenuFont_12;
+  tFontDataUC           OSDMenuFont_14;
+  tFontDataUC           OSDMenuFont_16;
+  tFontDataUC           OSDMenuFont_18;
+  tFontDataUC           OSDMenuFont_20;
+  tFontDataUC           OSDMenuFont_20B;
+#endif
 
 void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn) = NULL;
 
