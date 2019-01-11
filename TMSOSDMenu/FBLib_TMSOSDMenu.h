@@ -3,12 +3,38 @@
 
 #include                "libFireBird.h"
 
+#ifndef FB_USE_UNICODE_OSD
+  #define FMUC_GetStringHeight(...)   FM_GetStringHeight( __VA_ARGS__ )
+  #define FMUC_GetStringWidth(...)    FM_GetStringWidth( __VA_ARGS__ )
+  #define FMUC_PutString(...)         FM_PutString( __VA_ARGS__ )
+  #define FMUC_PutStringAA(...)       FM_PutStringAA( __VA_ARGS__ )
+  #define OSDMenuFont_10              Calibri_10_FontData
+  #define OSDMenuFont_12              Calibri_12_FontData
+  #define OSDMenuFont_14              Calibri_14_FontData
+  #define OSDMenuFont_16              Calibri_16_FontData
+  #define OSDMenuFont_18              Calibri_18_FontData
+  #define OSDMenuFont_20              Calibri_20_FontData
+  #define OSDMenuFont_20B             Calibri_20B_FontData
+  #define tFontDataUC                 tFontData
+#else
+  extern tFontDataUC    OSDMenuFont_10;
+  extern tFontDataUC    OSDMenuFont_12;
+  extern tFontDataUC    OSDMenuFont_14;
+  extern tFontDataUC    OSDMenuFont_16;
+  extern tFontDataUC    OSDMenuFont_18;
+  extern tFontDataUC    OSDMenuFont_20;
+  extern tFontDataUC    OSDMenuFont_20B;
+#endif
+
 #define ITEMNAMESIZE    128
 #define ITEMVALUESIZE   128
 #define STDSTRINGSIZE   256
 #define NRMENULEVELS     5
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
+#define INFOBOX_WIDTH   380
+#define INFOBOX_HEIGHT  190
+
 
 typedef struct
 {
@@ -60,7 +86,7 @@ typedef struct
   dword                 LogoX;
   dword                 LogoY;
   TYPE_GrData          *pLogoGd;
-  tOSDMenuDisplayMode  OSDMenuDisplayMode;
+  tOSDMenuDisplayMode   OSDMenuDisplayMode;
   tFontDataUC          *FontLeftTitle;
   tFontDataUC          *FontRightTitle;
   tFontDataUC          *FontListLineNumber;
@@ -77,8 +103,8 @@ typedef struct
   char                  Button[MAXMBBUTTONS][STDSTRINGSIZE];
   char                  Title[STDSTRINGSIZE];
   char                  Text[STDSTRINGSIZE];
-//  tFontData            *FontColorPickerTitle;
-//  tFontData            *FontColorPickerCursor;
+//  tFontDataUC          *FontColorPickerTitle;
+//  tFontDataUC          *FontColorPickerCursor;
 }tMessageBox;
 
 typedef enum
@@ -95,13 +121,15 @@ typedef enum
   LCT_NRCURSORS
 } tOSDMenuLastCursorType;
 
-extern tFontDataUC      OSDMenuFont_10;
-extern tFontDataUC      OSDMenuFont_12;
-extern tFontDataUC      OSDMenuFont_14;
-extern tFontDataUC      OSDMenuFont_16;
-extern tFontDataUC      OSDMenuFont_18;
-extern tFontDataUC      OSDMenuFont_20;
-extern tFontDataUC      OSDMenuFont_20B;
+#ifndef FB_USE_UNICODE_OSD
+  extern tFontData      Calibri_10_FontData;
+  extern tFontData      Calibri_12_FontData;
+  extern tFontData      Calibri_14_FontData;
+  extern tFontData      Calibri_16_FontData;
+  extern tFontData      Calibri_18_FontData;
+  extern tFontData      Calibri_20_FontData;
+  extern tFontData      Calibri_20B_FontData;
+#endif
 
 extern TYPE_GrData      _Button_0_Gd;
 extern TYPE_GrData      _Button_1_Gd;
@@ -160,8 +188,8 @@ extern TYPE_GrData      _Button_volplus_Gd;
 extern TYPE_GrData      _Button_white_Gd;
 extern TYPE_GrData      _Button_yellow_Gd;
 
-extern TYPE_GrData      _InfoBox_Gd;
-extern TYPE_GrData      _Messagebox_Gd;
+//extern TYPE_GrData      _InfoBox_Gd;
+//extern TYPE_GrData      _Messagebox_Gd;
 extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;
 extern TYPE_GrData      _ScrollBarInvisible_Gd;
 extern TYPE_GrData      _ScrollBarKnob_Gd;
@@ -212,7 +240,7 @@ extern dword            WaitSpinnerTimeout;
 
 int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
 int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
-int  OSDMenuGetW(char * str, byte fntSize);
+int  OSDMenuGetW(const char *str, byte fntSize);
 void OSDCalcIndices(void);
 void OSDDrawBackground(void);
 void OSDDrawButtons(void);
@@ -226,8 +254,10 @@ void OSDMenuDrawCursor(dword x, dword y, dword w);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 void OSDMenuLoadStdFonts(void);
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
+void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDMenuWaitSpinnerIdle(void);
+
+void OSDMenuInfoBoxDraw(word rgn);
 
 extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
 

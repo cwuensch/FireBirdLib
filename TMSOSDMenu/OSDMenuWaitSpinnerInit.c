@@ -1,4 +1,10 @@
 #include                "FBLib_TMSOSDMenu.h"
+#include                "graphic/WaitSpinner_All.gd"
+
+word                    WaitSpinnerRgn = 0;
+int                     WaitSpinnerIndex = 0;
+dword                   WaitSpinnerTimeout = 0;
+
 
 void OSDMenuWaitSpinnerInit(void)
 {

@@ -2,16 +2,16 @@
 
 void OSDMenuInfoBoxDestroy(void)
 {
-  TRACEENTER();
+  bool EnterNormal = TRUE;
 
   if(InfoBoxOSDRgn)
   {
     OSDMenuInfoBoxDestroyNoOSDUpdate();
     TAP_Osd_Sync();
   }
-  if((!OSDRgn) && (!ProgressBarOSDRgn) && (!MessageBoxOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
 
-  OSDMenuFreeStdFonts();
-
-  TRACEEXIT();
+#ifdef FB_COLORPICKER_ENABLED
+  if(ColorPickerOSDRgn) EnterNormal = FALSE;
+#endif
+  if(EnterNormal && (!OSDRgn) && (!MessageBoxOSDRgn) && (!ProgressBarOSDRgn)) TAP_EnterNormal();
 }
