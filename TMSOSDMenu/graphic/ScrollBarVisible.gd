@@ -1,6 +1,6 @@
 #include "tap.h"
 
-byte _ScrollBarVisible_Cpm[] =
+static byte _ScrollBarVisible_Cpm[] =
 {
   0x00, 0x08, 0x1B, 0x90, 0xFF, 0xFF, 0x00, 0x01, 0x00, 0x01, 
   0x01, 0xA9, 0x67, 0x52, 0xFF, 0xFF, 0x5C, 0x00, 
@@ -33,7 +33,7 @@ byte _ScrollBarVisible_Cpm[] =
   0xAE, 0xC9, 0xA0, 
 };
 
-TYPE_GrData _ScrollBarVisible_Gd =
+static TYPE_GrData _ScrollBarVisible_Gd =
 {
   1,                              //version
   0,                              //reserved
