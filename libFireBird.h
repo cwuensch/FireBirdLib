@@ -2032,7 +2032,7 @@
   void        INISetInt(char *Key, long int Value);
   void        INISetString(char *Key, char *Value);
 
-  INILOCATION LangLoadStrings(char *LangFile, dword NrStrings, int FallbackLang, char *AppName);
+  int         LangLoadStrings(char *AbsLangFile, dword NrStrings, int FallbackLang);
   void        LangUnloadStrings(void);
   char       *LangGetString(dword StringID);
   char       *LangGetStringDefault(dword StringID, char *DefaultString);
