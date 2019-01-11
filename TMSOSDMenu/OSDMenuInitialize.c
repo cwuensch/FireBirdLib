@@ -8,7 +8,6 @@ bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
 dword                   ButtonColor;
-dword                   LastUnprocessedOSDMenuKey = 0;
 tCursorType             MenuCursorType;
 tOSDMenuLastCursorType  OSDMenuLastCursor = LCT_NRCURSORS;
 
