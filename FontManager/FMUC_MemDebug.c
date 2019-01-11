@@ -79,7 +79,7 @@ void *FMUC_ReserveMemory(char *Requester, dword size)
 
 
   FMUC_MemoryDump(&NrReservations, &NrTotalSize);
-  LogEntryFBLibPrintf(TRUE, "FMUC: %s has requested %d bytes. Currently %d, %d bytes", Requester, size, NrReservations, NrTotalSize);
+  LogEntryFBLibPrintf(TRUE, "FMUC: %s has requested %ld bytes. Currently %ld, %ld bytes", Requester, size, NrReservations, NrTotalSize);
 
   return ret;
 }
@@ -102,7 +102,7 @@ void FMUC_FreeMemory(char *Requester, void *Pointer)
   Mem->Alloc = NULL;
   FMUC_MemoryDump(&NrReservations, &NrTotalSize);
 
-  LogEntryFBLibPrintf(TRUE, "FMUC: '%s' has released %d bytes from '%s'. Currently %d, %d bytes", Requester, Mem->Size, Mem->Requester, NrReservations, NrTotalSize);
+  LogEntryFBLibPrintf(TRUE, "FMUC: '%s' has released %ld bytes from '%s'. Currently %ld, %ld bytes", Requester, Mem->Size, Mem->Requester, NrReservations, NrTotalSize);
 
   Mem->Size = 0;
   Mem->Requester = NULL;
