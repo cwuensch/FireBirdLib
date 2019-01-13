@@ -2513,6 +2513,7 @@
   void        GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, char *NewString);
+  void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
