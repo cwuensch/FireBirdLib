@@ -13,58 +13,6 @@ static bool FlashSatTablesDecode_ST_TMSS(TYPE_SatInfo_TMSS *Data, tFlashSatTable
 
   memcpy(SatTable, Data, sizeof(tFlashSatTable));
 
-/*  memset(SatTable, 0, sizeof(tFlashSatTable));
-  SatTable->NrOfTransponders = Data->NrOfTransponders;
-  SatTable->unused1          = Data->unused1;
-  SatTable->SatPosition      = Data->SatPosition;
-  memcpy(SatTable->unknown1,   Data->unknown1, 22);
-  memcpy(SatTable->unused2,    Data->unused2, 8);
-  strncpy(SatTable->SatName,   Data->SatName, MAX_SatName - 1);
-
-  //LNB 1
-  SatTable->LNB[0].LNBSupply    = Data->LNB[0].LNBSupply;
-  SatTable->LNB[0].unused1      = Data->LNB[0].unused1;
-  SatTable->LNB[0].DiSEqC10     = Data->LNB[0].DiSEqC10;
-  SatTable->LNB[0].unused2      = Data->LNB[0].unused2;
-  SatTable->LNB[0].DiSEqC12     = Data->LNB[0].DiSEqC12;
-  SatTable->LNB[0].UniversalLNB = Data->LNB[0].UniversalLNB;
-  SatTable->LNB[0].Switch22     = Data->LNB[0].Switch22;
-  SatTable->LNB[0].LowBand      = Data->LNB[0].LowBand;
-  SatTable->LNB[0].HBFrq        = Data->LNB[0].HBFrq;
-  SatTable->LNB[0].unused3      = Data->LNB[0].unused3;
-  SatTable->LNB[0].LoopThrough  = Data->LNB[0].LoopThrough;
-  SatTable->LNB[0].unused4      = Data->LNB[0].unused4;
-  SatTable->LNB[0].DiSEqC11     = Data->LNB[0].DiSEqC11;
-  memcpy(SatTable->LNB[0].DiSEqC12Flags, Data->LNB[0].DiSEqC12Flags, 3);
-
-  SatTable->LNB[0].UniCableSatPosition = Data->LNB[0].UniCableSatPosition;
-  SatTable->LNB[0].UniCableunused      = Data->LNB[0].UniCableunused;
-  SatTable->LNB[0].UniCableUserBand    = Data->LNB[0].UniCableUserBand;
-  SatTable->LNB[0].UniCableFrq         = Data->LNB[0].UniCableFrq;
-  memcpy(SatTable->LNB[0].unused6, Data->LNB[0].unused6, 2);
-
-  //LNB 2
-  SatTable->LNB[1].LNBSupply    = Data->LNB[1].LNBSupply;
-  SatTable->LNB[1].unused1      = Data->LNB[1].unused1;
-  SatTable->LNB[1].DiSEqC10     = Data->LNB[1].DiSEqC10;
-  SatTable->LNB[1].unused2      = Data->LNB[1].unused2;
-  SatTable->LNB[1].DiSEqC12     = Data->LNB[1].DiSEqC12;
-  SatTable->LNB[1].UniversalLNB = Data->LNB[1].UniversalLNB;
-  SatTable->LNB[1].Switch22     = Data->LNB[1].Switch22;
-  SatTable->LNB[1].LowBand      = Data->LNB[1].LowBand;
-  SatTable->LNB[1].HBFrq        = Data->LNB[1].HBFrq;
-  SatTable->LNB[1].unused3      = Data->LNB[1].unused3;
-  SatTable->LNB[1].LoopThrough  = Data->LNB[1].LoopThrough;
-  SatTable->LNB[1].unused4      = Data->LNB[1].unused4;
-  SatTable->LNB[1].DiSEqC11     = Data->LNB[1].DiSEqC11;
-  memcpy(SatTable->LNB[1].DiSEqC12Flags, Data->LNB[1].DiSEqC12Flags, 3);
-
-  SatTable->LNB[1].UniCableSatPosition = Data->LNB[1].UniCableSatPosition;
-  SatTable->LNB[1].UniCableunused      = Data->LNB[1].UniCableunused;
-  SatTable->LNB[1].UniCableUserBand    = Data->LNB[1].UniCableUserBand;
-  SatTable->LNB[1].UniCableFrq         = Data->LNB[1].UniCableFrq;
-  memcpy(SatTable->LNB[1].unused6, Data->LNB[1].unused6, 2); */
-
   TRACEEXIT();
   return TRUE;
 }

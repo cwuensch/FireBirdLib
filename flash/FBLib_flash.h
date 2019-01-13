@@ -47,67 +47,11 @@
   #define TYPE_Service_TMSC   TYPE_Service_TMSS
 
   bool FlashServiceDecode(void *Data, tFlashService *Service);
-//  bool FlashServiceDecode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
-//  bool FlashServiceDecode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
-//  bool FlashServiceDecode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
   bool FlashServiceDelete(void *Data);
   bool FlashServiceDelServiceName(int SvcType, int SvcNum);
-//  bool FlashServiceDelete_ST_TMSC(TYPE_Service_TMSC *Data);
-//  bool FlashServiceDelete_ST_TMSS(TYPE_Service_TMSS *Data);
-//  bool FlashServiceDelete_ST_TMST(TYPE_Service_TMST *Data);
   bool FlashServiceEncode(void *Data, tFlashService *Service);
-//  bool FlashServiceEncode_ST_TMSC(TYPE_Service_TMSC *Data, tFlashService *Service);
-//  bool FlashServiceEncode_ST_TMSS(TYPE_Service_TMSS *Data, tFlashService *Service);
-//  bool FlashServiceEncode_ST_TMST(TYPE_Service_TMST *Data, tFlashService *Service);
 
-/*  typedef struct
-  {
-    byte                  LNBSupply:1;
-    byte                  unused1:1;
-    byte                  DiSEqC10:3;
-    byte                  unused2:3;
-
-    byte                  DiSEqC12;
-
-    word                  UniversalLNB:1;
-    word                  Switch22:1;
-    word                  LowBand:14;
-
-    word                  HBFrq;
-    byte                  DiSEqC12Flags[3];
-
-    byte                  unused3:6;
-    byte                  LoopThrough:1;
-    byte                  unused4:1;
-
-    byte                  DiSEqC11;
-    union
-    {
-      byte                unused5[5];
-      struct
-      {
-        byte              UniCableSatPosition:1;
-        byte              UniCableunused:7;
-
-        word              UniCableUserBand:4;
-        word              UniCableFrq:12;
-
-        byte              unused6[2];
-      } __attribute__((packed));
-    };
-  } TYPE_LNB_TMSS; */
   typedef tFlashLNB       TYPE_LNB_TMSS;
-
-  /* typedef struct
-  {
-    word                  NrOfTransponders;
-    word                  unused1;
-    char                  SatName[MAX_SatName];
-    TYPE_LNB_TMSS         LNB[2];
-    byte                  unknown1[22];
-    word                  SatPosition;
-    byte                  unused2[8];
-  } TYPE_SatInfo_TMSS; */
   typedef tFlashSatTable  TYPE_SatInfo_TMSS;
 
   typedef struct
@@ -120,10 +64,6 @@
   {
     word                  NrOfTransponders;
   } TYPE_SatInfo_TMSC;
-
-//  bool FlashSatTablesDecode_ST_TMSS(TYPE_SatInfo_TMSS *Data, tFlashSatTable *SatTable);
-//  bool FlashSatTablesDecode_ST_TMST(TYPE_SatInfo_TMST *Data, tFlashSatTable *SatTable);
-//  bool FlashSatTablesDecode_ST_TMSC(TYPE_SatInfo_TMSC *Data, tFlashSatTable *SatTable);
 
   typedef struct
   {
@@ -179,18 +119,6 @@
     byte                ModulationType;
     byte                unused1;
   }__attribute__((packed)) TYPE_TpInfo_TMSC;
-
-//  bool FlashTransponderTablesDecode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable);
-//  bool FlashTransponderTablesDecode_ST_TMSS(TYPE_TpInfo_TMSS *Data, tFlashTransponderTable *TransponderTable);
-//  bool FlashTransponderTablesDecode_ST_TMST(TYPE_TpInfo_TMST *Data, tFlashTransponderTable *TransponderTable);
-//  bool FlashTransponderTablesEncode_ST_TMSC(TYPE_TpInfo_TMSC *Data, tFlashTransponderTable *TransponderTable);
-//  bool FlashTransponderTablesEncode_ST_TMSS(TYPE_TpInfo_TMSS *Data, tFlashTransponderTable *TransponderTable);
-//  bool FlashTransponderTablesEncode_ST_TMST(TYPE_TpInfo_TMST *Data, tFlashTransponderTable *TransponderTable);
-
-
-//  bool FlashTimeDecode_ST_TMSS(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);
-//  bool FlashTimeDecode_ST_TMST(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);
-//  bool FlashTimeDecode_ST_TMSC(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);
 
   typedef struct
   {
@@ -267,19 +195,6 @@
     TYPE_TpInfo_TMSC    TpInfo;      // 12 bytes
   }__attribute__((packed)) TYPE_Timer_TMSC; //196 bytes
 
-
-//  bool FlashTimerDecode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerDecode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerDecode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerDecode_ST_TMST360(TYPE_Timer_TMST360 *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerDecode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
-
-//  bool FlashTimerEncode_ST_TMSS(TYPE_Timer_TMSS *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerEncode_ST_TMST(TYPE_Timer_TMST *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerEncode_ST_TMST200(TYPE_Timer_TMST200 *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerEncode_ST_TMST360(TYPE_Timer_TMST360 *Data, tFlashTimer *TimerInfo);
-//  bool FlashTimerEncode_ST_TMSC(TYPE_Timer_TMSC *Data, tFlashTimer *TimerInfo);
-
   void FlashReindexTimers(int SvcType, int FromSvcNum, int ToSvcNum);
 
   typedef struct
@@ -297,14 +212,6 @@
     dword               AutomaticMode;
     char                FileName[50][128];
   } TYPE_AutoDescrambleTimer;
-
-//  bool FlashADDecode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-//  bool FlashADDecode_ST_TMST(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-//  bool FlashADDecode_ST_TMSC(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-
-//  bool FlashADEncode_ST_TMSS(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-//  bool FlashADEncode_ST_TMST(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
-//  bool FlashADEncode_ST_TMSC(TYPE_AutoDescrambleTimer *Data, tAutoDescrambleTimer *ADTimer);
 
   void FlashReindexFavorites(int SvcType, int FromSvcNum, int ToSvcNum);
 
