@@ -2514,6 +2514,7 @@
   void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(const byte *String, int CharPos);
   void        InsertAt(const char *SourceString, int Pos, char *NewString);
+  void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(const byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
