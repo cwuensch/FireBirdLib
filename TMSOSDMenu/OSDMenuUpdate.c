@@ -1,5 +1,7 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+word                    OSDRgn;
+
 void OSDMenuUpdate(bool SuppressOSDSync)
 {
   TRACEENTER();

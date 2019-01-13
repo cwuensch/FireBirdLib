@@ -1,6 +1,5 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-word                    OSDRgn = 0, MyOSDRgn = 0;
 dword                   LastUnprocessedOSDMenuKey = 0;
 
 
