@@ -2,8 +2,6 @@
 
 void OSDMenuMessageBoxDestroy(void)
 {
-  bool EnterNormal = TRUE;
-
   TRACEENTER();
 
   if(MessageBoxOSDRgn)
@@ -11,15 +9,9 @@ void OSDMenuMessageBoxDestroy(void)
     OSDMenuMessageBoxDestroyNoOSDUpdate();
     TAP_Osd_Sync();
   }
+  if((!OSDRgn) && (!InfoBoxOSDRgn) && (!ProgressBarOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
 
-#ifdef FB_COLORPICKER_ENABLED
-  if(ColorPickerOSDRgn) EnterNormal = FALSE;
-#endif
-  if(EnterNormal && (!OSDRgn) && (!InfoBoxOSDRgn) && (!ProgressBarOSDRgn)) TAP_EnterNormal();
-
-#ifdef FB_USE_UNICODE_OSD
   OSDMenuFreeStdFonts();
-#endif
 
   TRACEEXIT();
 }

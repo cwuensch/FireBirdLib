@@ -15,7 +15,7 @@ void OSDMenuModifyTitleLeft(char *Text)
 
   pMenu = &Menu[CurrentMenuLevel];
 
-  strncpy(pMenu->TitleLeft, Text, STDSTRINGSIZE);
+  strncpyUC(pMenu->TitleLeft, Text, STDSTRINGSIZE);
   pMenu->TitleLeft[STDSTRINGSIZE - 1] = '\0';
   TitleDirty = TRUE;
 

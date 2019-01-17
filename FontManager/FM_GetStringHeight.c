@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-dword FM_GetStringHeight(const char *Text, tFontData *FontData)
+dword FM_GetStringHeight(char *Text, tFontData *FontData)
 {
   TRACEENTER();
 

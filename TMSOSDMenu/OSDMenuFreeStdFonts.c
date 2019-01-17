@@ -4,7 +4,6 @@ void OSDMenuFreeStdFonts(void)
 {
   TRACEENTER();
 
-#ifdef FB_USE_UNICODE_OSD
   if(!OSDRgn && !ProgressBarOSDRgn && !InfoBoxOSDRgn && !MessageBoxOSDRgn && !ColorPickerOSDRgn)
   {
     FMUC_FreeFontFile(&OSDMenuFont_10);
@@ -15,7 +14,6 @@ void OSDMenuFreeStdFonts(void)
     FMUC_FreeFontFile(&OSDMenuFont_20);
     FMUC_FreeFontFile(&OSDMenuFont_20B);
   }
-#endif
 
   TRACEEXIT();
 }

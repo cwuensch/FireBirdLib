@@ -6,13 +6,11 @@ void OSDMenuInfoBoxDestroyNoOSDUpdate(void)
 
   tOSDMapInfo          *OSDMapInfo;
 
-#ifdef FB_WAITSPINNER_ENABLED
   if(WaitSpinnerRgn)
   {
     TAP_Osd_Delete(WaitSpinnerRgn);
     WaitSpinnerRgn = 0;
   }
-#endif
 
   if(InfoBoxOSDRgn)
   {
@@ -25,9 +23,9 @@ void OSDMenuInfoBoxDestroyNoOSDUpdate(void)
       {
         OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
-          TAP_Osd_RestoreBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, INFOBOX_WIDTH, INFOBOX_HEIGHT, InfoBoxSaveArea);
+          TAP_Osd_RestoreBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height, InfoBoxSaveArea);
       }
-      else if(OSDRgn) TAP_Osd_RestoreBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, INFOBOX_WIDTH, INFOBOX_HEIGHT, InfoBoxSaveArea);
+      else if(OSDRgn) TAP_Osd_RestoreBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _InfoBox_Gd.width, _InfoBox_Gd.height, InfoBoxSaveArea);
 
       TAP_MemFree(InfoBoxSaveArea);
       InfoBoxSaveArea = NULL;
@@ -35,9 +33,7 @@ void OSDMenuInfoBoxDestroyNoOSDUpdate(void)
     }
   }
 
-#ifdef FB_USE_UNICODE_OSD
   OSDMenuFreeStdFonts();
-#endif
 
   TRACEEXIT();
 }

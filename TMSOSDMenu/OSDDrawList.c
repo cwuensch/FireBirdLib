@@ -7,6 +7,8 @@
 
 void OSDDrawList(void)
 {
+  TRACEENTER();
+
   int                   i;
   dword                 XStart, XEnd, Y;
   tMenu                *pMenu;
@@ -15,7 +17,6 @@ void OSDDrawList(void)
   char                  s[4];
   dword                 MaxNameIconWidth, MaxValueIconWidth;
 
-  TRACEENTER();
   pMenu = &Menu[CurrentMenuLevel];
 
   //Get maximum width of icons
@@ -51,8 +52,8 @@ void OSDDrawList(void)
           TAP_Osd_PutGd(OSDRgn, 640 , 96 + 10 + (i * 37), (MenuCursorType == CT_Standard ? &_pfeil_r_Gd : &_pfeil_r_bright_Gd), TRUE);
         }
       }
-      else
-        TAP_Osd_DrawRectangle(OSDRgn, 60, 130 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
+
+      TAP_Osd_DrawRectangle(OSDRgn, 60, 131 + (i * 37), 600, 2, 1, RGB(16, 16, 16));
 
       //Draw line content
 

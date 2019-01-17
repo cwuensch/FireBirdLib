@@ -1,6 +1,6 @@
 #include "tap.h"
 
-static byte _Button_1_Cpm[] =
+byte _Button_1_Cpm[] =
 {
   0x00, 0x08, 0x1B, 0x90, 0xFF, 0xFF, 0x00, 0x01, 0x00, 0x01, 
   0x01, 0x3A, 0xFC, 0x17, 0xFF, 0xFF, 0x07, 0x80, 
@@ -26,7 +26,7 @@ static byte _Button_1_Cpm[] =
   0xAC, 0xB2, 0xC8, 0x36, 
 };
 
-static TYPE_GrData _Button_1_Gd =
+TYPE_GrData _Button_1_Gd =
 {
   1,                              //version
   0,                              //reserved

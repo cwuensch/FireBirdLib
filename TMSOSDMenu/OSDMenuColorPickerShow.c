@@ -1,15 +1,6 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-#include                "graphic/ColorPicker.gd"
-
-word                    ColorPickerOSDRgn = 0;
-dword                   ColorPickerColor;
-dword                   ColorPickerDefaultColor;
-tCurrentColorSelected   CurrentColorSelected;
-int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
-
-
 void OSDMenuColorPickerShow(char *Title, dword Color)
 {
   TRACEENTER();
@@ -36,7 +27,7 @@ void OSDMenuColorPickerShow(char *Title, dword Color)
       {
         OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
-          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, INFOBOX_WIDTH, INFOBOX_HEIGHT);
+          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
       }
       else
         InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _ColorPicker_Gd.width, _ColorPicker_Gd.height);

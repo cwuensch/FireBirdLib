@@ -1,6 +1,6 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align)
+void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align)
 {
   TRACEENTER();
 
@@ -9,8 +9,8 @@ void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char *str, dword 
     case 10: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_10, bDot, align, 1); break;
     case 12: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_12, bDot, align, 1); break;
     case 14: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_14, bDot, align, 1); break;
-    case 16: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_14, bDot, align, 1); break;
-    case 20: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_14, bDot, align, 1); break;
+    case 16: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_16, bDot, align, 1); break;
+    case 20: FMUC_PutStringAA(rgn, x, y + FONTYOFFSET, maxX, str, fcolor, bcolor, &OSDMenuFont_20, bDot, align, 1); break;
   }
 
   TRACEEXIT();

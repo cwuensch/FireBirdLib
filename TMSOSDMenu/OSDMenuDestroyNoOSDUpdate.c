@@ -19,9 +19,7 @@ void OSDMenuDestroyNoOSDUpdate(void)
     Menu[CurrentMenuLevel].Item = NULL;
   }
 
-#ifdef FB_USE_UNICODE_OSD
   OSDMenuFreeStdFonts();
-#endif
 
   CallbackProcedure = NULL;
 

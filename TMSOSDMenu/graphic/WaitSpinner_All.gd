@@ -1,6 +1,6 @@
 #include "tap.h"
 
-static byte _WaitSpinner_All_Cpm[] =
+byte _WaitSpinner_All_Cpm[] =
 {
   0x00, 0x08, 0x19, 0x10, 0xFF, 0xFF, 0x00, 0x01, 0x00, 0x07, 
   0x13, 0x5D, 0x06, 0x82, 0xFF, 0xFF, 0x7F, 0xF8, 
@@ -1528,7 +1528,7 @@ static byte _WaitSpinner_All_Cpm[] =
   0xC0, 
 };
 
-static TYPE_GrData _WaitSpinner_All_Gd =
+TYPE_GrData _WaitSpinner_All_Gd =
 {
   1,                              //version
   0,                              //reserved

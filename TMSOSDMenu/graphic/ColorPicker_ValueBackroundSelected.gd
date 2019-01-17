@@ -1,6 +1,6 @@
 #include "tap.h"
 
-static byte _ColorPicker_ValueBackroundSelected_Cpm[] =
+byte _ColorPicker_ValueBackroundSelected_Cpm[] =
 {
   0x00, 0x08, 0x1B, 0x90, 0xFF, 0xFF, 0x00, 0x01, 0x00, 0x01, 
   0x00, 0xAB, 0xBB, 0xE5, 0xFF, 0xFF, 0x0A, 0xF8, 
@@ -17,7 +17,7 @@ static byte _ColorPicker_ValueBackroundSelected_Cpm[] =
   0xAF, 0x8F, 0xEF, 0xEA, 0xB8, 
 };
 
-static TYPE_GrData _ColorPicker_ValueBackroundSelected_Gd =
+TYPE_GrData _ColorPicker_ValueBackroundSelected_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -29,7 +29,7 @@ void OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDire
     if((dy + nh) <= rh) xh = nh;
                    else xh = rh - dy;
 
-    TAP_Osd_Copy(rgn, rgn, x, y, xw, xh, dx, dy, TRUE);
+    TAP_Osd_Copy_Chk("OSDCopy A", rgn, rgn, x, y, xw, xh, dx, dy, TRUE);
 
     if(direction == X) nw <<= 1;
                   else nh <<= 1;
@@ -52,7 +52,7 @@ void OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDire
     if((dy + h) <= rh) xh = h;
                   else xh = rh - dy;
 
-    TAP_Osd_Copy(rgn, rgn, x, y, xw, xh, dx, dy, TRUE);
+    TAP_Osd_Copy_Chk("OSDCopy B", rgn, rgn, x, y, xw, xh, dx, dy, TRUE);
   }
 
   TRACEEXIT();

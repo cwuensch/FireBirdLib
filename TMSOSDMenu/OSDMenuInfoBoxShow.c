@@ -1,12 +1,6 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-word                    InfoBoxOSDRgn = 0;
-dword                   InfoBoxTimeOut = 0;
-byte                   *InfoBoxSaveArea = NULL;
-dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
-
-
 void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
 {
   TRACEENTER();
@@ -20,14 +14,12 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
 
   if(MessageBoxOSDRgn)OSDMenuMessageBoxDestroy();
 
-#ifdef FB_USE_UNICODE_OSD
   OSDMenuLoadStdFonts();
-#endif
 
   if(!InfoBoxOSDRgn)
   {
-    x = (720 - INFOBOX_WIDTH) >> 1;
-    y = (576 - INFOBOX_HEIGHT) >> 1;
+    x = (720 - _InfoBox_Gd.width) >> 1;
+    y = (576 - _InfoBox_Gd.height) >> 1;
     if(OSDRgn || MyOSDRgn)
     {
       InfoBoxSaveAreaX = x;
@@ -36,16 +28,16 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
       {
         OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
-          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, INFOBOX_WIDTH, INFOBOX_HEIGHT);
+          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
       }
       else
-        InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, INFOBOX_WIDTH, INFOBOX_HEIGHT);
+        InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _InfoBox_Gd.width, _InfoBox_Gd.height);
     }
 
-    InfoBoxOSDRgn = TAP_Osd_Create(x, y, INFOBOX_WIDTH, INFOBOX_HEIGHT, 0, 0);
+    InfoBoxOSDRgn = TAP_Osd_Create(x, y, _InfoBox_Gd.width, _InfoBox_Gd.height, 0, 0);
     TAP_ExitNormal();
   }
-  OSDMenuInfoBoxDraw(InfoBoxOSDRgn);
+  TAP_Osd_PutGd(InfoBoxOSDRgn, 0, 0, &_InfoBox_Gd, FALSE);
 
   OSDMenuPutS(InfoBoxOSDRgn, 0, 10, 380, Title, RGB(232,146,17), COLOR_None, 14, FALSE, ALIGN_CENTER);
 

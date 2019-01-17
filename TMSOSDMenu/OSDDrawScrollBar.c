@@ -1,10 +1,5 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-#include                "graphic/ScrollBarInvisible.gd"
-#include                "graphic/ScrollBarVisible.gd"
-#include                "graphic/ScrollBarKnob.gd"
-
-
 void OSDDrawScrollBar(void)
 {
   TRACEENTER();

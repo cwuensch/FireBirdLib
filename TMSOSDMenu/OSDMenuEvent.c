@@ -1,8 +1,5 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-dword                   LastUnprocessedOSDMenuKey = 0;
-
-
 bool OSDMenuEvent(word *event, dword *param1, dword *param2)
 {
   TRACEENTER();
@@ -11,9 +8,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
 
   if(InfoBoxOSDRgn)
   {
-    #ifdef FB_WAITSPINNER_ENABLED
-      if(WaitSpinnerRgn) OSDMenuWaitSpinnerIdle();
-    #endif
+    if(WaitSpinnerRgn) OSDMenuWaitSpinnerIdle();
 
     if(event && param1 && (*event == EVT_KEY))
     {
@@ -112,7 +107,6 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
     return FALSE;
   }
 
-#ifdef FB_COLORPICKER_ENABLED
   if(ColorPickerOSDRgn)
   {
     if(event && param1 && (*event == EVT_KEY))
@@ -294,9 +288,7 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
     TRACEEXIT();
     return FALSE;
   }
-#endif
 
-#ifdef FB_OSDMENU_ENABLED
   if(OSDRgn)
   {
     if(event && param1 && (*event == EVT_KEY))
@@ -380,7 +372,6 @@ bool OSDMenuEvent(word *event, dword *param1, dword *param2)
     }
 
   }
-#endif
 
   TRACEEXIT();
   return FALSE;

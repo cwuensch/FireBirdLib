@@ -9,11 +9,6 @@
 
   #define isTMS         1
 
-  #define FB_OSDMENU_ENABLED
-  #define FB_WAITSPINNER_ENABLED
-  #define FB_COLORPICKER_ENABLED
-  #define FB_USE_UNICODE_OSD
-
   // Call FBLIB's special check-and-log API wrapper functions.
   #define FB_DEBUG_CHK
 
@@ -1529,18 +1524,10 @@
     word                  PMTPID;
     word                  PCRPID;
     word                  VideoPID;
-    union {
-      word                AudioPID;
-      struct
-      {
-        word              AudioPID2:13;
-        word              AudioTypeFlag:2;
-        word              AudAutoSelect:1;
-      };
-    };
+    word                  AudioPID;
     word                  LCN;
     word                  AudioStreamType;
-    char                  ServiceName[MAX_SvcName + 1];
+    char                  ServiceName[MAX_SvcName+1];
     char                  ProviderName[40];
     byte                  NameLock;
     word                  Flags2;
@@ -1582,21 +1569,15 @@
     byte                  unused4:1;
 
     byte                  DiSEqC11;
-    union
-    {
-      byte                unused5[5];
-      struct
-      {
-        byte              UniCableSatPosition:1;
-        byte              UniCableunused:7;
 
-        word              UniCableUserBand:4;
-        word              UniCableFrq:12;
+    byte                  UniCableSatPosition:1;
+    byte                  UniCableunused:7;
 
-        byte              unused6[2];
-      } __attribute__((packed));
-    };
-  } tFlashLNB;  // identisch mit TYPE_LNB_TMSS
+    word                  UniCableUserBand:4;
+    word                  UniCableFrq:12;
+
+    byte                  unused5[2];
+  } tFlashLNB;
 
   typedef struct
   {
@@ -1607,7 +1588,7 @@
     byte                  unknown1[22];
     word                  SatPosition;
     byte                  unused2[8];
-  } tFlashSatTable;  // identisch mit TYPE_SatInfo_TMSS
+  } tFlashSatTable;
 
   int   FlashSatTablesGetTotal(void);
   bool  FlashSatTablesGetInfo(int SatNum, tFlashSatTable *SatTable);
@@ -1653,18 +1634,18 @@
 
   typedef struct
   {
-    short               UTCOffset;
-    word                SleepTimer;
+      short               UTCOffset;
+      word                SleepTimer;
 
-    byte                unknown1:3;
-    byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-    byte                Mode:1;                 //0=Auto, 1=Manual
-    byte                unknown2:1;
+      byte                unknown1:3;
+      byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+      byte                Mode:1;                 //0=Auto, 1=Manual
+      byte                unknown2:1;
 
-    byte                unknown3;
+      byte                unknown3;
 
-    word                DST:2;                  //0=off, 3=on
-    word                unknown4:14;
+      word                DST:2;                  //0=off, 3=on
+      word                unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
@@ -1700,8 +1681,7 @@
     byte                unused8[8];
     byte                IceTV;
     byte                unused9[13];
-    byte                unused10[8];
-    dword               rs_timestamp1;              //RS timers are OT timers where (rs_timestamp1 != 0)
+    dword               rs_timestamp1;			//RS timers are OT timers where (rs_timestamp1 != 0)
     char                rs_episodeCRID[64];
     char                rs_seriesCRID[64];
     dword               rs_unknown1;
@@ -1835,10 +1815,10 @@
     tFontDef              FontDef[191];
   } tFontData;
 
-  dword FM_GetStringWidth(const char *Text, tFontData *FontData);
-  dword FM_GetStringHeight(const char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
-  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
+  dword FM_GetStringWidth(char *Text, tFontData *FontData);
+  dword FM_GetStringHeight(char *Text, tFontData *FontData);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
   bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
@@ -1868,15 +1848,13 @@
     tGlyphCacheUC      *GlyphCache;
   } tFontDataUC;
 
-#ifdef FB_USE_UNICODE_OSD
   void  FM_MakeFontDir(void);
   bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
-  dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
-  dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData);
+  dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData);
+  dword FMUC_GetStringWidth(char *Text, tFontDataUC *FontData);
   void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
   void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
-#endif
 
 
   /*****************************************************************************************************************************/
@@ -2033,7 +2011,7 @@
   void        INISetInt(char *Key, long int Value);
   void        INISetString(char *Key, char *Value);
 
-  int         LangLoadStrings(char *AbsLangFile, dword NrStrings, int FallbackLang);
+  INILOCATION LangLoadStrings(char *LangFile, dword NrStrings, int FallbackLang, char *AppName);
   void        LangUnloadStrings(void);
   char       *LangGetString(dword StringID);
   char       *LangGetStringDefault(dword StringID, char *DefaultString);
@@ -2513,7 +2491,6 @@
   void        GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, char *NewString);
-  void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
@@ -2746,9 +2723,7 @@
 
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
-  #ifdef FB_USE_UNICODE_OSD
-    void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
-  #endif
+  void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
   void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
