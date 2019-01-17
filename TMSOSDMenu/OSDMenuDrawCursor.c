@@ -1,8 +1,5 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-#include                "graphic/SelectionBar_Blue_100x34.gd"
-#include                "graphic/SelectionBar_Blue_100x34Dark.gd"
-
 void OSDMenuDrawCursor(dword x, dword y, dword w)
 {
   TRACEENTER();

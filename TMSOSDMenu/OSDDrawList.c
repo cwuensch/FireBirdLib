@@ -1,10 +1,5 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-#include                "graphic/pfeil_l.gd"
-#include                "graphic/pfeil_l_bright.gd"
-#include                "graphic/pfeil_r.gd"
-#include                "graphic/pfeil_r_bright.gd"
-
 void OSDDrawList(void)
 {
   TRACEENTER();
