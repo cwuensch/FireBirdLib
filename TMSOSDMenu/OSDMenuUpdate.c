@@ -8,10 +8,6 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   if(OSDRgn == 0)
   {
     OSDDirty     = TRUE;
-    TitleDirty   = TRUE;
-    ListDirty    = TRUE;
-    ButtonsDirty = TRUE;
-    LogoDirty    = TRUE;
     OSDRgn = TAP_Osd_Create(0, 0, 720, 576, 0, 0);
     TAP_ExitNormal();
   }
@@ -20,7 +16,11 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   if (OSDDirty)
   {
     OSDDrawBackground();
-    OSDDirty = FALSE;
+    OSDDirty     = FALSE;
+    TitleDirty   = TRUE;
+    ListDirty    = TRUE;
+    ButtonsDirty = TRUE;
+    LogoDirty    = TRUE;
   }
 
   //Draw left and right title
