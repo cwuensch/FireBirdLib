@@ -17,16 +17,32 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   }
 
   //Draw background & grey rectangles
-  if(OSDDirty) OSDDrawBackground();
+  if (OSDDirty)
+  {
+    OSDDrawBackground();
+    OSDDirty = FALSE;
+  }
 
   //Draw left and right title
-  if(TitleDirty) OSDDrawTitle();
+  if (TitleDirty)
+  {
+    OSDDrawTitle();
+    TitleDirty = FALSE;
+  }
 
   //Draw software icon
-  if(LogoDirty) OSDDrawLogo();
+  if (LogoDirty)
+  {
+    OSDDrawLogo();
+    LogoDirty = FALSE;
+  }
 
   //Draw buttons
-  if(ButtonsDirty) OSDDrawButtons();
+  if (ButtonsDirty)
+  {
+    OSDDrawButtons();
+    ButtonsDirty = FALSE;
+  }
 
   //Calculate TopIndex & SelectionIndex
   OSDCalcIndices();
@@ -43,6 +59,8 @@ void OSDMenuUpdate(bool SuppressOSDSync)
       case OMDM_Standard: OSDDrawList(); break;
       case OMDM_Memo:     OSDDrawMemo(); break;
     }
+
+    ListDirty = FALSE;
   }
 
   //Show OSD
