@@ -25,6 +25,10 @@
     #define FB_CALL_TRACE
   #endif
 
+  #ifdef STACKTRACE
+    #define FB_CALL_TRACE
+  #endif
+
   #ifdef PC_BASED
     #define inline
     #define __attribute__(a)
