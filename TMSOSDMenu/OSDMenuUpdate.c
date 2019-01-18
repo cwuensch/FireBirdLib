@@ -30,18 +30,19 @@ void OSDMenuUpdate(bool SuppressOSDSync)
     TitleDirty = FALSE;
   }
 
+  //Draw buttons
+  if (ButtonsDirty)
+  {
+    OSDDrawButtons();
+    LogoDirty = TRUE;
+    ButtonsDirty = FALSE;
+  }
+
   //Draw software icon
   if (LogoDirty)
   {
     OSDDrawLogo();
     LogoDirty = FALSE;
-  }
-
-  //Draw buttons
-  if (ButtonsDirty)
-  {
-    OSDDrawButtons();
-    ButtonsDirty = FALSE;
   }
 
   //Calculate TopIndex & SelectionIndex

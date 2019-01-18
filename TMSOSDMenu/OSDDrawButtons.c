@@ -7,6 +7,8 @@ void OSDDrawButtons(void)
   tMenu                *pMenu;
   dword                 i;
 
+  TAP_Osd_FillBox(OSDRgn, 0, 481, 720, 95, RGB(16, 16, 16));
+
   pMenu = &Menu[CurrentMenuLevel];
 
   for(i = 0; i < pMenu->NrButtons; i++)
