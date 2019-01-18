@@ -7,6 +7,13 @@ export SRC_DIR = $(shell pwd)
 BASE = $(shell cd /tapapi/TMS; pwd)
 include ${BASE}/include/tool.mk
 
+# normal library version and debugging control by TAP
+CFLAGS = -DFB_CALL_TRACE
+#CFLAGS = -DFB_DEBUG      for a special debugging version
+#CFLAGS = -DFB_DEBUG_FULL for a special debugging version incl. trace support
+
+export CFLAGS
+
 all: lib devutils
 
 docs: HTMLDOCS

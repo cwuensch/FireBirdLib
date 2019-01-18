@@ -1,4 +1,5 @@
-#undef FB_NO_DEBUG
+#define                 FB_DEBUG_CHK
+#define                 FB_LOG_ENTRY_LIB_PRINTF
 #include                "libFireBird.h"
 
 int TAP_Osd_PutPixel_Chk(char *Comment, word rgn, dword x, dword y, dword pix)

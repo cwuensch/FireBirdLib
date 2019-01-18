@@ -1,4 +1,5 @@
-#undef FB_NO_DEBUG
+#define                 FB_DEBUG_CHK
+#define                 FB_LOG_ENTRY_LIB_PRINTF
 #include                "libFireBird.h"
 
 //TAP_Osd_Copy(word srcRgnNum, word dstRgnNum, dword srcX, dword srcY, dword w, dword h, dword dstX, dword dstY,  bool sprite);

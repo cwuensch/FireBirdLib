@@ -1,34 +1,28 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  //#define STACKTRACE
-
   #define __FBLIB_RELEASEDATE__ "2018-12-06"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
   #define isTMS         1
 
-  // Call FBLIB's special check-and-log API wrapper functions.
-  #define FB_DEBUG_CHK
+  // Use -DFB_DEBUG_FULL if you want to activate all debug-like functions,
+  // thus getting debugging and tracing information at runtime.
+  #ifdef FB_DEBUG_FULL
+    #define FB_DEBUG
+    #define STACKTRACE
+  #endif
 
-  // Call LogEntryFBLibPrintf().
-  #define FB_LOG_ENTRY_LIB_PRINTF
-
-  // Make use of tracing functions.
-  #define FB_CALL_TRACE
-
-  // Define the following if you want to suppress all debug-like functions,
-  // thus not getting any debug information at runtime.
-  #ifdef FB_NO_DEBUG
-    #undef STACKTRACE
-    #undef FB_DEBUG_CHK
-    #undef FB_LOG_ENTRY_LIB_PRINTF
-    // Define the following at library compile time
-    // if you are using FB_NO_DEBUG.
-    #ifndef FB_LIBRARY_COMPILATION
-      #undef FB_CALL_TRACE
-    #endif
+  // Use -DFB_DEBUG if you want to activate debug-like functions,
+  // thus getting debugging information at runtime.
+  #ifdef FB_DEBUG
+    // Call FBLIB's special check-and-log API wrapper functions.
+    #define FB_DEBUG_CHK
+    // Call LogEntryFBLibPrintf().
+    #define FB_LOG_ENTRY_LIB_PRINTF
+    // Make use of tracing functions.
+    #define FB_CALL_TRACE
   #endif
 
   #ifdef PC_BASED

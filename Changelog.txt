@@ -1071,3 +1071,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenu's progress bar was 1 px too close to the left ((720 - 252) / 2 = 234)
             Fixed: OSDMenu's color picker was 2 px too high up, buttons and color box were 3 px too far from the bottom and color box was 1 px too close to the left
 2019-01-17: Fixed: Reset "Dirty" flags after drawing to avoid repetitive redrawing of all OSD content
+2019-01-18: Added: FB_DEBUG and FB_DEBUG_FULL to enable debugging which is disabled by default now (FB_NO_DEBUG and FB_LIBRARY_COMPILATION have been removed)
