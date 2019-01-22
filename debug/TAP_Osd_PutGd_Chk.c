@@ -33,8 +33,8 @@ int TAP_Osd_PutGd_Chk(char *Comment, word rgn, int x, int y, TYPE_GrData * gd, b
 
     if(x >= RgnW) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: x(%d) >= RgnW(%d) @ %s", x, RgnW, Comment);
     if(y >= RgnH) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: y(%d) >= RgnH(%d) @ %s", y, RgnH, Comment);
-    if((x + gd->width) > RgnW) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: (x(%d) + gd->width(%u)) > RgnW(%d) @ %s", x, gd->width, RgnW, Comment);
-    if((y + gd->height) > RgnH) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%u)) > RgnH(%d) @ %s", y, gd->height, RgnH, Comment);
+    if((x + gd->width) > RgnW) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: (x(%d) + gd->width(%d)) > RgnW(%d) @ %s", x, gd->width, RgnW, Comment);
+    if((y + gd->height) > RgnH) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutGd_Chk Warning: (y(%d) + gd->height(%d)) > RgnH(%d) @ %s", y, gd->height, RgnH, Comment);
   }
 
   ret = TAP_Osd_PutGd(rgn, x, y, gd, sprite);

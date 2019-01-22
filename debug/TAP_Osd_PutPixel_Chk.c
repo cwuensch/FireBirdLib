@@ -14,7 +14,7 @@ int TAP_Osd_PutPixel_Chk(char *Comment, word rgn, dword x, dword y, dword pix)
     RgnH = GetOSDRegionHeight(rgn);
     RgnW = GetOSDRegionWidth(rgn);
 
-    if(!isOSDRegionAlive(rgn)) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutPixel_Chk Warning: rgn(%u) points to an undefined region @ %s", rgn, Comment);
+    if(!isOSDRegionAlive(rgn)) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutPixel_Chk Warning: rgn(%d) points to an undefined region @ %s", rgn, Comment);
     if(x >= RgnW) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutPixel_Chk Warning: x(%lu) out of range @ %s", x, Comment);
     if(y >= RgnH) LogEntryFBLibPrintf(TRUE, "TAP_Osd_PutPixel_Chk Warning: y(%lu) out of range @ %s", y, Comment);
   }

@@ -280,7 +280,7 @@ bool StrToUTF8(byte *SourceString, byte *DestString, byte DefaultISO8859CharSet)
   }
   else
   {
-    //LogEntryFBLibPrintf(TRUE, "StrToUTF8: using default lookup table 8859-%u", CharSet);
+    //LogEntryFBLibPrintf(TRUE, "StrToUTF8: using default lookup table 8859-%d", CharSet);
   }
 
   switch(CharSet)
