@@ -1,6 +1,6 @@
 PROJECT = libFireBird
 
-DIRS = av compression debug elf EPG ExtAttribs Firmware flash FontManager hdd ini InstructionSequences LogoManager main rec shutdown string StringDB tap tapcom time TMSOSDMenu TMSOSDKeyboard tmsvfd
+DIRS = av compression debug elf EPG ExtAttribs Firmware flash FontManager hdd ini InstructionSequences LogoManager main rec shutdown string StringDB tap tapcom time TMSOSDKeyboard TMSOSDMenu TMSOSDMenu/fonts TMSOSDMenu/graphic tmsvfd
 
 export SRC_DIR = $(shell pwd)
 
@@ -26,9 +26,7 @@ doc:
 lib:
 	@for i in $(DIRS); \
 	do \
-	  cd $$i; \
-	  $(MAKE) all; \
-	  cd ..; \
+	  $(MAKE) -C $$i all; \
 	done
 	-$(RM) $(PROJECT).a
 	@for i in $(DIRS); \
@@ -44,7 +42,7 @@ devutils:
 	$(MAKE) all;
 
 clean:
-	@for i in $(DIRS); do cd $$i; make clean; cd ..; done
+	@for i in $(DIRS); do make -C $$i clean; done
 	cd devutils; make clean; cd ..;
 	rm -rf $(PROJECT).a HTMLDOCS README.html
 
