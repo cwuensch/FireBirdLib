@@ -7,7 +7,7 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   //Create an OSD region if not already available
   if(OSDRgn == 0)
   {
-    OSDDirty     = TRUE;
+    OSDDirty = TRUE;
     OSDRgn = TAP_Osd_Create(0, 0, 720, 576, 0, 0);
     TAP_ExitNormal();
   }
@@ -34,8 +34,8 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   if (ButtonsDirty)
   {
     OSDDrawButtons();
-    LogoDirty = TRUE;
     ButtonsDirty = FALSE;
+    LogoDirty    = TRUE;
   }
 
   //Draw software icon
