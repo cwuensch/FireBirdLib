@@ -26,7 +26,9 @@
   #endif
 
   #ifdef STACKTRACE
-    #define FB_CALL_TRACE
+    #ifndef FB_CALL_TRACE
+      #define FB_CALL_TRACE
+    #endif
   #endif
 
   #ifdef PC_BASED
