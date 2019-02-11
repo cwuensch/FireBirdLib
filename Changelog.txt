@@ -1073,3 +1073,5 @@ The following functions accept any form a path. The INI and language INI functio
 2019-01-17: Fixed: Reset "Dirty" flags after drawing to avoid repetitive redrawing of all OSD content
 2019-01-18: Added: FB_DEBUG and FB_DEBUG_FULL to enable debugging which is disabled by default now (FB_NO_DEBUG and FB_LIBRARY_COMPILATION have been removed)
 2019-02-11: Fixed: Limit the number of InfoBox lines and MessageBox lines to 7 (which is the maximum number of lines that can be displayed)
+            Fixed: FMUC_FreeFontFile() closed a font file even if the file handle was invalid due to an open error
+            Fixed: FMUC_GetGlyphData() sought for glyphs even if the file handle was invalid due to an open or header error
