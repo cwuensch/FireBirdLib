@@ -42,7 +42,7 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
   OSDMenuPutS(InfoBoxOSDRgn, 0, 10, 380, Title, RGB(232,146,17), COLOR_None, 14, FALSE, ALIGN_CENTER);
 
   //Count the number of lines
-  strncpy(s, Text, 256);
+  strncpy(s, Text, 255);
   s[255] = '\0';
   pText = s;
   EndOfText = s + strlen(s);
