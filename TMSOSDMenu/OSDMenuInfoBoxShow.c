@@ -54,6 +54,7 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
     if(!pText) break;
     *pText = '\0';
     pText++;
+    if (Lines == 7) break;
   }
 
   dy = 20;
