@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_RELEASEDATE__ "2019-01-18"
+  #define __FBLIB_RELEASEDATE__ "2019-02-18"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1524,10 +1524,12 @@
     word                  PMTPID;
     word                  PCRPID;
     word                  VideoPID;
-    word                  AudioPID;
+    word                  AudioPID:13;
+    word                  AudioTypeFlag:2;
+    word                  AudioAutoSelect:1;
     word                  LCN;
     word                  AudioStreamType;
-    char                  ServiceName[MAX_SvcName+1];
+    char                  ServiceName[MAX_SvcName + 1];
     char                  ProviderName[40];
     byte                  NameLock;
     word                  Flags2;
@@ -1634,18 +1636,18 @@
 
   typedef struct
   {
-      short               UTCOffset;
-      word                SleepTimer;
+    short                 UTCOffset;
+    word                  SleepTimer;
 
-      byte                unknown1:3;
-      byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-      byte                Mode:1;                 //0=Auto, 1=Manual
-      byte                unknown2:1;
+    byte                  unknown1:3;
+    byte                  GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+    byte                  Mode:1;                 //0=Auto, 1=Manual
+    byte                  unknown2:1;
 
-      byte                unknown3;
+    byte                  unknown3;
 
-      word                DST:2;                  //0=off, 3=on
-      word                unknown4:14;
+    word                  DST:2;                  //0=off, 3=on
+    word                  unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
@@ -1681,6 +1683,7 @@
     byte                unused8[8];
     byte                IceTV;
     byte                unused9[13];
+    byte                unused10[8];
     dword               rs_timestamp1;			//RS timers are OT timers where (rs_timestamp1 != 0)
     char                rs_episodeCRID[64];
     char                rs_seriesCRID[64];
