@@ -1078,3 +1078,4 @@ The following functions accept any form a path. The INI and language INI functio
 2019-02-18: Fixed: OSDMenuPush() and OSDMenuPop() missed to set OSDDirty
 2019-02-19: Fixed: Improved several flash structs and helper functions. Thanks to chris86
 2019-02-20: Fixed: Modified FlashServiceFindNum() so that it will find services even if a transponder occupies more than one transponder entry (e.g. 1MHz offset)
+2019-02-21: Fixed: The title area has never been erased if marked dirty
