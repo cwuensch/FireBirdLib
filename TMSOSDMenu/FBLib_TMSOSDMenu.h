@@ -60,6 +60,10 @@ typedef struct
   dword                 LogoX;
   dword                 LogoY;
   TYPE_GrData          *pLogoGd;
+  dword                 PrevLogoX;
+  dword                 PrevLogoY;
+  dword                 PrevLogoW;
+  dword                 PrevLogoH;
   tOSDMenuDisplayMode  OSDMenuDisplayMode;
   tFontDataUC          *FontLeftTitle;
   tFontDataUC          *FontRightTitle;
