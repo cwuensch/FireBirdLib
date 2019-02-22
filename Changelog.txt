@@ -1097,3 +1097,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: New cursor graphics that are necessary for different line heights (i.e. different number of lines)
             Fixed: OSDMenuSetCursor() doesn't draw the new cursor
             Added: OSDMemoFormatText() to allow a dynamic change of the font size (i.e. the number of lines)
+            Added: TMSOSDMenu memo demo
