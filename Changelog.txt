@@ -1093,3 +1093,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: OSDMenuSetMemo() can either set OMDM_Memo or OMDM_Text now
             Added: OSDMenuSetLineHeight() and enums tLineHeight to allow for a different number of lines
             Added: OSDMenuGetNrOfLines() to query the current number of lines
+            Fixed: The ScrollBar graphics contained various pixels with slightly wrong color
