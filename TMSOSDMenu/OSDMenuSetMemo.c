@@ -1,6 +1,6 @@
 #include "FBLib_TMSOSDMenu.h"
 
-void OSDMenuSetMemo (void)
+void OSDMenuSetMemo (bool SelectionAlwaysOnTop)
 {
   tMenu *pMenu;
 
@@ -11,7 +11,7 @@ void OSDMenuSetMemo (void)
   pMenu->AllowScrollingOfLongText = FALSE;
   pMenu->HasValueColumn = FALSE;
   pMenu->NumberedItems = FALSE;
-  pMenu->OSDMenuDisplayMode = OMDM_Memo;
+  pMenu->OSDMenuDisplayMode = (SelectionAlwaysOnTop ? OMDM_Memo : OMDM_Text);
 
   TRACEEXIT();
 }
