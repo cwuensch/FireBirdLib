@@ -10,9 +10,21 @@ void OSDCalcIndices(void)
   pMenu = &Menu[CurrentMenuLevel];
 
   //if TopIndex or SelectionIndex has changed, make list dirty
-  if(pMenu->OSDMenuDisplayMode == OMDM_Memo)
+  if(pMenu->OSDMenuDisplayMode == OMDM_Memo || pMenu->OSDMenuDisplayMode == OMDM_Text)
   {
     pMenu->CurrentTopIndex = pMenu->CurrentSelection;
+
+    if (pMenu->OSDMenuDisplayMode == OMDM_Text)
+    {
+      if (pMenu->CurrentTopIndex + 15 > pMenu->NrItems)
+      {
+        pMenu->CurrentTopIndex = pMenu->NrItems - 15;
+
+        if (pMenu->CurrentTopIndex < 0) pMenu->CurrentTopIndex = 0;
+
+        pMenu->CurrentSelection = pMenu->CurrentTopIndex;
+      }
+    }
   }
   else
   {

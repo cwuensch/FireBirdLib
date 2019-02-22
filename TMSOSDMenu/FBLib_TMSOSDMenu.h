@@ -37,7 +37,8 @@ typedef struct
 typedef enum
 {
   OMDM_Standard,
-  OMDM_Memo
+  OMDM_Memo,
+  OMDM_Text            // like Memo, but CurrentTopIndex won't follow CurrentSelection
 } tOSDMenuDisplayMode;
 
 typedef struct

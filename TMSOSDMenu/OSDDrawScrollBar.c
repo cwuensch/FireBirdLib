@@ -4,7 +4,7 @@ void OSDDrawScrollBar(void)
 {
   TRACEENTER();
 
-  int                   Y;
+  int                   n, Y;
 
   if(Menu[CurrentMenuLevel].NrItems < (Menu[CurrentMenuLevel].OSDMenuDisplayMode == OMDM_Standard ? 11 : 16))
   {
@@ -13,7 +13,8 @@ void OSDDrawScrollBar(void)
   else
   {
     TAP_Osd_PutGd(OSDRgn, 661, 96, &_ScrollBarVisible_Gd, FALSE);
-    Y = 108 + (Menu[CurrentMenuLevel].CurrentSelection * 324) / (Menu[CurrentMenuLevel].NrItems - 1);
+    n = (Menu[CurrentMenuLevel].OSDMenuDisplayMode == OMDM_Text ? 15 : 1);
+    Y = 108 + (Menu[CurrentMenuLevel].CurrentSelection * 324) / (Menu[CurrentMenuLevel].NrItems - n);
     TAP_Osd_PutGd(OSDRgn, 662, Y, &_ScrollBarKnob_Gd, FALSE);
   }
 

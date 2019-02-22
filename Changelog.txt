@@ -1089,3 +1089,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuItemModifyNameColor() to change the color of the name separately from the color of the item line
             Added: OSDMenuItemModifyValueLeftArrowGap() to be able to control the distance between name and value
             Added: OSDMenuSetMemo() to be able to initialize and control an OSDMemo from scratch
+            Added: OMDM_Text - an OSDMemo that won't scoll beyond its last line
