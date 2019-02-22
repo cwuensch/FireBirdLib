@@ -75,14 +75,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   memset(&pMenu->Item[0], 0, pMenu->MaxItems * sizeof(tItem));
 
   OSDMenuButtonsClear();
-
-  pMenu->FontLeftTitle          = &OSDMenuFont_20;
-  pMenu->FontRightTitle         = &OSDMenuFont_16;
-  pMenu->FontListLineNumber     = &OSDMenuFont_14;
-  pMenu->FontListNameColumn     = &OSDMenuFont_14;
-  pMenu->FontListValueColumn    = &OSDMenuFont_14;
-  pMenu->FontButtons            = &OSDMenuFont_12;
-  pMenu->FontMemo               = &OSDMenuFont_14;
+  OSDMenuSetLineHeight(LH_Normal);
 
   if(TitleLeft)
     strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);

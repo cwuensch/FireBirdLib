@@ -2718,6 +2718,13 @@
 
   typedef enum
   {
+    LH_Normal,
+    LH_Small,
+    LH_Tiny
+  } tLineHeight;
+
+  typedef enum
+  {
     CT_Standard,
     CT_Dark,
     CT_Box,
@@ -2735,6 +2742,7 @@
   void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
   void OSDMenuSetCursor(tCursorType CursorType);
+  void OSDMenuSetLineHeight(tLineHeight type);
   void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
   void OSDMenuModifyTitleRight(char *Text);

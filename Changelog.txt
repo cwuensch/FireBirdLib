@@ -1091,3 +1091,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuSetMemo() to be able to initialize and control an OSDMemo from scratch
             Added: OMDM_Text - an OSDMemo that won't scoll beyond its last line
             Modified: OSDMenuSetMemo() can either set OMDM_Memo or OMDM_Text now
+            Added: OSDMenuSetLineHeight() and enums tLineHeight to allow for a different number of lines
