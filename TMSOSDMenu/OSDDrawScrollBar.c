@@ -6,7 +6,7 @@ void OSDDrawScrollBar(void)
 
   int                   Y;
 
-  if(Menu[CurrentMenuLevel].NrItems < 11)
+  if(Menu[CurrentMenuLevel].NrItems < (Menu[CurrentMenuLevel].OSDMenuDisplayMode == OMDM_Standard ? 11 : 16))
   {
     TAP_Osd_PutGd(OSDRgn, 661, 96, &_ScrollBarInvisible_Gd, FALSE);
   }

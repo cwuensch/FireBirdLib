@@ -1085,3 +1085,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuGetH() to get a string's height
             Added: OSDMenuGetW(), OSDMenuGetH() and OSDMenuPutS() made public (i.e. part of the API)
             Fixed: OSDDrawList() limited the width of the name even without value arrows and a value itself
+            Fixed: OSDDrawScrollBar() didn't take into account the different number of lines of the two OSDMenuDisplayModes
