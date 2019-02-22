@@ -50,6 +50,7 @@ typedef struct
   bool                  AllowScrollingOfLongText;
   bool                  HasValueColumn;
   dword                 ValueXPos;
+  int                   ValueXOffset;
   bool                  ScrollLoop;
   bool                  NumberedItems;
   bool                  hasValueArrows;

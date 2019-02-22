@@ -117,18 +117,18 @@ void OSDDrawList(void)
       if(pMenu->HasValueColumn)
       {
         //The text of the right column
-        FMUC_PutStringAA(OSDRgn, pMenu->ValueXPos + 45 + MaxValueIconWidth, Y + 5 + FONTYOFFSET, 645, pItem->Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT, 1);
+        FMUC_PutStringAA(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset + MaxValueIconWidth, Y + 5 + FONTYOFFSET, 645, pItem->Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT, 1);
 
         //The color patch or icon of the right column. The former has priority
         if(pItem->ColorPatch)
         {
-          TAP_Osd_FillBox(OSDRgn, pMenu->ValueXPos + 45, Y + 5, 50, 18, (pItem->ColorPatch & 0x00ffffff) | 0xff000000);
-          TAP_Osd_DrawRectangle(OSDRgn, pMenu->ValueXPos + 45, Y + 5, 50, 18, 1, RGB(192,192,192));
+          TAP_Osd_FillBox(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset, Y + 5, 50, 18, (pItem->ColorPatch & 0x00ffffff) | 0xff000000);
+          TAP_Osd_DrawRectangle(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset, Y + 5, 50, 18, 1, RGB(192,192,192));
         }
         else
         {
           if(pItem->pValueIconGd)
-            TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 45 , Y + 13 - (pItem->pValueIconGd->height >> 1), pItem->pValueIconGd, TRUE);
+            TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset, Y + 13 - (pItem->pValueIconGd->height >> 1), pItem->pValueIconGd, TRUE);
         }
       }
     }

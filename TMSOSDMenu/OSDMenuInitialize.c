@@ -68,6 +68,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->NumberedItems = NumberedItems;
   pMenu->ScrollLoop = ScrollLoop;
   pMenu->ValueXPos = 350;
+  pMenu->ValueXOffset = 15;
   pMenu->hasValueArrows = FALSE;
   pMenu->MaxItems = 30;
   pMenu->Item = TAP_MemAlloc(pMenu->MaxItems * sizeof(tItem));

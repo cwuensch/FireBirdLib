@@ -2851,6 +2851,7 @@
   bool  OSDMenuItemModifyName(int ItemIndex, char *Text);
   bool  OSDMenuItemModifyValue(int ItemIndex, char *Text);
   void  OSDMenuItemModifyValueXPos(dword NewValueXPos);
+  void  OSDMenuItemModifyValueLeftArrowGap(int NewGapWidth);
   bool  OSDMenuItemModifyNameIcon(int ItemIndex, TYPE_GrData *pNameIconGd);
   bool  OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
