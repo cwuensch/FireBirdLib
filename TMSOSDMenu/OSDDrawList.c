@@ -39,7 +39,7 @@ void OSDDrawList(void)
       //Draw the background or selection bar and the optional value arrows
       if ((i + pMenu->CurrentTopIndex) == pMenu->CurrentSelection)
       {
-        OSDMenuDrawCursor(60, 96 + (i * 37), 600);
+        OSDMenuDrawCursor(60, 96 + (i * 37), 600, 34);
 
         if (pMenu->HasValueColumn && pItem->ValueArrows)
         {

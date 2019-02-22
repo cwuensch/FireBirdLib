@@ -1,16 +1,15 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuDrawCursor(dword x, dword y, dword w)
+void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
 {
   TRACEENTER();
 
   TYPE_GrData              *OSDMenuLightBlueCursorGd, *OSDMenuDarkBlueCursorGd;
-  int                       pb=0, cx, h, hundret=0, hundretModulo=0;
+  int                       pb=0, cx, hundret=0, hundretModulo=0;
   dword                     Color;
 
   OSDMenuLightBlueCursorGd = &_SelectionBar_Blue_100x34_Gd;
   OSDMenuDarkBlueCursorGd = &_SelectionBar_Blue_100x34Dark_Gd;
-  h = 34;
 
   if(MenuCursorType == CT_Box)
   {

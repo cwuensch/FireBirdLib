@@ -235,7 +235,7 @@ void OSDDrawMemo(void);
 void OSDDrawScrollBar(void);
 void OSDDrawTitle(void);
 void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected);
-void OSDMenuDrawCursor(dword x, dword y, dword w);
+void OSDMenuDrawCursor(dword x, dword y, dword w, dword h);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 void OSDMenuLoadStdFonts(void);
