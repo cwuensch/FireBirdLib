@@ -68,6 +68,7 @@ typedef struct
   dword                 PrevLogoY;
   dword                 PrevLogoW;
   dword                 PrevLogoH;
+  char                 *MemoText;
   tOSDMenuDisplayMode  OSDMenuDisplayMode;
   tFontDataUC          *FontLeftTitle;
   tFontDataUC          *FontRightTitle;

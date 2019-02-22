@@ -8,7 +8,6 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
 
   char                 *from, *upto, *p, c;
   dword                 spW, Width = 0;
-  char                 *Buffer;
   tMenu                *pMenu;
 
   #define HORSPACE      568
@@ -24,17 +23,17 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
     return;
   }
 
-  Buffer = TAP_MemAlloc(strlen(Text) + 2);
-  memset(Buffer, 0, strlen(Text) + 2);
-  strcpy(Buffer, Text);
-  StrReplace(Buffer, "\x8d", "\r");
-  StrReplace(Buffer, "\x8a", "\n");
-  StrReplace(Buffer, "\r\n", "\n");
-  if (Buffer[strlen(Buffer) - 1] != '\n') strcat(Buffer, "\n");
+  pMenu->MemoText = TAP_MemAlloc(strlen(Text) + 2);
+  memset(pMenu->MemoText, 0, strlen(Text) + 2);
+  strcpy(pMenu->MemoText, Text);
+  StrReplace(pMenu->MemoText, "\x8d", "\r");
+  StrReplace(pMenu->MemoText, "\x8a", "\n");
+  StrReplace(pMenu->MemoText, "\r\n", "\n");
+  if (pMenu->MemoText[strlen(pMenu->MemoText) - 1] != '\n') strcat(pMenu->MemoText, "\n");
 
   spW = FMUC_GetStringWidth(" ", pMenu->FontMemo);
 
-  from = Buffer;
+  from = pMenu->MemoText;
   upto = from - 1;
 
   while ((p = strpbrk(upto + 1, " \n")))
@@ -67,8 +66,6 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
 
     *p = c;
   }
-
-  TAP_MemFree(Buffer);
 
   TRACEEXIT();
 }
