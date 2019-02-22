@@ -43,5 +43,7 @@ void OSDMenuSetLineHeight (tLineHeight type)
     OSDMenuLastCursor = LCT_NRCURSORS;
   }
 
+  if (pMenu->OSDMenuDisplayMode == OMDM_Memo || pMenu->OSDMenuDisplayMode == OMDM_Text) OSDMemoFormatText();
+
   TRACEEXIT();
 }
