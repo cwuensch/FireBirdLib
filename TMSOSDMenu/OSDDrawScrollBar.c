@@ -5,19 +5,43 @@ void OSDDrawScrollBar(void)
   TRACEENTER();
 
   tMenu                *pMenu;
-  int                   n, Y;
+  word                  extralines = 0, cutY;
+  int                   n, l, Y;
 
   pMenu = &Menu[CurrentMenuLevel];
+
+  if (pMenu->OSDMenuDisplayMode == OMDM_Standard)
+  {
+    switch (pMenu->NrLines)
+    {
+      case 18:
+        extralines = 8;
+        break;
+
+      case 15:
+        extralines = 5;
+        break;
+    }
+  }
+
+  cutY = 96 + _ScrollBarVisible_Gd.height - 16;   // same for ScrollBarInvisible
 
   if(pMenu->NrItems < pMenu->NrLines + 1)
   {
     TAP_Osd_PutGd(OSDRgn, 661, 96, &_ScrollBarInvisible_Gd, FALSE);
+
+    if (extralines) TAP_Osd_Copy(OSDRgn, OSDRgn, 661, cutY, _ScrollBarInvisible_Gd.width, 16, 661, cutY + extralines, FALSE);
   }
   else
   {
     TAP_Osd_PutGd(OSDRgn, 661, 96, &_ScrollBarVisible_Gd, FALSE);
+
+    if (extralines) TAP_Osd_Copy(OSDRgn, OSDRgn, 661, cutY, _ScrollBarVisible_Gd.width, 16, 661, cutY + extralines, FALSE);
+
     n = (pMenu->OSDMenuDisplayMode == OMDM_Text ? pMenu->NrLines : 1);
-    Y = 108 + (pMenu->CurrentSelection * 324) / (pMenu->NrItems - n);
+    l = _ScrollBarVisible_Gd.height + extralines - 2 * 12 - _ScrollBarKnob_Gd.height;
+    Y = 96 + 12 + (pMenu->CurrentSelection * l) / (pMenu->NrItems - n);
+
     TAP_Osd_PutGd(OSDRgn, 662, Y, &_ScrollBarKnob_Gd, FALSE);
   }
 
