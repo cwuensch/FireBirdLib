@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_RELEASEDATE__ "2019-02-20"
+  #define __FBLIB_RELEASEDATE__ "2019-02-22"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
