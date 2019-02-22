@@ -2744,6 +2744,9 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   void OSDMenuDestroyNoOSDUpdate(void);
+  int  OSDMenuGetW(char *str, byte fntSize);
+  int  OSDMenuGetH(char *str, byte fntSize);
+  void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
   bool OSDMenuIsVisible(void);
 
   //Callback function for custom menu drawings

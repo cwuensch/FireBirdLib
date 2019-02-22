@@ -222,7 +222,6 @@ extern dword            WaitSpinnerTimeout;
 
 int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
 int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
-int  OSDMenuGetW(char * str, byte fntSize);
 void OSDCalcIndices(void);
 void OSDDrawBackground(void);
 void OSDDrawButtons(void);
@@ -236,7 +235,6 @@ void OSDMenuDrawCursor(dword x, dword y, dword w);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 void OSDMenuLoadStdFonts(void);
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDMenuWaitSpinnerIdle(void);
 
 extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
