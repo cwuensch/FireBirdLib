@@ -1094,3 +1094,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuSetLineHeight() and enums tLineHeight to allow for a different number of lines
             Added: OSDMenuGetNrOfLines() to query the current number of lines
             Fixed: The ScrollBar graphics contained various pixels with slightly wrong color
+            Added: New cursor graphics that are necessary for different line heights (i.e. different number of lines)
