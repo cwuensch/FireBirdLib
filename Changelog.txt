@@ -1099,3 +1099,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMemoFormatText() to allow a dynamic change of the font size (i.e. the number of lines)
             Added: TMSOSDMenu memo demo
             Modified: TMSOSDMenu menu demo demonstrates dynamic change of both the font size (i.e. the number of lines) and the cursor type
+            Modified: Replace the previous WaitSpinner with one that (unlike a circular one) looks undistorted on the 5:4 OSD

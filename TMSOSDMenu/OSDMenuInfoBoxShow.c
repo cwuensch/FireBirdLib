@@ -1,6 +1,8 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
+dword WaitSpinnerPosY;
+
 void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
 {
   TRACEENTER();
@@ -66,6 +68,8 @@ void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
     y += dy;
     pText += (strlen(pText) + 1);
   }
+
+  WaitSpinnerPosY = (Lines == 6 ? 164 : 158) + ((24 - WaitSpinnerItemHeight) >> 1);
 
   if(Timeout)
     InfoBoxTimeOut = TAP_GetTick() + Timeout;

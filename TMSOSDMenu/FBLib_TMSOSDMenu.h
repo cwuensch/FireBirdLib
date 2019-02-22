@@ -10,6 +10,18 @@
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
 
+#define WaitSpinnerItems       12
+#define WaitSpinnerItemWidth    6
+#define WaitSpinnerItemHeight  14
+#define WaitSpinnerWidth       ((2 * WaitSpinnerItems - 1) * WaitSpinnerItemWidth)
+#define WaitSpinnerItemsTrail   8
+#define WaitSpinnerSpeed       10
+#define WaitSpinnerItemColorBlank RGB(192, 192, 192)
+#define WaitSpinnerItemColorShade -64   // shade to RGB(128, 128, 128)
+#define WaitSpinnerItemColorTrail RGB(120, 120, 120)
+
+extern dword WaitSpinnerPosY;
+
 typedef struct
 {
   char                  Name[ITEMNAMESIZE];
@@ -192,8 +204,6 @@ extern TYPE_GrData      _ColorPicker_CursorNone_Gd;
 extern TYPE_GrData      _ColorPicker_CursorDeselected_Gd;
 extern TYPE_GrData      _ColorPicker_ValueBackroundSelected_Gd;
 
-extern TYPE_GrData      _WaitSpinner_All_Gd;
-
 extern word             OSDRgn;
 extern word             MyOSDRgn; //Used by OSDMenuSaveMyRegion()
 extern word             OSDMenuSelectionBarRgn;
@@ -246,6 +256,8 @@ void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 void OSDMenuLoadStdFonts(void);
 void OSDMenuWaitSpinnerIdle(void);
+void OSDMenuWaitSpinnerDrawItem(word rgn, dword x, dword rgb);
+dword OSDMenuWaitSpinnerShadeColor(dword rgb, word step, word steps);
 
 extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
 
