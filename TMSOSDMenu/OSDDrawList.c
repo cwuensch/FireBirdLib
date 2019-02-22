@@ -52,7 +52,7 @@ void OSDDrawList(void)
 
       //Draw line content
 
-      XEnd = (pMenu->HasValueColumn ? pMenu->ValueXPos : 645);
+      XEnd = (pMenu->HasValueColumn && (pItem->ValueArrows || *pItem->Value) ? pMenu->ValueXPos : 645);
       Y = 99 + (i * 37);
 
       if(pItem->Selectable)

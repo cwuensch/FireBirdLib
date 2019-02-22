@@ -1084,3 +1084,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenuGetW() and OSDMenuPutS() could not handle all sizes of the standard fonts (new: use size + 0xB for bold fonts)
             Added: OSDMenuGetH() to get a string's height
             Added: OSDMenuGetW(), OSDMenuGetH() and OSDMenuPutS() made public (i.e. part of the API)
+            Fixed: OSDDrawList() limited the width of the name even without value arrows and a value itself
