@@ -112,7 +112,7 @@ void OSDDrawList(void)
         TAP_Osd_PutGd(OSDRgn, XStart, Y + 13 - (pItem->pNameIconGd->height >> 1), pItem->pNameIconGd, TRUE);
 
       //The text of the left column
-      FMUC_PutStringAA(OSDRgn, XStart + MaxNameIconWidth, Y + 5 + FONTYOFFSET, XEnd, pItem->Name, ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT, 1);
+      FMUC_PutStringAA(OSDRgn, XStart + MaxNameIconWidth, Y + 5 + FONTYOFFSET, XEnd, pItem->Name, pItem->Selectable ? pItem->NameColor : ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT, 1);
 
       if(pMenu->HasValueColumn)
       {

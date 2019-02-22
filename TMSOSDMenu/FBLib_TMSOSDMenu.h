@@ -17,6 +17,7 @@ typedef struct
   TYPE_GrData          *pNameIconGd;
   TYPE_GrData          *pValueIconGd;
   dword                 ColorPatch;
+  dword                 NameColor;
   dword                 TextColor;
   bool                  Selectable;
   bool                  ValueArrows;

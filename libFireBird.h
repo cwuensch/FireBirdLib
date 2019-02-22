@@ -2855,6 +2855,7 @@
   bool  OSDMenuItemModifyValueIcon(int ItemIndex, TYPE_GrData *pValueIconGd);
   bool  OSDMenuItemModifySelectable(int ItemIndex, bool Selectable);
   bool  OSDMenuItemModifyColorPatch(int ItemIndex, dword Color); //set to 0 to disable
+  bool  OSDMenuItemModifyNameColor(int ItemIndex, dword Color);
   bool  OSDMenuItemModifyTextColor(int ItemIndex, dword Color);
   bool  OSDMenuItemModifyID(int ItemIndex, dword ID);
   bool  OSDMenuItemModifyCustomIndex(int ItemIndex, int CustomIndex);
