@@ -30,7 +30,7 @@ void OSDDrawList(void)
   //The background
   TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 368, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
 
-  for(i = 0; i < 10; i++)
+  for(i = 0; i < pMenu->NrLines; i++)
   {
     pItem = &pMenu->Item[i + pMenu->CurrentTopIndex];
 

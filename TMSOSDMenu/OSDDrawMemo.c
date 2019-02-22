@@ -13,7 +13,7 @@ void OSDDrawMemo(void)
   //The background
   TAP_Osd_Draw3dBoxFill(OSDRgn, 60, 96, 600, 368, RGB(30, 30, 30), RGB(30, 30, 30), RGB(30, 30, 30));
 
-  for(i = 0; i < 15; i++)
+  for(i = 0; i < pMenu->NrLines; i++)
   {
     Y = 99 + (i * 24);
 
