@@ -1088,3 +1088,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDDrawScrollBar() didn't take into account the different number of lines of the two OSDMenuDisplayModes
             Added: OSDMenuItemModifyNameColor() to change the color of the name separately from the color of the item line
             Added: OSDMenuItemModifyValueLeftArrowGap() to be able to control the distance between name and value
+            Added: OSDMenuSetMemo() to be able to initialize and control an OSDMemo from scratch
