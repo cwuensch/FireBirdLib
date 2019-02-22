@@ -20,6 +20,7 @@ void OSDMenuSetLineHeight (tLineHeight type)
       pMenu->FontListNameColumn  = &OSDMenuFont_14;
       pMenu->FontListValueColumn = &OSDMenuFont_14;
       pMenu->FontMemo            = &OSDMenuFont_14;
+      pMenu->NrLines = (type == LH_Normal && pMenu->OSDMenuDisplayMode == OMDM_Standard ? 10 : 15);
       ListDirty = TRUE;
       break;
 
@@ -28,12 +29,15 @@ void OSDMenuSetLineHeight (tLineHeight type)
       pMenu->FontListNameColumn  = &OSDMenuFont_12;
       pMenu->FontListValueColumn = &OSDMenuFont_12;
       pMenu->FontMemo            = &OSDMenuFont_12;
+      pMenu->NrLines = 18;
       ListDirty = TRUE;
       break;
 
     default:
       break;
   }
+
+  if (pMenu->OSDMenuDisplayMode == OMDM_Standard) OSDDirty = TRUE;
 
   TRACEEXIT();
 }

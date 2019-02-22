@@ -43,6 +43,7 @@ typedef enum
 
 typedef struct
 {
+  int                   NrLines;
   tItem                *Item;
   int                   NrItems;
   int                   MaxItems;

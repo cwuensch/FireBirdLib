@@ -2743,6 +2743,7 @@
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
   void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuSetLineHeight(tLineHeight type);
+  int  OSDMenuGetNrOfLines(void);
   void OSDMenuUpdate(bool SuppressOSDSync);
   void OSDMenuModifyTitleLeft(char *Text);
   void OSDMenuModifyTitleRight(char *Text);

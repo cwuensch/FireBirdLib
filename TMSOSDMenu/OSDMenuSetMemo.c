@@ -12,6 +12,7 @@ void OSDMenuSetMemo (bool SelectionAlwaysOnTop)
   pMenu->HasValueColumn = FALSE;
   pMenu->NumberedItems = FALSE;
   pMenu->OSDMenuDisplayMode = (SelectionAlwaysOnTop ? OMDM_Memo : OMDM_Text);
+  pMenu->NrLines = 15;
 
   TRACEEXIT();
 }

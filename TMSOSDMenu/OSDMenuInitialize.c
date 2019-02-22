@@ -63,6 +63,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
 
   OSDMenuLoadStdFonts();
 
+  pMenu->OSDMenuDisplayMode = OMDM_Standard;
   pMenu->AllowScrollingOfLongText = AllowScrollingOfLongText;
   pMenu->HasValueColumn = HasValueColumn;
   pMenu->NumberedItems = NumberedItems;
@@ -88,8 +89,6 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   else
     pMenu->TitleRight[0] = '\0';
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
-
-  pMenu->OSDMenuDisplayMode = OMDM_Standard;
 
   MenuCursorType = CT_Standard;
 

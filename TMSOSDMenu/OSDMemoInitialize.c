@@ -16,6 +16,7 @@ void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char 
   OSDMenuInitialize(FALSE, FALSE, FALSE, ScrollLoop, TitleLeft, TitleRight);
   pMenu = &Menu[CurrentMenuLevel];
   pMenu->OSDMenuDisplayMode = OMDM_Memo;
+  pMenu->NrLines = 15;
 
   if(!Text || !Text[0])
   {
