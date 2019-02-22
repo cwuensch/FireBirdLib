@@ -239,6 +239,7 @@ void OSDDrawLogo(void);
 void OSDDrawMemo(void);
 void OSDDrawScrollBar(void);
 void OSDDrawTitle(void);
+void OSDMemoFormatText(void);
 void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected);
 void OSDMenuDrawCursor(dword x, dword y, dword w, dword h);
 void OSDMenuFreeStdFonts(void);
