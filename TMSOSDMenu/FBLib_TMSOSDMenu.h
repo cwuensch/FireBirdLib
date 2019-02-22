@@ -168,6 +168,12 @@ extern TYPE_GrData      _Button_volplus_Gd;
 extern TYPE_GrData      _Button_white_Gd;
 extern TYPE_GrData      _Button_yellow_Gd;
 
+extern TYPE_GrData      _Cursor_Blue_Normal_Gd;
+extern TYPE_GrData      _Cursor_Blue_Small_Gd;
+extern TYPE_GrData      _Cursor_Blue_Tiny_Gd;
+extern TYPE_GrData      _Cursor_Dark_Normal_Gd;
+extern TYPE_GrData      _Cursor_Dark_Small_Gd;
+extern TYPE_GrData      _Cursor_Dark_Tiny_Gd;
 extern TYPE_GrData      _InfoBox_Gd;
 extern TYPE_GrData      _InputBox_Gd;
 extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;
@@ -179,8 +185,6 @@ extern TYPE_GrData      _Progressbar_Gd;
 extern TYPE_GrData      _ScrollBarInvisible_Gd;
 extern TYPE_GrData      _ScrollBarKnob_Gd;
 extern TYPE_GrData      _ScrollBarVisible_Gd;
-extern TYPE_GrData      _SelectionBar_Blue_100x34_Gd;
-extern TYPE_GrData      _SelectionBar_Blue_100x34Dark_Gd;
 
 extern TYPE_GrData      _ColorPicker_Gd;
 extern TYPE_GrData      _ColorPicker_CursorNone_Gd;

@@ -37,7 +37,11 @@ void OSDMenuSetLineHeight (tLineHeight type)
       break;
   }
 
-  if (pMenu->OSDMenuDisplayMode == OMDM_Standard) OSDDirty = TRUE;
+  if (pMenu->OSDMenuDisplayMode == OMDM_Standard)
+  {
+    OSDDirty = TRUE;
+    OSDMenuLastCursor = LCT_NRCURSORS;
+  }
 
   TRACEEXIT();
 }

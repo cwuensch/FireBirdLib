@@ -8,9 +8,6 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
   int                       pb=0, cx, hundret=0, hundretModulo=0;
   dword                     Color;
 
-  OSDMenuLightBlueCursorGd = &_SelectionBar_Blue_100x34_Gd;
-  OSDMenuDarkBlueCursorGd = &_SelectionBar_Blue_100x34Dark_Gd;
-
   if(MenuCursorType == CT_Box)
   {
     Color = RGB(90, 205, 236);
@@ -21,6 +18,24 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
   }
   else
   {
+    switch (h)
+    {
+      case 19:
+        OSDMenuLightBlueCursorGd = &_Cursor_Blue_Tiny_Gd;
+        OSDMenuDarkBlueCursorGd = &_Cursor_Dark_Tiny_Gd;
+        break;
+
+      case 23:
+        OSDMenuLightBlueCursorGd = &_Cursor_Blue_Small_Gd;
+        OSDMenuDarkBlueCursorGd = &_Cursor_Dark_Small_Gd;
+        break;
+
+      default:
+        OSDMenuLightBlueCursorGd = &_Cursor_Blue_Normal_Gd;
+        OSDMenuDarkBlueCursorGd = &_Cursor_Dark_Normal_Gd;
+        break;
+    }
+
     //100er-Bar in eine Memory-Region kopieren
     if(OSDMenuLightBlueCursorGd)
     {
