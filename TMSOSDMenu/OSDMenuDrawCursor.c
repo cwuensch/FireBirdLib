@@ -37,35 +37,32 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
     }
 
     //100er-Bar in eine Memory-Region kopieren
-    if(OSDMenuLightBlueCursorGd)
+    if(OSDMenuLastCursor != LCT_Blue)
     {
-      if(OSDMenuLastCursor != LCT_Blue)
-      {
-        if(OSDMenuSelectionBarRgn) TAP_Osd_Delete(OSDMenuSelectionBarRgn);
-        OSDMenuSelectionBarRgn = TAP_Osd_Create(0, 0, OSDMenuLightBlueCursorGd->width, OSDMenuLightBlueCursorGd->height, 0, OSD_Flag_MemRgn);
-        TAP_Osd_PutGd(OSDMenuSelectionBarRgn, 0, 0, OSDMenuLightBlueCursorGd, FALSE);
-        OSDMenuLastCursor = LCT_Blue;
-      }
-
-      hundret = w/100;
-      hundretModulo = w%100;
-      cx = x;
-
-      //Hunderter
-      if(hundret > 0)
-      {
-        for(pb=0;pb<hundret;pb++)
-        {
-          TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, 100, h, cx, y, FALSE);
-          cx += 100;
-        }
-      }
-
-      //Restliche Länge
-      if(hundretModulo > 0) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, hundretModulo, h, cx, y, FALSE);
+      if(OSDMenuSelectionBarRgn) TAP_Osd_Delete(OSDMenuSelectionBarRgn);
+      OSDMenuSelectionBarRgn = TAP_Osd_Create(0, 0, OSDMenuLightBlueCursorGd->width, OSDMenuLightBlueCursorGd->height, 0, OSD_Flag_MemRgn);
+      TAP_Osd_PutGd(OSDMenuSelectionBarRgn, 0, 0, OSDMenuLightBlueCursorGd, FALSE);
+      OSDMenuLastCursor = LCT_Blue;
     }
 
-    if(MenuCursorType == CT_Dark && OSDMenuDarkBlueCursorGd)
+    hundret = w/100;
+    hundretModulo = w%100;
+    cx = x;
+
+    //Hunderter
+    if(hundret > 0)
+    {
+      for(pb=0;pb<hundret;pb++)
+      {
+        TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, 100, h, cx, y, FALSE);
+        cx += 100;
+      }
+    }
+
+    //Restliche Länge
+    if(hundretModulo > 0) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, hundretModulo, h, cx, y, FALSE);
+
+    if(MenuCursorType == CT_Dark)
     {
       //Falls via OSDMenuSetCursor ausgewählt, dann den dunklen Cursor drübermalen
       //100er-Bar in eine Memory-Region kopieren
