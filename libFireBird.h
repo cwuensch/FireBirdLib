@@ -2724,6 +2724,12 @@
     CT_NRITEMS
   } tCursorType;
 
+  enum // human-friendly arguments to OSDMenuUpdate()
+  {
+    DO_SYNC,
+    NO_SYNC
+  };
+
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
   void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
