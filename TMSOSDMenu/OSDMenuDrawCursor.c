@@ -2,11 +2,11 @@
 
 void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
 {
-  TRACEENTER();
-
   TYPE_GrData              *OSDMenuLightBlueCursorGd, *OSDMenuDarkBlueCursorGd;
-  int                       pb=0, cx, hundret=0, hundretModulo=0;
+  word                      chunks, remainder, cx;
   dword                     Color;
+
+  TRACEENTER();
 
   if(MenuCursorType == CT_Box)
   {
@@ -36,7 +36,7 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
         break;
     }
 
-    //100er-Bar in eine Memory-Region kopieren
+    //Cursor-Stück in eine Memory-Region kopieren
     if(OSDMenuLastCursor != LCT_Blue)
     {
       if(OSDMenuSelectionBarRgn) TAP_Osd_Delete(OSDMenuSelectionBarRgn);
@@ -45,27 +45,24 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
       OSDMenuLastCursor = LCT_Blue;
     }
 
-    hundret = w/100;
-    hundretModulo = w%100;
+    chunks = w / OSDMenuLightBlueCursorGd->width;
+    remainder = w % OSDMenuLightBlueCursorGd->width;
     cx = x;
 
-    //Hunderter
-    if(hundret > 0)
+    //Stücke
+    for (; chunks > 0; chunks--)
     {
-      for(pb=0;pb<hundret;pb++)
-      {
-        TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, 100, h, cx, y, FALSE);
-        cx += 100;
-      }
+      TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, OSDMenuLightBlueCursorGd->width, h, cx, y, FALSE);
+      cx += OSDMenuLightBlueCursorGd->width;
     }
 
     //Restliche Länge
-    if(hundretModulo > 0) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, hundretModulo, h, cx, y, FALSE);
+    if (remainder) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, remainder, h, cx, y, FALSE);
 
     if(MenuCursorType == CT_Dark)
     {
       //Falls via OSDMenuSetCursor ausgewählt, dann den dunklen Cursor drübermalen
-      //100er-Bar in eine Memory-Region kopieren
+      //Cursor-Stück in eine Memory-Region kopieren
       if(OSDMenuLastCursor != LCT_BlueDark)
       {
         if(OSDMenuSelectionBarRgn) TAP_Osd_Delete(OSDMenuSelectionBarRgn);
@@ -74,22 +71,19 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
         OSDMenuLastCursor = LCT_BlueDark;
       }
 
-      hundret = (w-4)/100;
-      hundretModulo = (w-4)%100;
-      cx = x+2;
+      chunks = (w - 4) / OSDMenuDarkBlueCursorGd->width;
+      remainder = (w - 4) % OSDMenuDarkBlueCursorGd->width;
+      cx = x + 2;
 
-      //Hunderter
-      if(hundret > 0)
+      //Stücke
+      for (; chunks > 0; chunks--)
       {
-        for(pb=0;pb<hundret;pb++)
-        {
-          TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, 100, h, cx, y, FALSE);
-          cx += 100;
-        }
+        TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, OSDMenuDarkBlueCursorGd->width, h, cx, y, FALSE);
+        cx += OSDMenuDarkBlueCursorGd->width;
       }
 
       //Restliche Länge
-      if(hundretModulo > 0) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, hundretModulo, h, cx, y, FALSE);
+      if (remainder) TAP_Osd_Copy(OSDMenuSelectionBarRgn, OSDRgn, 0, 0, remainder, h, cx, y, FALSE);
     }
   }
 
