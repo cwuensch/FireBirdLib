@@ -6,8 +6,8 @@ bool StringEndsWith(char *text, char *postfix)
   TRACEENTER();
 
   char                 *p;
-  int                   i;
-  bool                  ret;
+  int                   l, i;
+  bool                  ret = FALSE;
 
   if(!text || !*text || !postfix || !*postfix)
   {
@@ -15,9 +15,14 @@ bool StringEndsWith(char *text, char *postfix)
     return FALSE;
   }
 
+  l = strlen(text);
   i = strlen(postfix);
-  p = &text[strlen(text) - i];
-  ret = (memcmp(p, postfix, i) == 0);
+
+  if (l >= i)
+  {
+    p = &text[l - i];
+    ret = (memcmp(p, postfix, i) == 0);
+  }
 
   TRACEEXIT();
   return ret;
