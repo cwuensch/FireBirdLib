@@ -1102,3 +1102,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Replace the previous WaitSpinner with one that (unlike a circular one) looks undistorted on the 5:4 OSD
             Modified: Release date
 2019-09-26  Fixed: Potential out-of-bounds read in StringEndsWith()
+2019-10-03  Fixed: FMUC_PutStringAA() and FM_PutStringAA(): both drew one pixel line too high
