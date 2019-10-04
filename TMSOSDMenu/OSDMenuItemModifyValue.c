@@ -9,7 +9,7 @@ bool OSDMenuItemModifyValue(int ItemIndex, char *Text)
 
   pMenu = &Menu[CurrentMenuLevel];
 
-  if((pMenu->NrItems == 0) || (ItemIndex >= pMenu->NrItems))
+  if((ItemIndex < 0) || (ItemIndex >= pMenu->NrItems))
   {
     TRACEEXIT();
     return FALSE;
