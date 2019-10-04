@@ -2738,6 +2738,7 @@
   };
 
   //Main OSD
+  #define OSDMenuGetW OSDMenuGetStringWidth   // potential legacy usage
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
   void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
@@ -2754,8 +2755,8 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   void OSDMenuDestroyNoOSDUpdate(void);
-  int  OSDMenuGetW(char *str, byte fntSize);
   int  OSDMenuGetStringHeight(char *str, byte fntSize);
+  int  OSDMenuGetStringWidth(char *str, byte fntSize);
   void OSDMenuPutString(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
   bool OSDMenuIsVisible(void);
 
