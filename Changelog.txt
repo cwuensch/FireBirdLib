@@ -1104,3 +1104,4 @@ The following functions accept any form a path. The INI and language INI functio
 2019-09-26  Fixed: Potential out-of-bounds read in StringEndsWith()
 2019-10-03  Fixed: FMUC_PutStringAA() and FM_PutStringAA(): both drew one pixel line too high
 2019-10-04  Fixed: OSDMenuPutS() made private again (due to the use of FONTYOFFSET)
+            Added: OSDMenuPutString() (user-usable replacement for OSDMenuPutS())
