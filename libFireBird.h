@@ -2755,8 +2755,8 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   void OSDMenuDestroyNoOSDUpdate(void);
-  int  OSDMenuGetStringHeight(char *str, byte fntSize);
-  int  OSDMenuGetStringWidth(char *str, byte fntSize);
+  dword OSDMenuGetStringHeight(char *str, byte fntSize);
+  dword OSDMenuGetStringWidth(char *str, byte fntSize);
   void OSDMenuPutString(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
   bool OSDMenuIsVisible(void);
 
