@@ -1111,3 +1111,4 @@ The following functions accept any form a path. The INI and language INI functio
 2019-10-08  Modified: Return type of OSDMenuGetStringHeight() and OSDMenuGetStringWidth() changed from integer to dword
 2019-10-16  Added: OSDMenuItemPassDrawing() to allow a user-controlled item drawing
             Added: TMSOSDMenu PassDrawing demo
+            Added: Cursor type CT_Hide to hide the cursor

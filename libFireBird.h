@@ -2728,6 +2728,7 @@
     CT_Standard,
     CT_Dark,
     CT_Box,
+    CT_Hide,
     CT_NRITEMS
   } tCursorType;
 
