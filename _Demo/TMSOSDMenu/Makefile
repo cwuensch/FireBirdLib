@@ -1,5 +1,6 @@
 APP1 = TMSOSDMemoDemo
 APP2 = TMSOSDMenuDemo
+APP3 = TMSOSDMenuPassDrawingDemo
 BASE = $(shell cd /tapapi/TMS; pwd)
 CUR_DIR = $(shell pwd)
 
@@ -24,7 +25,7 @@ TAP_INCLUDE_DIRS = $(addprefix -I, $(INCLUDE_DIRS))
 TAP_FLAGS += $(TAP_INCLUDE_DIRS)
 TAP_LIBS = ${BASE}/tapinit.o ${BASE}/libtap.so -lFireBird -ldl -lc
 
-all: $(APP1).tap $(APP2).tap clean
+all: $(APP1).tap $(APP2).tap $(APP3).tap clean
 
 %.tap: %.o
 	@echo "[Linking... $@]"
@@ -37,4 +38,4 @@ all: $(APP1).tap $(APP2).tap clean
 
 clean:
 	@echo "[Cleaning up...]"
-	@-${RM} *.d $(APP1).o $(APP2).o
+	@-${RM} *.d $(APP1).o $(APP2).o $(APP3).o
