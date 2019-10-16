@@ -2845,6 +2845,7 @@
   void        OSDMenuButtonsClear(void);
   void        OSDMenuButtonColor(dword Color);
   void        OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
+  void        OSDMenuButtonModifyText(dword ButtonIndex, char *Text);
   tButtonIcon OSDMenuGetButtonIcon(dword key);
 
   //Cursor Functions
