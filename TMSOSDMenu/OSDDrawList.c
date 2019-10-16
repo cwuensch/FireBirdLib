@@ -11,6 +11,7 @@ void OSDDrawList(void)
   dword                 ItemColor;
   char                  s[4];
   dword                 MaxNameIconWidth, MaxValueIconWidth;
+  word                  ItemRgn = 0;
 
   pMenu = &Menu[CurrentMenuLevel];
 
@@ -134,12 +135,12 @@ void OSDDrawList(void)
         TAP_Osd_PutGd(OSDRgn, XStart, yL + ((hL - pItem->pNameIconGd->height) >> 1), pItem->pNameIconGd, TRUE);
 
       //The text of the left column
-      FMUC_PutStringAA(OSDRgn, XStart + MaxNameIconWidth, yT + 5 + FONTYOFFSET, XEnd, pItem->Name, pItem->Selectable ? pItem->NameColor : ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT, 1);
+      if (pItem->drawName) FMUC_PutStringAA(OSDRgn, XStart + MaxNameIconWidth, yT + 5 + FONTYOFFSET, XEnd, pItem->Name, pItem->Selectable ? pItem->NameColor : ItemColor, COLOR_None, pMenu->FontListNameColumn, TRUE, ALIGN_LEFT, 1);
 
       if(pMenu->HasValueColumn)
       {
         //The text of the right column
-        FMUC_PutStringAA(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset + MaxValueIconWidth, yT + 5 + FONTYOFFSET, 645, pItem->Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT, 1);
+        if (pItem->drawValue) FMUC_PutStringAA(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset + MaxValueIconWidth, yT + 5 + FONTYOFFSET, 645, pItem->Value, ItemColor, COLOR_None, pMenu->FontListValueColumn, TRUE, ALIGN_LEFT, 1);
 
         //The color patch or icon of the right column. The former has priority
         if(pItem->ColorPatch)
@@ -153,8 +154,19 @@ void OSDDrawList(void)
             TAP_Osd_PutGd(OSDRgn, pMenu->ValueXPos + 30 + pMenu->ValueXOffset, yL + ((hL - pItem->pValueIconGd->height) >> 1), pItem->pValueIconGd, TRUE);
         }
       }
+
+      if (pItem->passDrawing && CallbackProcedure)
+      {
+        if (!ItemRgn) ItemRgn = TAP_Osd_Create(0, 0, 600, hL, 0, OSD_Flag_MemRgn);
+
+        TAP_Osd_Copy(OSDRgn, ItemRgn, 60, yL, 600, hL, 0, 0, FALSE);
+        CallbackProcedure(OSDCB_ListItem | (pItem->ID << 8), ItemRgn);
+        TAP_Osd_Copy(ItemRgn, OSDRgn, 0, 0, 600, hL, 60, yL, FALSE);
+      }
     }
   }
+
+  if (ItemRgn) TAP_Osd_Delete(ItemRgn);
 
   if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);
 

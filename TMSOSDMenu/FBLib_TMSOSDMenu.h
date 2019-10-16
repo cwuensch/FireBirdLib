@@ -33,6 +33,9 @@ typedef struct
   dword                 TextColor;
   bool                  Selectable;
   bool                  ValueArrows;
+  bool                  passDrawing;
+  bool                  drawName;
+  bool                  drawValue;
   dword                 ID;
   int                   CustomIndex;
 }tItem;

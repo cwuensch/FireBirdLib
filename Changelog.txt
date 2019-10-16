@@ -1109,3 +1109,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Rename OSDMenuGetW() OSDMenuGetStringWidth() and define OSDMenuGetW as an alias
             Fixed: Check ItemIndex for potential out-of-bounds array access
 2019-10-08  Modified: Return type of OSDMenuGetStringHeight() and OSDMenuGetStringWidth() changed from integer to dword
+2019-10-16  Added: OSDMenuItemPassDrawing() to allow a user-controlled item drawing

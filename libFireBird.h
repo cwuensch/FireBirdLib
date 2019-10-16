@@ -2770,7 +2770,9 @@
     OSDCB_Title,
     OSDCB_List,
     OSDCB_Buttons,
-    OSDCB_Logo
+    OSDCB_Logo,
+    OSDCB_ListItem,
+    OSDCB_MASK = 0xFF   // max. number of OSDCB types
   } tOSDCB;
 
 
@@ -2859,6 +2861,7 @@
   //Items
   void  OSDMenuItemsClear(void);
   bool  OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID);
+  bool  OSDMenuItemPassDrawing(int ItemIndex, bool VisibleName, bool VisibleValue);
   bool  OSDMenuItemModifyName(int ItemIndex, char *Text);
   bool  OSDMenuItemModifyValue(int ItemIndex, char *Text);
   void  OSDMenuItemModifyValueXPos(dword NewValueXPos);
