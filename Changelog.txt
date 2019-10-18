@@ -1114,3 +1114,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: Cursor type CT_Hide to hide the cursor
             Added: OSDMenuButtonModifyText() to allow label replacement without graphic position change
             Modified: Release date
+2019-10-18  Fixed: Potential out-of-bounds access in OSDMenuButtonAdd()

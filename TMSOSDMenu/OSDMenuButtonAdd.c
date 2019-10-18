@@ -8,14 +8,15 @@ void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd,
   tMenu                *pMenu;
   TYPE_GrData          *IconGd;
 
+  pMenu = &Menu[CurrentMenuLevel];
+
   IconGd = OSDMenuGetIconPointer(ButtonIcon, ButtonGd);
-  if((Line == 0) || (Line > 3) || (!IconGd) || (!Text))
+  if((Line == 0) || (Line > 3) || (!IconGd) || (!Text) || (pMenu->NrButtons >= MAXBUTTONS))
   {
     TRACEEXIT();
     return;
   }
 
-  pMenu = &Menu[CurrentMenuLevel];
   pMenu->Buttons[pMenu->NrButtons].X = pMenu->ButtonXStart[Line];
 
   switch(Line)

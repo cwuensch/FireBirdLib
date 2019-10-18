@@ -7,6 +7,7 @@
 #define ITEMVALUESIZE   128
 #define STDSTRINGSIZE   256
 #define NRMENULEVELS     5
+#define MAXBUTTONS      20
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
 
@@ -71,7 +72,7 @@ typedef struct
   bool                  ScrollLoop;
   bool                  NumberedItems;
   bool                  hasValueArrows;
-  tButtons              Buttons[20];
+  tButtons              Buttons[MAXBUTTONS];
   dword                 NrButtons;
   dword                 ButtonXStart[4];
   char                  TitleLeft[STDSTRINGSIZE];
