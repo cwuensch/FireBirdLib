@@ -155,12 +155,12 @@ void OSDDrawList(void)
         }
       }
 
-      if (pItem->passDrawing && CallbackProcedure)
+      if (pItem->passDrawing && pMenu->CallbackProcedure)
       {
         if (!ItemRgn) ItemRgn = TAP_Osd_Create(0, 0, 600, hL, 0, OSD_Flag_MemRgn);
 
         TAP_Osd_Copy(OSDRgn, ItemRgn, 60, yL, 600, hL, 0, 0, FALSE);
-        CallbackProcedure(OSDCB_ListItem | (pItem->ID << 8), ItemRgn);
+        pMenu->CallbackProcedure(OSDCB_ListItem | (pItem->ID << 8), ItemRgn);
         TAP_Osd_Copy(ItemRgn, OSDRgn, 0, 0, 600, hL, 60, yL, FALSE);
       }
     }
@@ -168,7 +168,7 @@ void OSDDrawList(void)
 
   if (ItemRgn) TAP_Osd_Delete(ItemRgn);
 
-  if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);
+  if (pMenu->CallbackProcedure) pMenu->CallbackProcedure(OSDCB_List, OSDRgn);
 
   TRACEEXIT();
 }

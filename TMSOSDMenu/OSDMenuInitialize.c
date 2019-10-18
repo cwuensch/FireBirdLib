@@ -44,8 +44,6 @@ tFontDataUC             OSDMenuFont_18;
 tFontDataUC             OSDMenuFont_20;
 tFontDataUC             OSDMenuFont_20B;
 
-void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn) = NULL;
-
 void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
 {
   TRACEENTER();
@@ -91,8 +89,6 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';
 
   MenuCursorType = CT_Standard;
-
-  CallbackProcedure = NULL;
 
   TRACEEXIT();
 }

@@ -17,7 +17,7 @@ void OSDDrawButtons(void)
     FMUC_PutStringAA(OSDRgn, pMenu->Buttons[i].X + pMenu->Buttons[i].pButtonGd->width + 2, pMenu->Buttons[i].Y + 3 + FONTYOFFSET, 658, pMenu->Buttons[i].Text, pMenu->Buttons[i].Color, COLOR_None, pMenu->FontButtons, FALSE, ALIGN_LEFT, 1);
   }
 
-  if(CallbackProcedure) CallbackProcedure(OSDCB_Buttons, OSDRgn);
+  if (pMenu->CallbackProcedure) pMenu->CallbackProcedure(OSDCB_Buttons, OSDRgn);
 
   TRACEEXIT();
 }

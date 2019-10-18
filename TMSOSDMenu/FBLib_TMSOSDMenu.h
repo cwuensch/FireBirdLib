@@ -93,6 +93,7 @@ typedef struct
   tFontDataUC          *FontListValueColumn;
   tFontDataUC          *FontButtons;
   tFontDataUC          *FontMemo;
+  void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
 }tMenu;
 
 typedef struct
@@ -263,8 +264,5 @@ void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor
 void OSDMenuWaitSpinnerIdle(void);
 void OSDMenuWaitSpinnerDrawItem(word rgn, dword x, dword rgb);
 dword OSDMenuWaitSpinnerShadeColor(dword rgb, word step, word steps);
-
-extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
-
 
 #endif

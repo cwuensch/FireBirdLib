@@ -24,7 +24,7 @@ void OSDDrawMemo(void)
       FMUC_PutStringAA(OSDRgn, 76, Y + 5 + FONTYOFFSET, 645, pMenu->Item[i + pMenu->CurrentTopIndex].Name, RGB(255, 255, 255), COLOR_None, pMenu->FontMemo, TRUE, ALIGN_LEFT, 1);
   }
 
-  if(CallbackProcedure) CallbackProcedure(OSDCB_List, OSDRgn);
+  if (pMenu->CallbackProcedure) pMenu->CallbackProcedure(OSDCB_List, OSDRgn);
 
   TRACEEXIT();
 }

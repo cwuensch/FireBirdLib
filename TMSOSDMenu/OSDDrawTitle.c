@@ -16,7 +16,7 @@ void OSDDrawTitle(void)
 
   FMUC_PutStringAA(OSDRgn, 50 + tw + 5, 49 + FONTYOFFSET, 658, Menu[CurrentMenuLevel].TitleRight, RGB(102,102,102), COLOR_None, pMenu->FontRightTitle, TRUE, ALIGN_RIGHT, 1);
 
-  if(CallbackProcedure) CallbackProcedure(OSDCB_Title, OSDRgn);
+  if (pMenu->CallbackProcedure) pMenu->CallbackProcedure(OSDCB_Title, OSDRgn);
 
   TRACEEXIT();
 }
