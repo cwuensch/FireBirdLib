@@ -1116,3 +1116,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Release date
 2019-10-18  Fixed: Potential out-of-bounds access in OSDMenuButtonAdd()
             Fixed: Potential null pointer usage in OSDMenuMessageBoxButtonAdd()
+            Fixed: OSDMenuDestroyNoOSDUpdate() and OSDMenuPop() left some memory unreleased

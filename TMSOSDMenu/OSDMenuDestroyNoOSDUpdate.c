@@ -19,6 +19,12 @@ void OSDMenuDestroyNoOSDUpdate(void)
     Menu[CurrentMenuLevel].Item = NULL;
   }
 
+  if (Menu[CurrentMenuLevel].MemoText)
+  {
+    TAP_MemFree(Menu[CurrentMenuLevel].MemoText);
+    Menu[CurrentMenuLevel].MemoText = NULL;
+  }
+
   OSDMenuFreeStdFonts();
 
   CallbackProcedure = NULL;
