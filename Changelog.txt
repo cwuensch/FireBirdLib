@@ -1142,3 +1142,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Prevent ValidFileName() from missing MAX_FILE_NAME_SIZE and looping over whole strName with UTF-8 characters
             Added: HDD_GetFileDir() which got lost when converting to TMS only code
             Modified: Make constant parameters of the functions in elf, hdd, tap, TMSOSDKeyboard, TMSOSDMenu, rec and string const
+            Modified: Release date
