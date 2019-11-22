@@ -37,6 +37,12 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
 {
   TRACEENTER();
 
+  if (!Title || !Variable || (MaxSize < 2))
+  {
+    TRACEEXIT();
+    return;
+  }
+
   OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Title) + 1);
   strcpy(OSDMenuKeyboard_Title, Title);
   OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxSize + 4);

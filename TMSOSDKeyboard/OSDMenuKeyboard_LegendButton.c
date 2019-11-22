@@ -5,7 +5,7 @@ void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text
 {
   TRACEENTER();
 
-  if(OSDMenuKeyboard_NrButtons < 20)
+  if (Text && (OSDMenuKeyboard_NrButtons < 20))
   {
     OSDMenuKeyboard_Buttons[OSDMenuKeyboard_NrButtons].Line = Line;
     OSDMenuKeyboard_Buttons[OSDMenuKeyboard_NrButtons].ButtonIcon = ButtonIcon;
