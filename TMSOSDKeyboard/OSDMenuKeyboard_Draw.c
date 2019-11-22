@@ -120,11 +120,11 @@ void OSDMenuKeyboard_Draw(void)
   {
     if (KeyboardCursorType == KC_Text)
     {
-    //Cursor malen
-    TAP_Osd_PutGd(OSDMenuKeyboard_rgn, 6, 284, &_TextCursor14_Gd, TRUE);
+      //Cursor malen
+      TAP_Osd_PutGd(OSDMenuKeyboard_rgn, 6, 284, &_TextCursor14_Gd, TRUE);
 
-    //Ganzen Text malen
-    FMUC_PutStringAA(OSDMenuKeyboard_rgn, x + _TextCursor14_Gd.width, 280, MAXX, OSDMenuKeyboard_StringVar, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
+      //Ganzen Text malen
+      FMUC_PutStringAA(OSDMenuKeyboard_rgn, x + _TextCursor14_Gd.width, 280, MAXX, OSDMenuKeyboard_StringVar, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
     }
     else
     {
@@ -140,12 +140,12 @@ void OSDMenuKeyboard_Draw(void)
     //Ganzen Text malen
     FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, StringVarStart, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
 
-    //Cursor malen
     tw = FMUC_GetStringWidth(StringVarStart, &KeyboardFont_14);
 
     if (KeyboardCursorType == KC_Text)
     {
-    TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x + tw, 284, &_TextCursor14_Gd, TRUE);
+      //Cursor malen
+      TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x + tw, 284, &_TextCursor14_Gd, TRUE);
     }
     else
     {
@@ -161,13 +161,13 @@ void OSDMenuKeyboard_Draw(void)
     *pCharAtCursor = '\0';
     FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, StringVarStart, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
 
-    //Cursor malen
     x += FMUC_GetStringWidth(StringVarStart, &KeyboardFont_14);
 
     if (KeyboardCursorType == KC_Text)
     {
-    TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x, 284, &_TextCursor14_Gd, TRUE);
-    x += _TextCursor14_Gd.width;
+      //Cursor malen
+      TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x, 284, &_TextCursor14_Gd, TRUE);
+      x += _TextCursor14_Gd.width;
     }
 
     //Zweiten Teil des Textes malen
