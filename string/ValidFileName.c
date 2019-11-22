@@ -20,7 +20,6 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result,
     {
       if(isLegalChar(s, ControlCharacters))
       {
-        *d = *s;
         if(isUTF8Char(s, &BytesPerCharacter))
         {
           //As this is a multibyte UTF character, copy all bytes
