@@ -1130,3 +1130,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Don't return a space character for empty keys
             Fixed: Reset KeyPadMode to its default when initializing the keyboard
             Added: OSDMenuKeyboard_ChangeKeypad() to change or suppress keypads (except Standard and CAPS)
+            Added: OSDMenuKeyboard_SetKeypadMode() to change the default starting keypad mode
