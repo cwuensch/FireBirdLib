@@ -50,13 +50,13 @@ void OSDMenuKeyboard_Draw(void)
       if(i != KeyPadPosition)
       {
         TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 22+k*50, 56+(j*50), 50, 50, COLOR_Grey12, COLOR_Grey08, COLOR_Grey04);
-        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 22+k*50, 70+(j*50), 70+(k*50), Keypad[KeyPadMode][i], COLOR_Grey19, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
+        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 23+k*50, 70+(j*50), 70+(k*50), Keypad[KeyPadMode][i], COLOR_Grey19, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
       }
       else
       {
         TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 22+k*50, 56+(j*50), 50, 50, COLOR_Grey08, COLOR_Grey12, COLOR_Orange03);
         TAP_Osd_FillBox(OSDMenuKeyboard_rgn, 24+k*50, 81+(j*50), 46, 23, COLOR_Orange02);
-        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 22+k*50, 70+(j*50), 70+(k*50), Keypad[KeyPadMode][i], COLOR_Grey00, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
+        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 23+k*50, 70+(j*50), 70+(k*50), Keypad[KeyPadMode][i], COLOR_Grey00, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
       }
 
       k++;
@@ -75,13 +75,13 @@ void OSDMenuKeyboard_Draw(void)
       if(i != KeyPadPosition)
       {
         TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 22+k*50, 56+(j*50), 100, 50, COLOR_Grey12, COLOR_Grey08, COLOR_Grey04);
-        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 22+k*50, 70+(j*50), 120+(k*50), keytext, COLOR_Grey19, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
+        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 23+k*50, 70+(j*50), 120+(k*50), keytext, COLOR_Grey19, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
       }
       else
       {
         TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 22+k*50, 56+(j*50), 100, 50, COLOR_Grey08, COLOR_Grey12, COLOR_Orange03);
         TAP_Osd_FillBox(OSDMenuKeyboard_rgn, 24+k*50, 81+(j*50), 96, 23, COLOR_Orange02);
-        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 22+k*50, 70+(j*50), 120+(k*50), keytext, COLOR_Grey00, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
+        FMUC_PutStringAA(OSDMenuKeyboard_rgn, 23+k*50, 70+(j*50), 120+(k*50), keytext, COLOR_Grey00, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
       }
       k+=2;
     }
