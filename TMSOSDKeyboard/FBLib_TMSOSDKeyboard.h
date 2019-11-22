@@ -27,6 +27,7 @@
   extern tOSDMenuKeyboard_Buttons OSDMenuKeyboard_Buttons[20];
   extern int            OSDMenuKeyboard_NrButtons;
   extern char           Keypad[KPM_NrModes][26][4];
+  extern tKeyboardCursor KeyboardCursorType;
   extern tKeyPadMode    KeyPadMode;
   extern int            KeyPadPosition;
   extern word           OSDMenuKeyboard_rgn;

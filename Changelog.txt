@@ -1134,3 +1134,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Align keyboard title horizontally and vertically centered (2 px to the left and 3 px up)
             Fixed: Align key descriptions centered (1 px to the right)
             Fixed: Align keyboard text and cursor centered (2 px up)
+            Added: OSDMenuKeyboard_SetCursor() to change the cursor type

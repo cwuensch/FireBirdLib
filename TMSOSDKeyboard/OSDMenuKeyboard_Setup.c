@@ -28,6 +28,7 @@ static const char       KP_SpecialChars3[26][4] = {"\u00dd", "\u00fd", "\u00de",
                                                   // Ý         ý         Þ         þ         µ
 
 tKeyPadMode             KeyPadMode;
+tKeyboardCursor         KeyboardCursorType;
 int                     KeyPadPosition = 0;
 word                    OSDMenuKeyboard_rgn = 0;
 bool                    OSDMenuKeyboard_ReturnToNormal;
@@ -70,6 +71,7 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
   memcpy(Keypad[KPM_SpecialChars3], KP_SpecialChars3, 26 << 2);
 
   KeyPadMode = KPM_Standard;
+  KeyboardCursorType = KC_Text;
 
   FMUC_LoadFontFile("Calibri_12.ufnt", &KeyboardFont_12);
   FMUC_LoadFontFile("Calibri_14.ufnt", &KeyboardFont_14);

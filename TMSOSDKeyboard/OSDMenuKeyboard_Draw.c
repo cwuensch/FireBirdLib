@@ -9,9 +9,11 @@ void OSDMenuKeyboard_Draw(void)
   int                   j=0;
   int                   k=0;
   char                 *keytext;
-  dword                 tw;
+  dword                 tw, cw;
   char                  CharAtCursor, *pCharAtCursor;
-  dword                 x;
+  char                  sCharAtCursor[5];
+  byte                  cl;
+  dword                 x, cx = 0;
   #define MAXX          437
   char                 *StringVarStart;
   dword                 State, SubState;
@@ -116,11 +118,22 @@ void OSDMenuKeyboard_Draw(void)
 
   if(OSDMenuKeyboard_CursorPosition == 0)
   {
+    if (KeyboardCursorType == KC_Text)
+    {
     //Cursor malen
     TAP_Osd_PutGd(OSDMenuKeyboard_rgn, 6, 284, &_TextCursor14_Gd, TRUE);
 
     //Ganzen Text malen
     FMUC_PutStringAA(OSDMenuKeyboard_rgn, x + _TextCursor14_Gd.width, 280, MAXX, OSDMenuKeyboard_StringVar, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
+    }
+    else
+    {
+      FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, OSDMenuKeyboard_StringVar, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
+      cx = x;
+      isUTF8Char(OSDMenuKeyboard_StringVar, &cl);
+      strncpy(sCharAtCursor, OSDMenuKeyboard_StringVar, cl);
+      sCharAtCursor[cl] = 0;
+    }
   }
   else if(OSDMenuKeyboard_CursorPosition == (int)strlen(OSDMenuKeyboard_StringVar))
   {
@@ -129,7 +142,16 @@ void OSDMenuKeyboard_Draw(void)
 
     //Cursor malen
     tw = FMUC_GetStringWidth(StringVarStart, &KeyboardFont_14);
+
+    if (KeyboardCursorType == KC_Text)
+    {
     TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x + tw, 284, &_TextCursor14_Gd, TRUE);
+    }
+    else
+    {
+      cx = x + tw;
+      sCharAtCursor[0] = 0;
+    }
   }
   else
   {
@@ -141,12 +163,30 @@ void OSDMenuKeyboard_Draw(void)
 
     //Cursor malen
     x += FMUC_GetStringWidth(StringVarStart, &KeyboardFont_14);
+
+    if (KeyboardCursorType == KC_Text)
+    {
     TAP_Osd_PutGd(OSDMenuKeyboard_rgn, x, 284, &_TextCursor14_Gd, TRUE);
     x += _TextCursor14_Gd.width;
+    }
 
     //Zweiten Teil des Textes malen
     *pCharAtCursor = CharAtCursor;
     FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, pCharAtCursor, COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
+
+    cx = x;
+    isUTF8Char(pCharAtCursor, &cl);
+    strncpy(sCharAtCursor, pCharAtCursor, cl);
+    sCharAtCursor[cl] = 0;
+
+  }
+
+  if (KeyboardCursorType == KC_Box)
+  {
+    if (!*sCharAtCursor) strcpy(sCharAtCursor, " ");
+
+    cw = FMUC_GetStringWidth(sCharAtCursor, &KeyboardFont_14);
+    FMUC_PutStringAA(OSDMenuKeyboard_rgn, cx, 280, cx + cw - 1, sCharAtCursor, COLOR_Grey19, COLOR_Orange02, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
   }
 
   //Legende
