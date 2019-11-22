@@ -21,7 +21,7 @@ void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *
 
     IconGd = OSDMenuGetIconPointer(ButtonIcon, NULL);
     TAP_Osd_PutGd(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1], y, IconGd, TRUE);
-    FMUC_PutString(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1] + IconGd->width + 2, y, 430, Text, COLOR_Grey18, 0, &KeyboardFont_12, FALSE, ALIGN_LEFT);
+    FMUC_PutString(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1] + IconGd->width + 2, y, 432, Text, COLOR_Grey18, 0, &KeyboardFont_12, FALSE, ALIGN_LEFT);
     OSDMenuKeyboard_ButtonsX[Line - 1] = OSDMenuKeyboard_ButtonsX[Line - 1] + IconGd->width + FMUC_GetStringWidth(Text, &KeyboardFont_12) + 6;
   }
 
