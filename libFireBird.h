@@ -2507,7 +2507,7 @@
   bool        StringEndsWith(char *text, char *postfix);
   int         strlenUC(byte *s);
   bool        StrMkISO(byte *SourceString);
-  bool        StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet);
+  bool        StrMkUTF8(byte *SourceString, size_t SourceSize, byte DefaultISO8859CharSet);
   byte       *strncpyUC(byte *dest, byte *src, size_t n);
   bool        StrReplace(char *String, char *Find, char *Replace);
   void        StrToISO(byte *SourceString, byte *DestString);

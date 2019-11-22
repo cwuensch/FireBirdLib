@@ -1137,3 +1137,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuKeyboard_SetCursor() to change the cursor type
             Added: OSDMenuKeyboard_AutomaticLowerCase() to automatically change to standard keypad mode after entering an upper-case character
             Modified: Replace three dots "..." by UTF-8 horizontal ellipsis character
+            Modified: StrMkUTF8() has now an additional parameter "size" and writes at most "size" bytes (including the terminating null byte) to SourceString

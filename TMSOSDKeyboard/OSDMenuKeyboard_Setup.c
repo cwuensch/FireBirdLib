@@ -47,11 +47,11 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
 
   OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Title) + 1);
   strcpy(OSDMenuKeyboard_Title, Title);
-  OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxSize + 4);
-  memset(OSDMenuKeyboard_StringVar, 0, MaxSize + 4);
+  OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxSize);
+  memset(OSDMenuKeyboard_StringVar, 0, MaxSize);
 
   strncpy(OSDMenuKeyboard_StringVar, Variable, MaxSize);
-  StrMkUTF8(OSDMenuKeyboard_StringVar, 9);
+  StrMkUTF8(OSDMenuKeyboard_StringVar, MaxSize, 9);
 
   OSDMenuKeyboard_TextStartPosition = 0;
   OSDMenuKeyboard_NrButtons = 0;
