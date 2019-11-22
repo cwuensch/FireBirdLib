@@ -2888,6 +2888,7 @@
   void  OSDMenuItemSortID(bool Ascending);
   int   OSDMenuItemFindName(char *Text);
   int   OSDMenuItemFindValue(char *Text);
+  int   OSDMenuItemFindID(dword ID);
 
   //Menu Stack
   bool OSDMenuPush(void);

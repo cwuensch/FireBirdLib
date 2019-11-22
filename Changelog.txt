@@ -1119,3 +1119,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: OSDMenuDestroyNoOSDUpdate() and OSDMenuPop() left some memory unreleased
             Fixed: The callback function was common to all menus (not menu-specific) and was not saved and restored with OSDMenuPush()/OSDMenuPop()
             Modified: Release date
+2019-11-22  Added: OSDMenuItemFindID()
