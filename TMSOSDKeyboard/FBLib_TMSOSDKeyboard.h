@@ -5,6 +5,7 @@
   #include              "OSDMenuKeyboard_Colors.h"
   #include              "TMSRemote_TAPCOM.h"
 
+  #define BUTTONTEXTSIZE  20
   #define NRKEYPADKEYS    29
 
   typedef enum
@@ -23,7 +24,7 @@
   {
     dword               Line;
     tButtonIcon         ButtonIcon;
-    char                Text[20];
+    char                Text[BUTTONTEXTSIZE];
   } tOSDMenuKeyboard_Buttons;
 
   extern bool           OSDMenuKeyboard_GUIInitialized;
