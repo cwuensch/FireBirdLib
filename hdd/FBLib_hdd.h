@@ -128,7 +128,6 @@ bool  ChangeDirRoot(void);
 dword CalcAbsSectorFromFAT(TYPE_File *, dword);
 bool  PushDirEntry (dword Cluster, dword Entry, dword DirLen);
 bool  PopDirEntry (dword *Cluster, dword *Entry, dword *DirLen);
-bool  GetFileDir(char *, dword, char *);
 inline dword getNextCluster(dword c);
 
 //The latest version of the SmartFiler Recycle Bin

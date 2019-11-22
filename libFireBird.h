@@ -1882,6 +1882,20 @@
 
   typedef enum
   {
+    DIR_ROOT,
+    DIR_DATA_FILES,
+    DIR_PROGRAM_FILES,
+    DIR_MP3,
+    DIR_MP3_FILES = DIR_MP3,
+    DIR_INCOMING,
+    DIR_MEDIA_FILES,
+    DIR_PHOTO_FILES,
+    DIR_SYSTEM_FILES,
+    DIR_TMP
+  } eRootDirs;
+
+  typedef enum
+  {
     FIU_No,
     FIU_Playback,
     FIU_PlayMP3,
@@ -1945,6 +1959,7 @@
   bool        HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice);
   int         HDD_FindSymbolicLink(char *pathName, char *returnedPath, char *fullPathName);
   bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
+  bool        HDD_GetFileDir(char *FileName, eRootDirs Root, char *Dir);
   bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
   dword       HDD_GetFileTimeByFileName(char *FileName);
   dword       HDD_GetFileTimeByTypeFile(TYPE_File *File);
