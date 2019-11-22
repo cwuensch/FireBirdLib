@@ -1136,3 +1136,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Align keyboard text and cursor centered (2 px up)
             Added: OSDMenuKeyboard_SetCursor() to change the cursor type
             Added: OSDMenuKeyboard_AutomaticLowerCase() to automatically change to standard keypad mode after entering an upper-case character
+            Modified: Replace three dots "..." by UTF-8 horizontal ellipsis character

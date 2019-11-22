@@ -100,7 +100,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
 
       if(XEnd > (int)maxX)
       {
-        dotWidth = FMUC_GetStringWidth("... ", FontData);
+        dotWidth = FMUC_GetStringWidth("… ", FontData);
         XEnd += dotWidth;
 
         newstrlen = strlen(newstr);
@@ -117,7 +117,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
           p = FMUC_FindUTF8Start(p - 1);
           newstrlen--;
         } while((XEnd > (int)maxX) && (width != 0) && (newstrlen > 0) && (p > newstr));
-        strcat(newstr, "...");
+        strcat(newstr, "…");
       }
       break;
     }
@@ -129,7 +129,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
       p = newstr;
       if(XEnd > (int)maxX)
       {
-        dotWidth = FMUC_GetStringWidth("...", FontData);
+        dotWidth = FMUC_GetStringWidth("…", FontData);
         XEnd += dotWidth;
         newstrlen = strlen(newstr);
         do
@@ -145,7 +145,7 @@ void FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword f
         } while((XEnd > (int)maxX) && (width != 0) && (newstrlen > 0));
 
         DeleteAt(newstr, 0, (int)(p - newstr));
-        InsertAt(newstr, 0, "...");
+        InsertAt(newstr, 0, "…");
       }
       break;
     }

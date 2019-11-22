@@ -112,8 +112,8 @@ void OSDMenuKeyboard_Draw(void)
   //..., falls der Text bereits links hinausgeschoben ist
   if(OSDMenuKeyboard_TextStartPosition > 0)
   {
-    FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, "...", COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
-    x += FMUC_GetStringWidth("...", &KeyboardFont_14);
+    FMUC_PutStringAA(OSDMenuKeyboard_rgn, x, 280, MAXX, "…", COLOR_Grey19, 0, &KeyboardFont_14, TRUE, ALIGN_LEFT, AntiAliasFactor);
+    x += FMUC_GetStringWidth("…", &KeyboardFont_14);
   }
 
   if(OSDMenuKeyboard_CursorPosition == 0)
