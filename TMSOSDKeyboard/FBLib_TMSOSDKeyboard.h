@@ -8,18 +8,6 @@
   #define BUTTONTEXTSIZE  23
   #define NRKEYPADKEYS    29
 
-  typedef enum
-  {
-    KPM_Standard,
-    KPM_CAPS,
-    KPM_Num,
-    KPM_Symbols,
-    KPM_SpecialChars1,
-    KPM_SpecialChars2,
-    KPM_SpecialChars3,
-    KPM_NrModes
-  } tKeyPadMode;
-
   typedef struct
   {
     dword               Line;

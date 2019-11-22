@@ -173,7 +173,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
           case RKEY_Play:
           {
             KeyPadMode++;
-            if(KeyPadMode >= KPM_NrModes) KeyPadMode = 0;
+            if(KeyPadMode >= KPM_NrModes || *Keypad[KeyPadMode][0] == 0) KeyPadMode = 0;
             OSDMenuKeyboard_Draw();
             break;
           }

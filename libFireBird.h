@@ -2943,7 +2943,20 @@
   /* TMS OSD Keyboard                                                                                                          */
   /*****************************************************************************************************************************/
 
+  typedef enum
+  {
+    KPM_Standard,
+    KPM_CAPS,
+    KPM_Num,
+    KPM_Symbols,
+    KPM_SpecialChars1,
+    KPM_SpecialChars2,
+    KPM_SpecialChars3,
+    KPM_NrModes
+  } tKeyPadMode;
+
   void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
+  bool OSDMenuKeyboard_ChangeKeypad(tKeyPadMode mode, char keypad[26][4]);
   void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
   void OSDMenuKeyboard_Show(void);
   bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
