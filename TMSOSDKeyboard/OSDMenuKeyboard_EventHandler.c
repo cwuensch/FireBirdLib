@@ -158,7 +158,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
               default:
               {
-                if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize - strlen(Keypad[KeyPadMode][KeyPadPosition]))
+                if (*Keypad[KeyPadMode][KeyPadPosition] && (strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize - strlen(Keypad[KeyPadMode][KeyPadPosition])))
                 {
                   InsertAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, Keypad[KeyPadMode][KeyPadPosition]);
                   OSDMenuKeyboard_CursorPosition++;
