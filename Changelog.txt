@@ -1128,3 +1128,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Enable the edited text to spread wider, so that there is the same spacing to the left and right
             Fixed: Potential string overflow (OSDMenuKeyboard_StringVar)
             Modified: Don't return a space character for empty keys
+            Fixed: Reset KeyPadMode to its default when initializing the keyboard

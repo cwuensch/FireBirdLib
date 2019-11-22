@@ -27,7 +27,7 @@ char                    Keypad[KPM_NrModes][26][4] = {{"a", "b", "c", "d", "e", 
                                                      // Ý         ý         Þ         þ         µ
 
 
-tKeyPadMode             KeyPadMode = KPM_Standard;
+tKeyPadMode             KeyPadMode;
 int                     KeyPadPosition = 0;
 word                    OSDMenuKeyboard_rgn = 0;
 bool                    OSDMenuKeyboard_ReturnToNormal;
@@ -60,6 +60,8 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
   OSDMenuKeyboard_StringVarOrig = Variable;
 
   OSDMenuKeyboard_StringMaxSize = MaxSize;
+
+  KeyPadMode = KPM_Standard;
 
   FMUC_LoadFontFile("Calibri_12.ufnt", &KeyboardFont_12);
   FMUC_LoadFontFile("Calibri_14.ufnt", &KeyboardFont_14);
