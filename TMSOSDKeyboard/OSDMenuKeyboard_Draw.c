@@ -12,7 +12,7 @@ void OSDMenuKeyboard_Draw(void)
   dword                 tw;
   char                  CharAtCursor, *pCharAtCursor;
   dword                 x;
-  #define MAXX          415
+  #define MAXX          437
   char                 *StringVarStart;
   dword                 State, SubState;
   extern TYPE_GrData    _TextCursor14_Gd;
