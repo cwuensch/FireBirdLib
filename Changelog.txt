@@ -1139,3 +1139,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Replace three dots "..." by UTF-8 horizontal ellipsis character
             Modified: StrMkUTF8() has now an additional parameter "size" and writes at most "size" bytes (including the terminating null byte) to SourceString
             Fixed: Wrong use of MAX_FILE_NAME_SIZE (which in fact is the max. string length of a file name)
+            Fixed: Prevent ValidFileName() from missing MAX_FILE_NAME_SIZE and looping over whole strName with UTF-8 characters

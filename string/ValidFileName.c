@@ -22,6 +22,8 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result,
       {
         if(isUTF8Char(s, &BytesPerCharacter))
         {
+          if(d + BytesPerCharacter >= l) break;
+
           //As this is a multibyte UTF character, copy all bytes
           memcpy(d, s, BytesPerCharacter);
           d += BytesPerCharacter;
@@ -29,11 +31,12 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result,
         }
         else
         {
+          if(d == l) break;
+
           *d = *s;
           d++;
         }
       }
-      if(d == l) break;
       s++;
     }
   }
