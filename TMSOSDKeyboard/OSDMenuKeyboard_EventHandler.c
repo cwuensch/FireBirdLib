@@ -133,7 +133,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
             {
               case 26:
               {
-                if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxLen)
+                if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize)
                 {
                   InsertAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, " ");
                   OSDMenuKeyboard_CursorPosition++;
@@ -158,7 +158,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
               default:
               {
-                if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxLen)
+                if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize)
                 {
                   InsertAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, Keypad[KeyPadMode][KeyPadPosition]);
                   OSDMenuKeyboard_CursorPosition++;
@@ -202,8 +202,8 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
           case RKEY_Recall:     //Original wiederherstellen
           {
-            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxLen + 4);
-            strncpy(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_StringVarOrig, OSDMenuKeyboard_StringMaxLen);
+            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxSize + 4);
+            strncpy(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_StringVarOrig, OSDMenuKeyboard_StringMaxSize);
             StrMkUTF8(OSDMenuKeyboard_StringVar, 9);
             OSDMenuKeyboard_CursorPosition = strlenUC(OSDMenuKeyboard_StringVar);
             OSDMenuKeyboard_Draw();
@@ -212,7 +212,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
           case RKEY_Blue:       //Gesamten Text löschen
           {
-            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxLen + 4);
+            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxSize + 4);
             OSDMenuKeyboard_CursorPosition = 0;
             OSDMenuKeyboard_Draw();
             break;
@@ -220,8 +220,8 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
           case RKEY_Yellow:     //Add *text*
           {
-            if((strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxLen) && (OSDMenuKeyboard_StringVar[0] != '*')) InsertAt(OSDMenuKeyboard_StringVar, 0, "*");
-            if((strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxLen) && (OSDMenuKeyboard_StringVar[strlen(OSDMenuKeyboard_StringVar) - 1] != '*')) strcat(OSDMenuKeyboard_StringVar, "*");
+            if((strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize) && (OSDMenuKeyboard_StringVar[0] != '*')) InsertAt(OSDMenuKeyboard_StringVar, 0, "*");
+            if((strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize) && (OSDMenuKeyboard_StringVar[strlen(OSDMenuKeyboard_StringVar) - 1] != '*')) strcat(OSDMenuKeyboard_StringVar, "*");
             OSDMenuKeyboard_Draw();
             break;
           }
@@ -314,7 +314,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 
           case 0x0173:   //F4 = BLUE
           {
-            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxLen + 4);
+            memset(OSDMenuKeyboard_StringVar, 0, OSDMenuKeyboard_StringMaxSize + 4);
             OSDMenuKeyboard_CursorPosition = 0;
             OSDMenuKeyboard_Draw();
             break;
@@ -325,7 +325,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
             //ASCII Codes
             if((*param1 < 0x100) && (((*param1 >= 0x20) && (*param1 < 0x7f)) || (*param1 >= 0xa0)))
             {
-              if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxLen)
+              if(strlen(OSDMenuKeyboard_StringVar) < OSDMenuKeyboard_StringMaxSize)
               {
                 char          ToBeInserted[8];
 

@@ -32,7 +32,7 @@
   extern char          *OSDMenuKeyboard_Title;
   extern char          *OSDMenuKeyboard_StringVar;
   extern char          *OSDMenuKeyboard_StringVarOrig;
-  extern dword          OSDMenuKeyboard_StringMaxLen;
+  extern dword          OSDMenuKeyboard_StringMaxSize;
   extern int            OSDMenuKeyboard_CursorPosition;
   extern int            OSDMenuKeyboard_TextStartPosition;
   extern int            OSDMenuKeyboard_ButtonsX[3];

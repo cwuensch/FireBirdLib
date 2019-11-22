@@ -7,7 +7,7 @@ bool                    OSDMenuKeyboard_GUIInitialized = FALSE;
 char                   *OSDMenuKeyboard_Title = NULL;
 char                   *OSDMenuKeyboard_StringVar = NULL;
 char                   *OSDMenuKeyboard_StringVarOrig = NULL;
-dword                   OSDMenuKeyboard_StringMaxLen = 0;
+dword                   OSDMenuKeyboard_StringMaxSize = 0;
 int                     OSDMenuKeyboard_CursorPosition = 0;
 int                     OSDMenuKeyboard_TextStartPosition = 0;
 int                     OSDMenuKeyboard_ButtonsX[3];
@@ -33,16 +33,16 @@ word                    OSDMenuKeyboard_rgn = 0;
 bool                    OSDMenuKeyboard_ReturnToNormal;
 tFontDataUC             KeyboardFont_12, KeyboardFont_14;
 
-void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength)
+void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
 {
   TRACEENTER();
 
   OSDMenuKeyboard_Title = TAP_MemAlloc(strlen(Title) + 1);
   strcpy(OSDMenuKeyboard_Title, Title);
-  OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxLength + 4);
-  memset(OSDMenuKeyboard_StringVar, 0, MaxLength + 4);
+  OSDMenuKeyboard_StringVar = TAP_MemAlloc(MaxSize + 4);
+  memset(OSDMenuKeyboard_StringVar, 0, MaxSize + 4);
 
-  strncpy(OSDMenuKeyboard_StringVar, Variable, MaxLength);
+  strncpy(OSDMenuKeyboard_StringVar, Variable, MaxSize);
   StrMkUTF8(OSDMenuKeyboard_StringVar, 9);
 
   OSDMenuKeyboard_TextStartPosition = 0;
@@ -53,7 +53,7 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength)
 
   OSDMenuKeyboard_StringVarOrig = Variable;
 
-  OSDMenuKeyboard_StringMaxLen = MaxLength;
+  OSDMenuKeyboard_StringMaxSize = MaxSize;
 
   FMUC_LoadFontFile("Calibri_12.ufnt", &KeyboardFont_12);
   FMUC_LoadFontFile("Calibri_14.ufnt", &KeyboardFont_14);
