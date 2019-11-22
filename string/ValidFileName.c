@@ -14,7 +14,7 @@ char *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result,
   {
     strcpy(Result, strName);
     s = strName;
-    l = d + MAX_FILE_NAME_SIZE - 1;
+    l = d + MAX_FILE_NAME_SIZE;
 
     while(*s)
     {
