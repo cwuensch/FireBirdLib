@@ -44,7 +44,7 @@ tFontDataUC             OSDMenuFont_18;
 tFontDataUC             OSDMenuFont_20;
 tFontDataUC             OSDMenuFont_20B;
 
-void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
+void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight)
 {
   TRACEENTER();
 

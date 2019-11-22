@@ -1,6 +1,6 @@
 #include "FBLib_TMSOSDMenu.h"
 
-dword OSDMenuGetStringHeight (char *str, byte fntSize)
+dword OSDMenuGetStringHeight (const char *str, byte fntSize)
 {
   dword ret = 0;
 

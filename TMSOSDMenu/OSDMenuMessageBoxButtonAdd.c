@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-void OSDMenuMessageBoxButtonAdd(char *Text)
+void OSDMenuMessageBoxButtonAdd(const char *Text)
 {
   TRACEENTER();
 

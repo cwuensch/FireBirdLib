@@ -119,7 +119,7 @@ void  busyWait(void);
 void  Delay(dword);
 int   GetClusterPointer(int);
 
-int   SendHDDCommand(dword, byte*, int);
+int   SendHDDCommand(dword, const byte*, int);
 
 void  SwapWords(word *);
 void  SwapDWords(dword *);

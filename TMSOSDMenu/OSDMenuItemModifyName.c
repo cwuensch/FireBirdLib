@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-bool OSDMenuItemModifyName(int ItemIndex, char *Text)
+bool OSDMenuItemModifyName(int ItemIndex, const char *Text)
 {
   TRACEENTER();
 

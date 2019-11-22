@@ -36,7 +36,7 @@
   extern tFontDataUC    KeyboardFont_12, KeyboardFont_14;
 
   void OSDMenuKeyboard_Draw(void);
-  void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
+  void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, const char *Text);
   void OSDMenuKeyboard_TMSRemoteDirectMode(bool DirectMode);
   void OSDMenuKeyboard_CursorRight(void);
   void OSDMenuKeyboard_CursorLeft(void);

@@ -1,11 +1,11 @@
 #include <string.h>
 #include "libFireBird.h"
 
-bool StringEndsWith(char *text, char *postfix)
+bool StringEndsWith(const char *text, const char *postfix)
 {
   TRACEENTER();
 
-  char                 *p;
+  const char           *p;
   int                   l, i;
   bool                  ret = FALSE;
 

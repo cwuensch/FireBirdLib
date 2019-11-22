@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDKeyboard.h"
 
-void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text)
+void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, const char *Text)
 {
   TRACEENTER();
 

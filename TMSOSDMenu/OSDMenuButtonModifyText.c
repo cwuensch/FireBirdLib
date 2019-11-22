@@ -1,7 +1,7 @@
 #include <string.h>
 #include "FBLib_TMSOSDMenu.h"
 
-void OSDMenuButtonModifyText (dword ButtonIndex, char *Text)
+void OSDMenuButtonModifyText (dword ButtonIndex, const char *Text)
 {
   tMenu                *pMenu;
 

@@ -2,7 +2,7 @@
 
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 
-void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *Text)
+void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, const char *Text)
 {
   TRACEENTER();
 

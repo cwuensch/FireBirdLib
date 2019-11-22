@@ -46,7 +46,7 @@ static bool GetFileDir (const char *FileName, const char *Dir, const char *ext)
   return FALSE;
 }
 
-bool HDD_GetFileDir (char *FileName, eRootDirs Root, char *Dir)
+bool HDD_GetFileDir (const char *FileName, eRootDirs Root, char *Dir)
 {
   const char *ext = NULL;
   char dirname[MAX_FILE_NAME_SIZE + 1];

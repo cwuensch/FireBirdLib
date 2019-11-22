@@ -258,7 +258,7 @@ void OSDMenuDrawCursor(dword x, dword y, dword w, dword h);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
 void OSDMenuLoadStdFonts(void);
-void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
+void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDMenuWaitSpinnerIdle(void);
 void OSDMenuWaitSpinnerDrawItem(word rgn, dword x, dword rgb);
 dword OSDMenuWaitSpinnerShadeColor(dword rgb, word step, word steps);

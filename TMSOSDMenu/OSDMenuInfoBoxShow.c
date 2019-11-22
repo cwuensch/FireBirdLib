@@ -3,7 +3,7 @@
 
 dword WaitSpinnerPosY;
 
-void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout)
+void OSDMenuInfoBoxShow(const char *Title, const char *Text, dword Timeout)
 {
   TRACEENTER();
 

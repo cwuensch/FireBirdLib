@@ -1360,11 +1360,11 @@
   /* ELF file format functions                                                                                                 */
   /*****************************************************************************************************************************/
 
-  bool  ELFOpenFile(char *FileName);
+  bool  ELFOpenFile(const char *FileName);
   bool  ELFReadELFHeader(void);
   bool  ELFReadSectionHeaders(void);
   bool  ELFReadShstrtabSection(void);
-  dword ELFGetSectionIndex(char *SectionName);
+  dword ELFGetSectionIndex(const char *SectionName);
   bool  ELFGetSectionAddress(dword SectionIndex, dword *SectionAddress, dword *SectionSize);
   bool  ELFGetSectionOffset(dword SectionIndex, dword *SectionOffset, dword *SectionSize);
   bool  ELFReadDWORD(dword SectionIndex, dword *Data);
@@ -1853,10 +1853,10 @@
 
   void  FM_MakeFontDir(void);
   bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
-  dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData);
-  dword FMUC_GetStringWidth(char *Text, tFontDataUC *FontData);
-  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
-  void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
+  dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
+  dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData);
+  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
+  void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
 
 
@@ -1943,37 +1943,37 @@
 
 
   bool        FixInvalidFileName(char *FileName);
-  void        ConvertPathType(char *Source, char *Dest, tPathFormat DestFormat);
-  tPathFormat GetPathType(char *Source);
+  void        ConvertPathType(const char *Source, char *Dest, tPathFormat DestFormat);
+  tPathFormat GetPathType(const char *Source);
   int         HDD_AAM_Disable(void);
   int         HDD_AAM_Enable(byte AAMLevel);
   int         HDD_APM_Disable(void);
   int         HDD_APM_Enable(byte APMLevel);
   bool        HDD_BuildExtDriveList(textPartitionInfo *ExtPartitionList, dword *NrListItems);
-  bool        HDD_ChangeDir(char *Dir);
-  void        HDD_Delete(char *FileName);
-  bool        HDD_Exist(char *FileName);
-  TYPE_File  *HDD_FappendOpen(char *FileName);
-  bool        HDD_FappendWrite(TYPE_File *file, char *data);
-  bool        HDD_FindMountPoint(char *File, char *MountPoint);
-  bool        HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice);
-  int         HDD_FindSymbolicLink(char *pathName, char *returnedPath, char *fullPathName);
+  bool        HDD_ChangeDir(const char *Dir);
+  void        HDD_Delete(const char *FileName);
+  bool        HDD_Exist(const char *FileName);
+  TYPE_File  *HDD_FappendOpen(const char *FileName);
+  bool        HDD_FappendWrite(TYPE_File *file, const char *data);
+  bool        HDD_FindMountPoint(const char *File, char *MountPoint);
+  bool        HDD_FindMountPointDevice(const char *File, char *MountPoint, char *MountDevice);
+  int         HDD_FindSymbolicLink(const char *pathName, char *returnedPath, char *fullPathName);
   bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
-  bool        HDD_GetFileDir(char *FileName, eRootDirs Root, char *Dir);
-  bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
-  dword       HDD_GetFileTimeByFileName(char *FileName);
+  bool        HDD_GetFileDir(const char *FileName, eRootDirs Root, char *Dir);
+  bool        HDD_GetFileSizeAndInode(const char *FileName, __ino64_t *CInode, __off64_t *FileSize);
+  dword       HDD_GetFileTimeByFileName(const char *FileName);
   dword       HDD_GetFileTimeByTypeFile(TYPE_File *File);
   bool        HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo);
-  __ino64_t   HDD_GetInodeByFileName(char *Filename);
+  __ino64_t   HDD_GetInodeByFileName(const char *Filename);
   __ino64_t   HDD_GetInodeByTypeFile(TYPE_File *File);
   bool        HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
-  bool        HDD_InfBlockGet(char *RecPath, tinfBlock *infBlock);
-  bool        HDD_InfBlockSet(char *RecPath, tinfBlock *infBlock);
-  bool        HDD_Move(char *FileName, char *FromDir, char *ToDir);
-  bool        HDD_Recycle(char *FileName);
-  bool        HDD_RecycleSF(char *FileName);
-  void        HDD_RemoveDir(char *DirPath, bool Recursive);
-  bool        HDD_Rename(char *FileName, char *NewFileName);
+  bool        HDD_InfBlockGet(const char *RecPath, tinfBlock *infBlock);
+  bool        HDD_InfBlockSet(const char *RecPath, tinfBlock *infBlock);
+  bool        HDD_Move(const char *FileName, const char *FromDir, const char *ToDir);
+  bool        HDD_Recycle(const char *FileName);
+  bool        HDD_RecycleSF(const char *FileName);
+  void        HDD_RemoveDir(const char *DirPath, bool Recursive);
+  bool        HDD_Rename(const char *FileName, const char *NewFileName);
   int         HDD_Smart_DisableAttributeAutoSave(void);
   int         HDD_Smart_DisableOperations(void);
   int         HDD_Smart_EnableAttributeAutoSave(void);
@@ -1981,12 +1981,12 @@
   int         HDD_Smart_ReadData(word *DataBuf);
   int         HDD_Smart_ReadThresholdData(word *DataBuf);
   int         HDD_Smart_ReturnStatus(void);                  ////if 20 is returned then one or more thresholds have been exceeded; -1 upon error
-  bool        HDD_Unrecycle(char *FileName);
-  bool        HDD_UnrecycleSF(char *FileName);
+  bool        HDD_Unrecycle(const char *FileName);
+  bool        HDD_UnrecycleSF(const char *FileName);
   bool        HDD_Write(void *data, dword length, TYPE_File *f);
-  tFileInUse  HDD_isFileInUse(char *FileName);
+  tFileInUse  HDD_isFileInUse(const char *FileName);
   void        MakeUniqueFileName(char *FileName);
-  void        SeparateFileNameComponents(char *FileName, char *Path, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
+  void        SeparateFileNameComponents(const char *FileName, char *Path, char *Name, char *Ext, int *Index, bool *isRec, bool *isDel);
 
 
   /*****************************************************************************************************************************/
@@ -2421,16 +2421,16 @@
   char  *GetRecExtension(void);
   bool   HDD_DecodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
   bool   HDD_EncodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
-  int    HDD_FindPCR(byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
+  int    HDD_FindPCR(const byte *pBuffer, dword BufferSize, word PID);   //Returns the PCR in minutes
   byte  *HDD_GetPvrRecTsInfoPointer(byte Slot);
   byte  *HDD_GetPvrRecTsPlayInfoPointer(byte Slot);
   bool   HDD_GetRecSlotFiles(byte Slot, TYPE_File **RecFile, TYPE_File **InfFile, TYPE_File **NavFile);
   bool   HDD_isAnyRecording(void);
-  bool   HDD_isCryptedStream(byte *Buffer, dword BufferSize);
+  bool   HDD_isCryptedStream(const byte *Buffer, dword BufferSize);
   bool   HDD_isExtRecording(void);
-  bool   HDD_isRecFileName(char *FileName);
+  bool   HDD_isRecFileName(const char *FileName);
   bool   HDD_isRecording(byte RecSlot);
-  char  *HDD_MakeNewRecName(char *fname, word sequence, char *NewRecname, int NewRecNameSize);
+  char  *HDD_MakeNewRecName(const char *fname, word sequence, char *NewRecname, int NewRecNameSize);
   dword  HDD_NumberOfRECSlots(void);
 
   bool   HDD_RecSlotDecode(byte Slot, tFlashTimer *RecSlot);
@@ -2438,11 +2438,11 @@
   bool   HDD_RECSlotSetDuration(byte Slot, word Duration);
   word   HDD_SetExtRecording(bool ExtDisk);
 
-  bool   infData_isAvail(char *infFileName, char *NameTag, dword *PayloadSize);
-  bool   infData_Get(char *infFileName, char *NameTag, dword *PayloadSize, byte **Payload);
-  bool   infData_GetNameByIndex(char *infFileName, dword NameIndex, char *NameTag);
-  bool   infData_Set(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
-  bool   infData_Delete(char *infFileName, char *NameTag);
+  bool   infData_isAvail(const char *infFileName, const char *NameTag, dword *PayloadSize);
+  bool   infData_Get(const char *infFileName, const char *NameTag, dword *PayloadSize, byte **Payload);
+  bool   infData_GetNameByIndex(const char *infFileName, dword NameIndex, char *NameTag);
+  bool   infData_Set(const char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
+  bool   infData_Delete(const char *infFileName, const char *NameTag);
 
   typedef struct
   {
@@ -2468,7 +2468,7 @@
 
   bool PSBuffer_Init(tPSBuffer *PSBuffer, word PID, int BufferSize);
   void PSBuffer_Free(tPSBuffer *PSBuffer);
-  bool PSBuffer_ProcessTSPacket(tPSBuffer *PSBuffer, byte *TSBuffer, ulong64 FileOffset);
+  bool PSBuffer_ProcessTSPacket(tPSBuffer *PSBuffer, const byte *TSBuffer, ulong64 FileOffset);
 
 
   /*****************************************************************************************************************************/
@@ -2502,36 +2502,36 @@
     NonPrintableChars    = 8
   } eRemoveChars;
 
-  char       *ansicstr(char *string, int len, int flags, int *sawc, int *rlen);
+  char       *ansicstr(const char *string, int len, int flags, int *sawc, int *rlen);
   void        DeleteAt(char *SourceString, int Pos, int Len);
   void        ExtractLine(char *Text, char *Line);
-  size_t      GetLine(char *data, bool strip);
-  void        GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars);
-  byte       *GetUCPos(byte *String, int CharPos);
-  void        InsertAt(char *SourceString, int Pos, char *NewString);
-  bool        isUTF8Char(byte *p, byte *BytesPerChar);
+  size_t      GetLine(const char *data, bool strip);
+  void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
+  byte       *GetUCPos(const byte *String, int CharPos);
+  void        InsertAt(const char *SourceString, int Pos, char *NewString);
+  bool        isUTF8Char(const byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
   void        MakeValidFileName(char *strName, eRemoveChars ControlCharacters);
-  char       *ParseLine(char *zeile, size_t *n, char delim);
+  char       *ParseLine(const char *zeile, size_t *n, char delim);
   void        ReplaceInvalidFileNameChars(char *strName);
   char       *RTrim(char *s);
-  void        SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt);
-  byte       *SkipCharTableBytes(byte *p);
-  byte       *strcpyUC(byte *dest, byte *src);
-  bool        StringEndsWith(char *text, char *postfix);
-  int         strlenUC(byte *s);
+  void        SeparatePathComponents(const char *FullName, char *Path, char *FileName, char *FileExt);
+  byte       *SkipCharTableBytes(const byte *p);
+  byte       *strcpyUC(byte *dest, const byte *src);
+  bool        StringEndsWith(const char *text, const char *postfix);
+  int         strlenUC(const byte *s);
   bool        StrMkISO(byte *SourceString);
   bool        StrMkUTF8(byte *SourceString, size_t SourceSize, byte DefaultISO8859CharSet);
-  byte       *strncpyUC(byte *dest, byte *src, size_t n);
-  bool        StrReplace(char *String, char *Find, char *Replace);
-  void        StrToISO(byte *SourceString, byte *DestString);
-  void        StrToISOAlloc(byte *SourceString, byte **DestString);
-  bool        StrToUTF8(byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
+  byte       *strncpyUC(byte *dest, const byte *src, size_t n);
+  bool        StrReplace(char *String, const char *Find, const char *Replace);
+  void        StrToISO(const byte *SourceString, byte *DestString);
+  void        StrToISOAlloc(const byte *SourceString, byte **DestString);
+  bool        StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
   void        UpperCase(char *string);
-  dword       UTF8ToUTF32(byte *UTF8Character, byte *BytesPerChar);
+  dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
   void        UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
-  char       *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result, int ResultSize);
+  char       *ValidFileName(const char *strName, eRemoveChars ControlCharacters, char *Result, int ResultSize);
 
 
   /*****************************************************************************************************************************/
@@ -2602,15 +2602,15 @@
   dword HDD_TAP_DisableAll(bool DisableEvents);
   int   HDD_TAP_GetCurrentDir(char* CurrentDir);
   bool  HDD_TAP_GetFileNameByIndex(int Index, char **TAPFileName);
-  dword HDD_TAP_GetIDByFileName(char *TAPFileName);
+  dword HDD_TAP_GetIDByFileName(const char *TAPFileName);
   dword HDD_TAP_GetIDByIndex(int TAPIndex);
   int   HDD_TAP_GetIndexByID(dword TAPID);
-  bool  HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
+  bool  HDD_TAP_GetInfo(const char *FileName, tTAPInfo *pTAPInfo);
   void *HDD_TAP_GetStartParameter(void);
   bool  HDD_TAP_PopDir(void);
   bool  HDD_TAP_PushDir(void);
   dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dword param1, dword param2);
-  dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
+  dword HDD_TAP_Start(const char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID);
   bool  HDD_TAP_StartedByTAP(void);
   void  HDD_TAP_Terminate(dword TAPID);
   bool  HDD_TAP_isAnyRunning(void);
@@ -2755,15 +2755,15 @@
 
   //Main OSD
   #define OSDMenuGetW OSDMenuGetStringWidth   // potential legacy usage
-  void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
+  void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight);
   void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
   void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuSetLineHeight(tLineHeight type);
   int  OSDMenuGetNrOfLines(void);
   void OSDMenuUpdate(bool SuppressOSDSync);
-  void OSDMenuModifyTitleLeft(char *Text);
-  void OSDMenuModifyTitleRight(char *Text);
+  void OSDMenuModifyTitleLeft(const char *Text);
+  void OSDMenuModifyTitleRight(const char *Text);
   void OSDMenuModifyItemLongTextScrolling(bool AllowScrollingOfLongText);
   void OSDMenuModifyItemValueColumn(bool HasValueColumn);
   void OSDMenuModifyItemNumbered(bool NumberedItems);
@@ -2771,9 +2771,9 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   void OSDMenuDestroyNoOSDUpdate(void);
-  dword OSDMenuGetStringHeight(char *str, byte fntSize);
-  dword OSDMenuGetStringWidth(char *str, byte fntSize);
-  void OSDMenuPutString(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
+  dword OSDMenuGetStringHeight(const char *str, byte fntSize);
+  dword OSDMenuGetStringWidth(const char *str, byte fntSize);
+  void OSDMenuPutString(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
   bool OSDMenuIsVisible(void);
 
   //Callback function for custom menu drawings
@@ -2859,8 +2859,8 @@
 
   void        OSDMenuButtonsClear(void);
   void        OSDMenuButtonColor(dword Color);
-  void        OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, char *Text);
-  void        OSDMenuButtonModifyText(dword ButtonIndex, char *Text);
+  void        OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd, const char *Text);
+  void        OSDMenuButtonModifyText(dword ButtonIndex, const char *Text);
   tButtonIcon OSDMenuGetButtonIcon(dword key);
 
   //Cursor Functions
@@ -2879,10 +2879,10 @@
 
   //Items
   void  OSDMenuItemsClear(void);
-  bool  OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID);
+  bool  OSDMenuItemAdd(const char *Name, const char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID);
   bool  OSDMenuItemPassDrawing(int ItemIndex, bool VisibleName, bool VisibleValue);
-  bool  OSDMenuItemModifyName(int ItemIndex, char *Text);
-  bool  OSDMenuItemModifyValue(int ItemIndex, char *Text);
+  bool  OSDMenuItemModifyName(int ItemIndex, const char *Text);
+  bool  OSDMenuItemModifyValue(int ItemIndex, const char *Text);
   void  OSDMenuItemModifyValueXPos(dword NewValueXPos);
   void  OSDMenuItemModifyValueLeftArrowGap(int NewGapWidth);
   bool  OSDMenuItemModifyNameIcon(int ItemIndex, TYPE_GrData *pNameIconGd);
@@ -2905,8 +2905,8 @@
   void  OSDMenuItemSortNameColumn(bool Ascending, bool CaseSensitive);
   void  OSDMenuItemSortValueColumn(bool Ascending, bool CaseSensitive);
   void  OSDMenuItemSortID(bool Ascending);
-  int   OSDMenuItemFindName(char *Text);
-  int   OSDMenuItemFindValue(char *Text);
+  int   OSDMenuItemFindName(const char *Text);
+  int   OSDMenuItemFindValue(const char *Text);
   int   OSDMenuItemFindID(dword ID);
 
   //Menu Stack
@@ -2915,36 +2915,36 @@
   void OSDMenuSaveMyRegion(word Rgn);
 
   //Memo
-  void OSDMemoInitialize(bool ScrollLoop, char *TitleLeft, char *TitleRight, char *Text);
+  void OSDMemoInitialize(bool ScrollLoop, const char *TitleLeft, const char *TitleRight, const char *Text);
 
   //Info box
-  void OSDMenuInfoBoxShow(char *Title, char *Text, dword Timeout);
+  void OSDMenuInfoBoxShow(const char *Title, const char *Text, dword Timeout);
   void OSDMenuWaitSpinnerInit(void);
   void OSDMenuInfoBoxDestroy(void);
   void OSDMenuInfoBoxDestroyNoOSDUpdate(void);
   bool OSDMenuInfoBoxIsVisible(void);
 
   //Message box
-  void  OSDMenuMessageBoxInitialize(char *Title, char *Text);
-  void  OSDMenuMessageBoxButtonAdd(char *Text);
+  void  OSDMenuMessageBoxInitialize(const char *Title, const char *Text);
+  void  OSDMenuMessageBoxButtonAdd(const char *Text);
   void  OSDMenuMessageBoxButtonSelect(dword SelectedButton);
   void  OSDMenuMessageBoxAllowScrollOver(void);
   void  OSDMenuMessageBoxDoNotEnterNormalMode(bool DoNotEnterNormalMode);
   void  OSDMenuMessageBoxShow(void);
-  void  OSDMenuMessageBoxModifyText(char *Text);
+  void  OSDMenuMessageBoxModifyText(const char *Text);
   void  OSDMenuMessageBoxDestroy(void);
   void  OSDMenuMessageBoxDestroyNoOSDUpdate(void);
   bool  OSDMenuMessageBoxIsVisible(void);
   dword OSDMenuMessageBoxLastButton(void);
 
   //Color Picker
-  void  OSDMenuColorPickerShow(char *Title, dword DefaultColor);
+  void  OSDMenuColorPickerShow(const char *Title, dword DefaultColor);
   void  OSDMenuColorPickerDestroy(void);
   bool  OSDMenuColorPickerIsVisible(void);
   dword OSDMenuColorPickerColor(void);
 
   //Progress bar
-  void OSDMenuProgressBarShow(char *Title, char *Text, dword Value, dword MaxValue, TYPE_GrData *DifferentProgressBar);
+  void OSDMenuProgressBarShow(const char *Title, const char *Text, dword Value, dword MaxValue, TYPE_GrData *DifferentProgressBar);
   void OSDMenuProgressBarDestroy(void);
   void OSDMenuProgressBarDestroyNoOSDUpdate(void);
   bool OSDMenuProgressBarIsVisible(void);
@@ -2977,12 +2977,12 @@
     KC_NRITEMS
   } tKeyboardCursor;
 
-  void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
+  void OSDMenuKeyboard_Setup(const char *Title, char *Variable, dword MaxLength);
   void OSDMenuKeyboard_AutomaticLowerCase(bool automatic);
   bool OSDMenuKeyboard_ChangeKeypad(tKeyPadMode mode, char keypad[26][4]);
   void OSDMenuKeyboard_SetCursor(tKeyboardCursor KeyboardCursor);
   bool OSDMenuKeyboard_SetKeypadMode(tKeyPadMode mode);
-  void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
+  void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, const char *Text);
   void OSDMenuKeyboard_Show(void);
   bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
   bool OSDMenuKeyboard_isVisible(void);

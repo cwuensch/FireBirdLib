@@ -2,7 +2,7 @@
 #include                <stdlib.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-bool OSDMenuItemAdd(char *Name, char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID)
+bool OSDMenuItemAdd(const char *Name, const char *Value, TYPE_GrData *pNameIconGd, TYPE_GrData *pValueIconGd, bool Selectable, bool ValueArrows, dword ID)
 {
   TRACEENTER();
 

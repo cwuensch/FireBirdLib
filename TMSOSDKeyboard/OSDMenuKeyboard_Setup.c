@@ -35,7 +35,7 @@ bool                    OSDMenuKeyboard_ReturnToNormal;
 bool                    AutomaticLowerCase;
 tFontDataUC             KeyboardFont_12, KeyboardFont_14;
 
-void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
+void OSDMenuKeyboard_Setup(const char *Title, char *Variable, dword MaxSize)
 {
   TRACEENTER();
 

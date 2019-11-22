@@ -1,6 +1,6 @@
 #include                "FBLib_TMSOSDMenu.h"
 
-dword OSDMenuGetStringWidth (char *str, byte fntSize)
+dword OSDMenuGetStringWidth (const char *str, byte fntSize)
 {
   TRACEENTER();
 
