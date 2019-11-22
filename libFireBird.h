@@ -2849,6 +2849,8 @@
   tButtonIcon OSDMenuGetButtonIcon(dword key);
 
   //Cursor Functions
+  int   OSDMenuFindNextSelectableEntry(int CurrentSelection);
+  int   OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
   bool  OSDMenuSelectItem(int ItemIndex);
   bool  OSDMenuSelectTopItem(int TopIndex);
   int   OSDMenuGetCurrentItem(void);

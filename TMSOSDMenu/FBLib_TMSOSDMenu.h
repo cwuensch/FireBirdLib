@@ -244,8 +244,6 @@ extern word             WaitSpinnerRgn;
 extern int              WaitSpinnerIndex;
 extern dword            WaitSpinnerTimeout;
 
-int  OSDMenuFindNextSelectableEntry(int CurrentSelection);
-int  OSDMenuFindPreviousSelectableEntry(int CurrentSelection);
 void OSDCalcIndices(void);
 void OSDDrawBackground(void);
 void OSDDrawButtons(void);
