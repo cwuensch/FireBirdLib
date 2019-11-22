@@ -32,6 +32,7 @@
   extern int            KeyPadPosition;
   extern word           OSDMenuKeyboard_rgn;
   extern bool           OSDMenuKeyboard_ReturnToNormal;
+  extern bool           AutomaticLowerCase;
   extern tFontDataUC    KeyboardFont_12, KeyboardFont_14;
 
   void OSDMenuKeyboard_Draw(void);

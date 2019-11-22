@@ -32,6 +32,7 @@ tKeyboardCursor         KeyboardCursorType;
 int                     KeyPadPosition = 0;
 word                    OSDMenuKeyboard_rgn = 0;
 bool                    OSDMenuKeyboard_ReturnToNormal;
+bool                    AutomaticLowerCase;
 tFontDataUC             KeyboardFont_12, KeyboardFont_14;
 
 void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
@@ -72,6 +73,7 @@ void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxSize)
 
   KeyPadMode = KPM_Standard;
   KeyboardCursorType = KC_Text;
+  AutomaticLowerCase = FALSE;
 
   FMUC_LoadFontFile("Calibri_12.ufnt", &KeyboardFont_12);
   FMUC_LoadFontFile("Calibri_14.ufnt", &KeyboardFont_14);

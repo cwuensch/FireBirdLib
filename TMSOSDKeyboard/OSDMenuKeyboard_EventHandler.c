@@ -162,6 +162,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
                 {
                   InsertAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, Keypad[KeyPadMode][KeyPadPosition]);
                   OSDMenuKeyboard_CursorPosition++;
+                  if (AutomaticLowerCase && (KeyPadMode == KPM_CAPS)) KeyPadMode = KPM_Standard;
                   OSDMenuKeyboard_Draw();
                 }
               }
@@ -172,8 +173,14 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
           case RKEY_Info:       //Zeichensatz ändern
           case RKEY_Play:
           {
+            if (AutomaticLowerCase)
+            {
+              // Reihenfolge: KPM_CAPS -> KPM_Standard
+              if (KeyPadMode == KPM_CAPS) KeyPadMode = KPM_Standard - 1;
+              else if (KeyPadMode == KPM_Standard) KeyPadMode++;
+            }
             KeyPadMode++;
-            if(KeyPadMode >= KPM_NrModes || *Keypad[KeyPadMode][0] == 0) KeyPadMode = 0;
+            if (KeyPadMode >= KPM_NrModes || *Keypad[KeyPadMode][0] == 0) KeyPadMode = (AutomaticLowerCase ? KPM_CAPS : KPM_Standard);
             OSDMenuKeyboard_Draw();
             break;
           }
@@ -338,6 +345,7 @@ bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2)
               {
                 InsertAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, ToBeInserted);
                 OSDMenuKeyboard_CursorPosition++;
+                if (AutomaticLowerCase && (KeyPadMode == KPM_CAPS)) KeyPadMode = KPM_Standard;
                 OSDMenuKeyboard_Draw();
               }
             }

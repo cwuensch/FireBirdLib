@@ -2963,6 +2963,7 @@
   } tKeyboardCursor;
 
   void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
+  void OSDMenuKeyboard_AutomaticLowerCase(bool automatic);
   bool OSDMenuKeyboard_ChangeKeypad(tKeyPadMode mode, char keypad[26][4]);
   void OSDMenuKeyboard_SetCursor(tKeyboardCursor KeyboardCursor);
   bool OSDMenuKeyboard_SetKeypadMode(tKeyPadMode mode);
