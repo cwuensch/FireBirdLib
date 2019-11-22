@@ -1123,3 +1123,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuItemGetNameColor()
             Added: OSDMenuItemGetTextColor()
             Added: OSDMenuFindNextSelectableEntry() and OSDMenuFindPreviousSelectableEntry() made public (i.e. part of the API)
+            Modified: Increase the maximum length of keyboard button texts from 19 to 22

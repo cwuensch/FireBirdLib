@@ -5,7 +5,7 @@
   #include              "OSDMenuKeyboard_Colors.h"
   #include              "TMSRemote_TAPCOM.h"
 
-  #define BUTTONTEXTSIZE  20
+  #define BUTTONTEXTSIZE  23
   #define NRKEYPADKEYS    29
 
   typedef enum
