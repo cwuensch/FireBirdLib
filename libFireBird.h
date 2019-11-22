@@ -2878,6 +2878,7 @@
   bool  OSDMenuItemModifyCustomIndex(int ItemIndex, int CustomIndex);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);
+  dword OSDMenuItemGetNameColor(int ItemIndex);
   dword OSDMenuItemGetID(int ItemIndex);
   char *OSDMenuItemGetCurrentValue(void);
   char *OSDMenuItemGetCurrentName(void);
