@@ -1131,3 +1131,4 @@ The following functions accept any form a path. The INI and language INI functio
             Fixed: Reset KeyPadMode to its default when initializing the keyboard
             Added: OSDMenuKeyboard_ChangeKeypad() to change or suppress keypads (except Standard and CAPS)
             Added: OSDMenuKeyboard_SetKeypadMode() to change the default starting keypad mode
+            Fixed: Align keyboard title horizontally and vertically centered (2 px to the left and 3 px up)

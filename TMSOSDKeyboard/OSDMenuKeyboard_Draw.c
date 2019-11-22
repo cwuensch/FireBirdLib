@@ -35,7 +35,7 @@ void OSDMenuKeyboard_Draw(void)
 
   // Titelbox erzeugen
   TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 0, 0, 444, 36, COLOR_Grey08, COLOR_Grey08, COLOR_Grey03);
-  FMUC_PutStringAA(OSDMenuKeyboard_rgn, 5, 10, 440, OSDMenuKeyboard_Title, COLOR_Orange01, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
+  FMUC_PutStringAA(OSDMenuKeyboard_rgn, 5, 7, 438, OSDMenuKeyboard_Title, COLOR_Orange01, 0, &KeyboardFont_14, FALSE, ALIGN_CENTER, AntiAliasFactor);
 
   // Tastaturbox erzeugen
   TAP_Osd_Draw3dBoxFill(OSDMenuKeyboard_rgn, 0, 34, 444, 244, COLOR_Grey08, COLOR_Grey08, COLOR_Grey04);
