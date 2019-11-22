@@ -1121,3 +1121,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Release date
 2019-11-22  Added: OSDMenuItemFindID()
             Added: OSDMenuItemGetNameColor()
+            Added: OSDMenuItemGetTextColor()
