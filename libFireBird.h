@@ -164,7 +164,7 @@
   #define LE32(p)       (p)
 
   #define XDATA                                       //don't use XDATA on the TMS
-  #define TS_FILE_NAME_SIZE   MAX_FILE_NAME_SIZE      //the name has changed
+  #define TS_FILE_NAME_SIZE   (MAX_FILE_NAME_SIZE + 1)//name and usage have changed: name[TS_FILE_NAME_SIZE] vs. name[MAX_FILE_NAME_SIZE + 1]
   #define ATTR_PARENT         0xf0                    //FindFirst/FindNext doesn't know about ..
 
   #ifndef PC_BASED
