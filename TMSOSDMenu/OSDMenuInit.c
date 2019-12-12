@@ -60,6 +60,8 @@ void OSDMenuInit (bool AllowScrollingOfLongText, bool HasValueColumn, bool Numbe
   pMenu->HasValueColumn = HasValueColumn;
   pMenu->NumberedItems = NumberedItems;
   pMenu->ScrollLoop = ScrollLoop;
+  pMenu->XPos = 60;
+  pMenu->Width = 600;
   pMenu->ValueXPos = 350;
   pMenu->ValueXOffset = 15;
   pMenu->hasValueArrows = FALSE;
