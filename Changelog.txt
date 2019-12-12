@@ -1152,3 +1152,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuListBoxDestroy() and OSDMenuListBoxDestroyNoOSDUpdate()
             Modified: TMSOSDMenu demo demonstrates use of a list box
             Added: TMSOSDMenu ListBox demo to demonstrate a stand-alone list box
+            Added: OSDMenuInfoBoxExitButton() to add an Exit button to an InfoBox without automatic timeout

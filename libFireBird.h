@@ -2930,6 +2930,7 @@
   void OSDMenuInfoBoxDestroy(void);
   void OSDMenuInfoBoxDestroyNoOSDUpdate(void);
   bool OSDMenuInfoBoxIsVisible(void);
+  void OSDMenuInfoBoxExitButton(bool ExitButton);
 
   //Message box
   void  OSDMenuMessageBoxInitialize(const char *Title, const char *Text);

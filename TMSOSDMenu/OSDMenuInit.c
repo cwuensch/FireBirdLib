@@ -13,6 +13,7 @@ word                    InfoBoxOSDRgn;
 dword                   InfoBoxTimeOut;
 byte                   *InfoBoxSaveArea;
 dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
+bool                    InfoBoxExitButton;
 
 word                    MessageBoxOSDRgn;
 tMessageBox             MessageBox;

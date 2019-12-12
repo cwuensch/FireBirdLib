@@ -232,6 +232,7 @@ extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
 extern byte            *InfoBoxSaveArea;
 extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
+extern bool             InfoBoxExitButton;
 
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
