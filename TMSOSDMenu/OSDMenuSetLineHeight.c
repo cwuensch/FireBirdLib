@@ -37,7 +37,7 @@ void OSDMenuSetLineHeight (tLineHeight type)
       break;
   }
 
-  if (pMenu->OSDMenuDisplayMode == OMDM_Standard) OSDDirty = TRUE;
+  if (pMenu->OSDMenuDisplayMode == OMDM_Standard || pMenu->OSDMenuDisplayMode == OMDM_ListBox) OSDDirty = TRUE;
   if (pMenu->OSDMenuDisplayMode == OMDM_Memo || pMenu->OSDMenuDisplayMode == OMDM_Text) OSDMemoFormatText();
 
   TRACEEXIT();

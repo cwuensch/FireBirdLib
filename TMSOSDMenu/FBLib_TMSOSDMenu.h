@@ -11,6 +11,11 @@
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
 
+#define LISTBOX_FRAME_THICKNESS  2
+#define LISTBOX_GAP_FRAME_TO_X   8
+#define LISTBOX_OFFSET_TO_X      (LISTBOX_FRAME_THICKNESS + LISTBOX_GAP_FRAME_TO_X)
+#define LISTBOX_ADDITIONAL_WIDTH (2 * LISTBOX_OFFSET_TO_X + _ScrollBarVisible_Gd.width)
+
 #define WaitSpinnerItems       12
 #define WaitSpinnerItemWidth    6
 #define WaitSpinnerItemHeight  14
@@ -53,6 +58,7 @@ typedef struct
 typedef enum
 {
   OMDM_Standard,
+  OMDM_ListBox,
   OMDM_Memo,
   OMDM_Text            // like Memo, but CurrentTopIndex won't follow CurrentSelection
 } tOSDMenuDisplayMode;

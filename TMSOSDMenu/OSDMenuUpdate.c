@@ -58,7 +58,8 @@ void OSDMenuUpdate(bool SuppressOSDSync)
     OSDDrawScrollBar();
     switch(Menu[CurrentMenuLevel].OSDMenuDisplayMode)
     {
-      case OMDM_Standard: OSDDrawList(); break;
+      case OMDM_Standard:
+      case OMDM_ListBox:  OSDDrawList(); break;
       case OMDM_Text:
       case OMDM_Memo:     OSDDrawMemo(); break;
     }

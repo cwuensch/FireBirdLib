@@ -10,7 +10,7 @@ void OSDDrawScrollBar(void)
 
   pMenu = &Menu[CurrentMenuLevel];
 
-  if (pMenu->OSDMenuDisplayMode == OMDM_Standard)
+  if (pMenu->OSDMenuDisplayMode == OMDM_Standard || pMenu->OSDMenuDisplayMode == OMDM_ListBox)
   {
     switch (pMenu->NrLines)
     {
