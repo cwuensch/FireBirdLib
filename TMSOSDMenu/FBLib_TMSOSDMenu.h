@@ -59,6 +59,8 @@ typedef enum
 
 typedef struct
 {
+  dword                 XPos;
+  dword                 Width;
   int                   NrLines;
   tItem                *Item;
   int                   NrItems;
