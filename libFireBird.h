@@ -2892,6 +2892,7 @@
   bool  OSDMenuItemModifyNameColor(int ItemIndex, dword Color);
   bool  OSDMenuItemModifyTextColor(int ItemIndex, dword Color);
   bool  OSDMenuItemModifyID(int ItemIndex, dword ID);
+  bool  OSDMenuItemModifyValueArrows(int ItemIndex, bool ValueArrows);
   bool  OSDMenuItemModifyCustomIndex(int ItemIndex, int CustomIndex);
   char *OSDMenuItemGetValue(int ItemIndex);
   char *OSDMenuItemGetName(int ItemIndex);

@@ -1144,3 +1144,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Make constant parameters of the functions in elf, hdd, tap, TMSOSDKeyboard, TMSOSDMenu, rec and string const
             Modified: Release date
 2019-12-12  Fixed: isMJD() had a year 2020 problem
+            Added: OSDMenuItemModifyValueArrows()
