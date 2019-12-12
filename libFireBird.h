@@ -2917,6 +2917,7 @@
 
   //List box
   bool OSDMenuListBoxInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *Title, dword x, dword width, bool OSDUpdate);
+  bool OSDMenuListBoxIsVisible(void);
 
   //Memo
   void OSDMemoInitialize(bool ScrollLoop, const char *TitleLeft, const char *TitleRight, const char *Text);
