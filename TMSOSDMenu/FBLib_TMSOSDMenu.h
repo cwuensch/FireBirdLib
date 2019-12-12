@@ -257,6 +257,7 @@ void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Select
 void OSDMenuDrawCursor(dword x, dword y, dword w, dword h);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
+void OSDMenuInit(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight);
 void OSDMenuLoadStdFonts(void);
 void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
 void OSDMenuWaitSpinnerIdle(void);
