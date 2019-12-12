@@ -17,6 +17,7 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   {
     OSDDrawBackground();
     OSDDirty     = FALSE;
+    OSDMenuLastCursor = LCT_NRCURSORS;
     TitleDirty   = TRUE;
     ListDirty    = TRUE;
     ButtonsDirty = TRUE;

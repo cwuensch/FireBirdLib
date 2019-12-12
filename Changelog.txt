@@ -1145,3 +1145,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Release date
 2019-12-12  Fixed: isMJD() had a year 2020 problem
             Added: OSDMenuItemModifyValueArrows()
+            Modified: Void cursor when OSD is dirty (instead of only when number of lines changes)
