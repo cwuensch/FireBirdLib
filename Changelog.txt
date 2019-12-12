@@ -1147,3 +1147,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: OSDMenuItemModifyValueArrows()
             Modified: Void cursor when OSD is dirty (instead of only when number of lines changes)
             Added: New menu type "ListBox" (supporting basically all existing menu features)
+            Added: Restrict the buttons in list boxes to 2 lines

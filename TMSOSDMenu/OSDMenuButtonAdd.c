@@ -11,7 +11,7 @@ void OSDMenuButtonAdd(dword Line, tButtonIcon ButtonIcon, TYPE_GrData *ButtonGd,
   pMenu = &Menu[CurrentMenuLevel];
 
   IconGd = OSDMenuGetIconPointer(ButtonIcon, ButtonGd);
-  if((Line == 0) || (Line > 3) || (!IconGd) || (!Text) || (pMenu->NrButtons >= MAXBUTTONS))
+  if((Line == 0) || (Line > 3) || (!IconGd) || (!Text) || (pMenu->NrButtons >= MAXBUTTONS) || (pMenu->OSDMenuDisplayMode == OMDM_ListBox && Line == 3))
   {
     TRACEEXIT();
     return;
