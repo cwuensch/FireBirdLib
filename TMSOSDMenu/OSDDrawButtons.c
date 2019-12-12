@@ -10,8 +10,7 @@ void OSDDrawButtons(void)
   pMenu = &Menu[CurrentMenuLevel];
 
   if (pMenu->OSDMenuDisplayMode == OMDM_ListBox) TAP_Osd_FillBox(OSDRgn, pMenu->XPos - LISTBOX_GAP_FRAME_TO_X, 481, pMenu->Width + LISTBOX_ADDITIONAL_WIDTH - 2 * LISTBOX_FRAME_THICKNESS, 54, RGB(16, 16, 16));
-  else
-  TAP_Osd_FillBox(OSDRgn, 0, 481, 720, 95, RGB(16, 16, 16));
+  else TAP_Osd_FillBox(OSDRgn, 0, 481, 720, 95, RGB(16, 16, 16));
 
   for(i = 0; i < pMenu->NrButtons; i++)
   {
