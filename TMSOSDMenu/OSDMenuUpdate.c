@@ -16,12 +16,12 @@ void OSDMenuUpdate(bool SuppressOSDSync)
   if (OSDDirty)
   {
     OSDDrawBackground();
-    OSDDirty     = FALSE;
+    OSDDirty          = FALSE;
     OSDMenuLastCursor = LCT_NRCURSORS;
-    TitleDirty   = TRUE;
-    ListDirty    = TRUE;
-    ButtonsDirty = TRUE;
-    LogoDirty    = TRUE;
+    TitleDirty        = TRUE;
+    ListDirty         = TRUE;
+    ButtonsDirty      = TRUE;
+    LogoDirty         = TRUE;
   }
 
   //Draw left and right title
