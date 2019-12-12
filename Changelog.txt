@@ -1150,3 +1150,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: Restrict the buttons in list boxes to 2 lines
             Added: OSDMenuListBoxIsVisible()
             Added: OSDMenuListBoxDestroy() and OSDMenuListBoxDestroyNoOSDUpdate()
+            Modified: TMSOSDMenu demo demonstrates use of a list box
