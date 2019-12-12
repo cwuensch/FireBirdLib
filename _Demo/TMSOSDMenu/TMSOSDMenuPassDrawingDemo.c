@@ -2,7 +2,7 @@
 #include "tap.h"
 #include "libFireBird.h"
 
-#define PROGRAM_NAME "TMSOSDMenu PassDrawingDemo"
+#define PROGRAM_NAME "TMSOSDMenu PassDrawing Demo"
 #define VERSION      "0.1"
 
 TAP_ID           (0x8E0Affff);
