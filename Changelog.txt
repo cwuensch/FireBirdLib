@@ -1156,3 +1156,4 @@ The following functions accept any form a path. The INI and language INI functio
             Modified: Release date
 2019-12-30  Fixed: INIFindStartEnd() mistook trailing substrings for the key to search for
             Modified: Make TAP_GetSysOsdControl() return a true/false value
+            Modified: Release date
