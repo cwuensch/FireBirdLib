@@ -1154,3 +1154,4 @@ The following functions accept any form a path. The INI and language INI functio
             Added: TMSOSDMenu ListBox demo to demonstrate a stand-alone list box
             Added: OSDMenuInfoBoxExitButton() to add an Exit button to an InfoBox without automatic timeout
             Modified: Release date
+2019-12-30  Fixed: INIFindStartEnd() mistook trailing substrings for the key to search for
