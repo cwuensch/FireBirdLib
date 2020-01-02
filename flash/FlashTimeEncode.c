@@ -1,51 +1,51 @@
 #include                <string.h>
 #include                "FBLib_flash.h"
 
-static bool FlashTimeDecode_ST_TMSS(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
+static bool FlashTimeEncode_ST_TMSS(tFlashTimeInfo *TimeInfo, tFlashTimeInfo *Data)
 {
   TRACEENTER();
 
-  memset(TimeInfo, 0, sizeof(tFlashTimeInfo));
-  TimeInfo->UTCOffset      = Data->UTCOffset;
-  TimeInfo->SleepTimer     = Data->SleepTimer;
-  TimeInfo->unknown1       = Data->unknown1;
-  TimeInfo->GMTCollection  = Data->GMTCollection;
-  TimeInfo->Mode           = Data->Mode;
-  TimeInfo->unknown2       = Data->unknown2;
-  TimeInfo->unknown3       = Data->unknown3;
-  TimeInfo->DSTActive      = Data->DSTActive;
-  TimeInfo->AutoDSTEnabled = Data->AutoDSTEnabled;
-  TimeInfo->unknown4       = Data->unknown4;
+  memset(Data, 0, sizeof(tFlashTimeInfo));
+  Data->UTCOffset      = TimeInfo->UTCOffset;
+  Data->SleepTimer     = TimeInfo->SleepTimer;
+  Data->unknown1       = TimeInfo->unknown1;
+  Data->GMTCollection  = TimeInfo->GMTCollection;
+  Data->Mode           = TimeInfo->Mode;
+  Data->unknown2       = TimeInfo->unknown2;
+  Data->unknown3       = TimeInfo->unknown3;
+  Data->DSTActive      = TimeInfo->DSTActive;
+  Data->AutoDSTEnabled = TimeInfo->AutoDSTEnabled;
+  Data->unknown4       = TimeInfo->unknown4;
 
   TRACEEXIT();
   return TRUE;
 }
 
-static bool FlashTimeDecode_ST_TMST(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
+static bool FlashTimeEncode_ST_TMST(tFlashTimeInfo *TimeInfo, tFlashTimeInfo *Data)
 {
   bool ret;
 
   TRACEENTER();
 
-  ret = FlashTimeDecode_ST_TMSS(Data, TimeInfo);
+  ret = FlashTimeEncode_ST_TMSS(TimeInfo, Data);
 
   TRACEEXIT();
   return ret;
 }
 
-static bool FlashTimeDecode_ST_TMSC(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
+static bool FlashTimeEncode_ST_TMSC(tFlashTimeInfo *TimeInfo, tFlashTimeInfo *Data)
 {
   bool ret;
 
   TRACEENTER();
 
-  ret = FlashTimeDecode_ST_TMSS(Data, TimeInfo);
+  ret = FlashTimeEncode_ST_TMSS(TimeInfo, Data);
 
   TRACEEXIT();
   return ret;
 }
 
-bool FlashTimeDecode(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
+bool FlashTimeEncode(tFlashTimeInfo *TimeInfo, tFlashTimeInfo *Data)
 {
   bool ret;
 
@@ -72,9 +72,9 @@ bool FlashTimeDecode(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
     case ST_T5800:
     case ST_TF7k7HDPVR: break;
 
-    case ST_TMSS: ret = FlashTimeDecode_ST_TMSS(Data, TimeInfo); break;
-    case ST_TMST: ret = FlashTimeDecode_ST_TMST(Data, TimeInfo); break;
-    case ST_TMSC: ret = FlashTimeDecode_ST_TMSC(Data, TimeInfo); break;
+    case ST_TMSS: ret = FlashTimeEncode_ST_TMSS(TimeInfo, Data); break;
+    case ST_TMST: ret = FlashTimeEncode_ST_TMST(TimeInfo, Data); break;
+    case ST_TMSC: ret = FlashTimeEncode_ST_TMSC(TimeInfo, Data); break;
 
     case ST_NRTYPES: break;
   }
@@ -83,8 +83,7 @@ bool FlashTimeDecode(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo)
   return ret;
 }
 
-
-bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo)
+bool FlashTimeSetInfo(tFlashTimeInfo *TimeInfo)
 {
   TRACEENTER();
 
@@ -116,7 +115,7 @@ bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo)
       tFlashTimeInfo   *p;
 
       p = (tFlashTimeInfo*)(FIS_vFlashBlockTimeInfo());
-      if(p) ret = FlashTimeDecode(p, TimeInfo);
+      if(p) ret = FlashTimeEncode(TimeInfo, p);
       break;
     }
 
@@ -125,7 +124,7 @@ bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo)
       tFlashTimeInfo   *p;
 
       p = (tFlashTimeInfo*)(FIS_vFlashBlockTimeInfo());
-      if(p) ret = FlashTimeDecode(p, TimeInfo);
+      if(p) ret = FlashTimeEncode(TimeInfo, p);
       break;
     }
 
@@ -134,7 +133,7 @@ bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo)
       tFlashTimeInfo   *p;
 
       p = (tFlashTimeInfo*)(FIS_vFlashBlockTimeInfo());
-      if(p) ret = FlashTimeDecode(p, TimeInfo);
+      if(p) ret = FlashTimeEncode(TimeInfo, p);
       break;
     }
 

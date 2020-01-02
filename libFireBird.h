@@ -1,7 +1,7 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_RELEASEDATE__ "2019-12-30"
+  #define __FBLIB_RELEASEDATE__ "2020-01-02"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
@@ -1484,6 +1484,7 @@
   byte   ApplChannel_GetBer(byte TunerIndex, byte *BER);
   void   ApplCiplus_CamSelect(byte CamIndex);
   byte   ApplCiplus_GetSelectedCam(void);
+  word   ApplClock_SetTimeMJD(word mjd, byte hour, byte min, byte sec);
   dword  ApplHdd_FileCutPaste(char *SourceFileName, unsigned int StartBlock, unsigned int NrBlocks, char *CutFileName);
   dword  ApplHdd_FreeSize(char *MountPath, bool a1);
   word   ApplHdd_GetFileInfo(word p1, int *TotalBlocks, int *CurrentBlock, byte p4, byte p5);
@@ -1639,19 +1640,21 @@
     short                 UTCOffset;
     word                  SleepTimer;
 
-    byte                  unknown1:3;
-    byte                  GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-    byte                  Mode:1;                 //0=Auto, 1=Manual
-    byte                  unknown2:1;
+    word                  unknown1:3;
+    word                  GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+    word                  Mode:1;                 //0=Auto, 1=Manual
+    word                  unknown2:1;
+    word                  unknown3:8;
 
-    byte                  unknown3;
-
-    word                  DST:2;                  //0=off, 3=on
+    word                  AutoDSTEnabled:1;
+    word                  DSTActive:1;
     word                  unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
+  bool FlashTimeSetInfo(tFlashTimeInfo *TimeInfo);
   bool FlashTimeDecode(tFlashTimeInfo *Data, tFlashTimeInfo *TimeInfo);
+  bool FlashTimeEncode(tFlashTimeInfo *TimeInfo, tFlashTimeInfo *Data);
 
   typedef struct
   {
@@ -2094,6 +2097,7 @@
   inline dword FIS_fwApplChannel_GetBer(void);
   inline dword FIS_fwApplCiplus_CamSelect(void);
   inline dword FIS_fwApplCiplus_GetSelectedCam(void);
+  inline dword FIS_fwApplClock_SetTimeMJD(void);
   inline dword FIS_fwApplHdd_FileCutPaste(void);
   inline dword FIS_fwApplHdd_FreeSize(void);
   inline dword FIS_fwApplHdd_GetFileInfo(void);
@@ -2163,6 +2167,7 @@
   inline dword FIS_vfavName(void);
   inline dword FIS_vFlash(void);
   inline dword FIS_vfrontfd(void);
+  inline dword FIS_vgmt(void);
   inline dword FIS_vGrid(void);
   inline dword FIS_vHddDivxFolder(void);
   inline dword FIS_vhddRecordFile(void);
