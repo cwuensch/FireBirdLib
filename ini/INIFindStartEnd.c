@@ -1,5 +1,6 @@
 #include <string.h>
 #include "FBLib_ini.h"
+#include "../string/FBLib_string.h"
 #include "libFireBird.h"
 
 void INIFindStartEnd(char *Key, char **Start, char **End, dword MaxEntrylen)
