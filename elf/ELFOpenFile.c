@@ -1,28 +1,15 @@
 #include                <stdio.h>
-#include                "ELF.h"
-#include                "FBLib_elf.h"
-
-int                      fTAP = 0;
-Elf32_Ehdr              *ELFHeader = NULL;
-Elf32_Shdr              *SectionHeaders = NULL;
-char                    *shstrtab = NULL;
-char                    *strtab = NULL;
-Elf32_Sym               *symtab = NULL;
+#include                <string.h>
+#include                "../libFireBird.h"
 
 bool ELFOpenFile(char *FileName)
 {
-  TRACEENTER();
+  char                  CurrentFile[512];
 
-  bool                  ret = FALSE;
-  char                  AbsFileName[FBLIB_DIR_SIZE];
+  memset(CurrentFile, 0, 512);
+  TAP_SPrint(CurrentFile, "%s", TAPFSROOT);
+  HDD_TAP_GetCurrentDir(&CurrentFile[strlen(CurrentFile)]);
+  TAP_SPrint(&CurrentFile[strlen(CurrentFile)], "/%s", FileName);
 
-  if(FileName && *FileName)
-  {
-    ConvertPathType(FileName, AbsFileName, PF_FullLinuxPath);
-    fTAP = open(AbsFileName, O_RDONLY);
-    ret = (fTAP >= 0);
-  }
-
-  TRACEEXIT();
-  return ret;
+  return ELFOpenAbsFile(CurrentFile);
 }

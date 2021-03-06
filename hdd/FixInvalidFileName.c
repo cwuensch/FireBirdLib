@@ -11,7 +11,7 @@ bool FixInvalidFileName(char *FileName)
   bool                  ret;
 
   ret = FALSE;
-  if(FileName && *FileName && HDD_Exist(FileName))
+  if(FileName && *FileName && TAP_Hdd_Exist(FileName))
   {
     memset(NewRecName, 0, sizeof(NewRecName));
 

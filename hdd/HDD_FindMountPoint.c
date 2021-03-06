@@ -1,16 +1,12 @@
-#include                <stdio.h>
-#include                <stdlib.h>
-#include                <mntent.h>
-#include                <string.h>
 #include                "libFireBird.h"
 
-bool HDD_FindMountPoint(char *File, char *MountPoint)
+bool HDD_FindMountPoint(const char *AbsPath, char *const OutMountPoint)
 {
   TRACEENTER();
 
   bool ret;
 
-  ret = HDD_FindMountPointDevice(File, MountPoint, NULL);
+  ret = HDD_FindMountPointDevice(AbsPath, OutMountPoint, NULL);
 
   TRACEEXIT();
   return ret;

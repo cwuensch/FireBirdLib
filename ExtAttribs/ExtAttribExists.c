@@ -3,41 +3,19 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <sys/xattr.h>
-#include "libFireBird.h"
+#include "../libFireBird.h"
 
 int ExtAttribExists(char *FileName, char *AttrName)
 {
-  TRACEENTER();
+  char                  AbsFileName[512];
 
-  char                  FullAttrName[128];
-  char                  AbsFileName[FBLIB_DIR_SIZE];
-  int                   f, i;
+  if(!FileName || !*FileName || !TAP_Hdd_Exist(FileName) || !AttrName || !*AttrName) return 0;
 
-  if(!FileName || !*FileName || !AttrName || !*AttrName)
-  {
-    TRACEEXIT();
-    return 0;
-  }
+  memset(AbsFileName, 0, sizeof(AbsFileName));
+  strcpy(AbsFileName, TAPFSROOT);
+  HDD_TAP_GetCurrentDir(&AbsFileName[strlen(AbsFileName)]);
+  if(AbsFileName[strlen(AbsFileName) - 1] != '/') strcat(AbsFileName, "/");
+  strcat(AbsFileName, FileName);
 
-  ConvertPathType(FileName, AbsFileName, PF_FullLinuxPath);
-  if(*AbsFileName)
-  {
-    f = open(AbsFileName, O_RDWR, 0600);
-    if(f >= 0)
-    {
-      TAP_SPrint(FullAttrName, "user.%s", AttrName);
-
-      if((i = fgetxattr(f, FullAttrName, NULL, 0)) >= 0)
-      {
-        close(f);
-
-        TRACEEXIT();
-        return i;
-      }
-      close(f);
-    }
-  }
-
-  TRACEEXIT();
-  return 0;
+  return ExtAttribExistsAbsPath(AbsFileName, AttrName);
 }

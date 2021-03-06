@@ -24,11 +24,9 @@
     word                PMTPID;             //0x06
     word                PCRPID;             //0x08
     word                VideoPID;           //0x0a
-
     word                AudioPID:13;        //0x0c
     word                AudioTypeFlag:2;
     word                AudioAutoSelect:1;
-
     word                NameLock:1;         //0x0e
     word                Flags2:15;
 
@@ -102,11 +100,9 @@
 
   typedef struct
   {
-    union
-    {
+    union {
       dword             Frequency;
-      struct
-      {
+      struct {
         dword           SatIdx:8;
         dword           Frequency2:24;
       };
@@ -150,13 +146,13 @@
     word                ServiceIndex;       //00a8
     byte                unused8[8];         //00aa
     byte                IceTV;              //00b2
-    byte                unused9[5];         //00b3
+    byte                unused9[5];         //00b3  // Padding?
   }__attribute__((packed)) TYPE_Timer_generic; //184 bytes
 
   typedef struct
   {
     TYPE_Timer_generic  TimerInfo;   //184 bytes
-    TYPE_TpInfo_TMSS    TpInfo;      // 32 bytes
+    TYPE_TpInfo_TMSS    TpInfo;      // 32 bytes  // (Alex: 100 bytes?)
   }__attribute__((packed)) TYPE_Timer_TMSS; //216 bytes
 
   typedef struct

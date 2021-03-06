@@ -1,7 +1,7 @@
 #ifndef FBLIB_TMSOSDKEYBOARD_H
   #define FBLIB_TMSOSDKEYBOARD_H
 
-  #include              "libFireBird.h"
+  #include              "../libFireBird.h"
   #include              "OSDMenuKeyboard_Colors.h"
   #include              "TMSRemote_TAPCOM.h"
 
@@ -9,12 +9,12 @@
 
   typedef enum
   {
-    KPM_Standard,
-    KPM_CAPS,
+    KPM_Letters,
+    KPM_LettersCAPS,
     KPM_Num,
     KPM_Symbols,
-    KPM_SpecialChars1,
-    KPM_SpecialChars2,
+    KPM_Special,
+    KPM_SpecialCAPS,
     KPM_SpecialChars3,
     KPM_NrModes
   } tKeyPadMode;
@@ -22,12 +22,13 @@
   typedef struct
   {
     dword               Line;
-    tButtonIcon         ButtonIcon;
+    TYPE_GrData        *ButtonGd;
     char                Text[20];
   } tOSDMenuKeyboard_Buttons;
 
   extern bool           OSDMenuKeyboard_GUIInitialized;
 
+  extern char           OSDMenuKeyboard_Clipboard[MAX_FILE_NAME_SIZE + 1];
   extern char          *OSDMenuKeyboard_Title;
   extern char          *OSDMenuKeyboard_StringVar;
   extern char          *OSDMenuKeyboard_StringVarOrig;
@@ -37,15 +38,19 @@
   extern int            OSDMenuKeyboard_ButtonsX[3];
   extern tOSDMenuKeyboard_Buttons OSDMenuKeyboard_Buttons[20];
   extern int            OSDMenuKeyboard_NrButtons;
-  extern char           Keypad[KPM_NrModes][26][4];
+  extern char           Keypad[KPM_NrModes][26][2];
   extern tKeyPadMode    KeyPadMode;
+  extern bool           KeyPadShiftState;
+  extern bool           KeyPadCursorMode;
   extern int            KeyPadPosition;
   extern word           OSDMenuKeyboard_rgn;
+  extern tFontData      Calibri_14_FontData;
   extern bool           OSDMenuKeyboard_ReturnToNormal;
-  extern tFontDataUC    KeyboardFont_12, KeyboardFont_14;
 
-  void OSDMenuKeyboard_Draw(void);
-  void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
+  void OSDMenuKeyboard_DrawAll(void);
+  void OSDMenuKeyboard_DrawKeys(void);
+  void OSDMenuKeyboard_DrawText(void);
+  void OSDMenuKeyboard_DrawLegendButton(dword Line, TYPE_GrData *ButtonGd, char *Text);
   void OSDMenuKeyboard_TMSRemoteDirectMode(bool DirectMode);
   void OSDMenuKeyboard_CursorRight(void);
   void OSDMenuKeyboard_CursorLeft(void);
@@ -54,5 +59,6 @@
   void OSDMenuKeyboard_DeleteLeft(void);
   void OSDMenuKeyboard_Finish(void);
   void OSDMenuKeyboard_SaveAndFinish(void);
+  void OSDMenuKeyboard_SetShiftState(void);
 
 #endif

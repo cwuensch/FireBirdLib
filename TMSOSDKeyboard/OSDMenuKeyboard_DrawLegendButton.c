@@ -1,12 +1,9 @@
 #include                "FBLib_TMSOSDKeyboard.h"
 
-TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
-
-void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *Text)
+void OSDMenuKeyboard_DrawLegendButton(dword Line, TYPE_GrData *ButtonGd, char *Text)
 {
-  TRACEENTER();
-
-  TYPE_GrData          *IconGd;
+//  TYPE_GrData          *IconGd = NULL;
+  extern tFontData      Calibri_12_FontData;
   int                   y;
 
   if(Line > 0 && Line < 4)
@@ -19,11 +16,9 @@ void OSDMenuKeyboard_DrawLegendButton(dword Line, tButtonIcon ButtonIcon, char *
       default: y = 312; break;
     }
 
-    IconGd = OSDMenuGetIconPointer(ButtonIcon, NULL);
-    TAP_Osd_PutGd(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1], y, IconGd, TRUE);
-    FMUC_PutString(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1] + IconGd->width + 2, y, 430, Text, COLOR_Grey18, 0, &KeyboardFont_12, FALSE, ALIGN_LEFT);
-    OSDMenuKeyboard_ButtonsX[Line - 1] = OSDMenuKeyboard_ButtonsX[Line - 1] + IconGd->width + FMUC_GetStringWidth(Text, &KeyboardFont_12) + 6;
+//    IconGd = OSDMenuGetIconPointer(ButtonIcon, NULL);
+    TAP_Osd_PutGd(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1], y, ButtonGd, TRUE);
+    FM_PutString(OSDMenuKeyboard_rgn, OSDMenuKeyboard_ButtonsX[Line - 1] + ButtonGd->width + 2, y, 430, Text, COLOR_Grey18, 0, &Calibri_12_FontData, FALSE, ALIGN_LEFT);
+    OSDMenuKeyboard_ButtonsX[Line - 1] = OSDMenuKeyboard_ButtonsX[Line - 1] + ButtonGd->width + FM_GetStringWidth(Text, &Calibri_12_FontData) + 6;
   }
-
-  TRACEEXIT();
 }

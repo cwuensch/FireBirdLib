@@ -1,2 +1,2 @@
-c:\sw\OS\cygwin\bin\find . -name "*.o" -delete
-c:\sw\OS\cygwin\bin\find . -name "*.d" -delete
+%TFROOT%\Cygwin\bin\find . -name "*.o" -delete
+%TFROOT%\Cygwin\bin\find . -name "*.d" -delete

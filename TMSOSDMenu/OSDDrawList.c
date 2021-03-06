@@ -1,9 +1,13 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _pfeil_l_Gd;
+extern TYPE_GrData      _pfeil_l_bright_Gd;
+extern TYPE_GrData      _pfeil_r_Gd;
+extern TYPE_GrData      _pfeil_r_bright_Gd;
+
+
 void OSDDrawList(void)
 {
-  TRACEENTER();
-
   int                   i, YText, hL, dLines;
   dword                 XStart, XEnd, yT, yL;
   tMenu                *pMenu;
@@ -12,6 +16,7 @@ void OSDDrawList(void)
   char                  s[4];
   dword                 MaxNameIconWidth, MaxValueIconWidth;
 
+  TRACEENTER();
   pMenu = &Menu[CurrentMenuLevel];
 
   //Get maximum width of icons

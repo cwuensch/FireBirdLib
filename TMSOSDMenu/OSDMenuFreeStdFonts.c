@@ -1,3 +1,4 @@
+#define FB_USE_UNICODE_OSD
 #include                "FBLib_TMSOSDMenu.h"
 
 void OSDMenuFreeStdFonts(void)

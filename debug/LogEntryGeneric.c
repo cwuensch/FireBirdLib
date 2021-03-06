@@ -1,27 +1,19 @@
 #include                <stdio.h>
-#include                <stdlib.h>
 #include                <string.h>
-#include                "libFireBird.h"
+#include                <utime.h>
+#include                "../libFireBird.h"
 
 void LogEntryGeneric(char *ProgramName, bool Console, char *Text)
 {
-  TRACEENTER();
-
   char                 *s;
   int                   l;
-  TYPE_File             *File;
-  char                  TimeResult[40];
+  FILE                 *f;
+  char                 *TS;
   char                  CRLF[] = {'\r', '\n'};
   byte                  Sec;
-  byte                 *ISOText;
+  struct utimbuf        times;
 
-  #define FILENAME      "TAPSystem.log"
-
-  if(!ProgramName || !Text)
-  {
-    TRACEEXIT();
-    return;
-  }
+#define ABSFILENAME     TAPFSROOT "/ProgramFiles/Settings/TAPSystem.log"
 
   HDD_TAP_PushDir();
   if(!HDD_ChangeDir("/ProgramFiles/Settings"))
@@ -30,49 +22,32 @@ void LogEntryGeneric(char *ProgramName, bool Console, char *Text)
     if(!TAP_Hdd_Exist("Settings")) TAP_Hdd_Create("Settings", ATTR_FOLDER);
     HDD_ChangeDir("Settings");
   }
-
   l = strlen(ProgramName) + strlen(Text) + 4;
   s = TAP_MemAlloc(l);
-  if(s)
+  memset(s, 0, l);
+  TAP_SPrint(s, "%s: %s", ProgramName, Text);
+
+  TS = TimeFormat(Now(&Sec), Sec, TIMESTAMP_YMDHMS);
+  strcat(TS, " ");
+
+  if((f = fopen(ABSFILENAME, "a")) != NULL)
   {
-    memset(s, 0, l);
-    TAP_SPrint(s, "%s: %s", ProgramName, Text);
-    StrToISOAlloc(s, &ISOText);
-    if(ISOText)
-    {
-      TimeFormat(Now(&Sec), Sec, TIMESTAMP_YMDHMS, TimeResult);
-      strcat(TimeResult, " ");
+    fwrite(TS, strlen(TS), 1, f);
+    fwrite(s, strlen(s), 1, f);
+    fwrite(CRLF, 2, 1, f);
+    fclose(f);
 
-      if(!TAP_Hdd_Exist(FILENAME)) TAP_Hdd_Create(FILENAME, ATTR_NORMAL);
-      if((File = TAP_Hdd_Fopen(FILENAME)) != NULL)
-      {
-        TAP_Hdd_Fseek(File, 0, SEEK_END);
-        TAP_Hdd_Fwrite(TimeResult, strlen(TimeResult), 1, File);
-        if(isUTFToppy())
-          TAP_Hdd_Fwrite(s, strlen(s), 1, File);
-        else
-          TAP_Hdd_Fwrite(ISOText, strlen(ISOText), 1, File);
-        TAP_Hdd_Fwrite(CRLF, 2, 1, File);
-        TAP_Hdd_Fclose(File);
-      }
-
-      if(Console)
-      {
-        if(isUTFToppy())
-        {
-          TAP_Print("%s%s\n", TimeResult, s);
-        }
-        else
-        {
-          TAP_Print("%s%s\n", TimeResult, ISOText);
-        }
-      }
-
-      TAP_MemFree(ISOText);
-    }
-    TAP_MemFree(s);
+    //As the log would receive the Linux time stamp (01.01.2000), adjust to the PVR's time
+    times.actime = PvrTimeToLinux(Now(NULL));
+    times.modtime = times.actime;
+    utime(ABSFILENAME, &times);
   }
-  HDD_TAP_PopDir();
 
-  TRACEEXIT();
+  if (Console)
+  {
+    TAP_Print("%s%s\n", TS, s);
+  }
+
+  HDD_TAP_PopDir();
+  TAP_MemFree(s);
 }

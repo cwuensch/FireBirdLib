@@ -1,0 +1,91 @@
+﻿Der Buildvorgang wurde am 03.12.2015 16:43:37 gestartet.
+     1>Projekt "D:\Topfield\FireBirdLib\FireBirdLib_VS\FireBirdLib_VS.vcxproj" auf Knoten "2", build Ziel(e).
+     1>Build:
+         ..\build_TMS.bat /quiet
+                 1 Datei(en) kopiert.
+         Building MIPS FBLib
+         cd devutils; \
+         make all;
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/devutils'
+         make[1]: Nothing to be done for `all'.
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/devutils'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/av'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/av'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/compression'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/compression'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/debug'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/debug'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/elf'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/elf'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/ExtAttribs'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/ExtAttribs'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/Firmware'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/Firmware'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/flash'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/flash'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/FontManager'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/FontManager'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/hdd'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/hdd'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/ini'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/ini'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/InstructionSequences'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/InstructionSequences'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/LogoManager'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/LogoManager'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/main'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/main'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/rec'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/rec'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/shutdown'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/shutdown'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/string'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/string'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/StringDB'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/StringDB'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tap'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tap'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tapcom'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tapcom'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/time'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/time'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDKeyboard'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         mipsel-linux-uclibc-gcc -D_TMS_ -DLINUX -MD -W -Wall -O2 -mips32 -ffunction-sections -fdata-sections -I/tapapi/TMS/include -I/opt/crosstool/include   -c -o USBKeyboard.o USBKeyboard.c
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDKeyboard'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tmsvfd'
+     1>make[1] : warning : jobserver unavailable: using -j1.  Add `+' to parent make rule.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tmsvfd'
+         rm -f libFireBird.a
+         mipsel-linux-uclibc-ar: creating libFireBird.a
+                 1 Datei(en) kopiert.
+                 1 Datei(en) kopiert.
+     1>Die Erstellung des Projekts "D:\Topfield\FireBirdLib\FireBirdLib_VS\FireBirdLib_VS.vcxproj" ist abgeschlossen, build Ziel(e).
+
+Das Erstellen war erfolgreich.
+
+Verstrichene Zeit 00:00:05.76

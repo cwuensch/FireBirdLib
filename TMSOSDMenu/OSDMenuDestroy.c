@@ -14,7 +14,9 @@ void OSDMenuDestroy(void)
     OSDMenuSelectionBarRgn = 0;
     OSDMenuLastCursor = LCT_NRCURSORS;
   }
-  if((!ProgressBarOSDRgn) && (!InfoBoxOSDRgn) && (!MessageBoxOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
+
+  if((!InfoBoxOSDRgn) && (!MessageBoxOSDRgn) && (!ProgressBarOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
+
   if(Menu[CurrentMenuLevel].Item)
   {
     TAP_MemFree(Menu[CurrentMenuLevel].Item);
@@ -27,7 +29,9 @@ void OSDMenuDestroy(void)
     Menu[CurrentMenuLevel].MemoText = NULL;
   }
 
+#ifdef FB_USE_UNICODE_OSD
   OSDMenuFreeStdFonts();
+#endif
 
   CallbackProcedure = NULL;
 

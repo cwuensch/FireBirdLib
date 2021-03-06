@@ -35,7 +35,7 @@ void StrToISO(byte *SourceString, byte *DestString)
 
       if(UTF32 > 0xff)
       {
-        //LogEntryFBLibPrintf(TRUE, "StrToISO: character 0x%4.4lx ignored", UTF32);
+        TAP_Print("StrToISO: character 0x%4.4lx ignored\n", UTF32);
       }
       else
       {

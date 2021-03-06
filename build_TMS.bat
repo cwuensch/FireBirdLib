@@ -1,21 +1,34 @@
 @echo off
-cd /d %~dp0%
+cd /d %~dp0
 set Project=libFireBird
-set TFROOT=C:\sw\prgm\Topfield
-set PATH=%TFROOT%\TMS\crosstool\bin;C:\sw\OS\cygwin\bin
+if "%TFROOT%"=="" set TFROOT=C:\sw\prgm\Topfield
+set PATH=%TFROOT%\gccForTMS\crosstool\bin;%TFROOT%\Cygwin\bin;C:\sw\OS\cygwin\bin;%PATH%
 
-copy %Project%.h %TFROOT%\TMS\include
+copy %Project%.h %TFROOT%\API\TMS\include
 
 if exist Compile_TMSEMU goto Compile_TMSEMU
 
 echo Building MIPS FBLib
-bash -i -c "make -j 8"
+rem bash -i -c "make -j 8"
+make -j 8
+set BuildState=%errorlevel%
 goto Compile_Done
 
 :Compile_TMSEMU
 echo Building Intel FBLib
-bash -i -c "make -j 8 --file=Makefile_tmsemu"
+rem bash -i -c "make -j 8 --file=Makefile_tmsemu"
+make -j 8 --file=Makefile_tmsemu
+set BuildState=%errorlevel%
 
 :Compile_Done
+if not "%1"=="/quiet" (
+  if not "%2"=="/quiet" (
+    pause
+  )
+)
 
-copy %Project%.a "%TFROOT%\TMS\crosstool\lib\%Project%.a"
+rem copy %Project%.a "%TFROOT%\gccForTMS\crosstool\lib\%Project%.a"
+rem copy %Project%_tmsemu.a "%TFROOT%\gccForTMS\crosstool\lib\%Project%_tmsemu.a"
+call update.bat
+
+exit %BuildState%

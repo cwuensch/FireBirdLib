@@ -1,17 +1,17 @@
 #include "libFireBird.h"
 
-dword AddTime(dword date, int add) //add minutes to the day
+dword AddTime(dword pvrDate, int addMinutes)  //add minutes to the day
 {
   TRACEENTER();
 
   word                  day;
   short                 hour, min;
 
-  day = (date >> 16) & 0xffff;
-  hour= (date >> 8) & 0xff;
-  min = (date) & 0xff;
+  day = (pvrDate >> 16) & 0xffff;
+  hour= (pvrDate >> 8) & 0xff;
+  min = (pvrDate) & 0xff;
 
-  min += add % 60;
+  min += addMinutes % 60;
   if(min < 0)
   {
     hour-=1;
@@ -23,7 +23,7 @@ dword AddTime(dword date, int add) //add minutes to the day
     min-=60;
   }
 
-  hour += add / 60;
+  hour += addMinutes / 60;
 
   if(hour < 0)
   {

@@ -1,0 +1,32 @@
+Alles auf den aktuellen Stand bringen,
+dann folgende Dateien zurücksetzen:
+
+ExtAttribs		1289
+TMSOSDKeyboard		1289
+
+av
+  BMP_WriteHeader	1289
+  SaveBitmap		1289
+
+FontManager
+  FM_LoadFontFile	1289
+
+hdd
+  HDD_ChangeDir		1289
+  HDD_GetFileSizeAndInode 1289
+  HDD_InfBlockGet	1656
+  HDD_InfBlockSet	1656
+  HDD_GetInodeByName    -> löschen
+  HDD_GetFileTimeByName -> löschen
+
+main
+  GetApplVer		1289
+
+string
+  DeleteAt		1289
+  InsertAt		1289
+  isUTFToppy		1289
+  SeparatePathComponents1289
+
+tap
+  HDD_TAP_Start		1289

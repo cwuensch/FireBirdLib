@@ -1,6 +1,21 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _ColorPicker_Gd;
+extern TYPE_GrData      _Button_red_Gd;
+extern TYPE_GrData      _Button_green_Gd;
+extern TYPE_GrData      _Button_blue_Gd;
+extern TYPE_GrData      _Button_ok_Gd;
+extern TYPE_GrData      _Button_exit_Gd;
+
+
+//word                    ColorPickerOSDRgn = 0;
+dword                   ColorPickerColor;
+dword                   ColorPickerDefaultColor;
+tCurrentColorSelected   CurrentColorSelected;
+int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
+
+
 void OSDMenuColorPickerShow(char *Title, dword Color)
 {
   TRACEENTER();
@@ -27,7 +42,7 @@ void OSDMenuColorPickerShow(char *Title, dword Color)
       {
         OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
-          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
+          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, INFOBOX_WIDTH, INFOBOX_HEIGHT);
       }
       else
         InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _ColorPicker_Gd.width, _ColorPicker_Gd.height);

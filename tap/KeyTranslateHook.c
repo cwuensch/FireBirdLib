@@ -10,7 +10,6 @@ dword KeyTranslateHook(word event, dword param1, dword param2)
 
   dword                 KeyFlags, NativeKeyCode, TranslatedKeyCode;
   dword                 ret;
-  dword                 SysID;
 
   if(event == EVT_KEY)
   {
@@ -19,7 +18,6 @@ dword KeyTranslateHook(word event, dword param1, dword param2)
     TranslatedKeyCode = NativeKeyCode;
 
     //Nothing to do for RT_5000 and RT_2100
-    SysID = GetSysID();
     if(RemoteType == RT_7100PLUS)
     {
       switch(NativeKeyCode)
@@ -66,8 +64,16 @@ bool KeyTranslate(bool Enable, void *EventHandler)
 
   TRACEENTER();
 
+  //Get the address to the TAP table
+  TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
+  if(!TMSTAPTaskTable || (!LibInitialized && !InitTAPex()))
+  {
+    TRACEEXIT();
+    return FALSE;
+  }
+
   //Get toppy information
-  if(LoadFirmwareDat(&FWDatHeader, &ToppyInfo, NULL))
+  if(Enable && LoadFirmwareDat(&FWDatHeader, &ToppyInfo, NULL))
   {
     for(i = 0; i < FWDatHeader->NrOfToppyInfoEntries; i++, ToppyInfo++)
     {
@@ -77,25 +83,21 @@ bool KeyTranslate(bool Enable, void *EventHandler)
         break;
       }
     }
+
+    if((RemoteType != RT_5000) && (RemoteType != RT_2100))
+    {
+      if(TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler == (dword)EventHandler)
+      {
+        Original_TAP_EventHandler = (void*)TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler;
+        TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler = (dword)&KeyTranslateHook;
+
+        TRACEEXIT();
+        return TRUE;
+      }
+    }
   }
 
-  //Get the address to the TAP table
-  TMSTAPTaskTable = (tTMSTAPTaskTable*)FIS_vTAPTable();
-  if(!TMSTAPTaskTable || (!LibInitialized && !InitTAPex()))
-  {
-    TRACEEXIT();
-    return FALSE;
-  }
-
-  if(Enable && (TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler == (dword)EventHandler))
-  {
-    Original_TAP_EventHandler = (void*)TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler;
-    TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler = (dword)&KeyTranslateHook;
-
-    TRACEEXIT();
-    return TRUE;
-  }
-  else if(!Enable && (TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler == (dword)KeyTranslateHook))
+  if(!Enable && (TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler == (dword)KeyTranslateHook))
   {
     TMSTAPTaskTable[TAP_TableIndex].TAP_EventHandler = (dword)Original_TAP_EventHandler;
     Original_TAP_EventHandler = NULL;

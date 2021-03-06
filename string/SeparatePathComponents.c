@@ -1,27 +1,38 @@
 #include                <string.h>
-#include                "libFireBird.h"
+#include                "../libFireBird.h"
 
-void SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt)
+void SeparatePathComponents (char *FullName, char *Path, char *FileName, char *FileExt)
 {
-  TRACEENTER();
+  char                  *Slash, *Dot;
 
-  int                   Index;
-  bool                  isDel;
+  if (FullName == NULL) return;
 
-  if(Path) Path[0] = '\0';
-  if(FileName) FileName[0] = '\0';
-  if(FileExt) FileExt[0] = '\0';
+  Slash = strrchr (FullName, '/');
+  Dot   = strrchr (FullName, '.');
+  if (Dot < Slash) Dot = NULL;
 
-  if(!FullName || !*FullName)
+  if (Path)
   {
-    TRACEEXIT();
-    return;
+    if (Slash)
+    {
+      strncpy (Path, FullName, Slash - FullName + 1);
+      Path [Slash - FullName + 1] = '\0';
+    }
+    else Path [0] = '\0';
   }
 
-  SeparateFileNameComponents(FullName, Path, FileName, FileExt, &Index, NULL, &isDel);
+  //Dot needs to be > Slash else it is not part of the file name
+  if (FileExt)
+  {
+    if (Dot) strcpy (FileExt, Dot);
+        else FileExt [0] = '\0';
+  }
 
-  if(Index && FileName) TAP_SPrint(&FileName[strlen(FileName)], "-%d", Index);
-  if(isDel && FileExt) strcat(FileExt, ".del");
-
-  TRACEEXIT();
+  if (FileName)
+  {
+    if (!Slash) Slash = FullName - 1;
+    if (!Dot) Dot = strrchr (FullName, '\0');
+    strncpy (FileName, Slash + 1, Dot - Slash - 1);
+    FileName [Dot - Slash - 1] = '\0';
+  }
 }

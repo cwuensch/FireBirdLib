@@ -31,7 +31,7 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     //Convert all non-ASCII characters to Unicode
     //Event Name
     memset(EPGInfo->EventName, 0, sizeof(EPGInfo->EventName));
-    strncpyUC(EPGInfo->EventName, EvtInfo->ShortEventText, EvtInfo->NameLength);
+    strncpy(EPGInfo->EventName, EvtInfo->ShortEventText, EvtInfo->NameLength);
     StrMkUTF8(EPGInfo->EventName, 9);
     EPGInfo->NameLength = strlen(EPGInfo->EventName);
 

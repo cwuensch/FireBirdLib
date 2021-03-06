@@ -1,14 +1,10 @@
 #include                <stdio.h>
-#include                <fcntl.h>
-#include                <sys/stat.h>
 #include                <string.h>
-#include                <stdarg.h>
-#include                <sys/types.h>
+#include                <stdarg.h>    //va_list
+#include                <sys/stat.h>  //mkdir
 #include                <utime.h>
 #define                 FB_LOG_ENTRY_LIB_PRINTF
 #include                "libFireBird.h"
-
-int vsnprintf(char *str, size_t size, const char *format, va_list ap);   //define missing prototype
 
 void LogEntryFBLibPrintf(bool Console, char *format, ...)
 {
@@ -16,12 +12,12 @@ void LogEntryFBLibPrintf(bool Console, char *format, ...)
 
   char                  Text[512];
   FILE                 *File;
-  char                  TimeResult[40];
+  char                 *TS;
   byte                  Sec;
   char                  CRLF[] = {'\r', '\n'};
   struct utimbuf        times;
 
-  #define FILENAME      "/mnt/hd/ProgramFiles/Settings/FBLib.log"
+  #define FILENAME      TAPFSROOT "/ProgramFiles/Settings/FBLib.log"
 
   if(!format)
   {
@@ -36,13 +32,12 @@ void LogEntryFBLibPrintf(bool Console, char *format, ...)
 
   mkdir("/mnt/hd/ProgramFiles/Settings", 0777);
 
-  TimeFormat(Now(&Sec), Sec, TIMESTAMP_YMDHMS, TimeResult);
-  strcat(TimeResult, " ");
+  TS = TimeFormat(Now(&Sec), Sec, TIMESTAMP_YMDHMS);
+  strcat(TS, " ");
 
-  if((File = fopen(FILENAME, "r+")) != NULL)
+  if((File = fopen(FILENAME, "a")) != NULL)
   {
-    fseek(File, 0, SEEK_END);
-    fwrite(TimeResult, strlen(TimeResult), 1, File);
+    fwrite(TS, strlen(TS), 1, File);
     fwrite(Text, strlen(Text), 1, File);
     fwrite(CRLF, 2, 1, File);
     fclose(File);
@@ -55,7 +50,7 @@ void LogEntryFBLibPrintf(bool Console, char *format, ...)
 
   if(Console)
   {
-    TAP_Print("%s FBLIB - %s\n", TimeResult, Text);
+    TAP_Print("%s FBLIB - %s\n", TS, Text);
   }
 
   TRACEEXIT();

@@ -1,0 +1,2754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\libFireBird.h" />
+    <ClInclude Include="..\_Demo\FIS_Test\Setup_busybox.h">
+      <Filter>_Demo\FIS_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\av\FBLib_av.h">
+      <Filter>av</Filter>
+    </ClInclude>
+    <ClInclude Include="..\compression\FBLib_compression.h">
+      <Filter>compression</Filter>
+    </ClInclude>
+    <ClInclude Include="..\debug\FBLib_debug.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\elf\ELF.h">
+      <Filter>elf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\elf\FBLib_elf.h">
+      <Filter>elf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\flash\FBLib_flash.h">
+      <Filter>flash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FontManager\FBLib_FontManager.h">
+      <Filter>FontManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hdd\FBLib_hdd.h">
+      <Filter>hdd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ini\FBLib_ini.h">
+      <Filter>ini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LogoManager\FBLib_LogoManager.h">
+      <Filter>LogoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\main\FBLib_main.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rec\FBLib_rec.h">
+      <Filter>rec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shutdown\FBLib_shutdown.h">
+      <Filter>shutdown</Filter>
+    </ClInclude>
+    <ClInclude Include="..\string\FBLib_string.h">
+      <Filter>string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tap\FBLib_tap.h">
+      <Filter>tap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tapcom\FBLib_tapcom.h">
+      <Filter>tapcom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\time\FBLib_time.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TMSOSDMenu\FBLib_TMSOSDMenu.h">
+      <Filter>TMSOSDMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmsvfd\FBLib_tmsvfd.h">
+      <Filter>tmsvfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmsvfd\VFDSegmentMap.h">
+      <Filter>tmsvfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmsvfd\VFDSegmentMapCyrillic.h">
+      <Filter>tmsvfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmsvfd\VFDSegmentMapHappy.h">
+      <Filter>tmsvfd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TMSOSDKeyboard\FBLib_TMSOSDKeyboard.h">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TMSOSDKeyboard\TMSRemote_TAPCOM.h">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TMSOSDKeyboard\USBKeyboard.h">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\build_TMS.bat" />
+    <None Include="..\Changelog.txt" />
+    <None Include="..\Makefile" />
+    <None Include="..\_Demo\EPG\build_TMS.bat">
+      <Filter>_Demo\EPG</Filter>
+    </None>
+    <None Include="..\_Demo\EPG\DSTConfig.lng">
+      <Filter>_Demo\EPG</Filter>
+    </None>
+    <None Include="..\_Demo\ColorPicker\build_TMS.bat">
+      <Filter>_Demo\ColorPicker</Filter>
+    </None>
+    <None Include="..\_Demo\ConvertPathType\build_TMS.bat">
+      <Filter>_Demo\ConvertPathType</Filter>
+    </None>
+    <None Include="..\_Demo\CrashCheck\build_TMS.bat">
+      <Filter>_Demo\CrashCheck</Filter>
+    </None>
+    <None Include="..\_Demo\DSTConfig\build_TMS.bat">
+      <Filter>_Demo\DSTConfig</Filter>
+    </None>
+    <None Include="..\_Demo\DSTConfig\DSTConfig.lng">
+      <Filter>_Demo\DSTConfig</Filter>
+    </None>
+    <None Include="..\_Demo\FIS_Test\Build.bat">
+      <Filter>_Demo\FIS_Test</Filter>
+    </None>
+    <None Include="..\_Demo\FIS_Test\build_TMS.bat">
+      <Filter>_Demo\FIS_Test</Filter>
+    </None>
+    <None Include="..\_Demo\FontManager\build_TMS.bat">
+      <Filter>_Demo\FontManager</Filter>
+    </None>
+    <None Include="..\_Demo\FontManager\Makefile">
+      <Filter>_Demo\FontManager</Filter>
+    </None>
+    <None Include="..\_Demo\FlashDecode\build_TMS.bat">
+      <Filter>_Demo\FlashDecode</Filter>
+    </None>
+    <None Include="..\_Demo\FlashDecode\Makefile">
+      <Filter>_Demo\FlashDecode</Filter>
+    </None>
+    <None Include="..\_Demo\SDS_Demo\build_TMS.bat">
+      <Filter>_Demo\SDS_Demo</Filter>
+    </None>
+    <None Include="..\_Demo\SDS_Demo\Makefile">
+      <Filter>_Demo\SDS_Demo</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDKeyboard\build_TMS.bat">
+      <Filter>_Demo\TMSOSDKeyboard</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDKeyboard\Makefile">
+      <Filter>_Demo\TMSOSDKeyboard</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDKeyboard2\build_TMS.bat">
+      <Filter>_Demo\TMSOSDKeyboard2</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDKeyboard2\Makefile">
+      <Filter>_Demo\TMSOSDKeyboard2</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDMenu\build_TMS.bat">
+      <Filter>_Demo\TMSOSDMenu</Filter>
+    </None>
+    <None Include="..\_Demo\TMSOSDMenu\Makefile">
+      <Filter>_Demo\TMSOSDMenu</Filter>
+    </None>
+    <None Include="..\_Demo\ColorPicker\Makefile">
+      <Filter>_Demo\ColorPicker</Filter>
+    </None>
+    <None Include="..\_Demo\ConvertPathType\Makefile">
+      <Filter>_Demo\ConvertPathType</Filter>
+    </None>
+    <None Include="..\_Demo\CrashCheck\Makefile">
+      <Filter>_Demo\CrashCheck</Filter>
+    </None>
+    <None Include="..\_Demo\DSTConfig\Makefile">
+      <Filter>_Demo\DSTConfig</Filter>
+    </None>
+    <None Include="..\_Demo\EPG\Makefile">
+      <Filter>_Demo\EPG</Filter>
+    </None>
+    <None Include="..\_Demo\FIS_Test\Makefile">
+      <Filter>_Demo\FIS_Test</Filter>
+    </None>
+    <None Include="..\compression\Makefile">
+      <Filter>compression</Filter>
+    </None>
+    <None Include="..\compression\Makefile_tmsemu">
+      <Filter>compression</Filter>
+    </None>
+    <None Include="..\av\Makefile">
+      <Filter>av</Filter>
+    </None>
+    <None Include="..\av\Makefile_tmsemu">
+      <Filter>av</Filter>
+    </None>
+    <None Include="..\debug\Makefile">
+      <Filter>debug</Filter>
+    </None>
+    <None Include="..\devutils\build_TMS.bat">
+      <Filter>devutils</Filter>
+    </None>
+    <None Include="..\devutils\Makefile">
+      <Filter>devutils</Filter>
+    </None>
+    <None Include="..\elf\Makefile">
+      <Filter>elf</Filter>
+    </None>
+    <None Include="..\elf\Makefile_tmsemu">
+      <Filter>elf</Filter>
+    </None>
+    <None Include="..\ExtAttribs\Makefile">
+      <Filter>ExtAttribs</Filter>
+    </None>
+    <None Include="..\ExtAttribs\Makefile_tmsemu">
+      <Filter>ExtAttribs</Filter>
+    </None>
+    <None Include="..\Firmware\Makefile">
+      <Filter>Firmware</Filter>
+    </None>
+    <None Include="..\flash\Makefile">
+      <Filter>flash</Filter>
+    </None>
+    <None Include="..\FontManager\Makefile">
+      <Filter>FontManager</Filter>
+    </None>
+    <None Include="..\FontManager\Makefile_tmsemu">
+      <Filter>FontManager</Filter>
+    </None>
+    <None Include="..\hdd\Makefile">
+      <Filter>hdd</Filter>
+    </None>
+    <None Include="..\ini\Makefile">
+      <Filter>ini</Filter>
+    </None>
+    <None Include="..\InstructionSequences\Makefile">
+      <Filter>InstructionSequences</Filter>
+    </None>
+    <None Include="..\LogoManager\Makefile">
+      <Filter>LogoManager</Filter>
+    </None>
+    <None Include="..\LogoManager\Makefile_tmsemu">
+      <Filter>LogoManager</Filter>
+    </None>
+    <None Include="..\main\Makefile">
+      <Filter>main</Filter>
+    </None>
+    <None Include="..\rec\Makefile">
+      <Filter>rec</Filter>
+    </None>
+    <None Include="..\shutdown\Makefile">
+      <Filter>shutdown</Filter>
+    </None>
+    <None Include="..\shutdown\Makefile_tmsemu">
+      <Filter>shutdown</Filter>
+    </None>
+    <None Include="..\string\Makefile">
+      <Filter>string</Filter>
+    </None>
+    <None Include="..\StringDB\Makefile">
+      <Filter>StringDB</Filter>
+    </None>
+    <None Include="..\StringDB\Makefile_tmsemu">
+      <Filter>StringDB</Filter>
+    </None>
+    <None Include="..\tap\Makefile">
+      <Filter>tap</Filter>
+    </None>
+    <None Include="..\tapcom\Makefile">
+      <Filter>tapcom</Filter>
+    </None>
+    <None Include="..\tapcom\Makefile_tmsemu">
+      <Filter>tapcom</Filter>
+    </None>
+    <None Include="..\time\Makefile">
+      <Filter>time</Filter>
+    </None>
+    <None Include="..\TMSOSDMenu\Makefile">
+      <Filter>TMSOSDMenu</Filter>
+    </None>
+    <None Include="..\tmsvfd\Makefile">
+      <Filter>tmsvfd</Filter>
+    </None>
+    <None Include="..\TMSOSDKeyboard\Makefile">
+      <Filter>TMSOSDKeyboard</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="_Demo">
+      <UniqueIdentifier>{0a2c0f28-dd60-492a-a6bf-4a8845ab4868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\ColorPicker">
+      <UniqueIdentifier>{9ea711c1-eaa7-401d-ba37-efd954483d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\ConvertPathType">
+      <UniqueIdentifier>{a6b796ec-162d-4bb6-909a-37909f3251ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\CrashCheck">
+      <UniqueIdentifier>{d00f44d7-fe8b-4c2b-9f2e-dd957b3a6cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\DSTConfig">
+      <UniqueIdentifier>{74cd2890-f0c0-45a9-9c35-c2ddc5a1498f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\EPG">
+      <UniqueIdentifier>{e64feeae-9f8d-485f-91d3-0f974899d56a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\FIS_Test">
+      <UniqueIdentifier>{f75151f9-2bed-4edb-9752-52a4207e2f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\FlashDecode">
+      <UniqueIdentifier>{e12b1186-d2bf-4a04-b0b6-8784d44c2bfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\FontManager">
+      <UniqueIdentifier>{643a1a43-4a70-44dc-8df4-cb4ca3232f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\SDS_Demo">
+      <UniqueIdentifier>{b8eb3fa9-5674-45a2-9788-e0b3e021c454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="av">
+      <UniqueIdentifier>{043d32ea-75e1-4d95-8ba5-4167fb21fdb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="compression">
+      <UniqueIdentifier>{1bcb56b5-fd0b-4f1d-b264-94af4fad23ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debug">
+      <UniqueIdentifier>{cb657b5a-a925-4c2f-aa5a-988882e7f79f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="devutils">
+      <UniqueIdentifier>{e5132b05-48da-4f55-a3b9-f24d2e38c868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="elf">
+      <UniqueIdentifier>{1cb59b62-9224-4fe8-8f28-32905e954aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EPG">
+      <UniqueIdentifier>{f0ce5dc5-ad30-4389-a7df-7ef6d7382bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExtAttribs">
+      <UniqueIdentifier>{2a9824f5-76eb-49e2-a34e-355d2bdc5f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Firmware">
+      <UniqueIdentifier>{165241bf-f53f-49df-acda-1eb23299f127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="flash">
+      <UniqueIdentifier>{bf47d433-3422-4f58-a6a8-bcca3ec3bb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FontManager">
+      <UniqueIdentifier>{2fd438c9-0a16-424b-b0f7-707571b6df39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hdd">
+      <UniqueIdentifier>{12e21568-5c46-4769-bd2c-6e1e2a63e8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ini">
+      <UniqueIdentifier>{1379f83e-0434-4bdc-8903-a2af29ba3893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InstructionSequences">
+      <UniqueIdentifier>{fb4a22cc-b441-4a18-a91c-945c8df2bec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LogoManager">
+      <UniqueIdentifier>{94b1798f-e2d2-4180-9437-432f9df29094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{9743dfe5-a017-4ebd-82d4-39d433ef6242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rec">
+      <UniqueIdentifier>{6fabe7a6-4e58-4303-80fb-a08cf577cbbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shutdown">
+      <UniqueIdentifier>{e1036454-a457-46a5-8ecb-f88bce520c0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="string">
+      <UniqueIdentifier>{caccaaac-cdce-4c07-9c91-45bc812cf2e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StringDB">
+      <UniqueIdentifier>{d3dff613-11f2-4215-98de-c8502054f613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tap">
+      <UniqueIdentifier>{89280d6f-3c96-4d74-88f1-c7fb7668d675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tmsvfd">
+      <UniqueIdentifier>{d4e75fb9-9258-4475-a00c-204c121ca769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tapcom">
+      <UniqueIdentifier>{aede9034-d1fd-4410-ab94-9ad3cbb5c189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="time">
+      <UniqueIdentifier>{e03af6c3-1d8c-49d7-8612-c0b144fa0678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TMSOSDKeyboard">
+      <UniqueIdentifier>{74cfe5eb-4305-4f7e-a3c3-7799d73bb3cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TMSOSDMenu">
+      <UniqueIdentifier>{4bab22c3-e6f3-4158-b753-828fda97ee8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\TMSOSDKeyboard">
+      <UniqueIdentifier>{bebbb24f-78aa-468d-acde-2699350ba4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\TMSOSDMenu">
+      <UniqueIdentifier>{f23f2a6e-0eb2-4f56-b794-b64e89ead70f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Demo\TMSOSDKeyboard2">
+      <UniqueIdentifier>{62d14b78-f497-4502-9e0f-0fed2c50b236}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\_Demo\ColorPicker\ColorPickerTest.c">
+      <Filter>_Demo\ColorPicker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\ConvertPathType\ConvertPathType.c">
+      <Filter>_Demo\ConvertPathType</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\CrashCheck\CrashCheck.c">
+      <Filter>_Demo\CrashCheck</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\DSTConfig\DSTConfig.c">
+      <Filter>_Demo\DSTConfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\EPG\EPGPoolTest.c">
+      <Filter>_Demo\EPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FIS_Test\busybox_Bin2C.c">
+      <Filter>_Demo\FIS_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FIS_Test\FIS_Test.c">
+      <Filter>_Demo\FIS_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FIS_Test\Setup_busybox.c">
+      <Filter>_Demo\FIS_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FontManager\Brush_Script_MT_18.c">
+      <Filter>_Demo\FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FontManager\FontManagerDemo.c">
+      <Filter>_Demo\FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\FlashDecode\FlashDecode.c">
+      <Filter>_Demo\FlashDecode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\SDS_Demo\SDS_Demo.c">
+      <Filter>_Demo\SDS_Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\TMSOSDKeyboard\OSDMenuKeyboardDemo.c">
+      <Filter>_Demo\TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\TMSOSDKeyboard2\OSDMenuKeyboardDemo.c">
+      <Filter>_Demo\TMSOSDKeyboard2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Demo\TMSOSDMenu\TMSOSDMenuDemo.c">
+      <Filter>_Demo\TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\AudioTrackInfo.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\BMP_WriteHeader.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\CaptureScreen.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\DrawOSDLine.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\DrawScrollbar.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\EndMessageWin.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\FreeOSDRegion.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetCurrentEvent.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetOSDMapAddress.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetOSDRegionHeight.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetOSDRegionWidth.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetPIPPosition.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\GetStreamFormat.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isAnyOSDVisible.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isAnyOSDVisibleEx.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isDirectSvcNumVisible.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isInfoBoxVisible.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isOSDRegionAlive.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\isPIPActive.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\OSDCopy.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\OSDToBMP.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\PlayMediaFile.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\SaveBitmap.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\SetRemoteMode.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\ShowMessageWin.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\ShowMessageWindow.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\ShowPvrList.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\SoundSinus.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\TAP_GetSysOsdControl.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\TAP_Osd_PutFreeColorGd.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\TunerGet.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\TunerSet.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\VideoToBMP.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\YUV2RGB.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\av\YUV2RGB2.c">
+      <Filter>av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\CompressedTFDSize.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\CompressTFD.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\CRC16.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\CRC32.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\lh5.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\Md5.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\OATH.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\SuperFastHash.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\TFDSize.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressedFirmwareSize.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressedLoaderSize.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressedTFDSize.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressFirmware.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressLoader.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compression\UncompressTFD.c">
+      <Filter>compression</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceComment.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceEnable.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceEnter.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceExit.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceExitResult.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceExportStats.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceInit.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CallTraceResetStats.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CrashCheck_isOK.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CrashCheck_Shutdown.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\CrashCheck_Startup.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\DumpMemory.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\DumpMemoryDword.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\FindGotPointer.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\HookFirmware.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\LogEntry.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\LogEntryFBLibPrintf.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\LogEntryGeneric.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\LogEntryGenericPrintf.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\LogEntryPrintf.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\PrintNet.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_MemAlloc_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_Copy_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_Create_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_Fillbox_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_FreeColorPutGd_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_PutGd_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_PutPixel_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_Restorebox_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\TAP_Osd_Savebox_Chk.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug\UnhookFirmware.c">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\devutils\JailBreak.c">
+      <Filter>devutils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFCleanup.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFGetSectionAddress.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFGetSectionIndex.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFOpenAbsFile.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFOpenFile.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFReadData.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFReadDWORD.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFReadELFHeader.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFReadSectionHeaders.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\elf\ELFReadShstrtabSection.c">
+      <Filter>elf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribExists.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribExistsAbsPath.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribGet.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribGetAbsPath.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribRemove.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribRemoveAbsPath.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribSet.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExtAttribs\ExtAttribSetAbsPath.c">
+      <Filter>ExtAttribs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_CheckRecording.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_CheckRecording_Tuner.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_ClrTimer.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_EvtProc_PincodeKey.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_ExecProgram.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_ExportChData.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetCurrentEvent.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetEvtCount.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetEvtCountInFreePool.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetEvtListHeadInHash.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetEvtListHeadInHashByChannelID.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetEvtListHeadInUsePool.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetFreeExtRecordSpace.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_GetIsExternal.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_ImportChData.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_KeyCvt.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_PvrPause.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_RestartTimeShiftSvc.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_SetIsExternal.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_SetPlaybackSpeed.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_ShoutCast.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_StartPlayback.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_StartPlaybackMedia.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_StopPlaying.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_StopRecPlaying.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_TimeToLocal.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_WaitEvt.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\Appl_WriteRecInfo.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplChannel_GetAgc.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplChannel_GetBer.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_FileCutPaste.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_FreeSize.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_GetFileInfo.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_GetInfoFromExternalDevice.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_RestoreWorkFolder.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_SaveWorkFolder.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_SelectFolder.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplHdd_SetWorkFolder.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplNewVfd_Stop.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplPin_Delete.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplPin_IsLockPopup.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplSvc_GetSvcIdx.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplSvc_GetTpIdx.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplTap_GetEmptyTask.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ApplTimer_OptimizeList.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_easy_cleanup.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_easy_init.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_easy_perform.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_easy_setopt.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_global_cleanup.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\curl_global_init.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\DevFront_SetIlluminate.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\DevFront_SetIrCode.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\DevHdd_DeviceClose.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\DevHdd_DeviceOpen.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\DevService_Mute.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_attr.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_child.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_error.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_free.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_idx.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_parse_file.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\ezxml_parse_str.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Firmware\PvrTimeToLinux.c">
+      <Filter>Firmware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashADGetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashADLowLevel.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashADSetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesFindService.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesGetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesGetInfoCurrent.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesGetParameters.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesGetSelectedGroupName.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesGetTotal.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashFavoritesSetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashProgram.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashSatTablesDecode.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashSatTablesGetTotal.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceAdd.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceDel.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceFind.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceFindNum.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceGetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceGetTotal.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceLowLevel.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceMove.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashServiceSetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTimeDecode.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTimerDecode.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTimerEncode.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTimerStructSize.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderFindIndex.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderFindIndex2.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesAdd.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesDel.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesGetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesGetTotal.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesLowLevel.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\FlashTransponderTablesSetInfo.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\GetEEPROMAddress.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\GetEEPROMPin.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flash\SetEEPROMPin.c">
+      <Filter>flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_AlphaBlend.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_AlphaBlendRGB.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_CharToIndex.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_FreeFontFile.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_GetStringHeight.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_GetStringWidth.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_InitAlphaLUT.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_isValidCharacter.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_LoadFontFile.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_PutString.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FontManager\FM_PutStringAA.c">
+      <Filter>FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\ChangeDirRoot.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\Delay.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\FixInvalidFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_AAM_Disable.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_AAM_Enable.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_APM_Disable.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_APM_Enable.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_BuildExtDriveList.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_ChangeDir.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Delete.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Exist.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_FappendOpen.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_FappendWrite.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_FindMountPoint.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_FindMountPointDevice.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_FindSymbolicLink.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetAbsolutePathByTypeFile.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetAbsolutePathByTypeFileUTF8.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetFileSizeAndInode.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetFileTimeByAbsFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetFileTimeByRelFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetFileTimeByTypeFile.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetHddID.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetInodeByAbsFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetInodeByRelFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_GetInodeByTypeFile.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_IdentifyDevice.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_InfBlockGet.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_InfBlockSet.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_isFileInUse.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Move.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Recycle.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_RecycleSF.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_RemoveDir.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Rename.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_DisableAttributeAutoSave.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_DisableOperations.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_EnableAttributeAutoSave.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_EnableOperations.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_ReadData.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_ReadThresholdData.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Smart_ReturnStatus.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Unrecycle.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_UnrecycleSF.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\HDD_Write.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\MakeUniqueFileName.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\SendHDDCommand.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\SeparateFileNameComponents.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\SwapDWords.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hdd\SwapWords.c">
+      <Filter>hdd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INICloseFile.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIFindStartEnd.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetARGB.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetARGB8.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetHexByte.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetHexDWord.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetHexWord.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetInt.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetRGB.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetRGB8.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIGetString.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIKeyExists.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIKillKey.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INILocateFile.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INIOpenFile.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISaveFile.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetARGB.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetARGB8.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetHexByte.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetHexDWord.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetHexWord.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetInt.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetRGB.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetRGB8.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\INISetString.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\LangGetString.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\LangGetStringDefault.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\LangLoadStrings.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ini\LangUnloadStrings.c">
+      <Filter>ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FindInstructionSequence.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_AddSvcName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_CheckRecording.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_CheckRecording_Tuner.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_CiMenu.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_CiplusMenu.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ClrTimer.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ConvertToValidUTF8Str.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_DeleteRadioSvcName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_DeleteTvSvcName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_EnterNormal.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_EvtProc_PincodeKey.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ExecProgram.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ExportChData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetCurrentEvent.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetEvtCount.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetEvtCountInFreePool.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetEvtListHeadInHash.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetEvtListHeadInUsePool.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetFreeExtRecordSpace.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetIsExternal.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetSameTimeEvent.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_GetStreamFormat.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ImportChData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_InitTempRec.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_IsTimeShifting.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_KeyCvt.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_PvrList.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_PvrList_SetListType.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_PvrPause.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_RestartTimeShiftSvc.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_SetApplVer.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_SetIsExternal.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_SetPlaybackSpeed.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_SetProviderName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_SetTimeShift.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_ShoutCast.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StartPlayback.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StartPlaybackMedia.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StartTempRec.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StopPlaying.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StopRecPlaying.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_StopTempRec.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_TimeToLocal.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_WaitEvt.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_WriteFlash.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwAppl_WriteRecInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplChannel_GetAgc.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplChannel_GetBer.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_FileCutPaste.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_FreeSize.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_GetFileInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_GetInfoFromExternalDevice.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_RestoreWorkFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_SaveWorkFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_SelectFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplHdd_SetWorkFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplIcelink_EitFromHdd.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplOsd_DrawJpeg.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplPin_Delete.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplPin_IsLockPopup.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplSvc_GetSvcIdx.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplSvc_GetTpIdx.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplTap_CallEventHandler.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplTap_GetEmptyTask.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplTimer_OptimizeList.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplVfdSendData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplVfdStart.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwApplVfdStop.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_easy_cleanup.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_easy_init.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_easy_perform.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_easy_setopt.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_global_cleanup.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwcurl_global_init.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevEeprom_GetMacAddr.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevEeprom_Info.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevFront_PowerOffCancel.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevFront_PowerOffReply.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevFront_SetIlluminate.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevHdd_DeviceClose.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevHdd_DeviceOpen.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwDevService_Mute.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwEeprom_DirectWrite.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_attr.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_child.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_error.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_free.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_idx.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_parse_file.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwezxml_parse_str.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwPowerOff.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwPutDevEvt.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwSetIrCode.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_fwTimeToLinux.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vApplState.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vAudioTrack.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vbookmarkTime.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vBootReason.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vCheckAutoDecTimerId.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vciMenuMode.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vciplusMenuMode.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vcurTapTask.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vdirectSvcNumTimerId.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vdupEntry.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vEEPROM.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vEEPROMPin.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vEtcInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vextPartitionInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vextTsFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vfavName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlash.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockAutoDec.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockDLNAData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockFavoriteGroup.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockGameSaveData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockLanIPConfig.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockNetwork.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockNetworkUpdateConfig.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockOTAInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockProviderInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockRadioServices.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockSatInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockServerData.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockServiceName.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockTimeInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockTimer.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockTransponderInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vFlashBlockTVServices.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vfrontfd.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vgrid.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vHddDivxFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vhddRecordFile.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vhddTapFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vhddTsFolder.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_viboxTimerId.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_visAllPartitionInvalid.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vIsPipActive.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vIsPopUpOn.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vMACAddress.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vnDupTimer.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vnExtPartition.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vnPipSvcNum.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vnRadioSvc.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vnTvSvc.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vOSDMap.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vOsdOutBuf.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vParentalInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPhotoAlbumInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPipH.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPipSvcNum.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPipW.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPipX.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPipY.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPvrPlayInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPvrRecTempInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPvrRecTsInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vPvrRecTsPlayInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vRECSlotAddress.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vselectedPartition.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vShoutCastInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vShoutCastState.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTapSysOsdCtrl.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTAPTable.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTempRecSlot.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTimerEditInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTimerTempInfo.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vTopEvent.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vvfdBrightTimerId.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\FIS_vVfdTimerId.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InstructionSequences\TryResolve.c">
+      <Filter>InstructionSequences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_CalculateChannelID.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_ChannelNameToLogoName.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_Cleanup.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_CleanupMemory.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetChannelID.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetDirectory.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetLogoByChannel.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetLogoByChannelID.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetLogoByChannelName.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetLogoByLogoName.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_GetLogoFileNameByChannelID.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_Initialize.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_LogoCacheLoad.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_LogoCacheRebuild.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_LogosAvailable.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_MoveExternalUpdates.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_ProcessLILAdd.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LogoManager\LogoManager_UpdateLIL.c">
+      <Filter>LogoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\BootReason.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FirmwareDatMJD.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FlushCache.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FrontPanelComm.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FrontPanelEEPROMRead.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FrontPanelEEPROMWrite.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\FrontPanelGetPatch.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\GetApplVer.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\GetMacAddress.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\GetSysID.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\GetSystemType.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\GetToppyString.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\InitTAPex.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\InitTAPexFailedMsg.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\isIceTVToppy.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\iso639_1.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\iso639_2.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\LoadFirmwareDat.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main\PutDevEvent.c">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\GetRecExtension.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_DecodeRECHeader.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_EncodeRECHeader.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_FindPCR.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_GetPvrRecTsInfoPointer.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_GetPvrRecTsPlayInfoPointer.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_GetRECSlotFiles.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_isAnyRecording.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_isCryptedStream.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_isExtRecording.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_isRecFileName.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_isRecording.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_MakeNewRecName.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_NumberOfRECSlots.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_RECSlotDecode.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_RECSlotEncode.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_RECSlotSetDuration.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\HDD_SetExtRecording.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_CloseFile.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_Delete.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_Flen.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_Get.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_GetNameByIndex.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_isAvail.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_LocateSig.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_OpenFile.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_Set.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rec\infData_Truncate.c">
+      <Filter>rec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shutdown\Reboot.c">
+      <Filter>shutdown</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shutdown\SDS.c">
+      <Filter>shutdown</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shutdown\Shutdown.c">
+      <Filter>shutdown</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\ansicstr.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\DeleteAt.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\ExtractLine.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\GetLine.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\GetStringEncoding.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\GetUCPos.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\InsertAt.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\isLegalChar.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\isUTF8Char.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\isUTFToppy.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\LowerCase.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\MakeValidFileName.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\ParseLine.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\ReplaceInvalidFileNameChars.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\RTrim.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\SeparatePathComponents.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\SkipCharTableBytes.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\strcpyUC.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\stricstr.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StringEndsWith.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\strlenUC.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrMkISO.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrMkUTF8.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\strncpyUC.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrReplace.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrToISO.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrToISOAlloc.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\StrToUTF8.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\UpperCase.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\UTF32ToUTF8.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\UTF8ToUTF32.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\ValidFileName.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBAdd.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBCountRecords.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBCurrent.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBDel.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBDestroy.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBEOF.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBFirst.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBGet.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBInit.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBLoad.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBLoadFromFile.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBNext.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBPrev.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBSave.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\StringDB\StringDBSaveToFile.c">
+      <Filter>StringDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_Callback.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_CheckCollision.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_Disable.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_DisableAll.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_DisabledEventHandler.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetCurrentDir.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetFileNameByIndex.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetIDByFileName.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetIDByIndex.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetIndexByID.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetInfo.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetInfoByAbsPath.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_GetStartParameter.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_isAnyRunning.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_isBatchMode.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_isDisabled.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_isDisabledAll.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_isRunning.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_PopDir.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_PushDir.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_SendEvent.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_Start.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_StartedByTAP.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\HDD_TAP_Terminate.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\KeyTranslateHook.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\NoAutoStartTAP.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\TAP_EnterNormalNoInfo.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tap\TAP_MemRealloc.c">
+      <Filter>tap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\isValidChannel.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_CloseChannel.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_Finish.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_GetChannel.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_GetReturnValue.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_GetStatus.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_LastAlive.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_OpenChannel.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_Reject.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tapcom\TAPCOM_StillAlive.c">
+      <Filter>tapcom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\AddSec.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\AddTime.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronEventHandler.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronGetEvent.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronModifyEvent.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronRegisterEvent.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronUnregisterAllEvents.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\cronUnregisterEvent.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DayOfWeek.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_CalcTransition.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_FindNextTransition.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_GetDefaultDSTRule.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_GetNextTransition.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_GetTransitions_Europe.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_GetTransitions_Manual.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_ProcessRule.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\DST_SetDSTRule.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\GetCurrentTimeZone.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\GetUptime.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\isMJD.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\LocalTime2UTC.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\Now.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TF2UnixTime.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TimeDiff.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TimeFormat.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TimerPaddingAPICheck.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TimerPaddingGet.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\TimerPaddingSet.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\Unix2TFTime.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\time\UTC2LocalTime.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDCalcIndices.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawBackground.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawButtons.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawList.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawLogo.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawMemo.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawScrollBar.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDDrawTitle.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMemoInitialize.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuButtonAdd.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuButtonColor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuButtonsClear.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuColorPickerColor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuColorPickerDestroy.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuColorPickerDrawCursor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuColorPickerIsVisible.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuColorPickerShow.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuDestroy.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuDestroyNoOSDUpdate.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuDrawCursor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuEvent.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuFindNextSelectableEntry.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuFindPreviousSelectableEntry.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuGetButtonIcon.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuGetCurrentItem.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuGetIconPointer.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuGetLastUnprocessedKey.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuGetW.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInfoBoxDestroy.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInfoBoxDestroyNoOSDUpdate.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInfoBoxDraw.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInfoBoxIsVisible.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInfoBoxShow.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuInitialize.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuIsVisible.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemAdd.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemFindName.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemFindValue.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetCurrentID.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetCurrentName.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetCurrentValue.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetID.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetName.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetNrOfItems.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetTopIndex.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemGetValue.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyColorPatch.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyCustomIndex.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyID.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyName.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyNameIcon.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifySelectable.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyTextColor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyValue.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyValueIcon.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemModifyValueXPos.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemsClear.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemSortID.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemSortNameColumn.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuItemSortValueColumn.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuLogo.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxAllowScrollOver.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxButtonAdd.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxButtonSelect.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxDestroy.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxDestroyNoOSDUpdate.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxDoNotEnterNormalMode.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxInitialize.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxIsVisible.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxLastButton.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxModifyText.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuMessageBoxShow.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyItemLongTextScrolling.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyItemNumbered.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyItemValueColumn.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyScrollLoop.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyTitleLeft.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuModifyTitleRight.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuPop.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuProgressBarDestroy.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuProgressBarDestroyNoOSDUpdate.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuProgressBarIsVisible.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuProgressBarShow.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuPush.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuPutS.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSaveMyRegion.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollDown.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollEnd.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollHome.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollPageDown.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollPageUp.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuScrollUp.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSelectItem.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSelectTopItem.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSetCallback.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSetCursor.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuSetFont.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuUpdate.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuWaitSpinnerIdle.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDMenu\OSDMenuWaitSpinnerInit.c">
+      <Filter>TMSOSDMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_CDAnimation.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_Clear.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_EnableCD.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_EnableCDAnimation.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_EnableHDD.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_GetControl.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_isInUseByTAP.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetCDValue.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetCharacterSet.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetDisplayDigit.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetHDDValue.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetIcon.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetLargeText.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_SetSmallText.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_TranslateSegments.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmsvfd\VFD_Update.c">
+      <Filter>tmsvfd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Destroy.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Draw.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_EventHandler.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_isVisible.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Setup.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Show.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_TMSRemoteDirectMode.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\string\InsertCharsAt.c">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_SetLegendStrings.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\USBKeyboard.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Free.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TMSOSDKeyboard\OSDMenuKeyboard_Saved.c">
+      <Filter>TMSOSDKeyboard</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

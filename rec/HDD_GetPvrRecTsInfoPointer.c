@@ -7,7 +7,7 @@ byte *HDD_GetPvrRecTsInfoPointer(byte Slot)
 
   static byte          *__pvrRecTsInfo = NULL;
   static byte          *__pvrRecTsPlayInfo = NULL;
-  static int            infSize = 1412;
+  static int            infSize = 0x774;
   byte                 *ret;
 
   if(Slot > HDD_NumberOfRECSlots())

@@ -8,7 +8,7 @@ dword HDD_GetFileTimeByTypeFile(TYPE_File *File)
   dword                 ret;
 
   if(HDD_GetAbsolutePathByTypeFile(File, AbsFileName))
-    ret = HDD_GetFileTimeByFileName(AbsFileName);
+    ret = HDD_GetFileTimeByAbsFileName(AbsFileName);
   else
     ret = 0;
 

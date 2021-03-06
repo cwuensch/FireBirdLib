@@ -9,9 +9,8 @@ void OSDMenuInfoBoxDestroy(void)
     OSDMenuInfoBoxDestroyNoOSDUpdate();
     TAP_Osd_Sync();
   }
-  if((!OSDRgn) && (!ProgressBarOSDRgn) && (!MessageBoxOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
 
-  OSDMenuFreeStdFonts();
+  if((!OSDRgn) && (!MessageBoxOSDRgn) && (!ProgressBarOSDRgn) && (!ColorPickerOSDRgn)) TAP_EnterNormal();
 
   TRACEEXIT();
 }

@@ -3,13 +3,10 @@
 
 void OSDMenuKeyboard_CursorRight(void)
 {
-  TRACEENTER();
-
-  if(OSDMenuKeyboard_CursorPosition < (int)strlenUC(OSDMenuKeyboard_StringVar))
+  if(OSDMenuKeyboard_CursorPosition < (int)strlen(OSDMenuKeyboard_StringVar))
   {
     OSDMenuKeyboard_CursorPosition++;
-    OSDMenuKeyboard_Draw();
+    OSDMenuKeyboard_DrawText();
+    OSDMenuKeyboard_SetShiftState();
   }
-
-  TRACEEXIT();
 }

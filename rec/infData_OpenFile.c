@@ -7,12 +7,13 @@ bool infData_OpenFile(char *infFileName)
 {
   TRACEENTER();
 
-  char                  AbsFileName[FBLIB_DIR_SIZE];
+  char                  AbsFileName[FBLIB_DIR_SIZE], CurDir[FBLIB_DIR_SIZE];
 
   infDatainfFile = NULL;
   if(infFileName && *infFileName)
   {
-    ConvertPathType(infFileName, AbsFileName, PF_FullLinuxPath);
+    HDD_TAP_GetCurrentDir(CurDir);
+    TAP_SPrint(AbsFileName, "%s%s/%s", TAPFSROOT, CurDir, infFileName);
     if(*AbsFileName) infDatainfFile = fopen(AbsFileName, "r+");
   }
 

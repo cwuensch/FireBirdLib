@@ -10,7 +10,7 @@ void *TAP_MemRealloc(void *ptr, size_t OldSize, size_t NewSize, bool InitMemory)
   if(temp == NULL)
   {
     // out of memory!
-    LogEntryFBLibPrintf(TRUE, "TAP_MemRealloc: not enough memory (alloc returned NULL)");
+//    LogEntryFBLibPrintf(TRUE, "TAP_MemRealloc: not enough memory (alloc returned NULL)");
 
     TRACEEXIT();
     return NULL;

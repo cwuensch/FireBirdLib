@@ -1,41 +1,20 @@
-#include                <string.h>
 #include                <stdio.h>
 #include                "FBLib_hdd.h"
 
-bool HDD_InfBlockGet(char *RecPath, tinfBlock *infBlock)
+bool HDD_InfBlockGet(char *AbsRecPath, tinfBlock *infBlock)
 {
   TRACEENTER();
 
   bool                  ret;
   FILE                 *FileHandle;
   tinfBlock             TempinfBlock;
-  char                  AbsFileName[FBLIB_DIR_SIZE];
-  tstat64               statbuf;
-
-  if(!RecPath && !*RecPath)
-  {
-    TRACEEXIT();
-    return FALSE;
-  }
 
   ret = FALSE;
   if(infBlock) memset(infBlock, 0, sizeof(tinfBlock));
 
-  ConvertPathType(RecPath, AbsFileName, PF_FullLinuxPath);
-  if(*AbsFileName)
+  if(AbsRecPath)
   {
-    if(!StringEndsWith(AbsFileName, ".inf"))
-    {
-      strcat(AbsFileName, ".inf");
-
-      //Falls es keine .inf gibt, dann die eigentliche Datei nehmen
-      if(stat64(AbsFileName, &statbuf) != 0)
-      {
-        AbsFileName[strlen(AbsFileName) - 4] = '\0';
-      }
-    }
-
-    FileHandle = fopen64(AbsFileName, "rb");
+    FileHandle = fopen64(AbsRecPath, "rb");
     if(FileHandle)
     {
       fseeko64(FileHandle, -((__off64_t)sizeof(tinfBlock)), SEEK_END);

@@ -5,7 +5,7 @@
 extern int strncasecmp(__const char *__s1, __const char *__s2, size_t __n);
 
 // case-insensitive version of strstr()
-char *stricstr(char *s1, char *s2)
+char *stricstr(const char *s1, const char *s2)
 {
   TRACEENTER();
 
@@ -19,8 +19,8 @@ char *stricstr(char *s1, char *s2)
     return NULL;
   }
 
-  s1 = SkipCharTableBytes(s1);
-  s2 = SkipCharTableBytes(s2);
+//  s1 = SkipCharTableBytes(s1);
+//  s2 = SkipCharTableBytes(s2);
 
   if(*s2)
   {

@@ -1,43 +1,31 @@
-#include                <fcntl.h>
-#include                <stdlib.h>
-#include                <unistd.h>
 #include                <stdio.h>
 #include                <string.h>
-#include                <sys/types.h>
 #include                <utime.h>
-#include                "libFireBird.h"
+#include                "../libFireBird.h"
 
 void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat TimeStampFormat, char *Text)
 {
-  TRACEENTER();
-
-  int                   f;
-  char                  TimeResult[40];
+  char                  AbsFileName[FBLIB_DIR_SIZE], CurDir[FBLIB_DIR_SIZE];
+  FILE                 *f;
+  char                 *TS;
   char                  CRLF[] = {'\r', '\n'};
   byte                  Sec;
-  byte                 *ISOText;
-  char                  AbsFileName[FBLIB_DIR_SIZE];
   struct utimbuf        times;
 
-  if(!Text)
-  {
-    TRACEEXIT();
-    return;
-  }
+  TS = TimeFormat(Now (&Sec), Sec, TimeStampFormat);
+  if (TS [0]) strcat (TS, " ");
 
-  TimeFormat(Now(&Sec), Sec, TimeStampFormat, TimeResult);
-  if(TimeResult[0]) strcat(TimeResult, " ");
-
-  if(FileName && FileName[0])
+  if (FileName && FileName [0])
   {
-    ConvertPathType(FileName, AbsFileName, PF_FullLinuxPath);
-    f = open(AbsFileName, O_WRONLY | O_CREAT | O_APPEND);
-    if(f >= 0)
+    HDD_TAP_GetCurrentDir(CurDir);
+    TAP_SPrint(AbsFileName, "%s%s/%s", TAPFSROOT, CurDir, FileName);
+    f = fopen(AbsFileName, "a");
+    if(f)
     {
-      write(f, TimeResult, strlen(TimeResult));
-      if(Text && Text[0]) write(f, Text, strlen(Text));
-      write(f, CRLF, 2);
-      close(f);
+      fwrite(TS, strlen(TS), 1, f);
+      if(Text && Text[0]) fwrite(Text, strlen(Text), 1, f);
+      fwrite(CRLF, 2, 1, f);
+      fclose(f);
 
       //As the log would receive the Linux time stamp (01.01.2000), adjust to the PVR's time
       times.actime = PvrTimeToLinux(Now(NULL));
@@ -46,12 +34,13 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
     }
   }
 
-  if(Console)
+  if (Console)
   {
-    if(TimeStampFormat != TIMESTAMP_NONE) TAP_Print(TimeResult);
-    if(ProgramName && ProgramName[0]) TAP_Print("%s: ", ProgramName);
+    if (TimeStampFormat != TIMESTAMP_NONE) TAP_Print(TS);
+    if (ProgramName && ProgramName [0]) TAP_Print("%s: ", ProgramName);
 
-    if(isUTFToppy())
+    //Max length is 512. If above, a buffer overflow may occur
+    if(Text && Text [0])
     {
       if(strlen(Text) < 510)
       {
@@ -67,6 +56,8 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
           char    q;
 
           l = strlen(p);
+          if(l > 510) l = 510;
+
           q = p[l];
           p[l] = '\0';
           TAP_Print("%s", p);
@@ -74,42 +65,7 @@ void LogEntry(char *FileName, char *ProgramName, bool Console, eTimeStampFormat 
           p += l;
         }
       }
-      TAP_Print("\n");
     }
-    else
-    {
-      //Max length is 512. If above, a buffer overflow may occur
-      StrToISOAlloc(Text, &ISOText);
-      if(ISOText && ISOText[0])
-      {
-        if(strlen(ISOText) < 510)
-        {
-          TAP_Print("%s", ISOText);
-        }
-        else
-        {
-          char *p = ISOText;
-
-          while(*p)
-          {
-            int     l;
-            char    q;
-
-            l = strlen(p);
-            if(l > 510) l = 510;
-
-            q = p[l];
-            p[l] = '\0';
-            TAP_Print("%s", p);
-            p[l] = q;
-            p += l;
-          }
-        }
-      }
-      TAP_Print("\n");
-      TAP_MemFree(ISOText);
-    }
+    TAP_Print("\n");
   }
-
-  TRACEEXIT();
 }

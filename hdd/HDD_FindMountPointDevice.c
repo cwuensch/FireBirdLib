@@ -4,52 +4,50 @@
 #include                <string.h>
 #include                "libFireBird.h"
 
-bool HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice)
+bool HDD_FindMountPointDevice(const char *AbsPath, char *const OutMountPoint, char *const OutDeviceNode)  // OutMountPoint und OutDeviceNode: max. FBLIB_DIR_SIZE (inkl. Nullchar)
 {
   TRACEENTER();
 
   struct mntent        *ent;
   FILE                 *aFile;
-  char                  AbsFile[FBLIB_DIR_SIZE], Root[FBLIB_DIR_SIZE], Dev[FBLIB_DIR_SIZE];
+  char                  Root[FBLIB_DIR_SIZE], Dev[FBLIB_DIR_SIZE];
   char                 *x;
 
   Root[0] = '\0';
   Dev[0] = '\0';
-  AbsFile[0] = '\0';
-  ConvertPathType(File, AbsFile, PF_LinuxPathOnly);
-  if(*AbsFile)
+
+  if(AbsPath && AbsPath[0])
   {
     aFile = setmntent("/proc/mounts", "r");
     if(aFile != NULL)
     {
-      while(NULL != (ent = getmntent(aFile)))
+      while((ent = getmntent(aFile)) != NULL)
       {
         x = ansicstr(ent->mnt_dir, strlen(ent->mnt_dir), 0, NULL, NULL);
         if(x)
         {
-          if((strstr(AbsFile, x) == AbsFile) && (strlen(x) > strlen(Root)))
+          if((strncmp(AbsPath, x, strlen(x)) == 0) && (strlen(x) > strlen(Root)))
           {
-            strcpy(Root, x);
-            strcpy(Dev, ent->mnt_fsname);
+            snprintf(Root, sizeof(Root) - 1, x);
+            snprintf(Dev, sizeof(Dev) - 1, ent->mnt_fsname);
           }
           TAP_MemFree(x);
         }
-        else if((strstr(AbsFile, ent->mnt_dir) == AbsFile) && (strlen(ent->mnt_dir) > strlen(Root)))
+        else if((strncmp(AbsPath, ent->mnt_dir, strlen(ent->mnt_dir)) == 0) && (strlen(ent->mnt_dir) > strlen(Root)))
         {
-          strcpy(Root, ent->mnt_dir);
-          strcpy(Dev, ent->mnt_fsname);
+          snprintf(Root, sizeof(Root) - 1, ent->mnt_dir);
+          snprintf(Dev, sizeof(Dev) - 1, ent->mnt_fsname);
         }
       }
       endmntent(aFile);
     }
+    if(Root[0] && (Root[strlen(Root) - 1] != '/')) strcat(Root, "/");
+    if(Dev[0] && (Dev[strlen(Dev) - 1] != '/')) strcat(Dev, "/");
   }
 
-  if(*Root && (Root[strlen(Root) - 1] != '/')) strcat(Root, "/");
-  if(*Dev && (Dev[strlen(Dev) - 1] != '/')) strcat(Dev, "/");
-
-  if(MountPoint) strcpy(MountPoint, Root);
-  if(MountDevice) strcpy(MountDevice, Dev);
+  if(OutMountPoint) strcpy(OutMountPoint, Root);
+  if(OutDeviceNode) strcpy(OutDeviceNode, Dev);
 
   TRACEEXIT();
-  return (Root[0] != '\0' || Dev[0] != '\0');
+  return (Root[0] != '\0');
 }

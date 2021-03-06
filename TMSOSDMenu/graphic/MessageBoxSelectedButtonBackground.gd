@@ -1,6 +1,6 @@
 #include "tap.h"
 
-byte _MessageBoxSelectedButtonBackground_Cpm[] =
+static byte _MessageBoxSelectedButtonBackground_Cpm[] =
 {
   0x00, 0x08, 0x1B, 0x90, 0xFF, 0xFF, 0x00, 0x01, 0x00, 0x01, 
   0x01, 0x13, 0x17, 0x6E, 0xFF, 0xFF, 0x27, 0x10, 
@@ -23,7 +23,7 @@ byte _MessageBoxSelectedButtonBackground_Cpm[] =
   0xA2, 0xA7, 0x5C, 0x00, 0xA5, 0x08, 0x14, 0xF9, 0x7F, 0xDB, 0x8E, 0x97, 0xC0, 
 };
 
-TYPE_GrData _MessageBoxSelectedButtonBackground_Gd =
+static TYPE_GrData _MessageBoxSelectedButtonBackground_Gd =
 {
   1,                              //version
   0,                              //reserved

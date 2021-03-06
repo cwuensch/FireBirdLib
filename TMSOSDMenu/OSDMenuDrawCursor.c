@@ -1,5 +1,13 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _Cursor_Blue_Normal_Gd;
+extern TYPE_GrData      _Cursor_Blue_Small_Gd;
+extern TYPE_GrData      _Cursor_Blue_Tiny_Gd;
+extern TYPE_GrData      _Cursor_Dark_Normal_Gd;
+extern TYPE_GrData      _Cursor_Dark_Small_Gd;
+extern TYPE_GrData      _Cursor_Dark_Tiny_Gd;
+
+
 void OSDMenuDrawCursor(dword x, dword y, dword w, dword h)
 {
   TYPE_GrData              *OSDMenuLightBlueCursorGd, *OSDMenuDarkBlueCursorGd;

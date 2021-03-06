@@ -1,56 +1,22 @@
 #include                <string.h>
-#include                <stdlib.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-word                    OSDRgn = 0, MyOSDRgn = 0, OSDMenuSelectionBarRgn = 0;
+word                    OSDMenuSelectionBarRgn = 0;
 bool                    OSDDirty, TitleDirty, ListDirty, ButtonsDirty, LogoDirty;
 tMenu                   Menu[NRMENULEVELS];
 dword                   CurrentMenuLevel = 0;
 dword                   ButtonColor;
 tCursorType             MenuCursorType;
-tOSDMenuLastCursorType    OSDMenuLastCursor = LCT_NRCURSORS;
+tOSDMenuLastCursorType  OSDMenuLastCursor = LCT_NRCURSORS;
 
-word                    InfoBoxOSDRgn = 0;
-dword                   InfoBoxTimeOut = 0;
-byte                   *InfoBoxSaveArea = NULL;
-dword                   InfoBoxSaveAreaX, InfoBoxSaveAreaY;
-
-word                    MessageBoxOSDRgn = 0;
-tMessageBox             MessageBox;
-bool                    MessageBoxNoNormalMode = FALSE;
-bool                    MessageBoxAllowScrollOver = FALSE;
-
-word                    ProgressBarOSDRgn = 0;
-word                    ProgressBarFullRgn = 0;
-dword                   ProgressBarLastValue = 0xfff;
-
-word                    ColorPickerOSDRgn = 0;
-dword                   ColorPickerColor;
-dword                   ColorPickerDefaultColor;
-tCurrentColorSelected   CurrentColorSelected;
-int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
-
-word                    WaitSpinnerRgn = 0;
-int                     WaitSpinnerIndex = 0;
-dword                   WaitSpinnerTimeout = 0;
-
-dword                   LastUnprocessedOSDMenuKey = 0;
-
-tFontDataUC             OSDMenuFont_10;
-tFontDataUC             OSDMenuFont_12;
-tFontDataUC             OSDMenuFont_14;
-tFontDataUC             OSDMenuFont_16;
-tFontDataUC             OSDMenuFont_18;
-tFontDataUC             OSDMenuFont_20;
-tFontDataUC             OSDMenuFont_20B;
 
 void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn) = NULL;
 
 void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
 {
-  TRACEENTER();
-
   tMenu                *pMenu;
+
+  TRACEENTER();
 
   //Clear everything
   pMenu = &Menu[CurrentMenuLevel];
@@ -61,7 +27,9 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
   OSDRgn = 0;
   MyOSDRgn = 0;
 
+#ifdef FB_USE_UNICODE_OSD
   OSDMenuLoadStdFonts();
+#endif
 
   pMenu->OSDMenuDisplayMode = OMDM_Standard;
   pMenu->AllowScrollingOfLongText = AllowScrollingOfLongText;
@@ -77,6 +45,7 @@ void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool 
 
   OSDMenuButtonsClear();
   OSDMenuSetLineHeight(LH_Normal);
+
 
   if(TitleLeft)
     strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);

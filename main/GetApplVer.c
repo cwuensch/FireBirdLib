@@ -8,10 +8,7 @@ char *GetApplVer(void)
   void (*Appl_SetApplVer)(char *);
 
   char                 *osdOutBuf;
-  static char           FWVersion[20];
-  dword                 roStart, roEnd;
-  byte                 *p;
-  dword                 SectionIndex;
+  static char           FWVersion[8];  // 20
 
   if(FWVersion[0])
   {
@@ -34,8 +31,12 @@ char *GetApplVer(void)
   Appl_SetApplVer(NULL);
   strcpy(FWVersion, osdOutBuf);
 
-  if(ELFOpenFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
+/*  if(ELFOpenFile("/root/pvr") && ELFReadELFHeader() && ELFReadSectionHeaders() && ELFReadShstrtabSection())
   {
+    dword               roStart, roEnd;
+    byte               *p;
+    dword               SectionIndex;
+
     SectionIndex = ELFGetSectionIndex(".rodata");
     if(SectionIndex)
     {
@@ -57,7 +58,7 @@ char *GetApplVer(void)
       }
     }
   }
-  ELFCleanup();
+  ELFCleanup(); */
 
   TRACEEXIT();
   return FWVersion;

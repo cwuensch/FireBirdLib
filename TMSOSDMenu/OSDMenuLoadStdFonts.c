@@ -1,4 +1,13 @@
+#define FB_USE_UNICODE_OSD
 #include                "FBLib_TMSOSDMenu.h"
+
+tFontDataUC           OSDMenuFont_10;
+tFontDataUC           OSDMenuFont_12;
+tFontDataUC           OSDMenuFont_14;
+tFontDataUC           OSDMenuFont_16;
+tFontDataUC           OSDMenuFont_18;
+tFontDataUC           OSDMenuFont_20;
+tFontDataUC           OSDMenuFont_20B;
 
 void OSDMenuLoadStdFonts(void)
 {

@@ -10,7 +10,7 @@ void* TAP_MemAlloc_Chk(char *Comment, dword size)
 
   ret = TAP_MemAlloc(size);
 
-  if(!ret && Comment) LogEntryFBLibPrintf(TRUE, "TAP_MemAlloc_Chk Warning: TAP_MemAlloc(%lu) returned NULL pointer @ %s", size, Comment);
+  if(!ret && Comment) TAP_Print("TAP_MemAlloc_Chk Warning: TAP_MemAlloc(%lu) returned NULL pointer @ %s\n", size, Comment);
 
   TRACEEXIT();
   return ret;

@@ -1,11 +1,15 @@
 #ifndef __FBLIB__
   #define __FBLIB__
 
-  #define __FBLIB_RELEASEDATE__ "2019-02-22"
+//  #define STACKTRACE
+
+  #define __FBLIB_RELEASEDATE__ "2019-02-22+"
 
   #define __FBLIB_VERSION__ __FBLIB_RELEASEDATE__
 
   #define isTMS         1
+
+//  #define FB_USE_UNICODE_OSD
 
   // Use -DFB_DEBUG_FULL if you want to activate all debug-like functions,
   // thus getting debugging and tracing information at runtime.
@@ -19,8 +23,10 @@
   #ifdef FB_DEBUG
     // Call FBLIB's special check-and-log API wrapper functions.
     #define FB_DEBUG_CHK
+
     // Call LogEntryFBLibPrintf().
     #define FB_LOG_ENTRY_LIB_PRINTF
+
     // Make use of tracing functions.
     #define FB_CALL_TRACE
   #endif
@@ -31,6 +37,10 @@
     #endif
   #endif
 
+  #ifdef _MSC_VER
+    #define __const const
+  #endif
+
   #ifdef PC_BASED
     #define inline
     #define __attribute__(a)
@@ -38,8 +48,12 @@
     #include "tap.h"
   #endif
 
+  #undef _LARGEFILE_SOURCE
+  #define _LARGEFILE_SOURCE
+  #undef _LARGEFILE64_SOURCE
+  #define _LARGEFILE64_SOURCE
   #undef __USE_LARGEFILE64
-  #define __USE_LARGEFILE64
+  #define __USE_LARGEFILE64     1
   #undef _LARGEFILE64_SOURCE
   #define _LARGEFILE64_SOURCE
   #define _FILE_OFFSET_BITS     64
@@ -214,6 +228,7 @@
   #define RKEY_Blue     RKEY_F4
   #define RKEY_Option   0x10049
   #define RKEY_White    RKEY_Option
+  #define RKEY_Aspect   RKEY_Uhf
 
   //In addition to the Service Status Mask defined in tap.h
   #define SVCSTATUS_MASK_Audio    0x00010000
@@ -333,7 +348,7 @@
   bool  isPIPActive(void);
   void  OSDCopy(word rgn, dword x, dword y, dword w, dword h, word items, eCopyDirection direction);
   bool  PlayMediaFile(char *MediaFileName);
-  bool  SaveBitmap(char *FileName, int width, int height, byte* pBuffer);
+  bool  SaveBitmap(char *strName, int width, int height, byte* pBuffer );
   void  SetRemoteMode(byte Mode, byte Index, bool Active);
   void  ShowMessageWin(char* title, char* lpMessage1, char* lpMessage2, dword dwDelay);
   void  ShowMessageWindow(char **content, dword pos_x, dword pos_y, byte fntSize, byte align, dword bdcolor, dword titlecolor, dword msgcolor, dword bgcolor, dword delay);
@@ -1251,8 +1266,8 @@
     CCS_ExcessiveRebootsDetected
   }tCrashCheckStatus;
 
-  void   CrashCheck_Startup(char *TAPName, tCrashCheckStatus *CCStatus);
-  void   CrashCheck_Shutdown(char *TAPName);
+  void  CrashCheck_Startup(char *TAPName, tCrashCheckStatus *CCStatus);
+  void  CrashCheck_Shutdown(char *TAPName);
 
 #ifdef FB_DEBUG_CHK
   void *TAP_MemAlloc_Chk(char *Comment, dword size);
@@ -1361,6 +1376,7 @@
   /*****************************************************************************************************************************/
 
   bool  ELFOpenFile(char *FileName);
+  bool  ELFOpenAbsFile(char *FileName);
   bool  ELFReadELFHeader(void);
   bool  ELFReadSectionHeaders(void);
   bool  ELFReadShstrtabSection(void);
@@ -1377,9 +1393,13 @@
   /*****************************************************************************************************************************/
 
   int  ExtAttribExists(char *FileName, char *AttrName);
+  int  ExtAttribExistsAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribGet(char *FileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
+  bool ExtAttribGetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int MaxDataLen, int *DataLen);
   bool ExtAttribRemove(char *FileName, char *AttrName);
+  bool ExtAttribRemoveAbsPath(char *AbsFileName, char *AttrName);
   bool ExtAttribSet(char *FileName, char *AttrName, byte *Data, int DataLen);
+  bool ExtAttribSetAbsPath(char *AbsFileName, char *AttrName, byte *Data, int DataLen);
 
 
   /*****************************************************************************************************************************/
@@ -1464,8 +1484,8 @@
   bool   Appl_GetIsExternal(void);
   dword  Appl_GetFreeExtRecordSpace(char *MountPath);
   void  *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
-  dword  Appl_KeyCvt(dword NECKeyCode);
   bool   Appl_ImportChData(char *FileName);
+  dword  Appl_KeyCvt(dword NECKeyCode);
   void   Appl_PvrPause(bool p1);
   void   Appl_RestartTimeShiftSvc(bool p1, dword Block);
   void   Appl_SetIsExternal(bool External);
@@ -1509,7 +1529,6 @@
   /*****************************************************************************************************************************/
   /* Flash & EEPROM                                                                                                            */
   /*****************************************************************************************************************************/
-
   typedef struct
   {
     byte                  SatIndex;
@@ -1572,14 +1591,21 @@
 
     byte                  DiSEqC11;
 
-    byte                  UniCableSatPosition:1;
-    byte                  UniCableunused:7;
+    union
+    {
+      byte                unused5[5];
+      struct
+      {
+        byte              UniCableSatPosition:1;
+        byte              UniCableunused:7;
 
-    word                  UniCableUserBand:4;
-    word                  UniCableFrq:12;
+        word              UniCableUserBand:4;
+        word              UniCableFrq:12;
 
-    byte                  unused5[2];
-  } tFlashLNB;
+        byte              unused6[2];
+      } __attribute__((packed));
+    };
+  } tFlashLNB;  // identisch mit TYPE_LNB_TMSS
 
   typedef struct
   {
@@ -1590,7 +1616,7 @@
     byte                  unknown1[22];
     word                  SatPosition;
     byte                  unused2[8];
-  } tFlashSatTable;
+  } tFlashSatTable;  // identisch mit TYPE_SatInfo_TMSS
 
   int   FlashSatTablesGetTotal(void);
   bool  FlashSatTablesGetInfo(int SatNum, tFlashSatTable *SatTable);
@@ -1636,18 +1662,18 @@
 
   typedef struct
   {
-    short                 UTCOffset;
-    word                  SleepTimer;
+    short               UTCOffset;
+    word                SleepTimer;
 
-    byte                  unknown1:3;
-    byte                  GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
-    byte                  Mode:1;                 //0=Auto, 1=Manual
-    byte                  unknown2:1;
+    byte                unknown1:3;
+    byte                GMTCollection:3;        //0=Normal, 1=CAS Only, 2=User Select
+    byte                Mode:1;                 //0=Auto, 1=Manual
+    byte                unknown2:1;
 
-    byte                  unknown3;
+    byte                unknown3;
 
-    word                  DST:2;                  //0=off, 3=on
-    word                  unknown4:14;
+    word                DST:2;                  //0=off, 3=on
+    word                unknown4:14;
   }tFlashTimeInfo;
 
   bool FlashTimeGetInfo(tFlashTimeInfo *TimeInfo);
@@ -1684,7 +1710,7 @@
     byte                IceTV;
     byte                unused9[13];
     byte                unused10[8];
-    dword               rs_timestamp1;			//RS timers are OT timers where (rs_timestamp1 != 0)
+    dword               rs_timestamp1;              //RS timers are OT timers where (rs_timestamp1 != 0)
     char                rs_episodeCRID[64];
     char                rs_seriesCRID[64];
     dword               rs_unknown1;
@@ -1818,10 +1844,10 @@
     tFontDef              FontDef[191];
   } tFontData;
 
-  dword FM_GetStringWidth(char *Text, tFontData *FontData);
-  dword FM_GetStringHeight(char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
-  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
+  dword FM_GetStringWidth(const char *Text, tFontData *FontData);
+  dword FM_GetStringHeight(const char *Text, tFontData *FontData);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
   bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
@@ -1853,9 +1879,9 @@
 
   void  FM_MakeFontDir(void);
   bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
-  dword FMUC_GetStringHeight(char *Text, tFontDataUC *FontData);
-  dword FMUC_GetStringWidth(char *Text, tFontDataUC *FontData);
-  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
+  dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
+  dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData);
+  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
   void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
 
@@ -1938,18 +1964,21 @@
   bool        HDD_BuildExtDriveList(textPartitionInfo *ExtPartitionList, dword *NrListItems);
   bool        HDD_ChangeDir(char *Dir);
   void        HDD_Delete(char *FileName);
-  bool        HDD_Exist(char *FileName);
+  bool        HDD_Exist(char *AbsPath);
   TYPE_File  *HDD_FappendOpen(char *FileName);
   bool        HDD_FappendWrite(TYPE_File *file, char *data);
-  bool        HDD_FindMountPoint(char *File, char *MountPoint);
-  bool        HDD_FindMountPointDevice(char *File, char *MountPoint, char *MountDevice);
+  bool        HDD_FindMountPoint(const char *AbsPath, char *const OutMountPoint);
+  bool        HDD_FindMountPointDevice(const char *AbsPath, char *const OutMountPoint, char *const OutDeviceNode);  // OutMountPoint und OutDeviceNode: max. FBLIB_DIR_SIZE Zeichen (inkl. Nullchar)
   int         HDD_FindSymbolicLink(char *pathName, char *returnedPath, char *fullPathName);
   bool        HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName);
-  bool        HDD_GetFileSizeAndInode(char *FileName, __ino64_t *CInode, __off64_t *FileSize);
-  dword       HDD_GetFileTimeByFileName(char *FileName);
+  bool        HDD_GetAbsolutePathByTypeFileUTF8(TYPE_File *File, char *AbsFileName);
+  bool        HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize);
+  dword       HDD_GetFileTimeByAbsFileName(char *FileName);
+  dword       HDD_GetFileTimeByRelFileName(char *FileName);
   dword       HDD_GetFileTimeByTypeFile(TYPE_File *File);
   bool        HDD_GetHddID(char *ModelNo, char *SerialNo, char *FirmwareNo);
-  __ino64_t   HDD_GetInodeByFileName(char *Filename);
+  __ino64_t   HDD_GetInodeByAbsFileName(char *Filename);
+  __ino64_t   HDD_GetInodeByRelFileName(char *Filename);
   __ino64_t   HDD_GetInodeByTypeFile(TYPE_File *File);
   bool        HDD_IdentifyDevice(char *IdentifyDeviceBuffer);
   bool        HDD_InfBlockGet(char *RecPath, tinfBlock *infBlock);
@@ -2014,7 +2043,7 @@
   void        INISetInt(char *Key, long int Value);
   void        INISetString(char *Key, char *Value);
 
-  INILOCATION LangLoadStrings(char *LangFile, dword NrStrings, int FallbackLang, char *AppName);
+  int         LangLoadStrings(char *AbsLangFile, dword NrStrings, int FallbackLang);
   void        LangUnloadStrings(void);
   char       *LangGetString(dword StringID);
   char       *LangGetStringDefault(dword StringID, char *DefaultString);
@@ -2049,10 +2078,10 @@
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_GetSameTimeEvent(void);
   inline dword FIS_fwAppl_GetStreamFormat(void);
-  inline dword FIS_fwAppl_KeyCvt(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_InitTempRec(void);
   inline dword FIS_fwAppl_IsTimeShifting(void);
+  inline dword FIS_fwAppl_KeyCvt(void);
   inline dword FIS_fwAppl_PvrList(void);
   inline dword FIS_fwAppl_PvrList_SetListType(void);
   inline dword FIS_fwAppl_PvrPause(void);
@@ -2064,9 +2093,9 @@
   inline dword FIS_fwAppl_SetTimeShift(void);
   inline dword FIS_fwAppl_ShoutCast(void);
   inline dword FIS_fwAppl_StartPlayback(void);
+  inline dword FIS_fwAppl_StartPlaybackDivx(void);
   inline dword FIS_fwAppl_StartPlaybackMedia(void);
   inline dword FIS_fwAppl_StartPlaybackMp3(void);
-  inline dword FIS_fwAppl_StartPlaybackDivx(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);
   inline dword FIS_fwAppl_StopRecPlaying(void);
@@ -2366,15 +2395,17 @@
     dword               Resume;                      //13467  89a
   } tRECHeaderInfo;
 
-  typedef struct
+/*  typedef struct
   {
-    dword                 SHOffset:24;
+    dword                 SHOffset:24; // = (FrameType shl 24) or SHOffset
     dword                 FrameType:8;
     byte                  MPEGType;
     byte                  FrameCounter;
-    word                  Field5;
+    word                  Field5;      // iFrameSeqOffset;
+//    byte                  Zero1;
     dword                 PHOffsetHigh;
     dword                 PHOffset;
+
     dword                 PTS2;
     dword                 NextPH;
     dword                 Time;
@@ -2388,20 +2419,24 @@
     byte                  MPEGType;
     byte                  FrameCounter;
     word                  PPSLen;
+//    byte                  Zero1;
     dword                 SEIOffsetHigh;
     dword                 SEIOffsetLow;
+
     dword                 SEIPTS;
     dword                 NextAUD;
     ulong64               Timems;
+
     dword                 SEISPS;
     dword                 SPSLen;
     dword                 IFrame;
     dword                 Zero2;
+
     dword                 Zero3;
     dword                 Zero4;
     dword                 Zero5;
     dword                 Zero6;
-  } tnavHD;
+  } tnavHD;  */
 
   char  *GetRecExtension(void);
   bool   HDD_DecodeRECHeader(byte *Buffer, tRECHeaderInfo *RECHeaderInfo, SYSTEM_TYPE SystemType);
@@ -2428,6 +2463,7 @@
   bool   infData_GetNameByIndex(char *infFileName, dword NameIndex, char *NameTag);
   bool   infData_Set(char *infFileName, char *NameTag, dword PayloadSize, byte *Payload);
   bool   infData_Delete(char *infFileName, char *NameTag);
+
 
   typedef struct
   {
@@ -2494,6 +2530,7 @@
   void        GetStringEncoding(char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, char *NewString);
+  void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
   void        LowerCase(char *string);
@@ -2504,7 +2541,7 @@
   void        SeparatePathComponents(char *FullName, char *Path, char *FileName, char *FileExt);
   byte       *SkipCharTableBytes(byte *p);
   byte       *strcpyUC(byte *dest, byte *src);
-  bool        StringEndsWith(char *text, char *postfix);
+  bool        StringEndsWith(const char *text, const char *postfix);
   int         strlenUC(byte *s);
   bool        StrMkISO(byte *SourceString);
   bool        StrMkUTF8(byte *SourceString, byte DefaultISO8859CharSet);
@@ -2591,7 +2628,8 @@
   dword HDD_TAP_GetIDByIndex(int TAPIndex);
   int   HDD_TAP_GetIndexByID(dword TAPID);
   bool  HDD_TAP_GetInfo(char *FileName, tTAPInfo *pTAPInfo);
-  void *HDD_TAP_GetStartParameter(void);
+  bool  HDD_TAP_GetInfoByAbsPath(char *AbsFileName, tTAPInfo *pTAPInfo);
+  void* HDD_TAP_GetStartParameter(void);
   bool  HDD_TAP_PopDir(void);
   bool  HDD_TAP_PushDir(void);
   dword HDD_TAP_SendEvent(dword TAPID, bool AllowParamInterception, word event, dword param1, dword param2);
@@ -2611,6 +2649,7 @@
 
   /*****************************************************************************************************************************/
   /* TAP Comm                                                                                                                  */
+  /*   Mainly developed by asrael                                                                                              */
   /*****************************************************************************************************************************/
 
   #define EVT_TAPCOM           0xFFF
@@ -2627,6 +2666,7 @@
 
   #define TAPCOM_NO_RETURN_VALUE 0x80000000
 
+
   typedef enum
   {
     TAPCOM_Status_OPEN,                   //Sobald der Block angelegt wird
@@ -2638,20 +2678,84 @@
     TAPCOM_Status_NO_CHANNEL              //Keine gültige Verbindung
   } TAPCOM_Status;
 
-  typedef void* TAPCOM_Channel;
+  typedef void* TAPCOM_Channel;           // Zeiger, der intern als Kommunikationskanal verwendet wird
+
 
   //Client Funktionen
-  TAPCOM_Channel  TAPCOM_OpenChannel(dword TargetID, dword ServiceID, dword ParamBlockVersion, void *ParamBlock);
-  TAPCOM_Status   TAPCOM_GetStatus(TAPCOM_Channel Channel);
-  dword           TAPCOM_LastAlive(TAPCOM_Channel Channel);
-  int             TAPCOM_GetReturnValue(TAPCOM_Channel Channel);
-  void            TAPCOM_CloseChannel(TAPCOM_Channel Channel);
+
+  TAPCOM_Channel TAPCOM_OpenChannel(      // setzt Remote Procedure Call an andere Anwendung ab
+
+    dword TargetID,                       // ID der gewählten Anwendung (siehe oben)
+    dword ServiceID,                      // Service-ID der gewählten Anwendung
+    dword ParamBlockVersion,              // Version des Parameterblocks
+    void *ParamBlock                      // Pointer auf die zu übertragenden Daten.
+
+  );                                      // Rückgabewert: Pointer auf (internen) Kommunikationskanal. Dieser muss an die
+
+
+  TAPCOM_Status TAPCOM_GetStatus(         // Liefert den Status des Kommunikationskanals
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: Status des Kanals
+
+
+  dword TAPCOM_LastAlive(                 // Liefert den Zeitpunkt der letzten Serveraktivität (siehe: TAPCOM_StillAlive)
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: Tickcount der letzten Serveraktivität
+
+
+  int TAPCOM_GetReturnValue(              // Kann vom Client aus aufgerufen werden, um abzufragen,
+                                          // ob der Server den RPC ausgeführt oder zurückgewiesen hat.
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );                                      // Rückgabewert: der vom Server gesetzte Rückgabewert
+
+
+  void TAPCOM_CloseChannel(               // Kann vom Client aufgerufen werden, um Message-Puffer nach Abschluss der
+                                          // Kommunikation freizugeben.
+
+    TAPCOM_Channel Channel                // der von TAPCOM_OpenChannel zurückgegebene Kanal
+
+  );
+
 
   //Server-Funktionen
-  TAPCOM_Channel  TAPCOM_GetChannel(dword param1, dword *CallerID, dword *ServiceID, dword *ParamBlockVersion, void  **ParamBlock);                                      // Rückgabewert: Pointer auf (internen) Kommunikationskanal.
-  void            TAPCOM_Reject(TAPCOM_Channel Channel);
-  void            TAPCOM_Finish(TAPCOM_Channel Channel, int val);
-  void            TAPCOM_StillAlive(TAPCOM_Channel Channel);
+  TAPCOM_Channel TAPCOM_GetChannel(       // Liefert Informationen über den vom Client gesendeten Befehl
+
+    dword param1,                         // Wird vom Event geliefert und enthält die Adresse zum Messagebuffer
+    dword *CallerID,                      // ID der aufrufenden Clients (siehe oben)
+    dword *ServiceID,                     // ID des gewünschten Services, frei definierbar
+    dword *ParamBlockVersion,             // Version des Parameterblocks
+    void  **ParamBlock                    // Rückgabe der Adresse, an der eventuelle Parameter für den Service stehen
+
+  );                                      // Rückgabewert: Pointer auf (internen) Kommunikationskanal.
+
+
+  void TAPCOM_Reject(                     // Der Server kennt den Befehl nicht oder kann diesen gerade nicht abarbeiten
+
+    TAPCOM_Channel Channel                // der von TAPCOM_GetChannel zurückgegebene Kanal
+
+  );
+
+  void TAPCOM_Finish(                     // Kann vom Server aus aufgerufen werden, um dem Client ein Ergebnis vom Typ int
+                                          // des RPCs zu übermitteln.
+
+    TAPCOM_Channel Channel,               // der von TAPCOM_GetChannel zurückgegebene Kanal
+    int            val                    // der Rückgabewert vom Server
+
+  );
+
+
+  void TAPCOM_StillAlive(                 // Dauert die Befehlsverarbeitung länger, kann der Server dem Client mitteilen,
+                                          // dass er noch aktiv ist (siehe: TAPCOM_LastAlive)
+
+    TAPCOM_Channel Channel                // der von TAPCOM_GetChannel zurückgegebene Kanal
+
+  );
 
 
   /*****************************************************************************************************************************/
@@ -2704,12 +2808,13 @@
   dword  PvrTimeToLinux(dword PVRTime);
   dword  TF2UnixTime(dword TFTimeStamp);
   long   TimeDiff(dword FromTime, dword ToTime);
-  char  *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat, char *Result);
+  char  *TimeFormat(dword DateTime, byte Sec, eTimeStampFormat TimeStampFormat);
   bool   TimerPaddingAPICheck(void);
   bool   TimerPaddingGet(short *PrePaddingMin, short *PostPaddingMin);
   bool   TimerPaddingSet(short *PrePaddingMin, short *PostPaddingMin);
   dword  Unix2TFTime(dword UnixTimeStamp);
   dword  UTC2LocalTime(dword UTCTime, short *Offset);   //Uses DST_SetDSTRule()
+
 
   /*****************************************************************************************************************************/
   /* TMS OSD Menu                                                                                                              */
@@ -2722,7 +2827,7 @@
     LH_Small,
     LH_Tiny
   } tLineHeight;
-
+  
   typedef enum
   {
     CT_Standard,
@@ -2739,7 +2844,9 @@
 
   //Main OSD
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight);
-  void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
+  #ifdef FB_USE_UNICODE_OSD
+    void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
+  #endif
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
   void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuSetLineHeight(tLineHeight type);
@@ -2754,13 +2861,13 @@
   void OSDMenuLogo(dword X, dword Y, TYPE_GrData *LogoGd);
   void OSDMenuDestroy(void);
   void OSDMenuDestroyNoOSDUpdate(void);
-  int  OSDMenuGetW(char *str, byte fntSize);
-  int  OSDMenuGetH(char *str, byte fntSize);
-  void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
+  int  OSDMenuGetW(const char *str, byte fntSize);
+  int  OSDMenuGetH(const char *str, byte fntSize);
+  void OSDMenuPutS(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, byte fntSize, byte bDot, byte align);
   bool OSDMenuIsVisible(void);
 
   //Callback function for custom menu drawings
-  void OSDMenuSetCallback(void *OSDCallbackRoutine);
+  void OSDMenuSetCallback(void *OSDCallbackProcedure);
 
   //void OSDCallbackProcedure(tOSDCB OSDCBType, word OSDRgn);
 
@@ -2924,7 +3031,10 @@
   bool OSDMenuProgressBarIsVisible(void);
 
   //Event handling
+  bool  OSDAllEvents(word *event, dword *param1, dword *param2);
   bool  OSDMenuEvent(word *event, dword *param1, dword *param2);
+  bool  OSDMessageEvent(word *event, dword *param1, dword *param2);
+  bool  OSDColorPickerEvent(word *event, dword *param1, dword *param2);
   dword OSDMenuGetLastUnprocessedKey(void);
 
 
@@ -2932,12 +3042,14 @@
   /* TMS OSD Keyboard                                                                                                          */
   /*****************************************************************************************************************************/
 
-  void OSDMenuKeyboard_Setup(char *Title, char *Variable, dword MaxLength);
-  void OSDMenuKeyboard_LegendButton(dword Line, tButtonIcon ButtonIcon, char *Text);
-  void OSDMenuKeyboard_Show(void);
-  bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
-  bool OSDMenuKeyboard_isVisible(void);
-  void OSDMenuKeyboard_Destroy(void);
+  void OSDKeyboard_Setup(char *Title, char *Variable, dword MaxLength, bool AllowEmpty, bool SaveDict);  // Length zzgl. Null
+  void OSDKeyboard_SetLegendStrings(char* StrSpace, char* StrDelete1, char* StrDelete2, char* StrOriginal, char* StrClearAll, char* StrCopy, char* StrPaste, char* StrCancel, char* StrSave);  // Strings müssen static sein!
+  void OSDKeyboard_Show(void);
+  bool OSDKeyboard_EventHandler(word *event, dword *param1, dword *param2);
+  bool OSDKeyboard_isVisible(void);
+  bool OSDKeyboard_Saved(void);
+  void OSDKeyboard_Destroy(void);
+  void OSDKeyboard_Free(void);
 
 
   /*****************************************************************************************************************************/
@@ -3000,13 +3112,14 @@
   bool VFD_CDAnimation(bool Forward);
   bool VFD_SetCharacterSet(tVFDCharset VFDCharset);
 
-
   /*****************************************************************************************************************************/
   /* USB Keyboard                                                                                                              */
   /*****************************************************************************************************************************/
 
-  //#define EVT_USBKEYBOARD   0x0ffe
+  #define EVT_USBKEYBOARD    0x0ffe
   #define EVT_TMSREMOTEASCII 0x0ffd
+
+  bool USBKeyboardRedirect(bool Redirect, bool CookOutput);
 
   /*****************************************************************************************************************************/
   /* MIPS OpCodes                                                                                                              */

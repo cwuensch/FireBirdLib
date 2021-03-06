@@ -2,14 +2,11 @@
 
 void OSDMenuKeyboard_DeleteLeft(void)
 {
-  TRACEENTER();
-
   if(OSDMenuKeyboard_CursorPosition > 0)
   {
     OSDMenuKeyboard_CursorPosition--;
     DeleteAt(OSDMenuKeyboard_StringVar, OSDMenuKeyboard_CursorPosition, 1);
-    OSDMenuKeyboard_Draw();
+    OSDMenuKeyboard_DrawText();
+    OSDMenuKeyboard_SetShiftState();
   }
-
-  TRACEEXIT();
 }

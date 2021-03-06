@@ -27,7 +27,7 @@ dword HDD_TAP_GetIDByIndex(int TAPIndex)
     return 0;
   }
 
-  if(!HDD_TAP_GetInfo(AbsFileName, &pTAPInfo))
+  if(!HDD_TAP_GetInfoByAbsPath(AbsFileName, &pTAPInfo))
   {
     TRACEEXIT();
     return 0;

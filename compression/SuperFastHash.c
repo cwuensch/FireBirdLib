@@ -11,7 +11,7 @@
                       +((const byte *)(d))[0])
 #endif
 
-dword SuperFastHash(register unsigned char * data, int len, dword hash)
+dword SuperFastHash(register byte * data, int len, dword hash)
 {
   TRACEENTER();
 

@@ -1,3 +1,4 @@
+#include                <stdio.h>
 #include                <string.h>
 #include                "libFireBird.h"
 
@@ -6,7 +7,7 @@ bool HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName)
   TRACEENTER();
 
   dword   *d;
-  bool    ret;
+  bool     ret;
 
   ret = FALSE;
   if(AbsFileName) AbsFileName[0] = '\0';
@@ -17,7 +18,7 @@ bool HDD_GetAbsolutePathByTypeFile(TYPE_File *File, char *AbsFileName)
     d = File->handle;
     if(d && d[2])
     {
-      strcpy(AbsFileName, (char*)d[2]);
+      snprintf(AbsFileName, FBLIB_DIR_SIZE, (char*)d[2]);
       ret = TRUE;
     }
   }

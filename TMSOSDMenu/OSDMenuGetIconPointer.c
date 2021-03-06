@@ -1,5 +1,63 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _Button_0_Gd;
+extern TYPE_GrData      _Button_1_Gd;
+extern TYPE_GrData      _Button_2_Gd;
+extern TYPE_GrData      _Button_3_Gd;
+extern TYPE_GrData      _Button_4_Gd;
+extern TYPE_GrData      _Button_5_Gd;
+extern TYPE_GrData      _Button_6_Gd;
+extern TYPE_GrData      _Button_7_Gd;
+extern TYPE_GrData      _Button_8_Gd;
+extern TYPE_GrData      _Button_9_Gd;
+extern TYPE_GrData      _Button_ar_Gd;
+extern TYPE_GrData      _Button_audio_Gd;
+extern TYPE_GrData      _Button_aux_Gd;
+extern TYPE_GrData      _Button_blue_Gd;
+extern TYPE_GrData      _Button_cut_Gd;
+extern TYPE_GrData      _Button_down_Gd;
+extern TYPE_GrData      _Button_exit_Gd;
+extern TYPE_GrData      _Button_fav_Gd;
+extern TYPE_GrData      _Button_ffwd_Gd;
+extern TYPE_GrData      _Button_filelist_Gd;
+extern TYPE_GrData      _Button_green_Gd;
+extern TYPE_GrData      _Button_guide_Gd;
+extern TYPE_GrData      _Button_info_Gd;
+extern TYPE_GrData      _Button_jumpend_Gd;
+extern TYPE_GrData      _Button_jumpstart_Gd;
+extern TYPE_GrData      _Button_left_Gd;
+extern TYPE_GrData      _Button_list_Gd;
+extern TYPE_GrData      _Button_m_Gd;
+extern TYPE_GrData      _Button_menu_Gd;
+extern TYPE_GrData      _Button_mute_Gd;
+extern TYPE_GrData      _Button_nouse_Gd;
+extern TYPE_GrData      _Button_ok_Gd;
+extern TYPE_GrData      _Button_option_Gd;
+extern TYPE_GrData      _Button_pause_Gd;
+extern TYPE_GrData      _Button_play_Gd;
+extern TYPE_GrData      _Button_progminus_Gd;
+extern TYPE_GrData      _Button_progplus_Gd;
+extern TYPE_GrData      _Button_recall_Gd;
+extern TYPE_GrData      _Button_record_Gd;
+extern TYPE_GrData      _Button_red_Gd;
+extern TYPE_GrData      _Button_right_Gd;
+extern TYPE_GrData      _Button_rwd_Gd;
+extern TYPE_GrData      _Button_sat_Gd;
+extern TYPE_GrData      _Button_select_Gd;
+extern TYPE_GrData      _Button_sleep_Gd;
+extern TYPE_GrData      _Button_step_Gd;
+extern TYPE_GrData      _Button_stop_Gd;
+extern TYPE_GrData      _Button_subtitle_Gd;
+extern TYPE_GrData      _Button_ttx_Gd;
+extern TYPE_GrData      _Button_tv_radio_Gd;
+extern TYPE_GrData      _Button_up_Gd;
+extern TYPE_GrData      _Button_vf_Gd;
+extern TYPE_GrData      _Button_volminus_Gd;
+extern TYPE_GrData      _Button_volplus_Gd;
+extern TYPE_GrData      _Button_white_Gd;
+extern TYPE_GrData      _Button_yellow_Gd;
+
+
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton)
 {
   TRACEENTER();

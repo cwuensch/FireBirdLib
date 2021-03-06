@@ -6,10 +6,11 @@ BLOCK = TMSOSDKeyboard
 include ${BASE}/include/tool.mk
 
 # Folders
-INCLUDE_DIRS = ${SRC_DIR} ${BASE}/include
+SRC_DIR = ${CUR_DIR}
+INCLUDE_DIRS = ${BASE}/include
 
 #compile options
-CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -fPIC
+CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -ffunction-sections -fdata-sections
 CFLAGS += $(addprefix -I, $(INCLUDE_DIRS))
 CFLAGS += $(addprefix -I, /opt/crosstool/include)
 ifeq (${DEBUG},y)
@@ -18,16 +19,13 @@ endif
 
 
 #TAP_LIBS =  ${BASE}/tapinit.o ${BASE}/libtap.so -lc
-C99_OBJS = OSDMenuKeyboard_Setup.o
-TAP_OBJS := $(filter-out $(C99_OBJS),$(patsubst %.c,%.o,$(wildcard *.c)))
-TAP_HEAD = ${SRC_DIR}/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
+TAP_OBJS := $(patsubst %.c,%.o,$(wildcard *.c))
+TAP_HEAD = ${BASE}/include/libFireBird.h FBLib_$(BLOCK).h $(CUR_DIR)/Makefile
 
-$(C99_OBJS): CFLAGS += -std=c99
-
-all: ${TAP_OBJS} ${C99_OBJS}
+all: ${TAP_OBJS}
 	@$(Q_)-${RM} *.d
 
-%.o: %.c ${TAP_HEAD}
+%o: %c ${TAP_HEAD}
 	@$(CC) $(CFLAGS) $(TAP_FLAGS) -c $< -o $@
 
 clean:

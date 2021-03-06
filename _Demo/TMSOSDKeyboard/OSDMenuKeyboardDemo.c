@@ -2,6 +2,26 @@
 #include                "tap.h"
 #include                "libFireBird.h"
 
+/* #include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_SkipLeft.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_SkipRight.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Slow_Inactive.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Rwd_Inactive.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Ffwd_Inactive.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Pause_Inactive.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Play_Inactive.gd" */
+
+#include                "../../TMSOSDMenu/graphic/Button_jumpstart.gd"
+#include                "../../TMSOSDMenu/graphic/Button_jumpend.gd"
+#include                "../../TMSOSDMenu/graphic/Button_step.gd"
+#include                "../../TMSOSDMenu/graphic/Button_rwd.gd"
+#include                "../../TMSOSDMenu/graphic/Button_ffwd.gd"
+#include                "../../TMSOSDMenu/graphic/Button_pause.gd"
+#include                "../../TMSOSDMenu/graphic/Button_play.gd"
+#include                "../../TMSOSDMenu/graphic/Button_recall.gd"
+#include                "../../TMSOSDMenu/graphic/Button_blue.gd"
+#include                "../../../TAP/SamplesTMS/MovieCutter/source/Graphics/Button_Exit.gd"
+#include                "../../TMSOSDMenu/graphic/Button_stop.gd"
+
 #define PROGRAM_NAME    "OSDKeyboard Demo"
 #define VERSION         "V0.2"
 
@@ -43,7 +63,25 @@ int TAP_Main(void)
   //Initialize the Keyboard
   //Right now, there is no save or exit. Whenever the remote control's exit is clicked, the contents of the textbox will be copied into the destination variable.
   OSDMenuKeyboard_Setup("Keyboard Test", Text, sizeof(Text));
-  OSDMenuKeyboard_LegendButton(1, BI_Exit, "Exit Keyboard");
 
+/*  OSDMenuKeyboard_LegendButton(1, &_Button_SkipLeft_Gd, "");
+  OSDMenuKeyboard_LegendButton(1, &_Button_SkipRight_Gd, "Cursor bewegen  ");
+  OSDMenuKeyboard_LegendButton(1, &_Button_Slow_Inactive_Gd, "Zum Ende  ");
+  OSDMenuKeyboard_LegendButton(1, &_Button_Rwd_Inactive_Gd, "");
+  OSDMenuKeyboard_LegendButton(1, &_Button_Ffwd_Inactive_Gd, "Löschen");
+  OSDMenuKeyboard_LegendButton(2, &_Button_Pause_Inactive_Gd, "Groß-/Kleinbuchst.  ");
+  OSDMenuKeyboard_LegendButton(2, &_Button_Play_Inactive_Gd, "Sonderzeichen"); */
+
+  OSDMenuKeyboard_LegendButton(1, &_Button_jumpstart_Gd, "");
+  OSDMenuKeyboard_LegendButton(1, &_Button_jumpend_Gd, "Cursor bewegen   ");
+  OSDMenuKeyboard_LegendButton(1, &_Button_step_Gd, "Ende   ");
+  OSDMenuKeyboard_LegendButton(1, &_Button_rwd_Gd, "");
+  OSDMenuKeyboard_LegendButton(1, &_Button_ffwd_Gd, "Zeichen löschen");
+  OSDMenuKeyboard_LegendButton(2, &_Button_pause_Gd, "Groß-/Kleinbuchst.  ");
+  OSDMenuKeyboard_LegendButton(2, &_Button_play_Gd, "Sonderzeichen");
+  OSDMenuKeyboard_LegendButton(3, &_Button_recall_Gd, "Original ");
+  OSDMenuKeyboard_LegendButton(3, &_Button_blue_Gd, "Alles löschen   ");
+  OSDMenuKeyboard_LegendButton(3, &_Button_Exit_Gd, "Abbrechen ");
+  OSDMenuKeyboard_LegendButton(3, &_Button_stop_Gd, "Speichern");
   return 1;
 }

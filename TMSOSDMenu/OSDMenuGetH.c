@@ -1,6 +1,6 @@
 #include "FBLib_TMSOSDMenu.h"
 
-int OSDMenuGetH (char *str, byte fntSize)
+int OSDMenuGetH (const char *str, byte fntSize)
 {
   int ret = 0;
 

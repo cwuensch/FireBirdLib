@@ -1,0 +1,77 @@
+﻿Der Buildvorgang wurde am 01.05.2019 13:30:52 gestartet.
+     1>Projekt "D:\Topfield\FireBirdLib\FireBirdLib_VS\FireBirdLib_VS.vcxproj" auf Knoten "2", build Ziel(e).
+     1>Build:
+         ..\build_TMS.bat /debug /quiet
+                 1 Datei(en) kopiert.
+         Building MIPS FBLib
+         cd devutils; \
+         make all;
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/av'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/devutils'
+         make[1]: Nothing to be done for `all'.
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/devutils'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/av'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/compression'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/compression'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/debug'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/debug'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/elf'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/elf'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/EPG'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/EPG'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/ExtAttribs'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/ExtAttribs'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/Firmware'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/Firmware'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/flash'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/flash'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/FontManager'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/FontManager'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/hdd'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/hdd'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/ini'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/ini'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/InstructionSequences'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/InstructionSequences'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/LogoManager'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/LogoManager'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/main'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/main'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/rec'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/rec'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/shutdown'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/shutdown'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/string'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/string'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/StringDB'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/StringDB'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tap'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tap'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tapcom'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tapcom'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/time'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/time'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu/fonts'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu/fonts'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu/graphic'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDMenu/graphic'
+         make[1]: *** No rule to make target `all'.  Stop.
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDKeyboard'
+         In file included from FBLib_TMSOSDKeyboard.h:4,
+                          from OSDMenuKeyboard_Setup.c:5:
+         ../libFireBird.h:1609: warning: declaration does not declare anything
+         ../libFireBird.h:1610: warning: declaration does not declare anything
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/TMSOSDKeyboard'
+         make[1]: Entering directory `/cygdrive/d/Topfield/FireBirdLib/tmsvfd'
+         make[1]: Leaving directory `/cygdrive/d/Topfield/FireBirdLib/tmsvfd'
+         rm -f libFireBird.a
+         mipsel-linux-uclibc-ar: creating libFireBird.a
+                 1 Datei(en) kopiert.
+                 1 Datei(en) kopiert.
+     1>Die Erstellung des Projekts "D:\Topfield\FireBirdLib\FireBirdLib_VS\FireBirdLib_VS.vcxproj" ist abgeschlossen, build Ziel(e).
+
+Das Erstellen war erfolgreich.
+
+Verstrichene Zeit 00:00:19.92

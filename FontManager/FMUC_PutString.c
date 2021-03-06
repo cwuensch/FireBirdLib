@@ -1,7 +1,8 @@
 #include                <string.h>
+#define FB_USE_UNICODE_OSD
 #include                "FBLib_FontManager.h"
 
-void FMUC_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align)
+void FMUC_PutString(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align)
 {
   TRACEENTER();
 

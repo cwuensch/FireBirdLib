@@ -1,6 +1,10 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
+#include                "graphic/MessageBoxSelectedButtonBackground.gd"
+//extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;
+
+
 void OSDMenuMessageBoxShow(void)
 {
   TRACEENTER();
@@ -23,8 +27,8 @@ void OSDMenuMessageBoxShow(void)
 
   if(!MessageBoxOSDRgn)
   {
-    x = (720 - _InfoBox_Gd.width) >> 1;
-    y = (576 - _InfoBox_Gd.height) >> 1;
+    x = (720 - INFOBOX_WIDTH) >> 1;
+    y = (576 - INFOBOX_HEIGHT) >> 1;
     if(OSDRgn || MyOSDRgn)
     {
       InfoBoxSaveAreaX = x;
@@ -33,20 +37,20 @@ void OSDMenuMessageBoxShow(void)
       {
         OSDMapInfo = (tOSDMapInfo*) FIS_vOsdMap();
         if(OSDMapInfo)
-          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, _InfoBox_Gd.width, _InfoBox_Gd.height);
+          InfoBoxSaveArea = TAP_Osd_SaveBox(MyOSDRgn, InfoBoxSaveAreaX - OSDMapInfo[MyOSDRgn].x, InfoBoxSaveAreaY - OSDMapInfo[MyOSDRgn].y, INFOBOX_WIDTH, INFOBOX_HEIGHT);
       }
       else
-        InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, _InfoBox_Gd.width, _InfoBox_Gd.height);
+        InfoBoxSaveArea = TAP_Osd_SaveBox(OSDRgn, InfoBoxSaveAreaX, InfoBoxSaveAreaY, INFOBOX_WIDTH, INFOBOX_HEIGHT);
     }
-    MessageBoxOSDRgn = TAP_Osd_Create(x, y, _InfoBox_Gd.width, _InfoBox_Gd.height, 0, 0);
+    MessageBoxOSDRgn = TAP_Osd_Create(x, y, INFOBOX_WIDTH, INFOBOX_HEIGHT, 0, 0);
     TAP_ExitNormal();
   }
-  TAP_Osd_PutGd(MessageBoxOSDRgn, 0, 0, &_InfoBox_Gd, FALSE);
+  OSDMenuInfoBoxDraw(MessageBoxOSDRgn);
 
   OSDMenuPutS(MessageBoxOSDRgn, 0, 10, 380, MessageBox.Title, RGB(232,146,17), COLOR_None, 14, FALSE, ALIGN_CENTER);
 
   //Count the number of lines
-  strncpyUC(s, MessageBox.Text, 255);
+  strncpy(s, MessageBox.Text, 255);
   s[255] = '\0';
   pText = s;
   EndOfText = s + strlen(s);
@@ -71,7 +75,7 @@ void OSDMenuMessageBoxShow(void)
     pText += (strlen(pText) + 1);
   }
 
-  dx = _InfoBox_Gd.width / (MessageBox.NrButtons + 1);
+  dx = INFOBOX_WIDTH / (MessageBox.NrButtons + 1);
   x = dx;
 
   //With more than 3 buttons, they overlap. This means that the text is not centered.

@@ -1,4 +1,10 @@
 #include                "FBLib_TMSOSDMenu.h"
+//#include                "graphic/WaitSpinner_All.gd"
+
+//word                    WaitSpinnerRgn = 0;
+int                     WaitSpinnerIndex = 0;
+dword                   WaitSpinnerTimeout = 0;
+
 
 void OSDMenuWaitSpinnerInit(void)
 {
@@ -17,7 +23,7 @@ void OSDMenuWaitSpinnerInit(void)
       for (i = 0; i < WaitSpinnerItems; i++)
         OSDMenuWaitSpinnerDrawItem(WaitSpinnerRgn, i * WaitSpinnerItemWidth * 2, WaitSpinnerItemColorBlank);
 
-      TAP_Osd_Copy(WaitSpinnerRgn, InfoBoxOSDRgn, 0, 0, WaitSpinnerWidth, WaitSpinnerItemHeight, (_InfoBox_Gd.width - WaitSpinnerWidth) >> 1, WaitSpinnerPosY, FALSE);
+      TAP_Osd_Copy(WaitSpinnerRgn, InfoBoxOSDRgn, 0, 0, WaitSpinnerWidth, WaitSpinnerItemHeight, (INFOBOX_WIDTH - WaitSpinnerWidth) >> 1, WaitSpinnerPosY, FALSE);
       TAP_Osd_Sync();
 
       WaitSpinnerIndex = 0;

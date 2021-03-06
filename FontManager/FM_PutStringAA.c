@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_FontManager.h"
 
-void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor)
+void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor)
 {
   TRACEENTER();
 
@@ -110,7 +110,7 @@ void FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char *str, dword fco
           newstrlen--;
         } while((XEnd > maxX) && (width != 0) && (newstrlen > 0));
         DeleteAt(newstr, 0, (int)(p - newstr));
-        InsertAt(newstr, 0, "...");
+        InsertCharsAt(newstr, 0, "...", 3);
       }
 
       break;
