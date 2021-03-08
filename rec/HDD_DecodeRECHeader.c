@@ -481,10 +481,10 @@ void HDD_DecodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->HeaderDurationSec  = getWord(&Buffer[p + 0x000e], WrongEndian);
 
   RECHeaderInfo->CryptFlag   = Buffer[p + 0x0010] & 0x03;
-  RECHeaderInfo->HeaderFlags = Buffer[p + 0x0010] & 0xfc;
+  RECHeaderInfo->HeaderFlags = (Buffer[p + 0x0010] & 0xfc) >> 2;
 
-  RECHeaderInfo->HeaderCopyFlag = Buffer[p + 0x0011] & 0x80;
-  RECHeaderInfo->HeaderTSFlag = Buffer[p + 0x0011] & 0x40;
+  RECHeaderInfo->HeaderCopyFlag = (Buffer[p + 0x0011] & 0x80) >> 7;
+  RECHeaderInfo->HeaderTSFlag = (Buffer[p + 0x0011] & 0x40) >> 6;
   RECHeaderInfo->HeaderFlags2 = Buffer[p + 0x0011] & 0x3f;
 
   memcpy(RECHeaderInfo->HeaderUnknown4, &Buffer[p + 0x0012], 10);
@@ -576,10 +576,10 @@ void HDD_DecodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->HeaderDurationSec  = getWord(&Buffer[p + 0x000e], WrongEndian);
 
   RECHeaderInfo->CryptFlag = Buffer[p + 0x0010] & 0x03;
-  RECHeaderInfo->HeaderFlags = Buffer[p + 0x0010] & 0xfc;
+  RECHeaderInfo->HeaderFlags = (Buffer[p + 0x0010] & 0xfc) >> 2;
 
-  RECHeaderInfo->HeaderCopyFlag = Buffer[p + 0x0011] & 0x80;
-  RECHeaderInfo->HeaderTSFlag = Buffer[p + 0x0011] & 0x40;
+  RECHeaderInfo->HeaderCopyFlag = (Buffer[p + 0x0011] & 0x80) >> 7;
+  RECHeaderInfo->HeaderTSFlag = (Buffer[p + 0x0011] & 0x40) >> 6;
   RECHeaderInfo->HeaderFlags2 = Buffer[p + 0x0011] & 0x3f;
 
 
@@ -666,10 +666,10 @@ void HDD_DecodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   RECHeaderInfo->HeaderDurationSec  = getWord(&Buffer[p + 0x000e], WrongEndian);
 
   RECHeaderInfo->CryptFlag   = Buffer[p + 0x0010] & 0x03;
-  RECHeaderInfo->HeaderFlags = Buffer[p + 0x0010] & 0xfc;
+  RECHeaderInfo->HeaderFlags = (Buffer[p + 0x0010] & 0xfc) >> 2;
 
-  RECHeaderInfo->HeaderCopyFlag = Buffer[p + 0x0011] & 0x80;
-  RECHeaderInfo->HeaderTSFlag = Buffer[p + 0x0011] & 0x40;
+  RECHeaderInfo->HeaderCopyFlag = (Buffer[p + 0x0011] & 0x80) >> 7;
+  RECHeaderInfo->HeaderTSFlag = (Buffer[p + 0x0011] & 0x40) >> 6;
   RECHeaderInfo->HeaderFlags2 = Buffer[p + 0x0011] & 0x3f;
 
   memcpy(RECHeaderInfo->HeaderUnknown4, &Buffer[p + 0x0012], 10);

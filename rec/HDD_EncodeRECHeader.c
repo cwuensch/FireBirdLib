@@ -551,7 +551,7 @@ void HDD_EncodeRECHeader_ST_TMSS(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   setDword(&Buffer[p + 0x0008], RECHeaderInfo->HeaderStartTime, FALSE);
   setWord(&Buffer[p + 0x000c], RECHeaderInfo->HeaderDuration, FALSE);
   setWord(&Buffer[p + 0x000e], RECHeaderInfo->HeaderDurationSec, FALSE);
-  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags & 0xfc) | (RECHeaderInfo->CryptFlag & 0x03);
+  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags << 2) | (RECHeaderInfo->CryptFlag & 0x03);
   Buffer[p + 0x0011] = (RECHeaderInfo->HeaderFlags2 & 0x3f) | (RECHeaderInfo->HeaderCopyFlag ? 0x80 : 0x00) | (RECHeaderInfo->HeaderTSFlag ? 0x40 : 0x00);
   memcpy(&Buffer[p + 0x0012], RECHeaderInfo->HeaderUnknown4, 10);
 
@@ -651,7 +651,7 @@ void HDD_EncodeRECHeader_ST_TMST(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   setDword(&Buffer[p + 0x0008], RECHeaderInfo->HeaderStartTime, FALSE);
   setWord(&Buffer[p + 0x000c], RECHeaderInfo->HeaderDuration, FALSE);
   setWord(&Buffer[p + 0x000e], RECHeaderInfo->HeaderDurationSec, FALSE);
-  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags & 0xfc) | (RECHeaderInfo->CryptFlag & 0x03);
+  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags << 2) | (RECHeaderInfo->CryptFlag & 0x03);
   Buffer[p + 0x0011] = (RECHeaderInfo->HeaderFlags2 & 0x3f) | (RECHeaderInfo->HeaderCopyFlag ? 0x80 : 0x00) | (RECHeaderInfo->HeaderTSFlag ? 0x40 : 0x00);
   memcpy(&Buffer[p + 0x0012], RECHeaderInfo->HeaderUnknown4, 10);
 
@@ -744,7 +744,7 @@ void HDD_EncodeRECHeader_ST_TMSC(byte *Buffer, tRECHeaderInfo *RECHeaderInfo)
   setDword(&Buffer[p + 0x0008], RECHeaderInfo->HeaderStartTime, FALSE);
   setWord(&Buffer[p + 0x000c], RECHeaderInfo->HeaderDuration, FALSE);
   setWord(&Buffer[p + 0x000e], RECHeaderInfo->HeaderDurationSec, FALSE);
-  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags & 0xfc) | (RECHeaderInfo->CryptFlag & 0x03);
+  Buffer[p + 0x0010] = (RECHeaderInfo->HeaderFlags << 2) | (RECHeaderInfo->CryptFlag & 0x03);
   Buffer[p + 0x0011] = (RECHeaderInfo->HeaderFlags2 & 0x3f) | (RECHeaderInfo->HeaderCopyFlag ? 0x80 : 0x00) | (RECHeaderInfo->HeaderTSFlag ? 0x40 : 0x00);
   memcpy(&Buffer[p + 0x0012], RECHeaderInfo->HeaderUnknown4, 10);
 
