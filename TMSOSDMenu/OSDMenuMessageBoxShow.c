@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-extern TYPE_GrData      _MessageBoxSelectedButtonBackground_gd
+extern TYPE_GrData      _MessageBoxSelectedButtonBackground_Gd;
 
 
 void OSDMenuMessageBoxShow(void)

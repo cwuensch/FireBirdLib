@@ -347,7 +347,8 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
           }
           else
           {
-            LogEntryFBLibPrintf(TRUE, "StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
+//            TAP_PrintNet("StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
+//            LogEntryFBLibPrintf(TRUE, "StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
           }
           SourceString++;
         }

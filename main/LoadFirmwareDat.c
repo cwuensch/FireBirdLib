@@ -1,3 +1,6 @@
+#define _FILE_OFFSET_BITS  64
+
+#define _GNU_SOURCE
 #include                <stdlib.h>
 #include                <stdio.h>
 #include                <fcntl.h>

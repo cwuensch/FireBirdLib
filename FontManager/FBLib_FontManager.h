@@ -24,7 +24,7 @@
   tGlyphCacheUC  *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Character, byte *BytesPerChar);
   byte           *FMUC_FindUTF8Start(byte *p);
   byte           *FMUC_FindNextUTF8(byte *p);
-  bool            FMUC_IsDiacriticalMark(dword Character);
+  bool            FMUC_IsDiacriticalMark(const dword Character);
 
   typedef struct
   {

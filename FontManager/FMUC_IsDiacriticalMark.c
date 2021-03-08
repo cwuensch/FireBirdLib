@@ -1,6 +1,6 @@
 #include  "FBLib_FontManager.h"
 
-bool FMUC_IsDiacriticalMark(dword Character)
+bool FMUC_IsDiacriticalMark(const dword Character)
 {
   TRACEENTER();
 

@@ -15,7 +15,7 @@ dword HDD_NumberOfRECSlots(void)
     {
       for(i = 0; i < FWDatHeader->NrOfToppyInfoEntries; i++, ToppyInfo++)
       {
-        if(ToppyInfo->SysID == GetSysID())
+        if(ToppyInfo->SysID == (word)TAP_GetSystemId())
         {
           MaxRecStreams = ToppyInfo->MaxRecStreams;
           break;

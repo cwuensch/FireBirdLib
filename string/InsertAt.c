@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "libFireBird.h"
 
-void InsertAt(const char *SourceString, int Pos, char *NewString)
+void InsertAt(char *SourceString, int Pos, const char *NewString)
 {
   TRACEENTER();
 
@@ -44,7 +44,7 @@ void InsertAt(const char *SourceString, int Pos, char *NewString)
     src--;
   }
 
-  memcpy(Target, NewString, NewLen);
+  memcpy(Target, (void*) NewString, NewLen);
 
   TRACEEXIT();
 }

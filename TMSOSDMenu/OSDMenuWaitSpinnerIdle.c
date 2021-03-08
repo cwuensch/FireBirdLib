@@ -31,7 +31,7 @@ void OSDMenuWaitSpinnerIdle(void)
     if (WaitSpinnerIndex == WaitSpinnerItems + WaitSpinnerItemsTrail - 1) WaitSpinnerIndex = WaitSpinnerItemsTrail;
     else WaitSpinnerIndex++;
 
-    TAP_Osd_Copy(WaitSpinnerRgn, InfoBoxOSDRgn, 0, 0, WaitSpinnerWidth, WaitSpinnerItemHeight, (_InfoBox_Gd.width - WaitSpinnerWidth) >> 1, WaitSpinnerPosY, FALSE);
+    TAP_Osd_Copy(WaitSpinnerRgn, InfoBoxOSDRgn, 0, 0, WaitSpinnerWidth, WaitSpinnerItemHeight, (INFOBOX_WIDTH - WaitSpinnerWidth) >> 1, WaitSpinnerPosY, FALSE);
     TAP_Osd_Sync();
 
     WaitSpinnerTimeout = TAP_GetTick() + WaitSpinnerSpeed;

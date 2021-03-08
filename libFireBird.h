@@ -36,6 +36,10 @@
     #endif
   #endif
 
+  #ifdef _MSC_VER
+    #define __const const
+  #endif
+
   #ifdef PC_BASED
     #define inline
     #define __attribute__(a)
@@ -43,10 +47,12 @@
     #include "tap.h"
   #endif
 
-  #undef __USE_LARGEFILE64
-  #define __USE_LARGEFILE64
+  #undef _LARGEFILE_SOURCE
+  #define _LARGEFILE_SOURCE
   #undef _LARGEFILE64_SOURCE
   #define _LARGEFILE64_SOURCE
+  #undef __USE_LARGEFILE64
+  #define __USE_LARGEFILE64     1
   #define _FILE_OFFSET_BITS     64
 
   #include              <sys/types.h>
@@ -219,6 +225,7 @@
   #define RKEY_Blue     RKEY_F4
   #define RKEY_Option   0x10049
   #define RKEY_White    RKEY_Option
+  #define RKEY_Aspect   RKEY_Uhf
 
   //In addition to the Service Status Mask defined in tap.h
   #define SVCSTATUS_MASK_Audio    0x00010000
@@ -1469,8 +1476,8 @@
   bool   Appl_GetIsExternal(void);
   dword  Appl_GetFreeExtRecordSpace(char *MountPath);
   void  *Appl_GetSameTimeEvent(byte SatIndex, word NetID, word TSID, word ServiceID);
-  dword  Appl_KeyCvt(dword NECKeyCode);
   bool   Appl_ImportChData(char *FileName);
+  dword  Appl_KeyCvt(dword NECKeyCode);
   void   Appl_PvrPause(bool p1);
   void   Appl_RestartTimeShiftSvc(bool p1, dword Block);
   void   Appl_SetIsExternal(bool External);
@@ -1515,7 +1522,6 @@
   /*****************************************************************************************************************************/
   /* Flash & EEPROM                                                                                                            */
   /*****************************************************************************************************************************/
-
   typedef struct
   {
     byte                  SatIndex;
@@ -2074,10 +2080,10 @@
   inline dword FIS_fwAppl_GetIsExternal(void);
   inline dword FIS_fwAppl_GetSameTimeEvent(void);
   inline dword FIS_fwAppl_GetStreamFormat(void);
-  inline dword FIS_fwAppl_KeyCvt(void);
   inline dword FIS_fwAppl_ImportChData(void);
   inline dword FIS_fwAppl_InitTempRec(void);
   inline dword FIS_fwAppl_IsTimeShifting(void);
+  inline dword FIS_fwAppl_KeyCvt(void);
   inline dword FIS_fwAppl_PvrList(void);
   inline dword FIS_fwAppl_PvrList_SetListType(void);
   inline dword FIS_fwAppl_PvrPause(void);
@@ -2089,9 +2095,9 @@
   inline dword FIS_fwAppl_SetTimeShift(void);
   inline dword FIS_fwAppl_ShoutCast(void);
   inline dword FIS_fwAppl_StartPlayback(void);
+  inline dword FIS_fwAppl_StartPlaybackDivx(void);
   inline dword FIS_fwAppl_StartPlaybackMedia(void);
   inline dword FIS_fwAppl_StartPlaybackMp3(void);
-  inline dword FIS_fwAppl_StartPlaybackDivx(void);
   inline dword FIS_fwAppl_StartTempRec(void);
   inline dword FIS_fwAppl_StopPlaying(void);
   inline dword FIS_fwAppl_StopRecPlaying(void);
@@ -2520,7 +2526,7 @@
   size_t      GetLine(const char *data, bool strip);
   void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
   byte       *GetUCPos(const byte *String, int CharPos);
-  void        InsertAt(const char *SourceString, int Pos, char *NewString);
+  void        InsertAt(char *SourceString, int Pos, const char *NewString);
   void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(const byte *p, byte *BytesPerChar);
   bool        isUTFToppy(void);
@@ -3077,7 +3083,7 @@
   /* USB Keyboard                                                                                                              */
   /*****************************************************************************************************************************/
 
-  //#define EVT_USBKEYBOARD   0x0ffe
+  #define EVT_USBKEYBOARD    0x0ffe
   #define EVT_TMSREMOTEASCII 0x0ffd
 
   /*****************************************************************************************************************************/

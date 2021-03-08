@@ -3,7 +3,16 @@
 
 #include                "libFireBird.h"
 
-#ifndef FB_USE_UNICODE_OSD
+#ifdef FB_USE_UNICODE_OSD
+  extern tFontDataUC    OSDMenuFont_10;
+  extern tFontDataUC    OSDMenuFont_12;
+  extern tFontDataUC    OSDMenuFont_14;
+  extern tFontDataUC    OSDMenuFont_16;
+  extern tFontDataUC    OSDMenuFont_18;
+  extern tFontDataUC    OSDMenuFont_20;
+  extern tFontDataUC    OSDMenuFont_20B;
+#else
+  #define tFontDataUC                 tFontData
   #define FMUC_GetStringHeight(...)   FM_GetStringHeight( __VA_ARGS__ )
   #define FMUC_GetStringWidth(...)    FM_GetStringWidth( __VA_ARGS__ )
   #define FMUC_PutString(...)         FM_PutString( __VA_ARGS__ )
@@ -15,15 +24,6 @@
   #define OSDMenuFont_18              Calibri_18_FontData
   #define OSDMenuFont_20              Calibri_20_FontData
   #define OSDMenuFont_20B             Calibri_20B_FontData
-  #define tFontDataUC                 tFontData
-#else
-  extern tFontDataUC    OSDMenuFont_10;
-  extern tFontDataUC    OSDMenuFont_12;
-  extern tFontDataUC    OSDMenuFont_14;
-  extern tFontDataUC    OSDMenuFont_16;
-  extern tFontDataUC    OSDMenuFont_18;
-  extern tFontDataUC    OSDMenuFont_20;
-  extern tFontDataUC    OSDMenuFont_20B;
 #endif
 
 #define ITEMNAMESIZE    128
@@ -40,7 +40,7 @@
 #define LISTBOX_FRAME_THICKNESS  2
 #define LISTBOX_GAP_FRAME_TO_X   8
 #define LISTBOX_OFFSET_TO_X      (LISTBOX_FRAME_THICKNESS + LISTBOX_GAP_FRAME_TO_X)
-#define LISTBOX_ADDITIONAL_WIDTH (2 * LISTBOX_OFFSET_TO_X + _ScrollBarVisible_Gd.width)
+#define LISTBOX_ADDITIONAL_WIDTH (2 * LISTBOX_OFFSET_TO_X + 16)
 
 #define WaitSpinnerItems       12
 #define WaitSpinnerItemWidth    6

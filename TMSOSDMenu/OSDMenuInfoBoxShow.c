@@ -1,6 +1,8 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _Button_exit_Gd;
+
 word                    InfoBoxOSDRgn = 0;
 dword                   InfoBoxTimeOut = 0;
 byte                   *InfoBoxSaveArea = NULL;
@@ -81,7 +83,7 @@ void OSDMenuInfoBoxShow(const char *Title, const char *Text, dword Timeout)
     InfoBoxTimeOut = TAP_GetTick() + Timeout;
   else
   {
-    if (InfoBoxExitButton) TAP_Osd_PutGd(InfoBoxOSDRgn, _InfoBox_Gd.width - _Button_exit_Gd.width - 8, Lines == 6 ? 167 : 163, &_Button_exit_Gd, TRUE);
+    if (InfoBoxExitButton) TAP_Osd_PutGd(InfoBoxOSDRgn, INFOBOX_WIDTH - _Button_exit_Gd.width - 8, Lines == 6 ? 167 : 163, &_Button_exit_Gd, TRUE);
 
     InfoBoxTimeOut = 0xffffffff;
   }

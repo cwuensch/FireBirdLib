@@ -12,19 +12,10 @@ dword                   LastUnprocessedOSDMenuKey = 0;
 tCursorType             MenuCursorType;
 tOSDMenuLastCursorType  OSDMenuLastCursor = LCT_NRCURSORS;
 
-#ifdef FB_USE_UNICODE_OSD
-  tFontDataUC           OSDMenuFont_10;
-  tFontDataUC           OSDMenuFont_12;
-  tFontDataUC           OSDMenuFont_14;
-  tFontDataUC           OSDMenuFont_16;
-  tFontDataUC           OSDMenuFont_18;
-  tFontDataUC           OSDMenuFont_20;
-  tFontDataUC           OSDMenuFont_20B;
-#endif
-
 void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn) = NULL;
 
-void OSDMenuInit(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, char *TitleLeft, char *TitleRight)
+
+void OSDMenuInit(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight)
 {
   tMenu                *pMenu;
 

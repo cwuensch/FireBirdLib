@@ -1,7 +1,8 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
-extern TYPE_GrData      _Progressbar_gd
-//extern TYPE_GrData      _InputBox_gd
+
+extern TYPE_GrData      _Progressbar_Gd;
+//extern TYPE_GrData      _InputBox_Gd;
 
 #define PROGRESSBARX    234
 #define PROGRESSBARY    330

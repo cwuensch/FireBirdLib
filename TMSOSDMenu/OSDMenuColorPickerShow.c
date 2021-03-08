@@ -1,9 +1,15 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 
-extern TYPE_GrData      _ColorPicker_gd
+extern TYPE_GrData      _ColorPicker_Gd;
+extern TYPE_GrData      _Button_red_Gd;
+extern TYPE_GrData      _Button_green_Gd;
+extern TYPE_GrData      _Button_blue_Gd;
+extern TYPE_GrData      _Button_ok_Gd;
+extern TYPE_GrData      _Button_exit_Gd;
 
-word                    ColorPickerOSDRgn = 0;
+
+//word                    ColorPickerOSDRgn = 0;
 dword                   ColorPickerColor;
 dword                   ColorPickerDefaultColor;
 tCurrentColorSelected   CurrentColorSelected;
