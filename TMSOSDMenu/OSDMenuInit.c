@@ -54,13 +54,13 @@ void OSDMenuInit(bool AllowScrollingOfLongText, bool HasValueColumn, bool Number
 
 
   if(TitleLeft)
-    strncpyUC(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
+    strncpy(pMenu->TitleLeft, TitleLeft, STDSTRINGSIZE);
   else
     pMenu->TitleLeft[0] = '\0';
   pMenu->TitleLeft[STDSTRINGSIZE - 1] = '\0';
 
   if(TitleRight)
-    strncpyUC(pMenu->TitleRight, TitleRight, STDSTRINGSIZE);
+    strncpy(pMenu->TitleRight, TitleRight, STDSTRINGSIZE);
   else
     pMenu->TitleRight[0] = '\0';
   pMenu->TitleRight[STDSTRINGSIZE - 1] = '\0';

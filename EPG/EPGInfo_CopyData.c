@@ -31,13 +31,13 @@ void EPGInfo_CopyData(TYPE_EvtInfo *EvtInfo, TYPE_EPGInfo *EPGInfo, dword EventS
     //Convert all non-ASCII characters to Unicode
     //Event Name
     memset(EPGInfo->EventName, 0, sizeof(EPGInfo->EventName));
-    strncpyUC(EPGInfo->EventName, EvtInfo->ShortEventText, EvtInfo->NameLength);
+    strncpy(EPGInfo->EventName, EvtInfo->ShortEventText, EvtInfo->NameLength);
     StrMkUTF8(EPGInfo->EventName, sizeof(EPGInfo->EventName), 9);
     EPGInfo->NameLength = strlen(EPGInfo->EventName);
 
     //Short event text
     memset(EPGInfo->ShortEventText, 0, sizeof(EPGInfo->ShortEventText));
-    strcpyUC(EPGInfo->ShortEventText, &EvtInfo->ShortEventText[EvtInfo->NameLength]);
+    strcpy(EPGInfo->ShortEventText, &EvtInfo->ShortEventText[EvtInfo->NameLength]);
     StrMkUTF8(EPGInfo->ShortEventText, sizeof(EPGInfo->ShortEventText), 9);
     EPGInfo->ShortEventTextLength = strlen(EPGInfo->ShortEventText);
 

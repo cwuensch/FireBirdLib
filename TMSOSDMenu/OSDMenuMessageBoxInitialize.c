@@ -24,10 +24,10 @@ void OSDMenuMessageBoxInitialize(const char *Title, const char *Text)
   MessageBoxNoNormalMode = FALSE;
   MessageBoxAllowScrollOver = FALSE;
 
-  strncpyUC(MessageBox.Title, Title, STDSTRINGSIZE);
+  strncpy(MessageBox.Title, Title, STDSTRINGSIZE);
   MessageBox.Title[STDSTRINGSIZE - 1] = '\0';
 
-  strncpyUC(MessageBox.Text, Text, STDSTRINGSIZE);
+  strncpy(MessageBox.Text, Text, STDSTRINGSIZE);
   MessageBox.Text[STDSTRINGSIZE - 1] = '\0';
 
   TRACEEXIT();
