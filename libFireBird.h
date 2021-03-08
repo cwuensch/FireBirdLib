@@ -7,6 +7,11 @@
 
   #define isTMS         1
 
+  #define FB_OSDMENU_ENABLED
+  #define FB_WAITSPINNER_ENABLED
+  #define FB_COLORPICKER_ENABLED
+  #define FB_USE_UNICODE_OSD
+
   // Use -DFB_DEBUG_FULL if you want to activate all debug-like functions,
   // thus getting debugging and tracing information at runtime.
   #ifdef FB_DEBUG_FULL
@@ -1854,13 +1859,15 @@
     tGlyphCacheUC      *GlyphCache;
   } tFontDataUC;
 
+#ifdef FB_USE_UNICODE_OSD
   void  FM_MakeFontDir(void);
   bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
   dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
   dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData);
-  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
+  void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
   void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
+#endif
 
 
   /*****************************************************************************************************************************/
@@ -2762,7 +2769,9 @@
   //Main OSD
   #define OSDMenuGetW OSDMenuGetStringWidth   // potential legacy usage
   void OSDMenuInitialize(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight);
-  void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
+  #ifdef FB_USE_UNICODE_OSD
+    void OSDMenuSetFont(tFontDataUC *LeftTitle, tFontDataUC *RightTitle, tFontDataUC *ListNumber, tFontDataUC *ListName, tFontDataUC *ListValue, tFontDataUC *Buttons, tFontDataUC *Memo);
+  #endif
   void OSDMenuSetMemo(bool SelectionAlwaysOnTop);
   void OSDMenuSetCursor(tCursorType CursorType);
   void OSDMenuSetLineHeight(tLineHeight type);

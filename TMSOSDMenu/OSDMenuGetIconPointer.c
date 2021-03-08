@@ -1,5 +1,63 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _Button_0_gd
+extern TYPE_GrData      _Button_1_gd
+extern TYPE_GrData      _Button_2_gd
+extern TYPE_GrData      _Button_3_gd
+extern TYPE_GrData      _Button_4_gd
+extern TYPE_GrData      _Button_5_gd
+extern TYPE_GrData      _Button_6_gd
+extern TYPE_GrData      _Button_7_gd
+extern TYPE_GrData      _Button_8_gd
+extern TYPE_GrData      _Button_9_gd
+extern TYPE_GrData      _Button_ar_gd
+extern TYPE_GrData      _Button_audio_gd
+extern TYPE_GrData      _Button_aux_gd
+extern TYPE_GrData      _Button_blue_gd
+extern TYPE_GrData      _Button_cut_gd
+extern TYPE_GrData      _Button_down_gd
+extern TYPE_GrData      _Button_exit_gd
+extern TYPE_GrData      _Button_fav_gd
+extern TYPE_GrData      _Button_ffwd_gd
+extern TYPE_GrData      _Button_filelist_gd
+extern TYPE_GrData      _Button_green_gd
+extern TYPE_GrData      _Button_guide_gd
+extern TYPE_GrData      _Button_info_gd
+extern TYPE_GrData      _Button_jumpend_gd
+extern TYPE_GrData      _Button_jumpstart_gd
+extern TYPE_GrData      _Button_left_gd
+extern TYPE_GrData      _Button_list_gd
+extern TYPE_GrData      _Button_m_gd
+extern TYPE_GrData      _Button_menu_gd
+extern TYPE_GrData      _Button_mute_gd
+extern TYPE_GrData      _Button_ok_gd
+extern TYPE_GrData      _Button_option_gd
+extern TYPE_GrData      _Button_pause_gd
+extern TYPE_GrData      _Button_play_gd
+extern TYPE_GrData      _Button_progminus_gd
+extern TYPE_GrData      _Button_progplus_gd
+extern TYPE_GrData      _Button_recall_gd
+extern TYPE_GrData      _Button_record_gd
+extern TYPE_GrData      _Button_red_gd
+extern TYPE_GrData      _Button_right_gd
+extern TYPE_GrData      _Button_rwd_gd
+extern TYPE_GrData      _Button_sat_gd
+extern TYPE_GrData      _Button_select_gd
+extern TYPE_GrData      _Button_sleep_gd
+extern TYPE_GrData      _Button_step_gd
+extern TYPE_GrData      _Button_stop_gd
+extern TYPE_GrData      _Button_subtitle_gd
+extern TYPE_GrData      _Button_ttx_gd
+extern TYPE_GrData      _Button_tv_radio_gd
+extern TYPE_GrData      _Button_up_gd
+extern TYPE_GrData      _Button_vf_gd
+extern TYPE_GrData      _Button_volminus_gd
+extern TYPE_GrData      _Button_volplus_gd
+extern TYPE_GrData      _Button_white_gd
+extern TYPE_GrData      _Button_yellow_gd
+extern TYPE_GrData      _Button_nouse_gd
+
+
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton)
 {
   TRACEENTER();

@@ -1,5 +1,10 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+extern TYPE_GrData      _ColorPicker_CursorNone_gd
+extern TYPE_GrData      _ColorPicker_CursorDeselected_gd
+extern TYPE_GrData      _ColorPicker_ValueBackroundSelected_gd
+
+
 void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Selected)
 {
   TRACEENTER();
