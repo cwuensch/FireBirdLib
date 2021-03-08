@@ -10,7 +10,7 @@ void InsertCharsAt(char *SourceString, int Pos, const char *NewString, int Chars
   OldLen = strlen(SourceString);
   if(Pos >= OldLen)
   {
-    memcpy(&SourceString[OldLen], NewString, CharsToInsert);
+    memcpy(&SourceString[OldLen], (void*) NewString, CharsToInsert);
     SourceString[OldLen + CharsToInsert] = '\0';
     return;
   }
@@ -31,5 +31,5 @@ void InsertCharsAt(char *SourceString, int Pos, const char *NewString, int Chars
     SourceString--;
   }
 
-  memcpy(Target, NewString, CharsToInsert);
+  memcpy(Target, (void*) NewString, CharsToInsert);
 }

@@ -1,6 +1,5 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDKeyboard.h"
-#include                "../TMSOSDMenu/graphic/TextCursor14.gd"
 
 char                    OSDMenuKeyboard_Clipboard[MAX_FILE_NAME_SIZE + 1];
 

@@ -1,6 +1,6 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
-#include                "graphic/Progressbar.gd";
+#include                "graphic/Progressbar.gd"
 
 #define PROGRESSBARX    234
 #define PROGRESSBARY    330

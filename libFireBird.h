@@ -1591,11 +1591,11 @@
 
     byte                  DiSEqC11;
 
-    union
-    {
-      byte                unused5[5];
-      struct
-      {
+//    union
+//    {
+//      byte                unused5[5];
+//      struct
+//      {
         byte              UniCableSatPosition:1;
         byte              UniCableunused:7;
 
@@ -1603,8 +1603,8 @@
         word              UniCableFrq:12;
 
         byte              unused6[2];
-      } __attribute__((packed));
-    };
+//      } __attribute__((packed));
+//    };
   } tFlashLNB;  // identisch mit TYPE_LNB_TMSS
 
   typedef struct
@@ -2551,7 +2551,7 @@
   void        StrToISOAlloc(byte *SourceString, byte **DestString);
   bool        StrToUTF8(byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
   void        UpperCase(char *string);
-  dword       UTF8ToUTF32(byte *UTF8Character, byte *BytesPerChar);
+  dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
   void        UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
   char       *ValidFileName(char *strName, eRemoveChars ControlCharacters, char *Result, int ResultSize);
 

@@ -46,10 +46,12 @@
   extern bool           KeyPadCursorMode;
   extern int            KeyPadPosition;
 
+  void OSDMenuKeyboard_Destroy(void);
   void OSDMenuKeyboard_DrawAll(void);
   void OSDMenuKeyboard_DrawKeys(void);
   void OSDMenuKeyboard_DrawText(void);
   void OSDMenuKeyboard_DrawLegendButton(dword Line, TYPE_GrData *ButtonGd, char *Text);
+  bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
   void OSDMenuKeyboard_TMSRemoteDirectMode(bool DirectMode);
 
 #endif

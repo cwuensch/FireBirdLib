@@ -47,6 +47,7 @@
   extern tFontData      Calibri_14_FontData;
   extern bool           OSDMenuKeyboard_ReturnToNormal;
 
+  bool OSDMenuKeyboard_EventHandler(word *event, dword *param1, dword *param2);
   void OSDMenuKeyboard_DrawAll(void);
   void OSDMenuKeyboard_DrawKeys(void);
   void OSDMenuKeyboard_DrawText(void);
