@@ -1821,10 +1821,10 @@
     tFontDef              FontDef[191];
   } tFontData;
 
-  dword FM_GetStringWidth(char *Text, tFontData *FontData);
-  dword FM_GetStringHeight(char *Text, tFontData *FontData);
-  void  FM_PutString(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
-  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
+  dword FM_GetStringWidth(const char *Text, tFontData *FontData);
+  dword FM_GetStringHeight(const char *Text, tFontData *FontData);
+  void  FM_PutString(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align);
+  void  FM_PutStringAA(word rgn, dword x, dword y, dword maxX, const char * str, dword fcolor, dword bcolor, tFontData *FontData, byte bDot, byte align, float AntiAliasFactor);
   bool  FM_LoadFontFile(char *FontFileName, tFontData *FontData);
   void  FM_FreeFontFile(tFontData *FontData);
 
