@@ -10,7 +10,7 @@ static byte _pfeil_r_Cpm[] =
   0x2D, 0x0E, 0xE5, 0xFF, 0x8F, 0xCF, 0xDF, 0x92, 0x3E, 0xE6, 0xFA, 0xA2, 0xF0, 
 };
 
-static TYPE_GrData _pfeil_r_Gd =
+TYPE_GrData _pfeil_r_Gd =
 {
   1,                              //version
   0,                              //reserved

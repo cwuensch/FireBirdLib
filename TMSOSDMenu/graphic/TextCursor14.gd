@@ -8,7 +8,7 @@ static byte _TextCursor14_Cpm[] =
   0xD1, 0x67, 0x53, 0x08, 0x24, 0x00, 0x7A, 0x09, 0x47, 0x1E, 0xE7, 0xFC, 0xF6, 0x79, 0xD5, 0xC0, 
 };
 
-static TYPE_GrData _TextCursor14_Gd =
+TYPE_GrData _TextCursor14_Gd =
 {
   1,                              //version
   0,                              //reserved

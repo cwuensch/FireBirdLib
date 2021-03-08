@@ -28,7 +28,7 @@ static byte _Button_mute_Cpm[] =
   0x7F, 0xEC, 0xF9, 0xD1, 0xF7, 0x2C, 0xB2, 0xCD, 0x66, 0xC0, 
 };
 
-static TYPE_GrData _Button_mute_Gd =
+TYPE_GrData _Button_mute_Gd =
 {
   1,                              //version
   0,                              //reserved

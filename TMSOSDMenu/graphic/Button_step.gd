@@ -19,7 +19,7 @@ static byte _Button_step_Cpm[] =
   0x75, 0xD5, 0x9F, 0x0B, 0xE3, 0xFD, 0x87, 0xB1, 0xC7, 0x13, 0xF5, 0x79, 0xE7, 0xBA, 0x9B, 
 };
 
-static TYPE_GrData _Button_step_Gd =
+TYPE_GrData _Button_step_Gd =
 {
   1,                              //version
   0,                              //reserved

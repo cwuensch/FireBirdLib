@@ -27,7 +27,7 @@ static byte _Button_play_Cpm[] =
   0x45, 0x12, 0xD1, 0xAB, 0x57, 0xFA, 0x81, 0xF3, 0x1B, 
 };
 
-static TYPE_GrData _Button_play_Gd =
+TYPE_GrData _Button_play_Gd =
 {
   1,                              //version
   0,                              //reserved

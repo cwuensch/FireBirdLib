@@ -68,7 +68,7 @@ static byte _InfoBox_Cpm[] =
   0xBC, 0x92, 0x4B, 0x7B, 0xC9, 0x24, 0xFF, 0x7B, 0xC9, 0x24, 0x92, 0x49, 0x3C, 0x80, 
 };
 
-static TYPE_GrData _InfoBox_Gd =
+TYPE_GrData _InfoBox_Gd =
 {
   1,                              //version
   0,                              //reserved

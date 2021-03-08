@@ -9,7 +9,7 @@ static byte _ColorPicker_CursorDeselected_Cpm[] =
   0xC4, 0xEA, 0x9D, 0xE0, 0xB6, 0xBF, 0x3D, 0xCB, 0xA4, 0xEC, 0xF2, 0x5C, 0xA7, 0x87, 0xED, 
 };
 
-static TYPE_GrData _ColorPicker_CursorDeselected_Gd =
+TYPE_GrData _ColorPicker_CursorDeselected_Gd =
 {
   1,                              //version
   0,                              //reserved

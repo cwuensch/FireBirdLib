@@ -37,7 +37,7 @@ static byte _Button_left_Cpm[] =
   0x2C, 0x2C, 0x07, 0x12, 0x53, 0x60, 
 };
 
-static TYPE_GrData _Button_left_Gd =
+TYPE_GrData _Button_left_Gd =
 {
   1,                              //version
   0,                              //reserved

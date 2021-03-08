@@ -34,7 +34,7 @@ static byte _Button_m_Cpm[] =
   0x80, 
 };
 
-static TYPE_GrData _Button_m_Gd =
+TYPE_GrData _Button_m_Gd =
 {
   1,                              //version
   0,                              //reserved

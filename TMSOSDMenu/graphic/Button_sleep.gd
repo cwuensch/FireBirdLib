@@ -37,7 +37,7 @@ static byte _Button_sleep_Cpm[] =
   0xE2, 0xBA, 0xBF, 0xB0, 0xE1, 0xC3, 0x86, 0x9E, 0x08, 0x30, 0x7F, 0x92, 0x27, 0xA9, 0x6C, 
 };
 
-static TYPE_GrData _Button_sleep_Gd =
+TYPE_GrData _Button_sleep_Gd =
 {
   1,                              //version
   0,                              //reserved

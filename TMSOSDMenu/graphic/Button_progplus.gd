@@ -26,7 +26,7 @@ static byte _Button_progplus_Cpm[] =
   0x50, 0x9A, 0xA8, 0x36, 
 };
 
-static TYPE_GrData _Button_progplus_Gd =
+TYPE_GrData _Button_progplus_Gd =
 {
   1,                              //version
   0,                              //reserved

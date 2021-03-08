@@ -39,7 +39,7 @@ static byte _Button_vf_Cpm[] =
   0x40, 0x80, 0x85, 0xB0, 
 };
 
-static TYPE_GrData _Button_vf_Gd =
+TYPE_GrData _Button_vf_Gd =
 {
   1,                              //version
   0,                              //reserved

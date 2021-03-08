@@ -10,7 +10,7 @@ static byte _ScrollBarKnob_Cpm[] =
   0x4D, 0x6B, 0x46, 0xF7, 0xB1, 0x99, 0x88, 0x88, 0x2E, 0xF7, 0x7B, 0xBD, 0xDF, 0xF7, 
 };
 
-static TYPE_GrData _ScrollBarKnob_Gd =
+TYPE_GrData _ScrollBarKnob_Gd =
 {
   1,                              //version
   0,                              //reserved

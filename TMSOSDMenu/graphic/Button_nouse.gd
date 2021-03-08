@@ -63,7 +63,7 @@ static byte _Button_nouse_Cpm[] =
   0x37, 0xFB, 0x0D, 0xAB, 0x46, 0x83, 0xB6, 0x4D, 0x36, 
 };
 
-static TYPE_GrData _Button_nouse_Gd =
+TYPE_GrData _Button_nouse_Gd =
 {
   1,                              //version
   0,                              //reserved

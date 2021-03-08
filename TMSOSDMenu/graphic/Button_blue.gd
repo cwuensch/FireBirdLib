@@ -47,7 +47,7 @@ static byte _Button_blue_Cpm[] =
   0x53, 0x9F, 0x07, 0xC9, 0x47, 0xF6, 0xF9, 0x96, 
 };
 
-static TYPE_GrData _Button_blue_Gd =
+TYPE_GrData _Button_blue_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -21,7 +21,7 @@ static byte _Button_subtitle_Cpm[] =
   0xE1, 0x3F, 0xCA, 0x17, 0x5F, 0xEC, 0x3F, 0x6D, 0xBB, 0x53, 0xC5, 0x86, 0x18, 0x79, 0x1B, 
 };
 
-static TYPE_GrData _Button_subtitle_Gd =
+TYPE_GrData _Button_subtitle_Gd =
 {
   1,                              //version
   0,                              //reserved

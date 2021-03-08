@@ -27,7 +27,7 @@ static byte _Button_volminus_Cpm[] =
   0x7C, 0x2D, 0x8F, 0xEC, 0x3B, 0x49, 0xA6, 0x5D, 0x24, 0x2D, 0x80, 
 };
 
-static TYPE_GrData _Button_volminus_Gd =
+TYPE_GrData _Button_volminus_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -28,7 +28,7 @@ static byte _SelectionBar_Blue_100x34_Cpm[] =
   0x09, 0xB3, 0xA6, 0x04, 0x21, 0xF8, 0x40, 
 };
 
-static TYPE_GrData _SelectionBar_Blue_100x34_Gd =
+TYPE_GrData _SelectionBar_Blue_100x34_Gd =
 {
   1,                              //version
   0,                              //reserved

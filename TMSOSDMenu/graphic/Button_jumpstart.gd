@@ -20,7 +20,7 @@ static byte _Button_jumpstart_Cpm[] =
   0x0F, 0x51, 0xB0, 
 };
 
-static TYPE_GrData _Button_jumpstart_Gd =
+TYPE_GrData _Button_jumpstart_Gd =
 {
   1,                              //version
   0,                              //reserved

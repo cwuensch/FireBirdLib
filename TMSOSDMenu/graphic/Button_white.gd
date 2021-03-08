@@ -39,7 +39,7 @@ static byte _Button_white_Cpm[] =
   0x22, 0x24, 0x48, 0x46, 0xD8, 0x6F, 0x5E, 0xE7, 0x7E, 0x33, 0xE0, 
 };
 
-static TYPE_GrData _Button_white_Gd =
+TYPE_GrData _Button_white_Gd =
 {
   1,                              //version
   0,                              //reserved

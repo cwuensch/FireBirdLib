@@ -22,7 +22,7 @@ static byte _Button_ttx_Cpm[] =
   0xE0, 0x6C, 
 };
 
-static TYPE_GrData _Button_ttx_Gd =
+TYPE_GrData _Button_ttx_Gd =
 {
   1,                              //version
   0,                              //reserved

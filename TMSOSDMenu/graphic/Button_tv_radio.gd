@@ -33,7 +33,7 @@ static byte _Button_tv_radio_Cpm[] =
   0x2A, 0xD5, 0x2F, 0xD3, 0x5E, 0xBD, 0x75, 0x2D, 0x80, 
 };
 
-static TYPE_GrData _Button_tv_radio_Gd =
+TYPE_GrData _Button_tv_radio_Gd =
 {
   1,                              //version
   0,                              //reserved

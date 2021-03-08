@@ -9,7 +9,7 @@ static byte _ScrollBarInvisible_Cpm[] =
   0xAA, 0xAA, 0xAA, 0xAA, 0xAF, 0x80, 
 };
 
-static TYPE_GrData _ScrollBarInvisible_Gd =
+TYPE_GrData _ScrollBarInvisible_Gd =
 {
   1,                              //version
   0,                              //reserved

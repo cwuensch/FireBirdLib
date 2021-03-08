@@ -20,7 +20,7 @@ static byte _Button_select_Cpm[] =
   0x8D, 0x80, 
 };
 
-static TYPE_GrData _Button_select_Gd =
+TYPE_GrData _Button_select_Gd =
 {
   1,                              //version
   0,                              //reserved

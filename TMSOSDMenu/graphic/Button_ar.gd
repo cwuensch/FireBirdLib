@@ -42,7 +42,7 @@ static byte _Button_ar_Cpm[] =
   0xF2, 0x57, 0x5B, 0xFD, 0x86, 0xCD, 0x93, 0x21, 0xFE, 0x2D, 0x5A, 0xB5, 0x3A, 0xD8, 
 };
 
-static TYPE_GrData _Button_ar_Gd =
+TYPE_GrData _Button_ar_Gd =
 {
   1,                              //version
   0,                              //reserved

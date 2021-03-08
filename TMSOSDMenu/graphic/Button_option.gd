@@ -49,7 +49,7 @@ static byte _Button_option_Cpm[] =
   0x29, 0x3F, 0xD2, 0x28, 0xF2, 0xA6, 0xC0, 
 };
 
-static TYPE_GrData _Button_option_Gd =
+TYPE_GrData _Button_option_Gd =
 {
   1,                              //version
   0,                              //reserved

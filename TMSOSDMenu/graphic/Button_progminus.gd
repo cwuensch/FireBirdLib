@@ -24,7 +24,7 @@ static byte _Button_progminus_Cpm[] =
   0x55, 0xD0, 0x6C, 
 };
 
-static TYPE_GrData _Button_progminus_Gd =
+TYPE_GrData _Button_progminus_Gd =
 {
   1,                              //version
   0,                              //reserved

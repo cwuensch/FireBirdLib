@@ -56,7 +56,7 @@ static byte _Messagebox_Cpm[] =
   0xD9, 0xF2, 0x49, 0x2D, 0x9F, 0x24, 0x96, 0xCF, 0x92, 0x49, 0x24, 0x92, 0x79, 
 };
 
-static TYPE_GrData _Messagebox_Gd =
+TYPE_GrData _Messagebox_Gd =
 {
   1,                              //version
   0,                              //reserved

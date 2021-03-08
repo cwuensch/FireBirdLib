@@ -158,7 +158,7 @@ static byte _ColorPicker_Cpm[] =
   0x79, 
 };
 
-static TYPE_GrData _ColorPicker_Gd =
+TYPE_GrData _ColorPicker_Gd =
 {
   1,                              //version
   0,                              //reserved

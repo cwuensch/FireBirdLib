@@ -51,7 +51,7 @@ static byte _Button_fav_Cpm[] =
   0xBC, 0x4F, 0xED, 0x0D, 0x62, 0xC5, 0x81, 0x36, 0xA9, 0x57, 0xF4, 0x8A, 0x3E, 0x22, 0x6C, 
 };
 
-static TYPE_GrData _Button_fav_Gd =
+TYPE_GrData _Button_fav_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -1528,7 +1528,7 @@ static byte _WaitSpinner_All_Cpm[] =
   0xC0, 
 };
 
-static TYPE_GrData _WaitSpinner_All_Gd =
+TYPE_GrData _WaitSpinner_All_Gd =
 {
   1,                              //version
   0,                              //reserved

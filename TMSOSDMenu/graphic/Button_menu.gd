@@ -43,7 +43,7 @@ static byte _Button_menu_Cpm[] =
   0xEE, 0x6E, 0x7F, 0xD2, 0x23, 0xD1, 0x36, 
 };
 
-static TYPE_GrData _Button_menu_Gd =
+TYPE_GrData _Button_menu_Gd =
 {
   1,                              //version
   0,                              //reserved

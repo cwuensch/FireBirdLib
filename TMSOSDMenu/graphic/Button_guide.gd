@@ -61,7 +61,7 @@ static byte _Button_guide_Cpm[] =
   0x16, 0x98, 0xFF, 0xE6, 0x68, 0xD1, 0xA3, 0x08, 0xE4, 0x28, 0x7F, 0xE2, 0x2C, 0xB1, 0x69, 0x80, 
 };
 
-static TYPE_GrData _Button_guide_Gd =
+TYPE_GrData _Button_guide_Gd =
 {
   1,                              //version
   0,                              //reserved

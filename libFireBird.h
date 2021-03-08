@@ -54,8 +54,6 @@
   #define _LARGEFILE64_SOURCE
   #undef __USE_LARGEFILE64
   #define __USE_LARGEFILE64     1
-  #undef _LARGEFILE64_SOURCE
-  #define _LARGEFILE64_SOURCE
   #define _FILE_OFFSET_BITS     64
 
   #include              <sys/types.h>

@@ -19,7 +19,7 @@ static byte _Button_stop_Cpm[] =
   0x38, 0x43, 0x0F, 0xEA, 0x0F, 0x69, 0xB0, 
 };
 
-static TYPE_GrData _Button_stop_Gd =
+TYPE_GrData _Button_stop_Gd =
 {
   1,                              //version
   0,                              //reserved

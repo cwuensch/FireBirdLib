@@ -37,7 +37,7 @@ static byte _Button_exit_Cpm[] =
   0x6D, 0x7F, 0xD2, 0x03, 0xD4, 0x1B, 
 };
 
-static TYPE_GrData _Button_exit_Gd =
+TYPE_GrData _Button_exit_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -10,7 +10,7 @@ static byte _pfeil_l_bright_Cpm[] =
   0x06, 0xC3, 0xF4, 0x3F, 0xF1, 0xE4, 0x3E, 0x4D, 0xE5, 0x3F, 0x2C, 0x79, 0x77, 0xD7, 0x8B, 0xC0, 
 };
 
-static TYPE_GrData _pfeil_l_bright_Gd =
+TYPE_GrData _pfeil_l_bright_Gd =
 {
   1,                              //version
   0,                              //reserved

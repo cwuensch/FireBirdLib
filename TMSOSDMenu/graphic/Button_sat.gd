@@ -39,7 +39,7 @@ static byte _Button_sat_Cpm[] =
   0xA9, 0x71, 0x71, 0xFE, 0x90, 0x8F, 0x42, 0x6C, 
 };
 
-static TYPE_GrData _Button_sat_Gd =
+TYPE_GrData _Button_sat_Gd =
 {
   1,                              //version
   0,                              //reserved

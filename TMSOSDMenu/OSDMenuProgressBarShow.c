@@ -1,11 +1,10 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
 #include                "graphic/Progressbar.gd"
+//extern TYPE_GrData      _Progressbar_Gd;
 
 #define PROGRESSBARX    234
 #define PROGRESSBARY    330
-
-//extern TYPE_GrData      _Progressbar_Gd;
 
 //word                    ProgressBarOSDRgn = 0;
 word                    ProgressBarFullRgn = 0;

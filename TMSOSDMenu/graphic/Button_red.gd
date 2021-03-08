@@ -42,7 +42,7 @@ static byte _Button_red_Cpm[] =
   0xF6, 0x4E, 0xFF, 0xA0, 0x62, 0x9E, 0xF6, 0xA7, 0xE6, 0x38, 
 };
 
-static TYPE_GrData _Button_red_Gd =
+TYPE_GrData _Button_red_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -21,7 +21,7 @@ static byte _Button_ffwd_Cpm[] =
   0xF7, 0xDA, 0x7C, 0x2E, 0xBF, 0xB0, 0xE0, 0x82, 0x04, 0xD9, 0xAF, 0x5F, 0xAA, 0x0F, 0x53, 0x60, 
 };
 
-static TYPE_GrData _Button_ffwd_Gd =
+TYPE_GrData _Button_ffwd_Gd =
 {
   1,                              //version
   0,                              //reserved

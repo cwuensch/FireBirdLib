@@ -32,7 +32,7 @@ static byte _InputBox_Cpm[] =
   0xBF, 0xF5, 0xEF, 0xF7, 0xD2, 0x71, 0xEF, 0x1E, 0xF1, 0xEF, 0xFE, 0x7B, 0xC0, 
 };
 
-static TYPE_GrData _InputBox_Gd =
+TYPE_GrData _InputBox_Gd =
 {
   1,                              //version
   0,                              //reserved

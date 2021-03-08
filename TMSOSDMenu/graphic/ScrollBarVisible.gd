@@ -27,7 +27,7 @@ static byte _ScrollBarVisible_Cpm[] =
   0xBA, 0xE6, 0x3C, 0x58, 0xB1, 0x27, 0x1C, 0x71, 0x41, 0x04, 0x0A, 0x18, 0x61, 0x40, 
 };
 
-static TYPE_GrData _ScrollBarVisible_Gd =
+TYPE_GrData _ScrollBarVisible_Gd =
 {
   1,                              //version
   0,                              //reserved

@@ -23,7 +23,7 @@ static byte _Button_filelist_Cpm[] =
   0x36, 
 };
 
-static TYPE_GrData _Button_filelist_Gd =
+TYPE_GrData _Button_filelist_Gd =
 {
   1,                              //version
   0,                              //reserved

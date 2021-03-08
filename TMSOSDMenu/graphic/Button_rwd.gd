@@ -21,7 +21,7 @@ static byte _Button_rwd_Cpm[] =
   0xBF, 0x61, 0xBE, 0xFB, 0xE9, 0xBD, 0xD7, 0x7F, 0xE8, 0x3D, 0x46, 0xC0, 
 };
 
-static TYPE_GrData _Button_rwd_Gd =
+TYPE_GrData _Button_rwd_Gd =
 {
   1,                              //version
   0,                              //reserved

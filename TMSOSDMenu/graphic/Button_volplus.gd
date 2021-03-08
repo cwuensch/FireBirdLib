@@ -28,7 +28,7 @@ static byte _Button_volplus_Cpm[] =
   0xF8, 0x9B, 0x1F, 0x58, 0x74, 0xD2, 0x48, 0x99, 0x08, 0x9B, 
 };
 
-static TYPE_GrData _Button_volplus_Gd =
+TYPE_GrData _Button_volplus_Gd =
 {
   1,                              //version
   0,                              //reserved

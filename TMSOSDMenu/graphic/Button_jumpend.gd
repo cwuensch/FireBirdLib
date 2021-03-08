@@ -19,7 +19,7 @@ static byte _Button_jumpend_Cpm[] =
   0x1F, 0x0B, 0xAB, 0xFB, 0x0E, 0x08, 0x20, 0x4E, 0x0F, 0x3D, 0xFA, 0x83, 0xD4, 0x6C, 
 };
 
-static TYPE_GrData _Button_jumpend_Gd =
+TYPE_GrData _Button_jumpend_Gd =
 {
   1,                              //version
   0,                              //reserved

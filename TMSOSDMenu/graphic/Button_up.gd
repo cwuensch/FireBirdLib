@@ -36,7 +36,7 @@ static byte _Button_up_Cpm[] =
   0xFA, 0x90, 0xD9, 0x3F, 0x61, 0xB4, 0x66, 0xCC, 0x73, 0x52, 0x1B, 
 };
 
-static TYPE_GrData _Button_up_Gd =
+TYPE_GrData _Button_up_Gd =
 {
   1,                              //version
   0,                              //reserved

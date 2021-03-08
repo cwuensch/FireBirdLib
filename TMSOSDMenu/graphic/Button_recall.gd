@@ -35,7 +35,7 @@ static byte _Button_recall_Cpm[] =
   0xD8, 
 };
 
-static TYPE_GrData _Button_recall_Gd =
+TYPE_GrData _Button_recall_Gd =
 {
   1,                              //version
   0,                              //reserved

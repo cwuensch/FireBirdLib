@@ -17,7 +17,7 @@ static byte _ColorPicker_ValueBackroundSelected_Cpm[] =
   0xAF, 0x8F, 0xEF, 0xEA, 0xB8, 
 };
 
-static TYPE_GrData _ColorPicker_ValueBackroundSelected_Gd =
+TYPE_GrData _ColorPicker_ValueBackroundSelected_Gd =
 {
   1,                              //version
   0,                              //reserved

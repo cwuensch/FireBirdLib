@@ -21,7 +21,7 @@ static byte _Button_audio_Cpm[] =
   0x57, 0xDF, 0x7F, 0xE4, 0xD8, 
 };
 
-static TYPE_GrData _Button_audio_Gd =
+TYPE_GrData _Button_audio_Gd =
 {
   1,                              //version
   0,                              //reserved

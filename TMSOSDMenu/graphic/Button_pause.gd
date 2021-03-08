@@ -19,7 +19,7 @@ static byte _Button_pause_Cpm[] =
   0xFE, 0xC3, 0x92, 0x49, 0x13, 0xAF, 0x4E, 0x9F, 0x28, 0x3D, 0x86, 0xC0, 
 };
 
-static TYPE_GrData _Button_pause_Gd =
+TYPE_GrData _Button_pause_Gd =
 {
   1,                              //version
   0,                              //reserved
