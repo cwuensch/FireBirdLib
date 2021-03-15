@@ -1876,6 +1876,7 @@
     tGlyphCacheUC      *GlyphCache;
   } tFontDataUC;
 
+#ifdef FB_USE_UNICODE_OSD
   void  FM_MakeFontDir(void);
   bool  FMUC_LoadFontFile(char *FontFileName, tFontDataUC *FontData);
   dword FMUC_GetStringHeight(const char *Text, tFontDataUC *FontData);
@@ -1883,6 +1884,7 @@
   void  FMUC_PutString(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align);
   void  FMUC_PutStringAA(word rgn, dword x, dword y, dword maxX, const char *str, dword fcolor, dword bcolor, tFontDataUC *FontData, byte bDot, byte align, float AntiAliasFactor);
   void  FMUC_FreeFontFile(tFontDataUC *FontData);
+#endif
 
 
   /*****************************************************************************************************************************/
@@ -2543,7 +2545,6 @@
   void        ExtractLine(char *Text, char *Line);
   size_t      GetLine(const char *data, bool strip);
   void        GetStringEncoding(const char *Text, bool *hasAnsiChars, bool *hasUTFChars);
-  byte       *GetUCPos(const byte *String, int CharPos);
   void        InsertAt(char *SourceString, int Pos, const char *NewString);
   void        InsertCharsAt(char *SourceString, int Pos, const char *NewString, int CharsToInsert);
   bool        isUTF8Char(const byte *p, byte *BytesPerChar);
@@ -2555,12 +2556,9 @@
   char       *RTrim(char *s);
   void        SeparatePathComponents(const char *FullName, char *Path, char *FileName, char *FileExt);
   byte       *SkipCharTableBytes(const byte *p);
-  byte       *strcpyUC(byte *dest, const byte *src);
   bool        StringEndsWith(const char *text, const char *postfix);
-  int         strlenUC(const byte *s);
   bool        StrMkISO(byte *SourceString);
   bool        StrMkUTF8(byte *SourceString, size_t SourceSize, byte DefaultISO8859CharSet);
-  byte       *strncpyUC(byte *dest, const byte *src, size_t n);
   bool        StrReplace(char *String, const char *Find, const char *Replace);
   void        StrToISO(const byte *SourceString, byte *DestString);
   void        StrToISOAlloc(const byte *SourceString, byte **DestString);
@@ -2569,6 +2567,18 @@
   dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
   void        UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);
   char       *ValidFileName(const char *strName, eRemoveChars ControlCharacters, char *Result, int ResultSize);
+
+#ifdef FB_USE_UNICODE_OSD
+  byte       *GetUCPos(const byte *String, int CharPos);
+  byte       *strcpyUC(byte *dest, const byte *src);
+  byte       *strncpyUC(byte *dest, const byte *src, size_t n);
+  int         strlenUC(const byte *s);
+#else
+  #define     GetUCPos(str, pos)  (&str[pos])
+  #define     strcpyUC            strcpy
+  #define     strncpyUC           strncpy
+  #define     strlenUC            strlen
+#endif
 
 
   /*****************************************************************************************************************************/

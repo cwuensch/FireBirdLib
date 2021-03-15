@@ -1,4 +1,5 @@
 #include                <string.h>
+#define FB_USE_UNICODE_OSD
 #include                "libFireBird.h"
 
 int strlenUC(const byte *s)

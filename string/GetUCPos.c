@@ -1,3 +1,4 @@
+#define FB_USE_UNICODE_OSD
 #include                "libFireBird.h"
 
 byte *GetUCPos(const byte *String, int CharPos)

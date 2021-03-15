@@ -1,4 +1,5 @@
 #include                <string.h>
+#define FB_USE_UNICODE_OSD
 #include                "FBLib_FontManager.h"
 
 dword FMUC_GetStringWidth(const char *Text, tFontDataUC *FontData)

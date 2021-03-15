@@ -1,4 +1,5 @@
 #include                <string.h>
+#define FB_USE_UNICODE_OSD
 #include                "libFireBird.h"
 
 byte *strncpyUC(byte *dest, const byte *src, size_t n)
