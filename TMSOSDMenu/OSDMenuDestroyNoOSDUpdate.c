@@ -19,11 +19,17 @@ void OSDMenuDestroyNoOSDUpdate(void)
     Menu[CurrentMenuLevel].Item = NULL;
   }
 
+  if (Menu[CurrentMenuLevel].MemoText)
+  {
+    TAP_MemFree(Menu[CurrentMenuLevel].MemoText);
+    Menu[CurrentMenuLevel].MemoText = NULL;
+  }
+  
 #ifdef FB_USE_UNICODE_OSD
   OSDMenuFreeStdFonts();
 #endif
 
-  CallbackProcedure = NULL;
+  Menu[CurrentMenuLevel].CallbackProcedure = NULL;
 
   TRACEEXIT();
 }

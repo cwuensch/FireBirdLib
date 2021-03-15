@@ -2,7 +2,7 @@
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
-dword HDD_GetFileTimeByAbsFileName(char *FileName)
+dword HDD_GetFileTimeByAbsFileName(const char *FileName)
 {
   tstat64               statbuf;
   int                   status;

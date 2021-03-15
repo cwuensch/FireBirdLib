@@ -2,7 +2,7 @@
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
-__ino64_t HDD_GetInodeByAbsFileName(char *FileName)
+__ino64_t HDD_GetInodeByAbsFileName(const char *FileName)
 {
   tstat64               statbuf;
   int                   status;

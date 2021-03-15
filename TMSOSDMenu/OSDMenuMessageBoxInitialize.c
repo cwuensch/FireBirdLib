@@ -7,7 +7,7 @@ bool                    MessageBoxNoNormalMode = FALSE;
 bool                    MessageBoxAllowScrollOver = FALSE;
 
 
-void OSDMenuMessageBoxInitialize(char *Title, char *Text)
+void OSDMenuMessageBoxInitialize(const char *Title, const char *Text)
 {
   TRACEENTER();
 

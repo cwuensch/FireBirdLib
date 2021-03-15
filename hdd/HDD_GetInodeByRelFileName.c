@@ -1,7 +1,7 @@
 #include                <stdio.h>
 #include                "../libFireBird.h"
 
-__ino64_t HDD_GetInodeByRelFileName(char *FileName)
+__ino64_t HDD_GetInodeByRelFileName(const char *FileName)
 {
   char                  AbsFileName[FBLIB_DIR_SIZE], CurDir[FBLIB_DIR_SIZE];
 

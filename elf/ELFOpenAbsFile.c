@@ -9,7 +9,7 @@ char                    *strtab = NULL;
 Elf32_Sym               *symtab = NULL;
 
 
-bool ELFOpenAbsFile(char *FileName)
+bool ELFOpenAbsFile(const char *FileName)
 {
   fTAP = open(FileName, O_RDONLY);
 

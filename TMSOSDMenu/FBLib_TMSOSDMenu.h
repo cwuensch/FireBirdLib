@@ -30,10 +30,16 @@
 #define ITEMVALUESIZE   128
 #define STDSTRINGSIZE   256
 #define NRMENULEVELS     5
+#define MAXBUTTONS      20
 #define MAXMBBUTTONS     5
 #define FONTYOFFSET     -3
 #define INFOBOX_WIDTH   380
 #define INFOBOX_HEIGHT  190
+
+#define LISTBOX_FRAME_THICKNESS  2
+#define LISTBOX_GAP_FRAME_TO_X   8
+#define LISTBOX_OFFSET_TO_X      (LISTBOX_FRAME_THICKNESS + LISTBOX_GAP_FRAME_TO_X)
+#define LISTBOX_ADDITIONAL_WIDTH (2 * LISTBOX_OFFSET_TO_X + 16)
 
 #define WaitSpinnerItems       12
 #define WaitSpinnerItemWidth    6
@@ -58,6 +64,9 @@ typedef struct
   dword                 TextColor;
   bool                  Selectable;
   bool                  ValueArrows;
+  bool                  passDrawing;
+  bool                  drawName;
+  bool                  drawValue;
   dword                 ID;
   int                   CustomIndex;
 }tItem;
@@ -74,12 +83,15 @@ typedef struct
 typedef enum
 {
   OMDM_Standard,
+  OMDM_ListBox,
   OMDM_Memo,
   OMDM_Text            // like Memo, but CurrentTopIndex won't follow CurrentSelection
 } tOSDMenuDisplayMode;
 
 typedef struct
 {
+  dword                 XPos;
+  dword                 Width;
   int                   NrLines;
   tItem                *Item;
   int                   NrItems;
@@ -93,7 +105,7 @@ typedef struct
   bool                  ScrollLoop;
   bool                  NumberedItems;
   bool                  hasValueArrows;
-  tButtons              Buttons[20];
+  tButtons              Buttons[MAXBUTTONS];
   dword                 NrButtons;
   dword                 ButtonXStart[4];
   char                  TitleLeft[STDSTRINGSIZE];
@@ -114,6 +126,7 @@ typedef struct
   tFontDataUC          *FontListValueColumn;
   tFontDataUC          *FontButtons;
   tFontDataUC          *FontMemo;
+  void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
 }tMenu;
 
 typedef struct
@@ -167,6 +180,7 @@ extern word             InfoBoxOSDRgn;
 extern dword            InfoBoxTimeOut;
 extern byte            *InfoBoxSaveArea;
 extern dword            InfoBoxSaveAreaX, InfoBoxSaveAreaY;
+extern bool             InfoBoxExitButton;
 
 extern word             MessageBoxOSDRgn;
 extern tMessageBox      MessageBox;
@@ -202,13 +216,12 @@ void OSDMenuColorPickerDrawCursor(tCurrentColorSelected CursorColor, bool Select
 void OSDMenuDrawCursor(dword x, dword y, dword w, dword h);
 void OSDMenuFreeStdFonts(void);
 TYPE_GrData *OSDMenuGetIconPointer(tButtonIcon ButtonIcon, TYPE_GrData *UserDefinedButton);
+void OSDMenuInit(bool AllowScrollingOfLongText, bool HasValueColumn, bool NumberedItems, bool ScrollLoop, const char *TitleLeft, const char *TitleRight);
 void OSDMenuLoadStdFonts(void);
 void OSDMenuWaitSpinnerIdle(void);
 void OSDMenuWaitSpinnerDrawItem(word rgn, dword x, dword rgb);
 dword OSDMenuWaitSpinnerShadeColor(dword rgb, word step, word steps);
 
 void OSDMenuInfoBoxDraw(word rgn);
-
-extern void (*CallbackProcedure)(tOSDCB OSDCBType, word OSDRgn);
 
 #endif

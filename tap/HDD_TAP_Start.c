@@ -5,7 +5,7 @@
 
 TYPE_Parametered_Tap   *fbl_parametered_tap = NULL;
 
-dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
+dword HDD_TAP_Start(const char *TAPFileName, bool BatchMode, void* ParameterBlock, dword *TAPID)
 {
   dword                 ret;
   dword                 _TempWorkFolder[4];
@@ -65,7 +65,7 @@ dword HDD_TAP_Start(char *TAPFileName, bool BatchMode, void* ParameterBlock, dwo
   {
     ApplHdd_SetWorkFolder(_TempWorkFolder);
     memcpy((void*)_hddTapFolder[0], &_TempWorkFolder[0], sizeof(_TempWorkFolder));
-    Appl_ExecProgram(TAPFileName);
+    Appl_ExecProgram((void*)TAPFileName);
   }
 
   if(BatchMode && segptrBatch)

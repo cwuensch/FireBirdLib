@@ -1,5 +1,6 @@
 #include <string.h>
 #include "FBLib_ini.h"
+#include "../string/FBLib_string.h"
 #include "libFireBird.h"
 
 void INIFindStartEnd(char *Key, char **Start, char **End, dword MaxEntrylen)
@@ -33,9 +34,10 @@ void INIFindStartEnd(char *Key, char **Start, char **End, dword MaxEntrylen)
       return;
     }
 
-    p = *Start;
-    if(*Start > INIBuffer) p--;
-  } while((*p == '#') || (*p == ';'));
+    if (*Start > INIBuffer) p = *Start - 1;
+    else p = "\n";
+  }
+  while (*p != '\n' && *p != '\r' && *p != '\t' && *p != ' ');
 
   CR = strchr(*Start, '\x0d');
   LF = strchr(*Start, '\x0a');

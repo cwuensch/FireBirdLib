@@ -11,7 +11,7 @@ word                    ProgressBarFullRgn = 0;
 dword                   ProgressBarLastValue = 0xfff;
 
 
-void OSDMenuProgressBarShow(char *Title, char *Text, dword Value, dword MaxValue, TYPE_GrData *DifferentProgressBar)
+void OSDMenuProgressBarShow(const char *Title, const char *Text, dword Value, dword MaxValue, TYPE_GrData *DifferentProgressBar)
 {
   const dword Color_Edge = RGB(160,160,160);
 

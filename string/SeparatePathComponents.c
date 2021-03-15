@@ -1,7 +1,7 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-void SeparatePathComponents (char *FullName, char *Path, char *FileName, char *FileExt)
+void SeparatePathComponents(const char *FullName, char *Path, char *FileName, char *FileExt)
 {
   char                  *Slash, *Dot;
 
@@ -15,7 +15,7 @@ void SeparatePathComponents (char *FullName, char *Path, char *FileName, char *F
   {
     if (Slash)
     {
-      strncpy (Path, FullName, Slash - FullName + 1);
+      strncpy (Path, (void*) FullName, Slash - FullName + 1);
       Path [Slash - FullName + 1] = '\0';
     }
     else Path [0] = '\0';
@@ -30,7 +30,7 @@ void SeparatePathComponents (char *FullName, char *Path, char *FileName, char *F
 
   if (FileName)
   {
-    if (!Slash) Slash = FullName - 1;
+    if (!Slash) Slash = (void*) FullName - 1;
     if (!Dot) Dot = strrchr (FullName, '\0');
     strncpy (FileName, Slash + 1, Dot - Slash - 1);
     FileName [Dot - Slash - 1] = '\0';

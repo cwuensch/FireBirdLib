@@ -1,5 +1,8 @@
 #include                "FBLib_TMSOSDMenu.h"
 
+word                    OSDRgn = 0, MyOSDRgn = 0;
+dword                   LastUnprocessedOSDMenuKey = 0;
+
 bool OSDMenuEvent(word *event, dword *param1, dword *param2)
 {
   TRACEENTER();

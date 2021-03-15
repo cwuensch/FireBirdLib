@@ -33,7 +33,7 @@ void OSDMenuDestroy(void)
   OSDMenuFreeStdFonts();
 #endif
 
-  CallbackProcedure = NULL;
+  Menu[CurrentMenuLevel].CallbackProcedure = NULL;
 
   TRACEEXIT();
 }

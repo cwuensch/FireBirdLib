@@ -1,7 +1,7 @@
 #include                <stdio.h>
 #include                "../libFireBird.h"
 
-dword HDD_GetFileTimeByRelFileName(char *FileName)
+dword HDD_GetFileTimeByRelFileName(const char *FileName)
 {
   char                  AbsFileName[FBLIB_DIR_SIZE], CurDir[FBLIB_DIR_SIZE];
 

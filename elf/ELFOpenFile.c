@@ -2,7 +2,7 @@
 #include                <string.h>
 #include                "../libFireBird.h"
 
-bool ELFOpenFile(char *FileName)
+bool ELFOpenFile(const char *FileName)
 {
   char                  CurrentFile[512];
 

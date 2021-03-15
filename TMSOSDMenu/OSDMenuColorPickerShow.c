@@ -16,7 +16,7 @@ tCurrentColorSelected   CurrentColorSelected;
 int                     ColorPickerLastCursorRed, ColorPickerLastCursorGreen, ColorPickerLastCursorBlue;
 
 
-void OSDMenuColorPickerShow(char *Title, dword Color)
+void OSDMenuColorPickerShow(const char *Title, dword Color)
 {
   TRACEENTER();
 

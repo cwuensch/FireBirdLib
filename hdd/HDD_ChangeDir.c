@@ -2,7 +2,7 @@
 #include "FBLib_hdd.h"
 #include "../libFireBird.h"
 
-bool HDD_ChangeDir(char *Dir)
+bool HDD_ChangeDir(const char *Dir)
 {
 //  char                  DirUTF8[FBLIB_DIR_SIZE];
   static bool           ReturnTypeToBeChecked = TRUE;

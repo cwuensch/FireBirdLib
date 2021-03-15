@@ -1,7 +1,7 @@
 #include                <stdio.h>
 #include                "FBLib_hdd.h"
 
-bool HDD_InfBlockSet(char *AbsRecPath, tinfBlock *infBlock)
+bool HDD_InfBlockSet(const char *AbsRecPath, tinfBlock *infBlock)
 {
   TRACEENTER();
 

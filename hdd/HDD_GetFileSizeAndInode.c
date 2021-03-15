@@ -3,7 +3,7 @@
 #include                "FBLib_hdd.h"
 #include                "../libFireBird.h"
 
-bool HDD_GetFileSizeAndInode(char *Directory, char *FileName, __ino64_t *CInode, __off64_t *FileSize)
+bool HDD_GetFileSizeAndInode(const char *Directory, const char *FileName, __ino64_t *CInode, __off64_t *FileSize)
 {
   char                  AbsFileName[FBLIB_DIR_SIZE];
   tstat64               statbuf;
