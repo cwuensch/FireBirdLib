@@ -2,11 +2,11 @@
 #include                <stdlib.h>
 #include                "libFireBird.h"
 
-bool StrMkISO(byte *SourceString)
+bool StrMkISO(char *SourceString)
 {
   TRACEENTER();
 
-  byte                 *_isostring;
+  char                 *_isostring;
   bool                  hasAnsiChars, hasUTFChars;
 
   if(!SourceString)

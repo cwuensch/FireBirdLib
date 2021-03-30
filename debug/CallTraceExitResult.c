@@ -6,7 +6,7 @@ void CallTraceExitResult(dword *Magic, char *Result)
   char                  Spaces[101];
   int                   i, j;
   dword                 t;
-  byte                 *ISOText;
+  char                 *ISOText;
   extern dword          __tap_ud__;
 
   if(CallTraceDoNotReenter) return;

@@ -2,7 +2,7 @@
 #include                <stdlib.h>
 #include                "libFireBird.h"
 
-bool StrMkUTF8(byte *SourceString, size_t SourceSize, byte DefaultISO8859CharSet)
+bool StrMkUTF8(char *SourceString, size_t SourceSize, byte DefaultISO8859CharSet)
 {
   TRACEENTER();
 

@@ -2557,12 +2557,12 @@
   void        SeparatePathComponents(const char *FullName, char *Path, char *FileName, char *FileExt);
   byte       *SkipCharTableBytes(const byte *p);
   bool        StringEndsWith(const char *text, const char *postfix);
-  bool        StrMkISO(byte *SourceString);
-  bool        StrMkUTF8(byte *SourceString, size_t SourceSize, byte DefaultISO8859CharSet);
+  bool        StrMkISO(char *SourceString);
+  bool        StrMkUTF8(char *SourceString, size_t SourceSize, byte DefaultISO8859CharSet);
   bool        StrReplace(char *String, const char *Find, const char *Replace);
-  void        StrToISO(const byte *SourceString, byte *DestString);
-  void        StrToISOAlloc(const byte *SourceString, byte **DestString);
-  bool        StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859CharSet);
+  void        StrToISO(const char *SourceString, char *DestString);
+  void        StrToISOAlloc(const char *SourceString, char **DestString);
+  bool        StrToUTF8(const char *SourceString, char *DestString, byte DefaultISO8859CharSet);
   void        UpperCase(char *string);
   dword       UTF8ToUTF32(const byte *UTF8Character, byte *BytesPerChar);
   void        UTF32ToUTF8(dword UTF32Character, byte *UTF8Character, byte *BytesPerChar);

@@ -4,7 +4,7 @@
 void CallTraceComment(char *Comment)
 {
   char                  Spaces[101];
-  byte                 *ISOText;
+  char                 *ISOText;
 
   if(Comment)
   {

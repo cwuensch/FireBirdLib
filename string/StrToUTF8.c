@@ -136,11 +136,12 @@ char                    UTF8Upper[64] = "\u00c0\u00c1\u00c2\u00c3\u00c4\u00c5\u0
 char                    UTF8Lower[64] = "\u00e0\u00e1\u00e2\u00e3\u00e4\u00e5\u00e6\u00e7\u00e8\u00e9\u00ea\u00eb\u00ec\u00ed\u00ee\u00ef\u00f0\u00f1\u00f2\u00f3\u00f4\u00f5\u00f6\u00f8\u00f9\u00fa\u00fb\u00fc\u00fd\u00fe";
 
 
-bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859CharSet)
+bool StrToUTF8(const char *SourceString, char *DestString, byte DefaultISO8859CharSet)
 {
   TRACEENTER();
 
   bool                  ret;
+  byte                 *SourceStr = (byte*) SourceString, *DestStr = (byte*) DestString;
   byte                  BytesPerCharacter;
   dword                 UTF32;
   word                 *UTFLookup;
@@ -157,13 +158,13 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
   //Is there any encoding marker at the beginning of the text?
   CharSet = DefaultISO8859CharSet;
 
-  if(SourceString[0] < ' ')
+  if(SourceStr[0] < ' ')
   {
-    switch(SourceString[0])
+    switch(SourceStr[0])
     {
       case 0x00:
       {
-        DestString[0] = '\0';
+        DestStr[0] = '\0';
         TRACEEXIT();
         return TRUE;
       }
@@ -181,15 +182,15 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
       case 0x10:
       {
         //3 char Übersetzung
-        CharSet = SourceString[2];
-        SourceString += 2;
+        CharSet = SourceStr[2];
+        SourceStr += 2;
         break;
       }
 
       case 0x15:
       {
         //According to EN300468, this is already in UTF8 encoding
-        strcpy(DestString, &SourceString[1]);
+        strcpy(DestStr, &SourceStr[1]);
 
         TRACEEXIT();
         return FALSE;
@@ -197,11 +198,11 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
 
       case 0x1f:
       {
-        SourceString++;
+        SourceStr++;
         break;
       }
     }
-    SourceString++;
+    SourceStr++;
   }
   else
   {
@@ -229,28 +230,28 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
     default: UTFLookup = UTFLookupISO6937; break;
   }
 
-  while(*SourceString)
+  while(*SourceStr)
   {
-    if(*SourceString < 0x80)
+    if(*SourceStr < 0x80)
     {
       //ASCII: just copy
-      *DestString = *SourceString;
-      SourceString++;
-      DestString++;
+      *DestStr = *SourceStr;
+      SourceStr++;
+      DestStr++;
     }
     else
     {
-      if(isUTF8Char(SourceString, &BytesPerCharacter))
+      if(isUTF8Char(SourceStr, &BytesPerCharacter))
       {
         //Already UTF8: just copy
-        memcpy(DestString, (void *) SourceString, BytesPerCharacter);
-        SourceString += BytesPerCharacter;
-        DestString += BytesPerCharacter;
+        memcpy(DestStr, (void *) SourceStr, BytesPerCharacter);
+        SourceStr += BytesPerCharacter;
+        DestStr += BytesPerCharacter;
       }
       else
       {
         //Seems to be an ANSI character: conversion is needed
-        if((CharSet == 0) && (*SourceString >= 0xc0)  && (*SourceString <= 0xcf))
+        if((CharSet == 0) && (*SourceStr >= 0xc0)  && (*SourceStr <= 0xcf))
         {
           //if ISO6937 is used, replace diactricital characters with their single entity counterparts
 
@@ -261,40 +262,40 @@ bool StrToUTF8(const byte *SourceString, byte *DestString, byte DefaultISO8859Ch
           char          Dia[3], *p;
           int           Index;
 
-          memcpy(Dia, (void *) SourceString, 2);
+          memcpy(Dia, (void *) SourceStr, 2);
           Dia[2] = '\0';
           p = strstr(ISO6937, Dia);
           if(p)
           {
             Index = (dword)p - (dword)ISO6937;
-            memcpy(DestString, &UTF8[Index], 2);
-            DestString += 2;
+            memcpy(DestStr, &UTF8[Index], 2);
+            DestStr += 2;
           }
           else
           {
-//            TAP_PrintNet("StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
-//            LogEntryFBLibPrintf(TRUE, "StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceString[0], SourceString[1]);
+//            TAP_PrintNet("StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceStr[0], SourceStr[1]);
+//            LogEntryFBLibPrintf(TRUE, "StrToUTF8: ISO6937 diacritical char %2.2x %2.2x has been ignored", SourceStr[0], SourceStr[1]);
           }
-          SourceString++;
+          SourceStr++;
         }
         else
         {
-          SourceChar = * SourceString;
+          SourceChar = * SourceStr;
           if(SourceChar >= 0xa0)
             UTF32 = UTFLookup[SourceChar - 0xa0];
           else
             UTF32 = SourceChar;
 
-          UTF32ToUTF8(UTF32, DestString, &BytesPerCharacter);
-          DestString += BytesPerCharacter;
+          UTF32ToUTF8(UTF32, DestStr, &BytesPerCharacter);
+          DestStr += BytesPerCharacter;
         }
 
         ret = TRUE;
-        SourceString++;
+        SourceStr++;
       }
     }
   }
-  *DestString = '\0';
+  *DestStr = '\0';
 
   TRACEEXIT();
   return ret;
