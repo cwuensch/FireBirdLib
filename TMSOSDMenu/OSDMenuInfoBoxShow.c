@@ -1,7 +1,8 @@
 #include                <string.h>
 #include                "FBLib_TMSOSDMenu.h"
+#include                "graphic/Button_exit.gd"
 
-extern TYPE_GrData      _Button_exit_Gd;
+//extern TYPE_GrData      _Button_exit_Gd;
 
 word                    InfoBoxOSDRgn = 0;
 word                    ProgressBarOSDRgn = 0;
