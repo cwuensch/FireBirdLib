@@ -6,11 +6,10 @@ BLOCK = TMSOSDKeyboard
 include ${BASE}/include/tool.mk
 
 # Folders
-SRC_DIR = ${CUR_DIR}
-INCLUDE_DIRS = ${BASE}/include
+INCLUDE_DIRS = ${SRC_DIR} ${BASE}/include
 
 #compile options
-CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -ffunction-sections -fdata-sections
+CFLAGS += -DLINUX -MD -W -Wall -O2 -ffunction-sections -fdata-sections
 CFLAGS += $(addprefix -I, $(INCLUDE_DIRS))
 CFLAGS += $(addprefix -I, /opt/crosstool/include)
 ifeq (${DEBUG},y)

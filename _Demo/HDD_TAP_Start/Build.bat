@@ -5,7 +5,7 @@ set PATH=%TFROOT%\gccForTF5000\usr\local\bin;%PATH_old%
 set INCLUDE1=%TFROOT%\API\TF5000
 set INCLUDE2=%TFROOT%\gccForTF5000\usr\local\include
 rem set INCLUDE3=%TFROOT%\gccForTF5000\usr\include
-rem set INCLUDE3=%TFROOT%\Cygwin_mini\usr\include
+rem set INCLUDE3=%TFROOT%\Cygwin\usr\include
 set INCLUDE3=%TFROOT%\gccForTMS\crosstool\include
 
 

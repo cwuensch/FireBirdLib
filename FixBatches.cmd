@@ -3,7 +3,7 @@ cd /d %~dp0%
 
 echo @echo off> .\_test\build_TMS.bat
 echo cd /d %%~dp0>> .\_test\build_TMS.bat
-echo set PATH=%%TFROOT%%\gccForTMS\crosstool\bin;%%TFROOT%%\Cygwin_mini\bin;%%PATH%%>> .\_test\build_TMS.bat
+echo set PATH=%%TFROOT%%\gccForTMS\crosstool\bin;%%TFROOT%%\Cygwin\bin;%%PATH%%>> .\_test\build_TMS.bat
 echo del /Q bin obj>> .\_test\build_TMS.bat
 echo rem bash -i -c make>> .\_test\build_TMS.bat
 echo make>> .\_test\build_TMS.bat

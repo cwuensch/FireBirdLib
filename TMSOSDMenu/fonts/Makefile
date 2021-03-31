@@ -9,7 +9,7 @@ include ${BASE}/include/tool.mk
 INCLUDE_DIRS = ${SRC_DIR} ${BASE}/include
 
 #compile options
-CFLAGS += -DLINUX -MD -W -Wall -O2 -mips32 -fPIC
+CFLAGS += -DLINUX -MD -W -Wall -O2 -fPIC
 CFLAGS += $(addprefix -I, $(INCLUDE_DIRS))
 CFLAGS += $(addprefix -I, /opt/crosstool/include)
 ifeq (${DEBUG},y)
