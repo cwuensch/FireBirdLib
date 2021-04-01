@@ -32,7 +32,7 @@ long TimeDiff(dword FromTime, dword ToTime)
     dHour += 24;
   }
 
-  ret = (dDate * 1440 + dHour * 60 + dMin) * (TimeTravel ? -1 : 1);
+  ret = ((long)dDate * 1440 + dHour * 60 + dMin) * (TimeTravel ? -1 : 1);
 
   TRACEEXIT();
   return ret;

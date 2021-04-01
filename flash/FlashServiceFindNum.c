@@ -4,13 +4,13 @@ bool FlashServiceFindNum(byte SatIndex, word NetworkID, word TSID, word ServiceI
 {
   TRACEENTER();
 
-  word                    TpIdx, SvcIdx;
+  word                    SvcIdx;
   bool                    ret;
   static byte             LastSatIndex = 0;
   static word             LastNetworkID = 0, LastTSID = 0, LastServiceID = 0;
   static TYPE_ServiceType LastSvcType = 0;
   static int              LastSvcNum = 0;
-  int                     TrCount;
+  int                     TrCount, TpIdx;
   tFlashTransponderTable  Transponder;
 
   if((SatIndex == LastSatIndex) && (NetworkID == LastNetworkID) && (TSID == LastTSID) && (ServiceID == LastServiceID))
@@ -31,7 +31,7 @@ bool FlashServiceFindNum(byte SatIndex, word NetworkID, word TSID, word ServiceI
     {
       if((Transponder.OriginalNetworkID == NetworkID) && (Transponder.TSID == TSID))
       {
-        SvcIdx = ApplSvc_GetSvcIdx(SVC_TYPE_Tv, SatIndex, TpIdx, ServiceID, 0, 0xffff);
+        SvcIdx = ApplSvc_GetSvcIdx(SVC_TYPE_Tv, SatIndex, (word)TpIdx, ServiceID, 0, 0xffff);
         if(SvcIdx != 0xffff)
         {
           if(SvcType) *SvcType = SVC_TYPE_Tv;
@@ -49,7 +49,7 @@ bool FlashServiceFindNum(byte SatIndex, word NetworkID, word TSID, word ServiceI
         }
         else
         {
-          SvcIdx = ApplSvc_GetSvcIdx(SVC_TYPE_Radio, SatIndex, TpIdx, ServiceID, 0, 0xffff);
+          SvcIdx = ApplSvc_GetSvcIdx(SVC_TYPE_Radio, SatIndex, (word)TpIdx, ServiceID, 0, 0xffff);
           if(SvcIdx != 0xffff)
           {
             if(SvcType) *SvcType = SVC_TYPE_Radio;

@@ -52,7 +52,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
       GlyphCache->Width = FontDef->Width;
       GlyphCache->Height = FontDef->Height;
 
-      GlyphCache->GlyphData = FMUC_ReserveMemory("FMUC_GetGlyphData GlyphData", FontDef->Width * FontDef->Height);
+      GlyphCache->GlyphData = FMUC_ReserveMemory("FMUC_GetGlyphData GlyphData", (dword)FontDef->Width * FontDef->Height);
       if(GlyphCache->GlyphData == NULL)
       {
         LogEntryFBLibPrintf(TRUE, "FontManager UC: failed to reserve %d bytes for a glyph", FontDef->Width * FontDef->Height);
@@ -62,7 +62,7 @@ tGlyphCacheUC *FMUC_GetGlyphData(tFontDataUC *FontData, const byte *UTF8Characte
       }
 
       lseek(FontData->FileHandle, FontDef->FileOffset, SEEK_SET);
-      read(FontData->FileHandle, GlyphCache->GlyphData, FontDef->Width * FontDef->Height);
+      read(FontData->FileHandle, GlyphCache->GlyphData, (unsigned int)FontDef->Width * (unsigned int)FontDef->Height);
 
       FontData->GlyphCacheEntries++;
 
