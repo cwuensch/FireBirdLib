@@ -1588,11 +1588,11 @@
 
     byte                  DiSEqC11;
 
-//    union
-//    {
-//      byte                unused5[5];
-//      struct
-//      {
+    union
+    {
+      byte                unused5[5];
+      struct
+      {
         byte              UniCableSatPosition:1;
         byte              UniCableunused:7;
 
@@ -1600,8 +1600,8 @@
         word              UniCableFrq:12;
 
         byte              unused6[2];
-//      } __attribute__((packed));
-//    };
+      } __attribute__((packed));
+    };
   } tFlashLNB;  // identisch mit TYPE_LNB_TMSS
 
   typedef struct
