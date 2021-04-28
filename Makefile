@@ -1,6 +1,6 @@
 PROJECT = libFireBird
 
-DIRS = av compression debug elf EPG ExtAttribs Firmware flash FontManager hdd ini InstructionSequences LogoManager main rec shutdown string StringDB tap tapcom time TMSOSDMenu TMSOSDMenu/fonts TMSOSDMenu/graphic TMSOSDKeyboard TMSOSDKeyboard_CW tmsvfd
+DIRS = av compression debug elf EPG ExtAttribs Firmware flash FontManager hdd ini InstructionSequences LogoManager main rec shutdown string StringDB tap tapcom time TMSOSDMenu TMSOSDMenu/fonts TMSOSDMenu/graphic TMSOSDKeyboard_CW tmsvfd
 
 export SRC_DIR = $(shell pwd)
 
