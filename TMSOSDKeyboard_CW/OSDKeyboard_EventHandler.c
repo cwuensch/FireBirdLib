@@ -544,7 +544,7 @@ else if (*event == EVT_USBKEYBOARD)
   // Wenn Ok-Button lang genug gedrückt -> Selection einblenden
   if ((*event==EVT_IDLE || (*event==EVT_KEY && *param1==RKEY_Ok) || (*event==EVT_KEY && *param1==RKEY_Pause)) && OkLongPressed && (OkLongPressed != 1) && (labs(TAP_GetTick() - OkLongPressed) > 50))
   {
-    if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || KeyPadPosition == KEY_Alt))
+    if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || (KeyPadPosition == KEY_Alt && KeyPadMode != KPM_Symbols)))
     {
       SelActive = TRUE;
       KeyPadSelection = 1;
@@ -802,7 +802,7 @@ else if (*event == EVT_USBKEYBOARD)
 
         case RKEY_Pause:      // Aktive Taste auf ALT setzen
         {
-          if (KeyPadPosition != KEY_Alt)
+          if ((KeyPadPosition != KEY_Alt) && (KeyPadMode != KPM_Symbols))
           {
             KeyPadPosition = KEY_Alt;
             KeyPadCursorMode = FALSE;
@@ -814,6 +814,13 @@ else if (*event == EVT_USBKEYBOARD)
 
         case RKEY_Ok:         // Zeichen übernehmen
         {
+          if ((*param1 == RKEY_Pause || KeyPadPosition == KEY_Alt) && (KeyPadMode == KPM_Symbols))
+          {
+            OSDKeyboard_AltKey();
+            OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            break;
+          }
+
           if (IgnoreOk) break;
 
           if (KeyPadCursorMode)
@@ -867,7 +874,7 @@ else if (*event == EVT_USBKEYBOARD)
 
               // Wenn SelActive oder keine Alternativen Zeichen vorhanden
               // -> Zeichen sofort einfügen (springe zu nächstem Case)
-              if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || KeyPadPosition == KEY_Alt))
+              if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || (KeyPadPosition == KEY_Alt /*&& KeyPadMode != KPM_Symbols*/)))
               {
                 // Sonst: Timer für "Ok lang gedrückt" starten (und aufhören)
                 if (!OkLongPressed || OkLongPressed == 1)
@@ -899,7 +906,7 @@ else if (*event == EVT_USBKEYBOARD)
         case (RKEY_Pause + Keyflag_Click):  // Pause-Button released (für Sonderzeichen auf ALT-Taste)
         {
           // Release bei allen Sondertasten (alles außer default-case) ignorieren
-          if (KeyPadCursorMode || (KeyPadPosition >= NRKEYPADNORMALKEYS && KeyPadPosition != KEY_Alt) || (KeyPadPosition == KEY_Shift))
+          if (KeyPadCursorMode || ((KeyPadPosition >= NRKEYPADNORMALKEYS) && (KeyPadPosition != KEY_Alt /*|| KeyPadMode == KPM_Symbols*/)) || (KeyPadPosition == KEY_Shift))
             break;
 
 //TAP_PrintNet("Ok-Button released (RELEASE = %d, OkLongPressed = %lu)!\n", (*param1 != RKEY_Ok), OkLongPressed);
@@ -940,8 +947,8 @@ else if (*event == EVT_USBKEYBOARD)
                 OSDKeyboard_DrawKeys(TRUE);
               }
               KeyPadSelection = 0;
-              OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
             }
+            OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
           }
 
           // BEI RELEASE
@@ -1022,6 +1029,8 @@ else if (*event == EVT_USBKEYBOARD)
             KeyPadSelection = 0;
             OSDKeyboard_DrawKeys(TRUE);
           }
+          else if ((KeyPadMode == KPM_Symbols) && (*param1 != RKEY_Sleep))
+            OSDKeyboard_AltKey();
           else
             ret = OSDKeyboard_Finish(FALSE);
           break;
@@ -1060,7 +1069,7 @@ else if (*event == EVT_USBKEYBOARD)
           break;
         }
 
-        case 0x08:     //BS
+        case 0x08:     //BackSpace
         {
           OSDKeyboard_DeleteLeft(1);
           break;
