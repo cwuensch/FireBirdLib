@@ -23,10 +23,12 @@ const char              Keypad[KPM_NrModes][NRKEYPADNORMALKEYS][NRKEYALTSYMBOLS]
                               "+"    , "*"  , "×÷±", "=", "/", "\\"  , "<" , ">" , "°^~", 
                               ""     , "."  , ","  , ";", ":", "!"   , "?" , "-_", "|"}};
 
+const char              SpecialChars[NRKEYALTSYMBOLS+1] = ".,;-_()&!\"";
+
 const char              T9ArrayCaps[10][7]
-                          = {"0 .,:", "1!?&-", "2ABCÄ", "3DEF", "4GHI", "5JKL", "6MNOÖ", "7PQRS",  "8TUVÜ", "9WXYZ"};
+                          = {"0 .,;\"", "1-_&()", "2ABCÄ", "3DEF", "4GHI", "5JKL", "6MNOÖ", "7PQRS",  "8TUVÜ", "9WXYZ"};
 const char              T9Array[10][7]
-                          = {"0 .,:", "1!?&-", "2abcä", "3def", "4ghi", "5jkl", "6mnoö", "7pqrsß", "8tuvü", "9wxyz"};
+                          = {"0 .,;\"", "1-_&()", "2abcä", "3def", "4ghi", "5jkl", "6mnoö", "7pqrsß", "8tuvü", "9wxyz"};
 
 tKeyPadButton           SpecialKeys[NRKEYPADSPECIALKEYS]
                           = {{1, &_Keyb_Play_Gd, ""},

@@ -478,7 +478,7 @@ static bool OSDKeyboard_Finish(bool DoSave)
 
 bool OSDKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 {
-  static dword          LastKey = 0, LastT9Pressed = 0, OkLongPressed = 1;
+  static dword          LastKey = 0, LastT9Pressed = 0, OkLongPressed = 1, PosBeforePauseKey = KEY_Alt;
 //  static int            SugInserted = 0;
   static const char    *T9Cur = NULL;
   static bool           IgnoreOk = FALSE;
@@ -497,6 +497,7 @@ bool OSDKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 #ifdef FB_USE_UNICODE_OSD
     OSDMenuLoadStdFonts();
 #endif
+    OkLongPressed = 1;
     OSDKeyboard_CursorPosition = strlen(OSDKeyboard_StringVar);
     OSDKeyboard_DrawAll();
     ShowSuggestions(FALSE);
@@ -535,15 +536,15 @@ else if (*event == EVT_USBKEYBOARD)
 
 
   // Anderer Knopf gedrückt -> OkLongPressed zurücksetzen (kann nur passieren, wenn Release-Event verpasst wird)
-  if (OkLongPressed && ((*event==EVT_KEY && (*param1&0xFFFFFF)!=RKEY_Ok) || *event==EVT_TMSREMOTEASCII || *event==EVT_USBKEYBOARD))
+  if (OkLongPressed && (((*event==EVT_KEY && (*param1&0xFFFFFF)!=RKEY_Ok) && (*event==EVT_KEY && (*param1&0xFFFFFF)!=RKEY_Pause)) || *event==EVT_TMSREMOTEASCII || *event==EVT_USBKEYBOARD))
   {
     OkLongPressed = 0;  // eigentlich unnötig?
   }
 
   // Wenn Ok-Button lang genug gedrückt -> Selection einblenden
-  if ((*event==EVT_IDLE || (*event==EVT_KEY && *param1==RKEY_Ok)) && OkLongPressed && (OkLongPressed != 1) && (labs(TAP_GetTick() - OkLongPressed) > 50))
+  if ((*event==EVT_IDLE || (*event==EVT_KEY && *param1==RKEY_Ok) || (*event==EVT_KEY && *param1==RKEY_Pause)) && OkLongPressed && (OkLongPressed != 1) && (labs(TAP_GetTick() - OkLongPressed) > 50))
   {
-    if (!SelActive && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1))
+    if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || (KeyPadPosition == KEY_Alt && KeyPadMode != KPM_Symbols)))
     {
       SelActive = TRUE;
       KeyPadSelection = 1;
@@ -608,8 +609,9 @@ else if (*event == EVT_USBKEYBOARD)
             OSDKeyboard_CursorRight();
           else if (SelActive)
           {
+            const char *pAltKeys = ((KeyPadPosition < NRKEYPADNORMALKEYS) ? Keypad[KeyPadMode][KeyPadPosition] : SpecialChars);
             KeyPadSelection++;
-            if ((KeyPadSelection >= NRKEYALTSYMBOLS) || !Keypad[KeyPadMode][KeyPadPosition][KeyPadSelection])
+            if ((KeyPadSelection >= NRKEYALTSYMBOLS) || !pAltKeys[KeyPadSelection])
               KeyPadSelection = 0;
             OSDKeyboard_DrawKeySelection();
           }
@@ -636,10 +638,11 @@ else if (*event == EVT_USBKEYBOARD)
             OSDKeyboard_CursorLeft();
           else if (SelActive)
           {
+            const char *pAltKeys = ((KeyPadPosition < NRKEYPADNORMALKEYS) ? Keypad[KeyPadMode][KeyPadPosition] : SpecialChars);
             if (KeyPadSelection > 0)
               KeyPadSelection--;
             else
-              KeyPadSelection = min(strlen(Keypad[KeyPadMode][KeyPadPosition]), NRKEYALTSYMBOLS) - 1;
+              KeyPadSelection = min(strlen(pAltKeys), NRKEYALTSYMBOLS) - 1;
             OSDKeyboard_DrawKeySelection();
           }
           else
@@ -791,13 +794,40 @@ else if (*event == EVT_USBKEYBOARD)
         }
 
         case RKEY_Ok + Keyflag_Push:
+        case RKEY_Pause + Keyflag_Push:
         {
           IgnoreOk = TRUE;
           break;
         }
 
-        case RKEY_Ok:         //Zeichen übernehmen
+        case RKEY_Pause:      // Aktive Taste auf ALT setzen
         {
+          if (SelActive)
+          {
+            OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            break;
+          }
+
+          if ((KeyPadPosition != KEY_Alt) && (KeyPadMode != KPM_Symbols))
+          {
+            PosBeforePauseKey = KeyPadPosition;
+            KeyPadPosition = KEY_Alt;
+            KeyPadCursorMode = FALSE;
+            OSDKeyboard_DrawText();
+            OSDKeyboard_DrawKeys(TRUE);
+          }
+          // break;   // weitermachen mit RKEY_Ok...
+        }
+
+        case RKEY_Ok:         // Zeichen übernehmen
+        {
+          if ((*param1 == RKEY_Pause || KeyPadPosition == KEY_Alt) && (KeyPadMode == KPM_Symbols))
+          {
+            OSDKeyboard_AltKey();
+            OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            break;
+          }
+
           if (IgnoreOk) break;
 
           if (KeyPadCursorMode)
@@ -821,10 +851,6 @@ else if (*event == EVT_USBKEYBOARD)
 
             case KEY_Del:
               OSDKeyboard_DeleteRight();
-              break;
-
-            case KEY_Alt:
-              OSDKeyboard_AltKey();
               break;
 
             case KEY_Cancel:
@@ -855,7 +881,7 @@ else if (*event == EVT_USBKEYBOARD)
 
               // Wenn SelActive oder keine Alternativen Zeichen vorhanden
               // -> Zeichen sofort einfügen (springe zu nächstem Case)
-              if (!SelActive && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1))
+              if (!SelActive && (((KeyPadPosition < NRKEYPADNORMALKEYS) && (strlen(Keypad[KeyPadMode][KeyPadPosition]) > 1)) || (KeyPadPosition == KEY_Alt /*&& KeyPadMode != KPM_Symbols*/)))
               {
                 // Sonst: Timer für "Ok lang gedrückt" starten (und aufhören)
                 if (!OkLongPressed || OkLongPressed == 1)
@@ -883,47 +909,62 @@ else if (*event == EVT_USBKEYBOARD)
 //          break;
         }  // End case RKEY_Ok
 
-        case (RKEY_Ok + Keyflag_Click):  // Ok-Button released
+        case (RKEY_Ok + Keyflag_Click):     // Ok-Button released
+        case (RKEY_Pause + Keyflag_Click):  // Pause-Button released (für Sonderzeichen auf ALT-Taste)
         {
           // Release bei allen Sondertasten (alles außer default-case) ignorieren
-          if (KeyPadCursorMode || (KeyPadPosition >= NRKEYPADNORMALKEYS || KeyPadPosition == KEY_Shift))
+          if (KeyPadCursorMode || ((KeyPadPosition >= NRKEYPADNORMALKEYS) && (KeyPadPosition != KEY_Alt /*|| KeyPadMode == KPM_Symbols*/)) || (KeyPadPosition == KEY_Shift))
             break;
 
 //TAP_PrintNet("Ok-Button released (RELEASE = %d, OkLongPressed = %lu)!\n", (*param1 != RKEY_Ok), OkLongPressed);
 
           // kurzer Tastendruck -> wurde noch nicht verarbeitet
-          if (*param1 == (RKEY_Ok + Keyflag_Click))
+          if (*param1 == (RKEY_Ok + Keyflag_Click) || *param1 == (RKEY_Pause + Keyflag_Click))
             if (OkLongPressed && (OkLongPressed != 1) && (labs(TAP_GetTick() - OkLongPressed) < 50))
               OkLongPressed = 0;
 
           // Wenn Key NICHT mehr gedrückt
           if (!OkLongPressed)
           {
-            // Zeichen einfügen
-            if(strlen(OSDKeyboard_StringVar) < OSDKeyboard_StringMaxLen)
+            // Release bei ALT-Taste nachholen
+            if ((KeyPadPosition == KEY_Alt) && !SelActive)
             {
-              InsertCharsAt(OSDKeyboard_StringVar, OSDKeyboard_CursorPosition, &Keypad[KeyPadMode][KeyPadPosition][KeyPadSelection], 1);
-              OSDKeyboard_CursorPosition++;
-              OSDKeyboard_DrawText();
+              KeyPadPosition = PosBeforePauseKey;
+              OSDKeyboard_AltKey();
             }
-            if (KeyPadShiftState == 1)
+            else
             {
-              SelActive = FALSE;
-              KeyPadShiftState = FALSE;
-              if(KeyPadMode == KPM_LettersCAPS) KeyPadMode = KPM_Letters;
-              OSDKeyboard_DrawKeys(TRUE);
+              // Zeichen einfügen
+              if (strlen(OSDKeyboard_StringVar) < OSDKeyboard_StringMaxLen)
+              {
+                const char *pAltKeys = ((KeyPadPosition < NRKEYPADNORMALKEYS) ? Keypad[KeyPadMode][KeyPadPosition] : SpecialChars);
+                InsertCharsAt(OSDKeyboard_StringVar, OSDKeyboard_CursorPosition, &pAltKeys[KeyPadSelection], 1);
+                OSDKeyboard_CursorPosition++;
+                OSDKeyboard_DrawText();
+              }
+              if (KeyPadShiftState == 1 || SelActive)
+              {
+                if (SelActive)
+                {
+                  SelActive = FALSE;
+                  KeyPadSelection = 0;
+                  if (KeyPadPosition == KEY_Alt)
+                    KeyPadPosition = PosBeforePauseKey;
+                }
+                if (KeyPadShiftState == 1)
+                {
+                  KeyPadShiftState = FALSE;
+                  if(KeyPadMode == KPM_LettersCAPS) KeyPadMode = KPM_Letters;
+                }
+                OSDKeyboard_DrawKeys(TRUE);
+              }
             }
-            else if (SelActive)
-            {
-              SelActive = FALSE;
-              OSDKeyboard_DrawKeys(TRUE);
-            }
-            KeyPadSelection = 0;
             OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            if(*param1 != RKEY_Pause) PosBeforePauseKey = KEY_Alt;
           }
 
           // BEI RELEASE
-          if (*param1 == RKEY_Ok + Keyflag_Click)
+          if (*param1 == (RKEY_Ok + Keyflag_Click) || *param1 == (RKEY_Pause + Keyflag_Click))
           {
             OkLongPressed = 0;  // Release - jetzt ist der lange Tastendruck erledigt
             IgnoreOk = FALSE;
@@ -938,7 +979,7 @@ else if (*event == EVT_USBKEYBOARD)
         }
 
         case RKEY_Info:      //Zeichensatz ändern
-        case RKEY_Pause:
+//        case RKEY_Pause:
         {
           OSDKeyboard_AltKey();
           break;
@@ -998,8 +1039,12 @@ else if (*event == EVT_USBKEYBOARD)
           {
             SelActive = FALSE;
             KeyPadSelection = 0;
+            if (KeyPadPosition == KEY_Alt)
+              KeyPadPosition = PosBeforePauseKey;
             OSDKeyboard_DrawKeys(TRUE);
           }
+          else if ((KeyPadMode == KPM_Symbols) && (*param1 != RKEY_Sleep))
+            OSDKeyboard_AltKey();
           else
             ret = OSDKeyboard_Finish(FALSE);
           break;
@@ -1038,7 +1083,7 @@ else if (*event == EVT_USBKEYBOARD)
           break;
         }
 
-        case 0x08:     //BS
+        case 0x08:     //BackSpace
         {
           OSDKeyboard_DeleteLeft(1);
           break;

@@ -1,6 +1,6 @@
 JB = JailBreak
 
-CFLAGS = -I../elf -m32
+CFLAGS = -I../elf
 
 all: ${JB}
 

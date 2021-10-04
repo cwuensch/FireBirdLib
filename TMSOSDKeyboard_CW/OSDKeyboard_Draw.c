@@ -255,15 +255,18 @@ void OSDKeyboard_DrawKeySelection(void)
   dword                 x, y, w, h, c;
   int                   i, nr;
   char                  KeyText[2]; KeyText[1] = '\0';
-  char                 *pKeyText = KeyText;
+  const char           *pAltKeys = ((KeyPadPosition < NRKEYPADNORMALKEYS) ? Keypad[KeyPadMode][KeyPadPosition] : SpecialChars);
 
   TRACEENTER();
   if(OSDKeyboard_rgn)
   {
     // Koordinaten berechnen
-    nr = min(strlen(Keypad[KeyPadMode][KeyPadPosition]), NRKEYALTSYMBOLS);
+    nr = min(strlen(pAltKeys), NRKEYALTSYMBOLS);
     x  = KEYB_KeyAreaLeft + (KeyPadPosition % NRKEYCOLS) * (KEYB_KeyWidth + KEYB_KeyDist) + 6;
-    y  = KEYB_KeyAreaTop + (KeyPadPosition / NRKEYCOLS) * (KEYB_KeyHeight + KEYB_KeyDist) + KEYB_KeyHeight;
+    if (KeyPadPosition / NRKEYCOLS < 2)
+      y  = KEYB_KeyAreaTop + (KeyPadPosition / NRKEYCOLS) * (KEYB_KeyHeight + KEYB_KeyDist) + KEYB_KeyHeight;
+    else
+      y  = KEYB_KeyAreaTop + (KeyPadPosition / NRKEYCOLS - 1) * (KEYB_KeyHeight + KEYB_KeyDist) + KEYB_KeyHeight - KEYB_SelKeyHeight + 2;
     h  = KEYB_SelKeyHeight;
     w  = nr * KEYB_SelKeyWidth;
 
@@ -286,8 +289,8 @@ void OSDKeyboard_DrawKeySelection(void)
       else
         c = COLOR_LightText;
 
-      KeyText[0] = Keypad[KeyPadMode][KeyPadPosition][i];
-      FMUC_PutString(OSDKeyboard_rgn, x, y+6, x + w-1, pKeyText, c, 0, &OSDMenuFont_12, FALSE, ALIGN_CENTER);
+      KeyText[0] = pAltKeys[i];
+      FMUC_PutString(OSDKeyboard_rgn, x, y+6, x + w-1, KeyText, c, 0, &OSDMenuFont_12, FALSE, ALIGN_CENTER);
       x += w;
     }
     TAP_Osd_Sync();

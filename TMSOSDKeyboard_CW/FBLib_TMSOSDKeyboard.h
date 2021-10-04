@@ -13,7 +13,7 @@
   #define NRKEYPADNORMALKEYS    27
   #define NRKEYPADSPECIALKEYS    7
   #define NRKEYPADCOLORBUTTONS   5
-  #define NRKEYALTSYMBOLS        8
+  #define NRKEYALTSYMBOLS       10
   #define MAXSUGGESTIONLENGTH  256
   #define DICTHEAPSIZE        4096   // 20
   #define DICTENTRIES          500   //  4
@@ -44,6 +44,7 @@
 
 
   extern const char     Keypad[KPM_NrModes][NRKEYPADNORMALKEYS][NRKEYALTSYMBOLS];
+  extern const char     SpecialChars[NRKEYALTSYMBOLS+1];
   extern const char     T9Array[10][7];
   extern const char     T9ArrayCaps[10][7];
   extern tKeyPadButton  SpecialKeys[NRKEYPADSPECIALKEYS];
