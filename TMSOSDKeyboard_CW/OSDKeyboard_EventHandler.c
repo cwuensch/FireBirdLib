@@ -478,7 +478,7 @@ static bool OSDKeyboard_Finish(bool DoSave)
 
 bool OSDKeyboard_EventHandler(word *event, dword *param1, dword *param2)
 {
-  static dword          LastKey = 0, LastT9Pressed = 0, OkLongPressed = 1;
+  static dword          LastKey = 0, LastT9Pressed = 0, OkLongPressed = 1, PosBeforePauseKey = KEY_Alt;
 //  static int            SugInserted = 0;
   static const char    *T9Cur = NULL;
   static bool           IgnoreOk = FALSE;
@@ -802,8 +802,15 @@ else if (*event == EVT_USBKEYBOARD)
 
         case RKEY_Pause:      // Aktive Taste auf ALT setzen
         {
+          if (SelActive)
+          {
+            OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            break;
+          }
+
           if ((KeyPadPosition != KEY_Alt) && (KeyPadMode != KPM_Symbols))
           {
+            PosBeforePauseKey = KeyPadPosition;
             KeyPadPosition = KEY_Alt;
             KeyPadCursorMode = FALSE;
             OSDKeyboard_DrawText();
@@ -922,6 +929,7 @@ else if (*event == EVT_USBKEYBOARD)
             // Release bei ALT-Taste nachholen
             if ((KeyPadPosition == KEY_Alt) && !SelActive)
             {
+              KeyPadPosition = PosBeforePauseKey;
               OSDKeyboard_AltKey();
             }
             else
@@ -934,21 +942,25 @@ else if (*event == EVT_USBKEYBOARD)
                 OSDKeyboard_CursorPosition++;
                 OSDKeyboard_DrawText();
               }
-              if (KeyPadShiftState == 1)
+              if (KeyPadShiftState == 1 || SelActive)
               {
-                SelActive = FALSE;
-                KeyPadShiftState = FALSE;
-                if(KeyPadMode == KPM_LettersCAPS) KeyPadMode = KPM_Letters;
+                if (SelActive)
+                {
+                  SelActive = FALSE;
+                  KeyPadSelection = 0;
+                  if (KeyPadPosition == KEY_Alt)
+                    KeyPadPosition = PosBeforePauseKey;
+                }
+                if (KeyPadShiftState == 1)
+                {
+                  KeyPadShiftState = FALSE;
+                  if(KeyPadMode == KPM_LettersCAPS) KeyPadMode = KPM_Letters;
+                }
                 OSDKeyboard_DrawKeys(TRUE);
               }
-              else if (SelActive)
-              {
-                SelActive = FALSE;
-                OSDKeyboard_DrawKeys(TRUE);
-              }
-              KeyPadSelection = 0;
             }
             OkLongPressed = 1;  // damit beim Release nicht ein zweites Mal ausgelöst wird
+            if(*param1 != RKEY_Pause) PosBeforePauseKey = KEY_Alt;
           }
 
           // BEI RELEASE
@@ -1027,6 +1039,8 @@ else if (*event == EVT_USBKEYBOARD)
           {
             SelActive = FALSE;
             KeyPadSelection = 0;
+            if (KeyPadPosition == KEY_Alt)
+              KeyPadPosition = PosBeforePauseKey;
             OSDKeyboard_DrawKeys(TRUE);
           }
           else if ((KeyPadMode == KPM_Symbols) && (*param1 != RKEY_Sleep))
